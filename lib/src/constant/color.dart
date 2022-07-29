@@ -18,6 +18,7 @@ class ColorConst {
   static const Color drawerHover = Color(0xFFB4C9DE);
   static const Color searchIcon = Color(0xFF525f80);
   static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, .55);
+  static const Color error = Color(0xFFF44336);
 
   //dark
 

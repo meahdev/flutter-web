@@ -4,10 +4,12 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/streams.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
+import 'package:admin_dashboard/src/views/button.dart';
 import 'package:admin_dashboard/src/widget/drawer.dart';
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterx/flutterx.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -46,24 +48,29 @@ class _DashboardState extends State<Dashboard> {
           children: [
             _sidebar(),
             Expanded(
-              child: Container(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 60.0,
-                  vertical: 24.0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Buttons',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 8.0),
-                    _routes(),
-                  ],
+              child: SingleChildScrollView(
+                controller: ScrollController(),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 60.0,
+                    vertical: 24.0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Buttons',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge!
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      FxBox.h8,
+                      _routes(),
+                      FxBox.h10,
+                      const Button(),
+                    ],
+                  ),
                 ),
               ),
             ),

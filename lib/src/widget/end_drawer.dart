@@ -4,11 +4,11 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
-import 'package:admin_dashboard/src/widget/size_box.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterx/flutterx.dart';
 
 class SettingDrawer extends StatefulWidget {
   final GlobalKey<ScaffoldState> scaffoldKey;
@@ -63,9 +63,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
             padding: const EdgeInsets.all(24),
             child: Column(
               children: [
-                const CommanSizeBox(
-                  height: 10,
-                ),
+                FxBox.h10,
                 Container(
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
@@ -82,9 +80,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                const CommanSizeBox(
-                  height: 10,
-                ),
+                FxBox.h10,
                 Container(
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
@@ -101,9 +97,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                const CommanSizeBox(
-                  height: 10,
-                ),
+                FxBox.h10,
                 Row(
                   children: [
                     BlocProvider(
@@ -133,9 +127,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
                     )
                   ],
                 ),
-                const CommanSizeBox(
-                  height: 10,
-                ),
+                FxBox.h10,
               ],
             ),
           ),

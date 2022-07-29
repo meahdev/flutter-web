@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class ThemeClass {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
+      useMaterial3: true,
       fontFamily: "Nunito",
       applyElevationOverlayColor: false,
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,

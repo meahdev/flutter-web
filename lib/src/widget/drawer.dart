@@ -2,9 +2,9 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/streams.dart';
-import 'package:admin_dashboard/src/widget/size_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterx/flutterx.dart';
 
 class DrawerWidget extends StatelessWidget {
   const DrawerWidget({Key? key}) : super(key: key);
@@ -50,7 +50,7 @@ class DrawerWidget extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CommanSizeBox(height: 10),
+            FxBox.h10,
             _mainHeading(),
             _buildMainList(mainList, mainIconList),
             _componentsHeading(),
@@ -61,7 +61,7 @@ class DrawerWidget extends StatelessWidget {
             ),
             _extrasHeading(),
             _buildExtrasList(extrasList, extrasIconList),
-            const CommanSizeBox(height: 20),
+            FxBox.h20,
           ],
         ),
       ),
