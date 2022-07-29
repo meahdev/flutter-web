@@ -571,7 +571,6 @@ class Button extends StatelessWidget {
               icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               buttonType: ButtonType.info,
               height: 40,

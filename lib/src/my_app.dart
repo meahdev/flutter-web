@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/bloc/theme_mode_bloc.dart';
+import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
-import 'package:admin_dashboard/src/views/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,6 +13,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final _appRouter = AppRouter();
   @override
   void initState() {
     super.initState();
@@ -33,10 +34,12 @@ class _MyAppState extends State<MyApp> {
           return state.when(
             initial: () => const SizedBox.shrink(),
             success: (themeMode) {
-              return MaterialApp(
+              return MaterialApp.router(
+                routerDelegate: _appRouter.delegate(),
+                routeInformationParser: _appRouter.defaultRouteParser(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeClass.themeData(themeMode, context),
-                home: const Dashboard(),
+                // home: const Dashboard(),
               );
             },
           );
