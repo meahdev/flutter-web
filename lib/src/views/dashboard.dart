@@ -4,9 +4,10 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/streams.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/views/button.dart';
+import 'package:admin_dashboard/src/views/buttons/button.dart';
 import 'package:admin_dashboard/src/widget/drawer.dart';
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
+import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
@@ -23,12 +24,12 @@ class _DashboardState extends State<Dashboard> {
   final GlobalKey<ScaffoldState> _scaffoldDrawerKey =
       GlobalKey<ScaffoldState>();
 
-  @override
-  void dispose() {
-    selectedDrawerIndexController.close();
-    selectedDrawerExpanseController.close();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   selectedDrawerIndexController.close();
+  //   selectedDrawerExpanseController.close();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +178,7 @@ class _DashboardState extends State<Dashboard> {
             minWidth: 60,
             hoverColor: ColorConst.transparent,
             onPressed: () {},
-            child: SvgPicture.asset(IconlyBroken.notification),
+            child: const SvgIcon(icon: IconlyBroken.notification),
           ),
           MaterialButton(
             height: double.infinity,
@@ -196,7 +197,7 @@ class _DashboardState extends State<Dashboard> {
             onPressed: () {
               _scaffoldKey.currentState!.openEndDrawer();
             },
-            child: SvgPicture.asset(IconlyBroken.setting),
+            child: const SvgIcon(icon: IconlyBroken.setting),
           ),
         ],
       );

@@ -100,22 +100,19 @@ class _SettingDrawerState extends State<SettingDrawer> {
                 FxBox.h10,
                 Row(
                   children: [
-                    BlocProvider(
-                      create: (context) => themeModeBloc,
-                      child: BlocBuilder<ThemeModeBloc, ThemeModeState>(
-                        builder: (context, state) {
-                          return CupertinoSwitch(
-                            value: HiveUtils.isContainKey(HiveKeys.themeMode)
-                                ? HiveUtils.get(HiveKeys.themeMode)
-                                : false,
-                            onChanged: (value) {
-                              HiveUtils.set(HiveKeys.themeMode, value);
-                              themeModeBloc
-                                  .add(ThemeModeEvent.changeTheme(value));
-                            },
-                          );
-                        },
-                      ),
+                    BlocBuilder<ThemeModeBloc, ThemeModeState>(
+                      builder: (context, state) {
+                        return CupertinoSwitch(
+                          value: HiveUtils.isContainKey(HiveKeys.themeMode)
+                              ? HiveUtils.get(HiveKeys.themeMode)
+                              : false,
+                          onChanged: (value) {
+                            HiveUtils.set(HiveKeys.themeMode, value);
+                            themeModeBloc
+                                .add(ThemeModeEvent.changeTheme(value));
+                          },
+                        );
+                      },
                     ),
                     const Text(
                       Strings.darkMode,
