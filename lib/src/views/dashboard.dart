@@ -1,7 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/streams.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/buttons/button.dart';
@@ -9,7 +8,6 @@ import 'package:admin_dashboard/src/widget/drawer.dart';
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
 
 class Dashboard extends StatefulWidget {
@@ -46,6 +44,8 @@ class _DashboardState extends State<Dashboard> {
         drawerScrimColor: ColorConst.transparent,
         drawer: const DrawerWidget(),
         body: Row(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _sidebar(),
             Expanded(
@@ -143,15 +143,12 @@ class _DashboardState extends State<Dashboard> {
                   minWidth: 60,
                   hoverColor: ColorConst.transparent,
                   onPressed: () {},
-                  child: SvgPicture.asset(IconlyBroken.search),
+                  child: const SvgIcon(icon: IconlyBroken.search),
                 )
               : Container(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   width: 180,
-                  // alignment: Alignment.center,
                   child: TextField(
-                    // cursorColor: ColorConst.black,
-                    // cursorHeight: 10,
                     cursorWidth: 1,
                     textAlignVertical: TextAlignVertical.center,
                     decoration: InputDecoration(
@@ -164,9 +161,11 @@ class _DashboardState extends State<Dashboard> {
                       contentPadding: const EdgeInsets.fromLTRB(12, 10, 0, 4),
                       hintText: Strings.searchHint,
                       hintStyle: const TextStyle(fontSize: 14),
-                      suffixIcon: SvgPicture.asset(
-                        IconlyBroken.search,
-                        fit: BoxFit.none,
+                      suffixIcon: const Padding(
+                        padding: EdgeInsets.all(6),
+                        child: SvgIcon(
+                          icon: IconlyBroken.search,
+                        ),
                       ),
                       // fillColor: ColorConst.textFieldBG,
                       isCollapsed: true,
@@ -207,12 +206,12 @@ class _DashboardState extends State<Dashboard> {
       : const SizedBox.shrink();
 
   Widget _routes() => Row(
-        children: [
-          const Text('Admin'),
-          SvgPicture.asset(IconlyBroken.arrowRight3),
-          const Text('UI Elements'),
-          SvgPicture.asset(IconlyBroken.arrowRight3),
-          const Text('Buttons'),
+        children: const [
+          Text('Admin'),
+          SvgIcon(icon: IconlyBroken.arrowRight3),
+          Text('UI Elements'),
+          SvgIcon(icon: IconlyBroken.arrowRight3),
+          Text('Buttons'),
         ],
       );
 }

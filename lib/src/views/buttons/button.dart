@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -123,7 +124,114 @@ class Button extends StatelessWidget {
               ),
             ],
           )
-        : const SizedBox();
+        : Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: _exampleButton(context),
+                  ),
+                ),
+              ),
+              FxBox.h12,
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: _outlinedButton(context),
+                  ),
+                ),
+              ),
+              FxBox.h12,
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: _exampleWithIconButton(context),
+                  ),
+                ),
+              ),
+              FxBox.h12,
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: _outlineWithIconButton(context),
+                  ),
+                ),
+              ),
+              FxBox.h12,
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: _iconButton(context),
+                  ),
+                ),
+              ),
+              FxBox.h12,
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: _outlineIconButton(context),
+                  ),
+                ),
+              ),
+              FxBox.h12,
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: _socialButton(context),
+                  ),
+                ),
+              ),
+              FxBox.h12,
+              SizedBox(
+                width: double.infinity,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: _outlinedSocialButton(context),
+                  ),
+                ),
+              ),
+            ],
+          );
   }
 
   Widget _exampleButton(BuildContext context) {
@@ -139,6 +247,7 @@ class Button extends StatelessWidget {
         ),
         FxBox.h10,
         Wrap(
+          spacing: 10,
           runSpacing: 10,
           children: [
             FxButton(
@@ -146,9 +255,9 @@ class Button extends StatelessWidget {
               onPressed: () {},
               radius: 4,
               child: const Text('Primary'),
+
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               color: Theme.of(context).colorScheme.secondary,
               height: 40,
@@ -157,7 +266,6 @@ class Button extends StatelessWidget {
               child: const Text('Secondary'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               buttonType: ButtonType.success,
               height: 40,
@@ -166,7 +274,6 @@ class Button extends StatelessWidget {
               child: const Text('Success'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               buttonType: ButtonType.info,
               height: 40,
@@ -175,7 +282,6 @@ class Button extends StatelessWidget {
               child: const Text('Info'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               buttonType: ButtonType.warning,
               height: 40,
@@ -184,7 +290,6 @@ class Button extends StatelessWidget {
               child: const Text('Warning'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               buttonType: ButtonType.error,
               height: 40,
@@ -212,6 +317,7 @@ class Button extends StatelessWidget {
         ),
         FxBox.h10,
         Wrap(
+          spacing: 10,
           runSpacing: 10,
           children: [
             FxButton(
@@ -222,7 +328,6 @@ class Button extends StatelessWidget {
               child: const Text('Primary'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               // color: Theme.of(context).colorScheme.secondary,
@@ -232,7 +337,6 @@ class Button extends StatelessWidget {
               child: const Text('Secondary'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               buttonType: ButtonType.success,
@@ -242,7 +346,6 @@ class Button extends StatelessWidget {
               child: const Text('Success'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               buttonType: ButtonType.info,
@@ -252,7 +355,6 @@ class Button extends StatelessWidget {
               child: const Text('Info'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               buttonType: ButtonType.warning,
@@ -262,7 +364,6 @@ class Button extends StatelessWidget {
               child: const Text('Warning'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               buttonType: ButtonType.error,
@@ -291,6 +392,7 @@ class Button extends StatelessWidget {
         ),
         FxBox.h10,
         Wrap(
+          spacing: 10,
           runSpacing: 10,
           children: [
             FxButton(
@@ -301,7 +403,6 @@ class Button extends StatelessWidget {
               child: const Text('Primary'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               icon: Icons.ac_unit,
               height: 40,
@@ -310,7 +411,6 @@ class Button extends StatelessWidget {
               child: const Text('Secondary'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               icon: Icons.ac_unit,
               buttonType: ButtonType.success,
@@ -320,7 +420,6 @@ class Button extends StatelessWidget {
               child: const Text('Success'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               icon: Icons.ac_unit,
               buttonType: ButtonType.info,
@@ -330,7 +429,6 @@ class Button extends StatelessWidget {
               child: const Text('Info'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               icon: Icons.ac_unit,
               buttonType: ButtonType.warning,
@@ -340,7 +438,6 @@ class Button extends StatelessWidget {
               child: const Text('Warning'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               icon: Icons.ac_unit,
               buttonType: ButtonType.error,
@@ -369,6 +466,7 @@ class Button extends StatelessWidget {
         ),
         FxBox.h10,
         Wrap(
+          spacing: 10,
           runSpacing: 10,
           children: [
             FxButton(
@@ -380,7 +478,6 @@ class Button extends StatelessWidget {
               child: const Text('Primary'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               icon: Icons.ac_unit_outlined,
@@ -390,7 +487,6 @@ class Button extends StatelessWidget {
               child: const Text('Secondary'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               icon: Icons.ac_unit_outlined,
@@ -401,7 +497,6 @@ class Button extends StatelessWidget {
               child: const Text('Success'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               icon: Icons.ac_unit_outlined,
@@ -412,7 +507,6 @@ class Button extends StatelessWidget {
               child: const Text('Info'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               icon: Icons.ac_unit_outlined,
@@ -423,7 +517,6 @@ class Button extends StatelessWidget {
               child: const Text('Warning'),
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               icon: Icons.ac_unit_outlined,
@@ -453,30 +546,29 @@ class Button extends StatelessWidget {
         ),
         FxBox.h10,
         Wrap(
+          spacing: 10,
           runSpacing: 10,
           children: [
             FxButton(
+              icon: Icons.ac_unit,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
             ),
-            FxBox.w10,
             FxButton(
               // color: Theme.of(context).colorScheme.secondary,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               buttonType: ButtonType.success,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
             FxBox.w10,
@@ -485,25 +577,23 @@ class Button extends StatelessWidget {
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               buttonType: ButtonType.warning,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               buttonType: ButtonType.error,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
           ],
@@ -525,6 +615,7 @@ class Button extends StatelessWidget {
         ),
         FxBox.h10,
         Wrap(
+          spacing: 10,
           runSpacing: 10,
           children: [
             FxButton(
@@ -532,57 +623,52 @@ class Button extends StatelessWidget {
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               // color: Theme.of(context).colorScheme.secondary,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               buttonType: ButtonType.success,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               buttonType: ButtonType.info,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               buttonType: ButtonType.warning,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
-            FxBox.w10,
             FxButton(
               isOutlineButton: true,
               buttonType: ButtonType.error,
               height: 40,
               onPressed: () {},
               radius: 4,
-              child: const Icon(Icons.ac_unit),
+              icon: Icons.ac_unit,
               // roundedFromSide: true,
             ),
           ],
@@ -604,19 +690,18 @@ class Button extends StatelessWidget {
         ),
         FxBox.h10,
         Wrap(
+          spacing: 10,
           runSpacing: 10,
           children: [
             FxButton.apple(
               height: 40,
               onPressed: () {},
             ),
-            FxBox.w10,
             FxButton.facebook(
               height: 40,
               onPressed: () {},
               radius: 4,
             ),
-            FxBox.w10,
             FxButton.whatsapp(
               height: 40,
               onPressed: () {},
@@ -641,6 +726,7 @@ class Button extends StatelessWidget {
         ),
         FxBox.h10,
         Wrap(
+          spacing: 10,
           runSpacing: 10,
           children: [
             FxButton.apple(
@@ -648,14 +734,12 @@ class Button extends StatelessWidget {
               height: 40,
               onPressed: () {},
             ),
-            FxBox.w10,
             FxButton.facebook(
               isOutlineButton: true,
               height: 40,
               onPressed: () {},
               radius: 4,
             ),
-            FxBox.w10,
             FxButton.whatsapp(
               isOutlineButton: true,
               height: 40,

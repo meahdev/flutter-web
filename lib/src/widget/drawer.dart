@@ -2,8 +2,8 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/streams.dart';
+import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
 
 class DrawerWidget extends StatelessWidget {
@@ -112,7 +112,7 @@ class DrawerWidget extends StatelessWidget {
                 },
                 child: ListTile(
                   mouseCursor: SystemMouseCursors.click,
-                  leading: SvgPicture.asset(mainIconList[index], color: color),
+                  leading: SvgIcon(icon: mainIconList[index]),
                   title: Transform.translate(
                     offset: const Offset(-15, 0),
                     child: Text(
@@ -180,10 +180,7 @@ class DrawerWidget extends StatelessWidget {
                   child: ExpansionTile(
                     collapsedIconColor: color,
                     iconColor: color,
-                    leading: SvgPicture.asset(
-                      componentsIconList[index],
-                      color: color,
-                    ),
+                    leading: SvgIcon(icon: componentsIconList[index]),
                     title: Transform.translate(
                       offset: const Offset(-15, 0),
                       child: Text(
@@ -296,8 +293,7 @@ class DrawerWidget extends StatelessWidget {
                 child: ExpansionTile(
                   collapsedIconColor: color,
                   iconColor: color,
-                  leading:
-                      SvgPicture.asset(extrasIconList[index], color: color),
+                  leading: SvgIcon(icon: extrasIconList[index]),
                   title: Transform.translate(
                     offset: const Offset(-15, 0),
                     child: Text(

@@ -4,10 +4,10 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
+import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
 
 class SettingDrawer extends StatefulWidget {
@@ -35,15 +35,15 @@ class _SettingDrawerState extends State<SettingDrawer> {
                   Strings.settings,
                   style: TextStyle(
                     fontSize: 17,
-                    color: ColorConst.endDrawerText,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 GestureDetector(
-                    onTap: () {
-                      widget.scaffoldKey.currentState!.closeEndDrawer();
-                    },
-                    child: SvgPicture.asset(IconlyBroken.closeSquare)),
+                  onTap: () {
+                    widget.scaffoldKey.currentState!.closeEndDrawer();
+                  },
+                  child: const SvgIcon(icon: IconlyBroken.closeSquare),
+                ),
               ],
             ),
           ),
@@ -54,7 +54,6 @@ class _SettingDrawerState extends State<SettingDrawer> {
               Strings.chooseLayouts,
               style: TextStyle(
                 fontSize: 14,
-                color: ColorConst.endDrawerText,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -72,7 +71,6 @@ class _SettingDrawerState extends State<SettingDrawer> {
                     ),
                     border: Border.all(
                       width: 1,
-                      color: ColorConst.endDrawerImageBorder,
                     ),
                   ),
                   child: Image.network(
@@ -89,7 +87,6 @@ class _SettingDrawerState extends State<SettingDrawer> {
                     ),
                     border: Border.all(
                       width: 1,
-                      color: ColorConst.endDrawerImageBorder,
                     ),
                   ),
                   child: Image.network(
@@ -119,7 +116,6 @@ class _SettingDrawerState extends State<SettingDrawer> {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
-                        color: ColorConst.endDrawerText,
                       ),
                     )
                   ],
