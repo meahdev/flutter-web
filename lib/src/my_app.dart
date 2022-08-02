@@ -1,5 +1,5 @@
 import 'package:admin_dashboard/src/constant/theme.dart';
-import 'package:admin_dashboard/src/provider/theme/bloc/bloc/theme_mode_bloc.dart';
+import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
 import 'package:flutter/material.dart';

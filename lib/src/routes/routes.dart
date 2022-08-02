@@ -12,7 +12,7 @@ import 'package:auto_route/auto_route.dart';
       children: [
         AutoRoute(path: 'test', page: TestWidget),
         AutoRoute(path: 'button', page: Button),
-        // AutoRoute(path: 'settings', page: SettingsPage),
+        // AutoRoute(path: 'rating', page: Rating),
       ],
     ),
   ],

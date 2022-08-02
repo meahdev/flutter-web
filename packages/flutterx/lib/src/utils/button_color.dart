@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutterx/src/constant/color.dart';
 import 'package:flutterx/src/constant/enum.dart';
 
-Color? getButtonColor(ButtonType? buttonType) {
+Color? getButtonColor(ButtonType? buttonType, BuildContext context) {
   if (buttonType == ButtonType.error) {
     return FxColor.error;
   } else if (buttonType == ButtonType.info) {
@@ -12,12 +11,14 @@ Color? getButtonColor(ButtonType? buttonType) {
     return FxColor.success;
   } else if (buttonType == ButtonType.warning) {
     return FxColor.warning;
+  } else if (buttonType == ButtonType.secondary) {
+    return Theme.of(context).colorScheme.secondary.withOpacity(0.80);
   } else {
     return null;
   }
 }
 
-Color? getButtonHoverColor(ButtonType? buttonType) {
+Color? getButtonHoverColor(ButtonType? buttonType, BuildContext context) {
   if (buttonType == ButtonType.error) {
     return FxColor.errorDark;
   } else if (buttonType == ButtonType.info) {
@@ -26,6 +27,8 @@ Color? getButtonHoverColor(ButtonType? buttonType) {
     return FxColor.successDark;
   } else if (buttonType == ButtonType.warning) {
     return FxColor.warningDark;
+  } else if (buttonType == ButtonType.secondary) {
+    return Theme.of(context).colorScheme.secondary;
   } else {
     return null;
   }
@@ -35,11 +38,11 @@ Color? getButtonTextColor(ButtonType? buttonType) {
   if (buttonType == ButtonType.error) {
     return FxColor.white;
   } else if (buttonType == ButtonType.info) {
-    return FxColor.white;
+    return FxColor.dark;
   } else if (buttonType == ButtonType.success) {
     return FxColor.white;
   } else if (buttonType == ButtonType.warning) {
-    return FxColor.white;
+    return FxColor.dark;
   } else {
     return null;
   }

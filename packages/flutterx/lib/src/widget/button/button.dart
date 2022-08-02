@@ -1,12 +1,13 @@
 import 'dart:math' as math;
 import 'dart:ui' show lerpDouble;
 import 'package:flutter/material.dart';
-import 'package:flutterx/flutterx.dart';
 import 'package:flutterx/src/constant/color.dart';
+import 'package:flutterx/src/constant/enum.dart';
 import 'package:flutterx/src/constant/icons.dart';
 import 'package:flutterx/src/utils/button_color.dart';
 import 'package:flutterx/src/utils/button_utils.dart';
 import 'package:flutterx/src/utils/hover.dart';
+import 'package:flutterx/src/widget/widget.dart';
 
 class FxButton extends StatelessWidget {
   final ButtonType? buttonType;
@@ -60,7 +61,7 @@ class FxButton extends StatelessWidget {
       this.icon,
       this.iconSize,
       this.isOutlineButton = false,
-      this.borderWidth = 2.0,
+      this.borderWidth = 1.0,
       this.borderRadius = 2.0,
       required this.onPressed,
       this.onLongPress,
@@ -94,9 +95,7 @@ class FxButton extends StatelessWidget {
       this.enableFeedback = true,
       this.child,
       this.radius})
-      : assert(buttonType == null ||
-            (color == null && disabledColor == null && hoverColor == null)),
-        assert((fullWidth && minWidth == null) ||
+      : assert((fullWidth && minWidth == null) ||
             (!fullWidth && minWidth != null) ||
             (!fullWidth && minWidth == null)),
         assert((roundedFromSide && shape == null) ||
@@ -121,7 +120,7 @@ class FxButton extends StatelessWidget {
     this.roundedFromSide = false,
     this.iconSize,
     this.isOutlineButton = false,
-    this.borderWidth = 2.0,
+    this.borderWidth = 1.0,
     this.borderRadius = 2.0,
     required this.onPressed,
     this.onLongPress,
@@ -181,7 +180,7 @@ class FxButton extends StatelessWidget {
     this.roundedFromSide = false,
     this.iconSize,
     this.isOutlineButton = false,
-    this.borderWidth = 2.0,
+    this.borderWidth = 1.0,
     this.borderRadius = 2.0,
     required this.onPressed,
     this.onLongPress,
@@ -227,9 +226,9 @@ class FxButton extends StatelessWidget {
         assert(disabledElevation == null || disabledElevation >= 0.0),
         icon = KIcons.whatsapp,
         child = const Text('whatsapp'),
-        color = FxColor.whatsapp,
+        color = FxColor.whatsApp,
         textColor = FxColor.socialButtonTextColor,
-        hoverColor = FxColor.whatsappDark,
+        hoverColor = FxColor.whatsAppDark,
         buttonType = null,
         backGroundType = null,
         isRectangle = null,
@@ -317,11 +316,11 @@ class FxButton extends StatelessWidget {
         /// ButtonText Color
         disabledTextColor: disabledTextColor,
         color: Utils.backgroundColor(
-          isOutlineButton,
-          context,
-          buttonType,
-          color,
-        ),
+                isOutlineButton,
+                context,
+                buttonType,
+                color,
+              ),
 
         /// Background Color
         disabledColor: disabledColor ??
@@ -329,10 +328,10 @@ class FxButton extends StatelessWidget {
         focusColor: focusColor,
         hoverColor: isOutlineButton
             ? buttonType != null
-                ? getButtonColor(buttonType) ?? Theme.of(context).primaryColor
+                ? getButtonColor(buttonType, context) ?? Theme.of(context).primaryColor
                 : color ?? Theme.of(context).primaryColor
             : buttonType != null
-                ? getButtonHoverColor(buttonType) ??
+                ? getButtonHoverColor(buttonType, context) ??
                     Theme.of(context).primaryColorDark
                 : hoverColor ?? Theme.of(context).primaryColorDark,
         highlightColor: highlightColor,

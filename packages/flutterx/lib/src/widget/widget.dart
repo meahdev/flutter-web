@@ -1,4 +1,5 @@
 export 'sizedbox.dart';
 export 'button/button.dart';
+export 'button/fx_button.dart';
 export 'badge/badge.dart';
-export 'slider/slider.dart';
+export 'ratingbar/rating_bar.dart';

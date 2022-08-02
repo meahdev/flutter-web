@@ -11,7 +11,8 @@ class Utils {
         if (isHover) {
           return getButtonTextColor(buttonType);
         } else {
-          return getButtonColor(buttonType) ?? Theme.of(context).primaryColor;
+          return getButtonColor(buttonType, context) ??
+              Theme.of(context).primaryColor;
         }
       } else {
         if (isHover) {
@@ -37,10 +38,11 @@ class Utils {
     color,
   ) {
     if (isOutlineButton) {
-      return FxColor.white;
+      return Theme.of(context).scaffoldBackgroundColor;
     } else {
       if (buttonType != null) {
-        return getButtonColor(buttonType) ?? Theme.of(context).primaryColor;
+        return getButtonColor(buttonType, context) ??
+            Theme.of(context).primaryColor;
       } else {
         return color ?? Theme.of(context).primaryColor;
       }
@@ -67,7 +69,7 @@ class Utils {
                 ? BorderSide(
                     width: borderWidth,
                     color: buttonType != null
-                        ? getButtonColor(buttonType) ??
+                        ? getButtonColor(buttonType, context) ??
                             Theme.of(context).primaryColor
                         : color ?? Theme.of(context).primaryColor,
                   )
@@ -81,7 +83,7 @@ class Utils {
               ? BorderSide(
                   width: borderWidth,
                   color: buttonType != null
-                      ? getButtonColor(buttonType) ??
+                      ? getButtonColor(buttonType, context) ??
                           Theme.of(context).primaryColor
                       : color ?? Theme.of(context).primaryColor,
                 )
@@ -94,7 +96,8 @@ class Utils {
             side: BorderSide(
               width: borderWidth,
               color: buttonType != null
-                  ? getButtonColor(buttonType) ?? Theme.of(context).primaryColor
+                  ? getButtonColor(buttonType, context) ??
+                      Theme.of(context).primaryColor
                   : color ?? Theme.of(context).primaryColor,
             ),
           );
@@ -112,7 +115,8 @@ class Utils {
         if (isHover) {
           return getButtonTextColor(buttonType);
         } else {
-          return getButtonColor(buttonType) ?? Theme.of(context).primaryColor;
+          return getButtonColor(buttonType, context) ??
+              Theme.of(context).primaryColor;
         }
       } else {
         if (isHover) {

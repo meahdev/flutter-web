@@ -1,12 +1,13 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/streams.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
+import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/widget/drawer.dart';
+import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
+import 'package:admin_dashboard/src/widget/expantion_tile.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -36,28 +37,33 @@ class _MenuBarState extends State<MenuBar> {
   };
 
   List<List<String>> componentsExpandList = [
-    ['Buttons'],
+    ['Buttons', 'Rating'],
     ['Iconly Broken', 'Iconly Bold']
+  ];
+
+  final List<PageRouteInfo<dynamic>> _routes = const [
+    TestWidget(),
+    Button(),
+    // Rating()
   ];
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: const [TestWidget(), Button()],
+      routes: _routes,
       homeIndex: 0,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
           key: _scaffoldKey,
           endDrawer: Drawer(
-            width: 250,
+            width: 280,
             child: SettingDrawer(scaffoldKey: _scaffoldKey),
           ),
           appBar: _appBar(),
           body: Scaffold(
             key: _scaffoldDrawerKey,
             drawerScrimColor: ColorConst.transparent,
-            // drawer: const DrawerWidget(),
             drawer: _sidebar(tabsRouter),
             body: Row(
               mainAxisSize: MainAxisSize.max,
@@ -85,8 +91,8 @@ class _MenuBarState extends State<MenuBar> {
                                 .copyWith(fontWeight: FontWeight.bold),
                           ),
                           FxBox.h8,
-                          _routes(),
-                          FxBox.h10,
+                          _routesDeatils(),
+                          FxBox.h8,
                           child,
                         ],
                       ),
@@ -183,10 +189,8 @@ class _MenuBarState extends State<MenuBar> {
                       hintText: Strings.searchHint,
                       hintStyle: const TextStyle(fontSize: 14),
                       suffixIcon: const Padding(
-                        padding: EdgeInsets.all(6),
-                        child: SvgIcon(
-                          icon: IconlyBroken.search,
-                        ),
+                        padding: EdgeInsets.all(8),
+                        child: SvgIcon(icon: IconlyBroken.search),
                       ),
                       // fillColor: ColorConst.textFieldBG,
                       isCollapsed: true,
@@ -206,7 +210,7 @@ class _MenuBarState extends State<MenuBar> {
             hoverColor: ColorConst.transparent,
             onPressed: () {},
             child: const CircleAvatar(
-              maxRadius: 18,
+              maxRadius: 16,
               backgroundImage: NetworkImage(Images.profileImage),
             ),
           ),
@@ -222,6 +226,7 @@ class _MenuBarState extends State<MenuBar> {
         ],
       );
 
+  /// drawer / sidebar
   Widget _sidebar(TabsRouter tabsRouter) => Container(
         height: MediaQuery.of(context).size.height,
         width: 240,
@@ -230,26 +235,25 @@ class _MenuBarState extends State<MenuBar> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              FxBox.h10,
+              FxBox.h8,
               // main
               _menuHeading(Strings.main),
-              _mainList(tabsRouter),
+              _menuList(tabsRouter: tabsRouter, items: mainData),
               // components
               _menuHeading(Strings.components),
-              _componentList(tabsRouter),
-              // _buildComponentsList(
-              //   componentsExpandList,
-              //   componentsList,
-              //   componentsIconList,
-              // ),
-              // _extrasHeading(),
-              // _buildExtrasList(extrasList, extrasIconList),
+              _menuList(
+                tabsRouter: tabsRouter,
+                items: componentData,
+                isExpanded: true,
+                children: componentsExpandList,
+              ),
               FxBox.h20,
             ],
           ),
         ),
       );
 
+  /// menu heading
   Widget _menuHeading(String title) {
     return Container(
       padding: const EdgeInsets.only(left: 18),
@@ -265,157 +269,97 @@ class _MenuBarState extends State<MenuBar> {
     );
   }
 
-  Widget _mainList(TabsRouter tabsRouter) {
+  /// menu list
+  Widget _menuList({
+    required TabsRouter tabsRouter,
+    required Map<String, String> items,
+    bool isExpanded = false,
+    List<List<String>> children = const [],
+  }) {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: mainData.length,
-      itemBuilder: (context, index) => StreamBuilder<String>(
-        stream: selectedDrawerIndexController.stream,
-        initialData: '',
-        builder: (context, snapshot) {
-          String snapshotData = snapshot.data ?? '';
-          Color color = snapshotData == mainData.keys.elementAt(index)
-              ? ColorConst.drawerHover
-              : ColorConst.drawerIcon;
-          return MouseRegion(
-            onEnter: ((event) {
-              snapshotData != mainData.keys.elementAt(index)
-                  ? selectedDrawerIndexController.sink
-                      .add(mainData.keys.elementAt(index))
-                  : null;
-            }),
-            onExit: (event) {
-              snapshotData == mainData.keys.elementAt(index)
-                  ? selectedDrawerIndexController.sink.add('')
-                  : null;
-            },
-            child: ListTile(
-              mouseCursor: SystemMouseCursors.click,
-              leading: SvgIcon(icon: mainData.values.elementAt(index)),
-              title: Transform.translate(
-                offset: const Offset(-15, 0),
-                child: Text(
-                  mainData.keys.elementAt(index),
-                  style: TextStyle(
-                    color: color,
-                    fontSize: 15.7,
-                  ),
-                ),
+      itemCount: items.length,
+      itemBuilder: (context, index) => FxHover(
+        builder: (isHover) {
+          Color color =
+              isHover ? ColorConst.drawerHover : ColorConst.drawerIcon;
+          if (isExpanded) {
+            return FxExpansionTile(
+              leading: SvgIcon(
+                icon: items.values.elementAt(index),
+                size: 16,
+                color: color,
               ),
+              title: Text(
+                items.keys.elementAt(index),
+                style: TextStyle(color: color, fontSize: 14.7),
+              ),
+              trailing: SvgIcon(
+                icon: IconlyBroken.arrowDown,
+                size: 16,
+                color: color,
+              ),
+              children: [_subMenuList(children[index], tabsRouter)],
+            );
+          } else {
+            return ListTile(
+              leading: SvgIcon(
+                icon: items.values.elementAt(index),
+                size: 16,
+                color: color,
+              ),
+              title: Text(
+                items.keys.elementAt(index),
+                style: TextStyle(color: color, fontSize: 14.7),
+              ),
+              mouseCursor: SystemMouseCursors.click,
+              horizontalTitleGap: 0.0,
               onTap: () {
                 tabsRouter.setActiveIndex(0);
               },
-            ),
-          );
+            );
+          }
         },
       ),
     );
   }
 
-  Widget _componentList(TabsRouter tabsRouter) {
+  /// sub menu list
+  Widget _subMenuList(List<String> items, TabsRouter tabsRouter) {
     return ListView.builder(
-      physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: componentData.length,
-      itemBuilder: (context, index) => StreamBuilder<String>(
-        stream: selectedDrawerIndexController.stream,
-        initialData: '',
-        builder: (context, snapshot) {
-          String snapshotData = snapshot.data ?? '';
-          Color color = snapshotData == componentData.keys.elementAt(index)
-              ? ColorConst.drawerHover
-              : ColorConst.drawerIcon;
-          return MouseRegion(
-            onEnter: ((event) {
-              snapshotData != componentData.keys.elementAt(index)
-                  ? selectedDrawerIndexController.sink
-                      .add(componentData.keys.elementAt(index))
-                  : null;
-            }),
-            onExit: (event) {
-              snapshotData == componentData.keys.elementAt(index)
-                  ? selectedDrawerIndexController.sink.add('')
-                  : null;
-            },
-            child: Theme(
-              data: Theme.of(context)
-                  .copyWith(dividerColor: ColorConst.transparent),
-              child: ExpansionTile(
-                collapsedIconColor: color,
-                iconColor: color,
-                leading: SvgIcon(icon: componentData.values.elementAt(index)),
-                title: Transform.translate(
-                  offset: const Offset(-15, 0),
-                  child: Text(
-                    componentData.keys.elementAt(index),
-                    style: TextStyle(
-                      color: color,
-                      fontSize: 15.7,
-                    ),
-                  ),
-                ),
-                children: [
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: componentsExpandList[index].length,
-                    itemBuilder: (context, index1) {
-                      return StreamBuilder<int?>(
-                        stream: selectedDrawerExpanseController.stream,
-                        initialData: null,
-                        builder: (context, AsyncSnapshot<int?> snapshot) {
-                          int? snapshotData = snapshot.data;
-                          Color color = snapshotData == index1
-                              ? ColorConst.drawerHover
-                              : ColorConst.drawerIcon;
-                          return MouseRegion(
-                            cursor: SystemMouseCursors.zoomIn,
-                            onEnter: (event) {
-                              snapshotData != index1
-                                  ? selectedDrawerExpanseController.sink
-                                      .add(index1)
-                                  : null;
-                            },
-                            onExit: (event) {
-                              selectedDrawerExpanseController.sink.add(null);
-                            },
-                            child: ListTile(
-                              mouseCursor: SystemMouseCursors.click,
-                              title: Transform.translate(
-                                offset: const Offset(38, 0),
-                                child: Text(
-                                  componentsExpandList[index][index1],
-                                  style: TextStyle(
-                                    color: color,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                              onTap: () {
-                                tabsRouter.setActiveIndex(1);
-                              },
-                            ),
-                          );
-                        },
-                      );
-                    },
-                  )
-                ],
-              ),
+      itemCount: items.length,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) => FxHover(
+        builder: (isHover) {
+          Color color =
+              isHover ? ColorConst.drawerHover : ColorConst.drawerIcon;
+          return ListTile(
+            dense: true,
+            visualDensity: const VisualDensity(vertical: -3),
+            mouseCursor: SystemMouseCursors.click,
+            contentPadding: const EdgeInsets.only(left: 52.0),
+            title: Text(
+              items[index],
+              style: TextStyle(color: color, fontSize: 14),
             ),
+            onTap: () {
+              tabsRouter.setActiveIndex(getRouteIndex(items[index]));
+            },
           );
         },
       ),
     );
   }
 
-  Widget _routes() => Row(
+  /// routes
+  Widget _routesDeatils() => Row(
         children: const [
           Text('Admin'),
-          SvgIcon(icon: IconlyBroken.arrowRight3),
+          SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
           Text('UI Elements'),
-          SvgIcon(icon: IconlyBroken.arrowRight3),
+          SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
           Text('Buttons'),
         ],
       );

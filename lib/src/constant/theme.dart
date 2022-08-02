@@ -10,7 +10,7 @@ class ThemeClass {
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       colorSchemeSeed: ColorConst.primary,
       // colorScheme: ColorScheme.fromSwatch(primarySwatch: ColorConst.primary),
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
         elevation: 0.0,
         // backgroundColor:
         //     isDarkTheme ? ColorConst.appbarDarkBG : ColorConst.appbarLightBG,
