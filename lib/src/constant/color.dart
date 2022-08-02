@@ -14,7 +14,8 @@ class ColorConst {
   static const Color white = Color(0xFFFFFFFF);
   static const Color grey800 = Color(0xFF424242);
   static const Color blue = Color(0xFF2196F3);
-  static const Color endDrawerText = Color(0xFF5B626B);
+  static const Color lightFontColor = Color(0xFF5B626B);
+  static const Color darkFontColor = Color(0xFFE9ECEF);
   static const Color endDrawerImageBorder = Color(0xFFdee2e6);
   static const Color drawerHover = Color(0xFFB4C9DE);
   static const Color searchIcon = Color(0xFF525f80);

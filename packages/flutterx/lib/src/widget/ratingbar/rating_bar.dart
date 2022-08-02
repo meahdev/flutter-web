@@ -41,11 +41,15 @@ class _FxRatingBarState extends State<FxRatingBar> {
   bool isWidgetTapped = false;
   double? currentRating;
   Timer? debounceTimer;
+  Color? color;
 
   @override
   void initState() {
     currentRating = widget.rating;
     super.initState();
+    if (!widget.enable) {
+      color = const Color(0xff707070);
+    }
   }
 
   @override
@@ -60,7 +64,7 @@ class _FxRatingBarState extends State<FxRatingBar> {
     return Material(
       color: Colors.transparent,
       child: Wrap(
-        alignment: WrapAlignment.start,
+        alignment: WrapAlignment.center,
         spacing: widget.spacing,
         children: List.generate(
           widget.length,
@@ -75,7 +79,7 @@ class _FxRatingBarState extends State<FxRatingBar> {
     if (index >= currentRating!) {
       icon = Icon(
         widget.defaultIcon,
-        color: widget.borderColor ?? Theme.of(context).primaryColor,
+        color: color ?? widget.borderColor ?? Theme.of(context).colorScheme.primary,
         size: widget.size,
       );
     } else if (index >
@@ -84,19 +88,18 @@ class _FxRatingBarState extends State<FxRatingBar> {
         index < currentRating!) {
       icon = Icon(
         widget.halfFilledIcon,
-        color: widget.color ?? Theme.of(context).primaryColor,
+        color: widget.color ?? Theme.of(context).colorScheme.primary,
         size: widget.size,
       );
     } else {
       icon = Icon(
         widget.filledIcon,
-        color: widget.color ?? Theme.of(context).primaryColor,
+        color: widget.color ?? Theme.of(context).colorScheme.primary,
         size: widget.size,
       );
     }
     final Widget star = widget.enable
-        ? icon
-        : kIsWeb
+        ? kIsWeb
             ? MouseRegion(
                 onExit: (event) {
                   if (widget.onRated != null && !isWidgetTapped) {
@@ -215,7 +218,8 @@ class _FxRatingBarState extends State<FxRatingBar> {
                   });
                 },
                 child: icon,
-              );
+              )
+        : icon;
 
     return star;
   }

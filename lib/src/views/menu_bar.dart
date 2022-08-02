@@ -44,7 +44,7 @@ class _MenuBarState extends State<MenuBar> {
   final List<PageRouteInfo<dynamic>> _routes = const [
     TestWidget(),
     Button(),
-    // Rating()
+    Rating()
   ];
 
   @override
@@ -76,10 +76,7 @@ class _MenuBarState extends State<MenuBar> {
                   child: SingleChildScrollView(
                     controller: ScrollController(),
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 60.0,
-                        vertical: 24.0,
-                      ),
+                      padding: const EdgeInsets.all(24.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -317,6 +314,7 @@ class _MenuBarState extends State<MenuBar> {
               horizontalTitleGap: 0.0,
               onTap: () {
                 tabsRouter.setActiveIndex(0);
+                _scaffoldDrawerKey.currentState?.closeDrawer();
               },
             );
           }
@@ -346,6 +344,7 @@ class _MenuBarState extends State<MenuBar> {
             ),
             onTap: () {
               tabsRouter.setActiveIndex(getRouteIndex(items[index]));
+              _scaffoldDrawerKey.currentState?.closeDrawer();
             },
           );
         },
