@@ -167,7 +167,7 @@ class FxButton extends StatelessWidget {
         icon = KIcons.facebook,
         child = const Text('Facebook'),
         color = FxColor.facebook,
-        textColor = FxColor.socialButtonTextColor,
+        textColor = FxColor.white,
         hoverColor = FxColor.facebookDark,
         buttonType = null,
         backGroundType = null,
@@ -227,7 +227,7 @@ class FxButton extends StatelessWidget {
         icon = KIcons.whatsapp,
         child = const Text('whatsapp'),
         color = FxColor.whatsApp,
-        textColor = FxColor.socialButtonTextColor,
+        textColor = FxColor.white,
         hoverColor = FxColor.whatsAppDark,
         buttonType = null,
         backGroundType = null,
@@ -287,7 +287,7 @@ class FxButton extends StatelessWidget {
         color = backGroundType != null ? type(backGroundType) : FxColor.apple,
         textColor = backGroundType != null
             ? appleTextColor(backGroundType)
-            : FxColor.socialButtonTextColor,
+            : FxColor.white,
         buttonType = null,
         radius = isRectangle == false
             ? roundedFromSide == true

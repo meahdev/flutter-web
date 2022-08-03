@@ -384,15 +384,11 @@ class _ButtonState extends State<Button> {
               height: 40,
               onPressed: () {},
             ),
-            FxButton.facebook(
-              height: 40,
+            SocialButton.facebook(
               onPressed: () {},
-              radius: 4,
             ),
-            FxButton.whatsapp(
-              height: 40,
+            SocialButton.whatsApp(
               onPressed: () {},
-              radius: 4,
             ),
           ],
         )
@@ -421,17 +417,13 @@ class _ButtonState extends State<Button> {
               height: 40,
               onPressed: () {},
             ),
-            FxButton.facebook(
+            SocialButton.facebook(
               isOutlineButton: true,
-              height: 40,
               onPressed: () {},
-              radius: 4,
             ),
-            FxButton.whatsapp(
+            SocialButton.whatsApp(
               isOutlineButton: true,
-              height: 40,
               onPressed: () {},
-              radius: 4,
             ),
           ],
         )
