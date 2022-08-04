@@ -173,7 +173,7 @@ class _ButtonState extends State<Button> {
             ],
           )
         : Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
               ListView.separated(
                 physics: const NeverScrollableScrollPhysics(),
@@ -208,7 +208,7 @@ class _ButtonState extends State<Button> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h8,
+        FxBox.h16,
         Wrap(
           spacing: 8,
           runSpacing: 8,
@@ -235,7 +235,7 @@ class _ButtonState extends State<Button> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h8,
+        FxBox.h16,
         Wrap(
           spacing: 8,
           runSpacing: 8,
@@ -263,7 +263,7 @@ class _ButtonState extends State<Button> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h8,
+        FxBox.h16,
         Wrap(
           spacing: 8,
           runSpacing: 8,
@@ -291,7 +291,7 @@ class _ButtonState extends State<Button> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h8,
+        FxBox.h16,
         Wrap(
           spacing: 8,
           runSpacing: 8,
@@ -320,7 +320,7 @@ class _ButtonState extends State<Button> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h8,
+        FxBox.h16,
         Wrap(
           spacing: 8,
           runSpacing: 8,
@@ -347,7 +347,7 @@ class _ButtonState extends State<Button> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h8,
+        FxBox.h16,
         Wrap(
           spacing: 8,
           runSpacing: 8,
@@ -375,7 +375,7 @@ class _ButtonState extends State<Button> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h8,
+        FxBox.h16,
         Wrap(
           spacing: 10,
           runSpacing: 10,
@@ -406,7 +406,7 @@ class _ButtonState extends State<Button> {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h8,
+        FxBox.h16,
         Wrap(
           spacing: 10,
           runSpacing: 10,

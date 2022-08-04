@@ -3,7 +3,11 @@ int getRouteIndex(String route) {
     return 1;
   } else if (route == 'Rating') {
     return 2;
-  }else {
+  } else if (route == 'Badge') {
+    return 3;
+  } else if (route == 'Toast') {
+    return 4;
+  } else {
     return 0;
   }
 }

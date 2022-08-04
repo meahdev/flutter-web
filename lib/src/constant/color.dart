@@ -20,10 +20,19 @@ class ColorConst {
   static const Color drawerHover = Color(0xFFB4C9DE);
   static const Color searchIcon = Color(0xFF525f80);
   static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, .55);
-  static const Color error = Color(0xFFF44336);
 
   //dark
 
   static const Color appbarDarkBG = Color(0xFF2F323C);
   static const Color endDrawerDarkScrim = Color.fromRGBO(239, 242, 247, .55);
+
+  static Color get success => const Color(0xff53a653);
+  static Color get warning => const Color(0xffffcc00);
+  static Color get error => const Color(0xffe10725);
+  static Color get info => const Color(0xff4fc3f7);
+
+  static Color get successDark => const Color(0xff408140);
+  static Color get warningDark => const Color(0xffffb800);
+  static Color get errorDark => const Color(0xffc7051b);
+  static Color get infoDark => const Color(0xff03a9f4);
 }

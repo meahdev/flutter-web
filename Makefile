@@ -30,3 +30,7 @@ get:
 .PHONY: runner
 runner:
 	@flutter packages pub run build_runner build
+
+.PHONY: conflict
+conflict:
+	@flutter packages pub run build_runner build --delete-conflicting-outputs

@@ -37,14 +37,16 @@ class _MenuBarState extends State<MenuBar> {
   };
 
   List<List<String>> componentsExpandList = [
-    ['Buttons', 'Rating', 'Badge'],
+    ['Toast','Buttons', 'Rating', 'Badge'],
     ['Cupertino Icons']
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
     TestWidget(),
     Button(),
-    Rating()
+    Rating(),
+    Badge(),
+    Toast(),
   ];
 
   @override
@@ -89,7 +91,7 @@ class _MenuBarState extends State<MenuBar> {
                           ),
                           FxBox.h8,
                           _routesDeatils(),
-                          FxBox.h8,
+                          FxBox.h20,
                           child,
                         ],
                       ),
