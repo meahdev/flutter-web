@@ -284,7 +284,7 @@ class FxButton extends StatelessWidget {
         assert(disabledElevation == null || disabledElevation >= 0.0),
         icon = KIcons.apple,
         child = const Text('Sign in with Apple'),
-        color = backGroundType != null ? type(backGroundType) : FxColor.apple,
+        color = backGroundType != null ? type(backGroundType) : FxColor.appleDark,
         textColor = backGroundType != null
             ? appleTextColor(backGroundType)
             : FxColor.white,

@@ -380,8 +380,7 @@ class _ButtonState extends State<Button> {
           spacing: 10,
           runSpacing: 10,
           children: [
-            FxButton.apple(
-              height: 40,
+            SocialButton.apple(
               onPressed: () {},
             ),
             SocialButton.facebook(
@@ -412,9 +411,8 @@ class _ButtonState extends State<Button> {
           spacing: 10,
           runSpacing: 10,
           children: [
-            FxButton.apple(
+            SocialButton.apple(
               isOutlineButton: true,
-              height: 40,
               onPressed: () {},
             ),
             SocialButton.facebook(
