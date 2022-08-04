@@ -1,41 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:flutterx/src/constant/color.dart';
-import 'package:flutterx/src/utils/badge_utils.dart';
 
-class Badge extends StatelessWidget {
+class FxBadge extends StatelessWidget {
   final Color? color;
   final String text;
-  final TextStyle? style;
-  final bool? isRoundedFromSide;
-  final bool? isOutlined;
+  final TextStyle? textStyle;
+  final bool isOutlined;
   final double? radius;
 
-  const Badge(
-      {Key? key,
-      this.color,
-      required this.text,
-      this.style,
-      this.isRoundedFromSide = false,
-      this.isOutlined = false,
-      this.radius})
-      : super(key: key);
+  const FxBadge({
+    Key? key,
+    this.color,
+    required this.text,
+    this.textStyle,
+    this.isOutlined = false,
+    this.radius,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       decoration: BoxDecoration(
-        color: isOutlined == false ? color : FxColor.white,
-        borderRadius: BorderRadius.circular(
-          BadgeUtils.borderRadius(radius, isRoundedFromSide),
-        ),
-        border: Border.all(color: color ?? Theme.of(context).primaryColor),
+        color: isOutlined
+            ? Colors.transparent
+            : color ?? Theme.of(context).colorScheme.primary,
+        borderRadius: BorderRadius.circular(radius ?? 52.0),
+        border: Border.all(color: color ?? Theme.of(context).colorScheme.primary),
       ),
       child: Text(
         text,
-        style:
-            TextStyle(color: BadgeUtils.textColor(isOutlined, context, color))
-                .merge(style),
+        style: textStyle ??
+            TextStyle(
+              fontSize: 12,
+              color: isOutlined
+                  ? color ?? Theme.of(context).colorScheme.primary
+                  : Theme.of(context).colorScheme.onPrimary,
+            ),
       ),
     );
   }

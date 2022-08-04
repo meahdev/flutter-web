@@ -37,8 +37,8 @@ class _MenuBarState extends State<MenuBar> {
   };
 
   List<List<String>> componentsExpandList = [
-    ['Buttons', 'Rating'],
-    ['Iconly Broken', 'Iconly Bold']
+    ['Buttons', 'Rating', 'Badge'],
+    ['Cupertino Icons']
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
@@ -355,9 +355,15 @@ class _MenuBarState extends State<MenuBar> {
   /// routes
   Widget _routesDeatils() => Row(
         children: const [
-          Text('Admin'),
+          InkWell(
+            mouseCursor: SystemMouseCursors.click,
+            child: Text('Admin'),
+          ),
           SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
-          Text('UI Elements'),
+          InkWell(
+            mouseCursor: SystemMouseCursors.click,
+            child: Text('UI Elements'),
+          ),
           SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
           Text('Buttons'),
         ],
