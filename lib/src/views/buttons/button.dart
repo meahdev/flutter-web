@@ -213,7 +213,7 @@ class _ButtonState extends State<Button> {
           spacing: 8,
           runSpacing: 8,
           children: List.generate(_buttonText.length, (index) {
-            return ButtonFx(
+            return FxButton(
               onPressed: () {},
               text: _buttonText[index],
               buttonType: _simpleButtonData.values.elementAt(index),
@@ -240,7 +240,7 @@ class _ButtonState extends State<Button> {
           spacing: 8,
           runSpacing: 8,
           children: List.generate(_buttonText.length, (index) {
-            return ButtonFx(
+            return FxButton(
               onPressed: () {},
               text: _buttonText[index],
               buttonType: _simpleButtonData.values.elementAt(index),
@@ -268,7 +268,7 @@ class _ButtonState extends State<Button> {
           spacing: 8,
           runSpacing: 8,
           children: List.generate(_buttonText.length, (index) {
-            return ButtonFx(
+            return FxButton(
               onPressed: () {},
               text: _buttonText[index],
               buttonType: _simpleButtonData.values.elementAt(index),
@@ -296,7 +296,7 @@ class _ButtonState extends State<Button> {
           spacing: 8,
           runSpacing: 8,
           children: List.generate(_buttonText.length, (index) {
-            return ButtonFx(
+            return FxButton(
               onPressed: () {},
               text: _buttonText[index],
               buttonType: _outlineButtonData.values.elementAt(index),
@@ -325,7 +325,7 @@ class _ButtonState extends State<Button> {
           spacing: 8,
           runSpacing: 8,
           children: List.generate(_buttonText.length, (index) {
-            return ButtonFx(
+            return FxButton(
               onPressed: () {},
               buttonType: _simpleButtonData.values.elementAt(index),
               icon: Icon(_simpleButtonData.keys.elementAt(index)),
@@ -352,7 +352,7 @@ class _ButtonState extends State<Button> {
           spacing: 8,
           runSpacing: 8,
           children: List.generate(_buttonText.length, (index) {
-            return ButtonFx(
+            return FxButton(
               onPressed: () {},
               buttonType: _outlineButtonData.values.elementAt(index),
               icon: Icon(_outlineButtonData.keys.elementAt(index)),

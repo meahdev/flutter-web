@@ -9,19 +9,9 @@ class ThemeClass {
       applyElevationOverlayColor: false,
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       colorSchemeSeed: ColorConst.primary,
-      // colorScheme: ColorScheme.fromSwatch(primarySwatch: ColorConst.primary),
       appBarTheme: const AppBarTheme(
-        elevation: 0.0,
-        // backgroundColor:
-        //     isDarkTheme ? ColorConst.appbarDarkBG : ColorConst.appbarLightBG,
+        elevation: 5.0,
       ),
-      // dividerColor: isDarkTheme ? ColorConst.white : ColorConst.black,
-      // drawerTheme: DrawerThemeData(
-      //   scrimColor: isDarkTheme
-      //       ? ColorConst.endDrawerDarkScrim
-      //       : ColorConst.endDrawerLightScrim,
-      //   elevation: 0.0,
-      // ),
     );
   }
 }

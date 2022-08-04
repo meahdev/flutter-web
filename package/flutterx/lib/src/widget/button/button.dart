@@ -1,20 +1,16 @@
 import 'dart:math' as math;
 import 'dart:ui' show lerpDouble;
+
 import 'package:flutter/material.dart';
 import 'package:flutterx/src/constant/color.dart';
 import 'package:flutterx/src/constant/enum.dart';
-import 'package:flutterx/src/constant/icons.dart';
-import 'package:flutterx/src/utils/button_color.dart';
-import 'package:flutterx/src/utils/button_utils.dart';
 import 'package:flutterx/src/utils/hover.dart';
-import 'package:flutterx/src/widget/widget.dart';
+import 'package:flutterx/src/widget/sizedbox.dart';
 
 class FxButton extends StatelessWidget {
   final ButtonType? buttonType;
   final bool fullWidth;
-  final bool roundedFromSide;
-  final IconData? icon;
-  final double? iconSize;
+  final Widget? icon;
   final bool isOutlineButton;
   final double borderWidth;
   final double borderRadius;
@@ -22,280 +18,80 @@ class FxButton extends StatelessWidget {
   final void Function()? onLongPress;
   final void Function(bool)? onHighlightChanged;
   final MouseCursor? mouseCursor;
-  final ButtonTextTheme? textTheme;
-  final Color? textColor;
-  final Color? disabledTextColor;
-  final Color? color;
-  final Color? disabledColor;
-  final Color? focusColor;
-  final Color? hoverColor;
-  final Color? highlightColor;
-  final Color? splashColor;
-  final Brightness? colorBrightness;
-  final double? elevation;
-  final double? focusElevation;
-  final double? hoverElevation;
-  final double? highlightElevation;
-  final double? disabledElevation;
-  final EdgeInsetsGeometry? padding;
-  final VisualDensity? visualDensity;
-  final ShapeBorder? shape;
-  final Clip clipBehavior;
-  final FocusNode? focusNode;
-  final bool autofocus;
-  final MaterialTapTargetSize? materialTapTargetSize;
-  final Duration? animationDuration;
   final double? minWidth;
   final double? height;
+  final FocusNode? focusNode;
+  final bool autofocus;
+  final String? text;
+  final Color? textColor;
   final bool enableFeedback;
-  final Widget? child;
-  final double? radius;
-  final BackGroundType? backGroundType;
-  final bool? isRectangle;
+  final EdgeInsetsGeometry? padding;
+  final double? elevation;
+  final double? hoverElevation;
+  final Color? color;
+  final Color? hoverColor;
 
-  const FxButton(
-      {Key? key,
-      this.buttonType,
-      this.fullWidth = false,
-      this.roundedFromSide = false,
-      this.icon,
-      this.iconSize,
-      this.isOutlineButton = false,
-      this.borderWidth = 1.0,
-      this.borderRadius = 2.0,
-      required this.onPressed,
-      this.onLongPress,
-      this.onHighlightChanged,
-      this.mouseCursor,
-      this.textTheme,
-      this.textColor,
-      this.disabledTextColor,
-      this.color,
-      this.disabledColor,
-      this.focusColor,
-      this.hoverColor,
-      this.highlightColor,
-      this.splashColor,
-      this.colorBrightness,
-      this.elevation,
-      this.focusElevation,
-      this.hoverElevation,
-      this.highlightElevation,
-      this.disabledElevation,
-      this.padding,
-      this.visualDensity,
-      this.shape,
-      this.clipBehavior = Clip.none,
-      this.focusNode,
-      this.autofocus = false,
-      this.materialTapTargetSize,
-      this.animationDuration,
-      this.minWidth,
-      this.height,
-      this.enableFeedback = true,
-      this.child,
-      this.radius})
-      : assert((fullWidth && minWidth == null) ||
-            (!fullWidth && minWidth != null) ||
-            (!fullWidth && minWidth == null)),
-        assert((roundedFromSide && shape == null) ||
-            (!roundedFromSide && shape != null) ||
-            (!roundedFromSide && shape == null)),
-        assert(child != null || icon != null),
-        assert((isOutlineButton && shape == null) ||
-            (!isOutlineButton && shape != null) ||
-            (!isOutlineButton && shape == null)),
-        assert(elevation == null || elevation >= 0.0),
-        assert(focusElevation == null || focusElevation >= 0.0),
-        assert(hoverElevation == null || hoverElevation >= 0.0),
-        assert(highlightElevation == null || highlightElevation >= 0.0),
-        assert(disabledElevation == null || disabledElevation >= 0.0),
-        backGroundType = null,
-        isRectangle = null,
-        super(key: key);
-
-  const FxButton.facebook({
+  const FxButton({
     Key? key,
+    this.buttonType,
     this.fullWidth = false,
-    this.roundedFromSide = false,
-    this.iconSize,
+    this.icon,
     this.isOutlineButton = false,
     this.borderWidth = 1.0,
-    this.borderRadius = 2.0,
+    this.borderRadius = 52.0,
     required this.onPressed,
     this.onLongPress,
     this.onHighlightChanged,
     this.mouseCursor,
-    this.textTheme,
-    this.disabledTextColor,
-    this.disabledColor,
-    this.focusColor,
-    this.highlightColor,
-    this.splashColor,
-    this.colorBrightness,
-    this.elevation,
-    this.focusElevation,
-    this.hoverElevation,
-    this.highlightElevation,
-    this.disabledElevation,
-    this.padding,
-    this.visualDensity,
-    this.shape,
-    this.clipBehavior = Clip.none,
-    this.focusNode,
-    this.autofocus = false,
-    this.materialTapTargetSize,
-    this.animationDuration,
     this.minWidth,
     this.height,
+    this.autofocus = false,
+    this.focusNode,
+    this.text,
+    this.textColor,
     this.enableFeedback = true,
-    this.radius,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+    this.elevation,
+    this.hoverElevation,
+    this.color,
+    this.hoverColor,
   })  : assert((fullWidth && minWidth == null) ||
             (!fullWidth && minWidth != null) ||
             (!fullWidth && minWidth == null)),
-        assert((roundedFromSide && shape == null) ||
-            (!roundedFromSide && shape != null) ||
-            (!roundedFromSide && shape == null)),
-        assert((isOutlineButton && shape == null) ||
-            (!isOutlineButton && shape != null) ||
-            (!isOutlineButton && shape == null)),
+        assert(text != null || icon != null),
         assert(elevation == null || elevation >= 0.0),
-        assert(focusElevation == null || focusElevation >= 0.0),
         assert(hoverElevation == null || hoverElevation >= 0.0),
-        assert(highlightElevation == null || highlightElevation >= 0.0),
-        assert(disabledElevation == null || disabledElevation >= 0.0),
-        icon = KIcons.facebook,
-        child = const Text('Facebook'),
-        color = FxColor.facebook,
-        textColor = FxColor.white,
-        hoverColor = FxColor.facebookDark,
+        super(key: key);
+
+  const FxButton.whatsApp({
+    Key? key,
+    this.fullWidth = false,
+    this.icon = const Icon(Icons.whatsapp_rounded),
+    this.isOutlineButton = false,
+    this.borderWidth = 1.0,
+    this.borderRadius = 52.0,
+    required this.onPressed,
+    this.onLongPress,
+    this.onHighlightChanged,
+    this.mouseCursor,
+    this.minWidth,
+    this.height,
+    this.autofocus = false,
+    this.focusNode,
+    this.text = 'WhatsApp',
+    this.enableFeedback = true,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+    this.elevation,
+    this.hoverElevation,
+  })  : assert((fullWidth && minWidth == null) ||
+            (!fullWidth && minWidth != null) ||
+            (!fullWidth && minWidth == null)),
+        assert(elevation == null || elevation >= 0.0),
+        assert(hoverElevation == null || hoverElevation >= 0.0),
         buttonType = null,
-        backGroundType = null,
-        isRectangle = null,
-        super(key: key);
-
-  const FxButton.whatsapp({
-    Key? key,
-    this.fullWidth = false,
-    this.roundedFromSide = false,
-    this.iconSize,
-    this.isOutlineButton = false,
-    this.borderWidth = 1.0,
-    this.borderRadius = 2.0,
-    required this.onPressed,
-    this.onLongPress,
-    this.onHighlightChanged,
-    this.mouseCursor,
-    this.textTheme,
-    this.disabledTextColor,
-    this.disabledColor,
-    this.focusColor,
-    this.highlightColor,
-    this.splashColor,
-    this.colorBrightness,
-    this.elevation,
-    this.focusElevation,
-    this.hoverElevation,
-    this.highlightElevation,
-    this.disabledElevation,
-    this.padding,
-    this.visualDensity,
-    this.shape,
-    this.clipBehavior = Clip.none,
-    this.focusNode,
-    this.autofocus = false,
-    this.materialTapTargetSize,
-    this.animationDuration,
-    this.minWidth,
-    this.height,
-    this.enableFeedback = true,
-    this.radius,
-  })  : assert((fullWidth && minWidth == null) ||
-            (!fullWidth && minWidth != null) ||
-            (!fullWidth && minWidth == null)),
-        assert((roundedFromSide && shape == null) ||
-            (!roundedFromSide && shape != null) ||
-            (!roundedFromSide && shape == null)),
-        assert((isOutlineButton && shape == null) ||
-            (!isOutlineButton && shape != null) ||
-            (!isOutlineButton && shape == null)),
-        assert(elevation == null || elevation >= 0.0),
-        assert(focusElevation == null || focusElevation >= 0.0),
-        assert(hoverElevation == null || hoverElevation >= 0.0),
-        assert(highlightElevation == null || highlightElevation >= 0.0),
-        assert(disabledElevation == null || disabledElevation >= 0.0),
-        icon = KIcons.whatsapp,
-        child = const Text('whatsapp'),
         color = FxColor.whatsApp,
-        textColor = FxColor.white,
         hoverColor = FxColor.whatsAppDark,
-        buttonType = null,
-        backGroundType = null,
-        isRectangle = null,
-        super(key: key);
-
-  FxButton.apple({
-    Key? key,
-    this.fullWidth = false,
-    this.roundedFromSide = false,
-    this.iconSize,
-    this.borderWidth = 1.0,
-    this.borderRadius = 2.0,
-    required this.onPressed,
-    this.onLongPress,
-    this.onHighlightChanged,
-    this.mouseCursor,
-    this.textTheme,
-    this.disabledTextColor,
-    this.disabledColor,
-    this.focusColor,
-    this.highlightColor,
-    this.splashColor,
-    this.colorBrightness,
-    this.elevation,
-    this.focusElevation,
-    this.hoverElevation,
-    this.highlightElevation,
-    this.disabledElevation,
-    this.padding,
-    this.visualDensity,
-    this.shape,
-    this.clipBehavior = Clip.none,
-    this.focusNode,
-    this.autofocus = false,
-    this.materialTapTargetSize,
-    this.animationDuration,
-    this.minWidth,
-    this.height,
-    this.enableFeedback = true,
-    this.backGroundType,
-    this.isRectangle = false,
-    this.isOutlineButton = false,
-  })  : assert((fullWidth && minWidth == null) ||
-            (!fullWidth && minWidth != null) ||
-            (!fullWidth && minWidth == null)),
-        assert((roundedFromSide && shape == null) ||
-            (!roundedFromSide && shape != null) ||
-            (!roundedFromSide && shape == null)),
-        assert(elevation == null || elevation >= 0.0),
-        assert(focusElevation == null || focusElevation >= 0.0),
-        assert(hoverElevation == null || hoverElevation >= 0.0),
-        assert(highlightElevation == null || highlightElevation >= 0.0),
-        assert(disabledElevation == null || disabledElevation >= 0.0),
-        icon = KIcons.apple,
-        child = const Text('Sign in with Apple'),
-        color = backGroundType != null ? type(backGroundType) : FxColor.appleDark,
-        textColor = backGroundType != null
-            ? appleTextColor(backGroundType)
-            : FxColor.white,
-        buttonType = null,
-        radius = isRectangle == false
-            ? roundedFromSide == true
-                ? 36.0
-                : 4.0
-            : 0,
-        hoverColor =
-            backGroundType != null ? type(backGroundType) : FxColor.appleDark,
+        textColor = null,
         super(key: key);
 
   @override
@@ -303,90 +99,139 @@ class FxButton extends StatelessWidget {
     final double scale = MediaQuery.maybeOf(context)?.textScaleFactor ?? 1;
     final double gap =
         scale <= 1 ? 8 : lerpDouble(8, 4, math.min(scale - 1, 1))!;
-    return TranslateOnHover(builder: (isHover) {
-      return MaterialButton(
-        onPressed: onPressed,
-        onLongPress: onLongPress,
-        onHighlightChanged: onHighlightChanged,
-        mouseCursor: mouseCursor,
-        textTheme: textTheme,
-        textColor: Utils.colorText(
-            isOutlineButton, context, isHover, buttonType, color, textColor),
+    final ColorScheme colorScheme = Theme.of(context).colorScheme;
 
-        /// ButtonText Color
-        disabledTextColor: disabledTextColor,
-        color: Utils.backgroundColor(
-                isOutlineButton,
-                context,
-                buttonType,
-                color,
-              ),
+    return TranslateOnHover(
+      builder: (isHover) {
+        return MaterialButton(
+          enableFeedback: enableFeedback,
+          autofocus: autofocus,
+          onPressed: onPressed,
+          onLongPress: onLongPress,
+          onHighlightChanged: onHighlightChanged,
+          mouseCursor: mouseCursor,
+          elevation: isOutlineButton ? 0.0 : elevation,
+          hoverElevation: isOutlineButton ? 0.0 : hoverElevation,
+          padding: padding,
+          colorBrightness: Theme.of(context).brightness,
+          color: color ??
+              _getButtonColor(colorScheme, buttonType, isOutlineButton),
+          hoverColor: hoverColor ??
+              _getHoverButtonColor(colorScheme, buttonType, isOutlineButton),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(borderRadius),
+            side: BorderSide(
+              width: borderWidth,
+              color: isOutlineButton
+                  ? color ?? _getButtonColor(colorScheme, buttonType, false)!
+                  : color ?? _getButtonColor(colorScheme, buttonType, true)!,
+            ),
+          ),
+          minWidth: icon != null
+              ? 56.0
+              : fullWidth
+                  ? double.infinity
+                  : minWidth,
+          height: text == null ? 56.0 : height,
+          textColor: isHover
+              ? _getHoverFontColor(colorScheme, buttonType, isOutlineButton)
+              : _getFontColor(colorScheme, buttonType, isOutlineButton),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              icon ?? FxBox.shrink,
+              icon != null && text != null
+                  ? SizedBox(width: gap)
+                  : FxBox.shrink,
+              text != null ? Flexible(child: Text(text!)) : FxBox.shrink,
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
 
-        /// Background Color
-        disabledColor: disabledColor ??
-            Theme.of(context).colorScheme.onSurface.withOpacity(0.12),
-        focusColor: focusColor,
-        hoverColor: isOutlineButton
-            ? buttonType != null
-                ? getButtonColor(buttonType, context) ?? Theme.of(context).primaryColor
-                : color ?? Theme.of(context).primaryColor
-            : buttonType != null
-                ? getButtonHoverColor(buttonType, context) ??
-                    Theme.of(context).primaryColorDark
-                : hoverColor ?? Theme.of(context).primaryColorDark,
-        highlightColor: highlightColor,
-        splashColor: splashColor,
-        colorBrightness: colorBrightness,
-        elevation: elevation,
-        focusElevation: focusElevation,
-        hoverElevation: hoverElevation,
-        highlightElevation: highlightElevation,
-        disabledElevation: disabledElevation,
-        padding: padding,
-        visualDensity: visualDensity,
-        shape: Utils.buttonShape(
-            radius,
-            backGroundType,
-            borderWidth,
-            isOutlineButton,
-            buttonType,
-            context,
-            color,
-            roundedFromSide,
-            borderRadius,
-            shape),
+Color? _getButtonColor(
+    ColorScheme colorScheme, ButtonType? buttonType, bool isOutlineButton) {
+  if (isOutlineButton) {
+    return Colors.transparent;
+  }
+  if (buttonType == ButtonType.secondary) {
+    return colorScheme.secondary;
+  } else if (buttonType == ButtonType.warning) {
+    return FxColor.warning;
+  } else if (buttonType == ButtonType.error) {
+    return FxColor.error;
+  } else if (buttonType == ButtonType.success) {
+    return FxColor.success;
+  } else if (buttonType == ButtonType.info) {
+    return FxColor.info;
+  } else {
+    return colorScheme.primary;
+  }
+}
 
-        /// Shape Of Button
-        clipBehavior: clipBehavior,
-        focusNode: focusNode,
-        autofocus: autofocus,
-        materialTapTargetSize: materialTapTargetSize,
-        animationDuration: animationDuration,
-        minWidth: child == null
-            ? 52.0
-            : fullWidth
-                ? double.infinity
-                : minWidth,
-        height: child == null ? 52.0 : height,
-        enableFeedback: enableFeedback,
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            icon != null
-                ? Icon(
-                    icon,
-                    color: Utils.buttonRow(isOutlineButton, context, isHover,
-                        buttonType, color, textColor),
-                    size: iconSize,
-                  )
-                : FxBox.shrink,
+Color? _getHoverButtonColor(
+    ColorScheme colorScheme, ButtonType? buttonType, bool isOutlineButton) {
+  if (isOutlineButton) {
+    return _getButtonColor(colorScheme, buttonType, false);
+  }
+  if (buttonType == ButtonType.secondary) {
+    return colorScheme.onSecondaryContainer;
+  } else if (buttonType == ButtonType.warning) {
+    return FxColor.warningDark;
+  } else if (buttonType == ButtonType.error) {
+    return FxColor.errorDark;
+  } else if (buttonType == ButtonType.success) {
+    return FxColor.successDark;
+  } else if (buttonType == ButtonType.info) {
+    return FxColor.infoDark;
+  } else {
+    if (colorScheme.brightness == Brightness.dark) {
+      return colorScheme.inversePrimary;
+    } else {
+      return colorScheme.onPrimaryContainer;
+    }
+  }
+}
 
-            ///ButtonRow Comes From
-            icon != null && child != null ? SizedBox(width: gap) : FxBox.shrink,
-            child != null ? Flexible(child: child!) : FxBox.shrink,
-          ],
-        ),
-      );
-    });
+Color? _getFontColor(
+    ColorScheme colorScheme, ButtonType? buttonType, bool isOutlineButton) {
+  if (isOutlineButton) {
+    return _getButtonColor(colorScheme, buttonType, false);
+  }
+  if (buttonType == ButtonType.secondary) {
+    return colorScheme.surface;
+  } else if (buttonType == ButtonType.warning ||
+      buttonType == ButtonType.info) {
+    return FxColor.dark;
+  } else if (buttonType == ButtonType.error ||
+      buttonType == ButtonType.success) {
+    return FxColor.white;
+  } else {
+    return colorScheme.onPrimary;
+  }
+}
+
+Color? _getHoverFontColor(
+    ColorScheme colorScheme, ButtonType? buttonType, bool isOutlineButton) {
+  if (isOutlineButton) {
+    return _getFontColor(colorScheme, buttonType, false);
+  }
+  if (buttonType == ButtonType.secondary) {
+    return colorScheme.surface;
+  } else if (buttonType == ButtonType.warning ||
+      buttonType == ButtonType.info) {
+    return FxColor.dark;
+  } else if (buttonType == ButtonType.error ||
+      buttonType == ButtonType.success) {
+    return FxColor.white;
+  } else {
+    if (colorScheme.brightness == Brightness.dark) {
+      return colorScheme.onPrimaryContainer;
+    } else {
+      return colorScheme.onPrimary;
+    }
   }
 }
