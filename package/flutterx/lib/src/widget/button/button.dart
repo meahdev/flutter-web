@@ -134,8 +134,10 @@ class FxButton extends StatelessWidget {
                   : minWidth,
           height: text == null ? 56.0 : height,
           textColor: isHover
-              ? _getHoverFontColor(colorScheme, buttonType, isOutlineButton)
-              : _getFontColor(colorScheme, buttonType, isOutlineButton),
+              ? textColor ??
+                  _getHoverFontColor(colorScheme, buttonType, isOutlineButton)
+              : textColor ??
+                  _getFontColor(colorScheme, buttonType, isOutlineButton),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
