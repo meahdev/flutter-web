@@ -21,9 +21,16 @@ class ColorConst {
   static const Color searchIcon = Color(0xFF525f80);
   static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, .55);
   static const Color error = Color(0xFFF44336);
+  static const Color success = Color(0xff53a653);
+  static const Color warningDark = Color(0xffffb800);
+  static const Color chatColor = Color(0xFF2f3cab);
+  static const Color sendButtonColor = Color(0xFF02a499);
+  static const Color lightGrey = Color(0xFFdee2e6);
 
   //dark
 
   static const Color appbarDarkBG = Color(0xFF2F323C);
   static const Color endDrawerDarkScrim = Color.fromRGBO(239, 242, 247, .55);
+  //table hover color
+  static const Color tableHover = Color(0xFFf8f9fa);
 }

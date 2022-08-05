@@ -13,4 +13,10 @@ class Strings {
   static const String lightMode = 'Light Mode';
   static const String darkMode = 'Dark Mode';
   static const String chooseLayouts = 'Choose Layouts';
+  static const String latestTransaction = 'Latest Transaction';
+
+  //chat screen
+  static const String chat = 'Chat';
+  static const String enterYourText = 'Enter your Text';
+  static const String send = 'Send';
 }

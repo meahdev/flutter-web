@@ -15,9 +15,9 @@ import 'package:auto_route/auto_route.dart' as _i5;
 import 'package:flutter/material.dart' as _i6;
 
 import '../views/buttons/button.dart' as _i3;
+import '../views/dashboard/dashboard.dart' as _i2;
 import '../views/menu_bar.dart' as _i1;
 import '../views/rating/rating.dart' as _i4;
-import '../views/test.dart' as _i2;
 
 class AppRouter extends _i5.RootStackRouter {
   AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
@@ -29,9 +29,9 @@ class AppRouter extends _i5.RootStackRouter {
       return _i5.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.MenuBar());
     },
-    TestWidget.name: (routeData) {
+    Dashboard.name: (routeData) {
       return _i5.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.TestWidget());
+          routeData: routeData, child: const _i2.Dashboard());
     },
     Button.name: (routeData) {
       return _i5.MaterialPageX<dynamic>(
@@ -46,7 +46,8 @@ class AppRouter extends _i5.RootStackRouter {
   @override
   List<_i5.RouteConfig> get routes => [
         _i5.RouteConfig(MenuBar.name, path: '/', children: [
-          _i5.RouteConfig(TestWidget.name, path: 'test', parent: MenuBar.name),
+          _i5.RouteConfig(Dashboard.name,
+              path: 'dashboard', parent: MenuBar.name),
           _i5.RouteConfig(Button.name, path: 'button', parent: MenuBar.name),
           _i5.RouteConfig(Rating.name, path: 'rating', parent: MenuBar.name)
         ])
@@ -63,11 +64,11 @@ class MenuBar extends _i5.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.TestWidget]
-class TestWidget extends _i5.PageRouteInfo<void> {
-  const TestWidget() : super(TestWidget.name, path: 'test');
+/// [_i2.Dashboard]
+class Dashboard extends _i5.PageRouteInfo<void> {
+  const Dashboard() : super(Dashboard.name, path: 'dashboard');
 
-  static const String name = 'TestWidget';
+  static const String name = 'Dashboard';
 }
 
 /// generated route for
