@@ -7,6 +7,8 @@ int getRouteIndex(String route) {
     return 3;
   } else if (route == 'Toast') {
     return 4;
+  } else if (route == 'Cupertino Icons') {
+    return 5;
   } else {
     return 0;
   }

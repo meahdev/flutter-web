@@ -47,6 +47,7 @@ class _MenuBarState extends State<MenuBar> {
     Rating(),
     Badge(),
     Toast(),
+    CupertinoIcon(),
   ];
 
   @override

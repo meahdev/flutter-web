@@ -112,6 +112,8 @@ class FxButton extends StatelessWidget {
           mouseCursor: mouseCursor,
           elevation: isOutlineButton ? 0.0 : elevation,
           hoverElevation: isOutlineButton ? 0.0 : hoverElevation,
+          highlightElevation: 0.0,
+          focusElevation: 0.0,
           padding: padding,
           colorBrightness: Theme.of(context).brightness,
           color: color ??
