@@ -77,28 +77,75 @@ class _MenuBarState extends State<MenuBar> {
                     ? _sidebar(tabsRouter)
                     : const SizedBox.shrink(),
                 Expanded(
-                  child: SingleChildScrollView(
-                    controller: ScrollController(),
-                    child: Container(
-                      padding: const EdgeInsets.all(24.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            upperCase(tabsRouter.currentPath),
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyLarge!
-                                .copyWith(fontWeight: FontWeight.bold),
-                          ),
-                          FxBox.h8,
-                          _routesDeatils(tabsRouter),
-                          FxBox.h20,
-                          child,
-                        ],
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 24.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  FxBox.h20,
+                                  Text(
+                                    upperCase(tabsRouter.currentPath),
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodyLarge!
+                                        .copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                  FxBox.h8,
+                                  _routesDeatils(tabsRouter),
+                                  FxBox.h20,
+                                  child,
+                                  FxBox.h20,
+                                  // _footer(),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
+                      SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: Column(
+                          children: <Widget>[
+                            const Expanded(
+                              child: SizedBox.shrink(),
+                            ),
+                            _footer(),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
+                  // child: SingleChildScrollView(
+                  //   controller: ScrollController(),
+                  //   child: Container(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  //     child: Column(
+                  //       crossAxisAlignment: CrossAxisAlignment.start,
+                  //       children: [
+                  //         FxBox.h20,
+                  //         Text(
+                  //           upperCase(tabsRouter.currentPath),
+                  //           style: Theme.of(context)
+                  //               .textTheme
+                  //               .bodyLarge!
+                  //               .copyWith(fontWeight: FontWeight.bold),
+                  //         ),
+                  //         FxBox.h8,
+                  //         _routesDeatils(tabsRouter),
+                  //         FxBox.h20,
+                  //         child,
+                  //         FxBox.h20,
+                  //         _footer(),
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                 ),
               ],
             ),
@@ -373,5 +420,15 @@ class _MenuBarState extends State<MenuBar> {
                 const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
                 Text(upperCase(tabsRouter.currentPath)),
               ],
+      );
+
+  Widget _footer() => Container(
+        color: Theme.of(context).colorScheme.onInverseSurface,
+        height: 60,
+        width: Responsive.isWeb(context)
+            ? MediaQuery.of(context).size.width - 240
+            : MediaQuery.of(context).size.width,
+        alignment: Alignment.center,
+        child: const Text('Footer'),
       );
 }
