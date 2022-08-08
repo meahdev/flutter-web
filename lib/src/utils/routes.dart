@@ -9,6 +9,8 @@ int getRouteIndex(String route) {
     return 4;
   } else if (route == 'Cupertino Icons') {
     return 5;
+  } else if (route == 'Form Elements') {
+    return 6;
   } else {
     return 0;
   }

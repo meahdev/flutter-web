@@ -35,11 +35,13 @@ class _MenuBarState extends State<MenuBar> {
   Map<String, String> componentData = {
     'UI Elements': IconlyBroken.box,
     'Icons': IconlyBroken.smileEmoji,
+    'Forms': IconlyBroken.receipt
   };
 
   List<List<String>> componentsExpandList = [
     ['Toast', 'Buttons', 'Rating', 'Badge'],
-    ['Cupertino Icons']
+    ['Cupertino Icons'],
+    ['Form Elements'],
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
@@ -49,6 +51,7 @@ class _MenuBarState extends State<MenuBar> {
     Badge(),
     Toast(),
     CupertinoIcon(),
+    ElementsForm(),
   ];
 
   @override
