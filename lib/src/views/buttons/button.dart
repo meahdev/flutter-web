@@ -1,10 +1,58 @@
-import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class Button extends StatelessWidget {
+class Button extends StatefulWidget {
   const Button({Key? key}) : super(key: key);
+
+  @override
+  State<Button> createState() => _ButtonState();
+}
+
+class _ButtonState extends State<Button> {
+  final List<String> _buttonText = [
+    'Primary',
+    'Secondary',
+    'Success',
+    'Info',
+    'Warning',
+    'Error'
+  ];
+
+  final Map<IconData, dynamic> _simpleButtonData = {
+    Icons.home_outlined: null,
+    Icons.house_outlined: ButtonType.secondary,
+    Icons.check_circle_outline_rounded: ButtonType.success,
+    Icons.info_outline_rounded: ButtonType.info,
+    Icons.warning_amber_rounded: ButtonType.warning,
+    Icons.error_outline_rounded: ButtonType.error,
+  };
+
+  final Map<IconData, dynamic> _outlineButtonData = {
+    Icons.home: null,
+    Icons.house: ButtonType.secondary,
+    Icons.check_circle_rounded: ButtonType.success,
+    Icons.info_rounded: ButtonType.info,
+    Icons.warning_rounded: ButtonType.warning,
+    Icons.error_rounded: ButtonType.error,
+  };
+
+  List<Widget> _buttonList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _buttonList = [
+      _simpleButton(),
+      _outlinedButton(),
+      _simpleTextIconButton(),
+      _outlineTextIconButton(),
+      _simpleIconButton(),
+      _outlineIconButton(),
+      _socialButton(context),
+      _outlinedSocialButton(context),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +68,7 @@ class Button extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(20),
-                        child: _exampleButton(context),
+                        child: _simpleButton(),
                       ),
                     ),
                   ),
@@ -32,7 +80,7 @@ class Button extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(20),
-                        child: _outlinedButton(context),
+                        child: _outlinedButton(),
                       ),
                     ),
                   ),
@@ -48,7 +96,7 @@ class Button extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(20),
-                        child: _exampleWithIconButton(context),
+                        child: _simpleTextIconButton(),
                       ),
                     ),
                   ),
@@ -60,7 +108,7 @@ class Button extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(20),
-                        child: _outlineWithIconButton(context),
+                        child: _outlineTextIconButton(),
                       ),
                     ),
                   ),
@@ -76,7 +124,7 @@ class Button extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(20),
-                        child: _iconButton(context),
+                        child: _simpleIconButton(),
                       ),
                     ),
                   ),
@@ -88,7 +136,7 @@ class Button extends StatelessWidget {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(20),
-                        child: _outlineIconButton(context),
+                        child: _outlineIconButton(),
                       ),
                     ),
                   ),
@@ -125,553 +173,192 @@ class Button extends StatelessWidget {
             ],
           )
         : Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: _exampleButton(context),
-                  ),
-                ),
-              ),
-              FxBox.h12,
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: _outlinedButton(context),
+              ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (context, index) => SizedBox(
+                  width: double.infinity,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: _buttonList[index],
+                    ),
                   ),
                 ),
-              ),
-              FxBox.h12,
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: _exampleWithIconButton(context),
-                  ),
-                ),
-              ),
-              FxBox.h12,
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: _outlineWithIconButton(context),
-                  ),
-                ),
-              ),
-              FxBox.h12,
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: _iconButton(context),
-                  ),
-                ),
-              ),
-              FxBox.h12,
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: _outlineIconButton(context),
-                  ),
-                ),
-              ),
-              FxBox.h12,
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: _socialButton(context),
-                  ),
-                ),
-              ),
-              FxBox.h12,
-              SizedBox(
-                width: double.infinity,
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: _outlinedSocialButton(context),
-                  ),
-                ),
+                separatorBuilder: (context, index) => FxBox.h12,
+                itemCount: _buttonList.length,
               ),
             ],
           );
   }
 
-  Widget _exampleButton(BuildContext context) {
+  Widget _simpleButton() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Examples',
+          'Simple buttons',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h10,
+        FxBox.h16,
         Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            FxButton(
-              height: 40,
+          spacing: 8,
+          runSpacing: 8,
+          children: List.generate(_buttonText.length, (index) {
+            return FxButton(
               onPressed: () {},
-              radius: 4,
-              child: const Text('Primary'),
-
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              color: Theme.of(context).colorScheme.secondary,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Secondary'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              buttonType: ButtonType.success,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Success'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              buttonType: ButtonType.info,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Info'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              buttonType: ButtonType.warning,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Warning'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              buttonType: ButtonType.error,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Error'),
-              // roundedFromSide: true,
-            ),
-          ],
+              text: _buttonText[index],
+              buttonType: _simpleButtonData.values.elementAt(index),
+            );
+          }),
         )
       ],
     );
   }
 
-  Widget _outlinedButton(BuildContext context) {
+  Widget _outlinedButton() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Outlined buttons',
+          'Outline buttons',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h10,
+        FxBox.h16,
         Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            FxButton(
-              isOutlineButton: true,
-              height: 40,
+          spacing: 8,
+          runSpacing: 8,
+          children: List.generate(_buttonText.length, (index) {
+            return FxButton(
               onPressed: () {},
-              radius: 4,
-              child: const Text('Primary'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
+              text: _buttonText[index],
+              buttonType: _simpleButtonData.values.elementAt(index),
               isOutlineButton: true,
-              // color: Theme.of(context).colorScheme.secondary,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Secondary'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              buttonType: ButtonType.success,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Success'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              buttonType: ButtonType.info,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Info'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              buttonType: ButtonType.warning,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Warning'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              buttonType: ButtonType.error,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Error'),
-              // roundedFromSide: true,
-            ),
-          ],
+            );
+          }),
         )
       ],
     );
   }
 
-  Widget _exampleWithIconButton(BuildContext context) {
+  Widget _simpleTextIconButton() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Example with icon buttons',
+          'Simple with icon buttons',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h10,
+        FxBox.h16,
         Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            FxButton(
-              icon: Icons.ac_unit,
-              height: 40,
+          spacing: 8,
+          runSpacing: 8,
+          children: List.generate(_buttonText.length, (index) {
+            return FxButton(
               onPressed: () {},
-              radius: 4,
-              child: const Text('Primary'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              icon: Icons.ac_unit,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Secondary'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              icon: Icons.ac_unit,
-              buttonType: ButtonType.success,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Success'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              icon: Icons.ac_unit,
-              buttonType: ButtonType.info,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Info'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              icon: Icons.ac_unit,
-              buttonType: ButtonType.warning,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Warning'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              icon: Icons.ac_unit,
-              buttonType: ButtonType.error,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Error'),
-              // roundedFromSide: true,
-            ),
-          ],
+              text: _buttonText[index],
+              buttonType: _simpleButtonData.values.elementAt(index),
+              icon: Icon(_simpleButtonData.keys.elementAt(index)),
+            );
+          }),
         )
       ],
     );
   }
 
-  Widget _outlineWithIconButton(BuildContext context) {
+  Widget _outlineTextIconButton() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Outlined with icon buttons',
+          'Outline with icon buttons',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h10,
+        FxBox.h16,
         Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            FxButton(
-              isOutlineButton: true,
-              icon: Icons.ac_unit_outlined,
-              height: 40,
+          spacing: 8,
+          runSpacing: 8,
+          children: List.generate(_buttonText.length, (index) {
+            return FxButton(
               onPressed: () {},
-              radius: 4,
-              child: const Text('Primary'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
+              text: _buttonText[index],
+              buttonType: _outlineButtonData.values.elementAt(index),
+              icon: Icon(_outlineButtonData.keys.elementAt(index)),
               isOutlineButton: true,
-              icon: Icons.ac_unit_outlined,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Secondary'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              icon: Icons.ac_unit_outlined,
-              buttonType: ButtonType.success,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Success'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              icon: Icons.ac_unit_outlined,
-              buttonType: ButtonType.info,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Info'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              icon: Icons.ac_unit_outlined,
-              buttonType: ButtonType.warning,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Warning'),
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              icon: Icons.ac_unit_outlined,
-              buttonType: ButtonType.error,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              child: const Text('Error'),
-              // roundedFromSide: true,
-            ),
-          ],
+            );
+          }),
         )
       ],
     );
   }
 
-  Widget _iconButton(BuildContext context) {
+  Widget _simpleIconButton() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Icon buttons',
+          'Simple icon buttons',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h10,
+        FxBox.h16,
         Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            FxButton(
-              icon: Icons.ac_unit,
-              height: 40,
+          spacing: 8,
+          runSpacing: 8,
+          children: List.generate(_buttonText.length, (index) {
+            return FxButton(
               onPressed: () {},
-              radius: 4,
-            ),
-            FxButton(
-              // color: Theme.of(context).colorScheme.secondary,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              buttonType: ButtonType.success,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-            FxBox.w10,
-            FxButton(
-              buttonType: ButtonType.info,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              buttonType: ButtonType.warning,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              buttonType: ButtonType.error,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-          ],
+              buttonType: _simpleButtonData.values.elementAt(index),
+              icon: Icon(_simpleButtonData.keys.elementAt(index)),
+            );
+          }),
         )
       ],
     );
   }
 
-  Widget _outlineIconButton(BuildContext context) {
+  Widget _outlineIconButton() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Text(
-          'Outlined icon buttons',
+          'Outline icon buttons',
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h10,
+        FxBox.h16,
         Wrap(
-          spacing: 10,
-          runSpacing: 10,
-          children: [
-            FxButton(
-              isOutlineButton: true,
-              height: 40,
+          spacing: 8,
+          runSpacing: 8,
+          children: List.generate(_buttonText.length, (index) {
+            return FxButton(
               onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-            FxButton(
+              buttonType: _outlineButtonData.values.elementAt(index),
+              icon: Icon(_outlineButtonData.keys.elementAt(index)),
               isOutlineButton: true,
-              // color: Theme.of(context).colorScheme.secondary,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              buttonType: ButtonType.success,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              buttonType: ButtonType.info,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              buttonType: ButtonType.warning,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-            FxButton(
-              isOutlineButton: true,
-              buttonType: ButtonType.error,
-              height: 40,
-              onPressed: () {},
-              radius: 4,
-              icon: Icons.ac_unit,
-              // roundedFromSide: true,
-            ),
-          ],
+            );
+          }),
         )
       ],
     );
@@ -688,24 +375,19 @@ class Button extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h10,
+        FxBox.h16,
         Wrap(
           spacing: 10,
           runSpacing: 10,
           children: [
-            FxButton.apple(
-              height: 40,
+            SocialButton.apple(
               onPressed: () {},
             ),
-            FxButton.facebook(
-              height: 40,
+            SocialButton.facebook(
               onPressed: () {},
-              radius: 4,
             ),
-            FxButton.whatsapp(
-              height: 40,
+            SocialButton.whatsApp(
               onPressed: () {},
-              radius: 4,
             ),
           ],
         )
@@ -724,27 +406,22 @@ class Button extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
-        FxBox.h10,
+        FxBox.h16,
         Wrap(
           spacing: 10,
           runSpacing: 10,
           children: [
-            FxButton.apple(
+            SocialButton.apple(
               isOutlineButton: true,
-              height: 40,
               onPressed: () {},
             ),
-            FxButton.facebook(
+            SocialButton.facebook(
               isOutlineButton: true,
-              height: 40,
               onPressed: () {},
-              radius: 4,
             ),
-            FxButton.whatsapp(
+            SocialButton.whatsApp(
               isOutlineButton: true,
-              height: 40,
               onPressed: () {},
-              radius: 4,
             ),
           ],
         )

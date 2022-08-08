@@ -1,8 +1,7 @@
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
-import 'package:admin_dashboard/src/provider/theme/bloc/bloc/theme_mode_bloc.dart';
+import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/cupertino.dart';
@@ -62,7 +61,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
             padding: const EdgeInsets.all(24),
             child: Column(
               children: [
-                FxBox.h10,
+                FxBox.h8,
                 Container(
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
@@ -78,7 +77,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                FxBox.h10,
+                FxBox.h8,
                 Container(
                   padding: const EdgeInsets.all(4),
                   decoration: BoxDecoration(
@@ -94,7 +93,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
                     fit: BoxFit.cover,
                   ),
                 ),
-                FxBox.h10,
+                FxBox.h8,
                 Row(
                   children: [
                     BlocBuilder<ThemeModeBloc, ThemeModeState>(
@@ -120,7 +119,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
                     )
                   ],
                 ),
-                FxBox.h10,
+                FxBox.h8,
               ],
             ),
           ),

@@ -16,4 +16,7 @@ class IconlyBroken {
   static const String bookSquare = '${_assetPath}book-square.svg';
   static const String closeSquare = '${_assetPath}close-square.svg';
   static const String addSquare = '${_assetPath}add-square.svg';
+  static const String drawer = '${_assetPath}category.svg';
+  static const String arrowUp = '${_assetPath}arrow-up-3.svg';
+  static const String arrowDown = '${_assetPath}arrow-down-2.svg';
 }

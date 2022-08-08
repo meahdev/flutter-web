@@ -4,7 +4,7 @@ class Strings {
   static const String view = 'View';
   static const String edit = 'Edit';
   static const String delete = 'Delete';
-  static const String searchHint = 'Search....';
+  static const String searchHint = 'Search...';
   static const String veltrix = 'Veltrix';
   static const String main = 'Main';
   static const String components = 'Components';
