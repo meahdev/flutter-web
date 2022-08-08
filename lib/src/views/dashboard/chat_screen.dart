@@ -48,7 +48,7 @@ class _ChatscreenState extends State<Chatscreen> {
       child: Container(
         color: ColorConst.white,
         padding: const EdgeInsets.all(20.0),
-        height: MediaQuery.of(context).size.height * 0.51,
+        height: MediaQuery.of(context).size.height * 0.52,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,

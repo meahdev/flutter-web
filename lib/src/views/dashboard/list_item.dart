@@ -74,6 +74,7 @@ class _ListitemState extends State<Listitem> {
                   ),
         itemCount: _listItem.length,
         shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return _listContainer(
             boxIcon: _listItem[index]['boxIcon'],
