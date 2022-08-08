@@ -35,7 +35,9 @@ class _MyAppState extends State<MyApp> {
             initial: () => const SizedBox.shrink(),
             success: (themeMode) {
               return MaterialApp.router(
-                routerDelegate: _appRouter.delegate(),
+                routerDelegate: _appRouter.delegate(
+                  initialRoutes: [const MenuBar()]
+                ),
                 routeInformationParser: _appRouter.defaultRouteParser(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeClass.themeData(themeMode, context),

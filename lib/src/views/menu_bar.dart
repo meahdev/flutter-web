@@ -6,6 +6,7 @@ import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
+import 'package:admin_dashboard/src/utils/text_utils.dart';
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
 import 'package:admin_dashboard/src/widget/expantion_tile.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -37,7 +38,7 @@ class _MenuBarState extends State<MenuBar> {
   };
 
   List<List<String>> componentsExpandList = [
-    ['Toast','Buttons', 'Rating', 'Badge'],
+    ['Toast', 'Buttons', 'Rating', 'Badge'],
     ['Cupertino Icons']
   ];
 
@@ -84,14 +85,14 @@ class _MenuBarState extends State<MenuBar> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Buttons',
+                            upperCase(tabsRouter.currentPath),
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
                                 .copyWith(fontWeight: FontWeight.bold),
                           ),
                           FxBox.h8,
-                          _routesDeatils(),
+                          _routesDeatils(tabsRouter),
                           FxBox.h20,
                           child,
                         ],
@@ -356,19 +357,21 @@ class _MenuBarState extends State<MenuBar> {
   }
 
   /// routes
-  Widget _routesDeatils() => Row(
-        children: const [
-          InkWell(
-            mouseCursor: SystemMouseCursors.click,
-            child: Text('Admin'),
-          ),
-          SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
-          InkWell(
-            mouseCursor: SystemMouseCursors.click,
-            child: Text('UI Elements'),
-          ),
-          SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
-          Text('Buttons'),
-        ],
+  Widget _routesDeatils(TabsRouter tabsRouter) => Row(
+        children: tabsRouter.currentPath == '/dashboard'
+            ? []
+            : [
+                const InkWell(
+                  mouseCursor: SystemMouseCursors.click,
+                  child: Text('Admin'),
+                ),
+                const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
+                const InkWell(
+                  mouseCursor: SystemMouseCursors.click,
+                  child: Text('UI Elements'),
+                ),
+                const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
+                Text(upperCase(tabsRouter.currentPath)),
+              ],
       );
 }

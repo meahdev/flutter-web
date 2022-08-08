@@ -61,7 +61,13 @@ class AppRouter extends _i8.RootStackRouter {
   @override
   List<_i8.RouteConfig> get routes => [
         _i8.RouteConfig(MenuBar.name, path: '/', children: [
-          _i8.RouteConfig(TestWidget.name, path: 'test', parent: MenuBar.name),
+          _i8.RouteConfig('#redirect',
+              path: '',
+              parent: MenuBar.name,
+              redirectTo: 'dashboard',
+              fullMatch: true),
+          _i8.RouteConfig(TestWidget.name,
+              path: 'dashboard', parent: MenuBar.name),
           _i8.RouteConfig(Toast.name, path: 'toast', parent: MenuBar.name),
           _i8.RouteConfig(Button.name, path: 'button', parent: MenuBar.name),
           _i8.RouteConfig(Rating.name, path: 'rating', parent: MenuBar.name),
@@ -84,7 +90,7 @@ class MenuBar extends _i8.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.TestWidget]
 class TestWidget extends _i8.PageRouteInfo<void> {
-  const TestWidget() : super(TestWidget.name, path: 'test');
+  const TestWidget() : super(TestWidget.name, path: 'dashboard');
 
   static const String name = 'TestWidget';
 }
