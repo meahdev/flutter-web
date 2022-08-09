@@ -1,8 +1,6 @@
-import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
-import 'package:admin_dashboard/src/utils/hive/hive_keys.dart';
-import 'package:admin_dashboard/src/utils/hive/hive_utils.dart';
+
 import 'package:flutter/material.dart';
 
 class Activity extends StatefulWidget {

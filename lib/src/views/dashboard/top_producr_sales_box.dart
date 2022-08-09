@@ -19,7 +19,9 @@ class _TopProductSaleState extends State<TopProductSale> {
       ),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            minHeight: 250, minWidth: MediaQuery.of(context).size.width),
+          minHeight: 250,
+          minWidth: MediaQuery.of(context).size.width,
+        ),
         child: Container(
           padding: const EdgeInsets.all(20),
           color: ColorConst.primary,

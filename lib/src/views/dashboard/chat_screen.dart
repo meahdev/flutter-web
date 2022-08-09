@@ -53,7 +53,7 @@ class _ChatscreenState extends State<Chatscreen> {
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 400),
         child: Container(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(20.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
@@ -131,7 +131,7 @@ class _ChatscreenState extends State<Chatscreen> {
   }) {
     return ChatBubble(
       alignment: !isMe ? Alignment.bottomLeft : Alignment.bottomRight,
-      padding: const EdgeInsets.all(18),
+      padding: const EdgeInsets.all(12),
       margin: const EdgeInsets.all(20),
       shadowColor: Colors.transparent,
       clipper: isMe
@@ -140,8 +140,8 @@ class _ChatscreenState extends State<Chatscreen> {
       backGroundColor: boxColor,
       child: Container(
         padding: !isMe
-            ? const EdgeInsets.only(left: 10)
-            : const EdgeInsets.only(right: 10),
+            ? const EdgeInsets.only(left: 12)
+            : const EdgeInsets.only(right: 12),
         constraints: const BoxConstraints(maxWidth: 300),
         child: Column(
           crossAxisAlignment:
