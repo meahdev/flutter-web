@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
@@ -52,7 +53,7 @@ class _LoginOneState extends State<LoginOne> {
           ],
         ),
         FxBox.h48,
-        _signUp(),
+        ConstantAuth.signUp(context),
         FxBox.h16,
         const CustomText(
           title: Strings.loginFooterText,
@@ -201,7 +202,7 @@ class _LoginOneState extends State<LoginOne> {
     return CustomText(
       title: label,
       fontSize: 14,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w800,
       textColor: ColorConst.lightFontColor,
     );
   }
@@ -224,31 +225,6 @@ class _LoginOneState extends State<LoginOne> {
       textCapitalization: TextCapitalization.none,
       textInputAction: TextInputAction.done,
       controller: _passwordController,
-    );
-  }
-
-  Widget _signUp() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const CustomText(
-          title: Strings.dontHaveAccount,
-          textColor: ColorConst.lightFontColor,
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-        ),
-        GestureDetector(
-          onTap: () {
-            // onpressed
-          },
-          child: const CustomText(
-            title: Strings.signUpNow,
-            fontSize: 14,
-            textColor: ColorConst.primary,
-            fontWeight: FontWeight.w700,
-          ),
-        )
-      ],
     );
   }
 
