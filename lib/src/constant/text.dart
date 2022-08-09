@@ -6,10 +6,12 @@ class ConstText {
     double? fontSize,
     Color? color,
     FontWeight? fontWeight,
+    TextAlign? textAlign,
   }) {
     return Text(
       text,
       softWrap: true,
+      textAlign: textAlign,
       style: TextStyle(
         fontSize: fontSize ?? 15,
         color: color ?? Colors.black,
@@ -23,9 +25,11 @@ class ConstText {
     double? fontSize,
     Color? color,
     FontWeight? fontWeight,
+    TextAlign? textAlign,
   }) {
     return Text(
       text,
+      textAlign: textAlign,
       softWrap: true,
       style: TextStyle(
         fontSize: fontSize ?? 20,
@@ -40,9 +44,11 @@ class ConstText {
     double? fontSize,
     Color? color,
     FontWeight? fontWeight,
+    TextAlign? textAlign,
   }) {
     return Text(
       text,
+      textAlign: textAlign,
       style: TextStyle(
         fontSize: fontSize ?? 30,
         color: color ?? Colors.black,

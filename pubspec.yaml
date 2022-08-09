@@ -33,7 +33,7 @@ dependencies:
   flutter_svg: ^1.1.1+1
 
   hive_flutter: ^1.1.0
-
+  flutter_chat_bubble: ^2.0.0
   auto_route: ^4.2.1
   flutter_bloc: ^8.0.1
   json_annotation: ^4.6.0

@@ -6,6 +6,7 @@ class FxBadge extends StatelessWidget {
   final TextStyle? textStyle;
   final bool isOutlined;
   final double? radius;
+
   const FxBadge({
     Key? key,
     this.color,
@@ -14,6 +15,7 @@ class FxBadge extends StatelessWidget {
     this.isOutlined = false,
     this.radius,
   }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,8 +25,7 @@ class FxBadge extends StatelessWidget {
             ? Colors.transparent
             : color ?? Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(radius ?? 52.0),
-        border:
-            Border.all(color: color ?? Theme.of(context).colorScheme.primary),
+        border: Border.all(color: color ?? Theme.of(context).colorScheme.primary),
       ),
       child: Text(
         text,

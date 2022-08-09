@@ -16,14 +16,14 @@ class FxColor {
   static Color get dark => const Color(0xff141414);
 
   // facebook color
-  static const Color facebook = Color(0xFF3e5b9b);
-  static const Color facebookDark = Color(0xFF27427d);
+  static const Color facebook = Color(0xff29b0fc);
+  static const Color facebookDark = Color(0xff1067dd);
 
   // whatsapp color
   static const Color whatsApp = Color(0xff25d366);
   static const Color whatsAppDark = Color(0xff075e54);
 
   // apple color
-  static const Color apple = Color(0xFF000000);
+  static const Color appleLight = Color(0xFFffffff);
   static const Color appleDark = Color(0xFF000000);
 }

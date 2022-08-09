@@ -3,7 +3,6 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -33,8 +32,8 @@ class _TransactionState extends State<Transaction> {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
       child: Container(
+        padding: const EdgeInsets.all(20),
         color: ColorConst.white,
-        padding: const EdgeInsets.all(20.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -44,10 +43,8 @@ class _TransactionState extends State<Transaction> {
               color: ColorConst.grey800,
             ),
             FxBox.h10,
-            SizedBox(
-              height: Responsive.isMobile(context)
-                  ? MediaQuery.of(context).size.height * 0.48
-                  : MediaQuery.of(context).size.height * 0.42,
+            ConstrainedBox(
+              constraints: const BoxConstraints(maxHeight: 400),
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -64,13 +61,9 @@ class _TransactionState extends State<Transaction> {
                           BorderSide(width: 1, color: Colors.grey.shade50),
                     ),
                     columns: [
-                      DataColumn(
-                        label: _tableHeader('(#) Id'),
-                      ),
+                      DataColumn(label: _tableHeader('(#) Id')),
                       DataColumn(label: _tableHeader('Name')),
-                      DataColumn(
-                        label: _tableHeader('Date'),
-                      ),
+                      DataColumn(label: _tableHeader('Date')),
                       DataColumn(label: _tableHeader('Amount')),
                       DataColumn(label: _tableHeader('Status')),
                       DataColumn(label: _tableHeader('')),
@@ -80,105 +73,56 @@ class _TransactionState extends State<Transaction> {
                         onSelectChanged: (value) {},
                         cells: [
                           DataCell(_tableHeader('#14256')),
-                          DataCell(
-                            _tableRowImage('Philip Smead'),
-                          ),
-                          DataCell(
-                            _tableHeader('15/1/2018'),
-                          ),
-                          DataCell(
-                            _tableHeader('\$94'),
-                          ),
-                          DataCell(
-                            _statusBox(ColorConst.success, 'Delivered'),
-                          ),
-                          DataCell(
-                            _editButton(),
-                          ),
+                          DataCell(_tableRowImage('Philip Smead')),
+                          DataCell(_tableHeader('15/1/2018')),
+                          DataCell(_tableHeader('\$94')),
+                          DataCell(_statusBox(ColorConst.success, 'Delivered')),
+                          DataCell(_editButton()),
                         ],
                       ),
                       DataRow(
                         onSelectChanged: (value) {},
                         cells: [
                           DataCell(_tableHeader('#14257')),
+                          DataCell(_tableRowImage('Brent Shipley')),
+                          DataCell(_tableHeader('16/1/2019')),
+                          DataCell(_tableHeader('\$112')),
                           DataCell(
-                            _tableRowImage('Brent Shipley'),
-                          ),
-                          DataCell(
-                            _tableHeader('16/1/2019'),
-                          ),
-                          DataCell(
-                            _tableHeader('\$112'),
-                          ),
-                          DataCell(
-                            _statusBox(ColorConst.warningDark, 'Pending'),
-                          ),
-                          DataCell(
-                            _editButton(),
-                          ),
+                              _statusBox(ColorConst.warningDark, 'Pending')),
+                          DataCell(_editButton()),
                         ],
                       ),
                       DataRow(
                         onSelectChanged: (value) {},
                         cells: [
                           DataCell(_tableHeader('#14258')),
-                          DataCell(
-                            _tableRowImage('Robert Sitton'),
-                          ),
-                          DataCell(
-                            _tableHeader('17/1/2019'),
-                          ),
-                          DataCell(
-                            _tableHeader('\$116'),
-                          ),
-                          DataCell(
-                            _statusBox(ColorConst.success, 'Delivered'),
-                          ),
-                          DataCell(
-                            _editButton(),
-                          ),
+                          DataCell(_tableRowImage('Robert Sitton')),
+                          DataCell(_tableHeader('17/1/2019')),
+                          DataCell(_tableHeader('\$116')),
+                          DataCell(_statusBox(ColorConst.success, 'Delivered')),
+                          DataCell(_editButton()),
                         ],
                       ),
                       DataRow(
                         onSelectChanged: (value) {},
                         cells: [
                           DataCell(_tableHeader('#14259')),
-                          DataCell(
-                            _tableRowImage('Alberto Jackson'),
-                          ),
-                          DataCell(
-                            _tableHeader('18/1/2019'),
-                          ),
-                          DataCell(
-                            _tableHeader('\$109'),
-                          ),
-                          DataCell(
-                            _statusBox(ColorConst.error, 'Cancel'),
-                          ),
-                          DataCell(
-                            _editButton(),
-                          ),
+                          DataCell(_tableRowImage('Alberto Jackson')),
+                          DataCell(_tableHeader('18/1/2019')),
+                          DataCell(_tableHeader('\$109')),
+                          DataCell(_statusBox(ColorConst.error, 'Cancel')),
+                          DataCell(_editButton()),
                         ],
                       ),
                       DataRow(
                         onSelectChanged: (value) {},
                         cells: [
                           DataCell(_tableHeader('#14260')),
-                          DataCell(
-                            _tableRowImage('David Sanchez'),
-                          ),
-                          DataCell(
-                            _tableHeader('19/1/2019'),
-                          ),
-                          DataCell(
-                            _tableHeader('\$120'),
-                          ),
-                          DataCell(
-                            _statusBox(ColorConst.success, 'Delivered'),
-                          ),
-                          DataCell(
-                            _editButton(),
-                          ),
+                          DataCell(_tableRowImage('David Sanchez')),
+                          DataCell(_tableHeader('19/1/2019')),
+                          DataCell(_tableHeader('\$120')),
+                          DataCell(_statusBox(ColorConst.success, 'Delivered')),
+                          DataCell(_editButton()),
                         ],
                       ),
                     ],
@@ -197,7 +141,6 @@ class _TransactionState extends State<Transaction> {
       text: text,
       fontWeight: FontWeight.w700,
       color: ColorConst.grey800,
-      fontSize: MediaQuery.of(context).size.height * 0.015,
     );
   }
 
@@ -205,16 +148,16 @@ class _TransactionState extends State<Transaction> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        CircleAvatar(
-          maxRadius: MediaQuery.of(context).size.height * 0.02,
-          backgroundImage: const NetworkImage(Images.profileImage),
+        const CircleAvatar(
+          maxRadius: 15,
+          backgroundImage: NetworkImage(Images.profileImage),
         ),
         FxBox.w10,
         Expanded(
           child: Text(
             text,
-            style: TextStyle(
-              fontSize: MediaQuery.of(context).size.height * 0.012,
+            style: const TextStyle(
+              fontSize: 12,
               color: ColorConst.grey800,
               fontWeight: FontWeight.w700,
             ),
@@ -233,17 +176,20 @@ class _TransactionState extends State<Transaction> {
       color: color,
       radius: 5,
       textStyle: TextStyle(
-          fontSize: MediaQuery.of(context).size.height * 0.011,
-          color: ColorConst.white),
+        fontSize: MediaQuery.of(context).size.height * 0.011,
+        color: ColorConst.white,
+      ),
     );
   }
 
   Widget _editButton() {
     return FxButton(
       minWidth: 18,
+      borderRadius: 6,
+      color: ColorConst.primary,
       onPressed: () {},
-      child: ConstText.lightText(
-          text: Strings.edit, color: ColorConst.white, fontSize: 12),
+      textColor: ColorConst.white,
+      text: Strings.edit,
     );
   }
 }

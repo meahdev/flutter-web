@@ -23,6 +23,7 @@ class ColorConst {
   static const Color error = Color(0xFFF44336);
   static const Color success = Color(0xff53a653);
   static const Color warningDark = Color(0xffffb800);
+  // chat screen
   static const Color chatColor = Color(0xFF2f3cab);
   static const Color sendButtonColor = Color(0xFF02a499);
   static const Color lightGrey = Color(0xFFdee2e6);

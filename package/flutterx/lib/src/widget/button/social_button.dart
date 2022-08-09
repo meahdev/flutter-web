@@ -92,6 +92,36 @@ class SocialButton extends StatelessWidget {
         type = 'Facebook',
         super(key: key);
 
+  const SocialButton.apple({
+    Key? key,
+    this.icon = const Icon(Icons.apple_rounded),
+    this.isOutlineButton = false,
+    this.borderWidth = 1.0,
+    this.borderRadius = 4.0,
+    required this.onPressed,
+    this.onLongPress,
+    this.onHighlightChanged,
+    this.mouseCursor,
+    this.minWidth = 140,
+    this.height = 30,
+    this.autofocus = false,
+    this.focusNode,
+    this.text = 'Apple',
+    this.textColor,
+    this.enableFeedback = true,
+    this.padding = const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+    this.elevation,
+    this.hoverElevation,
+    this.color,
+    this.hoverColor,
+  })  : assert(minWidth == null || minWidth == 140.0 || minWidth == 280.0),
+        assert(height == null || height == 30.0 || height == 60.0),
+        assert(elevation == null || elevation >= 0.0),
+        assert(hoverElevation == null || hoverElevation >= 0.0),
+        type = 'Apple',
+        fullWidth = false,
+        super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final double scale = MediaQuery.maybeOf(context)?.textScaleFactor ?? 1;
@@ -112,7 +142,9 @@ class SocialButton extends StatelessWidget {
           hoverElevation: isOutlineButton ? 0.0 : hoverElevation,
           padding: padding,
           colorBrightness: Theme.of(context).brightness,
-          color: color ?? _getButtonColor(colorScheme, isOutlineButton, type),
+          color: type == 'Apple' && isOutlineButton
+              ? FxColor.white
+              : color ?? _getButtonColor(colorScheme, isOutlineButton, type),
           hoverColor: hoverColor ??
               _getHoverButtonColor(colorScheme, isOutlineButton, type),
           shape: RoundedRectangleBorder(
@@ -157,7 +189,11 @@ Color? _getButtonColor(
   if (type == 'WhatsApp') {
     return FxColor.whatsApp;
   } else if (type == 'Facebook') {
-    return FxColor.facebook;
+    return FxColor.facebookDark;
+  } else if (type == 'Apple') {
+    return colorScheme.brightness == Brightness.light
+        ? FxColor.appleDark
+        : FxColor.appleLight;
   } else {
     return colorScheme.primary;
   }
@@ -171,7 +207,11 @@ Color? _getHoverButtonColor(
   if (type == 'WhatsApp') {
     return FxColor.whatsAppDark;
   } else if (type == 'Facebook') {
-    return FxColor.facebookDark;
+    return FxColor.facebook;
+  } else if (type == 'Apple') {
+    return colorScheme.brightness == Brightness.light
+        ? FxColor.appleDark
+        : FxColor.appleLight;
   } else {
     if (colorScheme.brightness == Brightness.dark) {
       return colorScheme.inversePrimary;
@@ -184,10 +224,17 @@ Color? _getHoverButtonColor(
 Color? _getFontColor(
     ColorScheme colorScheme, bool isOutlineButton, String type) {
   if (isOutlineButton) {
+    if (type == 'Apple') {
+      return FxColor.appleDark;
+    }
     return _getButtonColor(colorScheme, false, type);
   }
   if (type == 'WhatsApp' || type == 'Facebook') {
     return FxColor.white;
+  } else if (type == 'Apple') {
+    return colorScheme.brightness == Brightness.light
+        ? FxColor.appleLight
+        : FxColor.appleDark;
   } else {
     return colorScheme.onPrimary;
   }
@@ -200,6 +247,10 @@ Color? _getHoverFontColor(
   }
   if (type == 'WhatsApp' || type == 'Facebook') {
     return FxColor.white;
+  } else if (type == 'Apple') {
+    return colorScheme.brightness == Brightness.light
+        ? FxColor.appleLight
+        : FxColor.appleDark;
   } else {
     if (colorScheme.brightness == Brightness.dark) {
       return colorScheme.onPrimaryContainer;
