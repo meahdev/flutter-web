@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/provider/form_colorpicker/bloc/form_color_bloc.dart';
 import 'package:admin_dashboard/src/provider/form_counter/bloc/form_textfield_counter_bloc.dart';
 import 'package:admin_dashboard/src/provider/form_dropdown/bloc/form_dropdown_bloc.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -19,6 +20,8 @@ class _ElementsFormState extends State<ElementsForm> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
   final TextEditingController _dateNtimeController = TextEditingController();
+
+  Color pickerColor = const Color(0xff02a499);
 
   List<String> headingList = ['Text', 'Search', 'Email', 'URL', 'Telephone'];
   List<String> hintList = [
@@ -89,7 +92,7 @@ class _ElementsFormState extends State<ElementsForm> {
           child: Row(
             children: [
               Expanded(
-                flex: 1,
+                flex: 2,
                 child: Text(
                   headingList[index],
                   style: const TextStyle(fontWeight: FontWeight.w600),
@@ -120,7 +123,7 @@ class _ElementsFormState extends State<ElementsForm> {
     return Row(
       children: [
         const Expanded(
-          flex: 1,
+          flex: 2,
           child: Text(
             'Password',
             style: TextStyle(fontWeight: FontWeight.w600),
@@ -149,7 +152,7 @@ class _ElementsFormState extends State<ElementsForm> {
     return Row(
       children: [
         const Expanded(
-          flex: 1,
+          flex: 2,
           child: Text(
             'Number',
             style: TextStyle(fontWeight: FontWeight.w600),
@@ -181,7 +184,9 @@ class _ElementsFormState extends State<ElementsForm> {
                               onTap: () {
                                 formTextfieldCounterBloc.add(
                                     FormTextfieldCounterEvent.increment(
-                                        int.parse(_numberController.text)));
+                                        int.parse(_numberController.text.isEmpty
+                                            ? '0'
+                                            : _numberController.text)));
                               },
                               child: const Icon(
                                 Icons.arrow_drop_up_sharp,
@@ -193,7 +198,9 @@ class _ElementsFormState extends State<ElementsForm> {
                               onTap: () {
                                 formTextfieldCounterBloc.add(
                                     FormTextfieldCounterEvent.decrement(
-                                        int.parse(_numberController.text)));
+                                        int.parse(_numberController.text.isEmpty
+                                            ? '0'
+                                            : _numberController.text)));
                               },
                               child: const Icon(
                                 Icons.arrow_drop_down_sharp,
@@ -215,7 +222,7 @@ class _ElementsFormState extends State<ElementsForm> {
     return Row(
       children: [
         const Expanded(
-          flex: 1,
+          flex: 2,
           child: Text(
             'Date and time',
             style: TextStyle(fontWeight: FontWeight.w600),
@@ -249,7 +256,7 @@ class _ElementsFormState extends State<ElementsForm> {
     return Row(
       children: [
         const Expanded(
-          flex: 1,
+          flex: 2,
           child: Text(
             'Color',
             style: TextStyle(fontWeight: FontWeight.w600),
@@ -262,10 +269,15 @@ class _ElementsFormState extends State<ElementsForm> {
               FxAlert.showAlert(
                 context: context,
                 title: 'Pick Color',
-                content: ColorPicker(
-                  portraitOnly: true,
-                  pickerColor: Colors.red,
-                  onColorChanged: (value) {},
+                content: SizedBox(
+                  width: 300,
+                  child: ColorPicker(
+                    pickerColor: pickerColor,
+                    onColorChanged: (value) {
+                      formColorBloc.add(FormColorEvent.changeColor(value));
+                    },
+                    portraitOnly: true,
+                  ),
                 ),
                 actions: [],
               );
@@ -282,11 +294,25 @@ class _ElementsFormState extends State<ElementsForm> {
                 height: 35,
                 padding:
                     const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(4)),
+                child: BlocProvider(
+                  create: (context) => formColorBloc,
+                  child: BlocBuilder<FormColorBloc, FormColorState>(
+                    builder: (context, state) {
+                      state.when(
+                        initial: () {},
+                        success: (color) {
+                          pickerColor = color;
+                        },
+                      );
+                      return Container(
+                        decoration: BoxDecoration(
+                          color: pickerColor,
+                          border: Border.all(),
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                      );
+                    },
+                  ),
                 )),
           ),
         )
@@ -298,7 +324,7 @@ class _ElementsFormState extends State<ElementsForm> {
     return Row(
       children: [
         const Expanded(
-          flex: 1,
+          flex: 2,
           child: Text(
             'Select',
             style: TextStyle(fontWeight: FontWeight.w600),
@@ -354,54 +380,3 @@ class _ElementsFormState extends State<ElementsForm> {
     );
   }
 }
-
-// static void dateValidator(String value) {
-//   final DateTime now = DateTime.now();
-//   final DateFormat formatter = DateFormat('yyyy');
-//   final String formatted = formatter.format(now);
-//   String str1 = value;
-//   List<String> str2 = str1.split('/');
-//   String month = str2.isNotEmpty ? str2[0] : '';
-//   String day = str2.length > 1 ? str2[1] : '';
-//   String year = str2.length > 2 ? str2[2] : '';
-//   if (int.parse(month) > 13) {
-//   } else if (int.parse(day) > 32) {
-//     day = '31';
-//   } else if ((int.parse(year) > int.parse(formatted))) {
-//     year = formatter.format(now);
-//   } else if ((int.parse(year) < 1920)) {
-//     year = '1920';
-//   }
-// }
-
-// class BirthTextInputFormatter extends TextInputFormatter {
-//   @override
-//   TextEditingValue formatEditUpdate(
-//       TextEditingValue oldValue, TextEditingValue newValue) {
-//     if (oldValue.text.length >= newValue.text.length) {
-//       return newValue;
-//     }
-//     var dateText = _addSeparator(newValue.text, '/');
-//     return newValue.copyWith(
-//         text: dateText, selection: updateCursorPosition(dateText));
-//   }
-
-//   String _addSeparator(String value, String separator) {
-//     value = value.replaceAll('/', '');
-//     var newString = '';
-//     for (int i = 0; i < value.length; i++) {
-//       newString += value[i];
-//       if (i == 1) {
-//         newString += separator;
-//       }
-//       if (i == 3) {
-//         newString += separator;
-//       }
-//     }
-//     return newString;
-//   }
-
-//   TextSelection updateCursorPosition(String text) {
-//     return TextSelection.fromPosition(TextPosition(offset: text.length));
-//   }
-// }
