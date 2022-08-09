@@ -29,6 +29,12 @@ class _ToastAnimationState extends State<ToastAnimation>
   }
 
   @override
+  void deactivate() {
+    _controller.stop();
+    super.deactivate();
+  }
+
+  @override
   void dispose() {
     super.dispose();
     _controller.dispose();

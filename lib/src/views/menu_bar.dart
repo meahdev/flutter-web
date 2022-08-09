@@ -38,7 +38,7 @@ class _MenuBarState extends State<MenuBar> {
   };
 
   List<List<String>> componentsExpandList = [
-    ['Toast', 'Buttons', 'Rating', 'Badge'],
+    ['Toast', 'Buttons', 'Rating', 'Badge', 'Alert Dialog', 'Modal'],
     ['Cupertino Icons']
   ];
 
@@ -49,13 +49,15 @@ class _MenuBarState extends State<MenuBar> {
     Badge(),
     Toast(),
     CupertinoIcon(),
+    AlertDialogBox(),
+    Modal(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: _routes,
-      homeIndex: 0,
+      homeIndex: 6,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
@@ -121,31 +123,6 @@ class _MenuBarState extends State<MenuBar> {
                       ),
                     ],
                   ),
-                  // child: SingleChildScrollView(
-                  //   controller: ScrollController(),
-                  //   child: Container(
-                  //     padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  //     child: Column(
-                  //       crossAxisAlignment: CrossAxisAlignment.start,
-                  //       children: [
-                  //         FxBox.h20,
-                  //         Text(
-                  //           upperCase(tabsRouter.currentPath),
-                  //           style: Theme.of(context)
-                  //               .textTheme
-                  //               .bodyLarge!
-                  //               .copyWith(fontWeight: FontWeight.bold),
-                  //         ),
-                  //         FxBox.h8,
-                  //         _routesDeatils(tabsRouter),
-                  //         FxBox.h20,
-                  //         child,
-                  //         FxBox.h20,
-                  //         _footer(),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                 ),
               ],
             ),

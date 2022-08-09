@@ -9,6 +9,10 @@ int getRouteIndex(String route) {
     return 4;
   } else if (route == 'Cupertino Icons') {
     return 5;
+  } else if (route == 'Alert Dialog') {
+    return 6;
+  } else if (route == 'Modal') {
+    return 7;
   } else {
     return 0;
   }

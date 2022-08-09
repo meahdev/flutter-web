@@ -2,33 +2,29 @@ import 'package:flutter/material.dart';
 
 abstract class ToastProvider {
   const ToastProvider();
-  Widget show(BuildContext context);
+  Widget show(BuildContext context, double? toastWidth);
 }
 
 class ToastWithColor extends ToastProvider {
   final String message;
   final Widget? leading;
-  final Widget? trailing;
   final Color? backgroundColor;
   final Color? borderColor;
   final TextStyle? textStyle;
   final int maxLines;
   final double radius;
   final double? height;
-  final double? width;
   final bool isLightBackground;
 
   const ToastWithColor({
     required this.message,
     this.leading,
-    this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.backgroundColor,
     this.borderColor,
     this.radius = 8,
     this.height,
-    this.width,
     this.isLightBackground = false,
   }) : super();
 
@@ -36,14 +32,12 @@ class ToastWithColor extends ToastProvider {
     Key? key,
     required this.message,
     this.leading,
-    this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.backgroundColor = Colors.green,
     this.borderColor,
     this.radius = 8,
     this.height,
-    this.width,
     this.isLightBackground = false,
   }) : super();
 
@@ -51,14 +45,12 @@ class ToastWithColor extends ToastProvider {
     Key? key,
     required this.message,
     this.leading,
-    this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.backgroundColor = Colors.red,
     this.borderColor,
     this.radius = 8,
     this.height,
-    this.width,
     this.isLightBackground = false,
   }) : super();
 
@@ -66,14 +58,12 @@ class ToastWithColor extends ToastProvider {
     Key? key,
     required this.message,
     this.leading,
-    this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.backgroundColor = Colors.amber,
     this.borderColor,
     this.radius = 8,
     this.height,
-    this.width,
     this.isLightBackground = false,
   }) : super();
 
@@ -81,31 +71,30 @@ class ToastWithColor extends ToastProvider {
     Key? key,
     required this.message,
     this.leading,
-    this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.backgroundColor = Colors.blue,
     this.borderColor,
     this.radius = 8,
     this.height,
-    this.width,
     this.isLightBackground = false,
   }) : super();
 
   @override
-  Widget show(BuildContext context) {
+  Widget show(BuildContext context, double? toastWidth) {
+    bool isWeb = MediaQuery.of(context).size.width >= 1100;
     return Container(
-      width: width ?? MediaQuery.of(context).size.width - 32,
+      width: isWeb ? toastWidth ?? 500 : MediaQuery.of(context).size.width - 32,
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(radius),
       ),
       clipBehavior: Clip.hardEdge,
       child: Container(
-        alignment: Alignment.centerLeft,
         height: height,
         padding: const EdgeInsets.all(12.0),
-        width: width ?? MediaQuery.of(context).size.width - 32,
+        width:
+            isWeb ? toastWidth ?? 500 : MediaQuery.of(context).size.width - 32,
         decoration: BoxDecoration(
           color: isLightBackground
               ? backgroundColor?.withOpacity(0.25) ??
@@ -145,10 +134,10 @@ class ToastWithColor extends ToastProvider {
                     ),
               ),
             ),
-            trailing ?? const SizedBox.shrink(),
-            trailing != null
-                ? const SizedBox(width: 12.0)
-                : const SizedBox.shrink(),
+            // trailing ?? const SizedBox.shrink(),
+            // trailing != null
+            //     ? const SizedBox(width: 12.0)
+            //     : const SizedBox.shrink(),
           ],
         ),
       ),
@@ -159,85 +148,81 @@ class ToastWithColor extends ToastProvider {
 class ToastWithoutColor extends ToastProvider {
   final String message;
   final IconData? icon;
-  final Widget? trailing;
+  // final Widget? trailing;
   final Color? iconColor;
   final TextStyle? textStyle;
   final int maxLines;
   final double radius;
   final double? height;
-  final double? width;
 
   const ToastWithoutColor({
     required this.message,
     required this.icon,
-    this.trailing,
+    // this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.iconColor,
     this.radius = 8,
     this.height,
-    this.width,
   }) : super();
 
   const ToastWithoutColor.success({
     Key? key,
     required this.message,
     required this.icon,
-    this.trailing,
+    // this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.iconColor = Colors.green,
     this.radius = 8,
     this.height,
-    this.width,
   }) : super();
 
   const ToastWithoutColor.error({
     Key? key,
     required this.message,
     required this.icon,
-    this.trailing,
+    // this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.iconColor = Colors.red,
     this.radius = 8,
     this.height,
-    this.width,
   }) : super();
 
   const ToastWithoutColor.warning({
     Key? key,
     required this.message,
     required this.icon,
-    this.trailing,
+    // this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.iconColor = Colors.amber,
     this.radius = 8,
     this.height,
-    this.width,
   }) : super();
 
   const ToastWithoutColor.info({
     Key? key,
     required this.message,
     required this.icon,
-    this.trailing,
+    // this.trailing,
     this.textStyle,
     this.maxLines = 2,
     this.iconColor = Colors.blue,
     this.radius = 8,
     this.height,
-    this.width,
   }) : super();
 
   @override
-  Widget show(BuildContext context) {
+  Widget show(BuildContext context, double? toastWidth) {
+    bool isWeb = MediaQuery.of(context).size.width >= 1100;
+
     return Container(
       alignment: Alignment.centerLeft,
       height: height,
       padding: const EdgeInsets.all(12.0),
-      width: width ?? MediaQuery.of(context).size.width - 32,
+      width: isWeb ? toastWidth ?? 500 : MediaQuery.of(context).size.width - 32,
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(radius),
@@ -281,10 +266,10 @@ class ToastWithoutColor extends ToastProvider {
                   ),
             ),
           ),
-          trailing ?? const SizedBox.shrink(),
-          trailing != null
-              ? const SizedBox(width: 12.0)
-              : const SizedBox.shrink(),
+          // trailing ?? const SizedBox.shrink(),
+          // trailing != null
+          //     ? const SizedBox(width: 12.0)
+          //     : const SizedBox.shrink(),
         ],
       ),
     );
