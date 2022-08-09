@@ -47,11 +47,12 @@ class _ChatscreenState extends State<Chatscreen> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 400),
         child: Container(
-          color: ColorConst.white,
           padding: const EdgeInsets.all(12.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,13 +61,14 @@ class _ChatscreenState extends State<Chatscreen> {
               ConstText.lightText(
                 text: Strings.chat,
                 fontWeight: FontWeight.bold,
-                color: ColorConst.grey800,
+                //color: ColorConst.grey800,
               ),
               FxBox.h10,
               ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 370),
                 child: ListView.builder(
                   shrinkWrap: true,
+                  controller: ScrollController(),
                   itemCount: _chatList.length,
                   itemBuilder: (context, index) {
                     return Column(
@@ -176,8 +178,8 @@ class _ChatscreenState extends State<Chatscreen> {
                 controller: _msgController,
                 decoration: InputDecoration(
                   hintText: Strings.enterYourText,
-                  hintStyle: TextStyle(
-                    color: ColorConst.black.withOpacity(0.6),
+                  hintStyle: const TextStyle(
+                    // color: ColorConst.black.withOpacity(0.6),
                     fontSize: 14,
                   ),
                   contentPadding:
@@ -197,7 +199,7 @@ class _ChatscreenState extends State<Chatscreen> {
           FxButton(
             onPressed: () {},
             color: ColorConst.sendButtonColor,
-            borderRadius: 8,
+            borderRadius: 4,
             height: 40,
             textColor: ColorConst.white,
             text: Strings.send,

@@ -1,6 +1,8 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/hive/hive_keys.dart';
+import 'package:admin_dashboard/src/utils/hive/hive_utils.dart';
 import 'package:flutter/material.dart';
 
 class Activity extends StatefulWidget {
@@ -50,19 +52,18 @@ class _ActivityState extends State<Activity> {
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(2),
+        borderRadius: BorderRadius.circular(4),
       ),
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 450),
         child: Container(
-          color: ColorConst.white,
           padding: const EdgeInsets.all(12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ConstText.lightText(
                 text: Strings.activity,
-                color: ColorConst.grey800,
+                // color: ColorConst.grey800,
                 fontWeight: FontWeight.bold,
               ),
               Stepper(

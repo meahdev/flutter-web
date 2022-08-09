@@ -2,6 +2,8 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/hive/hive_keys.dart';
+import 'package:admin_dashboard/src/utils/hive/hive_utils.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -22,7 +24,9 @@ class _TransactionState extends State<Transaction> {
     };
 
     if (states.any(interactiveStates.contains)) {
-      return ColorConst.tableHover;
+      return HiveUtils.get(HiveKeys.themeMode)
+          ? ColorConst.grey800
+          : ColorConst.tableHover;
     }
     return Colors.transparent;
   }
@@ -30,22 +34,25 @@ class _TransactionState extends State<Transaction> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
       child: Container(
         padding: const EdgeInsets.all(20),
-        color: ColorConst.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             ConstText.lightText(
               text: Strings.latestTransaction,
               fontWeight: FontWeight.bold,
-              color: ColorConst.grey800,
+              //color: ColorConst.grey800,
             ),
             FxBox.h10,
             ConstrainedBox(
               constraints: const BoxConstraints(maxHeight: 400),
               child: ListView(
+                controller: ScrollController(),
+                shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 children: [
                   DataTable(
@@ -140,7 +147,7 @@ class _TransactionState extends State<Transaction> {
     return ConstText.lightText(
       text: text,
       fontWeight: FontWeight.w700,
-      color: ColorConst.grey800,
+      //color: ColorConst.grey800,
     );
   }
 
@@ -158,7 +165,7 @@ class _TransactionState extends State<Transaction> {
             text,
             style: const TextStyle(
               fontSize: 12,
-              color: ColorConst.grey800,
+              //color: ColorConst.grey800,
               fontWeight: FontWeight.w700,
             ),
           ),

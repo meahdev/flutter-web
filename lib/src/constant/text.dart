@@ -14,7 +14,7 @@ class ConstText {
       textAlign: textAlign,
       style: TextStyle(
         fontSize: fontSize ?? 15,
-        color: color ?? Colors.black,
+        color: color,
         fontWeight: fontWeight,
       ),
     );
@@ -33,7 +33,7 @@ class ConstText {
       softWrap: true,
       style: TextStyle(
         fontSize: fontSize ?? 20,
-        color: color ?? Colors.black,
+        color: color,
         fontWeight: fontWeight,
       ),
     );
@@ -51,7 +51,7 @@ class ConstText {
       textAlign: textAlign,
       style: TextStyle(
         fontSize: fontSize ?? 30,
-        color: color ?? Colors.black,
+        color: color,
         fontWeight: fontWeight,
       ),
     );

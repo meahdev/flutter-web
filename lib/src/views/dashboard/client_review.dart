@@ -16,11 +16,12 @@ class _ClienresponseState extends State<Clienresponse> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 200),
         child: Container(
-          color: ColorConst.white,
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -28,13 +29,13 @@ class _ClienresponseState extends State<Clienresponse> {
             children: [
               ConstText.lightText(
                 text: Strings.clientReviews,
-                color: ColorConst.grey800,
+                // color: ColorConst.grey800,
                 fontWeight: FontWeight.bold,
               ),
               ConstText.lightText(
                 text: Strings.clientReviewText,
-                fontSize: 12,
-                color: ColorConst.grey800,
+                fontSize: 14,
+                //color: ColorConst.grey800,
                 fontWeight: FontWeight.w500,
               ),
               _tableRowImage('James Athey'),
@@ -58,7 +59,7 @@ class _ClienresponseState extends State<Clienresponse> {
           child: Text(
             text,
             style: const TextStyle(
-              color: ColorConst.grey800,
+              // color: ColorConst.grey800,
               fontWeight: FontWeight.w700,
             ),
           ),

@@ -14,7 +14,9 @@ class _TopProductSaleState extends State<TopProductSale> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
       child: ConstrainedBox(
         constraints: BoxConstraints(
             minHeight: 250, minWidth: MediaQuery.of(context).size.width),
@@ -32,7 +34,7 @@ class _TopProductSaleState extends State<TopProductSale> {
               ),
               ConstText.largeText(
                 text: '1452',
-                fontSize: 35,
+                fontSize: 32,
                 color: ColorConst.white,
                 fontWeight: FontWeight.bold,
               ),

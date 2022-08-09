@@ -18,12 +18,15 @@ class _StatusBoxState extends State<StatusBox> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
       child: ConstrainedBox(
         constraints: BoxConstraints(
-            minHeight: 250, minWidth: MediaQuery.of(context).size.width),
+          minHeight: 250,
+          minWidth: MediaQuery.of(context).size.width,
+        ),
         child: Container(
-          color: ColorConst.white,
           padding: const EdgeInsets.all(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -40,11 +43,11 @@ class _StatusBoxState extends State<StatusBox> {
                 color: ColorConst.primary,
                 fontWeight: FontWeight.bold,
               ),
-              FxBox.h12,
+              FxBox.h8,
               ConstText.lightText(
                 fontSize: 14,
                 text: Strings.successText,
-                color: ColorConst.grey800,
+                //color: ColorConst.grey800,
                 fontWeight: FontWeight.w500,
               ),
               FxBox.h16,
