@@ -74,7 +74,7 @@ class AppRouter extends _i10.RootStackRouter {
           _i10.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'modal',
+              redirectTo: 'dashboard',
               fullMatch: true),
           _i10.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),
