@@ -4,6 +4,7 @@ class ColorConst {
   // static const Color scaffold = Color(0xFFF8F8FA);
   static const Color drawerIcon = Color(0xFF8699AD);
   static const Color primary = Color(0xFF626ed4);
+  static const Color primaryDark = Color.fromARGB(255, 54, 64, 152);
   static const Color appbarLightBG = Color(0xFFE9E9EF);
   // static const Color textFieldBG = Color(0xFFDBDBE6);
   static const Color drawerBG = Color(0xFF333547);
@@ -35,4 +36,6 @@ class ColorConst {
   static Color get warningDark => const Color(0xffffb800);
   static Color get errorDark => const Color(0xffc7051b);
   static Color get infoDark => const Color(0xff03a9f4);
+
+  static Color get darkGreen => const Color(0xff02a499);
 }

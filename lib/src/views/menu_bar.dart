@@ -37,9 +37,26 @@ class _MenuBarState extends State<MenuBar> {
     'Icons': IconlyBroken.smileEmoji,
   };
 
+  Map<String, String> extrasData = {
+    'Authentication': IconlyBroken.archive,
+  };
+
   List<List<String>> componentsExpandList = [
     ['Toast', 'Buttons', 'Rating', 'Badge'],
     ['Cupertino Icons']
+  ];
+
+  List<List<String>> extrasExpandList = [
+    [
+      'Login 1',
+      'Login 2',
+      'Register 1',
+      'Register 2',
+      'Recover password 1',
+      'Recover password 2',
+      'Lock screen 1',
+      'Lock screen 2',
+    ],
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
@@ -49,6 +66,8 @@ class _MenuBarState extends State<MenuBar> {
     Badge(),
     Toast(),
     CupertinoIcon(),
+    LoginOne(),
+    LoginTwo(),
   ];
 
   @override
@@ -294,6 +313,14 @@ class _MenuBarState extends State<MenuBar> {
                 items: componentData,
                 isExpanded: true,
                 children: componentsExpandList,
+              ),
+              // Extras
+              _menuHeading(Strings.extras),
+              _menuList(
+                tabsRouter: tabsRouter,
+                items: extrasData,
+                isExpanded: true,
+                children: extrasExpandList,
               ),
               FxBox.h20,
             ],

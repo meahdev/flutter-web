@@ -12,6 +12,12 @@ class ThemeClass {
       appBarTheme: const AppBarTheme(
         elevation: 5.0,
       ),
+      checkboxTheme: const CheckboxThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        ),
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+      ),
     );
   }
 }

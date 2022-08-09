@@ -11,9 +11,11 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:flutter/material.dart' as _i9;
+import 'package:auto_route/auto_route.dart' as _i10;
+import 'package:flutter/material.dart' as _i11;
 
+import '../views/authentication/login/login_one.dart' as _i8;
+import '../views/authentication/login/login_two.dart' as _i9;
 import '../views/badge/badge.dart' as _i6;
 import '../views/buttons/button.dart' as _i4;
 import '../views/icons/cupertino_icon.dart' as _i7;
@@ -22,66 +24,78 @@ import '../views/rating/rating.dart' as _i5;
 import '../views/test.dart' as _i2;
 import '../views/toast/toast.dart' as _i3;
 
-class AppRouter extends _i8.RootStackRouter {
-  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
+class AppRouter extends _i10.RootStackRouter {
+  AppRouter([_i11.GlobalKey<_i11.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i8.PageFactory> pagesMap = {
+  final Map<String, _i10.PageFactory> pagesMap = {
     MenuBar.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.MenuBar());
     },
     TestWidget.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i2.TestWidget());
     },
     Toast.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i3.Toast());
     },
     Button.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i4.Button());
     },
     Rating.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i5.Rating());
     },
     Badge.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i6.Badge());
     },
     CupertinoIcon.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i10.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i7.CupertinoIcon());
+    },
+    LoginOne.name: (routeData) {
+      return _i10.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i8.LoginOne());
+    },
+    LoginTwo.name: (routeData) {
+      return _i10.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i9.LoginTwo());
     }
   };
 
   @override
-  List<_i8.RouteConfig> get routes => [
-        _i8.RouteConfig(MenuBar.name, path: '/', children: [
-          _i8.RouteConfig('#redirect',
+  List<_i10.RouteConfig> get routes => [
+        _i10.RouteConfig(MenuBar.name, path: '/', children: [
+          _i10.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
               redirectTo: 'dashboard',
               fullMatch: true),
-          _i8.RouteConfig(TestWidget.name,
+          _i10.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),
-          _i8.RouteConfig(Toast.name, path: 'toast', parent: MenuBar.name),
-          _i8.RouteConfig(Button.name, path: 'button', parent: MenuBar.name),
-          _i8.RouteConfig(Rating.name, path: 'rating', parent: MenuBar.name),
-          _i8.RouteConfig(Badge.name, path: 'badge', parent: MenuBar.name),
-          _i8.RouteConfig(CupertinoIcon.name,
-              path: 'cupertino-icon', parent: MenuBar.name)
+          _i10.RouteConfig(Toast.name, path: 'toast', parent: MenuBar.name),
+          _i10.RouteConfig(Button.name, path: 'button', parent: MenuBar.name),
+          _i10.RouteConfig(Rating.name, path: 'rating', parent: MenuBar.name),
+          _i10.RouteConfig(Badge.name, path: 'badge', parent: MenuBar.name),
+          _i10.RouteConfig(CupertinoIcon.name,
+              path: 'cupertino-icon', parent: MenuBar.name),
+          _i10.RouteConfig(LoginOne.name,
+              path: 'login-one', parent: MenuBar.name),
+          _i10.RouteConfig(LoginTwo.name,
+              path: 'login-two', parent: MenuBar.name)
         ])
       ];
 }
 
 /// generated route for
 /// [_i1.MenuBar]
-class MenuBar extends _i8.PageRouteInfo<void> {
-  const MenuBar({List<_i8.PageRouteInfo>? children})
+class MenuBar extends _i10.PageRouteInfo<void> {
+  const MenuBar({List<_i10.PageRouteInfo>? children})
       : super(MenuBar.name, path: '/', initialChildren: children);
 
   static const String name = 'MenuBar';
@@ -89,7 +103,7 @@ class MenuBar extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.TestWidget]
-class TestWidget extends _i8.PageRouteInfo<void> {
+class TestWidget extends _i10.PageRouteInfo<void> {
   const TestWidget() : super(TestWidget.name, path: 'dashboard');
 
   static const String name = 'TestWidget';
@@ -97,7 +111,7 @@ class TestWidget extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.Toast]
-class Toast extends _i8.PageRouteInfo<void> {
+class Toast extends _i10.PageRouteInfo<void> {
   const Toast() : super(Toast.name, path: 'toast');
 
   static const String name = 'Toast';
@@ -105,7 +119,7 @@ class Toast extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.Button]
-class Button extends _i8.PageRouteInfo<void> {
+class Button extends _i10.PageRouteInfo<void> {
   const Button() : super(Button.name, path: 'button');
 
   static const String name = 'Button';
@@ -113,7 +127,7 @@ class Button extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.Rating]
-class Rating extends _i8.PageRouteInfo<void> {
+class Rating extends _i10.PageRouteInfo<void> {
   const Rating() : super(Rating.name, path: 'rating');
 
   static const String name = 'Rating';
@@ -121,7 +135,7 @@ class Rating extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.Badge]
-class Badge extends _i8.PageRouteInfo<void> {
+class Badge extends _i10.PageRouteInfo<void> {
   const Badge() : super(Badge.name, path: 'badge');
 
   static const String name = 'Badge';
@@ -129,8 +143,24 @@ class Badge extends _i8.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.CupertinoIcon]
-class CupertinoIcon extends _i8.PageRouteInfo<void> {
+class CupertinoIcon extends _i10.PageRouteInfo<void> {
   const CupertinoIcon() : super(CupertinoIcon.name, path: 'cupertino-icon');
 
   static const String name = 'CupertinoIcon';
+}
+
+/// generated route for
+/// [_i8.LoginOne]
+class LoginOne extends _i10.PageRouteInfo<void> {
+  const LoginOne() : super(LoginOne.name, path: 'login-one');
+
+  static const String name = 'LoginOne';
+}
+
+/// generated route for
+/// [_i9.LoginTwo]
+class LoginTwo extends _i10.PageRouteInfo<void> {
+  const LoginTwo() : super(LoginTwo.name, path: 'login-two');
+
+  static const String name = 'LoginTwo';
 }

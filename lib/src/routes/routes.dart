@@ -1,3 +1,5 @@
+import 'package:admin_dashboard/src/views/authentication/login/login_one.dart';
+import 'package:admin_dashboard/src/views/authentication/login/login_two.dart';
 import 'package:admin_dashboard/src/views/badge/badge.dart';
 import 'package:admin_dashboard/src/views/buttons/button.dart';
 import 'package:admin_dashboard/src/views/icons/cupertino_icon.dart';
@@ -21,6 +23,8 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'rating', page: Rating),
         AutoRoute(path: 'badge', page: Badge),
         AutoRoute(path: 'cupertino-icon', page: CupertinoIcon),
+        AutoRoute(path: 'login-one', page: LoginOne),
+        AutoRoute(path: 'login-two', page: LoginTwo),
       ],
     ),
   ],
