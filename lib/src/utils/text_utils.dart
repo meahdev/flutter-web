@@ -5,7 +5,7 @@ String upperCase(String text) {
       tempText =
           '$tempText ${element.substring(0, 1).toUpperCase()}${element.substring(1).toLowerCase()}';
     }
-    return tempText;
+    return tempText.trim();
   } else {
     return text.replaceAll('/', '').substring(0, 1).toUpperCase() +
         text.replaceAll('/', '').substring(1).toLowerCase();

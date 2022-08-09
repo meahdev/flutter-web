@@ -79,7 +79,7 @@ class AppRouter extends _i10.RootStackRouter {
           _i10.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),
           _i10.RouteConfig(Toast.name, path: 'toast', parent: MenuBar.name),
-          _i10.RouteConfig(Button.name, path: 'button', parent: MenuBar.name),
+          _i10.RouteConfig(Button.name, path: 'buttons', parent: MenuBar.name),
           _i10.RouteConfig(Rating.name, path: 'rating', parent: MenuBar.name),
           _i10.RouteConfig(Badge.name, path: 'badge', parent: MenuBar.name),
           _i10.RouteConfig(AlertDialogBox.name,
@@ -119,7 +119,7 @@ class Toast extends _i10.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.Button]
 class Button extends _i10.PageRouteInfo<void> {
-  const Button() : super(Button.name, path: 'button');
+  const Button() : super(Button.name, path: 'buttons');
 
   static const String name = 'Button';
 }

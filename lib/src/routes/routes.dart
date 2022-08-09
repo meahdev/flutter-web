@@ -19,7 +19,7 @@ import 'package:auto_route/auto_route.dart';
         RedirectRoute(path: '', redirectTo: 'modal'),
         AutoRoute(path: 'dashboard', page: TestWidget),
         AutoRoute(path: 'toast', page: Toast),
-        AutoRoute(path: 'button', page: Button),
+        AutoRoute(path: 'buttons', page: Button),
         AutoRoute(path: 'rating', page: Rating),
         AutoRoute(path: 'badge', page: Badge),
         AutoRoute(path: 'alert-dialog', page: AlertDialogBox),
@@ -27,7 +27,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'cupertino-icon', page: CupertinoIcon),
       ],
     ),
-    
+
   ],
 )
 class $AppRouter {}

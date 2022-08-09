@@ -314,16 +314,27 @@ class _MenuBarState extends State<MenuBar> {
               leading: SvgIcon(
                 icon: items.values.elementAt(index),
                 size: 16,
-                color: color,
+                color:
+                    children[index].contains(upperCase(tabsRouter.currentPath))
+                        ? ColorConst.drawerHover
+                        : color,
               ),
               title: Text(
                 items.keys.elementAt(index),
-                style: TextStyle(color: color, fontSize: 14.7),
+                style: TextStyle(
+                    color: children[index]
+                            .contains(upperCase(tabsRouter.currentPath))
+                        ? ColorConst.drawerHover
+                        : color,
+                    fontSize: 14.7),
               ),
               trailing: SvgIcon(
                 icon: IconlyBroken.arrowDown,
                 size: 16,
-                color: color,
+                color:
+                    children[index].contains(upperCase(tabsRouter.currentPath))
+                        ? ColorConst.drawerHover
+                        : color,
               ),
               children: [_subMenuList(children[index], tabsRouter)],
             );
@@ -332,11 +343,20 @@ class _MenuBarState extends State<MenuBar> {
               leading: SvgIcon(
                 icon: items.values.elementAt(index),
                 size: 16,
-                color: color,
+                color: items.keys.elementAt(index) ==
+                        upperCase(tabsRouter.currentPath)
+                    ? ColorConst.drawerHover
+                    : color,
               ),
               title: Text(
                 items.keys.elementAt(index),
-                style: TextStyle(color: color, fontSize: 14.7),
+                style: TextStyle(
+                  color: items.keys.elementAt(index) ==
+                          upperCase(tabsRouter.currentPath)
+                      ? ColorConst.drawerHover
+                      : color,
+                  fontSize: 14.7,
+                ),
               ),
               mouseCursor: SystemMouseCursors.click,
               horizontalTitleGap: 0.0,
