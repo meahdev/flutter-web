@@ -49,13 +49,14 @@ class _MenuBarState extends State<MenuBar> {
     Badge(),
     Toast(),
     CupertinoIcon(),
+    Calender()
   ];
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: _routes,
-      homeIndex: 0,
+      homeIndex: 6,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
@@ -364,7 +365,8 @@ class _MenuBarState extends State<MenuBar> {
               mouseCursor: SystemMouseCursors.click,
               horizontalTitleGap: 0.0,
               onTap: () {
-                tabsRouter.setActiveIndex(0);
+                tabsRouter
+                    .setActiveIndex(getRouteIndex(items.keys.elementAt(index)));
                 _scaffoldDrawerKey.currentState?.closeDrawer();
               },
             );
