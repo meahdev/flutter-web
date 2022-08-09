@@ -5,3 +5,4 @@ export 'button/button.dart';
 export 'ratingbar/rating_bar.dart';
 export 'toast/toast.dart';
 export 'toast/toast_provider.dart';
+export 'alert/alert.dart';
