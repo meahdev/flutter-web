@@ -5,6 +5,7 @@ import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form_colorpicker/bloc/form_color_bloc.dart';
 import 'package:admin_dashboard/src/provider/form_counter/bloc/form_textfield_counter_bloc.dart';
 import 'package:admin_dashboard/src/provider/form_dropdown/bloc/form_dropdown_bloc.dart';
+import 'package:admin_dashboard/src/provider/form_validation_dropdown/bloc/form_validate_dropdown_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -50,7 +51,7 @@ class _MenuBarState extends State<MenuBar> {
   List<List<String>> componentsExpandList = [
     ['Toast', 'Buttons', 'Rating', 'Badge'],
     ['Cupertino Icons'],
-    ['Form Elements','Form Validation'],
+    ['Form Elements', 'Form Validation'],
   ];
 
   List<PageRouteInfo<dynamic>> _routes() {
@@ -66,6 +67,7 @@ class _MenuBarState extends State<MenuBar> {
         formTextfieldCounterBloc: formTextfieldCounterBloc,
         formDropDownBloc: formDropDownBloc,
       ),
+      ValidationForm()
     ];
   }
 

@@ -11,6 +11,8 @@ int getRouteIndex(String route) {
     return 5;
   } else if (route == 'Form Elements') {
     return 6;
+  } else if (route == 'Form Validation') {
+    return 7;
   } else {
     return 0;
   }
