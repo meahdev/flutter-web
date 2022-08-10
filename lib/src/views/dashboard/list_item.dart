@@ -67,7 +67,7 @@ class _ListitemState extends State<Listitem> {
                 mainAxisSpacing: 20,
                 mainAxisExtent: 160,
               )
-            : Responsive.isTablet(context)
+            : MediaQuery.of(context).size.width < 1500
                 ? const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 20,
@@ -220,9 +220,7 @@ class _ListitemState extends State<Listitem> {
     );
   }
 
-  Widget _textBox({
-    required String title,
-  }) {
+  Widget _textBox({required String title}) {
     return ConstText.lightText(
       text: title,
       color: ColorConst.white.withOpacity(0.5),

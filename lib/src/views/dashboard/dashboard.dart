@@ -80,16 +80,16 @@ class _DashboardState extends State<Dashboard> {
         FxBox.h20,
         Responsive.isWeb(context)
             ? Row(
-                // children: [
-                //   const Expanded(
-                //     flex: 2,
-                //     child: Transaction(),
-                //   ),
-                //   FxBox.w20,
-                //   const Expanded(
-                //     child: Chatscreen(),
-                //   ),
-                // ],
+                children: [
+                  const Expanded(
+                    flex: 2,
+                    child: Transaction(),
+                  ),
+                  FxBox.w20,
+                  const Expanded(
+                    child: Chatscreen(),
+                  ),
+                ],
               )
             : Column(
                 children: [
