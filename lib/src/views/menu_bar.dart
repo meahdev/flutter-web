@@ -27,19 +27,26 @@ class _MenuBarState extends State<MenuBar> {
       GlobalKey<ScaffoldState>();
 
   Map<String, String> mainData = {
-    'Dashboard': IconlyBroken.home,
-    'Calender': IconlyBroken.calendar,
-    'Text Editor': IconlyBroken.edit,
+    Strings.dashboard: IconlyBroken.home,
+    Strings.calender: IconlyBroken.calendar,
+    Strings.textEditor: IconlyBroken.edit,
   };
 
   Map<String, String> componentData = {
-    'UI Elements': IconlyBroken.box,
-    'Icons': IconlyBroken.smileEmoji,
+    Strings.uiElements: IconlyBroken.box,
+    Strings.icons: IconlyBroken.smileEmoji,
   };
 
   List<List<String>> componentsExpandList = [
-    ['Toast', 'Buttons', 'Rating', 'Badge', 'Alert Dialog', 'Modal'],
-    ['Cupertino Icons']
+    [
+      Strings.toast,
+      Strings.buttons,
+      Strings.rating,
+      Strings.badge,
+      Strings.alertDialog,
+      Strings.modal,
+    ],
+    [Strings.cupertinoIcons]
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
@@ -407,12 +414,12 @@ class _MenuBarState extends State<MenuBar> {
             : [
                 const InkWell(
                   mouseCursor: SystemMouseCursors.click,
-                  child: Text('Admin'),
+                  child: Text(Strings.admin),
                 ),
                 const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
                 const InkWell(
                   mouseCursor: SystemMouseCursors.click,
-                  child: Text('UI Elements'),
+                  child: Text(Strings.uiElements),
                 ),
                 const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
                 Text(upperCase(tabsRouter.currentPath)),
