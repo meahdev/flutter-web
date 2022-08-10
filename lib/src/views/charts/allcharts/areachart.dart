@@ -19,14 +19,14 @@ class _AreaChartState extends State<AreaChart> {
 
   @override
   Widget build(BuildContext context) {
-    return LineChart( mainData(),);
+    return LineChart(
+      mainData(),
+    );
   }
 
   LineChartData mainData() {
     return LineChartData(
-      borderData: FlBorderData(
-        border: const Border(bottom: BorderSide.none)
-      ),
+      borderData: FlBorderData(border: const Border(bottom: BorderSide.none)),
       gridData: FlGridData(
         show: false,
         drawVerticalLine: false,
@@ -44,7 +44,6 @@ class _AreaChartState extends State<AreaChart> {
             showTitles: true,
             reservedSize: 30,
             interval: 1,
-
           ),
         ),
       ),

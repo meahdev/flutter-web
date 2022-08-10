@@ -52,7 +52,7 @@ class BarChartSample2State extends State<BarChartSample2> {
         elevation: 0,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
         color: Colors.transparent,
-          child: Padding(
+        child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -90,8 +90,8 @@ class BarChartSample2State extends State<BarChartSample2> {
                             if (touchedGroupIndex != -1) {
                               var sum = 0.0;
                               for (var rod
-                              in showingBarGroups[touchedGroupIndex]
-                                  .barRods) {
+                                  in showingBarGroups[touchedGroupIndex]
+                                      .barRods) {
                                 sum += rod.toY;
                               }
                               final avg = sum /
@@ -101,12 +101,12 @@ class BarChartSample2State extends State<BarChartSample2> {
 
                               showingBarGroups[touchedGroupIndex] =
                                   showingBarGroups[touchedGroupIndex].copyWith(
-                                    barRods: showingBarGroups[touchedGroupIndex]
-                                        .barRods
-                                        .map((rod) {
-                                      return rod.copyWith(toY: avg);
-                                    }).toList(),
-                                  );
+                                barRods: showingBarGroups[touchedGroupIndex]
+                                    .barRods
+                                    .map((rod) {
+                                  return rod.copyWith(toY: avg);
+                                }).toList(),
+                              );
                             }
                           });
                         }),
