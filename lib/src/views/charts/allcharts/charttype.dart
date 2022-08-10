@@ -3,3 +3,7 @@ export 'barchart.dart';
 export 'areachart.dart';
 export 'piechart.dart';
 export 'columnChart.dart';
+export 'advanced_smil_chart.dart';
+export 'lineChartWithArea.dart';
+export 'simple_line_chart.dart';
+export 'simplepie_chart.dart';

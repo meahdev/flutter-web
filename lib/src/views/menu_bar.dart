@@ -52,6 +52,7 @@ class _MenuBarState extends State<MenuBar> {
     Toast(),
     CupertinoIcon(),
     MorrisChart(),
+    ChartListChart(),
   ];
 
   @override
