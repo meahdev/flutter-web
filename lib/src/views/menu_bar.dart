@@ -52,10 +52,10 @@ class _MenuBarState extends State<MenuBar> {
       'Login 2',
       'Register 1',
       'Register 2',
-      'Recover password 1',
-      'Recover password 2',
-      'Lock screen 1',
-      'Lock screen 2',
+      'Recover Password 1',
+      'Recover Password 2',
+      'Lock Screen 1',
+      'Lock Screen 2',
     ],
   ];
 
@@ -425,6 +425,10 @@ class _MenuBarState extends State<MenuBar> {
                 context.router.push(const LoginTwo());
               } else if (items[index] == 'Register 1') {
                 context.router.push(const RegisterOne());
+              } else if (items[index] == 'Register 2') {
+                context.router.push(const RegisterTwo());
+              } else if (items[index] == 'Recover Password 1') {
+                context.router.push(const RecoverPasswordOne());
               } else {
                 tabsRouter.setActiveIndex(getRouteIndex(items[index]));
               }

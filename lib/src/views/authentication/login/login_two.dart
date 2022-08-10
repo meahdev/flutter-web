@@ -21,8 +21,6 @@ class _LoginTwoState extends State<LoginTwo> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  bool isChecked = false;
-
   final CheckboxBloc _checkboxBloc = CheckboxBloc();
 
   @override
@@ -42,7 +40,7 @@ class _LoginTwoState extends State<LoginTwo> {
           ),
           Expanded(
             child: Container(
-              width: 410,
+              width: 420,
               height: MediaQuery.of(context).size.height,
               color: ColorConst.white,
               child: Column(
@@ -79,7 +77,7 @@ class _LoginTwoState extends State<LoginTwo> {
               ),
               FxBox.w4,
               CustomText(
-                title: Strings.veltrix.toUpperCase(),
+                title: Strings.siddhatva.toUpperCase(),
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
                 textColor: ColorConst.black,
@@ -123,7 +121,8 @@ class _LoginTwoState extends State<LoginTwo> {
           FxBox.h20,
           _forgotPasswordButton(),
           FxBox.h52,
-          ConstantAuth.signUp(context, true),
+          ConstantAuth.signUp(
+              context, true, Strings.dontHaveAccount, Strings.signUpNow),
           FxBox.h16,
           ConstantAuth.footerText(),
         ],

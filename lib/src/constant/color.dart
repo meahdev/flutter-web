@@ -20,6 +20,8 @@ class ColorConst {
   static const Color endDrawerImageBorder = Color(0xFFdee2e6);
   static const Color drawerHover = Color(0xFFB4C9DE);
   static const Color searchIcon = Color(0xFF525f80);
+  static const Color backgroundColor = Color(0xFFccedeb);
+  static const Color borderColor = Color(0xFFb3e4e0);
   static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, .55);
 
   //dark
@@ -38,4 +40,5 @@ class ColorConst {
   static Color get infoDark => const Color(0xff03a9f4);
 
   static Color get darkGreen => const Color(0xff02a499);
+  static Color get darkGreen2 => const Color(0xff01625c);
 }

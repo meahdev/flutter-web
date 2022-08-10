@@ -23,24 +23,13 @@ class _RegisterOneState extends State<RegisterOne> {
     return Scaffold(
       body: Column(mainAxisSize: MainAxisSize.min, children: [
         Padding(
-          padding: const EdgeInsets.only(left: 50, right: 50),
+          padding: const EdgeInsets.only(left: 40, right: 40),
           child: Stack(
             children: [
               Column(
                 children: [
                   (Responsive.isWeb(context))
-                      ? Align(
-                          alignment: Alignment.topRight,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 15.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Icon(Icons.home),
-                            ),
-                          ),
-                        )
+                      ? ConstantAuth.homeIconView(context)
                       : const SizedBox(height: 30),
                   ConstantAuth.headerView(
                       Strings.freeRegister, Strings.registerHeaderText),

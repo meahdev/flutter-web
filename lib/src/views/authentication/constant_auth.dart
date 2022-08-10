@@ -8,12 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
 class ConstantAuth {
-  static Widget signUp(BuildContext context, bool isScreen) {
+  static Widget signUp(
+      BuildContext context, bool isScreen, String title, String subTitle) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const CustomText(
-          title: Strings.dontHaveAccount,
+        CustomText(
+          title: title,
           textColor: ColorConst.lightFontColor,
           fontSize: 14,
           fontWeight: FontWeight.w700,
@@ -21,13 +22,13 @@ class ConstantAuth {
         GestureDetector(
           onTap: () {
             if (isScreen) {
-              context.router.push(const RegisterOne());
+              context.router.push(const RegisterTwo());
             } else {
               context.router.push(const RegisterOne());
             }
           },
-          child: const CustomText(
-            title: Strings.signUpNow,
+          child: CustomText(
+            title: subTitle,
             fontSize: 14,
             textColor: ColorConst.primary,
             fontWeight: FontWeight.w700,
@@ -40,7 +41,7 @@ class ConstantAuth {
   static Widget footerText() {
     return const CustomText(
       title: Strings.loginFooterText,
-      fontSize: 14.0,
+      fontSize: 13.0,
       fontWeight: FontWeight.w700,
       textColor: ColorConst.lightFontColor,
     );
@@ -150,7 +151,7 @@ class ConstantAuth {
         GestureDetector(
           onTap: () {
             if (isScreen) {
-              context.router.push(const LoginOne());
+              context.router.push(const LoginTwo());
             } else {
               context.router.push(const LoginOne());
             }
@@ -163,6 +164,21 @@ class ConstantAuth {
           ),
         )
       ],
+    );
+  }
+
+  static Widget homeIconView(BuildContext context) {
+    return Align(
+      alignment: Alignment.topRight,
+      child: Padding(
+        padding: const EdgeInsets.only(top: 15.0, right: 15.0),
+        child: GestureDetector(
+          onTap: () {
+            context.router.pop();
+          },
+          child: const Icon(Icons.home),
+        ),
+      ),
     );
   }
 }
