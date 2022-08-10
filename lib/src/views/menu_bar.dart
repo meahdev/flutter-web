@@ -2,10 +2,6 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
-import 'package:admin_dashboard/src/provider/form_colorpicker/bloc/form_color_bloc.dart';
-import 'package:admin_dashboard/src/provider/form_counter/bloc/form_textfield_counter_bloc.dart';
-import 'package:admin_dashboard/src/provider/form_dropdown/bloc/form_dropdown_bloc.dart';
-import 'package:admin_dashboard/src/provider/form_validation_dropdown/bloc/form_validate_dropdown_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -29,12 +25,6 @@ class _MenuBarState extends State<MenuBar> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _scaffoldDrawerKey =
       GlobalKey<ScaffoldState>();
-  final FormColorBloc formColorBloc = FormColorBloc();
-
-  final FormTextfieldCounterBloc formTextfieldCounterBloc =
-      FormTextfieldCounterBloc();
-
-  final FormDropdownBloc formDropDownBloc = FormDropdownBloc();
 
   Map<String, String> mainData = {
     'Dashboard': IconlyBroken.home,
@@ -54,27 +44,21 @@ class _MenuBarState extends State<MenuBar> {
     ['Form Elements', 'Form Validation'],
   ];
 
-  List<PageRouteInfo<dynamic>> _routes() {
-    return [
-      const TestWidget(),
-      const Button(),
-      const Rating(),
-      const Badge(),
-      const Toast(),
-      const CupertinoIcon(),
-      ElementsForm(
-        formColorBloc: formColorBloc,
-        formTextfieldCounterBloc: formTextfieldCounterBloc,
-        formDropDownBloc: formDropDownBloc,
-      ),
-      ValidationForm()
-    ];
-  }
+  final List<PageRouteInfo<dynamic>> _routes = const [
+    TestWidget(),
+    Button(),
+    Rating(),
+    Badge(),
+    Toast(),
+    CupertinoIcon(),
+    ElementsForm(),
+    ValidationForm()
+  ];
 
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
-      routes: _routes(),
+      routes: _routes,
       homeIndex: 0,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
