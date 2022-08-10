@@ -14,6 +14,9 @@
 import 'package:auto_route/auto_route.dart' as _i9;
 import 'package:flutter/material.dart' as _i10;
 
+import '../provider/form_colorpicker/bloc/form_color_bloc.dart' as _i11;
+import '../provider/form_counter/bloc/form_textfield_counter_bloc.dart' as _i12;
+import '../provider/form_dropdown/bloc/form_dropdown_bloc.dart' as _i13;
 import '../views/badge/badge.dart' as _i6;
 import '../views/buttons/button.dart' as _i4;
 import '../views/forms/elements_form.dart' as _i8;
@@ -58,8 +61,14 @@ class AppRouter extends _i9.RootStackRouter {
           routeData: routeData, child: const _i7.CupertinoIcon());
     },
     ElementsForm.name: (routeData) {
+      final args = routeData.argsAs<ElementsFormArgs>();
       return _i9.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i8.ElementsForm());
+          routeData: routeData,
+          child: _i8.ElementsForm(
+              key: args.key,
+              formColorBloc: args.formColorBloc,
+              formTextfieldCounterBloc: args.formTextfieldCounterBloc,
+              formDropDownBloc: args.formDropDownBloc));
     }
   };
 
@@ -144,8 +153,40 @@ class CupertinoIcon extends _i9.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.ElementsForm]
-class ElementsForm extends _i9.PageRouteInfo<void> {
-  const ElementsForm() : super(ElementsForm.name, path: 'form-elements');
+class ElementsForm extends _i9.PageRouteInfo<ElementsFormArgs> {
+  ElementsForm(
+      {_i10.Key? key,
+      required _i11.FormColorBloc formColorBloc,
+      required _i12.FormTextfieldCounterBloc formTextfieldCounterBloc,
+      required _i13.FormDropdownBloc formDropDownBloc})
+      : super(ElementsForm.name,
+            path: 'form-elements',
+            args: ElementsFormArgs(
+                key: key,
+                formColorBloc: formColorBloc,
+                formTextfieldCounterBloc: formTextfieldCounterBloc,
+                formDropDownBloc: formDropDownBloc));
 
   static const String name = 'ElementsForm';
+}
+
+class ElementsFormArgs {
+  const ElementsFormArgs(
+      {this.key,
+      required this.formColorBloc,
+      required this.formTextfieldCounterBloc,
+      required this.formDropDownBloc});
+
+  final _i10.Key? key;
+
+  final _i11.FormColorBloc formColorBloc;
+
+  final _i12.FormTextfieldCounterBloc formTextfieldCounterBloc;
+
+  final _i13.FormDropdownBloc formDropDownBloc;
+
+  @override
+  String toString() {
+    return 'ElementsFormArgs{key: $key, formColorBloc: $formColorBloc, formTextfieldCounterBloc: $formTextfieldCounterBloc, formDropDownBloc: $formDropDownBloc}';
+  }
 }

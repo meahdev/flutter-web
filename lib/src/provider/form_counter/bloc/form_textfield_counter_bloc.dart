@@ -18,5 +18,3 @@ class FormTextfieldCounterBloc
   }
 }
 
-final FormTextfieldCounterBloc formTextfieldCounterBloc =
-    FormTextfieldCounterBloc();

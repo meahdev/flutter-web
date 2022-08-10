@@ -16,4 +16,4 @@ class FormColorBloc extends Bloc<FormColorEvent, FormColorState> {
   }
 }
 
-final FormColorBloc formColorBloc = FormColorBloc();
+
