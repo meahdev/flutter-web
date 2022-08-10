@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/custom_text_field.dart';
@@ -6,6 +7,7 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 
 class LoginTwo extends StatefulWidget {
@@ -21,60 +23,93 @@ class _LoginTwoState extends State<LoginTwo> {
 
   bool isChecked = false;
 
+  final CheckboxBloc _checkboxBloc = CheckboxBloc();
+
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Expanded(
-          child: Image.asset(
-            Images.loginBg,
-            fit: BoxFit.cover,
-          ),
-        ),
-        Expanded(
-          child: Container(
-            width: MediaQuery.of(context).size.width / 4,
-            height: MediaQuery.of(context).size.height,
-            color: ColorConst.white,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _mainView(),
-              ],
+    return Scaffold(
+      body: Stack(
+        children: [
+          Expanded(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Image.asset(
+                Images.loginBg,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-        ),
-      ],
+          Expanded(
+            child: Container(
+              width: 410,
+              height: MediaQuery.of(context).size.height,
+              color: ColorConst.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _mainView(),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _mainView() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      margin: const EdgeInsets.only(top: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 36.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomText(
-            title: Strings.welcomeBack,
-            fontSize: 18,
-            fontWeight: FontWeight.w800,
-            textColor: ColorConst.lightFontColor,
-          ),
-          FxBox.h6,
-          const CustomText(
-            title: Strings.loginHeaderText,
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-            textColor: ColorConst.lightFontColor,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                width: 30,
+                child: Image.asset(
+                  Images.logosm,
+                  fit: BoxFit.cover,
+                ),
+              ),
+              FxBox.w4,
+              CustomText(
+                title: Strings.veltrix.toUpperCase(),
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+                textColor: ColorConst.black,
+              ),
+            ],
           ),
           FxBox.h28,
-          _labelView(Strings.username),
+          const Center(
+            child: CustomText(
+              title: Strings.welcomeBack,
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+              textColor: ColorConst.lightFontColor,
+            ),
+          ),
+          FxBox.h6,
+          const Center(
+            child: CustomText(
+              title: Strings.loginHeaderText,
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              textColor: ColorConst.lightFontColor,
+            ),
+          ),
+          FxBox.h28,
+          ConstantAuth.labelView(Strings.username),
           FxBox.h8,
           _usernameTextBoxWidget(),
           FxBox.h16,
-          _labelView(Strings.password),
+          ConstantAuth.labelView(Strings.password),
           FxBox.h8,
           _passwordTextBoxWidget(),
           FxBox.h12,
@@ -87,20 +122,12 @@ class _LoginTwoState extends State<LoginTwo> {
           ),
           FxBox.h20,
           _forgotPasswordButton(),
-          FxBox.h48,
-          ConstantAuth.signUp(context),
+          FxBox.h52,
+          ConstantAuth.signUp(context, true),
           FxBox.h16,
+          ConstantAuth.footerText(),
         ],
       ),
-    );
-  }
-
-  Widget _labelView(String label) {
-    return CustomText(
-      title: label,
-      fontSize: 14,
-      fontWeight: FontWeight.w800,
-      textColor: ColorConst.lightFontColor,
     );
   }
 
@@ -125,44 +152,28 @@ class _LoginTwoState extends State<LoginTwo> {
     );
   }
 
-  Widget _signUp() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const CustomText(
-          title: Strings.dontHaveAccount,
-          textColor: ColorConst.lightFontColor,
-          fontSize: 14,
-          fontWeight: FontWeight.w700,
-        ),
-        GestureDetector(
-          onTap: () {
-            // onpressed
-          },
-          child: const CustomText(
-            title: Strings.signUpNow,
-            fontSize: 14,
-            textColor: ColorConst.primary,
-            fontWeight: FontWeight.w700,
-          ),
-        )
-      ],
-    );
-  }
-
   Widget _rememberMeCheckBox() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Checkbox(
-          value: isChecked,
-          onChanged: (value) {
-            setState(() {
-              isChecked = !isChecked;
-            });
-          },
-          activeColor: ColorConst.primary,
-          focusColor: ColorConst.primary,
+        BlocProvider(
+          create: (context) => _checkboxBloc,
+          child: BlocBuilder<CheckboxBloc, CheckboxState>(
+            builder: (context, state) {
+              return state.when(
+                success: (isChecked) {
+                  return Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      _rememberMeAction(value!);
+                    },
+                    activeColor: ColorConst.primary,
+                    focusColor: ColorConst.primary,
+                  );
+                },
+              );
+            },
+          ),
         ),
         const CustomText(
           title: Strings.rememberMeLabel,
@@ -171,6 +182,10 @@ class _LoginTwoState extends State<LoginTwo> {
         ),
       ],
     );
+  }
+
+  Future<void> _rememberMeAction(bool isChecked) async {
+    _checkboxBloc.add(CheckboxEvent.started(isChecked: isChecked));
   }
 
   Widget _loginButton() {

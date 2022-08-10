@@ -66,8 +66,6 @@ class _MenuBarState extends State<MenuBar> {
     Badge(),
     Toast(),
     CupertinoIcon(),
-    LoginOne(),
-    LoginTwo(),
   ];
 
   @override
@@ -421,7 +419,15 @@ class _MenuBarState extends State<MenuBar> {
               style: TextStyle(color: color, fontSize: 14),
             ),
             onTap: () {
-              tabsRouter.setActiveIndex(getRouteIndex(items[index]));
+              if (items[index] == 'Login 1') {
+                context.router.push(const LoginOne());
+              } else if (items[index] == 'Login 2') {
+                context.router.push(const LoginTwo());
+              } else if (items[index] == 'Register 1') {
+                context.router.push(const RegisterOne());
+              } else {
+                tabsRouter.setActiveIndex(getRouteIndex(items[index]));
+              }
               _scaffoldDrawerKey.currentState?.closeDrawer();
             },
           );

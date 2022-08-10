@@ -1,12 +1,13 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
+import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/custom_text_field.dart';
-import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
-import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 
 class LoginOne extends StatefulWidget {
@@ -20,135 +21,58 @@ class _LoginOneState extends State<LoginOne> {
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  bool isChecked = false;
-
-  double _getWidth() {
-    if (MediaQuery.of(context).size.width <= 550) {
-      return double.infinity;
-    } else if (MediaQuery.of(context).size.width <= 750) {
-      return (MediaQuery.of(context).size.width - 240);
-    } else if (Responsive.isWeb(context)) {
-      return ((MediaQuery.of(context).size.width) / 4);
-    } else {
-      return (MediaQuery.of(context).size.width / 2) - 46;
-    }
-  }
+  final CheckboxBloc _checkboxBloc = CheckboxBloc();
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Stack(
-          children: [
-            Column(
+    return Scaffold(
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 50, right: 50),
+            child: Stack(
               children: [
-                _headerView(),
-                _bottomView(),
+                Column(
+                  children: [
+                    (Responsive.isWeb(context))
+                        ? Align(
+                            alignment: Alignment.topRight,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(top: 15.0, right: 15.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Icon(Icons.home),
+                              ),
+                            ),
+                          )
+                        : const SizedBox(height: 30),
+                    ConstantAuth.headerView(
+                        Strings.welcomeBack, Strings.loginHeaderText),
+                    _bottomView(),
+                  ],
+                ),
+                ConstantAuth.greenCircle(),
+                ConstantAuth.whiteCircle(),
+                ConstantAuth.logoView(),
               ],
             ),
-            _greenCircle(),
-            _whiteCircle(),
-            _logoView(),
-          ],
-        ),
-        FxBox.h48,
-        ConstantAuth.signUp(context),
-        FxBox.h16,
-        const CustomText(
-          title: Strings.loginFooterText,
-          fontSize: 14.0,
-          fontWeight: FontWeight.w700,
-          textColor: ColorConst.lightFontColor,
-        ),
-      ],
-    );
-  }
-
-  Widget _greenCircle() {
-    return Positioned.fill(
-      top: 88,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          CircleAvatar(
-            radius: 35,
-            backgroundColor: ColorConst.darkGreen,
           ),
+          FxBox.h48,
+          ConstantAuth.signUp(context, false),
+          FxBox.h16,
+          ConstantAuth.footerText(),
         ],
-      ),
-    );
-  }
-
-  Widget _whiteCircle() {
-    return Positioned.fill(
-      top: 86,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          CircleAvatar(
-            radius: 35,
-            backgroundColor: ColorConst.white,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _logoView() {
-    return Positioned.fill(
-      top: 110,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Image.asset(
-            Images.logosm,
-            height: 22,
-            width: 30.8,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _headerView() {
-    return Container(
-      width: _getWidth(),
-      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-      decoration: const BoxDecoration(
-        color: ColorConst.primary,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(4.0),
-          topRight: Radius.circular(4.0),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(40.0, 20.0, 40.0, 40.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const CustomText(
-              title: Strings.welcomeBack,
-              fontSize: 18,
-              fontWeight: FontWeight.w700,
-              textColor: ColorConst.white,
-            ),
-            FxBox.h6,
-            CustomText(
-              title: Strings.loginHeaderText,
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              textColor: ColorConst.white.withOpacity(0.5),
-            )
-          ],
-        ),
       ),
     );
   }
 
   Widget _bottomView() {
     return Container(
-      width: _getWidth(),
+      width: 400,
       decoration: const BoxDecoration(
         color: ColorConst.white,
         borderRadius: BorderRadius.only(
@@ -160,7 +84,7 @@ class _LoginOneState extends State<LoginOne> {
             color: ColorConst.appbarLightBG,
             blurRadius: 0.2, // soften the shadow
             spreadRadius: 0.2, //extend the shadow
-            // offset: Offset(
+            // offset: Offset(9
             //   0.2,
             //   0.2,
             // ),
@@ -175,11 +99,11 @@ class _LoginOneState extends State<LoginOne> {
           mainAxisSize: MainAxisSize.min,
           children: [
             FxBox.h28,
-            _labelView(Strings.username),
+            ConstantAuth.labelView(Strings.username),
             FxBox.h8,
             _usernameTextBoxWidget(),
             FxBox.h16,
-            _labelView(Strings.password),
+            ConstantAuth.labelView(Strings.password),
             FxBox.h8,
             _passwordTextBoxWidget(),
             FxBox.h12,
@@ -195,15 +119,6 @@ class _LoginOneState extends State<LoginOne> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget _labelView(String label) {
-    return CustomText(
-      title: label,
-      fontSize: 14,
-      fontWeight: FontWeight.w800,
-      textColor: ColorConst.lightFontColor,
     );
   }
 
@@ -232,15 +147,24 @@ class _LoginOneState extends State<LoginOne> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Checkbox(
-          value: isChecked,
-          onChanged: (value) {
-            setState(() {
-              isChecked = !isChecked;
-            });
-          },
-          activeColor: ColorConst.primary,
-          focusColor: ColorConst.primary,
+        BlocProvider(
+          create: (context) => _checkboxBloc,
+          child: BlocBuilder<CheckboxBloc, CheckboxState>(
+            builder: (context, state) {
+              return state.when(
+                success: (isChecked) {
+                  return Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      _rememberMeAction(value!);
+                    },
+                    activeColor: ColorConst.primary,
+                    focusColor: ColorConst.primary,
+                  );
+                },
+              );
+            },
+          ),
         ),
         const CustomText(
           title: Strings.rememberMeLabel,
@@ -249,6 +173,10 @@ class _LoginOneState extends State<LoginOne> {
         ),
       ],
     );
+  }
+
+  Future<void> _rememberMeAction(bool isChecked) async {
+    _checkboxBloc.add(CheckboxEvent.started(isChecked: isChecked));
   }
 
   Widget _loginButton() {

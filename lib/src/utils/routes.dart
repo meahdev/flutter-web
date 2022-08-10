@@ -9,10 +9,6 @@ int getRouteIndex(String route) {
     return 4;
   } else if (route == 'Cupertino Icons') {
     return 5;
-  } else if (route == 'Login 1') {
-    return 6;
-  } else if (route == 'Login 2') {
-    return 7;
   } else {
     return 0;
   }
