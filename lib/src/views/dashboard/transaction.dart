@@ -34,9 +34,6 @@ class _TransactionState extends State<Transaction> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-      ),
       child: Container(
         padding: const EdgeInsets.all(20),
         child: Column(

@@ -11,11 +11,8 @@ class _SalesReportState extends State<SalesReport> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-      ),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(minHeight: 400),
+        constraints: const BoxConstraints(minHeight: 465),
         child: Container(),
       ),
     );

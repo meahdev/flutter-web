@@ -9,19 +9,23 @@ class ThemeClass {
       applyElevationOverlayColor: false,
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       colorSchemeSeed: ColorConst.primary,
-      // colorScheme: ColorScheme.fromSwatch(primarySwatch: ColorConst.primary),
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         elevation: 0.0,
-        // backgroundColor:
-        //     isDarkTheme ? ColorConst.appbarDarkBG : ColorConst.appbarLightBG,
+        backgroundColor: isDarkTheme ? ColorConst.scaffoldDark : null,
       ),
-      // dividerColor: isDarkTheme ? ColorConst.white : ColorConst.black,
-      // drawerTheme: DrawerThemeData(
-      //   scrimColor: isDarkTheme
-      //       ? ColorConst.endDrawerDarkScrim
-      //       : ColorConst.endDrawerLightScrim,
-      //   elevation: 0.0,
-      // ),
+      scaffoldBackgroundColor: isDarkTheme ? ColorConst.scaffoldDark : null,
+      cardTheme: CardTheme.of(context).copyWith(
+        margin: EdgeInsets.zero,
+        color: isDarkTheme ? ColorConst.cardDark : Colors.white,
+        surfaceTintColor: isDarkTheme ? ColorConst.cardDark : Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        elevation: 10.0,
+        shadowColor: isDarkTheme
+            ? Colors.transparent
+            : Colors.grey.shade50.withOpacity(0.25),
+      ),
     );
   }
 }

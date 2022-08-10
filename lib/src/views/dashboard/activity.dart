@@ -45,15 +45,12 @@ class _ActivityState extends State<Activity> {
       state: StepState.complete,
     ),
   ];
-  int _currentStep = 0;
+
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-      ),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(minHeight: 450),
+        constraints: const BoxConstraints(minHeight: 465),
         child: Container(
           padding: const EdgeInsets.all(12),
           child: Column(
@@ -81,28 +78,7 @@ class _ActivityState extends State<Activity> {
                   );
                 },
                 steps: steps,
-                currentStep: _currentStep,
-                onStepTapped: (step) {
-                  setState(() {
-                    _currentStep = step;
-                  });
-                },
-                onStepContinue: () {
-                  if (_currentStep < steps.length - 1) {
-                    _currentStep = _currentStep + 1;
-                  } else {
-                    _currentStep = 0;
-                  }
-                  setState(() {});
-                },
-                onStepCancel: () {
-                  if (_currentStep > 0) {
-                    _currentStep = _currentStep - 1;
-                  } else {
-                    _currentStep = 0;
-                  }
-                  setState(() {});
-                },
+                currentStep: 0,
               ),
             ],
           ),

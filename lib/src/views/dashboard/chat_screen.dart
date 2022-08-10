@@ -47,11 +47,8 @@ class _ChatscreenState extends State<Chatscreen> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-      ),
       child: ConstrainedBox(
-        constraints: const BoxConstraints(minHeight: 400),
+        constraints: const BoxConstraints(minHeight: 380),
         child: Container(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -65,7 +62,7 @@ class _ChatscreenState extends State<Chatscreen> {
               ),
               FxBox.h10,
               ConstrainedBox(
-                constraints: const BoxConstraints(maxHeight: 370),
+                constraints: const BoxConstraints(maxHeight: 350),
                 child: ListView.builder(
                   shrinkWrap: true,
                   controller: ScrollController(),

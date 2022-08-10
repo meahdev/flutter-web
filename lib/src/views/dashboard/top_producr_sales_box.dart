@@ -14,9 +14,6 @@ class _TopProductSaleState extends State<TopProductSale> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-      ),
       child: ConstrainedBox(
         constraints: BoxConstraints(
           minHeight: 250,
@@ -24,7 +21,10 @@ class _TopProductSaleState extends State<TopProductSale> {
         ),
         child: Container(
           padding: const EdgeInsets.all(20),
-          color: ColorConst.primary,
+          decoration: BoxDecoration(
+            color: ColorConst.primary,
+            borderRadius: BorderRadius.circular(4.0),
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [

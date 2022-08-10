@@ -23,29 +23,29 @@ class _DashboardState extends State<Dashboard> {
     return Column(
       children: [
         const Listitem(),
-        FxBox.h16,
+        FxBox.h20,
         Responsive.isWeb(context)
             ? Row(
                 children: [
                   const Expanded(
                     child: SalesReport(),
                   ),
+                  FxBox.w20,
                   const Expanded(
                     child: Activity(),
                   ),
+                  FxBox.w20,
                   Expanded(
                     child: Column(
                       children: [
                         Row(
-                          children: const [
-                            Expanded(
-                              child: StatusBox(),
-                            ),
-                            Expanded(
-                              child: TopProductSale(),
-                            ),
+                          children: [
+                            const Expanded(child: StatusBox()),
+                            FxBox.w20,
+                            const Expanded(child: TopProductSale()),
                           ],
                         ),
+                        FxBox.h20,
                         const Clienresponse(),
                       ],
                     ),
@@ -55,35 +55,38 @@ class _DashboardState extends State<Dashboard> {
             : Column(
                 children: [
                   const SalesReport(),
+                  FxBox.h20,
                   const Activity(),
-                  FxBox.h16,
+                  FxBox.h20,
                   Responsive.isTablet(context)
                       ? Row(
-                          children: const [
-                            Expanded(child: StatusBox()),
-                            Expanded(child: TopProductSale()),
+                          children: [
+                            const Expanded(child: StatusBox()),
+                            FxBox.w20,
+                            const Expanded(child: TopProductSale()),
                           ],
                         )
                       : Column(
                           children: [
                             const StatusBox(),
-                            FxBox.h16,
+                            FxBox.h20,
                             const TopProductSale(),
                           ],
                         ),
-                  FxBox.h16,
+                  FxBox.h20,
                   const Clienresponse(),
                 ],
               ),
-        FxBox.h16,
+        FxBox.h20,
         Responsive.isWeb(context)
             ? Row(
-                children: const [
-                  Expanded(
+                children: [
+                  const Expanded(
                     flex: 2,
                     child: Transaction(),
                   ),
-                  Expanded(
+                  FxBox.w20,
+                  const Expanded(
                     child: Chatscreen(),
                   ),
                 ],
@@ -91,7 +94,7 @@ class _DashboardState extends State<Dashboard> {
             : Column(
                 children: [
                   const Transaction(),
-                  FxBox.h16,
+                  FxBox.h20,
                   const Chatscreen(),
                 ],
               ),
