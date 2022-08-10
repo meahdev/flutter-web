@@ -5,9 +5,9 @@ class ArcClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     var path = Path();
 
+    path.lineTo(size.width - (size.width * 0.80), size.height / 2);
     path.lineTo(0.0, size.height);
     path.lineTo(size.width, size.height);
-    path.lineTo(size.width - 20, size.height / 2);
     path.lineTo(size.width, 0.0);
     path.close();
 

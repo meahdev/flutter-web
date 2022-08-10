@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
+import 'package:admin_dashboard/src/widget/ribbon_shape.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -19,7 +20,9 @@ class _ListitemState extends State<Listitem> {
       'value': '1,243',
       'boxIcon': Icons.note_add,
       'up_down_Icon': Icons.arrow_upward,
-      'addTitle': 'Since last month'
+      'addTitle': 'Since last month',
+      'ribbonColor': ColorConst.success,
+      'ribbonValue': '+12%',
     },
     {
       'id': 1,
@@ -27,7 +30,9 @@ class _ListitemState extends State<Listitem> {
       'value': '52,123',
       'boxIcon': Icons.note_alt_sharp,
       'up_down_Icon': Icons.arrow_downward,
-      'addTitle': 'Since last month'
+      'addTitle': 'Since last month',
+      'ribbonColor': ColorConst.error,
+      'ribbonValue': '-28%',
     },
     {
       'id': 2,
@@ -35,7 +40,9 @@ class _ListitemState extends State<Listitem> {
       'value': '15.6',
       'boxIcon': Icons.pending_actions_outlined,
       'up_down_Icon': Icons.arrow_upward,
-      'addTitle': 'Since last month'
+      'addTitle': 'Since last month',
+      'ribbonColor': ColorConst.infoDark,
+      'ribbonValue': '00%',
     },
     {
       'id': 3,
@@ -43,7 +50,9 @@ class _ListitemState extends State<Listitem> {
       'value': '2456',
       'boxIcon': Icons.shopping_bag_rounded,
       'up_down_Icon': Icons.arrow_upward,
-      'addTitle': 'Since last month'
+      'addTitle': 'Since last month',
+      'ribbonColor': ColorConst.warningDark,
+      'ribbonValue': '+84%',
     },
   ];
   @override
@@ -85,37 +94,61 @@ class _ListitemState extends State<Listitem> {
             color: _listItem[index]['producTitle'] == 'REVENUE'
                 ? ColorConst.error
                 : ColorConst.success,
+            ribbonColor: _listItem[index]['ribbonColor'],
+            ribbonValue: _listItem[index]['ribbonValue'],
           );
         },
       ),
     );
   }
 
-  Widget _listContainer(
-      {required IconData boxIcon,
-      required String productTitle,
-      required String value,
-      required IconData icon,
-      required String title,
-      required Color color}) {
+  Widget _listContainer({
+    required IconData boxIcon,
+    required String productTitle,
+    required String value,
+    required IconData icon,
+    required String title,
+    required Color color,
+    required Color ribbonColor,
+    required String ribbonValue,
+  }) {
     return Container(
       decoration: BoxDecoration(
         color: ColorConst.primary,
         borderRadius: BorderRadius.circular(5),
       ),
+      padding: const EdgeInsets.only(top: 20.0, left: 20.0, bottom: 20.0),
       child: Column(
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _iconBox(boxIcon: boxIcon),
+              FxBox.w20,
               _listIconItem(
                 icon: icon,
                 productTitle: productTitle,
                 value: value,
                 color: color,
               ),
+              const Spacer(),
+              ClipPath(
+                clipper: ArcClipper(),
+                child: Container(
+                  color: ribbonColor,
+                  padding: const EdgeInsets.fromLTRB(20.0, 4.0, 8.0, 4.0),
+                  child: Text(
+                    ribbonValue,
+                    style: const TextStyle(
+                      color: ColorConst.white,
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -140,7 +173,6 @@ class _ListitemState extends State<Listitem> {
     return Container(
       height: 58,
       width: 58,
-      margin: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5),
         color: ColorConst.white.withOpacity(0.2),
@@ -191,13 +223,10 @@ class _ListitemState extends State<Listitem> {
   Widget _textBox({
     required String title,
   }) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: ConstText.lightText(
-        text: title,
-        color: ColorConst.white.withOpacity(0.5),
-        fontWeight: FontWeight.w500,
-      ),
+    return ConstText.lightText(
+      text: title,
+      color: ColorConst.white.withOpacity(0.5),
+      fontWeight: FontWeight.w500,
     );
   }
 }
