@@ -1,0 +1,209 @@
+import 'package:admin_dashboard/src/constant/color.dart';
+
+import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_chat_bubble/bubble_type.dart';
+import 'package:flutter_chat_bubble/chat_bubble.dart';
+import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_1.dart';
+import 'package:flutterx/flutterx.dart';
+
+class Chatscreen extends StatefulWidget {
+  const Chatscreen({Key? key}) : super(key: key);
+
+  @override
+  State<Chatscreen> createState() => _ChatscreenState();
+}
+
+class _ChatscreenState extends State<Chatscreen> {
+  final TextEditingController _msgController = TextEditingController();
+  final List<Map<String, dynamic>> _chatList = [
+    {
+      'userName': 'John Deo',
+      'userMsg': 'Hello',
+      'isCurrentUser': false,
+    },
+    {
+      'userName': 'Smith',
+      'userMsg': 'Hi, How are you? What about our next meeting?',
+      'isCurrentUser': true,
+    },
+    {
+      'userName': 'John Deo',
+      'userMsg': 'Yeah everything is fine',
+      'isCurrentUser': false,
+    },
+    {
+      'userName': 'Smith',
+      'userMsg': 'Wow that\'s great',
+      'isCurrentUser': true,
+    },
+    {
+      'userName': 'John Deo',
+      'userMsg': 'yah!',
+      'isCurrentUser': false,
+    },
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(minHeight: 380),
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ConstText.lightText(
+                text: Strings.chat,
+                fontWeight: FontWeight.bold,
+                //color: ColorConst.grey800,
+              ),
+              FxBox.h10,
+              ConstrainedBox(
+                constraints: const BoxConstraints(maxHeight: 350),
+                child: ListView.builder(
+                  shrinkWrap: true,
+                  controller: ScrollController(),
+                  itemCount: _chatList.length,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      crossAxisAlignment: !_chatList[index]['isCurrentUser']
+                          ? CrossAxisAlignment.start
+                          : CrossAxisAlignment.end,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        _chatBox(
+                          isMe: _chatList[index]['isCurrentUser'],
+                          userName: _chatList[index]['userName'],
+                          userMsg: _chatList[index]['userMsg'],
+                          boxColor: _chatList[index]['isCurrentUser']
+                              ? ColorConst.lightGrey
+                              : ColorConst.primary.withOpacity(0.15),
+                          usermsgColor: !_chatList[index]['isCurrentUser']
+                              ? ColorConst.primary
+                              : ColorConst.black,
+                        )
+                      ],
+                    );
+                  },
+                ),
+              ),
+              FxBox.h10,
+              _chatBubble(),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // Widget _userIcon() {
+  //   return Column(
+  //     children: [
+  //       CircleAvatar(
+  //         maxRadius: MediaQuery.of(context).size.height * 0.02,
+  //         backgroundImage: const NetworkImage(Images.profileImage),
+  //       ),
+  //       FxBox.h10,
+  //       Text(
+  //         '10.00',
+  //         style: TextStyle(
+  //           fontSize: MediaQuery.of(context).size.height * 0.012,
+  //           color: ColorConst.grey800,
+  //           fontWeight: FontWeight.w700,
+  //         ),
+  //       )
+  //     ],
+  //   );
+  // }
+
+  Widget _chatBox({
+    required String userName,
+    String? userMsg,
+    required Color usermsgColor,
+    required Color boxColor,
+    bool isMe = false,
+  }) {
+    return ChatBubble(
+      alignment: !isMe ? Alignment.bottomLeft : Alignment.bottomRight,
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.all(20),
+      shadowColor: Colors.transparent,
+      clipper: isMe
+          ? ChatBubbleClipper1(type: BubbleType.sendBubble)
+          : ChatBubbleClipper1(type: BubbleType.receiverBubble),
+      backGroundColor: boxColor,
+      child: Container(
+        padding: !isMe
+            ? const EdgeInsets.only(left: 12)
+            : const EdgeInsets.only(right: 12),
+        constraints: const BoxConstraints(maxWidth: 300),
+        child: Column(
+          crossAxisAlignment:
+              !isMe ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ConstText.lightText(
+              text: userName,
+              textAlign: isMe ? TextAlign.right : TextAlign.left,
+              color: ColorConst.primary,
+              fontWeight: FontWeight.w700,
+            ),
+            ConstText.lightText(
+              text: userMsg ?? '',
+              textAlign: isMe ? TextAlign.right : TextAlign.left,
+              color: usermsgColor,
+              fontWeight: FontWeight.w500,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _chatBubble() {
+    return ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 10),
+      child: Row(
+        children: [
+          Expanded(
+            child: SizedBox(
+              height: 35,
+              child: TextField(
+                controller: _msgController,
+                decoration: InputDecoration(
+                  hintText: Strings.enterYourText,
+                  hintStyle: const TextStyle(
+                    // color: ColorConst.black.withOpacity(0.6),
+                    fontSize: 14,
+                  ),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4),
+                      borderSide:
+                          const BorderSide(color: ColorConst.lightGrey)),
+                ),
+              ),
+            ),
+          ),
+          FxBox.w28,
+          FxButton(
+            onPressed: () {},
+            color: ColorConst.sendButtonColor,
+            borderRadius: 4,
+            height: 40,
+            textColor: ColorConst.white,
+            text: Strings.send,
+            minWidth: 80,
+          ),
+        ],
+      ),
+    );
+  }
+}

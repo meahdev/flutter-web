@@ -9,8 +9,22 @@ class ThemeClass {
       applyElevationOverlayColor: false,
       brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       colorSchemeSeed: ColorConst.primary,
-      appBarTheme: const AppBarTheme(
-        elevation: 5.0,
+      appBarTheme: AppBarTheme(
+        elevation: 0.0,
+        backgroundColor: isDarkTheme ? ColorConst.scaffoldDark : null,
+      ),
+      scaffoldBackgroundColor: isDarkTheme ? ColorConst.scaffoldDark : null,
+      cardTheme: CardTheme.of(context).copyWith(
+        margin: EdgeInsets.zero,
+        color: isDarkTheme ? ColorConst.cardDark : Colors.white,
+        surfaceTintColor: isDarkTheme ? ColorConst.cardDark : Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4.0),
+        ),
+        elevation: 10.0,
+        shadowColor: isDarkTheme
+            ? Colors.transparent
+            : Colors.grey.shade50.withOpacity(0.25),
       ),
     );
   }

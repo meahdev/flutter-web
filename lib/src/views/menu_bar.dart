@@ -50,7 +50,7 @@ class _MenuBarState extends State<MenuBar> {
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
-    TestWidget(),
+    Dashboard(),
     Button(),
     Rating(),
     Badge(),

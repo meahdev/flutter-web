@@ -17,11 +17,11 @@ import 'package:flutter/material.dart' as _i11;
 import '../views/alert/alert_dialog.dart' as _i7;
 import '../views/badge/badge.dart' as _i6;
 import '../views/buttons/button.dart' as _i4;
+import '../views/dashboard/dashboard.dart' as _i2;
 import '../views/icons/cupertino_icon.dart' as _i9;
 import '../views/menu_bar.dart' as _i1;
 import '../views/modal/modal.dart' as _i8;
 import '../views/rating/rating.dart' as _i5;
-import '../views/test.dart' as _i2;
 import '../views/toast/toast.dart' as _i3;
 
 class AppRouter extends _i10.RootStackRouter {
@@ -34,9 +34,9 @@ class AppRouter extends _i10.RootStackRouter {
       return _i10.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.MenuBar());
     },
-    TestWidget.name: (routeData) {
+    Dashboard.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.TestWidget());
+          routeData: routeData, child: const _i2.Dashboard());
     },
     Toast.name: (routeData) {
       return _i10.MaterialPageX<dynamic>(
@@ -76,10 +76,10 @@ class AppRouter extends _i10.RootStackRouter {
               parent: MenuBar.name,
               redirectTo: 'dashboard',
               fullMatch: true),
-          _i10.RouteConfig(TestWidget.name,
+          _i10.RouteConfig(Dashboard.name,
               path: 'dashboard', parent: MenuBar.name),
           _i10.RouteConfig(Toast.name, path: 'toast', parent: MenuBar.name),
-          _i10.RouteConfig(Button.name, path: 'buttons', parent: MenuBar.name),
+          _i10.RouteConfig(Button.name, path: 'button', parent: MenuBar.name),
           _i10.RouteConfig(Rating.name, path: 'rating', parent: MenuBar.name),
           _i10.RouteConfig(Badge.name, path: 'badge', parent: MenuBar.name),
           _i10.RouteConfig(AlertDialogBox.name,
@@ -101,11 +101,11 @@ class MenuBar extends _i10.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.TestWidget]
-class TestWidget extends _i10.PageRouteInfo<void> {
-  const TestWidget() : super(TestWidget.name, path: 'dashboard');
+/// [_i2.Dashboard]
+class Dashboard extends _i10.PageRouteInfo<void> {
+  const Dashboard() : super(Dashboard.name, path: 'dashboard');
 
-  static const String name = 'TestWidget';
+  static const String name = 'Dashboard';
 }
 
 /// generated route for
@@ -119,7 +119,7 @@ class Toast extends _i10.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.Button]
 class Button extends _i10.PageRouteInfo<void> {
-  const Button() : super(Button.name, path: 'buttons');
+  const Button() : super(Button.name, path: 'button');
 
   static const String name = 'Button';
 }

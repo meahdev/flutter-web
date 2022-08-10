@@ -5,8 +5,8 @@ import 'package:admin_dashboard/src/views/icons/cupertino_icon.dart';
 import 'package:admin_dashboard/src/views/menu_bar.dart';
 import 'package:admin_dashboard/src/views/modal/modal.dart';
 import 'package:admin_dashboard/src/views/rating/rating.dart';
-import 'package:admin_dashboard/src/views/test.dart';
 import 'package:admin_dashboard/src/views/toast/toast.dart';
+import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
 import 'package:auto_route/auto_route.dart';
 
 @MaterialAutoRouter(
@@ -17,9 +17,9 @@ import 'package:auto_route/auto_route.dart';
       page: MenuBar,
       children: [
         RedirectRoute(path: '', redirectTo: 'dashboard'),
-        AutoRoute(path: 'dashboard', page: TestWidget),
+        AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'toast', page: Toast),
-        AutoRoute(path: 'buttons', page: Button),
+        AutoRoute(path: 'button', page: Button),
         AutoRoute(path: 'rating', page: Rating),
         AutoRoute(path: 'badge', page: Badge),
         AutoRoute(path: 'alert-dialog', page: AlertDialogBox),
@@ -27,7 +27,6 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'cupertino-icon', page: CupertinoIcon),
       ],
     ),
-
   ],
 )
 class $AppRouter {}
