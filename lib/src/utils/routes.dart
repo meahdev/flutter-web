@@ -13,6 +13,8 @@ int getRouteIndex(String route) {
     return 6;
   } else if (route == 'Form Validation') {
     return 7;
+  } else if (route == 'Form File Upload') {
+    return 8;
   } else {
     return 0;
   }

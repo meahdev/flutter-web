@@ -205,6 +205,8 @@ class _ValidationFormState extends State<ValidationForm> {
     return Column(
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             __validationWithIconCommon(
               _commonText('First Name'),
@@ -798,7 +800,7 @@ class _ValidationFormState extends State<ValidationForm> {
       validator: (value) {
         if (value!.isEmpty) {
           return "This value is required.";
-        } else if (value.length > 6) {
+        } else if (value.length < 6) {
           return "This value is too short. It should have 6 characters or more.";
         }
         return null;
@@ -820,7 +822,7 @@ class _ValidationFormState extends State<ValidationForm> {
       validator: (value) {
         if (value!.isEmpty) {
           return "This value is required.";
-        } else if (value.length < 6) {
+        } else if (value.length > 6) {
           return "This value is too long. It should have 6 characters or fewer.";
         }
         return null;

@@ -41,7 +41,7 @@ class _MenuBarState extends State<MenuBar> {
   List<List<String>> componentsExpandList = [
     ['Toast', 'Buttons', 'Rating', 'Badge'],
     ['Cupertino Icons'],
-    ['Form Elements', 'Form Validation'],
+    ['Form Elements', 'Form Validation', 'Form File Upload'],
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
@@ -52,7 +52,8 @@ class _MenuBarState extends State<MenuBar> {
     Toast(),
     CupertinoIcon(),
     ElementsForm(),
-    ValidationForm()
+    ValidationForm(),
+    FileUploadForm()
   ];
 
   @override
