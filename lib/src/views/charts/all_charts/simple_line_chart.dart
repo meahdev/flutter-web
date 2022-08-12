@@ -14,15 +14,54 @@ class SimpleLineChart extends StatelessWidget {
       LineChartData(
         borderData: FlBorderData(show: false),
         lineBarsData: [
-          LineChartBarData(spots: const [
-            FlSpot(0, 3),
-            FlSpot(2.6, 2),
+          LineChartBarData(
+            spots: const [
+            FlSpot(0, 5),
+            FlSpot(4, 4),
             FlSpot(4.9, 5),
-            FlSpot(6.8, 3.1),
-            FlSpot(8, 4),
-            FlSpot(9.5, 3),
-            FlSpot(11, 4),
-          ], isCurved: false, barWidth: 2, color: const Color(0xff6d6fb9)),
+            FlSpot(3, 3.1),
+            FlSpot(6, 4),
+            ],
+            isCurved: true,
+            color: const Color(0xff6d6fb9),
+            barWidth: 2,
+            isStrokeCapRound: false,
+            dotData: FlDotData(
+              show: true,
+            ),
+          ),
+          LineChartBarData(
+            spots: const [
+              FlSpot(0, 2),
+              FlSpot(4, 4),
+              FlSpot(2.5, 5),
+              FlSpot(4, 3.1),
+              FlSpot(7, 4),
+            ],
+            isCurved: true,
+            color: const Color(0xff37a499),
+            barWidth: 2,
+            isStrokeCapRound: false,
+            dotData: FlDotData(
+              show: true,
+            ),
+          ),
+          LineChartBarData(
+            spots: const [
+              FlSpot(0, 0),
+              FlSpot(4, 4),
+              FlSpot(3.5, 5),
+              FlSpot(5, 3.1),
+              FlSpot(8, 4),
+            ],
+            isCurved: true,
+            color: const Color(0xff6fab427),
+            barWidth: 2,
+            isStrokeCapRound: false,
+            dotData: FlDotData(
+              show: true,
+            ),
+          ),
         ],
       ),
     );

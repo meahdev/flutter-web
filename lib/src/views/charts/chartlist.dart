@@ -19,42 +19,64 @@ class _ChartListChartState extends State<ChartListChart> {
       mainAxisSize: MainAxisSize.min,
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-              _card(ChartType.lineChart, context, 'Line Chart'),
+              _card(ChartType.animatingPieChart, context, 'Animating a Donut with Svg.animate'),
               FxBox.h20,
-              _card(ChartType.barChart, context, 'Bar Chart'),
+              _card(ChartType.simplePieChart, context, 'Simple Pie Chart'),
               FxBox.h20,
-              _card(ChartType.areaChart, context, 'Area Chart'),
+              _card(ChartType.advancedSmileChart, context, 'Advanced Smil Animations'),
               FxBox.h20,
-              _card(ChartType.piaChart, context, 'Donut Chart'),
+              _card(ChartType.simpleLineChart, context, 'Simple line chart'),
               FxBox.h20,
-              _card(ChartType.colomnChart, context, 'Column Chart'),
+              _card(ChartType.lineScatterChart, context, 'Line Scatter Diagram'),
+              FxBox.h20,
+              _card(ChartType.lineChartWithArea, context, 'Line chart with area'),
+              FxBox.h20,
+              _card(ChartType.overlapBars, context, 'Overlapping bars on mobile'),
             ]
           : [
               Row(
                 children: [
-                  Expanded(
-                      child: _card(ChartType.advancedSmileChart, context,
-                          'Advanced Smil Animations')),
+                  Expanded(child: _card(ChartType.animatingPieChart, context, 'Animating a Donut with Svg.animate')),
                   FxBox.w20,
-                  Expanded(
-                      child: _card(ChartType.simpleLineChart, context,
-                          'Simple line chart')),
+                  Expanded(child: _card(ChartType.simplePieChart, context, 'Simple Pie Chart'),
+                  ),
                 ],
               ),
               FxBox.h20,
               Row(
                 children: [
-                  // Expanded(child: _card(ChartType.piaChart, context, 'Donut Chart')),
-                   Expanded(child: _card(ChartType.animatingPieChart, context, 'Animating a Donut with Svg.animate')),
+                  Expanded(
+                    child: _card(ChartType.advancedSmileChart, context,
+                        'Advanced Smil Animations'),
+                  ),
                   FxBox.w20,
-                  Expanded(child: _card(ChartType.lineChartWithArea, context, 'Line chart with area')),
+                  Expanded(
+                    child: _card(ChartType.simpleLineChart, context,
+                        'Simple line chart'),
+                  ),
                 ],
               ),
               FxBox.h20,
               Row(
                 children: [
-                  Expanded(child: _card(ChartType.colomnChart, context, 'Column Chart'),),
-                  Expanded(child: _card(ChartType.simplePieChart, context, 'Simple Pie Chart'),),
+                  Expanded(
+                    child: _card(ChartType.lineScatterChart, context,
+                        'Line Scatter Diagram'),
+                  ),
+                  FxBox.w20,
+                  Expanded(
+                    child: _card(ChartType.lineChartWithArea, context,
+                        'Line chart with area'),
+                  ),
+                ],
+              ),
+              FxBox.h20,
+              Row(
+                children: [
+                  Expanded(
+                    child: _card(ChartType.overlapBars, context,
+                        'Overlapping bars on mobile'),
+                  ),
                 ],
               ),
             ],
@@ -72,7 +94,9 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            Text(
+              name,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             FxBox.h12,
             getChartData(chartType, context),
@@ -102,18 +126,6 @@ getChartData(ChartType chartType, BuildContext context) {
           _richText('DeActivated', 3201, context),
         ]),
       );
-    } else if (chartType == ChartType.barChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText('Activated', 695412, context),
-            FxBox.h12,
-            _richText('Pending', 163542, context),
-            FxBox.h12,
-          ],
-        ),
-      );
     } else if (chartType == ChartType.lineChartWithArea) {
       return Align(
         alignment: Alignment.center,
@@ -127,16 +139,62 @@ getChartData(ChartType chartType, BuildContext context) {
           ],
         ),
       );
-    }  else if (chartType == ChartType.colomnChart) {
+    } else if (chartType == ChartType.lineScatterChart) {
+      return Align(
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            _richText('Activated', 5677, context),
+            FxBox.h12,
+            _richText('Pending', 2541, context),
+            FxBox.h12,
+            _richText('DeActivated', 102030, context),
+          ],
+        ),
+      );
+    }else if (chartType == ChartType.simpleLineChart) {
+      return  Align(
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            _richText('Activated', 44242, context),
+            _richText('Pending', 75221, context),
+            _richText('Pending', 65221, context)
+          ],
+        ),
+      );
+    }
+    else if (chartType == ChartType.overlapBars) {
       return Align(
         alignment: Alignment.center,
         child: Column(
           children: [
             _richText('Activated', 86541, context),
-            FxBox.h12,
             _richText('Pending', 2541, context),
-            FxBox.h12,
             _richText('DeActivated', 102030, context),
+          ],
+        ),
+      );
+    }
+    else if (chartType == ChartType.simplePieChart) {
+      return Align(
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            _richText('Activated', 48484, context),
+            _richText('Pending', 48652, context),
+            _richText('DeActivated', 85412, context),
+          ],
+        ),
+      );
+    }else if (chartType == ChartType.animatingPieChart) {
+      return Align(
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            _richText('Activated', 748949, context),
+            _richText('Pending', 5181, context),
+            _richText('DeActivated', 101025, context),
           ],
         ),
       );
@@ -166,24 +224,6 @@ getChartData(ChartType chartType, BuildContext context) {
           _richText('DeActivated', 95521, context),
         ],
       );
-    } else if (chartType == ChartType.piaChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText('Activated', 3201, context),
-          _richText('Pending', 85120, context),
-          _richText('DeActivated', 65214, context),
-        ],
-      );
-    } else if (chartType == ChartType.colomnChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText('Activated', 86541, context),
-          _richText('Pending', 2541, context),
-          _richText('DeActivated', 102030, context),
-        ],
-      );
     } else if (chartType == ChartType.simplePieChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -197,9 +237,27 @@ getChartData(ChartType chartType, BuildContext context) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 48484, context),
-          _richText('Pending', 48652, context),
-          _richText('DeActivated', 85412, context),
+          _richText('Activated', 748949, context),
+          _richText('Pending', 5181, context),
+          _richText('DeActivated', 101025, context),
+        ],
+      );
+    } else if (chartType == ChartType.lineScatterChart) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _richText('Activated', 5677, context),
+          _richText('Pending', 5542, context),
+          _richText('DeActivated', 12422, context),
+        ],
+      );
+    } else if (chartType == ChartType.overlapBars) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _richText('Activated', 86541, context),
+          _richText('Pending', 2541, context),
+          _richText('DeActivated', 102030, context),
         ],
       );
     }

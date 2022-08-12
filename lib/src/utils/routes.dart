@@ -13,6 +13,8 @@ int getRouteIndex(String route) {
     return 6;
   }else if (route == 'Chartist chart') {
     return 7;
+  }else if (route == 'ChartJs chart') {
+    return 8;
   } else {
     return 0;
   }

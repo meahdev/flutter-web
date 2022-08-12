@@ -5,14 +5,14 @@ import 'package:admin_dashboard/src/utils/text_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class MorrisChart extends StatefulWidget {
-  const MorrisChart({Key? key}) : super(key: key);
+class ChartJsChart extends StatefulWidget {
+  const ChartJsChart({Key? key}) : super(key: key);
 
   @override
-  State<MorrisChart> createState() => _MorrisChartState();
+  State<ChartJsChart> createState() => _ChartJsChartState();
 }
 
-class _MorrisChartState extends State<MorrisChart> {
+class _ChartJsChartState extends State<ChartJsChart> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -28,8 +28,13 @@ class _MorrisChartState extends State<MorrisChart> {
         _card(ChartType.piaChart, context, 'Donut Chart'),
         FxBox.h20,
         _card(ChartType.colomnChart, context, 'Column Chart'),
-      ]
-          : [
+      ] : [
+          Row(
+          children: [Expanded(
+              child: _card(ChartType.colomnChart, context, 'Column Chart')),
+          ],
+        ),
+        FxBox.h20,
         Row(
           children: [
             Expanded(
@@ -37,24 +42,6 @@ class _MorrisChartState extends State<MorrisChart> {
             FxBox.w20,
             Expanded(
                 child: _card(ChartType.barChart, context, 'Bar Chart')),
-          ],
-        ),
-        FxBox.h20,
-        Row(
-          children: [
-            Expanded(
-                child: _card(ChartType.areaChart, context, 'Area Chart')),
-            FxBox.w20,
-            Expanded(
-                child: _card(ChartType.piaChart, context, 'Donut Chart')),
-          ],
-        ),
-        FxBox.h20,
-        Row(
-          children: [
-            Expanded(
-                child: _card(
-                    ChartType.colomnChart, context, 'Column Chart')),
           ],
         ),
       ],

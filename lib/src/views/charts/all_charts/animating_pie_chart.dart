@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-
 class AnimatingPieChart extends StatefulWidget {
   const AnimatingPieChart({Key? key}) : super(key: key);
 
@@ -24,7 +23,6 @@ class PieChart2State extends State {
                 sections: showingSections()),
           ),
         ),
-
       ],
     );
   }
@@ -53,19 +51,16 @@ class PieChart2State extends State {
           return PieChartSectionData(
             color: const Color(0xff333a3f),
             radius: radius,
-
           );
         case 4:
           return PieChartSectionData(
             color: const Color(0xff38a5f3),
             radius: radius,
-
           );
         case 5:
           return PieChartSectionData(
             color: const Color(0xffeb4660),
             radius: radius,
-
           );
         case 6:
           return PieChartSectionData(

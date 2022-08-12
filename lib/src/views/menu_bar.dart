@@ -41,7 +41,7 @@ class _MenuBarState extends State<MenuBar> {
   List<List<String>> componentsExpandList = [
     ['Toast', 'Buttons', 'Rating', 'Badge'],
     ['Cupertino Icons'],
-    ['Morris Chart','Chartist chart','Chartjs Chart','Flot Chart'],
+    ['Morris Chart','Chartist chart','ChartJs chart','Flot Chart'],
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
@@ -53,6 +53,7 @@ class _MenuBarState extends State<MenuBar> {
     CupertinoIcon(),
     MorrisChart(),
     ChartListChart(),
+    ChartJsChart()
   ];
 
   @override

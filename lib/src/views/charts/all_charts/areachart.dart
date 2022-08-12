@@ -9,11 +9,7 @@ class AreaChart extends StatefulWidget {
 }
 
 class _AreaChartState extends State<AreaChart> {
-  List<Color> gradientColors = [
-    const Color(0xff23b6e6),
-    const Color(0xff02d39a),
-    const Color(0xffaab1e6),
-  ];
+
 
   bool showAvg = false;
 
@@ -54,7 +50,7 @@ class _AreaChartState extends State<AreaChart> {
       lineBarsData: [
         LineChartBarData(
           spots: const [
-            FlSpot(0, 3),
+            FlSpot(0, 0),
             FlSpot(2.6, 2),
             FlSpot(4.9, 5),
             FlSpot(6.8, 3.1),
@@ -63,25 +59,56 @@ class _AreaChartState extends State<AreaChart> {
             FlSpot(11, 4),
           ],
           isCurved: true,
-          gradient: LinearGradient(
-            colors: gradientColors,
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
-          barWidth: 5,
+          color: Colors.transparent,
           isStrokeCapRound: true,
           dotData: FlDotData(
             show: false,
           ),
           belowBarData: BarAreaData(
             show: true,
-            gradient: LinearGradient(
-              colors: gradientColors
-                  .map((color) => color.withOpacity(0.3))
-                  .toList(),
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
+            color: const Color(0xff81d7d0).withOpacity(0.5)
+          ),
+        ),
+        LineChartBarData(
+          spots: const [
+            FlSpot(0, 0),
+            FlSpot(1, 2),
+            FlSpot(3, 2),
+            FlSpot(5, 1.1),
+            FlSpot(6, 4),
+            FlSpot(9.5, 3),
+            FlSpot(11, 4),
+          ],
+          isCurved: true,
+          color: Colors.transparent,
+          isStrokeCapRound: true,
+          dotData: FlDotData(
+            show: false,
+          ),
+          belowBarData: BarAreaData(
+              show: true,
+              color: const Color(0xff5cb6c4).withOpacity(0.5),
+          ),
+        ),
+        LineChartBarData(
+          spots: const [
+            FlSpot(0, 2),
+            FlSpot(2, 4),
+            FlSpot(3, 2),
+            FlSpot(5, 1.1),
+            FlSpot(8, 4),
+            FlSpot(9.5, 3),
+            FlSpot(11, 4),
+          ],
+          isCurved: true,
+          color: Colors.transparent,
+          isStrokeCapRound: true,
+          dotData: FlDotData(
+            show: false,
+          ),
+          belowBarData: BarAreaData(
+              show: true,
+              color: const Color(0xffaab1e6).withOpacity(0.5)
           ),
         ),
       ],

@@ -14,7 +14,7 @@ class SimplePieChart extends StatelessWidget {
               PieChartData(
                   sectionsSpace: 0,
                   centerSpaceRadius: 0,
-                  sections: getSectionData(MediaQuery.of(context).size.width / 2)
+                  sections: getSectionData(MediaQuery.of(context).size.width / 2.3)
               )),
         ),
       ],

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class ColumnChart extends StatelessWidget {
   const ColumnChart({Key? key}) : super(key: key);
-  final double width = 15;
+  final double width = 30;
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,7 @@ class ColumnChart extends StatelessWidget {
       BarChartData(
         barTouchData: barTouchData(context),
         titlesData: titlesData,
-        borderData: borderData,
+        borderData: FlBorderData(show: false),
         barGroups: barGroups,
         gridData: FlGridData(show: false),
         alignment: BarChartAlignment.spaceAround,
@@ -75,8 +75,11 @@ class ColumnChart extends StatelessWidget {
       case 6:
         text = '2016';
         break;
-      default:
+      case 7:
         text = '2017';
+        break;
+      default:
+        text = '2018';
         break;
     }
     return SideTitleWidget(
@@ -96,7 +99,12 @@ class ColumnChart extends StatelessWidget {
           ),
         ),
         leftTitles: AxisTitles(
-          sideTitles: SideTitles(showTitles: false),
+          sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 28,
+            interval: 1,
+            getTitlesWidget: leftTitles,
+          ),
         ),
         topTitles: AxisTitles(
           sideTitles: SideTitles(showTitles: false),
@@ -106,16 +114,32 @@ class ColumnChart extends StatelessWidget {
         ),
       );
 
-  FlBorderData get borderData => FlBorderData(
-        show: false,
-      );
-
-  final _barsGradient = const LinearGradient(
-    colors: [Color(0xfff0f1f4), Color(0xff3c4bcf)],
-    begin: Alignment.bottomCenter,
-    end: Alignment.topCenter,
-  );
-
+  Widget leftTitles(double value, TitleMeta meta) {
+    const style = TextStyle(
+      color: Color(0xff7589a2),
+      fontWeight: FontWeight.bold,
+      fontSize: 14,
+    );
+    String text;
+    if (value == 0) {
+      text = '0';
+    } else if (value == 10) {
+      text = '75';
+    } else if (value == 19) {
+      text = '150';
+    } else if (value == 22) {
+      text = '225';
+    } else if (value == 25) {
+      text = '300';
+    } else {
+      return Container();
+    }
+    return SideTitleWidget(
+      axisSide: meta.axisSide,
+      space: 0,
+      child: Text(text, style: style),
+    );
+  }
   List<BarChartGroupData> get barGroups => [
         BarChartGroupData(
           x: 0,
@@ -123,7 +147,12 @@ class ColumnChart extends StatelessWidget {
             BarChartRodData(
               width: width,
               toY: 15,
-              gradient: _barsGradient,
+              color: Colors.transparent,
+              rodStackItems: [
+                BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
+                BarChartRodStackItem(7, 15, Colors.grey.withOpacity(0.1)),
+              ],
+              borderRadius: BorderRadius.zero,
             )
           ],
           showingTooltipIndicators: [0],
@@ -132,10 +161,14 @@ class ColumnChart extends StatelessWidget {
           x: 1,
           barRods: [
             BarChartRodData(
-              width: width,
-              toY: 10,
-              gradient: _barsGradient,
-            )
+                width: width,
+                toY: 10,
+                color: Colors.transparent,
+                rodStackItems: [
+                  BarChartRodStackItem(0, 5, const Color(0xff3c4bd0)),
+                  BarChartRodStackItem(5, 10, Colors.grey.withOpacity(0.1)),
+                ],
+                borderRadius: BorderRadius.zero)
           ],
           showingTooltipIndicators: [0],
         ),
@@ -143,10 +176,14 @@ class ColumnChart extends StatelessWidget {
           x: 2,
           barRods: [
             BarChartRodData(
-              width: width,
-              toY: 14,
-              gradient: _barsGradient,
-            )
+                width: width,
+                toY: 14,
+                color: Colors.transparent,
+                rodStackItems: [
+                  BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
+                  BarChartRodStackItem(7, 14, Colors.grey.withOpacity(0.1)),
+                ],
+                borderRadius: BorderRadius.zero)
           ],
           showingTooltipIndicators: [0],
         ),
@@ -154,32 +191,89 @@ class ColumnChart extends StatelessWidget {
           x: 3,
           barRods: [
             BarChartRodData(
-              width: width,
-              toY: 15,
-              gradient: _barsGradient,
-            )
+                width: width,
+                toY: 15,
+                color: Colors.transparent,
+                rodStackItems: [
+                  BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
+                  BarChartRodStackItem(7, 15, Colors.grey.withOpacity(0.1)),
+                ],
+                borderRadius: BorderRadius.zero)
           ],
           showingTooltipIndicators: [0],
         ),
         BarChartGroupData(
-          x: 3,
+          x: 4,
           barRods: [
             BarChartRodData(
-              width: width,
-              toY: 13,
-              gradient: _barsGradient,
-            )
+                width: width,
+                toY: 13,
+                color: Colors.transparent,
+                rodStackItems: [
+                  BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
+                  BarChartRodStackItem(7, 13, Colors.grey.withOpacity(0.1)),
+                ],
+                borderRadius: BorderRadius.zero)
           ],
           showingTooltipIndicators: [0],
         ),
         BarChartGroupData(
-          x: 3,
+          x: 5,
           barRods: [
             BarChartRodData(
-              width: width,
-              toY: 10,
-              gradient: _barsGradient,
-            )
+                width: width,
+                toY: 10,
+                color: Colors.transparent,
+                rodStackItems: [
+                  BarChartRodStackItem(0, 5, const Color(0xff3c4bd0)),
+                  BarChartRodStackItem(5, 10, Colors.grey.withOpacity(0.1)),
+                ],
+                borderRadius: BorderRadius.zero)
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 6,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 13,
+                color: Colors.transparent,
+                rodStackItems: [
+                  BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
+                  BarChartRodStackItem(7, 13, Colors.grey.withOpacity(0.1)),
+                ],
+                borderRadius: BorderRadius.zero)
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 7,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 5,
+                color: Colors.transparent,
+                rodStackItems: [
+                  BarChartRodStackItem(0, 2, const Color(0xff3c4bd0)),
+                  BarChartRodStackItem(2, 5, Colors.grey.withOpacity(0.1)),
+                ],
+                borderRadius: BorderRadius.zero)
+          ],
+          showingTooltipIndicators: [0],
+        ),
+        BarChartGroupData(
+          x: 8,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 10,
+                color: Colors.transparent,
+                rodStackItems: [
+                  BarChartRodStackItem(0, 5, const Color(0xff3c4bd0)),
+                  BarChartRodStackItem(5, 10, Colors.grey.withOpacity(0.1)),
+                ],
+                borderRadius: BorderRadius.zero)
           ],
           showingTooltipIndicators: [0],
         ),
@@ -188,7 +282,6 @@ class ColumnChart extends StatelessWidget {
 
 class BarChartSample3 extends StatefulWidget {
   const BarChartSample3({Key? key}) : super(key: key);
-
   @override
   State<StatefulWidget> createState() => BarChartSample3State();
 }
