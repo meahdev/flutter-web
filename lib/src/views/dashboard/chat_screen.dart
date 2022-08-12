@@ -44,6 +44,13 @@ class _ChatscreenState extends State<Chatscreen> {
       'isCurrentUser': false,
     },
   ];
+  final ScrollController _scrollController = ScrollController();
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -65,7 +72,7 @@ class _ChatscreenState extends State<Chatscreen> {
                 constraints: const BoxConstraints(maxHeight: 350),
                 child: ListView.builder(
                   shrinkWrap: true,
-                  controller: ScrollController(),
+                  controller: _scrollController,
                   itemCount: _chatList.length,
                   itemBuilder: (context, index) {
                     return Column(

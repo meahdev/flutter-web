@@ -183,9 +183,10 @@ class _RegisterTwoState extends State<RegisterTwo> {
             TextSpan(
               text: Strings.termsServiceText2,
               style: TextStyle(
-                  color: ColorConst.primary,
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w700),
+                color: ColorConst.primary,
+                fontFamily: 'Nunito',
+                fontWeight: FontWeight.w700,
+              ),
               // recognizer: TapGestureRecognizer()
               //   ..onTap = () {
               //     Constant.launchURL(ConstString.termsUrl);

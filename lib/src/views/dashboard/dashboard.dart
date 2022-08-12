@@ -22,82 +22,86 @@ class _DashboardState extends State<Dashboard> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Listitem(),
-        FxBox.h20,
-        Responsive.isWeb(context)
-            ? Row(
-                children: [
-                  const Expanded(
-                    child: SalesReport(),
-                  ),
-                  FxBox.w20,
-                  const Expanded(
-                    child: Activity(),
-                  ),
-                  FxBox.w20,
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Row(
+        Column(
+          children: [
+            const Listitem(),
+            FxBox.h20,
+            Responsive.isWeb(context)
+                ? Row(
+                    children: [
+                      const Expanded(
+                        child: SalesReport(),
+                      ),
+                      FxBox.w20,
+                      const Expanded(
+                        child: Activity(),
+                      ),
+                      FxBox.w20,
+                      Expanded(
+                        child: Column(
                           children: [
-                            const Expanded(child: StatusBox()),
-                            FxBox.w20,
-                            const Expanded(child: TopProductSale()),
-                          ],
-                        ),
-                        FxBox.h20,
-                        const Clienresponse(),
-                      ],
-                    ),
-                  ),
-                ],
-              )
-            : Column(
-                children: [
-                  const SalesReport(),
-                  FxBox.h20,
-                  const Activity(),
-                  FxBox.h20,
-                  Responsive.isTablet(context)
-                      ? Row(
-                          children: [
-                            const Expanded(child: StatusBox()),
-                            FxBox.w20,
-                            const Expanded(child: TopProductSale()),
-                          ],
-                        )
-                      : Column(
-                          children: [
-                            const StatusBox(),
+                            Row(
+                              children: [
+                                const Expanded(child: StatusBox()),
+                                FxBox.w20,
+                                const Expanded(child: TopProductSale()),
+                              ],
+                            ),
                             FxBox.h20,
-                            const TopProductSale(),
+                            const Clienresponse(),
                           ],
                         ),
-                  FxBox.h20,
-                  const Clienresponse(),
-                ],
-              ),
-        FxBox.h20,
-        Responsive.isWeb(context)
-            ? Row(
-                children: [
-                  const Expanded(
-                    flex: 2,
-                    child: Transaction(),
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      const SalesReport(),
+                      FxBox.h20,
+                      const Activity(),
+                      FxBox.h20,
+                      Responsive.isTablet(context)
+                          ? Row(
+                              children: [
+                                const Expanded(child: StatusBox()),
+                                FxBox.w20,
+                                const Expanded(child: TopProductSale()),
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                const StatusBox(),
+                                FxBox.h20,
+                                const TopProductSale(),
+                              ],
+                            ),
+                      FxBox.h20,
+                      const Clienresponse(),
+                    ],
                   ),
-                  FxBox.w20,
-                  const Expanded(
-                    child: Chatscreen(),
+            FxBox.h20,
+            Responsive.isWeb(context)
+                ? Row(
+                    children: [
+                      const Expanded(
+                        flex: 2,
+                        child: Transaction(),
+                      ),
+                      FxBox.w20,
+                      const Expanded(
+                        child: Chatscreen(),
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      const Transaction(),
+                      FxBox.h20,
+                      const Chatscreen(),
+                    ],
                   ),
-                ],
-              )
-            : Column(
-                children: [
-                  const Transaction(),
-                  FxBox.h20,
-                  const Chatscreen(),
-                ],
-              ),
+          ],
+        ),
       ],
     );
   }

@@ -24,6 +24,7 @@ class FxButton extends StatelessWidget {
   final bool autofocus;
   final String? text;
   final Color? textColor;
+  final FontWeight? textWeight;
   final bool enableFeedback;
   final EdgeInsetsGeometry? padding;
   final double? elevation;
@@ -49,6 +50,7 @@ class FxButton extends StatelessWidget {
     this.focusNode,
     this.text,
     this.textColor,
+    this.textWeight,
     this.enableFeedback = true,
     this.padding = const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
     this.elevation,
@@ -79,6 +81,7 @@ class FxButton extends StatelessWidget {
     this.autofocus = false,
     this.focusNode,
     this.text = 'WhatsApp',
+    this.textWeight,
     this.enableFeedback = true,
     this.padding = const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
     this.elevation,
@@ -147,7 +150,13 @@ class FxButton extends StatelessWidget {
               icon != null && text != null
                   ? SizedBox(width: gap)
                   : FxBox.shrink,
-              text != null ? Flexible(child: Text(text!)) : FxBox.shrink,
+              text != null
+                  ? Flexible(
+                      child: Text(
+                      text!,
+                      style: TextStyle(fontWeight: textWeight),
+                    ))
+                  : FxBox.shrink,
             ],
           ),
         );
