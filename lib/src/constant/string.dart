@@ -7,7 +7,7 @@ class Strings {
   static const String veltrix = 'Veltrix';
   static const String siddhatva = 'Siddhatva';
   static const String lightMode = 'Light Mode';
-  
+
   static const String admin = 'Admin';
 
   // appbar
@@ -28,7 +28,8 @@ class Strings {
   static const String calender = 'Calender';
   static const String textEditor = 'Text Editor';
   static const String uiElements = 'UI Elements';
-  static const String icons = 'Icons';
+  static const String authentication = 'Authentication';
+  static const String emailTemplates = 'Email Templates';
 
   // ui elements option
   static const String toast = 'Toast';
@@ -39,6 +40,21 @@ class Strings {
   static const String modal = 'Modal';
   static const String cupertinoIcons = 'Cupertino Icons';
   static const String latestTransaction = 'Latest Transaction';
+
+  // authentication option
+  static const String loginOne = 'Login 1';
+  static const String loginTwo = 'Login 2';
+  static const String registerOne = 'Register 1';
+  static const String registerTwo = 'Register 2';
+  static const String recoverPasswordOne = 'Recover Password 1';
+  static const String recoverPasswordTwo = 'Recover Password 2';
+  static const String lockScreenOne = 'Lock Screen 1';
+  static const String lockScreenTwo = 'Lock Screen 2';
+
+  // email templates option
+  static const String basicActionEmail= 'Basic Action Email';
+  static const String alertEmail= 'Alert Email';
+  static const String billingEmail= 'Billing Email';
 
   //chat screen
   static const String chat = 'Chat';
@@ -62,6 +78,7 @@ class Strings {
 
   //activity
   static const String activity = 'Activity';
+
   // Login
   static const String welcomeBack = 'Welcome Back !';
   static const String loginHeaderText = 'Sign in to continue to Siddhatva.';

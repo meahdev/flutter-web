@@ -11,6 +11,12 @@ int getRouteIndex(String route) {
     return 5;
   } else if (route == 'Modal') {
     return 6;
+  } else if (route == 'Basic Action Email') {
+    return 7;
+  } else if (route == 'Alert Email') {
+    return 8;
+  } else if (route == 'Billing Email') {
+    return 9;
   } else {
     return 0;
   }

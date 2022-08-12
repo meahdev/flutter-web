@@ -34,11 +34,11 @@ class _MenuBarState extends State<MenuBar> {
 
   Map<String, String> componentData = {
     Strings.uiElements: IconlyBroken.box,
-    Strings.icons: IconlyBroken.smileEmoji,
   };
 
   Map<String, String> extrasData = {
-    'Authentication': IconlyBroken.archive,
+    Strings.authentication: IconlyBroken.archive,
+    Strings.emailTemplates: IconlyBroken.archive,
   };
 
   List<List<String>> componentsExpandList = [
@@ -55,14 +55,19 @@ class _MenuBarState extends State<MenuBar> {
 
   List<List<String>> extrasExpandList = [
     [
-      'Login 1',
-      'Login 2',
-      'Register 1',
-      'Register 2',
-      'Recover Password 1',
-      'Recover Password 2',
-      'Lock Screen 1',
-      'Lock Screen 2',
+      Strings.loginOne,
+      Strings.loginTwo,
+      Strings.registerOne,
+      Strings.registerTwo,
+      Strings.recoverPasswordOne,
+      Strings.recoverPasswordTwo,
+      Strings.lockScreenOne,
+      Strings.lockScreenTwo,
+    ],
+    [
+      Strings.basicActionEmail,
+      Strings.alertEmail,
+      Strings.billingEmail,
     ],
   ];
 
@@ -74,6 +79,9 @@ class _MenuBarState extends State<MenuBar> {
     Toast(),
     AlertDialogBox(),
     Modal(),
+    BasicEmail(),
+    AlertEmail(),
+    BillingEmail(),
   ];
 
   @override
