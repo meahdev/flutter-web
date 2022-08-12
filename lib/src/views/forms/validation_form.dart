@@ -205,7 +205,6 @@ class _ValidationFormState extends State<ValidationForm> {
     return Column(
       children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             __validationWithIconCommon(
@@ -226,6 +225,7 @@ class _ValidationFormState extends State<ValidationForm> {
         ),
         FxBox.h16,
         Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             __validationWithIconCommon(
               _commonText('City'),
