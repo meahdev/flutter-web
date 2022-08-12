@@ -1,14 +1,14 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class LineChartWithArea extends StatefulWidget {
-  const LineChartWithArea({Key? key}) : super(key: key);
+class AreaChart extends StatefulWidget {
+  const AreaChart({Key? key}) : super(key: key);
 
   @override
-  _LineChartWithAreaState createState() => _LineChartWithAreaState();
+   State<AreaChart> createState() => _AreaChartState();
 }
 
-class _LineChartWithAreaState extends State<LineChartWithArea> {
+class _AreaChartState extends State<AreaChart> {
   List<Color> gradientColors = [
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
@@ -28,11 +28,11 @@ class _LineChartWithAreaState extends State<LineChartWithArea> {
     return LineChartData(
       borderData: FlBorderData(border: const Border(bottom: BorderSide.none)),
       gridData: FlGridData(
-        show: true,
-        drawVerticalLine: true,
+        show: false,
+        drawVerticalLine: false,
       ),
       titlesData: FlTitlesData(
-        show: true,
+        show: false,
         rightTitles: AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
@@ -63,15 +63,25 @@ class _LineChartWithAreaState extends State<LineChartWithArea> {
             FlSpot(11, 4),
           ],
           isCurved: true,
-          color: const Color(0xff6d6fb9),
-          barWidth: 2,
+          gradient: LinearGradient(
+            colors: gradientColors,
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          ),
+          barWidth: 5,
           isStrokeCapRound: true,
           dotData: FlDotData(
-            show: true,
+            show: false,
           ),
           belowBarData: BarAreaData(
             show: true,
-            color: const Color(0xffced2f1)
+            gradient: LinearGradient(
+              colors: gradientColors
+                  .map((color) => color.withOpacity(0.3))
+                  .toList(),
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+            ),
           ),
         ),
       ],

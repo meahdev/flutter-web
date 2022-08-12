@@ -1,5 +1,7 @@
 import 'package:admin_dashboard/src/constant/enum.dart';
-import 'package:admin_dashboard/src/views/charts/allcharts/charttype.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/animating_pie_chart.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/chart_type.dart';
+
 
 getChart(ChartType chartType) {
   if (chartType == ChartType.lineChart) {
@@ -20,5 +22,7 @@ getChart(ChartType chartType) {
     return const SimpleLineChart();
   } else if (chartType == ChartType.simplePieChart) {
     return const SimplePieChart();
+  }else if (chartType == ChartType.animatingPieChart) {
+    return const AnimatingPieChart();
   }
 }

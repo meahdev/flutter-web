@@ -1,14 +1,14 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-class AreaChart extends StatefulWidget {
-  const AreaChart({Key? key}) : super(key: key);
+class LineChartWithArea extends StatefulWidget {
+  const LineChartWithArea({Key? key}) : super(key: key);
 
   @override
-  _AreaChartState createState() => _AreaChartState();
+  State<LineChartWithArea> createState() => _LineChartWithAreaState();
 }
 
-class _AreaChartState extends State<AreaChart> {
+class _LineChartWithAreaState extends State<LineChartWithArea> {
   List<Color> gradientColors = [
     const Color(0xff23b6e6),
     const Color(0xff02d39a),
@@ -28,11 +28,11 @@ class _AreaChartState extends State<AreaChart> {
     return LineChartData(
       borderData: FlBorderData(border: const Border(bottom: BorderSide.none)),
       gridData: FlGridData(
-        show: false,
-        drawVerticalLine: false,
+        show: true,
+        drawVerticalLine: true,
       ),
       titlesData: FlTitlesData(
-        show: false,
+        show: true,
         rightTitles: AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
@@ -63,25 +63,15 @@ class _AreaChartState extends State<AreaChart> {
             FlSpot(11, 4),
           ],
           isCurved: true,
-          gradient: LinearGradient(
-            colors: gradientColors,
-            begin: Alignment.centerLeft,
-            end: Alignment.centerRight,
-          ),
-          barWidth: 5,
+          color: const Color(0xff6d6fb9),
+          barWidth: 2,
           isStrokeCapRound: true,
           dotData: FlDotData(
-            show: false,
+            show: true,
           ),
           belowBarData: BarAreaData(
             show: true,
-            gradient: LinearGradient(
-              colors: gradientColors
-                  .map((color) => color.withOpacity(0.3))
-                  .toList(),
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-            ),
+            color: const Color(0xffced2f1)
           ),
         ),
       ],

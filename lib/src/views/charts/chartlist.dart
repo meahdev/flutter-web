@@ -44,12 +44,10 @@ class _ChartListChartState extends State<ChartListChart> {
               FxBox.h20,
               Row(
                 children: [
-                  Expanded(
-                      child: _card(ChartType.lineChartWithArea, context,
-                          'Line chart with area')),
+                  // Expanded(child: _card(ChartType.piaChart, context, 'Donut Chart')),
+                   Expanded(child: _card(ChartType.animatingPieChart, context, 'Animating a Donut with Svg.animate')),
                   FxBox.w20,
-                  Expanded(
-                      child: _card(ChartType.piaChart, context, 'Donut Chart')),
+                  Expanded(child: _card(ChartType.lineChartWithArea, context, 'Line chart with area')),
                 ],
               ),
               FxBox.h20,
@@ -74,9 +72,7 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              name,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             FxBox.h12,
             getChartData(chartType, context),
@@ -131,20 +127,7 @@ getChartData(ChartType chartType, BuildContext context) {
           ],
         ),
       );
-    } else if (chartType == ChartType.piaChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText('Activated', 3201, context),
-            FxBox.h12,
-            _richText('Pending', 85120, context),
-            FxBox.h12,
-            _richText('DeActivated', 65214, context),
-          ],
-        ),
-      );
-    } else if (chartType == ChartType.colomnChart) {
+    }  else if (chartType == ChartType.colomnChart) {
       return Align(
         alignment: Alignment.center,
         child: Column(
@@ -201,8 +184,16 @@ getChartData(ChartType chartType, BuildContext context) {
           _richText('DeActivated', 102030, context),
         ],
       );
-    }
-    else if (chartType == ChartType.simplePieChart) {
+    } else if (chartType == ChartType.simplePieChart) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _richText('Activated', 48484, context),
+          _richText('Pending', 48652, context),
+          _richText('DeActivated', 85412, context),
+        ],
+      );
+    } else if (chartType == ChartType.animatingPieChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
