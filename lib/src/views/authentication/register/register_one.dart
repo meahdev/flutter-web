@@ -43,7 +43,8 @@ class _RegisterOneState extends State<RegisterOne> {
           ),
         ),
         FxBox.h48,
-        ConstantAuth.login(context, false),
+        ConstantAuth.login(
+            context, false, Strings.alreayAccountExist, Strings.login),
         FxBox.h16,
         ConstantAuth.footerText(),
       ]),
