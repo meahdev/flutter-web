@@ -10,9 +10,8 @@ class FileUploadForm extends StatefulWidget {
 }
 
 class _FileUploadFormState extends State<FileUploadForm> {
-  PlatformFile? file;
-  FilePickerResult? result;
-  List<PlatformFile> files = [];
+  FilePickerResult? file;
+  List<PlatformFile> filesList = [];
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -28,35 +27,34 @@ class _FileUploadFormState extends State<FileUploadForm> {
               "Dropzone",
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            FxBox.h4,
-            const Text(
-              "DropzoneJS is an open source library that provides drag’n’drop file uploads with image previews.",
-            ),
-            const SizedBox(
-              height: 20,
-            ),
+            FxBox.h24,
             GestureDetector(
               onTap: () {
                 pickFile();
               },
               child: Container(
-                color: Colors.white,
-                height: MediaQuery.of(context).size.height * 0.42,
-                width: MediaQuery.of(context).size.height * 1.7,
+                decoration: BoxDecoration(
+                  border: Border.all(),
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                padding: const EdgeInsets.all(20),
+                height: 268,
+                width: MediaQuery.of(context).size.width - 40,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
                     Icon(
                       Icons.cloud_upload_outlined,
-                      size: 70,
+                      size: 60,
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     Text(
-                      "Drop Files hear or click to uplode.",
+                      "Drop files here or click to upload.",
+                      textAlign: TextAlign.center,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                          TextStyle(fontWeight: FontWeight.w600, fontSize: 21),
                     ),
                   ],
                 ),
@@ -80,12 +78,12 @@ class _FileUploadFormState extends State<FileUploadForm> {
   }
 
   void pickFile() async {
-    result = await FilePicker.platform.pickFiles(allowMultiple: true);
-    if (result == null) return;
-    if (files.isEmpty) {
-      files = result!.files;
+    file = await FilePicker.platform.pickFiles(allowMultiple: true);
+    if (file == null) return;
+    if (filesList.isEmpty) {
+      filesList = file!.files;
     } else {
-      files.addAll(result!.files);
+      filesList.addAll(file!.files);
     }
     setState(() {});
     // loadSelectFile(result!.files);
