@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
-import 'package:admin_dashboard/src/constant/custom_text_field.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,18 +25,16 @@ class _RegisterTwoState extends State<RegisterTwo> {
       body: Stack(
         children: [
           ConstantAuth.homeBackground(context),
-          Expanded(
-            child: Container(
-              width: 420,
-              height: MediaQuery.of(context).size.height,
-              color: ColorConst.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _mainView(),
-                ],
-              ),
+          Container(
+            width: 420,
+            height: MediaQuery.of(context).size.height,
+            color: isDark ? ColorConst.darkContainer : ColorConst.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _mainView(),
+              ],
             ),
           ),
         ],
@@ -51,23 +50,29 @@ class _RegisterTwoState extends State<RegisterTwo> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ConstantAuth.logoWithAppName(ColorConst.black),
+          ConstantAuth.logoWithAppName(
+            isDark ? ColorConst.white : ColorConst.black,
+          ),
           FxBox.h28,
-          const Center(
+          Center(
             child: CustomText(
               title: Strings.freeRegister,
               fontSize: 18,
               fontWeight: FontWeight.w800,
-              textColor: ColorConst.lightFontColor,
+              textColor: isDark
+                  ? ColorConst.darkFooterText
+                  : ColorConst.lightFontColor,
             ),
           ),
           FxBox.h6,
-          const Center(
+          Center(
             child: CustomText(
               title: Strings.registerHeaderText,
               fontSize: 14,
               fontWeight: FontWeight.w700,
-              textColor: ColorConst.lightFontColor,
+              textColor: isDark
+                  ? ColorConst.darkFooterText
+                  : ColorConst.lightFontColor,
             ),
           ),
           FxBox.h28,
@@ -89,7 +94,11 @@ class _RegisterTwoState extends State<RegisterTwo> {
           FxBox.h16,
           FxBox.h52,
           ConstantAuth.login(
-              context, true, Strings.alreayAccountExist, Strings.login),
+            context,
+            true,
+            Strings.alreayAccountExist,
+            Strings.login,
+          ),
           FxBox.h16,
           ConstantAuth.footerText(),
         ],
@@ -135,7 +144,7 @@ class _RegisterTwoState extends State<RegisterTwo> {
       borderRadius: 4.0,
       height: 40,
       minWidth: 110,
-      color: ColorConst.primary,
+      color: Theme.of(context).colorScheme.primary,
     );
   }
 
@@ -143,27 +152,25 @@ class _RegisterTwoState extends State<RegisterTwo> {
     return Center(
       child: RichText(
         textAlign: TextAlign.left,
-        text: const TextSpan(
+        text: TextSpan(
           style: TextStyle(
               height: 1.5,
-              color: ColorConst.lightFontColor,
+              color: isDark
+                  ? ColorConst.darkFooterText
+                  : ColorConst.lightFontColor,
               fontFamily: 'Nunito',
               fontWeight: FontWeight.w700),
-          children: <TextSpan>[
-            TextSpan(
+          children: [
+            const TextSpan(
               text: Strings.termsServiceText1,
             ),
             TextSpan(
               text: Strings.termsServiceText2,
               style: TextStyle(
-                color: ColorConst.primary,
+                color: Theme.of(context).colorScheme.primary,
                 fontFamily: 'Nunito',
                 fontWeight: FontWeight.w700,
               ),
-              // recognizer: TapGestureRecognizer()
-              //   ..onTap = () {
-              //     Constant.launchURL(ConstString.termsUrl);
-              //   },
             ),
           ],
         ),

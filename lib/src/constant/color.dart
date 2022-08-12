@@ -23,16 +23,18 @@ class ColorConst {
   static const Color searchIcon = Color(0xFF525f80);
   static const Color backgroundColor = Color(0xFFccedeb);
   static const Color borderColor = Color(0xFFb3e4e0);
-  static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, .55);
+
+  // authentication
+  static const Color darkContainer = Color(0xff323a4e);
+  static const Color darkFooterText = Color(0xff868993);
+
   // chat screen
   static const Color chatColor = Color(0xFF2f3cab);
   static const Color sendButtonColor = Color(0xFF02a499);
   static const Color lightGrey = Color(0xFFdee2e6);
 
   //dark
-
   static const Color appbarDarkBG = Color(0xFF2F323C);
-  static const Color endDrawerDarkScrim = Color.fromRGBO(239, 242, 247, .55);
 
   static Color get success => const Color(0xff53a653);
   static Color get warning => const Color(0xffffcc00);
@@ -43,6 +45,7 @@ class ColorConst {
   static Color get warningDark => const Color(0xffffb800);
   static Color get errorDark => const Color(0xffc7051b);
   static Color get infoDark => const Color(0xff03a9f4);
+
   //table hover color
   static const Color tableHover = Color(0xFFf8f9fa);
 

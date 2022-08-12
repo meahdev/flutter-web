@@ -1,9 +1,10 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
-import 'package:admin_dashboard/src/constant/custom_text_field.dart';
+import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:auto_route/auto_route.dart';
@@ -30,18 +31,16 @@ class _LoginTwoState extends State<LoginTwo> {
       body: Stack(
         children: [
           ConstantAuth.homeBackground(context),
-          Expanded(
-            child: Container(
-              width: 420,
-              height: MediaQuery.of(context).size.height,
-              color: ColorConst.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _mainView(),
-                ],
-              ),
+          Container(
+            width: 420,
+            height: MediaQuery.of(context).size.height,
+            color: isDark ? ColorConst.darkContainer : ColorConst.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _mainView(),
+              ],
             ),
           ),
         ],
@@ -57,23 +56,29 @@ class _LoginTwoState extends State<LoginTwo> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ConstantAuth.logoWithAppName(ColorConst.black),
+          ConstantAuth.logoWithAppName(
+            isDark ? ColorConst.white : ColorConst.black,
+          ),
           FxBox.h28,
-          const Center(
+          Center(
             child: CustomText(
               title: Strings.welcomeBack,
               fontSize: 18,
               fontWeight: FontWeight.w800,
-              textColor: ColorConst.lightFontColor,
+              textColor: isDark
+                  ? ColorConst.darkFooterText
+                  : ColorConst.lightFontColor,
             ),
           ),
           FxBox.h6,
-          const Center(
+          Center(
             child: CustomText(
               title: Strings.loginHeaderText,
               fontSize: 14,
               fontWeight: FontWeight.w700,
-              textColor: ColorConst.lightFontColor,
+              textColor: isDark
+                  ? ColorConst.darkFooterText
+                  : ColorConst.lightFontColor,
             ),
           ),
           FxBox.h28,
@@ -148,9 +153,10 @@ class _LoginTwoState extends State<LoginTwo> {
             },
           ),
         ),
-        const CustomText(
+        CustomText(
           title: Strings.rememberMeLabel,
-          textColor: ColorConst.lightFontColor,
+          textColor:
+              isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
           fontWeight: FontWeight.w700,
         ),
       ],
@@ -168,7 +174,7 @@ class _LoginTwoState extends State<LoginTwo> {
       borderRadius: 4.0,
       height: 40,
       minWidth: 110,
-      color: ColorConst.primary,
+      color: Theme.of(context).colorScheme.primary,
     );
   }
 
@@ -179,7 +185,9 @@ class _LoginTwoState extends State<LoginTwo> {
       },
       child: FxHover(
         builder: (isHover) {
-          Color color = isHover ? ColorConst.primaryDark : ColorConst.primary;
+          Color color = isHover
+              ? ColorConst.primaryDark
+              : Theme.of(context).colorScheme.primary;
           return Row(
             children: [
               Icon(

@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,8 @@ class ConstantAuth {
       children: [
         CustomText(
           title: title,
-          textColor: ColorConst.lightFontColor,
+          textColor:
+              isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
           fontSize: 14,
           fontWeight: FontWeight.w700,
         ),
@@ -30,7 +32,7 @@ class ConstantAuth {
           child: CustomText(
             title: subTitle,
             fontSize: 14,
-            textColor: ColorConst.primary,
+            textColor: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.w700,
           ),
         )
@@ -39,11 +41,11 @@ class ConstantAuth {
   }
 
   static Widget footerText() {
-    return const CustomText(
+    return CustomText(
       title: Strings.loginFooterText,
       fontSize: 13.0,
       fontWeight: FontWeight.w700,
-      textColor: ColorConst.lightFontColor,
+      textColor: isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
     );
   }
 
@@ -52,7 +54,7 @@ class ConstantAuth {
       title: label,
       fontSize: 14,
       fontWeight: FontWeight.w800,
-      textColor: ColorConst.lightFontColor,
+      textColor: isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
     );
   }
 
@@ -76,10 +78,11 @@ class ConstantAuth {
       top: 185,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children: [
           CircleAvatar(
             radius: 35,
-            backgroundColor: ColorConst.white,
+            backgroundColor:
+                isDark ? ColorConst.darkContainer : ColorConst.white,
           ),
         ],
       ),
@@ -102,14 +105,15 @@ class ConstantAuth {
     );
   }
 
-  static Widget headerView(String title, String subTitle) {
+  static Widget headerView(
+      String title, String subTitle, BuildContext context) {
     return Container(
       width: 400,
       margin: const EdgeInsets.only(top: 60),
       padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-      decoration: const BoxDecoration(
-        color: ColorConst.primary,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.primary,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(4.0),
           topRight: Radius.circular(4.0),
         ),
@@ -123,14 +127,15 @@ class ConstantAuth {
               title: title,
               fontSize: 18,
               fontWeight: FontWeight.w700,
-              textColor: ColorConst.white,
+              textColor: Theme.of(context).colorScheme.onPrimary,
             ),
             FxBox.h6,
             CustomText(
               title: subTitle,
               fontSize: 14,
               fontWeight: FontWeight.w700,
-              textColor: ColorConst.white.withOpacity(0.5),
+              textColor:
+                  Theme.of(context).colorScheme.onPrimary.withOpacity(0.75),
             )
           ],
         ),
@@ -139,13 +144,18 @@ class ConstantAuth {
   }
 
   static Widget login(
-      BuildContext context, bool isScreen, String title, String subTitle) {
+    BuildContext context,
+    bool isScreen,
+    String title,
+    String subTitle,
+  ) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CustomText(
           title: title,
-          textColor: ColorConst.lightFontColor,
+          textColor:
+              isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
           fontSize: 14,
           fontWeight: FontWeight.w700,
         ),
@@ -160,7 +170,7 @@ class ConstantAuth {
           child: CustomText(
             title: subTitle,
             fontSize: 14,
-            textColor: ColorConst.primary,
+            textColor: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.w700,
           ),
         )
@@ -168,30 +178,13 @@ class ConstantAuth {
     );
   }
 
-  static Widget homeIconView(BuildContext context) {
-    return Align(
-      alignment: Alignment.topRight,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 15.0, right: 15.0),
-        child: GestureDetector(
-          onTap: () {
-            context.router.pop();
-          },
-          child: const Icon(Icons.home),
-        ),
-      ),
-    );
-  }
-
   static Widget homeBackground(BuildContext context) {
-    return Expanded(
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Image.asset(
-          Images.loginBg,
-          fit: BoxFit.cover,
-        ),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height,
+      child: Image.asset(
+        Images.loginBg,
+        fit: BoxFit.cover,
       ),
     );
   }
@@ -209,10 +202,11 @@ class ConstantAuth {
         ),
         FxBox.w4,
         CustomText(
-            title: Strings.siddhatva.toUpperCase(),
-            fontSize: 24,
-            fontWeight: FontWeight.w600,
-            textColor: color),
+          title: Strings.siddhatva.toUpperCase(),
+          fontSize: 24,
+          fontWeight: FontWeight.w600,
+          textColor: color,
+        ),
       ],
     );
   }

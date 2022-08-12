@@ -3,8 +3,6 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
-import 'package:admin_dashboard/src/utils/hive/hive_keys.dart';
-import 'package:admin_dashboard/src/utils/hive/hive_utils.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -25,7 +23,7 @@ class _TransactionState extends State<Transaction> {
     };
 
     if (states.any(interactiveStates.contains)) {
-      return isDarknessHover ? ColorConst.grey800 : ColorConst.tableHover;
+      return isDark ? ColorConst.grey800 : ColorConst.tableHover;
     }
     return Colors.transparent;
   }

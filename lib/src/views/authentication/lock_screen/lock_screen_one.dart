@@ -1,9 +1,9 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
-import 'package:admin_dashboard/src/constant/custom_text_field.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
-import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -30,11 +30,12 @@ class _LockScreenOneState extends State<LockScreenOne> {
               children: [
                 Column(
                   children: [
-                    (Responsive.isWeb(context))
-                        ? ConstantAuth.homeIconView(context)
-                        : const SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     ConstantAuth.headerView(
-                        Strings.locked, Strings.lockedDescription),
+                      Strings.locked,
+                      Strings.lockedDescription,
+                      context,
+                    ),
                     _bottomView(),
                   ],
                 ),
@@ -57,15 +58,15 @@ class _LockScreenOneState extends State<LockScreenOne> {
   Widget _bottomView() {
     return Container(
       width: 400,
-      decoration: const BoxDecoration(
-        color: ColorConst.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: isDark ? ColorConst.darkContainer : ColorConst.white,
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(4.0),
           bottomRight: Radius.circular(4.0),
         ),
         boxShadow: [
           BoxShadow(
-            color: ColorConst.appbarLightBG,
+            color: isDark ? Colors.transparent : ColorConst.appbarLightBG,
             blurRadius: 0.2, // soften the shadow
             spreadRadius: 0.2, //extend the shadow
           )
@@ -113,11 +114,12 @@ class _LockScreenOneState extends State<LockScreenOne> {
             ),
           ),
           FxBox.h16,
-          const CustomText(
+          CustomText(
             title: 'Robert Smith',
             fontSize: 16,
             fontWeight: FontWeight.w800,
-            textColor: ColorConst.lightFontColor,
+            textColor:
+                isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
           )
         ],
       ),
@@ -142,7 +144,7 @@ class _LockScreenOneState extends State<LockScreenOne> {
       borderRadius: 4.0,
       height: 40,
       minWidth: 110,
-      color: ColorConst.primary,
+      color: Theme.of(context).colorScheme.primary,
     );
   }
 }

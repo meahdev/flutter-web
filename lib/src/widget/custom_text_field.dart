@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -64,11 +65,14 @@ class CustomTextField extends StatelessWidget {
           suffixIconConstraints: const BoxConstraints(minWidth: 30),
           filled: true,
           hintText: hintText,
-          fillColor: ColorConst.white,
-          hintStyle: const TextStyle(
-              color: ColorConst.lightFontColor,
-              fontSize: 14,
-              fontWeight: FontWeight.w600),
+          fillColor: isDark ? ColorConst.darkContainer : ColorConst.white,
+          hintStyle: TextStyle(
+            color: isDark
+                ? ColorConst.darkFontColor.withOpacity(0.5)
+                : ColorConst.lightFontColor,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+          ),
           isDense: true,
           isCollapsed: true,
           contentPadding:
@@ -77,7 +81,10 @@ class CustomTextField extends StatelessWidget {
           errorText: errorText,
           errorStyle: const TextStyle(fontSize: 10, height: 0.7),
           enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: ColorConst.appbarLightBG),
+            borderSide: BorderSide(
+              color:
+                  isDark ? ColorConst.lightFontColor : ColorConst.appbarLightBG,
+            ),
             borderRadius: BorderRadius.circular(4),
           ),
           border: OutlineInputBorder(

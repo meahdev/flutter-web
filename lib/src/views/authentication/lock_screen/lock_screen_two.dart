@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
-import 'package:admin_dashboard/src/constant/custom_text_field.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
@@ -22,18 +23,16 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
       body: Stack(
         children: [
           ConstantAuth.homeBackground(context),
-          Expanded(
-            child: Container(
-              width: 420,
-              height: MediaQuery.of(context).size.height,
-              color: ColorConst.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _mainView(),
-                ],
-              ),
+          Container(
+            width: 420,
+            height: MediaQuery.of(context).size.height,
+            color: isDark ? ColorConst.darkContainer : ColorConst.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _mainView(),
+              ],
             ),
           ),
         ],
@@ -49,23 +48,29 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ConstantAuth.logoWithAppName(ColorConst.black),
+          ConstantAuth.logoWithAppName(
+            isDark ? ColorConst.white : ColorConst.black,
+          ),
           FxBox.h28,
-          const Center(
+          Center(
             child: CustomText(
               title: Strings.locked,
               fontSize: 18,
               fontWeight: FontWeight.w800,
-              textColor: ColorConst.lightFontColor,
+              textColor: isDark
+                  ? ColorConst.darkFooterText
+                  : ColorConst.lightFontColor,
             ),
           ),
           FxBox.h6,
-          const Center(
+          Center(
             child: CustomText(
               title: Strings.lockedDescription,
               fontSize: 14,
               fontWeight: FontWeight.w700,
-              textColor: ColorConst.lightFontColor,
+              textColor: isDark
+                  ? ColorConst.darkFooterText
+                  : ColorConst.lightFontColor,
             ),
           ),
           FxBox.h28,
@@ -79,7 +84,11 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
           FxBox.h4,
           FxBox.h60,
           ConstantAuth.login(
-              context, true, Strings.notYouReturn, Strings.signIn),
+            context,
+            true,
+            Strings.notYouReturn,
+            Strings.signIn,
+          ),
           FxBox.h16,
           ConstantAuth.footerText(),
         ],
@@ -107,11 +116,12 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
             ),
           ),
           FxBox.h16,
-          const CustomText(
+          CustomText(
             title: 'Robert Smith',
             fontSize: 16,
             fontWeight: FontWeight.w800,
-            textColor: ColorConst.lightFontColor,
+            textColor:
+                isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
           )
         ],
       ),
@@ -136,7 +146,7 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
       borderRadius: 4.0,
       height: 40,
       minWidth: 110,
-      color: ColorConst.primary,
+      color: Theme.of(context).colorScheme.primary,
     );
   }
 }

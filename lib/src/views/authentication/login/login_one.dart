@@ -1,10 +1,10 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
-import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
-import 'package:admin_dashboard/src/constant/custom_text_field.dart';
+import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:auto_route/auto_route.dart';
@@ -37,11 +37,12 @@ class _LoginOneState extends State<LoginOne> {
               children: [
                 Column(
                   children: [
-                    (Responsive.isWeb(context))
-                        ? ConstantAuth.homeIconView(context)
-                        : const SizedBox(height: 30),
+                    const SizedBox(height: 30),
                     ConstantAuth.headerView(
-                        Strings.welcomeBack, Strings.loginHeaderText),
+                      Strings.welcomeBack,
+                      Strings.loginHeaderText,
+                      context,
+                    ),
                     _bottomView(),
                   ],
                 ),
@@ -68,21 +69,17 @@ class _LoginOneState extends State<LoginOne> {
   Widget _bottomView() {
     return Container(
       width: 400,
-      decoration: const BoxDecoration(
-        color: ColorConst.white,
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: isDark ? ColorConst.darkContainer : ColorConst.white,
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(4.0),
           bottomRight: Radius.circular(4.0),
         ),
         boxShadow: [
           BoxShadow(
-            color: ColorConst.appbarLightBG,
+            color: isDark ? Colors.transparent : ColorConst.appbarLightBG,
             blurRadius: 0.2, // soften the shadow
             spreadRadius: 0.2, //extend the shadow
-            // offset: Offset(9
-            //   0.2,
-            //   0.2,
-            // ),
           )
         ],
       ),
@@ -161,9 +158,10 @@ class _LoginOneState extends State<LoginOne> {
             },
           ),
         ),
-        const CustomText(
+        CustomText(
           title: Strings.rememberMeLabel,
-          textColor: ColorConst.lightFontColor,
+          textColor:
+              isDark ? ColorConst.darkFontColor.withOpacity(0.75) : ColorConst.lightFontColor,
           fontWeight: FontWeight.w700,
         ),
       ],
@@ -181,7 +179,7 @@ class _LoginOneState extends State<LoginOne> {
       borderRadius: 4.0,
       height: 40,
       minWidth: 110,
-      color: ColorConst.primary,
+      color: Theme.of(context).colorScheme.primary,
     );
   }
 
@@ -192,7 +190,9 @@ class _LoginOneState extends State<LoginOne> {
       },
       child: FxHover(
         builder: (isHover) {
-          Color color = isHover ? ColorConst.primaryDark : ColorConst.primary;
+          Color color = isHover
+              ? ColorConst.primaryDark
+              : Theme.of(context).colorScheme.primary;
           return Row(
             children: [
               Icon(
@@ -212,33 +212,5 @@ class _LoginOneState extends State<LoginOne> {
         },
       ),
     );
-    // return TextButton(
-    //   onPressed: () {},
-    //   style: ButtonStyle(foregroundColor:
-    //       MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-    //     if (states.contains(MaterialState.hovered)) {
-    //       return ColorConst.primaryDark;
-    //     }
-    //     return ColorConst.primary;
-    //   }), overlayColor:
-    //       MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-    //     if (states.contains(MaterialState.hovered)) return Colors.white;
-    //     return Colors.white;
-    //   })),
-    //   child: Row(
-    //     children: [
-    //       const Icon(
-    //         Icons.lock,
-    //         size: 14,
-    //       ),
-    //       FxBox.w4,
-    //       const CustomText(
-    //         title: Strings.forgotPassword,
-    //         fontSize: 14,
-    //         fontWeight: FontWeight.w700,
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }
