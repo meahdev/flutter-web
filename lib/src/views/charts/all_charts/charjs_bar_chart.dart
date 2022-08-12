@@ -24,7 +24,7 @@ class ChartJsBarChart extends StatelessWidget {
     return BarTouchData(
       enabled: false,
       touchTooltipData: BarTouchTooltipData(
-        tooltipBgColor: Colors.transparent,
+        tooltipBgColor: Colors.green,
         tooltipPadding: const EdgeInsets.all(0),
         tooltipMargin: 8,
         getTooltipItem: (
@@ -147,11 +147,8 @@ class ChartJsBarChart extends StatelessWidget {
         BarChartRodData(
           width: width,
           toY: 15,
-          color: Colors.transparent,
-          rodStackItems: [
-            BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
-            BarChartRodStackItem(7, 15, Colors.grey.withOpacity(0.1)),
-          ],
+          color: Colors.green,
+      
           borderRadius: BorderRadius.zero,
         )
       ],
@@ -163,11 +160,8 @@ class ChartJsBarChart extends StatelessWidget {
         BarChartRodData(
             width: width,
             toY: 10,
-            color: Colors.transparent,
-            rodStackItems: [
-              BarChartRodStackItem(0, 5, const Color(0xff3c4bd0)),
-              BarChartRodStackItem(5, 10, Colors.grey.withOpacity(0.1)),
-            ],
+            color: Colors.green,
+         
             borderRadius: BorderRadius.zero)
       ],
       showingTooltipIndicators: [0],
@@ -178,11 +172,8 @@ class ChartJsBarChart extends StatelessWidget {
         BarChartRodData(
             width: width,
             toY: 14,
-            color: Colors.transparent,
-            rodStackItems: [
-              BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
-              BarChartRodStackItem(7, 14, Colors.grey.withOpacity(0.1)),
-            ],
+            color: Colors.green,
+         
             borderRadius: BorderRadius.zero)
       ],
       showingTooltipIndicators: [0],
@@ -193,11 +184,8 @@ class ChartJsBarChart extends StatelessWidget {
         BarChartRodData(
             width: width,
             toY: 15,
-            color: Colors.transparent,
-            rodStackItems: [
-              BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
-              BarChartRodStackItem(7, 15, Colors.grey.withOpacity(0.1)),
-            ],
+            color: Colors.green,
+         
             borderRadius: BorderRadius.zero)
       ],
       showingTooltipIndicators: [0],
@@ -208,11 +196,8 @@ class ChartJsBarChart extends StatelessWidget {
         BarChartRodData(
             width: width,
             toY: 13,
-            color: Colors.transparent,
-            rodStackItems: [
-              BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
-              BarChartRodStackItem(7, 13, Colors.grey.withOpacity(0.1)),
-            ],
+            color: Colors.green,
+        
             borderRadius: BorderRadius.zero)
       ],
       showingTooltipIndicators: [0],
@@ -223,11 +208,8 @@ class ChartJsBarChart extends StatelessWidget {
         BarChartRodData(
             width: width,
             toY: 10,
-            color: Colors.transparent,
-            rodStackItems: [
-              BarChartRodStackItem(0, 5, const Color(0xff3c4bd0)),
-              BarChartRodStackItem(5, 10, Colors.grey.withOpacity(0.1)),
-            ],
+            color: Colors.green,
+         
             borderRadius: BorderRadius.zero)
       ],
       showingTooltipIndicators: [0],
@@ -238,11 +220,8 @@ class ChartJsBarChart extends StatelessWidget {
         BarChartRodData(
             width: width,
             toY: 13,
-            color: Colors.transparent,
-            rodStackItems: [
-              BarChartRodStackItem(0, 7, const Color(0xff3c4bd0)),
-              BarChartRodStackItem(7, 13, Colors.grey.withOpacity(0.1)),
-            ],
+            color: Colors.green,
+         
             borderRadius: BorderRadius.zero)
       ],
       showingTooltipIndicators: [0],
@@ -253,11 +232,8 @@ class ChartJsBarChart extends StatelessWidget {
         BarChartRodData(
             width: width,
             toY: 5,
-            color: Colors.transparent,
-            rodStackItems: [
-              BarChartRodStackItem(0, 2, const Color(0xff3c4bd0)),
-              BarChartRodStackItem(2, 5, Colors.grey.withOpacity(0.1)),
-            ],
+            color: Colors.green,
+      
             borderRadius: BorderRadius.zero)
       ],
       showingTooltipIndicators: [0],
@@ -268,11 +244,8 @@ class ChartJsBarChart extends StatelessWidget {
         BarChartRodData(
             width: width,
             toY: 10,
-            color: Colors.transparent,
-            rodStackItems: [
-              BarChartRodStackItem(0, 5, const Color(0xff3c4bd0)),
-              BarChartRodStackItem(5, 10, Colors.grey.withOpacity(0.1)),
-            ],
+            color: Colors.green,
+        
             borderRadius: BorderRadius.zero)
       ],
       showingTooltipIndicators: [0],

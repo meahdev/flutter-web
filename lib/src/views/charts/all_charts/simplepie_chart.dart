@@ -14,38 +14,37 @@ class SimplePieChart extends StatelessWidget {
               PieChartData(
                   sectionsSpace: 0,
                   centerSpaceRadius: 0,
-                  sections: getSectionData(MediaQuery.of(context).size.width / 2.3)
+                  sections: getSectionData()
               )),
         ),
       ],
     );
   }
 }
-List<PieChartSectionData> getSectionData(double screenWidth) {
-  double radius = screenWidth / 4.44;
+List<PieChartSectionData> getSectionData() {
   return [
     PieChartSectionData(
       value: 20,
       title: '20%',
-      radius: radius,
+      radius: 170,
       color: const Color(0xff6d6fb9),
     ),
     PieChartSectionData(
       value: 35,
       title: '35%',
-      radius: radius,
+      radius: 170,
       color:  const Color(0xff4d938f),
     ),
     PieChartSectionData(
       value: 15,
       title: '15%',
-      radius: radius,
+      radius: 170,
       color: const Color(0xff3b3d40),
     ),
     PieChartSectionData(
       value: 30,
       title: '30%',
-      radius: radius,
+      radius: 170 ,
       color: const Color(0xffeaba67),
     ),
   ];

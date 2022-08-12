@@ -63,6 +63,7 @@ class BarChartSample2State extends State<BarChartSample2> {
                 child: BarChart(
                   BarChartData(
                     maxY: 20,
+
                     titlesData: FlTitlesData(
                       show: true,
                       rightTitles: AxisTitles(

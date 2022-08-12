@@ -31,7 +31,8 @@ class _ChartJsChartState extends State<ChartJsChart> {
       ] : [
           Row(
           children: [Expanded(
-              child: _card(ChartType.colomnChart, context, 'Column Chart')),
+              child: _card(
+                  ChartType.chartJsBarChart, context, 'Column Chart')),
           ],
         ),
         FxBox.h20,
@@ -176,13 +177,13 @@ getChartData(ChartType chartType, BuildContext context) {
           _richText('DeActivated', 65214, context),
         ],
       );
-    } else if (chartType == ChartType.colomnChart) {
+    } else if (chartType == ChartType.chartJsBarChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 86541, context),
-          _richText('Pending', 2541, context),
-          _richText('DeActivated', 102030, context),
+          _richText('Activated', 2541, context),
+          _richText('Pending', 84845, context),
+          _richText('DeActivated', 12001, context),
         ],
       );
     }

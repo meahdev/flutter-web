@@ -84,7 +84,7 @@ class ColumnChart extends StatelessWidget {
     }
     return SideTitleWidget(
       axisSide: meta.axisSide,
-      space: 4.0,
+      space: 16.0,
       child: Text(text, style: style),
     );
   }
