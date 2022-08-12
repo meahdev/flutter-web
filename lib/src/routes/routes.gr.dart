@@ -57,7 +57,7 @@ class AppRouter extends _i9.RootStackRouter {
       return _i9.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i7.CupertinoIcon());
     },
-    Calender.name: (routeData) {
+    Calendar.name: (routeData) {
       return _i9.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i8.Calendar());
     }
@@ -79,7 +79,7 @@ class AppRouter extends _i9.RootStackRouter {
           _i9.RouteConfig(Badge.name, path: 'badge', parent: MenuBar.name),
           _i9.RouteConfig(CupertinoIcon.name,
               path: 'cupertino-icon', parent: MenuBar.name),
-          _i9.RouteConfig(Calender.name, path: 'calender', parent: MenuBar.name)
+          _i9.RouteConfig(Calendar.name, path: 'calender', parent: MenuBar.name)
         ])
       ];
 }
@@ -142,9 +142,9 @@ class CupertinoIcon extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i8.Calender]
-class Calender extends _i9.PageRouteInfo<void> {
-  const Calender() : super(Calender.name, path: 'calender');
+/// [_i8.Calendar]
+class Calendar extends _i9.PageRouteInfo<void> {
+  const Calendar() : super(Calendar.name, path: 'calender');
 
-  static const String name = 'Calender';
+  static const String name = 'Calendar';
 }

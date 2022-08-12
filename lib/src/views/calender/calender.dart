@@ -1,6 +1,7 @@
-import 'package:admin_dashboard/src/routes/routes.gr.dart';
+import 'package:admin_dashboard/src/provider/calendar/calendar_format/calendar_format_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -12,11 +13,19 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  TextEditingController eventController = TextEditingController();
-  String dropdownValue = '--Select--';
-  CalendarFormat calendarFormat = CalendarFormat.month;
+  final CalendarFormatBloc _calendarFormatBloc = CalendarFormatBloc();
 
-  Map<DateTime, List<Map<String, dynamic>>> eventsList = {
+  TextEditingController eventController = TextEditingController();
+
+  PageController? newpageController;
+
+  String dropdownValue = '--Select--';
+
+  double currentMonthPageIndex = 0.0;
+
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+
+  Map<DateTime, List<Map<String, dynamic>>> eventMap = {
     DateTime.parse('2022-08-13 00:00:00.000Z'): [
       {'eventName': 'Holiday', 'dropdownValue': 4}
     ],
@@ -38,7 +47,7 @@ class _CalendarState extends State<Calendar> {
     ]
   };
 
-  List<String> dropDownList = [
+  List<String> dropDownList = const [
     '--Select--',
     'Danger',
     'Success',
@@ -70,13 +79,27 @@ class _CalendarState extends State<Calendar> {
     'Sep',
     'Oct',
     'Nov',
-    'Dec',
+    'Dec'
   ];
 
   @override
+  void initState() {
+    _calendarFormatBloc.add(CalendarFormatEvent.loading(
+        calendarFormat: CalendarFormat.month, eventsList: eventMap));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    newpageController?.dispose();
+    eventController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      controller: ScrollController(),
+    return BlocProvider(
+      create: (_) => _calendarFormatBloc,
       child: Responsive.isWeb(context)
           ? Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -96,9 +119,8 @@ class _CalendarState extends State<Calendar> {
               children: [
                 _mobileView(),
                 Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: _tableCalendar(context: context),
-                )
+                    padding: const EdgeInsets.all(12),
+                    child: _tableCalendar(context: context))
               ],
             ),
     );
@@ -278,23 +300,22 @@ class _CalendarState extends State<Calendar> {
                 child: MaterialButton(
                   minWidth: 10,
                   onPressed: () {
-                    setState(() {
-                      eventController.text = list[index]["eventName"];
-                      dropdownValue = dropDownList
-                          .elementAt(list[index]["dropdownValue"] ?? 0);
-                    });
+                    eventController.text = list[index]["eventName"];
+                    dropdownValue = dropDownList
+                        .elementAt(list[index]["dropdownValue"] ?? 0);
                     _displayTextInputDialog(
                         context: context,
                         savePressed: () {
                           _handleSaveTap(date: date);
                         },
                         deletePressed: () {
-                          setState(() {
-                            list.removeAt(index);
-                            eventsList[date] = list;
-                            eventController.text = '';
-                            dropdownValue = '--Select--';
-                          });
+                          list.removeAt(index);
+                          eventMap[date] = list;
+                          eventController.clear();
+                          dropdownValue = '--Select--';
+                          _calendarFormatBloc.add(CalendarFormatEvent.loading(
+                              calendarFormat: _calendarFormat,
+                              eventsList: eventMap));
                           Navigator.pop(context);
                         });
                   },
@@ -310,290 +331,307 @@ class _CalendarState extends State<Calendar> {
   }
 
   void _handleSaveTap({required DateTime date}) {
-    if (eventController.text.isNotEmpty && dropdownValue != '--Select--') {
-      bool isContains = eventsList.containsKey(date);
+    if (eventController.text.isNotEmpty) {
+      bool isContains = eventMap.containsKey(date);
       if (isContains) {
-        final values = eventsList[date] as List<Map<String, dynamic>>;
+        final values = eventMap[date] as List<Map<String, dynamic>>;
         values.add({
           'eventName': eventController.text.trim(),
           'dropdownValue':
               dropDownList.indexWhere((element) => element == dropdownValue)
         });
-        eventsList[date] = values;
-        eventController.text = '';
+        eventController.clear();
+        eventMap[date] = values;
+        debugPrint(eventMap.toString());
         dropdownValue = '--Select--';
-        setState(() {});
+        _calendarFormatBloc.add(CalendarFormatEvent.loading(
+            calendarFormat: _calendarFormat, eventsList: eventMap));
         Navigator.pop(context);
       } else {
-        eventsList[date] = [
+        eventMap[date] = [
           {
             'eventName': eventController.text.trim(),
             'dropdownValue':
                 dropDownList.indexWhere((element) => element == dropdownValue)
           }
         ];
-        eventController.text = '';
+        eventController.clear();
         dropdownValue = '--Select--';
-        setState(() {});
+        _calendarFormatBloc.add(CalendarFormatEvent.loading(
+            calendarFormat: _calendarFormat, eventsList: eventMap));
         Navigator.pop(context);
       }
     }
   }
 
   Widget _tableCalendar({required BuildContext context}) {
-    return TableCalendar(
-      rowHeight: 100,
-      daysOfWeekHeight: 40,
-      startingDayOfWeek: StartingDayOfWeek.sunday,
-      daysOfWeekStyle: const DaysOfWeekStyle(
-        decoration: BoxDecoration(
-          border: Border.symmetric(vertical: BorderSide(color: Colors.red)),
-        ),
-        weekdayStyle: TextStyle(color: Color(0xFF4F4F4F)),
-        weekendStyle: TextStyle(color: Color(0xFF6A6A6A)),
-      ),
-      firstDay: DateTime.utc(2010, 10, 16),
-      lastDay: DateTime.utc(2030, 3, 14),
-      focusedDay: DateTime.now(),
-      headerVisible: true,
-      availableCalendarFormats: const {
-        CalendarFormat.month: 'Month',
-        CalendarFormat.week: 'Week',
-        CalendarFormat.twoWeeks: 'twoWeeks',
-      },
-      onFormatChanged: (format) => setState(() => calendarFormat = format),
-      calendarFormat: calendarFormat,
-      calendarStyle: CalendarStyle(
-        defaultDecoration: BoxDecoration(
-          border: Border.all(color: Colors.black, width: 0.5),
-        ),
-        cellMargin: const EdgeInsets.all(0.0),
-        canMarkersOverflow: true,
-        selectedDecoration: const BoxDecoration(color: Colors.red),
-        todayTextStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Color(0xFFFAFAFA),
-            fontSize: 18.0),
-        tableBorder: const TableBorder(
-          top: BorderSide(color: Color(0xFFe9ecef)),
-          bottom: BorderSide(color: Color(0xFFe9ecef)),
-          left: BorderSide(color: Color(0xFFe9ecef)),
-          right: BorderSide(color: Color(0xFFe9ecef)),
-        ),
-        todayDecoration:
-            const BoxDecoration(color: Colors.orange, shape: BoxShape.circle),
-      ),
-      headerStyle: const HeaderStyle(
-          titleCentered: true,
-          formatButtonShowsNext: false,
-          formatButtonVisible: false,
-          leftChevronIcon: Icon(
-            Icons.chevron_left,
-            color: Colors.black,
-            size: 30,
-          ),
-          rightChevronIcon: Icon(
-            Icons.chevron_right,
-            color: Colors.black,
-            size: 30,
-          ),
-          leftChevronPadding: EdgeInsets.all(8),
-          rightChevronPadding: EdgeInsets.all(8),
-          leftChevronMargin: EdgeInsets.all(2),
-          rightChevronMargin: EdgeInsets.all(2)
-          // formatButtonDecoration: BoxDecoration(
-          //   color: Colors.orange,
-          //   borderRadius: BorderRadius.circular(20.0),
-          // ),
-          // formatButtonTextStyle: TextStyle(color: Colors.black),
-          ),
-      onDaySelected: (date, events) {
-        _displayTextInputDialog(
-            context: context,
-            savePressed: () {
-              _handleSaveTap(date: date);
-            },
-            deletePressed: () {});
-      },
-      calendarBuilders: CalendarBuilders(
-          headerTitleBuilder: (context, day) => Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      // MaterialButton(
-                      //     onPressed: () {},
-                      //     color: const Color(0xFF626DE4),
-                      //     visualDensity:
-                      //         VisualDensity.compact,
-                      //     shape:
-                      //         const RoundedRectangleBorder(
-                      //             borderRadius:
-                      //                 BorderRadius.only(
-                      //                     topLeft: Radius
-                      //                         .circular(5),
-                      //                     bottomLeft: Radius
-                      //                         .circular(
-                      //                             5))),
-                      //     minWidth: 15,
-                      //     height: 43,
-                      //     child: const Icon(
-                      //       Icons.navigate_before,
-                      //       color: Colors.white,
-                      //     )),
-                      // MaterialButton(
-                      //     color: const Color(0xFF626DE4),
-                      //     visualDensity:
-                      //         VisualDensity.compact,
-                      //     shape:
-                      //         const RoundedRectangleBorder(
-                      //             borderRadius:
-                      //                 BorderRadius.only(
-                      //                     topRight: Radius
-                      //                         .circular(5),
-                      //                     bottomRight:
-                      //                         Radius
-                      //                             .circular(
-                      //                                 5))),
-                      //     minWidth: 15,
-                      //     height: 43,
-                      //     onPressed: () {},
-                      //     child: const Icon(
-                      //       Icons.navigate_next,
-                      //       color: Colors.white,
-                      //     )),
-                      // FxBox.w10,
-                      Responsive.isWeb(context)
-                          ? MaterialButton(
-                              onPressed: () {},
-                              color: const Color(0xFF626DE4).withOpacity(
-                                  day.month == DateTime.now().month ? 0.5 : 1),
-                              visualDensity: VisualDensity.compact,
-                              minWidth: 15,
-                              // mouseCursor: SystemMouseCursors.allScroll,
-                              height: 43,
-                              child: const Text(
-                                ' Today ',
-                                style: TextStyle(
-                                    fontSize: 14, color: Colors.white),
-                              ))
-                          : const SizedBox.shrink(),
-                    ],
-                  ),
-                  Text(
-                    '${months.elementAt(day.month - 1)} ${day.year}'
-                        .toUpperCase(),
-                    style: const TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF5B626B),
-                        fontWeight: FontWeight.w600),
-                  ),
-                  Row(
-                    children: [
-                      MaterialButton(
-                          onPressed: () {
-                            calendarFormat != CalendarFormat.month
-                                ? setState(() {
-                                    calendarFormat = CalendarFormat.month;
-                                  })
-                                : null;
-                          },
-                          color: calendarFormat != CalendarFormat.month
-                              ? const Color(0xFF626ED4)
-                              : const Color(0xFF4E58AA),
-                          visualDensity: VisualDensity.compact,
-                          shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(5),
-                                  bottomLeft: Radius.circular(5))),
-                          minWidth: 15,
-                          height: 43,
-                          child: const Text(
-                            ' Month ',
-                            style: TextStyle(fontSize: 14, color: Colors.white),
-                          )),
-                      MaterialButton(
-                          color: calendarFormat != CalendarFormat.week
-                              ? const Color(0xFF626DE4)
-                              : const Color(0xFF4E58AA),
-                          minWidth: 15,
-                          height: 43,
-                          visualDensity: VisualDensity.compact,
-                          shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(Radius.zero)),
-                          onPressed: () {
-                            calendarFormat != CalendarFormat.week
-                                ? setState(() {
-                                    calendarFormat = CalendarFormat.week;
-                                  })
-                                : null;
-                          },
-                          child: const Text(
-                            ' Week ',
-                            style: TextStyle(fontSize: 14, color: Colors.white),
-                          )),
-                      MaterialButton(
-                          color: calendarFormat != CalendarFormat.twoWeeks
-                              ? const Color(0xFF626DE4)
-                              : const Color(0xFF4E58AA),
-                          minWidth: 15,
-                          height: 43,
-                          visualDensity: VisualDensity.compact,
-                          shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(5),
-                                  bottomRight: Radius.circular(5))),
-                          onPressed: () {
-                            calendarFormat != CalendarFormat.twoWeeks
-                                ? setState(() {
-                                    calendarFormat = CalendarFormat.twoWeeks;
-                                  })
-                                : null;
-                          },
-                          child: const Text(
-                            ' 2 Week ',
-                            style: TextStyle(fontSize: 14, color: Colors.white),
-                          )),
-                    ],
-                  ),
-                ],
+    return BlocBuilder<CalendarFormatBloc, CalendarFormatState>(
+      builder: (context, state) {
+        return state.when(
+          initial: () => const CircularProgressIndicator(),
+          loaded: (calendarFormat, eventsList) {
+            return TableCalendar(
+              onCalendarCreated: (pageController) async {
+                newpageController = pageController;
+                await Future.delayed(const Duration(seconds: 2));
+
+                currentMonthPageIndex == 0.0
+                    ? setState(() {
+                        currentMonthPageIndex = pageController.page!;
+                      })
+                    : null;
+              },
+              rowHeight: 100,
+              daysOfWeekHeight: 40,
+              startingDayOfWeek: StartingDayOfWeek.sunday,
+              daysOfWeekStyle: const DaysOfWeekStyle(
+                decoration: BoxDecoration(
+                  border:
+                      Border.symmetric(vertical: BorderSide(color: Colors.red)),
+                ),
+                weekdayStyle: TextStyle(color: Color(0xFF4F4F4F)),
+                weekendStyle: TextStyle(color: Color(0xFF6A6A6A)),
               ),
-          todayBuilder: (context, date, events) {
-            List<Map<String, dynamic>> list = eventsList[date] ?? [];
-            return Stack(
-              children: [
-                Container(
-                    alignment: Alignment.topRight,
-                    padding: const EdgeInsets.all(3),
-                    decoration: const BoxDecoration(
-                      color: Color(0xFFd7edfe),
-                    ),
-                    child: Text(
-                      '${date.day} ',
-                      style: const TextStyle(color: Color(0xFF226295)),
-                    )),
-                _eventButton(list: list, date: date)
-              ],
+              firstDay: DateTime.utc(2010, 10, 16),
+              lastDay: DateTime.utc(2030, 3, 14),
+              focusedDay: DateTime.now(),
+              headerVisible: true,
+              availableCalendarFormats: const {
+                CalendarFormat.month: 'Month',
+                CalendarFormat.week: 'Week',
+                CalendarFormat.twoWeeks: 'twoWeeks',
+              },
+              calendarFormat: calendarFormat,
+              calendarStyle: CalendarStyle(
+                defaultDecoration: BoxDecoration(
+                  border: Border.all(color: Colors.black, width: 0.5),
+                ),
+                cellMargin: const EdgeInsets.all(0.0),
+                canMarkersOverflow: true,
+                selectedDecoration: const BoxDecoration(color: Colors.red),
+                todayTextStyle: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFFFAFAFA),
+                    fontSize: 18.0),
+                tableBorder: const TableBorder(
+                  top: BorderSide(color: Color(0xFFe9ecef)),
+                  bottom: BorderSide(color: Color(0xFFe9ecef)),
+                  left: BorderSide(color: Color(0xFFe9ecef)),
+                  right: BorderSide(color: Color(0xFFe9ecef)),
+                ),
+                todayDecoration: const BoxDecoration(
+                    color: Colors.orange, shape: BoxShape.circle),
+              ),
+              headerStyle: const HeaderStyle(
+                titleCentered: true,
+                formatButtonShowsNext: false,
+                formatButtonVisible: false,
+                leftChevronVisible: false,
+                rightChevronVisible: false,
+                // leftChevronIcon: Icon(
+                //   Icons.chevron_left,
+                //   color: Colors.black,
+                //   size: 30,
+                // ),
+                // rightChevronIcon: Icon(
+                //   Icons.chevron_right,
+                //   color: Colors.black,
+                //   size: 30,
+                // ),
+                // leftChevronPadding: EdgeInsets.all(8),
+                // rightChevronPadding: EdgeInsets.all(8),
+                // leftChevronMargin: EdgeInsets.all(2),
+                // rightChevronMargin: EdgeInsets.all(2)
+              ),
+              onDaySelected: (date, events) {
+                _displayTextInputDialog(
+                    context: context,
+                    savePressed: () {
+                      _handleSaveTap(date: date);
+                    },
+                    deletePressed: () {});
+              },
+              calendarBuilders: CalendarBuilders(
+                  headerTitleBuilder: (context, day) => Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              FxButton(
+                                onPressed: () {
+                                  if (newpageController != null) {
+                                    newpageController!.previousPage(
+                                        duration:
+                                            const Duration(microseconds: 400),
+                                        curve: Curves.easeInOut);
+                                  }
+                                },
+                                icon: const Icon(
+                                  Icons.navigate_before,
+                                  color: Colors.white,
+                                ),
+                                borderRadius: 3,
+                                color: const Color(0xFF626DE4),
+                              ),
+                              FxButton(
+                                onPressed: () {
+                                  if (newpageController != null) {
+                                    newpageController!.nextPage(
+                                        duration:
+                                            const Duration(milliseconds: 400),
+                                        curve: Curves.easeIn);
+                                  }
+                                },
+                                icon: const Icon(
+                                  Icons.navigate_next,
+                                  color: Colors.white,
+                                ),
+                                borderRadius: 3,
+                                color: const Color(0xFF626DE4),
+                              ),
+                              FxBox.w10,
+                              Responsive.isWeb(context)
+                                  ? FxButton(
+                                      onPressed: () {
+                                        if (newpageController!.page !=
+                                            currentMonthPageIndex) {
+                                          if (newpageController != null) {
+                                            newpageController!.jumpToPage(
+                                                currentMonthPageIndex.toInt());
+                                          }
+                                        }
+                                      },
+                                      text: 'Today',
+                                      borderRadius: 3,
+                                      color: const Color(0xFF626DE4)
+                                          .withOpacity(
+                                              day.month == DateTime.now().month
+                                                  ? 0.5
+                                                  : 1),
+                                      height: 43,
+                                    )
+                                  : const SizedBox.shrink(),
+                            ],
+                          ),
+                          Text(
+                            '${months.elementAt(day.month - 1)} ${day.year}'
+                                .toUpperCase(),
+                            style: const TextStyle(
+                                fontSize: 16,
+                                color: Color(0xFF5B626B),
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Row(
+                            children: [
+                              FxButton(
+                                onPressed: () {
+                                  calendarFormat != CalendarFormat.month
+                                      ? _calendarFormat = CalendarFormat.month
+                                      : null;
+
+                                  calendarFormat != CalendarFormat.month
+                                      ? _calendarFormatBloc.add(
+                                          CalendarFormatEvent.loading(
+                                              calendarFormat:
+                                                  CalendarFormat.month,
+                                              eventsList: eventMap))
+                                      : null;
+                                },
+                                text: 'Month',
+                                borderRadius: 0,
+                                color: calendarFormat != CalendarFormat.week
+                                    ? const Color(0xFF626DE4)
+                                    : const Color(0xFF4E58AA),
+                                height: 43,
+                              ),
+                              FxButton(
+                                onPressed: () {
+                                  calendarFormat != CalendarFormat.week
+                                      ? _calendarFormat = CalendarFormat.week
+                                      : null;
+                                  calendarFormat != CalendarFormat.week
+                                      ? _calendarFormatBloc.add(
+                                          CalendarFormatEvent.loading(
+                                              calendarFormat:
+                                                  CalendarFormat.week,
+                                              eventsList: eventMap))
+                                      : null;
+                                },
+                                text: 'Week',
+                                borderRadius: 0,
+                                color: calendarFormat != CalendarFormat.week
+                                    ? const Color(0xFF626DE4)
+                                    : const Color(0xFF4E58AA),
+                                height: 43,
+                              ),
+                              FxButton(
+                                onPressed: () {
+                                  calendarFormat != CalendarFormat.twoWeeks
+                                      ? _calendarFormat =
+                                          CalendarFormat.twoWeeks
+                                      : null;
+
+                                  calendarFormat != CalendarFormat.twoWeeks
+                                      ? _calendarFormatBloc.add(
+                                          CalendarFormatEvent.loading(
+                                              calendarFormat:
+                                                  CalendarFormat.twoWeeks,
+                                              eventsList: eventMap))
+                                      : null;
+                                },
+                                text: '2 Week',
+                                borderRadius: 0,
+                                color: calendarFormat != CalendarFormat.week
+                                    ? const Color(0xFF626DE4)
+                                    : const Color(0xFF4E58AA),
+                                height: 43,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                  todayBuilder: (context, date, events) {
+                    List<Map<String, dynamic>> list = eventsList[date] ?? [];
+                    return Stack(
+                      children: [
+                        Container(
+                            alignment: Alignment.topRight,
+                            padding: const EdgeInsets.all(3),
+                            decoration: const BoxDecoration(
+                              color: Color(0xFFd7edfe),
+                            ),
+                            child: Text(
+                              '${date.day} ',
+                              style: const TextStyle(color: Color(0xFF226295)),
+                            )),
+                        _eventButton(list: list, date: date)
+                      ],
+                    );
+                  },
+                  defaultBuilder: (context, day, focusedDay) {
+                    List<Map<String, dynamic>> list = eventsList[day] ?? [];
+
+                    return Stack(
+                      children: [
+                        Container(
+                            alignment: Alignment.topRight,
+                            padding: const EdgeInsets.all(3),
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: const Color(0xFFe9ecef),
+                                    width: 0.5)),
+                            child: Text(
+                              '${day.day}',
+                              style: const TextStyle(color: Colors.black),
+                            )),
+                        _eventButton(list: list, date: day),
+                      ],
+                    );
+                  }),
             );
           },
-          defaultBuilder: (context, day, focusedDay) {
-            List<Map<String, dynamic>> list = eventsList[day] ?? [];
-            return Stack(
-              children: [
-                Container(
-                    alignment: Alignment.topRight,
-                    padding: const EdgeInsets.all(3),
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: const Color(0xFFe9ecef), width: 0.5)),
-                    child: Text(
-                      '${day.day}',
-                      style: const TextStyle(color: Colors.black),
-                    )),
-                _eventButton(list: list, date: day),
-              ],
-            );
-          }),
+        );
+      },
     );
   }
 
@@ -622,9 +660,8 @@ class _CalendarState extends State<Calendar> {
                     IconButton(
                         splashRadius: 25,
                         onPressed: () {
-                          eventController.text = '';
+                          eventController.clear();
                           dropdownValue = '--Select--';
-                          setState(() {});
                           Navigator.pop(context);
                         },
                         icon: const Icon(Icons.clear))
@@ -640,7 +677,9 @@ class _CalendarState extends State<Calendar> {
                 const Text(
                   "Event Name",
                   style: TextStyle(
-                      fontWeight: FontWeight.w600, color: Color(0xFF5B626B)),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: Color(0xFF5B626B)),
                 ),
                 FxBox.h10,
                 TextField(
@@ -656,11 +695,13 @@ class _CalendarState extends State<Calendar> {
                 FxBox.h20,
                 const Text(
                   "Category",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                      color: Color(0xFF5B626B)),
                 ),
                 FxBox.h10,
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
                   height: 35,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(3),
@@ -669,23 +710,27 @@ class _CalendarState extends State<Calendar> {
                   child: StatefulBuilder(
                     builder: (context, setState) {
                       return DropdownButtonHideUnderline(
-                        child: DropdownButton<String>(
-                          value: dropdownValue,
-                          icon: const Icon(Icons.keyboard_arrow_down_sharp),
-                          elevation: 16,
-                          style: const TextStyle(color: Colors.black),
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              dropdownValue = newValue!;
-                            });
-                          },
-                          items: dropDownList
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
+                        child: ButtonTheme(
+                          alignedDropdown: true,
+                          child: DropdownButton<String>(
+                            isExpanded: true,
+                            value: dropdownValue,
+                            icon: const Icon(Icons.keyboard_arrow_down_sharp),
+                            elevation: 16,
+                            style: const TextStyle(color: Colors.black),
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownValue = newValue!;
+                              });
+                            },
+                            items: dropDownList
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
                         ),
                       );
                     },
@@ -696,55 +741,35 @@ class _CalendarState extends State<Calendar> {
             actions: <Widget>[
               Row(
                 children: [
-                  SizedBox(
-                    height: 40,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6.0)),
-                            primary: Colors.red,
-                            elevation: 0),
-                        onPressed: deletePressed,
-                        child: const Text("Delete",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14))),
+                  FxButton(
+                    onPressed: deletePressed,
+                    text: 'Delete',
+                    borderRadius: 5,
+                    color: Colors.red,
+                    height: 50,
                   ),
                   const Spacer(),
-                  SizedBox(
-                    height: 40,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6.0)),
-                            primary: Colors.grey.shade200,
-                            elevation: 0),
-                        onPressed: () {
-                          eventController.text = '';
-                          dropdownValue = '--Select--';
-                          setState(() {});
-                          Navigator.pop(context);
-                        },
-                        child: const Text(
-                          "Close",
-                          style: TextStyle(color: Colors.black),
-                        )),
+                  FxButton(
+                    onPressed: () {
+                      eventController.clear();
+                      dropdownValue = '--Select--';
+                      Navigator.pop(context);
+                    },
+                    text: 'Close',
+                    textColor: Colors.black,
+                    borderRadius: 5,
+                    color: Colors.grey.shade200,
+                    height: 50,
                   ),
-                  const SizedBox(
-                    width: 10,
+                  FxBox.w10,
+                  FxButton(
+                    onPressed: savePressed,
+                    text: 'Save',
+                    textColor: Colors.black,
+                    borderRadius: 5,
+                    color: Colors.teal,
+                    height: 50,
                   ),
-                  SizedBox(
-                    height: 40,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6.0)),
-                            primary: Colors.teal,
-                            elevation: 0),
-                        onPressed: savePressed,
-                        child: const Text("Save",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14))),
-                  )
                 ],
               )
             ],

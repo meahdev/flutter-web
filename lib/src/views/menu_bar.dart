@@ -42,14 +42,14 @@ class _MenuBarState extends State<MenuBar> {
     ['Cupertino Icons']
   ];
 
-  final List<PageRouteInfo<dynamic>> _routes = const [
-    TestWidget(),
-    Button(),
-    Rating(),
-    Badge(),
-    Toast(),
-    CupertinoIcon(),
-    Calender()
+  final List<PageRouteInfo<dynamic>> _routes = [
+    const TestWidget(),
+    const Button(),
+    const Rating(),
+    const Badge(),
+    const Toast(),
+    const CupertinoIcon(),
+    const Calendar()
   ];
 
   @override
