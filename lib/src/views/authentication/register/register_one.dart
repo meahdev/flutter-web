@@ -14,9 +14,9 @@ class RegisterOne extends StatefulWidget {
 }
 
 class _RegisterOneState extends State<RegisterOne> {
-  final _emailController = TextEditingController();
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,8 @@ class _RegisterOneState extends State<RegisterOne> {
           ),
         ),
         FxBox.h48,
-        ConstantAuth.login(context, false),
+        ConstantAuth.login(
+            context, false, Strings.alreayAccountExist, Strings.login),
         FxBox.h16,
         ConstantAuth.footerText(),
       ]),

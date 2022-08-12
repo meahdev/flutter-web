@@ -1,11 +1,13 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
+import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
@@ -18,8 +20,8 @@ class LoginOne extends StatefulWidget {
 }
 
 class _LoginOneState extends State<LoginOne> {
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   final CheckboxBloc _checkboxBloc = CheckboxBloc();
 
@@ -186,7 +188,7 @@ class _LoginOneState extends State<LoginOne> {
   Widget _forgotPasswordButton() {
     return GestureDetector(
       onTap: () {
-        // on pressed
+        context.router.push(const RecoverPasswordOne());
       },
       child: FxHover(
         builder: (isHover) {

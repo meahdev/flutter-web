@@ -1,6 +1,9 @@
+import 'package:admin_dashboard/src/views/authentication/lock_screen/lock_screen_one.dart';
+import 'package:admin_dashboard/src/views/authentication/lock_screen/lock_screen_two.dart';
 import 'package:admin_dashboard/src/views/authentication/login/login_one.dart';
 import 'package:admin_dashboard/src/views/authentication/login/login_two.dart';
 import 'package:admin_dashboard/src/views/authentication/recover_password/recover_password_one.dart';
+import 'package:admin_dashboard/src/views/authentication/recover_password/recover_password_two.dart';
 import 'package:admin_dashboard/src/views/authentication/register/register_one.dart';
 import 'package:admin_dashboard/src/views/authentication/register/register_two.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
@@ -41,6 +44,9 @@ import 'package:auto_route/auto_route.dart';
     AutoRoute(path: '/register-one', page: RegisterOne),
     AutoRoute(path: '/register-two', page: RegisterTwo),
     AutoRoute(path: '/recover-password', page: RecoverPasswordOne),
+    AutoRoute(path: '/recover-password-two', page: RecoverPasswordTwo),
+    AutoRoute(path: '/lock-screen-one', page: LockScreenOne),
+    AutoRoute(path: '/lock-screen-two', page: LockScreenTwo),
   ],
 )
 class $AppRouter {}

@@ -1,11 +1,12 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
+import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/custom_text_field.dart';
-import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
@@ -18,8 +19,8 @@ class LoginTwo extends StatefulWidget {
 }
 
 class _LoginTwoState extends State<LoginTwo> {
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   final CheckboxBloc _checkboxBloc = CheckboxBloc();
 
@@ -28,16 +29,7 @@ class _LoginTwoState extends State<LoginTwo> {
     return Scaffold(
       body: Stack(
         children: [
-          Expanded(
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
-              child: Image.asset(
-                Images.loginBg,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
+          ConstantAuth.homeBackground(context),
           Expanded(
             child: Container(
               width: 420,
@@ -65,25 +57,7 @@ class _LoginTwoState extends State<LoginTwo> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                width: 30,
-                child: Image.asset(
-                  Images.logosm,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              FxBox.w4,
-              CustomText(
-                title: Strings.siddhatva.toUpperCase(),
-                fontSize: 24,
-                fontWeight: FontWeight.w600,
-                textColor: ColorConst.black,
-              ),
-            ],
-          ),
+          ConstantAuth.logoWithAppName(ColorConst.black),
           FxBox.h28,
           const Center(
             child: CustomText(
@@ -201,7 +175,7 @@ class _LoginTwoState extends State<LoginTwo> {
   Widget _forgotPasswordButton() {
     return GestureDetector(
       onTap: () {
-        // on pressed
+        context.router.push(const RecoverPasswordTwo());
       },
       child: FxHover(
         builder: (isHover) {

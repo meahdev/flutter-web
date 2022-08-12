@@ -113,4 +113,12 @@ class Strings {
   static const String signInHere = 'Sign In here';
   static const String emailInstructions =
       'Enter your Email and instructions will be sent to you!';
+
+  // Lock Screen
+  static const String locked = 'Locked';
+  static const String unLock = 'Unlock';
+  static const String notYouReturn = 'Not you ? return ';
+  static const String signIn = 'Sign In';
+  static const String lockedDescription =
+      'Hello Smith, enter your password to unlock the screen!';
 }

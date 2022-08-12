@@ -440,6 +440,12 @@ class _MenuBarState extends State<MenuBar> {
                 context.router.push(const RegisterTwo());
               } else if (items[index] == 'Recover Password 1') {
                 context.router.push(const RecoverPasswordOne());
+              } else if (items[index] == 'Recover Password 2') {
+                context.router.push(const RecoverPasswordTwo());
+              } else if (items[index] == 'Lock Screen 1') {
+                context.router.push(const LockScreenOne());
+              } else if (items[index] == 'Lock Screen 2') {
+                context.router.push(const LockScreenTwo());
               } else {
                 tabsRouter.setActiveIndex(getRouteIndex(items[index]));
               }

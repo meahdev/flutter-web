@@ -138,12 +138,13 @@ class ConstantAuth {
     );
   }
 
-  static Widget login(BuildContext context, bool isScreen) {
+  static Widget login(
+      BuildContext context, bool isScreen, String title, String subTitle) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const CustomText(
-          title: Strings.alreayAccountExist,
+        CustomText(
+          title: title,
           textColor: ColorConst.lightFontColor,
           fontSize: 14,
           fontWeight: FontWeight.w700,
@@ -156,8 +157,8 @@ class ConstantAuth {
               context.router.push(const LoginOne());
             }
           },
-          child: const CustomText(
-            title: Strings.login,
+          child: CustomText(
+            title: subTitle,
             fontSize: 14,
             textColor: ColorConst.primary,
             fontWeight: FontWeight.w700,
@@ -179,6 +180,40 @@ class ConstantAuth {
           child: const Icon(Icons.home),
         ),
       ),
+    );
+  }
+
+  static Widget homeBackground(BuildContext context) {
+    return Expanded(
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Image.asset(
+          Images.loginBg,
+          fit: BoxFit.cover,
+        ),
+      ),
+    );
+  }
+
+  static Widget logoWithAppName(Color color) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: 30,
+          child: Image.asset(
+            Images.logosm,
+            fit: BoxFit.cover,
+          ),
+        ),
+        FxBox.w4,
+        CustomText(
+            title: Strings.siddhatva.toUpperCase(),
+            fontSize: 24,
+            fontWeight: FontWeight.w600,
+            textColor: color),
+      ],
     );
   }
 }

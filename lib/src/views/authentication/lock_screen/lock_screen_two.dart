@@ -1,23 +1,21 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/custom_text_field.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class RegisterTwo extends StatefulWidget {
-  const RegisterTwo({Key? key}) : super(key: key);
+class LockScreenTwo extends StatefulWidget {
+  const LockScreenTwo({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _RegisterTwoState();
+  State<StatefulWidget> createState() => _LockScreenTwoState();
 }
 
-class _RegisterTwoState extends State<RegisterTwo> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
+class _LockScreenTwoState extends State<LockScreenTwo> {
   final TextEditingController _passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +53,7 @@ class _RegisterTwoState extends State<RegisterTwo> {
           FxBox.h28,
           const Center(
             child: CustomText(
-              title: Strings.freeRegister,
+              title: Strings.locked,
               fontSize: 18,
               fontWeight: FontWeight.w800,
               textColor: ColorConst.lightFontColor,
@@ -64,32 +62,24 @@ class _RegisterTwoState extends State<RegisterTwo> {
           FxBox.h6,
           const Center(
             child: CustomText(
-              title: Strings.registerHeaderText,
+              title: Strings.lockedDescription,
               fontSize: 14,
               fontWeight: FontWeight.w700,
               textColor: ColorConst.lightFontColor,
             ),
           ),
           FxBox.h28,
-          ConstantAuth.labelView(Strings.emailText),
+          _profileImageView(),
           FxBox.h8,
-          _emailTextBoxWidget(),
-          FxBox.h16,
-          ConstantAuth.labelView(Strings.username),
-          FxBox.h8,
-          _usernameTextBoxWidget(),
-          FxBox.h16,
           ConstantAuth.labelView(Strings.password),
           FxBox.h8,
           _passwordTextBoxWidget(),
-          FxBox.h12,
-          Align(alignment: Alignment.centerRight, child: _registerButton()),
-          FxBox.h36,
-          _termsAndService(),
           FxBox.h16,
-          FxBox.h52,
+          Align(alignment: Alignment.topRight, child: _unLockButton()),
+          FxBox.h4,
+          FxBox.h60,
           ConstantAuth.login(
-              context, true, Strings.alreayAccountExist, Strings.login),
+              context, true, Strings.notYouReturn, Strings.signIn),
           FxBox.h16,
           ConstantAuth.footerText(),
         ],
@@ -97,23 +87,34 @@ class _RegisterTwoState extends State<RegisterTwo> {
     );
   }
 
-  Widget _emailTextBoxWidget() {
-    return CustomTextField(
-      hintText: Strings.enteremail,
-      onChanged: (String value) {},
-      textCapitalization: TextCapitalization.none,
-      textInputAction: TextInputAction.done,
-      controller: _emailController,
-    );
-  }
-
-  Widget _usernameTextBoxWidget() {
-    return CustomTextField(
-      hintText: Strings.enterUsername,
-      onChanged: (String value) {},
-      textCapitalization: TextCapitalization.none,
-      textInputAction: TextInputAction.done,
-      controller: _usernameController,
+  Widget _profileImageView() {
+    return Center(
+      child: Column(
+        children: [
+          Container(
+            width: 80.0,
+            height: 80.0,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              image: const DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage(Images.loginBg),
+              ),
+              border: Border.all(
+                width: 5.0,
+                color: ColorConst.appbarLightBG,
+              ),
+            ),
+          ),
+          FxBox.h16,
+          const CustomText(
+            title: 'Robert Smith',
+            fontSize: 16,
+            fontWeight: FontWeight.w800,
+            textColor: ColorConst.lightFontColor,
+          )
+        ],
+      ),
     );
   }
 
@@ -128,46 +129,14 @@ class _RegisterTwoState extends State<RegisterTwo> {
     );
   }
 
-  Widget _registerButton() {
+  Widget _unLockButton() {
     return FxButton(
       onPressed: () {},
-      text: Strings.register,
+      text: Strings.unLock,
       borderRadius: 4.0,
       height: 40,
       minWidth: 110,
       color: ColorConst.primary,
-    );
-  }
-
-  Widget _termsAndService() {
-    return Center(
-      child: RichText(
-        textAlign: TextAlign.left,
-        text: const TextSpan(
-          style: TextStyle(
-              height: 1.5,
-              color: ColorConst.lightFontColor,
-              fontFamily: 'Nunito',
-              fontWeight: FontWeight.w700),
-          children: <TextSpan>[
-            TextSpan(
-              text: Strings.termsServiceText1,
-            ),
-            TextSpan(
-              text: Strings.termsServiceText2,
-              style: TextStyle(
-                color: ColorConst.primary,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w700,
-              ),
-              // recognizer: TapGestureRecognizer()
-              //   ..onTap = () {
-              //     Constant.launchURL(ConstString.termsUrl);
-              //   },
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
