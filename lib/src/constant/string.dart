@@ -121,4 +121,10 @@ class Strings {
   static const String signIn = 'Sign In';
   static const String lockedDescription =
       'Hello Smith, enter your password to unlock the screen!';
+
+  // sale report
+  static const String salesReport = 'Sales Report';
+  static const String desktop = 'Desktop';
+  static const String mobile = 'Mobile';
+  static const String tablets = 'Tablets';
 }

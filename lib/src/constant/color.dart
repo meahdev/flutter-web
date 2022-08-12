@@ -51,4 +51,9 @@ class ColorConst {
 
   static Color get darkGreen => const Color(0xff02a499);
   static Color get darkGreen2 => const Color(0xff01625c);
+
+  //sale report
+  static const Color chartColorBlue = Color(0xff616fd4);
+  static const Color chartColorGreen = Color(0xff37a499);
+  static const Color chartColorYellow = Color(0xfff8b427);
 }

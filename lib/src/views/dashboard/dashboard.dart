@@ -30,14 +30,17 @@ class _DashboardState extends State<Dashboard> {
                 ? Row(
                     children: [
                       const Expanded(
+                        //flex: 2,
                         child: SalesReport(),
                       ),
                       FxBox.w20,
                       const Expanded(
+                        //flex: 3,
                         child: Activity(),
                       ),
                       FxBox.w20,
                       Expanded(
+                        // flex: 3,
                         child: Column(
                           children: [
                             Row(
