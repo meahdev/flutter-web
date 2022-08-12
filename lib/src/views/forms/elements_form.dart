@@ -1,9 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
-import 'package:admin_dashboard/src/provider/form_colorpicker/bloc/form_color_bloc.dart';
-import 'package:admin_dashboard/src/provider/form_counter/bloc/form_textfield_counter_bloc.dart';
-import 'package:admin_dashboard/src/provider/form_date/form_date_and_picker_bloc.dart';
-import 'package:admin_dashboard/src/provider/form_dropdown/bloc/form_dropdown_bloc.dart';
+import 'package:admin_dashboard/src/provider/form_elements/bloc/form_elements_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -21,40 +18,32 @@ class ElementsForm extends StatefulWidget {
 }
 
 class _ElementsFormState extends State<ElementsForm> {
-  final FormColorBloc formColorBloc = FormColorBloc();
-
-  final FormTextfieldCounterBloc formTextfieldCounterBloc =
-      FormTextfieldCounterBloc();
-
-  final FormDropdownBloc formDropDownBloc = FormDropdownBloc();
-
-  final FormDateAndPickerBloc formDateAndPickerBloc = FormDateAndPickerBloc();
-
+  final FormElementsBloc _formElementsBloc = FormElementsBloc();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
   final TextEditingController _dateNtimeController = TextEditingController();
-  Color pickerColor = const Color(0xff02a499);
-  List<String> headingList = [
+  Color _pickerColor = const Color(0xff02a499);
+  final List<String> _headingList = [
     Strings.text,
     Strings.search,
     Strings.email,
     Strings.url,
     Strings.telephone,
   ];
-  List<String> hintList = [
+  final List<String> _hintList = [
     'Artisanal kale',
     'How do I shoot web',
     'flutter@example.com',
     'https://flutter.com',
     '1-(555)-555-5555',
   ];
-  List<String> dropDownList = [
+  final List<String> _dropDownList = [
     'One',
     'Two',
     'Three',
     'Four',
   ];
-  String dropDownValue = 'One';
+  String _dropDownValue = 'One';
   @override
   void initState() {
     _passwordController.text = '1234567';
@@ -72,21 +61,8 @@ class _ElementsFormState extends State<ElementsForm> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => formColorBloc,
-        ),
-        BlocProvider(
-          create: (context) => formTextfieldCounterBloc,
-        ),
-        BlocProvider(
-          create: (context) => formDropDownBloc,
-        ),
-        BlocProvider(
-          create: (context) => formDateAndPickerBloc,
-        ),
-      ],
+    return BlocProvider(
+      create: (context) => _formElementsBloc,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
@@ -104,7 +80,7 @@ class _ElementsFormState extends State<ElementsForm> {
               Responsive.isWeb(context) || Responsive.isTablet(context)
                   ? Column(
                       children: [
-                        _textFieldNormal(headingList, hintList),
+                        _textFieldNormal(_headingList, _hintList),
                         FxBox.h8,
                         _passwordTextField(),
                         FxBox.h16,
@@ -119,7 +95,7 @@ class _ElementsFormState extends State<ElementsForm> {
                     )
                   : Column(
                       children: [
-                        _textFieldNormalMobile(headingList, hintList),
+                        _textFieldNormalMobile(_headingList, _hintList),
                         _passwordTextFieldMobile(),
                         _numberTextFieldMobile(),
                         _dateNtimeTextFieldMobile(),
@@ -288,13 +264,11 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _dateAndTimePickerBox() {
-    return BlocBuilder<FormDateAndPickerBloc, FormDateAndPickerState>(
+    return BlocBuilder<FormElementsBloc, FormElementsState>(
         builder: (context, state) {
-      state.when(
-          initial: () {},
-          loaded: (value) {
-            _dateNtimeController.text = value;
-          });
+      state.whenOrNull(datepickerSuccess: (value) {
+        _dateNtimeController.text = value;
+      });
       return SizedBox(
         height: 35,
         child: CustomTextField(
@@ -349,21 +323,23 @@ class _ElementsFormState extends State<ElementsForm> {
       return;
     }
 
-    formDateAndPickerBloc
-        .add(FormDateAndPickerEvent.started(dateAndtime: result.toString()));
+    _formElementsBloc.add(FormElementsEvent.datePicker(result.toString()));
   }
 
   Widget _numberIncrementDecrement() {
-    return BlocBuilder<FormTextfieldCounterBloc, FormTextfieldCounterState>(
+    return BlocBuilder<FormElementsBloc, FormElementsState>(
       builder: (context, state) {
-        state.when(
-            initial: () {},
-            success: (value) {
-              _numberController.text = value.toString();
-              _numberController.selection = TextSelection.fromPosition(
-                TextPosition(offset: _numberController.text.length),
-              );
-            });
+        state.whenOrNull(incrementSuccess: (value) {
+          _numberController.text = value.toString();
+          _numberController.selection = TextSelection.fromPosition(
+            TextPosition(offset: _numberController.text.length),
+          );
+        }, decrementSuccess: (value) {
+          _numberController.text = value.toString();
+          _numberController.selection = TextSelection.fromPosition(
+            TextPosition(offset: _numberController.text.length),
+          );
+        });
         return SizedBox(
           height: 35,
           child: CustomTextField(
@@ -377,8 +353,8 @@ class _ElementsFormState extends State<ElementsForm> {
                   child: _inkButton(
                     icon: Icons.arrow_drop_up_sharp,
                     onTap: () {
-                      formTextfieldCounterBloc.add(
-                        FormTextfieldCounterEvent.increment(
+                      _formElementsBloc.add(
+                        FormElementsEvent.increment(
                           int.parse(_numberController.text.isEmpty
                               ? '0'
                               : _numberController.text),
@@ -392,13 +368,11 @@ class _ElementsFormState extends State<ElementsForm> {
                   child: _inkButton(
                     icon: Icons.arrow_drop_down_sharp,
                     onTap: () {
-                      formTextfieldCounterBloc.add(
-                        FormTextfieldCounterEvent.decrement(
-                          int.parse(
-                            _numberController.text.isEmpty
-                                ? '0'
-                                : _numberController.text,
-                          ),
+                      _formElementsBloc.add(
+                        FormElementsEvent.decrement(
+                          int.parse(_numberController.text.isEmpty
+                              ? '0'
+                              : _numberController.text),
                         ),
                       );
                     },
@@ -446,9 +420,11 @@ class _ElementsFormState extends State<ElementsForm> {
           content: SizedBox(
             width: 300,
             child: ColorPicker(
-              pickerColor: pickerColor,
+              pickerColor: _pickerColor,
               onColorChanged: (value) {
-                formColorBloc.add(FormColorEvent.changeColor(value));
+                _formElementsBloc.add(
+                  FormElementsEvent.colorPicker(value),
+                );
               },
               portraitOnly: true,
             ),
@@ -461,17 +437,16 @@ class _ElementsFormState extends State<ElementsForm> {
         height: 35,
         width: double.infinity,
         padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
-        child: BlocBuilder<FormColorBloc, FormColorState>(
+        child: BlocBuilder<FormElementsBloc, FormElementsState>(
           builder: (context, state) {
-            state.when(
-              initial: () {},
-              success: (color) {
-                pickerColor = color;
+            state.whenOrNull(
+              colorpickerSuccess: (color) {
+                _pickerColor = color;
               },
             );
             return Container(
               decoration: BoxDecoration(
-                color: pickerColor,
+                color: _pickerColor,
                 border: Border.all(),
                 borderRadius: BorderRadius.circular(4),
               ),
@@ -526,12 +501,12 @@ class _ElementsFormState extends State<ElementsForm> {
       width: double.infinity,
       decoration: _boxdecoration(),
       padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 12.0),
-      child: BlocBuilder<FormDropdownBloc, FormDropdownState>(
+      child: BlocBuilder<FormElementsBloc, FormElementsState>(
         builder: (context, state) {
-          state.when(
+          state.whenOrNull(
             initial: () {},
-            success: (value) {
-              dropDownValue = value;
+            dropDownSuccess: (value) {
+              _dropDownValue = value;
             },
           );
           return DropdownButtonHideUnderline(
@@ -540,15 +515,16 @@ class _ElementsFormState extends State<ElementsForm> {
               elevation: 0,
               isExpanded: true,
               focusColor: ColorConst.transparent,
-              value: dropDownValue,
-              items: dropDownList.map((String items) {
+              value: _dropDownValue,
+              items: _dropDownList.map((String items) {
                 return DropdownMenuItem(
                   value: items,
                   child: Text(items),
                 );
               }).toList(),
               onChanged: (value) {
-                formDropDownBloc.add(FormDropdownEvent.onTap(value.toString()));
+                _formElementsBloc
+                    .add(FormElementsEvent.dropDown(value.toString()));
               },
             ),
           );

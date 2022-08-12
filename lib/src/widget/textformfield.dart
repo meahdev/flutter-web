@@ -21,28 +21,30 @@ class CustomTextField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final InputBorder? focusedBorder;
   final InputBorder? disabledBorder;
-  const CustomTextField(
-      {Key? key,
-      this.controller,
-      this.border,
-      this.hintText,
-      this.contentPadding,
-      this.obscureText = false,
-      this.suffixIcon,
-      this.onChanged,
-      this.keyboardType,
-      this.validator,
-      this.inputFormatters,
-      this.isDense,
-      this.prefixIcon,
-      this.prefixStyle,
-      this.readOnly = false,
-      this.onTap,
-      this.enabledBorder,
-      this.errorBorder,
-      this.disabledBorder,
-      this.focusedBorder})
-      : super(key: key);
+  final int? maxLines;
+  const CustomTextField({
+    Key? key,
+    this.controller,
+    this.border,
+    this.hintText,
+    this.contentPadding,
+    this.obscureText = false,
+    this.suffixIcon,
+    this.onChanged,
+    this.keyboardType,
+    this.validator,
+    this.inputFormatters,
+    this.isDense,
+    this.prefixIcon,
+    this.prefixStyle,
+    this.readOnly = false,
+    this.onTap,
+    this.enabledBorder,
+    this.errorBorder,
+    this.disabledBorder,
+    this.focusedBorder,
+    this.maxLines = 1,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +52,13 @@ class CustomTextField extends StatelessWidget {
       onTap: onTap,
       readOnly: readOnly,
       keyboardType: keyboardType,
+      maxLines: maxLines,
       inputFormatters: inputFormatters,
       validator: validator,
       onChanged: onChanged,
       obscureText: obscureText,
       controller: controller,
       decoration: InputDecoration(
-        
         errorBorder: errorBorder,
         enabledBorder: enabledBorder,
         focusedBorder: focusedBorder,

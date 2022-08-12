@@ -1,7 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/provider/form_checkbox/bloc/form_check_bloc.dart';
-import 'package:admin_dashboard/src/provider/form_submit/bloc/form_submit_bloc.dart';
-import 'package:admin_dashboard/src/provider/form_validation_dropdown/bloc/form_validate_dropdown_bloc.dart';
+import 'package:admin_dashboard/src/provider/form_validation/bloc/form_validation_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -18,12 +16,9 @@ class ValidationForm extends StatefulWidget {
 }
 
 class _ValidationFormState extends State<ValidationForm> {
-  final _formKey = GlobalKey<FormState>();
+  //first form
 
-  final FormValidateDropdownBloc formValidateDropdownBloc =
-      FormValidateDropdownBloc();
-  final FormCheckBloc formCheckBloc = FormCheckBloc();
-  final FormSubmitBloc formSubmitBloc = FormSubmitBloc();
+  final FormValidationBloc _formValidationBloc = FormValidationBloc();
 
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
@@ -31,12 +26,35 @@ class _ValidationFormState extends State<ValidationForm> {
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _zipController = TextEditingController();
   final TextEditingController _stateController = TextEditingController();
-
   AutovalidateMode _iconValidateMode = AutovalidateMode.disabled;
 
   final List<String> _stateList = ['Gujarat', 'Assam', 'Bihar'];
   String? _dropDownValue;
   bool _isCheck = false;
+
+  //second form
+  final FormValidationBloc formValidationBloc2 = FormValidationBloc();
+  AutovalidateMode _secondValidateMode = AutovalidateMode.disabled;
+  final TextEditingController _requiredController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _rePasswordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _urlController = TextEditingController();
+  final TextEditingController _digitController = TextEditingController();
+  final TextEditingController _numberController = TextEditingController();
+  final TextEditingController _alphaNumericController = TextEditingController();
+  final TextEditingController _textAreaController = TextEditingController();
+
+  //Third form
+  final FormValidationBloc formValidationBloc3 = FormValidationBloc();
+  AutovalidateMode _thirdValidateMode = AutovalidateMode.disabled;
+  final TextEditingController _minLengthController = TextEditingController();
+  final TextEditingController _maxLengthController = TextEditingController();
+  final TextEditingController _rangeLengthController = TextEditingController();
+  final TextEditingController _minValueController = TextEditingController();
+  final TextEditingController _maxValueController = TextEditingController();
+  final TextEditingController _rangeValueController = TextEditingController();
+  final TextEditingController _regularExpController = TextEditingController();
 
   @override
   void dispose() {
@@ -46,184 +64,106 @@ class _ValidationFormState extends State<ValidationForm> {
     _cityController.dispose();
     _zipController.dispose();
     _stateController.dispose();
+    _requiredController.dispose();
+    _passwordController.dispose();
+    _rePasswordController.dispose();
+    _emailController.dispose();
+    _urlController.dispose();
+    _digitController.dispose();
+    _numberController.dispose();
+    _alphaNumericController.dispose();
+    _textAreaController.dispose();
+    _minLengthController.dispose();
+    _maxLengthController.dispose();
+    _rangeLengthController.dispose();
+    _minValueController.dispose();
+    _maxValueController.dispose();
+    _rangeValueController.dispose();
+    _regularExpController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
+    return Column(
+      children: [
         BlocProvider(
-          create: (context) => formValidateDropdownBloc,
-        ),
-        BlocProvider(
-          create: (context) => formCheckBloc,
-        ),
-        BlocProvider(
-          create: (context) => formSubmitBloc,
-        ),
-      ],
-      child: BlocBuilder<FormSubmitBloc, FormSubmitState>(
-        builder: (context, state) {
-          state.when(
-            initial: () {},
-            success: (value) {
-              _iconValidateMode = AutovalidateMode.always;
-            },
-          );
-          return BlocBuilder<FormCheckBloc, FormCheckState>(
+          create: (context) => _formValidationBloc,
+          child: BlocBuilder<FormValidationBloc, FormValidationState>(
             builder: (context, state) {
-              state.when(
-                initial: () {},
-                success: (value) {
+              state.whenOrNull(
+                formSubmitSuccess: () {
+                  _iconValidateMode = AutovalidateMode.always;
+                },
+                checkBoxSuccess: (value) {
                   _isCheck = value;
                 },
               );
-              return Column(
-                children: [
-                  Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    child: Container(
-                      padding: const EdgeInsets.all(20.0),
-                      width: double.infinity,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            'Validation type',
-                            style: TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w600),
-                          ),
-                          FxBox.h24,
-                          Form(
-                            key: _formKey,
-                            autovalidateMode: _iconValidateMode,
-                            child: Responsive.isWeb(context) ||
-                                    Responsive.isTablet(context)
-                                ? _validationWithIcon()
-                                : __validationWithIconMobile(),
-                          ),
-                          FxBox.h24,
-                          _termNConditionField(),
-                          _isCheck == false &&
-                                  _iconValidateMode == AutovalidateMode.always
-                              ? _termNConditionErrorMsg()
-                              : const SizedBox.shrink(),
-                          FxBox.h24,
-                          _submitButton()
-                        ],
+              return Card(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _formHeadingCommon('Validation type'),
+                      FxBox.h24,
+                      Form(
+                        autovalidateMode: _iconValidateMode,
+                        child: Responsive.isWeb(context) ||
+                                Responsive.isTablet(context)
+                            ? _validationWithIcon()
+                            : __validationWithIconMobile(),
                       ),
-                    ),
-                  )
-                ],
+                      FxBox.h24,
+                      _termNConditionField(),
+                      _isCheck == false &&
+                              _iconValidateMode == AutovalidateMode.always
+                          ? _termNConditionErrorMsg()
+                          : const SizedBox.shrink(),
+                      FxBox.h24,
+                      FxButton(
+                        borderRadius: 4,
+                        onPressed: () {
+                          _formValidationBloc
+                              .add(const FormValidationEvent.submit());
+                        },
+                        text: 'Submit form',
+                      ),
+                    ],
+                  ),
+                ),
               );
             },
-          );
-        },
-      ),
-    );
-  }
-
-  Widget _validationWithIcon() {
-    return Column(
-      children: [
-        Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [_commomText('First Name'), _firstNameTextField()],
-              ),
-            ),
-            FxBox.w12,
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _commomText('Last Name'),
-                  _lastfirstNameTextField(),
-                ],
-              ),
-            ),
-            FxBox.w12,
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _commomText('Username'),
-                  _userNameTextField(),
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
-        FxBox.h16,
-        Row(
-          children: [
-            Expanded(
-              child: Column(
+        FxBox.h12,
+        Responsive.isWeb(context) || Responsive.isTablet(context)
+            ? Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _commomText('City'),
-                  _cityTextField(),
+                  Expanded(child: _validationForm2()),
+                  FxBox.w12,
+                  Expanded(child: _validationRangeForm())
                 ],
-              ),
-            ),
-            FxBox.w12,
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              )
+            : Column(
                 children: [
-                  _commomText('State'),
-                  _stateTextField(),
+                  _validationForm2(),
+                  FxBox.h12,
+                  _validationRangeForm()
                 ],
               ),
-            ),
-            FxBox.w12,
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _commomText('Zip'),
-                  _zipTextField(),
-                ],
-              ),
-            ),
-          ],
-        ),
       ],
     );
   }
 
-  Widget __validationWithIconMobile() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _commomText('First Name'),
-        _firstNameTextField(),
-        _commomText('Last Name'),
-        _lastfirstNameTextField(),
-        _commomText('Username'),
-        _userNameTextField(),
-        _commomText('City'),
-        _cityTextField(),
-        _commomText('State'),
-        _stateTextField(),
-        _commomText('Zip'),
-        _zipTextField(),
-      ],
-    );
-  }
-
-  Widget _submitButton() {
-    return FxButton(
-      borderRadius: 4,
-      onPressed: () {
-        formSubmitBloc.add(const FormSubmitEvent.onTap(true));
-      },
-      text: 'Submit form',
+  Widget _formHeadingCommon(String text) {
+    return Text(
+      text,
+      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
     );
   }
 
@@ -249,7 +189,7 @@ class _ValidationFormState extends State<ValidationForm> {
             ),
             value: _isCheck,
             onChanged: (value) {
-              formCheckBloc.add(FormCheckEvent.onCheck(value!));
+              _formValidationBloc.add(FormValidationEvent.checkBox(value!));
             },
           ),
         ),
@@ -261,7 +201,80 @@ class _ValidationFormState extends State<ValidationForm> {
     );
   }
 
-  Widget _commomText(String text) {
+  Widget _validationWithIcon() {
+    return Column(
+      children: [
+        Row(
+          children: [
+            __validationWithIconCommon(
+              _commonText('First Name'),
+              _firstNameTextField(),
+            ),
+            FxBox.w12,
+            __validationWithIconCommon(
+              _commonText('Last Name'),
+              _lastfirstNameTextField(),
+            ),
+            FxBox.w12,
+            __validationWithIconCommon(
+              _commonText('Username'),
+              _userNameTextField(),
+            ),
+          ],
+        ),
+        FxBox.h16,
+        Row(
+          children: [
+            __validationWithIconCommon(
+              _commonText('City'),
+              _cityTextField(),
+            ),
+            FxBox.w12,
+            __validationWithIconCommon(
+              _commonText('State'),
+              _stateTextField(),
+            ),
+            FxBox.w12,
+            __validationWithIconCommon(
+              _commonText('Zip'),
+              _zipTextField(),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget __validationWithIconMobile() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _commonText('First Name'),
+        _firstNameTextField(),
+        _commonText('Last Name'),
+        _lastfirstNameTextField(),
+        _commonText('Username'),
+        _userNameTextField(),
+        _commonText('City'),
+        _cityTextField(),
+        _commonText('State'),
+        _stateTextField(),
+        _commonText('Zip'),
+        _zipTextField(),
+      ],
+    );
+  }
+
+  Widget __validationWithIconCommon(Widget text, Widget textField) {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [text, textField],
+      ),
+    );
+  }
+
+  Widget _commonText(String text) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
@@ -351,11 +364,10 @@ class _ValidationFormState extends State<ValidationForm> {
   }
 
   Widget _stateTextField() {
-    return BlocConsumer<FormValidateDropdownBloc, FormValidateDropdownState>(
+    return BlocConsumer<FormValidationBloc, FormValidationState>(
       listener: (context, state) {
-        state.when(
-          initial: () {},
-          success: (value) {
+        state.whenOrNull(
+          dropeDownSuccess: (value) {
             _dropDownValue = value;
             _stateController.text = value;
           },
@@ -381,8 +393,8 @@ class _ValidationFormState extends State<ValidationForm> {
                   );
                 }).toList(),
                 onChanged: (value) {
-                  formValidateDropdownBloc
-                      .add(FormValidateDropdownEvent.onTap(value.toString()));
+                  _formValidationBloc
+                      .add(FormValidationEvent.dropDown(value.toString()));
                 },
               ),
             ),
@@ -417,6 +429,518 @@ class _ValidationFormState extends State<ValidationForm> {
         return null;
       },
       border: const OutlineInputBorder(),
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _validationForm2() {
+    return BlocProvider(
+      create: (context) => formValidationBloc2,
+      child: BlocBuilder<FormValidationBloc, FormValidationState>(
+        builder: (context, state) {
+          state.whenOrNull(
+            formSubmitSuccess: () {
+              _secondValidateMode = AutovalidateMode.always;
+            },
+          );
+          return Form(
+            autovalidateMode: _secondValidateMode,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _formHeadingCommon('Validation type'),
+                    FxBox.h24,
+                    _commonText('Required'),
+                    _requiredTextField(),
+                    _commonText('Equal To'),
+                    _passwordTextField(),
+                    FxBox.h8,
+                    _rePasswordTextField(),
+                    _commonText('E-Mail'),
+                    _emailTextField(),
+                    _commonText('URL'),
+                    _urlTextField(),
+                    _commonText('Digits'),
+                    _digitsTextField(),
+                    _commonText('Number'),
+                    _numberTextField(),
+                    _commonText('Alphanumeric'),
+                    _alphanumericTextField(),
+                    _commonText('Textarea'),
+                    _textAreaTextField(),
+                    FxBox.h24,
+                    Row(
+                      children: [
+                        FxButton(
+                          borderRadius: 4,
+                          onPressed: () {
+                            formValidationBloc2
+                                .add(const FormValidationEvent.submit());
+                          },
+                          text: 'Submit',
+                        ),
+                        FxBox.w8,
+                        FxButton(
+                          buttonType: ButtonType.secondary,
+                          borderRadius: 4,
+                          onPressed: () {
+                            _requiredController.clear();
+                            _passwordController.clear();
+                            _rePasswordController.clear();
+                            _emailController.clear();
+                            _urlController.clear();
+                            _digitController.clear();
+                            _numberController.clear();
+                            _alphaNumericController.clear();
+                            _textAreaController.clear();
+                          },
+                          text: 'Cancel',
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _requiredTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.name,
+      controller: _requiredController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Type something',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _passwordTextField() {
+    return CustomTextField(
+      obscureText: true,
+      keyboardType: TextInputType.name,
+      controller: _passwordController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Password',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _rePasswordTextField() {
+    return CustomTextField(
+      obscureText: true,
+      keyboardType: TextInputType.name,
+      controller: _rePasswordController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (value != _passwordController.text) {
+          return "This value should be the same";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Re-Type Password',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _emailTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.emailAddress,
+      controller: _emailController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+            .hasMatch(value)) {
+          return "This value should be a valid email.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Enter a valid email',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _urlTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.url,
+      controller: _urlController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (!RegExp(
+                r'^((?:.|\n)*?)((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?)')
+            .hasMatch(value)) {
+          return "This value should be a valid url.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'URL',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _digitsTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.number,
+      controller: _digitController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (!RegExp(r'[0-9]+$').hasMatch(value)) {
+          return "This value should be digits.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Enter only digits',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _numberTextField() {
+    return CustomTextField(
+      keyboardType: const TextInputType.numberWithOptions(decimal: true),
+      controller: _numberController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (!RegExp(r'^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$')
+            .hasMatch(value)) {
+          return "This value should be a valid number.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Enter only numbers',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _alphanumericTextField() {
+    return CustomTextField(
+      controller: _alphaNumericController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (!RegExp("^[a-zA-Z0-9_]*\$").hasMatch(value)) {
+          return "This value should be alphanumeric.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Enter alphanumeric numbers',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _textAreaTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.multiline,
+      maxLines: 5,
+      controller: _textAreaController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Type here',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _validationRangeForm() {
+    return BlocProvider(
+      create: (context) => formValidationBloc3,
+      child: BlocBuilder<FormValidationBloc, FormValidationState>(
+        builder: (context, state) {
+          state.whenOrNull(
+            formSubmitSuccess: () {
+              _thirdValidateMode = AutovalidateMode.always;
+            },
+          );
+          return Form(
+            autovalidateMode: _thirdValidateMode,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _formHeadingCommon('Range validation'),
+                    FxBox.h24,
+                    _commonText('Min Length'),
+                    _minLengthTextField(),
+                    _commonText('Max Length'),
+                    _maxLengthTextField(),
+                    _commonText('Range Length'),
+                    _rangeLengthTextField(),
+                    _commonText('Min Value'),
+                    _minValueTextField(),
+                    _commonText('Max Value'),
+                    _maxValueTextField(),
+                    _commonText('Range Value'),
+                    _rangeValueTextField(),
+                    _commonText('Regular Exp'),
+                    _regularExpTextField(),
+                    FxBox.h24,
+                    Row(
+                      children: [
+                        FxButton(
+                          borderRadius: 4,
+                          onPressed: () {
+                            formValidationBloc3
+                                .add(const FormValidationEvent.submit());
+                          },
+                          text: 'Submit',
+                        ),
+                        FxBox.w8,
+                        FxButton(
+                          buttonType: ButtonType.secondary,
+                          borderRadius: 4,
+                          onPressed: () {
+                            _minLengthController.clear();
+                            _maxLengthController.clear();
+                            _rangeLengthController.clear();
+                            _minValueController.clear();
+                            _maxValueController.clear();
+                            _rangeValueController.clear();
+                            _regularExpController.clear();
+                          },
+                          text: 'Cancel',
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _minLengthTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.name,
+      controller: _minLengthController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (value.length > 6) {
+          return "This value is too short. It should have 6 characters or more.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Min 6 chars.',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _maxLengthTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.name,
+      controller: _maxLengthController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (value.length < 6) {
+          return "This value is too long. It should have 6 characters or fewer.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Max 6 chars.',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _rangeLengthTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.name,
+      controller: _rangeLengthController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (value.length < 5 || value.length > 10) {
+          return "This value length is invalid. It should be between 5 and 10 characters long.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Text Between 5 - 10 chars lenght',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _minValueTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.number,
+      controller: _minValueController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (double.tryParse(value) == null ||
+            double.tryParse(value)! < 6) {
+          return "This value should be greater than or equal to 6.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Min value is 6',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _maxValueTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.number,
+      controller: _maxValueController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (double.tryParse(value) == null ||
+            double.tryParse(value)! > 6) {
+          return "This value should be lower than or equal to 6.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Max value is 6',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _rangeValueTextField() {
+    return CustomTextField(
+      keyboardType: TextInputType.number,
+      controller: _rangeValueController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (double.tryParse(value) == null ||
+            double.tryParse(value)! < 6 ||
+            double.tryParse(value)! > 100) {
+          return "This value should be between 6 and 100.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Number between  6 - 100',
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _regularExpTextField() {
+    return CustomTextField(
+      controller: _regularExpController,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return "This value is required.";
+        } else if (!RegExp("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$")
+            .hasMatch(value)) {
+          return "This value seems to be invalid.";
+        }
+        return null;
+      },
+      border: const OutlineInputBorder(),
+      hintText: 'Hex. Color',
       isDense: true,
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 15,
