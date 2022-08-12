@@ -37,6 +37,10 @@ class _MenuBarState extends State<MenuBar> {
     Strings.icons: IconlyBroken.smileEmoji,
   };
 
+  Map<String, String> extrasData = {
+    'Authentication': IconlyBroken.archive,
+  };
+
   List<List<String>> componentsExpandList = [
     [
       Strings.toast,
@@ -49,13 +53,25 @@ class _MenuBarState extends State<MenuBar> {
     [Strings.cupertinoIcons]
   ];
 
+  List<List<String>> extrasExpandList = [
+    [
+      'Login 1',
+      'Login 2',
+      'Register 1',
+      'Register 2',
+      'Recover Password 1',
+      'Recover Password 2',
+      'Lock Screen 1',
+      'Lock Screen 2',
+    ],
+  ];
+
   final List<PageRouteInfo<dynamic>> _routes = const [
     Dashboard(),
     Button(),
     Rating(),
     Badge(),
     Toast(),
-    CupertinoIcon(),
     AlertDialogBox(),
     Modal(),
   ];
@@ -279,6 +295,14 @@ class _MenuBarState extends State<MenuBar> {
                 isExpanded: true,
                 children: componentsExpandList,
               ),
+              // Extras
+              _menuHeading(Strings.extras),
+              _menuList(
+                tabsRouter: tabsRouter,
+                items: extrasData,
+                isExpanded: true,
+                children: extrasExpandList,
+              ),
               FxBox.h20,
             ],
           ),
@@ -398,7 +422,19 @@ class _MenuBarState extends State<MenuBar> {
               style: TextStyle(color: color, fontSize: 14),
             ),
             onTap: () {
-              tabsRouter.setActiveIndex(getRouteIndex(items[index]));
+              if (items[index] == 'Login 1') {
+                context.router.push(const LoginOne());
+              } else if (items[index] == 'Login 2') {
+                context.router.push(const LoginTwo());
+              } else if (items[index] == 'Register 1') {
+                context.router.push(const RegisterOne());
+              } else if (items[index] == 'Register 2') {
+                context.router.push(const RegisterTwo());
+              } else if (items[index] == 'Recover Password 1') {
+                context.router.push(const RecoverPasswordOne());
+              } else {
+                tabsRouter.setActiveIndex(getRouteIndex(items[index]));
+              }
               _scaffoldDrawerKey.currentState?.closeDrawer();
             },
           );

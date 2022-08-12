@@ -7,12 +7,10 @@ int getRouteIndex(String route) {
     return 3;
   } else if (route == 'Toast') {
     return 4;
-  } else if (route == 'Cupertino Icons') {
-    return 5;
   } else if (route == 'Alert Dialog') {
-    return 6;
+    return 5;
   } else if (route == 'Modal') {
-    return 7;
+    return 6;
   } else {
     return 0;
   }

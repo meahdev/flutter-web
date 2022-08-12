@@ -5,6 +5,7 @@ class ColorConst {
   static const Color cardDark = Color(0xff2a3142);
   static const Color drawerIcon = Color(0xFF8699AD);
   static const Color primary = Color(0xFF626ed4);
+  static const Color primaryDark = Color.fromARGB(255, 54, 64, 152);
   static const Color appbarLightBG = Color(0xFFE9E9EF);
   // static const Color textFieldBG = Color(0xFFDBDBE6);
   static const Color drawerBG = Color(0xFF333547);
@@ -20,6 +21,8 @@ class ColorConst {
   static const Color endDrawerImageBorder = Color(0xFFdee2e6);
   static const Color drawerHover = Color(0xFFB4C9DE);
   static const Color searchIcon = Color(0xFF525f80);
+  static const Color backgroundColor = Color(0xFFccedeb);
+  static const Color borderColor = Color(0xFFb3e4e0);
   static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, .55);
   // chat screen
   static const Color chatColor = Color(0xFF2f3cab);
@@ -42,4 +45,7 @@ class ColorConst {
   static Color get infoDark => const Color(0xff03a9f4);
   //table hover color
   static const Color tableHover = Color(0xFFf8f9fa);
+
+  static Color get darkGreen => const Color(0xff02a499);
+  static Color get darkGreen2 => const Color(0xff01625c);
 }

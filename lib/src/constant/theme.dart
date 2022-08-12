@@ -26,6 +26,12 @@ class ThemeClass {
             ? Colors.transparent
             : Colors.grey.shade50.withOpacity(0.25),
       ),
+      checkboxTheme: const CheckboxThemeData(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        ),
+        materialTapTargetSize: MaterialTapTargetSize.padded,
+      ),
     );
   }
 }
