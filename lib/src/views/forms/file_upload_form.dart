@@ -33,44 +33,67 @@ class _FileUploadFormState extends State<FileUploadForm> {
                 pickFile();
               },
               child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                padding: const EdgeInsets.all(20),
-                height: 268,
-                width: MediaQuery.of(context).size.width - 40,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Icon(
-                      Icons.cloud_upload_outlined,
-                      size: 60,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Text(
-                      "Drop files here or click to upload.",
-                      textAlign: TextAlign.center,
-                      style:
-                          TextStyle(fontWeight: FontWeight.w600, fontSize: 21),
-                    ),
-                  ],
-                ),
-              ),
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                  padding: const EdgeInsets.all(20),
+                  constraints:
+                      BoxConstraints(minHeight: 270, minWidth: double.infinity),
+                  // width: double.infinity,
+                  child: filesList.isEmpty
+                      ? Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.cloud_upload_sharp,
+                              size: 60,
+                            ),
+                            FxBox.h20,
+                            const Text(
+                              "Drop files here or click to upload.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600, fontSize: 21),
+                            ),
+                          ],
+                        )
+                      : GridView.builder(
+                          shrinkWrap: true,
+                          itemCount: filesList.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 5,
+                            mainAxisSpacing: 20.0,
+                          ),
+                          itemBuilder: (context, index) {
+                            final kb = filesList[index].size / 1024;
+                            final mb = kb / 1024;
+                            final size = (mb >= 1)
+                                ? '${mb.toStringAsFixed(2)} MB'
+                                : '${kb.toStringAsFixed(2)} KB';
+                            return Container(
+                              height: 120,
+                              width: 120,
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.secondary,
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Text(size),
+                            );
+                          },
+                        )),
             ),
             const SizedBox(
-              height: 30,
+              height: 40,
             ),
             Center(
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(primary: Colors.indigo),
-                    onPressed: () {},
-                    child: const Text(
-                      "Send Files",
-                      style: TextStyle(color: Colors.white),
-                    )))
+              child: FxButton(
+                borderRadius: 4,
+                onPressed: () {},
+                text: 'Send Files',
+              ),
+            )
           ],
         ),
       ),
