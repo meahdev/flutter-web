@@ -87,6 +87,10 @@ class _MenuBarState extends State<MenuBar> {
     Toast(),
     CupertinoIcon(),
     TimelineScreen(),
+    ComingSoon(),
+    Error404(),
+    Error500(),
+    Maintenance(),
   ];
 
   @override

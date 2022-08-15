@@ -1,9 +1,10 @@
 import 'dart:math';
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/utils/models/steps.dart';
-import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterx/flutterx.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class TimelineScreen extends StatefulWidget {
@@ -15,6 +16,8 @@ class TimelineScreen extends StatefulWidget {
 
 class _TimelineScreenState extends State<TimelineScreen> {
   List<Steps> _steps = [];
+
+  final borderRadius = BorderRadius.circular(10); // Image border
 
   @override
   void initState() {
@@ -37,15 +40,18 @@ class _TimelineScreenState extends State<TimelineScreen> {
         ],
       ),
       child: SafeArea(
-        child: Column(
-          children: [
-            CustomScrollView(
-              shrinkWrap: true,
-              physics: const ScrollPhysics(),
-              slivers: <Widget>[_timelineSteps(steps: _steps)],
-            ),
-            const SizedBox(height: 8),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(top: 18.0),
+          child: Column(
+            children: [
+              CustomScrollView(
+                shrinkWrap: true,
+                physics: const ScrollPhysics(),
+                slivers: <Widget>[_timelineSteps(steps: _steps)],
+              ),
+              const SizedBox(height: 8),
+            ],
+          ),
         ),
       ),
     );
@@ -53,19 +59,19 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
   List<Steps> _generateData() {
     return <Steps>[
-      Steps(
+      const Steps(
         step: 1,
         title: 'Decide What You Want',
         message:
             'Step number one, decide exactly what it is you want in each part of your life. Become a "meaningful specific" rather than a "wandering generality."',
       ),
-      Steps(
+      const Steps(
         step: 2,
         title: 'Write it Down',
         message:
             'Second, write it down, clearly and in detail. Always think on paper. A goal that is not in writing is not a goal at all. It is merely a wish and it has no energy behind it.',
       ),
-      Steps(
+      const Steps(
         step: 3,
         title: 'Set a Deadline',
         message:
@@ -88,8 +94,8 @@ class _TimelineScreenState extends State<TimelineScreen> {
             return const TimelineDivider(
               color: ColorConst.darkFontColor,
               thickness: 3,
-              begin: 0.05,
-              end: 0.95,
+              begin: 0.1,
+              end: 0.9,
             );
           }
 
@@ -99,10 +105,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
           final bool isLeftAlign = itemIndex.isEven;
 
           final child = _timelineStepsChild(
-            step.title,
-            step.message,
-            isLeftAlign,
-          );
+              step.title, step.message, isLeftAlign, itemIndex);
 
           final isFirst = itemIndex == 0;
           final isLast = itemIndex == steps.length - 1;
@@ -119,12 +122,12 @@ class _TimelineScreenState extends State<TimelineScreen> {
             alignment: TimelineAlign.manual,
             endChild: isLeftAlign ? child : null,
             startChild: isLeftAlign ? null : child,
-            lineXY: isLeftAlign ? 0.05 : 0.95,
+            lineXY: isLeftAlign ? 0.1 : 0.9,
             isFirst: isFirst,
             isLast: isLast,
             indicatorStyle: IndicatorStyle(
               width: 70,
-              height: 130,
+              height: 100,
               indicatorXY: indicatorY,
               indicator: _timelineStepIndicator(step.step.toInt()),
             ),
@@ -141,7 +144,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
   Widget _timelineStepIndicator(int step) {
     return Container(
-      margin: const EdgeInsets.only(top: 30),
+      // margin: const EdgeInsets.only(top: 30),
       decoration: const BoxDecoration(
         shape: BoxShape.rectangle,
         color: ColorConst.primary,
@@ -157,26 +160,25 @@ class _TimelineScreenState extends State<TimelineScreen> {
   }
 
   Widget _timelineStepsChild(
-    String title,
-    String subtitle,
-    bool isLeftAlign,
-  ) {
+      String title, String subtitle, bool isLeftAlign, int itemIndex) {
     return Padding(
       padding: isLeftAlign
-          ? (Responsive.isWeb(context))
-              ? EdgeInsets.only(
-                  right: MediaQuery.of(context).size.width / 3.5,
-                  top: 16,
-                  bottom: 16,
-                  left: 10)
-              : const EdgeInsets.only(right: 32, top: 16, bottom: 16, left: 10)
-          : (Responsive.isWeb(context))
-              ? EdgeInsets.only(
-                  left: MediaQuery.of(context).size.width / 3.5,
-                  top: 16,
-                  bottom: 16,
-                  right: 10)
-              : const EdgeInsets.only(left: 32, top: 16, bottom: 16, right: 10),
+          ?
+          // ? (Responsive.isWeb(context))
+          //     ? EdgeInsets.only(
+          //         right: MediaQuery.of(context).size.width / 3.5,
+          //         top: 16,
+          //         bottom: 16,
+          //         left: 10)
+          //     :
+          const EdgeInsets.only(right: 32, top: 16, bottom: 16, left: 10)
+          // : (Responsive.isWeb(context))
+          //     ? EdgeInsets.only(
+          //         left: MediaQuery.of(context).size.width / 3.5,
+          //         top: 16,
+          //         bottom: 16,
+          //         right: 10)
+          : const EdgeInsets.only(left: 32, top: 16, bottom: 16, right: 10),
       child: Container(
         margin: const EdgeInsets.only(left: 15, top: 35, right: 15, bottom: 25),
         padding:
@@ -204,7 +206,33 @@ class _TimelineScreenState extends State<TimelineScreen> {
               fontSize: 14,
               fontWeight: FontWeight.w600,
               textColor: ColorConst.lightFontColor,
+              overflow: (itemIndex == 3)
+                  ? TextOverflow.ellipsis
+                  : TextOverflow.visible,
             ),
+            const SizedBox(height: 16),
+            (itemIndex == 1)
+                ? FxButton(
+                    onPressed: () {},
+                    text: 'See more detail',
+                    height: 40,
+                  )
+                : const SizedBox(),
+            (itemIndex == 2)
+                ? Container(
+                    padding: const EdgeInsets.all(8), // Border width
+                    child: ClipRRect(
+                      borderRadius: borderRadius,
+                      child: SizedBox.fromSize(
+                        size: const Size.fromRadius(48), // Image radius
+                        child: Image.network(
+                          Images.lightTheme,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
           ],
         ),
       ),

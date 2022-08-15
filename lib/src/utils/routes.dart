@@ -11,7 +11,15 @@ int getRouteIndex(String route) {
     return 5;
   } else if (route == 'Timeline') {
     return 6;
-  } else {
+  } else if (route == 'Coming soon') {
+    return 7;
+  } else if (route == 'Error 404') {
+    return 8;
+  } else if (route == 'Error 500') {
+    return 9;
+  } else if (route == 'Maintenence') {
+    return 10;
+  }  else {
     return 0;
   }
 }

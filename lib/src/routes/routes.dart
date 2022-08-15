@@ -8,6 +8,10 @@ import 'package:admin_dashboard/src/views/authentication/register/register_one.d
 import 'package:admin_dashboard/src/views/authentication/register/register_two.dart';
 import 'package:admin_dashboard/src/views/badge/badge.dart';
 import 'package:admin_dashboard/src/views/buttons/button.dart';
+import 'package:admin_dashboard/src/views/extra_pages/coming_soon.dart';
+import 'package:admin_dashboard/src/views/extra_pages/error_404.dart';
+import 'package:admin_dashboard/src/views/extra_pages/error_500.dart';
+import 'package:admin_dashboard/src/views/extra_pages/maintenance.dart';
 import 'package:admin_dashboard/src/views/extra_pages/timeline/timeline.dart';
 import 'package:admin_dashboard/src/views/icons/cupertino_icon.dart';
 import 'package:admin_dashboard/src/views/menu_bar.dart';
@@ -23,7 +27,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'dashboard'),
+        RedirectRoute(path: '', redirectTo: 'maintenance'),
         AutoRoute(path: 'dashboard', page: TestWidget),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),
@@ -31,6 +35,10 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'badge', page: Badge),
         AutoRoute(path: 'cupertino-icon', page: CupertinoIcon),
         AutoRoute(path: 'timeline', page: TimelineScreen),
+        AutoRoute(path: 'coming-soon', page: ComingSoon),
+        AutoRoute(path: 'error-404', page: Error404),
+        AutoRoute(path: 'error-500', page: Error500),
+        AutoRoute(path: 'maintenance', page: Maintenance),
       ],
     ),
     AutoRoute(path: 'login-one', page: LoginOne),
