@@ -69,7 +69,7 @@ class AppRouter extends _i9.RootStackRouter {
           _i9.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'calender',
+              redirectTo: 'dashboard',
               fullMatch: true),
           _i9.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),

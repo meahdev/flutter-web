@@ -137,11 +137,7 @@ class _CalendarState extends State<Calendar> {
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 34,
-            child: ElevatedButton.icon(
-                style: ElevatedButton.styleFrom(
-                    primary: const Color(0xFF626ed4),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(4.0))),
+            child: FxButton(
                 onPressed: () {
                   _displayTextInputDialog(
                       context: context,
@@ -153,10 +149,8 @@ class _CalendarState extends State<Calendar> {
                   color: Colors.white,
                   size: 15,
                 ),
-                label: const Text(
-                  'Create New Event',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                )),
+                text: 'Create New Event',
+                borderRadius: 5),
           ),
           FxBox.h24,
           const Text(
@@ -190,7 +184,7 @@ class _CalendarState extends State<Calendar> {
               fit: StackFit.loose,
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(left: 0),
+                  padding: EdgeInsets.only(left: 1.5),
                   child: VerticalDivider(
                     endIndent: 5,
                     indent: 5,
@@ -265,22 +259,26 @@ class _CalendarState extends State<Calendar> {
     return SizedBox(
       width: double.infinity,
       height: 34,
-      child: ElevatedButton.icon(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-              primary: color,
-              alignment: Alignment.centerLeft,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(2.0))),
-          icon: const Icon(
-            Icons.fiber_manual_record,
-            color: Colors.white,
-            size: 12,
-          ),
-          label: Text(
-            label,
-            style: const TextStyle(color: Colors.white, fontSize: 14),
-          )),
+      child: Padding(
+        padding: const EdgeInsets.only(right: 8),
+        child: ElevatedButton.icon(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+                enabledMouseCursor: SystemMouseCursors.allScroll,
+                primary: color,
+                alignment: Alignment.centerLeft,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2.0))),
+            icon: const Icon(
+              Icons.fiber_manual_record,
+              color: Colors.white,
+              size: 12,
+            ),
+            label: Text(
+              label,
+              style: const TextStyle(color: Colors.white, fontSize: 14),
+            )),
+      ),
     );
   }
 
@@ -374,11 +372,8 @@ class _CalendarState extends State<Calendar> {
               onCalendarCreated: (pageController) async {
                 newpageController = pageController;
                 await Future.delayed(const Duration(seconds: 2));
-
                 currentMonthPageIndex == 0.0
-                    ? setState(() {
-                        currentMonthPageIndex = pageController.page!;
-                      })
+                    ? currentMonthPageIndex = pageController.page!
                     : null;
               },
               rowHeight: 100,
