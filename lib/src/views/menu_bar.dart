@@ -38,7 +38,7 @@ class _MenuBarState extends State<MenuBar> {
 
   Map<String, String> extrasData = {
     Strings.authentication: IconlyBroken.archive,
-    Strings.emailTemplates: IconlyBroken.archive,
+    Strings.emailTemplates: IconlyBroken.email,
   };
 
   List<List<String>> componentsExpandList = [
