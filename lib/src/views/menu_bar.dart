@@ -49,6 +49,7 @@ class _MenuBarState extends State<MenuBar> {
       Strings.badge,
       Strings.alertDialog,
       Strings.modal,
+      Strings.loader
     ],
     [Strings.cupertinoIcons]
   ];
@@ -82,6 +83,7 @@ class _MenuBarState extends State<MenuBar> {
     BasicEmail(),
     AlertEmail(),
     BillingEmail(),
+    SimpleLoader(),
   ];
 
   @override

@@ -38,6 +38,7 @@ class Strings {
   static const String badge = 'Badge';
   static const String alertDialog = 'Alert Dialog';
   static const String modal = 'Modal';
+  static const String loader = 'Loader';
   static const String cupertinoIcons = 'Cupertino Icons';
   static const String latestTransaction = 'Latest Transaction';
 
