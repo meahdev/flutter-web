@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class ChartJsBarChart extends StatelessWidget {
   const ChartJsBarChart({Key? key}) : super(key: key);
   final double width = 30;
+  static const Color chartJsBarChart = Color(0xff37a499);
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +29,11 @@ class ChartJsBarChart extends StatelessWidget {
         tooltipPadding: const EdgeInsets.all(0),
         tooltipMargin: 8,
         getTooltipItem: (
-            BarChartGroupData group,
-            int groupIndex,
-            BarChartRodData rod,
-            int rodIndex,
-            ) {
+          BarChartGroupData group,
+          int groupIndex,
+          BarChartRodData rod,
+          int rodIndex,
+        ) {
           return BarTooltipItem(
             rod.toY.round().toString(),
             TextStyle(
@@ -55,31 +56,31 @@ class ChartJsBarChart extends StatelessWidget {
     String text;
     switch (value.toInt()) {
       case 0:
-        text = '2010';
+        text = 'January';
         break;
       case 1:
-        text = '2011';
+        text = 'February';
         break;
       case 2:
-        text = '2012';
+        text = 'March';
         break;
       case 3:
-        text = '2013';
+        text = 'April';
         break;
       case 4:
-        text = '2014';
+        text = 'May';
         break;
       case 5:
-        text = '2015';
+        text = 'June';
         break;
       case 6:
-        text = '2016';
+        text = 'July';
         break;
       case 7:
-        text = '2017';
+        text = 'August';
         break;
       default:
-        text = '2018';
+        text = 'September';
         break;
     }
     return SideTitleWidget(
@@ -90,29 +91,29 @@ class ChartJsBarChart extends StatelessWidget {
   }
 
   FlTitlesData get titlesData => FlTitlesData(
-    show: true,
-    bottomTitles: AxisTitles(
-      sideTitles: SideTitles(
-        showTitles: true,
-        reservedSize: 30,
-        getTitlesWidget: getTitles,
-      ),
-    ),
-    leftTitles: AxisTitles(
-      sideTitles: SideTitles(
-        showTitles: true,
-        reservedSize: 28,
-        interval: 1,
-        getTitlesWidget: leftTitles,
-      ),
-    ),
-    topTitles: AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-    rightTitles: AxisTitles(
-      sideTitles: SideTitles(showTitles: false),
-    ),
-  );
+        show: true,
+        bottomTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 30,
+            getTitlesWidget: getTitles,
+          ),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 28,
+            interval: 5,
+            getTitlesWidget: leftTitles,
+          ),
+        ),
+        topTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+        rightTitles: AxisTitles(
+          sideTitles: SideTitles(showTitles: false),
+        ),
+      );
 
   Widget leftTitles(double value, TitleMeta meta) {
     const style = TextStyle(
@@ -123,13 +124,13 @@ class ChartJsBarChart extends StatelessWidget {
     String text;
     if (value == 0) {
       text = '0';
-    } else if (value == 10) {
+    } else if (value == 5) {
       text = '75';
-    } else if (value == 19) {
+    } else if (value == 10) {
       text = '150';
-    } else if (value == 22) {
+    } else if (value == 15) {
       text = '225';
-    } else if (value == 25) {
+    } else if (value == 20) {
       text = '300';
     } else {
       return Container();
@@ -140,121 +141,105 @@ class ChartJsBarChart extends StatelessWidget {
       child: Text(text, style: style),
     );
   }
+
   List<BarChartGroupData> get barGroups => [
-    BarChartGroupData(
-      x: 0,
-      barRods: [
-        BarChartRodData(
-          width: width,
-          toY: 15,
-          color: Colors.green,
-      
-          borderRadius: BorderRadius.zero,
-        )
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 1,
-      barRods: [
-        BarChartRodData(
-            width: width,
-            toY: 10,
-            color: Colors.green,
-         
-            borderRadius: BorderRadius.zero)
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 2,
-      barRods: [
-        BarChartRodData(
-            width: width,
-            toY: 14,
-            color: Colors.green,
-         
-            borderRadius: BorderRadius.zero)
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 3,
-      barRods: [
-        BarChartRodData(
-            width: width,
-            toY: 15,
-            color: Colors.green,
-         
-            borderRadius: BorderRadius.zero)
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 4,
-      barRods: [
-        BarChartRodData(
-            width: width,
-            toY: 13,
-            color: Colors.green,
-        
-            borderRadius: BorderRadius.zero)
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 5,
-      barRods: [
-        BarChartRodData(
-            width: width,
-            toY: 10,
-            color: Colors.green,
-         
-            borderRadius: BorderRadius.zero)
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 6,
-      barRods: [
-        BarChartRodData(
-            width: width,
-            toY: 13,
-            color: Colors.green,
-         
-            borderRadius: BorderRadius.zero)
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 7,
-      barRods: [
-        BarChartRodData(
-            width: width,
-            toY: 5,
-            color: Colors.green,
-      
-            borderRadius: BorderRadius.zero)
-      ],
-      showingTooltipIndicators: [0],
-    ),
-    BarChartGroupData(
-      x: 8,
-      barRods: [
-        BarChartRodData(
-            width: width,
-            toY: 10,
-            color: Colors.green,
-        
-            borderRadius: BorderRadius.zero)
-      ],
-      showingTooltipIndicators: [0],
-    ),
-  ];
+        BarChartGroupData(
+          x: 0,
+          barRods: [
+            BarChartRodData(
+              width: width,
+              toY: 15,
+              color: chartJsBarChart,
+              borderRadius: BorderRadius.zero,
+            )
+          ],
+        ),
+        BarChartGroupData(
+          x: 1,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 10,
+                color: chartJsBarChart,
+                borderRadius: BorderRadius.zero)
+          ],
+        ),
+        BarChartGroupData(
+          x: 2,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 14,
+                color: chartJsBarChart,
+                borderRadius: BorderRadius.zero)
+          ],
+        ),
+        BarChartGroupData(
+          x: 3,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 15,
+                color: chartJsBarChart,
+                borderRadius: BorderRadius.zero)
+          ],
+        ),
+        BarChartGroupData(
+          x: 4,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 13,
+                color: chartJsBarChart,
+                borderRadius: BorderRadius.zero)
+          ],
+        ),
+        BarChartGroupData(
+          x: 5,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 10,
+                color: chartJsBarChart,
+                borderRadius: BorderRadius.zero)
+          ],
+        ),
+        BarChartGroupData(
+          x: 6,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 13,
+                color: chartJsBarChart,
+                borderRadius: BorderRadius.zero)
+          ],
+        ),
+        BarChartGroupData(
+          x: 7,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 5,
+                color: chartJsBarChart,
+                borderRadius: BorderRadius.zero)
+          ],
+        ),
+        BarChartGroupData(
+          x: 8,
+          barRods: [
+            BarChartRodData(
+                width: width,
+                toY: 10,
+                color: chartJsBarChart,
+                borderRadius: BorderRadius.zero)
+          ],
+        ),
+      ];
 }
 
 class BarChartSample3 extends StatefulWidget {
   const BarChartSample3({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => BarChartSample3State();
 }

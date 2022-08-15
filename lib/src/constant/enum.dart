@@ -12,5 +12,8 @@ enum ChartType {
   animatingPieChart,
   lineScatterChart,
   overlapBars,
-  chartJsBarChart
+  chartJsBarChart,
+  radarChart,
+  polarChart,
+  multipleStaticChart,
 }

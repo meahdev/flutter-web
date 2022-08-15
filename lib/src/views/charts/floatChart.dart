@@ -5,48 +5,39 @@ import 'package:admin_dashboard/src/utils/text_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class ChartJsChart extends StatefulWidget {
-  const ChartJsChart({Key? key}) : super(key: key);
+class FloatChart extends StatefulWidget {
+  const FloatChart({Key? key}) : super(key: key);
 
   @override
-  State<ChartJsChart> createState() => _ChartJsChartState();
+  State<FloatChart> createState() => _FloatChartState();
 }
 
-class _ChartJsChartState extends State<ChartJsChart> {
+class _FloatChartState extends State<FloatChart> {
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-              _card(ChartType.chartJsBarChart, context, 'Bar Chart'),
-              FxBox.h20,
-              _card(ChartType.polarChart, context, 'Polar Chart'),
-              FxBox.h20,
-              _card(ChartType.radarChart, context, 'Radar Chart'),
-              FxBox.h20,
-            ]
-          : [
-              Row(
-                children: [
-                  Expanded(
-                      child: _card(
-                          ChartType.chartJsBarChart, context, 'Bar Chart')),
-                ],
-              ),
-              FxBox.h20,
-              Row(
-                children: [
-                  Expanded(
-                      child:
-                          _card(ChartType.polarChart, context, 'Polar Chart')),
-                  FxBox.w20,
-                  Expanded(
-                      child:
-                          _card(ChartType.radarChart, context, 'Radar Chart')),
-                ],
-              ),
-            ],
+        _card(ChartType.chartJsBarChart, context, 'Bar Chart'),
+        FxBox.h20,
+        _card(ChartType.polarChart, context, 'Polar Chart'),
+        FxBox.h20,
+        _card(ChartType.radarChart, context, 'Radar Chart'),
+        FxBox.h20,
+      ] : [
+        Row(
+          children: [Expanded(child: _card(ChartType.multipleStaticChart, context, 'Bar Chart')),
+          ],
+        ),
+        FxBox.h20,
+        Row(
+          children: [Expanded(child: _card(ChartType.polarChart, context, 'Polar Chart')),
+            FxBox.w20,
+            Expanded(child: _card(ChartType.radarChart, context, 'Radar Chart')),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -61,9 +52,7 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              name,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             FxBox.h12,
             getChartData(chartType, context),
@@ -121,13 +110,13 @@ getChartData(ChartType chartType, BuildContext context) {
       );
     }
   } else {
-    if (chartType == ChartType.chartJsBarChart) {
+    if (chartType == ChartType.multipleStaticChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 2541, context),
-          _richText('Pending', 84845, context),
-          _richText('DeActivated', 12001, context),
+          _richText('Activated', 362411, context),
+          _richText('Pending', 8489, context),
+          _richText('DeActivated', 985412, context),
         ],
       );
     } else if (chartType == ChartType.radarChart) {

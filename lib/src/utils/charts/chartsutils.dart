@@ -5,6 +5,18 @@ import 'package:admin_dashboard/src/views/charts/all_charts/chart_type.dart';
 
 
 getChart(ChartType chartType) {
+  double numberOfFeatures = 3;
+  const ticks = [7, 14, 21, 28, 35];
+  var features = ["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH"];
+  var data = [
+    [10.0, 20, 28, 5, 16, 15, 17, 6],
+    [14.5, 1, 4, 14, 23, 10, 6, 19]
+  ];
+
+  features = features.sublist(0, numberOfFeatures.floor());
+  data = data
+      .map((graph) => graph.sublist(0, numberOfFeatures.floor()))
+      .toList();
   if (chartType == ChartType.lineChart) {
     return const LineChart1();
   } else if (chartType == ChartType.barChart) {
@@ -31,5 +43,12 @@ getChart(ChartType chartType) {
     return const OverlapBar();
   }else if (chartType == ChartType.chartJsBarChart) {
     return const ChartJsBarChart();
+  }else if (chartType == ChartType.radarChart) {
+    return const RadarChartSample1();
+  }else if (chartType == ChartType.polarChart) {
+    return const PolarChart();
+  }
+  else if (chartType == ChartType.multipleStaticChart) {
+    return const MultipleStaticChart();
   }
 }

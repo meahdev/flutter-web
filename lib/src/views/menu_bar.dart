@@ -7,6 +7,7 @@ import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/utils/text_utils.dart';
+
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
 import 'package:admin_dashboard/src/widget/expantion_tile.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -53,7 +54,8 @@ class _MenuBarState extends State<MenuBar> {
     CupertinoIcon(),
     MorrisChart(),
     ChartListChart(),
-    ChartJsChart()
+    ChartJsChart(),
+    FloatChart()
   ];
 
   @override
@@ -126,31 +128,6 @@ class _MenuBarState extends State<MenuBar> {
                       ),
                     ],
                   ),
-                  // child: SingleChildScrollView(
-                  //   controller: ScrollController(),
-                  //   child: Container(
-                  //     padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  //     child: Column(
-                  //       crossAxisAlignment: CrossAxisAlignment.start,
-                  //       children: [
-                  //         FxBox.h20,
-                  //         Text(
-                  //           upperCase(tabsRouter.currentPath),
-                  //           style: Theme.of(context)
-                  //               .textTheme
-                  //               .bodyLarge!
-                  //               .copyWith(fontWeight: FontWeight.bold),
-                  //         ),
-                  //         FxBox.h8,
-                  //         _routesDeatils(tabsRouter),
-                  //         FxBox.h20,
-                  //         child,
-                  //         FxBox.h20,
-                  //         _footer(),
-                  //       ],
-                  //     ),
-                  //   ),
-                  // ),
                 ),
               ],
             ),

@@ -15,7 +15,9 @@ int getRouteIndex(String route) {
     return 7;
   }else if (route == 'ChartJs chart') {
     return 8;
-  } else {
+  }else if (route == 'Flot Chart') {
+    return 9;
+  }  else {
     return 0;
   }
 }
