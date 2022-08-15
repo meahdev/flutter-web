@@ -15,6 +15,8 @@ int getRouteIndex(String route) {
     return 7;
   } else if (route == 'Form File Upload') {
     return 8;
+  } else if (route == 'Form Repeater') {
+    return 9;
   } else {
     return 0;
   }

@@ -22,6 +22,8 @@ class CustomTextField extends StatelessWidget {
   final InputBorder? focusedBorder;
   final InputBorder? disabledBorder;
   final int? maxLines;
+  final String? prefixText;
+  final TextStyle? style;
   const CustomTextField({
     Key? key,
     this.controller,
@@ -44,11 +46,14 @@ class CustomTextField extends StatelessWidget {
     this.disabledBorder,
     this.focusedBorder,
     this.maxLines = 1,
+    this.prefixText,
+    this.style,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      style: style,
       onTap: onTap,
       readOnly: readOnly,
       keyboardType: keyboardType,
@@ -59,6 +64,7 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText,
       controller: controller,
       decoration: InputDecoration(
+        prefixText: prefixText,
         errorBorder: errorBorder,
         enabledBorder: enabledBorder,
         focusedBorder: focusedBorder,
