@@ -1,5 +1,9 @@
+import 'dart:developer';
+
+import 'package:admin_dashboard/src/provider/calendar/calendar_dialog/bloc/calendar_dialog_bloc.dart';
 import 'package:admin_dashboard/src/provider/calendar/calendar_format/calendar_format_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
@@ -14,6 +18,7 @@ class Calendar extends StatefulWidget {
 
 class _CalendarState extends State<Calendar> {
   final CalendarFormatBloc _calendarFormatBloc = CalendarFormatBloc();
+  // final CalendarDialogBloc _calendarDialogBloc = CalendarDialogBloc();
 
   TextEditingController eventController = TextEditingController();
 
@@ -108,9 +113,12 @@ class _CalendarState extends State<Calendar> {
                 Expanded(flex: 2, child: _mobileView()),
                 Expanded(
                   flex: 4,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: _tableCalendar(context: context),
+                  child: ColoredBox(
+                    color: Colors.white,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: _tableCalendar(context: context),
+                    ),
                   ),
                 )
               ],
@@ -118,9 +126,12 @@ class _CalendarState extends State<Calendar> {
           : Column(
               children: [
                 _mobileView(),
-                Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: _tableCalendar(context: context))
+                ColoredBox(
+                  color: Colors.white,
+                  child: Padding(
+                      padding: const EdgeInsets.all(1),
+                      child: _tableCalendar(context: context)),
+                )
               ],
             ),
     );
@@ -141,7 +152,11 @@ class _CalendarState extends State<Calendar> {
                 onPressed: () {
                   _displayTextInputDialog(
                       context: context,
-                      savePressed: () {},
+                      savePressed: () {
+                        _handleSaveTap(
+                            date: DateTime.parse(
+                                '${DateTime.now().toString().split(" ")[0]} 00:00:00.000Z'));
+                      },
                       deletePressed: () {});
                 },
                 icon: const Icon(
@@ -301,6 +316,7 @@ class _CalendarState extends State<Calendar> {
                     eventController.text = list[index]["eventName"];
                     dropdownValue = dropDownList
                         .elementAt(list[index]["dropdownValue"] ?? 0);
+
                     _displayTextInputDialog(
                         context: context,
                         savePressed: () {
@@ -357,6 +373,7 @@ class _CalendarState extends State<Calendar> {
         dropdownValue = '--Select--';
         _calendarFormatBloc.add(CalendarFormatEvent.loading(
             calendarFormat: _calendarFormat, eventsList: eventMap));
+
         Navigator.pop(context);
       }
     }
@@ -484,7 +501,9 @@ class _CalendarState extends State<Calendar> {
                                 borderRadius: 3,
                                 color: const Color(0xFF626DE4),
                               ),
-                              FxBox.w10,
+                              Responsive.isWeb(context)
+                                  ? FxBox.w10
+                                  : const SizedBox.shrink(),
                               Responsive.isWeb(context)
                                   ? FxButton(
                                       onPressed: () {
@@ -634,140 +653,224 @@ class _CalendarState extends State<Calendar> {
       {required BuildContext context,
       required void Function() savePressed,
       required void Function() deletePressed}) async {
+    CalendarDialogBloc calendarDialogBloc = CalendarDialogBloc();
+
     return showDialog(
+        barrierDismissible: false,
         context: context,
         builder: (context) {
-          return AlertDialog(
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(5.0))),
-            title: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text(
-                      'Event',
-                      style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xFF5B626B)),
-                    ),
-                    IconButton(
-                        splashRadius: 25,
-                        onPressed: () {
-                          eventController.clear();
-                          dropdownValue = '--Select--';
-                          Navigator.pop(context);
-                        },
-                        icon: const Icon(Icons.clear))
-                  ],
-                ),
-                const Divider(color: Colors.grey),
-              ],
-            ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "Event Name",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                      color: Color(0xFF5B626B)),
-                ),
-                FxBox.h10,
-                TextField(
-                  controller: eventController,
-                  decoration: InputDecoration(
-                      hintText: "Insert Event Name",
-                      hintStyle: const TextStyle(fontSize: 15),
-                      constraints: const BoxConstraints(maxHeight: 35),
-                      contentPadding: const EdgeInsets.all(8),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(3))),
-                ),
-                FxBox.h20,
-                const Text(
-                  "Category",
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                      color: Color(0xFF5B626B)),
-                ),
-                FxBox.h10,
-                Container(
-                  height: 35,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(3),
-                      border: Border.all(color: Colors.grey)),
-                  width: 350,
-                  child: StatefulBuilder(
-                    builder: (context, setState) {
-                      return DropdownButtonHideUnderline(
-                        child: ButtonTheme(
-                          alignedDropdown: true,
-                          child: DropdownButton<String>(
-                            isExpanded: true,
-                            value: dropdownValue,
-                            icon: const Icon(Icons.keyboard_arrow_down_sharp),
-                            elevation: 16,
-                            style: const TextStyle(color: Colors.black),
-                            onChanged: (String? newValue) {
-                              setState(() {
-                                dropdownValue = newValue!;
-                              });
-                            },
-                            items: dropDownList
-                                .map<DropdownMenuItem<String>>((String value) {
-                              return DropdownMenuItem<String>(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                          ),
+          return BlocProvider(
+            create: (context) => calendarDialogBloc
+              ..add(CalendarDialogEvent.loading(
+                  autovalidateMode: AutovalidateMode.disabled,
+                  category: dropdownValue,
+                  isValidate: false)),
+            child: AlertDialog(
+              actionsPadding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+              titlePadding: EdgeInsets.zero,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0))),
+              title: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 8.0, top: 8.0, right: 8.0),
+                    child: Row(
+                      children: [
+                        FxBox.w20,
+                        const Text(
+                          'Event',
+                          style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF5B626B)),
                         ),
-                      );
-                    },
+                        const Spacer(),
+                        IconButton(
+                            splashRadius: 25,
+                            onPressed: () {
+                              eventController.clear();
+                              dropdownValue = '--Select--';
+                              Navigator.pop(context);
+                            },
+                            icon: const Icon(
+                              Icons.clear,
+                              color: Color(0xFF5B626B),
+                            )),
+                      ],
+                    ),
                   ),
+                  const Divider(color: Colors.grey),
+                ],
+              ),
+              content: BlocBuilder<CalendarDialogBloc, CalendarDialogState>(
+                  builder: (context, state) {
+                return state.when(
+                    initial: () => const CircularProgressIndicator(),
+                    loaded: (autovalidateMode, category, isValidate) {
+                      log('${autovalidateMode.toString()} $category');
+                      return Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Event Name",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  color: Color(0xFF5B626B)),
+                            ),
+                            FxBox.h10,
+                            TextFormField(
+                              controller: eventController,
+                              autovalidateMode: autovalidateMode,
+                              validator: (value) {
+                                if (eventController.text.isEmpty) {
+                                  return 'Please provide a valid event name';
+                                } else {
+                                  calendarDialogBloc.add(
+                                      CalendarDialogEvent.loading(
+                                          autovalidateMode:
+                                              AutovalidateMode.disabled,
+                                          category: dropdownValue,
+                                          isValidate: true));
+                                  return null;
+                                }
+                              },
+                              decoration: InputDecoration(
+                                  hintText: "Insert Event Name",
+                                  hintStyle: const TextStyle(fontSize: 15),
+                                  isDense: true,
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    horizontal: 15,
+                                    vertical: 10,
+                                  ),
+                                  suffixIcon: autovalidateMode ==
+                                          AutovalidateMode.always
+                                      ? const Icon(
+                                          Icons.error_outline,
+                                          color: Colors.red,
+                                        )
+                                      : isValidate
+                                          ? const Icon(
+                                              Icons.done,
+                                              size: 25,
+                                              color: Color(0xFF02A499),
+                                            )
+                                          : null,
+                                  errorBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(3),
+                                      borderSide: const BorderSide(
+                                          color: Colors.red, width: 0.5)),
+                                  border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(3))),
+                            ),
+                            FxBox.h20,
+                            const Text(
+                              "Category",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 14,
+                                  color: Color(0xFF5B626B)),
+                            ),
+                            FxBox.h10,
+                            Container(
+                              height: 35,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(3),
+                                  border: Border.all(color: Colors.grey)),
+                              width: 350,
+                              child: DropdownButtonHideUnderline(
+                                child: ButtonTheme(
+                                  alignedDropdown: true,
+                                  child: DropdownButton<String>(
+                                    isExpanded: true,
+                                    value: category,
+                                    icon: const Icon(
+                                        Icons.keyboard_arrow_down_sharp),
+                                    elevation: 16,
+                                    style: const TextStyle(color: Colors.black),
+                                    onChanged: (String? newValue) {
+                                      dropdownValue = newValue!;
+                                      calendarDialogBloc.add(
+                                          CalendarDialogEvent.loading(
+                                              autovalidateMode: eventController
+                                                      .text
+                                                      .trim()
+                                                      .isNotEmpty
+                                                  ? AutovalidateMode.disabled
+                                                  : AutovalidateMode.always,
+                                              category: newValue,
+                                              isValidate: eventController.text
+                                                  .trim()
+                                                  .isEmpty));
+                                    },
+                                    items: dropDownList
+                                        .map<DropdownMenuItem<String>>(
+                                            (String value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(value),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ]);
+                    });
+              }),
+              actions: <Widget>[
+                Row(
+                  children: [
+                    FxButton(
+                      onPressed: deletePressed,
+                      text: 'Delete',
+                      textColor: Colors.white,
+                      borderRadius: 5,
+                      hoverColor: Colors.red,
+                      color: const Color(0xFFEC4561),
+                      height: 35,
+                    ),
+                    const Spacer(),
+                    FxButton(
+                      onPressed: () {
+                        eventController.clear();
+                        dropdownValue = '--Select--';
+                        Navigator.pop(context);
+                      },
+                      text: 'Close',
+                      textColor: Colors.black,
+                      borderRadius: 5,
+                      hoverColor: Colors.grey.shade200,
+                      color: const Color(0xFFE9ECEF),
+                      height: 35,
+                    ),
+                    FxBox.w10,
+                    FxButton(
+                      onPressed: () {
+                        if (eventController.text.trim().isEmpty) {
+                          calendarDialogBloc.add(CalendarDialogEvent.loading(
+                              autovalidateMode: AutovalidateMode.always,
+                              category: dropdownValue,
+                              isValidate: false));
+                        } else {
+                          log('SAVE');
+                          savePressed();
+                        }
+                      },
+                      text: 'Save',
+                      textColor: Colors.white,
+                      borderRadius: 5,
+                      hoverColor: Colors.teal,
+                      color: const Color(0xFF02A499),
+                      height: 35,
+                    ),
+                  ],
                 )
               ],
             ),
-            actions: <Widget>[
-              Row(
-                children: [
-                  FxButton(
-                    onPressed: deletePressed,
-                    text: 'Delete',
-                    borderRadius: 5,
-                    color: Colors.red,
-                    height: 50,
-                  ),
-                  const Spacer(),
-                  FxButton(
-                    onPressed: () {
-                      eventController.clear();
-                      dropdownValue = '--Select--';
-                      Navigator.pop(context);
-                    },
-                    text: 'Close',
-                    textColor: Colors.black,
-                    borderRadius: 5,
-                    color: Colors.grey.shade200,
-                    height: 50,
-                  ),
-                  FxBox.w10,
-                  FxButton(
-                    onPressed: savePressed,
-                    text: 'Save',
-                    textColor: Colors.black,
-                    borderRadius: 5,
-                    color: Colors.teal,
-                    height: 50,
-                  ),
-                ],
-              )
-            ],
           );
         });
   }
