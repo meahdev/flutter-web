@@ -131,7 +131,7 @@ class AppRouter extends _i21.RootStackRouter {
           _i21.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'dashboard',
+              redirectTo: 'simpleLoader',
               fullMatch: true),
           _i21.RouteConfig(Dashboard.name,
               path: 'dashboard', parent: MenuBar.name),

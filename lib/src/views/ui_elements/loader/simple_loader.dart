@@ -14,7 +14,9 @@ class _SimpleLoaderState extends State<SimpleLoader> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: const [
-        CircularProgressIndicator(),
+        CircularProgressIndicator(
+          valueColor: AlwaysStoppedAnimation<Color>(Colors.red),
+        ),
       ],
     );
   }
