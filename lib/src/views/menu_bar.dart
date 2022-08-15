@@ -37,8 +37,12 @@ class _MenuBarState extends State<MenuBar> {
     'Icons': IconlyBroken.smileEmoji,
   };
 
-  Map<String, String> extrasData = {
+  Map<String, String> authenticationData = {
     'Authentication': IconlyBroken.archive,
+  };
+
+  Map<String, String> extraPagesData = {
+    'Extra Pages': IconlyBroken.addSquare,
   };
 
   List<List<String>> componentsExpandList = [
@@ -46,7 +50,7 @@ class _MenuBarState extends State<MenuBar> {
     ['Cupertino Icons']
   ];
 
-  List<List<String>> extrasExpandList = [
+  List<List<String>> authenticationExpandList = [
     [
       'Login 1',
       'Login 2',
@@ -59,6 +63,22 @@ class _MenuBarState extends State<MenuBar> {
     ],
   ];
 
+  List<List<String>> extrasPagesExpandList = [
+    [
+      'Timeline',
+      'Invoice',
+      'Directory',
+      'Starter Page',
+      'Error 404',
+      'Error 500',
+      'Pricing',
+      'Gallery',
+      'Maintenence',
+      'Coming soon',
+      'FAQs'
+    ],
+  ];
+
   final List<PageRouteInfo<dynamic>> _routes = const [
     TestWidget(),
     Button(),
@@ -66,6 +86,7 @@ class _MenuBarState extends State<MenuBar> {
     Badge(),
     Toast(),
     CupertinoIcon(),
+    TimelineScreen(),
   ];
 
   @override
@@ -316,9 +337,15 @@ class _MenuBarState extends State<MenuBar> {
               _menuHeading(Strings.extras),
               _menuList(
                 tabsRouter: tabsRouter,
-                items: extrasData,
+                items: authenticationData,
                 isExpanded: true,
-                children: extrasExpandList,
+                children: authenticationExpandList,
+              ),
+              _menuList(
+                tabsRouter: tabsRouter,
+                items: extraPagesData,
+                isExpanded: true,
+                children: extrasPagesExpandList,
               ),
               FxBox.h20,
             ],

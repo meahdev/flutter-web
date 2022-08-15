@@ -8,6 +8,7 @@ import 'package:admin_dashboard/src/views/authentication/register/register_one.d
 import 'package:admin_dashboard/src/views/authentication/register/register_two.dart';
 import 'package:admin_dashboard/src/views/badge/badge.dart';
 import 'package:admin_dashboard/src/views/buttons/button.dart';
+import 'package:admin_dashboard/src/views/extra_pages/timeline/timeline.dart';
 import 'package:admin_dashboard/src/views/icons/cupertino_icon.dart';
 import 'package:admin_dashboard/src/views/menu_bar.dart';
 import 'package:admin_dashboard/src/views/rating/rating.dart';
@@ -29,6 +30,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'rating', page: Rating),
         AutoRoute(path: 'badge', page: Badge),
         AutoRoute(path: 'cupertino-icon', page: CupertinoIcon),
+        AutoRoute(path: 'timeline', page: TimelineScreen),
       ],
     ),
     AutoRoute(path: 'login-one', page: LoginOne),
