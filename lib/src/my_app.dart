@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -35,13 +36,20 @@ class _MyAppState extends State<MyApp> {
             initial: () => const SizedBox.shrink(),
             success: (themeMode) {
               return MaterialApp.router(
-                routerDelegate: _appRouter.delegate(
-                  initialRoutes: [const MenuBar()]
-                ),
+                routerDelegate:
+                    _appRouter.delegate(initialRoutes: [const MenuBar()]),
                 routeInformationParser: _appRouter.defaultRouteParser(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeClass.themeData(themeMode, context),
                 // home: const Dashboard(),
+                scrollBehavior: const MaterialScrollBehavior().copyWith(
+                  dragDevices: {
+                    PointerDeviceKind.mouse,
+                    PointerDeviceKind.touch,
+                    PointerDeviceKind.stylus,
+                    PointerDeviceKind.unknown
+                  },
+                ),
               );
             },
           );

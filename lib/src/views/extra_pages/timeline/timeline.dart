@@ -1,9 +1,11 @@
 import 'dart:math';
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/utils/models/steps.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterx/flutterx.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class TimelineScreen extends StatefulWidget {
@@ -15,6 +17,8 @@ class TimelineScreen extends StatefulWidget {
 
 class _TimelineScreenState extends State<TimelineScreen> {
   List<Steps> _steps = [];
+
+  final borderRadius = BorderRadius.circular(10); // Image border
 
   @override
   void initState() {
@@ -99,10 +103,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
           final bool isLeftAlign = itemIndex.isEven;
 
           final child = _timelineStepsChild(
-            step.title,
-            step.message,
-            isLeftAlign,
-          );
+              step.title, step.message, isLeftAlign, itemIndex);
 
           final isFirst = itemIndex == 0;
           final isLast = itemIndex == steps.length - 1;
@@ -157,10 +158,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
   }
 
   Widget _timelineStepsChild(
-    String title,
-    String subtitle,
-    bool isLeftAlign,
-  ) {
+      String title, String subtitle, bool isLeftAlign, int itemIndex) {
     return Padding(
       padding: isLeftAlign
           ? (Responsive.isWeb(context))
@@ -204,7 +202,33 @@ class _TimelineScreenState extends State<TimelineScreen> {
               fontSize: 14,
               fontWeight: FontWeight.w600,
               textColor: ColorConst.lightFontColor,
+              overflow: (itemIndex == 3)
+                  ? TextOverflow.ellipsis
+                  : TextOverflow.visible,
             ),
+            const SizedBox(height: 16),
+            (itemIndex == 1)
+                ? FxButton(
+                    onPressed: () {},
+                    text: 'See more detail',
+                    height: 40,
+                  )
+                : const SizedBox(),
+            (itemIndex == 2)
+                ? Container(
+                    padding: const EdgeInsets.all(8), // Border width
+                    child: ClipRRect(
+                      borderRadius: borderRadius,
+                      child: SizedBox.fromSize(
+                        size: const Size.fromRadius(48), // Image radius
+                        child: Image.network(
+                          Images.image,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  )
+                : const SizedBox(),
           ],
         ),
       ),
