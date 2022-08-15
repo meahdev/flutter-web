@@ -36,6 +36,7 @@ dependencies:
   file_picker: ^5.0.1
 
   hive_flutter: ^1.1.0
+  mime_type: ^1.0.0
 
   auto_route: ^4.2.1
   flutter_bloc: ^8.0.1

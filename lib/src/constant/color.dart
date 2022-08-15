@@ -21,6 +21,9 @@ class ColorConst {
   static const Color searchIcon = Color(0xFF525f80);
   static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, .55);
 
+  //form upload file
+  static const Color file = Color(0xffdddddd);
+
   //dark
 
   static const Color appbarDarkBG = Color(0xFF2F323C);

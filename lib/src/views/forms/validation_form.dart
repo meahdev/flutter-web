@@ -291,7 +291,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _firstNameController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return 'Please provide valid name.';
         }
         return null;
@@ -311,7 +311,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _lastNameController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return 'Please provide valid name.';
         }
         return null;
@@ -332,7 +332,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _userNameController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return 'Please choose username.';
         }
         return null;
@@ -351,7 +351,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _cityController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return 'Please provide valid city.';
         }
         return null;
@@ -403,7 +403,7 @@ class _ValidationFormState extends State<ValidationForm> {
           ),
           controller: _stateController,
           validator: (value) {
-            if (value!.isEmpty) {
+            if (value!.trim().isEmpty) {
               return 'Please choose state.';
             }
             return null;
@@ -425,7 +425,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _zipController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return 'Please provide valid zip.';
         }
         return null;
@@ -525,7 +525,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _requiredController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         }
         return null;
@@ -546,7 +546,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _passwordController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         }
         return null;
@@ -567,7 +567,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _rePasswordController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (value != _passwordController.text) {
           return "This value should be the same";
@@ -589,7 +589,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.emailAddress,
       controller: _emailController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
             .hasMatch(value)) {
@@ -612,7 +612,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.url,
       controller: _urlController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (!RegExp(
                 r'^((?:.|\n)*?)((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?)')
@@ -636,7 +636,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.number,
       controller: _digitController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (!RegExp(r'[0-9]+$').hasMatch(value)) {
           return "This value should be digits.";
@@ -658,7 +658,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       controller: _numberController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (!RegExp(r'^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$')
             .hasMatch(value)) {
@@ -680,7 +680,7 @@ class _ValidationFormState extends State<ValidationForm> {
     return CustomTextField(
       controller: _alphaNumericController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (!RegExp("^[a-zA-Z0-9_]*\$").hasMatch(value)) {
           return "This value should be alphanumeric.";
@@ -703,7 +703,7 @@ class _ValidationFormState extends State<ValidationForm> {
       maxLines: 5,
       controller: _textAreaController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         }
         return null;
@@ -798,7 +798,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _minLengthController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (value.length < 6) {
           return "This value is too short. It should have 6 characters or more.";
@@ -820,7 +820,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _maxLengthController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (value.length > 6) {
           return "This value is too long. It should have 6 characters or fewer.";
@@ -842,7 +842,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.name,
       controller: _rangeLengthController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (value.length < 5 || value.length > 10) {
           return "This value length is invalid. It should be between 5 and 10 characters long.";
@@ -864,7 +864,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.number,
       controller: _minValueController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (double.tryParse(value) == null ||
             double.tryParse(value)! < 6) {
@@ -887,7 +887,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.number,
       controller: _maxValueController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (double.tryParse(value) == null ||
             double.tryParse(value)! > 6) {
@@ -910,7 +910,7 @@ class _ValidationFormState extends State<ValidationForm> {
       keyboardType: TextInputType.number,
       controller: _rangeValueController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (double.tryParse(value) == null ||
             double.tryParse(value)! < 6 ||
@@ -933,7 +933,7 @@ class _ValidationFormState extends State<ValidationForm> {
     return CustomTextField(
       controller: _regularExpController,
       validator: (value) {
-        if (value!.isEmpty) {
+        if (value!.trim().isEmpty) {
           return "This value is required.";
         } else if (!RegExp("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$")
             .hasMatch(value)) {

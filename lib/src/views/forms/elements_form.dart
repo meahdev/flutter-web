@@ -1,7 +1,9 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form_elements/bloc/form_elements_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
+import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -272,6 +274,12 @@ class _ElementsFormState extends State<ElementsForm> {
       return SizedBox(
         height: 35,
         child: CustomTextField(
+          suffixIcon: const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: SvgIcon(
+              icon: IconlyBroken.calendar,
+            ),
+          ),
           controller: _dateNtimeController,
           inputFormatters: [
             LengthLimitingTextInputFormatter(10),
