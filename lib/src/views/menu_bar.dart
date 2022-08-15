@@ -111,6 +111,7 @@ class _MenuBarState extends State<MenuBar> {
                     : const SizedBox.shrink(),
                 Expanded(
                   child: CustomScrollView(
+                    controller: ScrollController(),
                     slivers: [
                       SliverList(
                         delegate: SliverChildListDelegate(

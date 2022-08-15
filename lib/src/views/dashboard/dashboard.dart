@@ -3,6 +3,8 @@ import 'package:admin_dashboard/src/views/dashboard/activity.dart';
 import 'package:admin_dashboard/src/views/dashboard/chat_screen.dart';
 import 'package:admin_dashboard/src/views/dashboard/client_review.dart';
 import 'package:admin_dashboard/src/views/dashboard/list_item.dart';
+import 'package:admin_dashboard/src/views/dashboard/montly_earning.dart';
+import 'package:admin_dashboard/src/views/dashboard/sales_analytics.dart';
 import 'package:admin_dashboard/src/views/dashboard/sales_report.dart';
 import 'package:admin_dashboard/src/views/dashboard/status_box.dart';
 import 'package:admin_dashboard/src/views/dashboard/top_producr_sales_box.dart';
@@ -30,17 +32,36 @@ class _DashboardState extends State<Dashboard> {
                 ? Row(
                     children: [
                       const Expanded(
-                        //flex: 2,
+                        flex: 3,
+                        child: Monthlyearning(),
+                      ),
+                      FxBox.w20,
+                      const Expanded(
+                        child: Salesanalytics(),
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      const Monthlyearning(),
+                      FxBox.h20,
+                      const Salesanalytics(),
+                    ],
+                  ),
+            FxBox.h20,
+            Responsive.isWeb(context)
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Expanded(
                         child: SalesReport(),
                       ),
                       FxBox.w20,
                       const Expanded(
-                        //flex: 3,
                         child: Activity(),
                       ),
                       FxBox.w20,
                       Expanded(
-                        // flex: 3,
                         child: Column(
                           children: [
                             Row(

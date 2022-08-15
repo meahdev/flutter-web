@@ -3,6 +3,7 @@ export 'alert/alert.dart';
 export 'badge/badge.dart';
 export 'button/social_button.dart';
 export 'button/button.dart';
+export 'dropdown/dropdown.dart';
 export 'modal/modal.dart';
 export 'progressbar/circular_progressbar.dart';
 export 'progressbar/linear_progressbar.dart';

@@ -56,4 +56,8 @@ class ColorConst {
   static const Color chartColorBlue = Color(0xff616fd4);
   static const Color chartColorGreen = Color(0xff37a499);
   static const Color chartColorYellow = Color(0xfff8b427);
+
+  //monthly earning
+  static const Color chartBorderColor = Color(0xff6d6fb9);
+  static const Color chartForgoundColor = Color(0xffced2f1);
 }

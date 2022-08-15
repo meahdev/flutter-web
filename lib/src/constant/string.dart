@@ -52,9 +52,9 @@ class Strings {
   static const String lockScreenTwo = 'Lock Screen 2';
 
   // email templates option
-  static const String basicActionEmail= 'Basic Action Email';
-  static const String alertEmail= 'Alert Email';
-  static const String billingEmail= 'Billing Email';
+  static const String basicActionEmail = 'Basic Action Email';
+  static const String alertEmail = 'Alert Email';
+  static const String billingEmail = 'Billing Email';
 
   //chat screen
   static const String chat = 'Chat';
@@ -127,4 +127,10 @@ class Strings {
   static const String desktop = 'Desktop';
   static const String mobile = 'Mobile';
   static const String tablets = 'Tablets';
+
+  // monthly earning
+  static const String monthlyEarning = 'Monthly Earning';
+
+  // sales analystics
+  static const String salesAnalytics = 'Sales Analytics';
 }

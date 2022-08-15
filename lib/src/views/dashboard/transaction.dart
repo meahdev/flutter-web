@@ -28,13 +28,6 @@ class _TransactionState extends State<Transaction> {
     return Colors.transparent;
   }
 
-  final ScrollController _scrollController = ScrollController();
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -52,7 +45,6 @@ class _TransactionState extends State<Transaction> {
             ConstrainedBox(
               constraints: const BoxConstraints(maxHeight: 400),
               child: ListView(
-                controller: _scrollController,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -64,9 +56,16 @@ class _TransactionState extends State<Transaction> {
                     showBottomBorder: true,
                     dataRowHeight: 70,
                     border: TableBorder(
-                      bottom: BorderSide(width: 1, color: Colors.grey.shade200),
-                      horizontalInside:
-                          BorderSide(width: 1, color: Colors.grey.shade50),
+                      bottom: BorderSide(
+                          width: 1,
+                          color: isDark
+                              ? ColorConst.white.withOpacity(0.25)
+                              : Colors.grey.shade200),
+                      horizontalInside: BorderSide(
+                          width: 1,
+                          color: isDark
+                              ? ColorConst.white.withOpacity(0.25)
+                              : Colors.grey.shade50),
                     ),
                     columns: [
                       DataColumn(label: _tableHeader('(#) Id')),
@@ -148,7 +147,6 @@ class _TransactionState extends State<Transaction> {
     return ConstText.lightText(
       text: text,
       fontWeight: FontWeight.w700,
-      //color: ColorConst.grey800,
     );
   }
 
@@ -166,7 +164,6 @@ class _TransactionState extends State<Transaction> {
             text,
             style: const TextStyle(
               fontSize: 12,
-              //color: ColorConst.grey800,
               fontWeight: FontWeight.w700,
             ),
           ),

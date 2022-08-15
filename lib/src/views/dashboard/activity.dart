@@ -1,6 +1,5 @@
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
-
 import 'package:flutter/material.dart';
 
 class Activity extends StatefulWidget {
@@ -58,7 +57,6 @@ class _ActivityState extends State<Activity> {
             children: [
               ConstText.lightText(
                 text: Strings.activity,
-                // color: ColorConst.grey800,
                 fontWeight: FontWeight.bold,
               ),
               Stepper(

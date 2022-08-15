@@ -59,7 +59,6 @@ class _ClienresponseState extends State<Clienresponse> {
           child: Text(
             text,
             style: const TextStyle(
-              // color: ColorConst.grey800,
               fontWeight: FontWeight.w700,
             ),
           ),

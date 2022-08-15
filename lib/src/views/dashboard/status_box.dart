@@ -6,7 +6,6 @@ import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-
 class StatusBox extends StatefulWidget {
   const StatusBox({Key? key}) : super(key: key);
 
@@ -47,7 +46,6 @@ class _StatusBoxState extends State<StatusBox> {
               ConstText.lightText(
                 fontSize: 14,
                 text: Strings.successText,
-                //color: ColorConst.grey800,
                 fontWeight: FontWeight.w500,
               ),
               FxBox.h16,

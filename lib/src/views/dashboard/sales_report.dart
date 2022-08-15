@@ -81,7 +81,13 @@ class _SalesReportState extends State<SalesReport> {
                 child: _chart(),
               ),
               FxBox.h24,
-              ListView.builder(
+              ListView.separated(
+                separatorBuilder: (context, index) {
+                  return Divider(
+                    height: 1,
+                    color: ColorConst.grey800.withOpacity(0.2),
+                  );
+                },
                 shrinkWrap: true,
                 itemCount: _chartList.length,
                 itemBuilder: (context, index) {
@@ -165,10 +171,6 @@ class _SalesReportState extends State<SalesReport> {
               ),
             ],
           ),
-        ),
-        Divider(
-          height: 1,
-          color: ColorConst.grey800.withOpacity(0.2),
         ),
       ],
     );
