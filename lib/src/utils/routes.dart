@@ -19,7 +19,11 @@ int getRouteIndex(String route) {
     return 9;
   } else if (route == 'Maintenence') {
     return 10;
-  }  else {
+  } else if (route == 'Pricing') {
+    return 11;
+  } else if (route == 'Directory') {
+    return 11;
+  } else {
     return 0;
   }
 }

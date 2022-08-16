@@ -11,8 +11,8 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i21;
-import 'package:flutter/material.dart' as _i22;
+import 'package:auto_route/auto_route.dart' as _i23;
+import 'package:flutter/material.dart' as _i24;
 
 import '../views/authentication/lock_screen/lock_screen_one.dart' as _i8;
 import '../views/authentication/lock_screen/lock_screen_two.dart' as _i9;
@@ -27,9 +27,11 @@ import '../views/authentication/register/register_two.dart' as _i5;
 import '../views/badge/badge.dart' as _i14;
 import '../views/buttons/button.dart' as _i12;
 import '../views/extra_pages/coming_soon.dart' as _i17;
+import '../views/extra_pages/directory.dart' as _i22;
 import '../views/extra_pages/error_404.dart' as _i18;
 import '../views/extra_pages/error_500.dart' as _i19;
 import '../views/extra_pages/maintenance.dart' as _i20;
+import '../views/extra_pages/pricing.dart' as _i21;
 import '../views/extra_pages/timeline/timeline.dart' as _i16;
 import '../views/icons/cupertino_icon.dart' as _i15;
 import '../views/menu_bar.dart' as _i1;
@@ -37,136 +39,147 @@ import '../views/rating/rating.dart' as _i13;
 import '../views/test.dart' as _i10;
 import '../views/toast/toast.dart' as _i11;
 
-class AppRouter extends _i21.RootStackRouter {
-  AppRouter([_i22.GlobalKey<_i22.NavigatorState>? navigatorKey])
+class AppRouter extends _i23.RootStackRouter {
+  AppRouter([_i24.GlobalKey<_i24.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i21.PageFactory> pagesMap = {
+  final Map<String, _i23.PageFactory> pagesMap = {
     MenuBar.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i1.MenuBar());
     },
     LoginOne.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i2.LoginOne());
     },
     LoginTwo.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i3.LoginTwo());
     },
     RegisterOne.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i4.RegisterOne());
     },
     RegisterTwo.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i5.RegisterTwo());
     },
     RecoverPasswordOne.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i6.RecoverPasswordOne());
     },
     RecoverPasswordTwo.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i7.RecoverPasswordTwo());
     },
     LockScreenOne.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i8.LockScreenOne());
     },
     LockScreenTwo.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i9.LockScreenTwo());
     },
     TestWidget.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i10.TestWidget());
     },
     Toast.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i11.Toast());
     },
     Button.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i12.Button());
     },
     Rating.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i13.Rating());
     },
     Badge.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i14.Badge());
     },
     CupertinoIcon.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i15.CupertinoIcon());
     },
     TimelineScreen.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i16.TimelineScreen());
     },
     ComingSoon.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i17.ComingSoon());
     },
     Error404.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i18.Error404());
     },
     Error500.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i19.Error500());
     },
     Maintenance.name: (routeData) {
-      return _i21.MaterialPageX<dynamic>(
+      return _i23.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i20.Maintenance());
+    },
+    Pricing.name: (routeData) {
+      return _i23.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i21.Pricing());
+    },
+    DirectoryRoute.name: (routeData) {
+      return _i23.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i22.DirectoryPage());
     }
   };
 
   @override
-  List<_i21.RouteConfig> get routes => [
-        _i21.RouteConfig(MenuBar.name, path: '/', children: [
-          _i21.RouteConfig('#redirect',
+  List<_i23.RouteConfig> get routes => [
+        _i23.RouteConfig(MenuBar.name, path: '/', children: [
+          _i23.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'maintenance',
+              redirectTo: 'directory',
               fullMatch: true),
-          _i21.RouteConfig(TestWidget.name,
+          _i23.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),
-          _i21.RouteConfig(Toast.name, path: 'toast', parent: MenuBar.name),
-          _i21.RouteConfig(Button.name, path: 'button', parent: MenuBar.name),
-          _i21.RouteConfig(Rating.name, path: 'rating', parent: MenuBar.name),
-          _i21.RouteConfig(Badge.name, path: 'badge', parent: MenuBar.name),
-          _i21.RouteConfig(CupertinoIcon.name,
+          _i23.RouteConfig(Toast.name, path: 'toast', parent: MenuBar.name),
+          _i23.RouteConfig(Button.name, path: 'button', parent: MenuBar.name),
+          _i23.RouteConfig(Rating.name, path: 'rating', parent: MenuBar.name),
+          _i23.RouteConfig(Badge.name, path: 'badge', parent: MenuBar.name),
+          _i23.RouteConfig(CupertinoIcon.name,
               path: 'cupertino-icon', parent: MenuBar.name),
-          _i21.RouteConfig(TimelineScreen.name,
+          _i23.RouteConfig(TimelineScreen.name,
               path: 'timeline', parent: MenuBar.name),
-          _i21.RouteConfig(ComingSoon.name,
+          _i23.RouteConfig(ComingSoon.name,
               path: 'coming-soon', parent: MenuBar.name),
-          _i21.RouteConfig(Error404.name,
+          _i23.RouteConfig(Error404.name,
               path: 'error-404', parent: MenuBar.name),
-          _i21.RouteConfig(Error500.name,
+          _i23.RouteConfig(Error500.name,
               path: 'error-500', parent: MenuBar.name),
-          _i21.RouteConfig(Maintenance.name,
-              path: 'maintenance', parent: MenuBar.name)
+          _i23.RouteConfig(Maintenance.name,
+              path: 'maintenance', parent: MenuBar.name),
+          _i23.RouteConfig(Pricing.name, path: 'pricing', parent: MenuBar.name),
+          _i23.RouteConfig(DirectoryRoute.name,
+              path: 'directory', parent: MenuBar.name)
         ]),
-        _i21.RouteConfig(LoginOne.name, path: 'login-one'),
-        _i21.RouteConfig(LoginTwo.name, path: 'login-two'),
-        _i21.RouteConfig(RegisterOne.name, path: 'register-one'),
-        _i21.RouteConfig(RegisterTwo.name, path: 'register-two'),
-        _i21.RouteConfig(RecoverPasswordOne.name, path: 'recover-password-one'),
-        _i21.RouteConfig(RecoverPasswordTwo.name, path: 'recover-password-two'),
-        _i21.RouteConfig(LockScreenOne.name, path: 'lock-screen-one'),
-        _i21.RouteConfig(LockScreenTwo.name, path: 'lock-screen-two')
+        _i23.RouteConfig(LoginOne.name, path: 'login-one'),
+        _i23.RouteConfig(LoginTwo.name, path: 'login-two'),
+        _i23.RouteConfig(RegisterOne.name, path: 'register-one'),
+        _i23.RouteConfig(RegisterTwo.name, path: 'register-two'),
+        _i23.RouteConfig(RecoverPasswordOne.name, path: 'recover-password-one'),
+        _i23.RouteConfig(RecoverPasswordTwo.name, path: 'recover-password-two'),
+        _i23.RouteConfig(LockScreenOne.name, path: 'lock-screen-one'),
+        _i23.RouteConfig(LockScreenTwo.name, path: 'lock-screen-two')
       ];
 }
 
 /// generated route for
 /// [_i1.MenuBar]
-class MenuBar extends _i21.PageRouteInfo<void> {
-  const MenuBar({List<_i21.PageRouteInfo>? children})
+class MenuBar extends _i23.PageRouteInfo<void> {
+  const MenuBar({List<_i23.PageRouteInfo>? children})
       : super(MenuBar.name, path: '/', initialChildren: children);
 
   static const String name = 'MenuBar';
@@ -174,7 +187,7 @@ class MenuBar extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginOne]
-class LoginOne extends _i21.PageRouteInfo<void> {
+class LoginOne extends _i23.PageRouteInfo<void> {
   const LoginOne() : super(LoginOne.name, path: 'login-one');
 
   static const String name = 'LoginOne';
@@ -182,7 +195,7 @@ class LoginOne extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.LoginTwo]
-class LoginTwo extends _i21.PageRouteInfo<void> {
+class LoginTwo extends _i23.PageRouteInfo<void> {
   const LoginTwo() : super(LoginTwo.name, path: 'login-two');
 
   static const String name = 'LoginTwo';
@@ -190,7 +203,7 @@ class LoginTwo extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.RegisterOne]
-class RegisterOne extends _i21.PageRouteInfo<void> {
+class RegisterOne extends _i23.PageRouteInfo<void> {
   const RegisterOne() : super(RegisterOne.name, path: 'register-one');
 
   static const String name = 'RegisterOne';
@@ -198,7 +211,7 @@ class RegisterOne extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.RegisterTwo]
-class RegisterTwo extends _i21.PageRouteInfo<void> {
+class RegisterTwo extends _i23.PageRouteInfo<void> {
   const RegisterTwo() : super(RegisterTwo.name, path: 'register-two');
 
   static const String name = 'RegisterTwo';
@@ -206,7 +219,7 @@ class RegisterTwo extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.RecoverPasswordOne]
-class RecoverPasswordOne extends _i21.PageRouteInfo<void> {
+class RecoverPasswordOne extends _i23.PageRouteInfo<void> {
   const RecoverPasswordOne()
       : super(RecoverPasswordOne.name, path: 'recover-password-one');
 
@@ -215,7 +228,7 @@ class RecoverPasswordOne extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.RecoverPasswordTwo]
-class RecoverPasswordTwo extends _i21.PageRouteInfo<void> {
+class RecoverPasswordTwo extends _i23.PageRouteInfo<void> {
   const RecoverPasswordTwo()
       : super(RecoverPasswordTwo.name, path: 'recover-password-two');
 
@@ -224,7 +237,7 @@ class RecoverPasswordTwo extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.LockScreenOne]
-class LockScreenOne extends _i21.PageRouteInfo<void> {
+class LockScreenOne extends _i23.PageRouteInfo<void> {
   const LockScreenOne() : super(LockScreenOne.name, path: 'lock-screen-one');
 
   static const String name = 'LockScreenOne';
@@ -232,7 +245,7 @@ class LockScreenOne extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.LockScreenTwo]
-class LockScreenTwo extends _i21.PageRouteInfo<void> {
+class LockScreenTwo extends _i23.PageRouteInfo<void> {
   const LockScreenTwo() : super(LockScreenTwo.name, path: 'lock-screen-two');
 
   static const String name = 'LockScreenTwo';
@@ -240,7 +253,7 @@ class LockScreenTwo extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.TestWidget]
-class TestWidget extends _i21.PageRouteInfo<void> {
+class TestWidget extends _i23.PageRouteInfo<void> {
   const TestWidget() : super(TestWidget.name, path: 'dashboard');
 
   static const String name = 'TestWidget';
@@ -248,7 +261,7 @@ class TestWidget extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.Toast]
-class Toast extends _i21.PageRouteInfo<void> {
+class Toast extends _i23.PageRouteInfo<void> {
   const Toast() : super(Toast.name, path: 'toast');
 
   static const String name = 'Toast';
@@ -256,7 +269,7 @@ class Toast extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.Button]
-class Button extends _i21.PageRouteInfo<void> {
+class Button extends _i23.PageRouteInfo<void> {
   const Button() : super(Button.name, path: 'button');
 
   static const String name = 'Button';
@@ -264,7 +277,7 @@ class Button extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i13.Rating]
-class Rating extends _i21.PageRouteInfo<void> {
+class Rating extends _i23.PageRouteInfo<void> {
   const Rating() : super(Rating.name, path: 'rating');
 
   static const String name = 'Rating';
@@ -272,7 +285,7 @@ class Rating extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i14.Badge]
-class Badge extends _i21.PageRouteInfo<void> {
+class Badge extends _i23.PageRouteInfo<void> {
   const Badge() : super(Badge.name, path: 'badge');
 
   static const String name = 'Badge';
@@ -280,7 +293,7 @@ class Badge extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i15.CupertinoIcon]
-class CupertinoIcon extends _i21.PageRouteInfo<void> {
+class CupertinoIcon extends _i23.PageRouteInfo<void> {
   const CupertinoIcon() : super(CupertinoIcon.name, path: 'cupertino-icon');
 
   static const String name = 'CupertinoIcon';
@@ -288,7 +301,7 @@ class CupertinoIcon extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i16.TimelineScreen]
-class TimelineScreen extends _i21.PageRouteInfo<void> {
+class TimelineScreen extends _i23.PageRouteInfo<void> {
   const TimelineScreen() : super(TimelineScreen.name, path: 'timeline');
 
   static const String name = 'TimelineScreen';
@@ -296,7 +309,7 @@ class TimelineScreen extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i17.ComingSoon]
-class ComingSoon extends _i21.PageRouteInfo<void> {
+class ComingSoon extends _i23.PageRouteInfo<void> {
   const ComingSoon() : super(ComingSoon.name, path: 'coming-soon');
 
   static const String name = 'ComingSoon';
@@ -304,7 +317,7 @@ class ComingSoon extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i18.Error404]
-class Error404 extends _i21.PageRouteInfo<void> {
+class Error404 extends _i23.PageRouteInfo<void> {
   const Error404() : super(Error404.name, path: 'error-404');
 
   static const String name = 'Error404';
@@ -312,7 +325,7 @@ class Error404 extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i19.Error500]
-class Error500 extends _i21.PageRouteInfo<void> {
+class Error500 extends _i23.PageRouteInfo<void> {
   const Error500() : super(Error500.name, path: 'error-500');
 
   static const String name = 'Error500';
@@ -320,8 +333,24 @@ class Error500 extends _i21.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i20.Maintenance]
-class Maintenance extends _i21.PageRouteInfo<void> {
+class Maintenance extends _i23.PageRouteInfo<void> {
   const Maintenance() : super(Maintenance.name, path: 'maintenance');
 
   static const String name = 'Maintenance';
+}
+
+/// generated route for
+/// [_i21.Pricing]
+class Pricing extends _i23.PageRouteInfo<void> {
+  const Pricing() : super(Pricing.name, path: 'pricing');
+
+  static const String name = 'Pricing';
+}
+
+/// generated route for
+/// [_i22.DirectoryPage]
+class DirectoryRoute extends _i23.PageRouteInfo<void> {
+  const DirectoryRoute() : super(DirectoryRoute.name, path: 'directory');
+
+  static const String name = 'DirectoryRoute';
 }

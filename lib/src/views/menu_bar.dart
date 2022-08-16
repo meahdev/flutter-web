@@ -91,6 +91,8 @@ class _MenuBarState extends State<MenuBar> {
     Error404(),
     Error500(),
     Maintenance(),
+    Pricing(),
+    DirectoryRoute(),
   ];
 
   @override
