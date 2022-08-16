@@ -7,7 +7,7 @@ class LineChart1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: true,verticalInterval: 1,getDrawingHorizontalLine: (double) => FlLine(color: Colors.grey.withOpacity(0.1),),getDrawingVerticalLine:(double) => FlLine(color: Colors.grey.withOpacity(0.1),)),
+        gridData: FlGridData(show: true,verticalInterval: 1,getDrawingHorizontalLine: (_) => FlLine(color: Colors.grey.withOpacity(0.1),),getDrawingVerticalLine:(_) => FlLine(color: Colors.grey.withOpacity(0.1),)),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
           show: true,

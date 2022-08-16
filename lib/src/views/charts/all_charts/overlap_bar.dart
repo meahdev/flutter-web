@@ -11,7 +11,7 @@ class OverlapBar extends StatefulWidget {
 class OverlapBarState extends State<OverlapBar> {
   final Color leftBarColor = const Color(0xff3b4cce);
   final Color rightBarColor = const Color(0xff3da397);
-  final double width = 15;
+  final double width = 12;
 
   late List<BarChartGroupData> rawBarGroups;
   late List<BarChartGroupData> showingBarGroups;
@@ -28,11 +28,11 @@ class OverlapBarState extends State<OverlapBar> {
     final barGroup5 = makeGroupData(4, 17, 6);
     final barGroup6 = makeGroupData(5, 19, 1.5);
     final barGroup7 = makeGroupData(6, 10, 1.5);
-    final barGroup8 = makeGroupData(4, 17, 6);
-    final barGroup9 = makeGroupData(3, 20, 16);
-    final barGroup10 = makeGroupData(1, 16, 12);
-    final barGroup11 = makeGroupData(0, 5, 12);
-    final barGroup12 = makeGroupData(2, 18, 5);
+    final barGroup8 = makeGroupData(7, 17, 6);
+    final barGroup9 = makeGroupData(8, 20, 16);
+    final barGroup10 = makeGroupData(9, 16, 12);
+    final barGroup11 = makeGroupData(10, 5, 12);
+    final barGroup12 = makeGroupData(11, 18, 5);
 
     final items = [
       barGroup1,
@@ -55,63 +55,50 @@ class OverlapBarState extends State<OverlapBar> {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1,
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-        color: Colors.transparent,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Expanded(
-                child: BarChart(
-                  BarChartData(
-                    maxY: 20,
-                    titlesData: FlTitlesData(
-                      show: true,
-                      rightTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      topTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          getTitlesWidget: bottomTitles,
-                          reservedSize: 42,
-                        ),
-                      ),
-                      leftTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          reservedSize: 28,
-                          interval: 1,
-                          getTitlesWidget: leftTitles,
-                        ),
-                      ),
-                    ),
-                    borderData: FlBorderData(
-                      show: false,
-                    ),
-                    barGroups: showingBarGroups,
-                    gridData: FlGridData(show: false),
+    return Column(
+      children: <Widget>[
+        Expanded(
+          child: BarChart(
+            BarChartData(
+              groupsSpace: 100,
+              maxY: 20,
+              titlesData: FlTitlesData(
+                show: true,
+                rightTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
+                topTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
+                bottomTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    getTitlesWidget: bottomTitles,
+                    reservedSize: 42,
+                  ),
+                ),
+                leftTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    reservedSize: 28,
+                    interval: 1,
+                    getTitlesWidget: leftTitles,
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 12,
+              borderData: FlBorderData(
+                show: false,
               ),
-            ],
+              barGroups: showingBarGroups,
+              gridData: FlGridData(show: false),
+            ),
           ),
         ),
-      ),
-    );
+        const SizedBox(
+          height: 12,
+        ),
+      ]);
+
   }
 
   Widget leftTitles(double value, TitleMeta meta) {
@@ -122,12 +109,22 @@ class OverlapBarState extends State<OverlapBar> {
     );
     String text;
     if (value == 0) {
-      text = '1K';
-    } else if (value == 10) {
-      text = '5K';
-    } else if (value == 19) {
-      text = '10K';
-    } else {
+      text = '0';
+    } else if (value == 3) {
+      text = '1.2';
+    }  else if (value == 6) {
+      text = '2.5';
+    }  else if (value == 9) {
+      text = '3.7';
+    } else if (value == 12) {
+      text = '5.0';
+    }else if (value == 15) {
+      text = '6.2';
+    }else if (value == 18) {
+      text = '7.5';
+    }else if (value == 20) {
+      text = '9.0';
+    }else {
       return Container();
     }
     return SideTitleWidget(
@@ -166,11 +163,13 @@ class OverlapBarState extends State<OverlapBar> {
         toY: y1,
         color: leftBarColor,
         width: width,
+        borderRadius: BorderRadius.zero,
       ),
       BarChartRodData(
         toY: y2,
         color: rightBarColor,
         width: width,
+        borderRadius: BorderRadius.zero,
       ),
     ]);
   }

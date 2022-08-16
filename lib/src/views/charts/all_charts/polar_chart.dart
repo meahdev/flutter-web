@@ -102,8 +102,7 @@ class PolarChartState extends State {
   List<PieChartSectionData> showingSections() {
     return List.generate(4,
           (i) {
-        final isTouched = i == touchedIndex;
-        switch (i) {
+      switch (i) {
           case 0:
             return PieChartSectionData(
               color: const Color(0xff3c4bcf),

@@ -3,6 +3,8 @@ import 'package:admin_dashboard/src/views/charts/all_charts/advanced_smil_chart.
 import 'package:admin_dashboard/src/views/charts/all_charts/animating_pie_chart.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/charjs_bar_chart.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/chart_type.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/line_scatter_chart.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/linechartwitharea.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/simple_line_chart.dart';
 
 

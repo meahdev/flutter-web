@@ -16,7 +16,7 @@ class _ChartJsChartState extends State<ChartJsChart> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
+
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
               _card(ChartType.chartJsBarChart, context, 'Bar Chart'),
@@ -28,22 +28,15 @@ class _ChartJsChartState extends State<ChartJsChart> {
             ]
           : [
               Row(
-                children: [
-                  Expanded(
-                      child: _card(
-                          ChartType.chartJsBarChart, context, 'Bar Chart')),
+                children: [Expanded(child: _card(ChartType.chartJsBarChart, context, 'Bar Chart')),
                 ],
               ),
               FxBox.h20,
               Row(
                 children: [
-                  Expanded(
-                      child:
-                          _card(ChartType.polarChart, context, 'Polar Chart')),
+                  Expanded(child: _card(ChartType.polarChart, context, 'Polar Chart')),
                   FxBox.w20,
-                  Expanded(
-                      child:
-                          _card(ChartType.radarChart, context, 'Radar Chart')),
+                  Expanded(child: _card(ChartType.radarChart, context, 'Radar Chart')),
                 ],
               ),
             ],

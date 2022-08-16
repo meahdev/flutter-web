@@ -18,7 +18,6 @@ class PieChart2State extends State {
         Expanded(
           child: PieChart(
             PieChartData(
-
                 sectionsSpace: 0,
                 centerSpaceRadius: 80,
                 sections: showingSections()),
@@ -35,6 +34,7 @@ class PieChart2State extends State {
       switch (i) {
         case 0:
           return PieChartSectionData(
+            showTitle: true,
             color: const Color(0xff616fd4),
             value: 4,
             title: '40%',

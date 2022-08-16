@@ -12,7 +12,7 @@ class SimpleLineChart extends StatelessWidget {
     //print(dummyData1);
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: true,verticalInterval: 2,getDrawingHorizontalLine: (double) => FlLine(color: Colors.grey.withOpacity(0.1),),getDrawingVerticalLine:(double) => FlLine(color: Colors.grey.withOpacity(0.1),)),
+        gridData: FlGridData(show: true,verticalInterval: 2,getDrawingHorizontalLine: (_) => FlLine(color: Colors.grey.withOpacity(0.1),),getDrawingVerticalLine:(_) => FlLine(color: Colors.grey.withOpacity(0.1),)),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
           show: true,
@@ -41,11 +41,12 @@ class SimpleLineChart extends StatelessWidget {
         lineBarsData: [
           LineChartBarData(
             spots: const [
-            FlSpot(0, 5),
-            FlSpot(4, 4),
-            FlSpot(4.9, 5),
-            FlSpot(3, 3.1),
-            FlSpot(6, 4),
+              FlSpot(0, 5),
+              FlSpot(2.6, 4),
+              FlSpot(4.9, 5),
+              FlSpot(8, 4),
+              FlSpot(9.5, 3),
+              FlSpot(11, 4),
             ],
             isCurved: true,
             color: const Color(0xff6d6fb9),
@@ -57,11 +58,11 @@ class SimpleLineChart extends StatelessWidget {
           ),
           LineChartBarData(
             spots: const [
-              FlSpot(0, 2),
-              FlSpot(4, 4),
-              FlSpot(2.5, 5),
-              FlSpot(4, 3.1),
-              FlSpot(7, 4),
+              FlSpot(0, 1),
+              FlSpot(2.6, 2),
+              FlSpot(4.9, 2),
+              FlSpot(8, 4),
+              FlSpot(9.5, 2),
             ],
             isCurved: true,
             color: const Color(0xff37a499),
@@ -74,10 +75,10 @@ class SimpleLineChart extends StatelessWidget {
           LineChartBarData(
             spots: const [
               FlSpot(0, 0),
-              FlSpot(4, 4),
-              FlSpot(3.5, 5),
-              FlSpot(5, 3.1),
-              FlSpot(8, 4),
+              FlSpot(1.6, 1),
+              FlSpot(3.9, 1),
+              FlSpot(8, 3),
+              FlSpot(9.5, 1),
             ],
             isCurved: true,
             color: const Color(0xff6fab427),
@@ -180,6 +181,21 @@ Widget getTitles(double value, TitleMeta meta) {
     case '7':
       text = '';
       break;
+    case '8':
+      text = 'Friday';
+      break;
+    case '9':
+      text = '';
+      break;
+    case '10':
+      text = 'Saturday';
+      break;
+    case '11':
+      text = '';
+      break;
+    case '12':
+      text = '';
+      break;
     default:
       text = '';
       break;
@@ -187,7 +203,6 @@ Widget getTitles(double value, TitleMeta meta) {
   return Padding(
     padding: const EdgeInsets.only(left: 15),
     child: SideTitleWidget(
-
       axisSide: meta.axisSide,
       space: 12.0,
       child: Text(text, style: style),

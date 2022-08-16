@@ -19,25 +19,34 @@ class _FloatChartState extends State<FloatChart> {
       mainAxisSize: MainAxisSize.min,
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-        _card(ChartType.chartJsBarChart, context, 'Bar Chart'),
-        FxBox.h20,
-        _card(ChartType.polarChart, context, 'Polar Chart'),
-        FxBox.h20,
-        _card(ChartType.radarChart, context, 'Radar Chart'),
-        FxBox.h20,
-      ] : [
-        Row(
-          children: [Expanded(child: _card(ChartType.multipleStaticChart, context, 'Bar Chart')),
-          ],
-        ),
-        FxBox.h20,
-        Row(
-          children: [Expanded(child: _card(ChartType.polarChart, context, 'Polar Chart')),
-            FxBox.w20,
-            Expanded(child: _card(ChartType.radarChart, context, 'Radar Chart')),
-          ],
-        ),
-      ],
+              _card(ChartType.chartJsBarChart, context, 'Bar Chart'),
+              FxBox.h20,
+              _card(ChartType.polarChart, context, 'Polar Chart'),
+              FxBox.h20,
+              _card(ChartType.radarChart, context, 'Radar Chart'),
+              FxBox.h20,
+            ]
+          : [
+              Row(
+                children: [
+                  Expanded(
+                      child: _card(
+                          ChartType.multipleStaticChart, context, 'Bar Chart')),
+                ],
+              ),
+              FxBox.h20,
+              Row(
+                children: [
+                  Expanded(
+                      child:
+                          _card(ChartType.polarChart, context, 'Polar Chart')),
+                  FxBox.w20,
+                  Expanded(
+                      child:
+                          _card(ChartType.radarChart, context, 'Radar Chart')),
+                ],
+              ),
+            ],
     );
   }
 }
@@ -52,7 +61,9 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(name, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            Text(
+              name,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
             ),
             FxBox.h12,
             getChartData(chartType, context),

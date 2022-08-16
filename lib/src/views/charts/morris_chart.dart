@@ -19,45 +19,39 @@ class _MorrisChartState extends State<MorrisChart> {
       mainAxisSize: MainAxisSize.min,
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-        _card(ChartType.lineChart, context, 'Line Chart'),
-        FxBox.h20,
-        _card(ChartType.barChart, context, 'Bar Chart'),
-        FxBox.h20,
-        _card(ChartType.areaChart, context, 'Area Chart'),
-        FxBox.h20,
-        _card(ChartType.piaChart, context, 'Donut Chart'),
-        FxBox.h20,
-        _card(ChartType.colomnChart, context, 'Column Chart'),
-      ]
+              _card(ChartType.lineChart, context, 'Line Chart'),
+              FxBox.h20,
+              _card(ChartType.barChart, context, 'Bar Chart'),
+              FxBox.h20,
+              _card(ChartType.areaChart, context, 'Area Chart'),
+              FxBox.h20,
+              _card(ChartType.piaChart, context, 'Donut Chart'),
+              FxBox.h20,
+              _card(ChartType.colomnChart, context, 'Column Chart'),
+            ]
           : [
-        Row(
-          children: [
-            Expanded(
-                child: _card(ChartType.lineChart, context, 'Line Chart')),
-            FxBox.w20,
-            Expanded(
-                child: _card(ChartType.barChart, context, 'Bar Chart')),
-          ],
-        ),
-        FxBox.h20,
-        Row(
-          children: [
-            Expanded(
-                child: _card(ChartType.areaChart, context, 'Area Chart')),
-            FxBox.w20,
-            Expanded(
-                child: _card(ChartType.piaChart, context, 'Donut Chart')),
-          ],
-        ),
-        FxBox.h20,
-        Row(
-          children: [
-            Expanded(
-                child: _card(
-                    ChartType.colomnChart, context, 'Column Chart')),
-          ],
-        ),
-      ],
+              Row(
+                children: [
+                  Expanded(
+                      child: _card(ChartType.lineChart, context, 'Line Chart')),
+                  FxBox.w20,
+                  Expanded(
+                      child: _card(ChartType.barChart, context, 'Bar Chart')),
+                ],
+              ),
+              FxBox.h20,
+              Row(
+                children: [
+                  Expanded(
+                      child: _card(ChartType.areaChart, context, 'Area Chart')),
+                  FxBox.w20,
+                  Expanded(
+                      child: _card(ChartType.piaChart, context, 'Donut Chart')),
+                ],
+              ),
+              FxBox.h20,
+              _card(ChartType.colomnChart, context, 'Column Chart'),
+            ],
     );
   }
 }

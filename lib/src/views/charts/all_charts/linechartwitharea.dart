@@ -46,6 +46,14 @@ class _LineChartWithAreaState extends State<LineChartWithArea> {
             interval: 1,
           ),
         ),
+        leftTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 28,
+            interval: 1,
+            getTitlesWidget: leftTitles,
+          ),
+        ),
       ),
       minX: 0,
       maxX: 11,
@@ -77,4 +85,35 @@ class _LineChartWithAreaState extends State<LineChartWithArea> {
       ],
     );
   }
+}
+
+Widget leftTitles(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Colors.grey,
+    fontWeight: FontWeight.bold,
+    fontSize: 14,
+  );
+  String text;
+  if (value == 0) {
+    text = '0';
+  }  else if (value == 1) {
+    text = '1';
+  } else if (value == 2) {
+    text = '2';
+  }  else if (value == 3) {
+    text = '3';
+  }  else if (value == 4) {
+    text = '4';
+  } else if (value == 5) {
+    text = '5';
+  } else if (value == 6) {
+    text = '6';
+  } else {
+    return Container();
+  }
+  return SideTitleWidget(
+    axisSide: meta.axisSide,
+    space: 0,
+    child: Text(text, style: style),
+  );
 }
