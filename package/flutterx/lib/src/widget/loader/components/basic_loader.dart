@@ -4,7 +4,7 @@ import 'dart:math' as math;
 class BasicLoader extends StatefulWidget {
   final Color color;
   final double size;
-  const BasicLoader({Key? key, required this.color, this.size = 25})
+  const BasicLoader({Key? key, required this.color, this.size = 32})
       : super(key: key);
 
   @override

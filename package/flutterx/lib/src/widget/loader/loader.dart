@@ -18,7 +18,7 @@ class FxLoader extends StatelessWidget {
   final double? lineWidth;
   final int? itemCount;
   final WaveType? wavetype;
-  const FxLoader(
+  FxLoader(
       {Key? key,
       required this.loaderType,
       required this.color,
@@ -26,7 +26,16 @@ class FxLoader extends StatelessWidget {
       this.lineWidth,
       this.itemCount,
       this.wavetype})
-      : super(key: key);
+      : assert(
+            loaderType == LoaderType.spiningLinesLoader &&
+                itemCount == null &&
+                lineWidth == null,
+            'You should specify lineWidth and itemCount in spiningLinesLoader'),
+        assert(loaderType == LoaderType.waveLoader && itemCount == null,
+            'You should specify itemCount in waveLoader'),
+        assert(loaderType == LoaderType.waveLoader && itemCount! >= 2,
+            'itemCount Can\'t be less then 2'),
+        super(key: key);
 
   const FxLoader.spinningLinesLoader({
     Key? key,
@@ -44,7 +53,7 @@ class FxLoader extends StatelessWidget {
     required this.size,
     required this.itemCount,
     this.wavetype = WaveType.start,
-  })  : assert(itemCount! >= 2, 'itemCount Cant be less then 2 '),
+  })  : assert(itemCount! >= 2, 'itemCount Can\'t be less then 2'),
         loaderType = LoaderType.waveLoader,
         lineWidth = null,
         super(key: key);
@@ -56,9 +65,7 @@ class FxLoader extends StatelessWidget {
 
   Widget getLoader() {
     if (loaderType == LoaderType.basicLoader) {
-      return BasicLoader(color: color, size: size,);
-    } else if (loaderType == LoaderType.circleLoader) {
-      return CircleLoader(
+      return BasicLoader(
         color: color,
         size: size,
       );
@@ -112,7 +119,10 @@ class FxLoader extends StatelessWidget {
         type: wavetype!,
       );
     } else {
-      return BasicLoader(color: color, size: size,);
+      return BasicLoader(
+        color: color,
+        size: size,
+      );
     }
   }
 }

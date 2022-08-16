@@ -47,11 +47,11 @@ class _RotatingCircleLoaderState extends State<RotatingCircleLoader>
           ..rotateY((0 - _animation2.value) * 0.0174533),
         alignment: FractionalOffset.center,
         child: SizedBox.fromSize(
-            size: Size.square(widget.size), child: _itemBuilder(0)),
+            size: Size.square(widget.size),
+            child: DecoratedBox(
+                decoration: BoxDecoration(
+                    color: widget.color, shape: BoxShape.circle))),
       ),
     );
   }
-
-  Widget _itemBuilder(int index) => DecoratedBox(
-      decoration: BoxDecoration(color: widget.color, shape: BoxShape.circle));
 }

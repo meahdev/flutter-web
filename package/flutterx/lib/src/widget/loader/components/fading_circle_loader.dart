@@ -1,6 +1,6 @@
 
 import 'package:flutter/widgets.dart';
-import 'package:flutterx/src/widget/loader/components/delay_tween.dart';
+import 'package:flutterx/src/widget/loader/delay_tween.dart';
 
 class FadingCircleLoader extends StatefulWidget {
   final Color color;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterx/src/constant/enum.dart';
-import 'package:flutterx/src/widget/loader/components/delay_tween.dart';
+import 'package:flutterx/src/widget/loader/delay_tween.dart';
 
 class WaveLoader extends StatefulWidget {
   final Color color;
