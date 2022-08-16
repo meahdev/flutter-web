@@ -144,12 +144,12 @@ class _ChatscreenState extends State<Chatscreen> {
           padding: const EdgeInsets.all(12),
           margin: const EdgeInsets.all(20),
           shadowColor: Colors.transparent,
-          clipper: isMe
+          clipper: !isMe
               ? ChatBubbleClipper1(type: BubbleType.sendBubble)
               : ChatBubbleClipper1(type: BubbleType.receiverBubble),
           backGroundColor: boxColor,
           child: Container(
-            padding: !isMe
+            padding: isMe
                 ? const EdgeInsets.only(left: 12)
                 : const EdgeInsets.only(right: 12),
             constraints: const BoxConstraints(maxWidth: 300),
