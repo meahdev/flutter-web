@@ -23,6 +23,10 @@ int getRouteIndex(String route) {
     return 11;
   } else if (route == 'Directory') {
     return 11;
+  }  else if (route == 'FAQs') {
+    return 12;
+  }  else if (route == 'Invoice') {
+    return 13;
   } else {
     return 0;
   }

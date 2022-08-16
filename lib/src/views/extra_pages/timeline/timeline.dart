@@ -227,7 +227,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
                         size: const Size.fromRadius(48), // Image radius
                         child: Image.network(
                           Images.lightTheme,
-                        //  Images.image,
                           fit: BoxFit.cover,
                         ),
                       ),

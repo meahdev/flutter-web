@@ -53,8 +53,16 @@ class _ComingSoonState extends State<ComingSoon> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-           const Text(Strings.siddhatva,style: TextStyle(fontSize: 25,color: Color(0XFF5B626B),fontWeight: FontWeight.bold),),
-          const SizedBox(height: 20,),
+          const Text(
+            Strings.siddhatva,
+            style: TextStyle(
+                fontSize: 25,
+                color: Color(0XFF5B626B),
+                fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
           const Text(
             "Let's get started with Veltrix",
             style: TextStyle(
@@ -68,9 +76,10 @@ class _ComingSoonState extends State<ComingSoon> {
               color: Color(0XFF5B626B),
             ),
           ),
-          const SizedBox(height: 50,),
+          const SizedBox(
+            height: 50,
+          ),
           Wrap(
-
             children: [
               Container(
                 height: 130,
@@ -83,13 +92,24 @@ class _ComingSoonState extends State<ComingSoon> {
                   children: [
                     Text(
                       '$days',
-                      style: const TextStyle(fontSize: 40,color: Colors.indigo,fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 40,
+                          color: Colors.indigo,
+                          fontWeight: FontWeight.bold),
                     ),
-                    const Text("Days",style: TextStyle(color:  Color(0XFF5B626B),fontSize: 16,fontWeight: FontWeight.bold),)
+                    const Text(
+                      "Days",
+                      style: TextStyle(
+                          color: Color(0XFF5B626B),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
               ),
-              const SizedBox(width: 20,),
+              const SizedBox(
+                width: 20,
+              ),
               Container(
                 height: 130,
                 width: 130,
@@ -101,13 +121,24 @@ class _ComingSoonState extends State<ComingSoon> {
                   children: [
                     Text(
                       '$hours',
-                      style: const TextStyle(fontSize: 40,color: Colors.indigo,fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 40,
+                          color: Colors.indigo,
+                          fontWeight: FontWeight.bold),
                     ),
-                    const Text("Hours",style: TextStyle(color:  Color(0XFF5B626B),fontSize: 16,fontWeight: FontWeight.bold),)
+                    const Text(
+                      "Hours",
+                      style: TextStyle(
+                          color: Color(0XFF5B626B),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
               ),
-              const SizedBox(width: 20,),
+              const SizedBox(
+                width: 20,
+              ),
               Container(
                 height: 130,
                 width: 130,
@@ -119,13 +150,24 @@ class _ComingSoonState extends State<ComingSoon> {
                   children: [
                     Text(
                       '$minutes',
-                      style: const TextStyle(fontSize: 40,color: Colors.indigo,fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 40,
+                          color: Colors.indigo,
+                          fontWeight: FontWeight.bold),
                     ),
-                    const Text("Minutes",style: TextStyle(color:  Color(0XFF5B626B),fontSize: 16,fontWeight: FontWeight.bold),)
+                    const Text(
+                      "Minutes",
+                      style: TextStyle(
+                          color: Color(0XFF5B626B),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
               ),
-              const SizedBox(width: 20,),
+              const SizedBox(
+                width: 20,
+              ),
               Container(
                 height: 130,
                 width: 130,
@@ -137,26 +179,42 @@ class _ComingSoonState extends State<ComingSoon> {
                   children: [
                     Text(
                       '$seconds',
-                      style: const TextStyle(fontSize: 40,color: Colors.indigo,fontWeight: FontWeight.bold),
+                      style: const TextStyle(
+                          fontSize: 40,
+                          color: Colors.indigo,
+                          fontWeight: FontWeight.bold),
                     ),
-                    const Text("Seconds",style: TextStyle(color: Color(0XFF5B626B),fontSize: 16,fontWeight: FontWeight.bold),)
+                    const Text(
+                      "Seconds",
+                      style: TextStyle(
+                          color: Color(0XFF5B626B),
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 50,),
+          const SizedBox(
+            height: 50,
+          ),
           SizedBox(
             width: 550,
             child: TextFormField(
               decoration: InputDecoration(
                   hintText: "Enter email address",
                   contentPadding: const EdgeInsets.only(left: 25),
-                  suffixIcon: Padding(padding: const EdgeInsets.only(right: 4),
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.only(right: 4),
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(primary: Colors.indigo),
                         onPressed: () {},
-                        child: const Text("Subscribe",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),)),
+                        child: const Text(
+                          "Subscribe",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        )),
                   ),
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40))),

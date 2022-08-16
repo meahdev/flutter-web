@@ -93,6 +93,8 @@ class _MenuBarState extends State<MenuBar> {
     Maintenance(),
     Pricing(),
     DirectoryRoute(),
+    FAQs(),
+    Invoice(),
   ];
 
   @override

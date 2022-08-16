@@ -12,6 +12,8 @@ import 'package:admin_dashboard/src/views/extra_pages/coming_soon.dart';
 import 'package:admin_dashboard/src/views/extra_pages/directory.dart';
 import 'package:admin_dashboard/src/views/extra_pages/error_404.dart';
 import 'package:admin_dashboard/src/views/extra_pages/error_500.dart';
+import 'package:admin_dashboard/src/views/extra_pages/faqs.dart';
+import 'package:admin_dashboard/src/views/extra_pages/invoice.dart';
 import 'package:admin_dashboard/src/views/extra_pages/maintenance.dart';
 import 'package:admin_dashboard/src/views/extra_pages/pricing.dart';
 import 'package:admin_dashboard/src/views/extra_pages/timeline/timeline.dart';
@@ -29,7 +31,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'directory'),
+        RedirectRoute(path: '', redirectTo: 'invoice'),
         AutoRoute(path: 'dashboard', page: TestWidget),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),
@@ -43,6 +45,8 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'maintenance', page: Maintenance),
         AutoRoute(path: 'pricing', page: Pricing),
         AutoRoute(path: 'directory', page: DirectoryPage),
+        AutoRoute(path: 'faqs', page: FAQs),
+        AutoRoute(path: 'invoice', page: Invoice),
       ],
     ),
     AutoRoute(path: 'login-one', page: LoginOne),
