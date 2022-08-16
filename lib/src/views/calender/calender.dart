@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:admin_dashboard/src/provider/calendar/calendar_dialog/bloc/calendar_dialog_bloc.dart';
 import 'package:admin_dashboard/src/provider/calendar/calendar_format/calendar_format_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
@@ -373,7 +370,6 @@ class _CalendarState extends State<Calendar> {
         dropdownValue = '--Select--';
         _calendarFormatBloc.add(CalendarFormatEvent.loading(
             calendarFormat: _calendarFormat, eventsList: eventMap));
-
         Navigator.pop(context);
       }
     }
@@ -440,20 +436,6 @@ class _CalendarState extends State<Calendar> {
                 formatButtonVisible: false,
                 leftChevronVisible: false,
                 rightChevronVisible: false,
-                // leftChevronIcon: Icon(
-                //   Icons.chevron_left,
-                //   color: Colors.black,
-                //   size: 30,
-                // ),
-                // rightChevronIcon: Icon(
-                //   Icons.chevron_right,
-                //   color: Colors.black,
-                //   size: 30,
-                // ),
-                // leftChevronPadding: EdgeInsets.all(8),
-                // rightChevronPadding: EdgeInsets.all(8),
-                // leftChevronMargin: EdgeInsets.all(2),
-                // rightChevronMargin: EdgeInsets.all(2)
               ),
               onDaySelected: (date, events) {
                 _displayTextInputDialog(
@@ -624,7 +606,6 @@ class _CalendarState extends State<Calendar> {
                   },
                   defaultBuilder: (context, day, focusedDay) {
                     List<Map<String, dynamic>> list = eventsList[day] ?? [];
-
                     return Stack(
                       children: [
                         Container(
@@ -654,7 +635,6 @@ class _CalendarState extends State<Calendar> {
       required void Function() savePressed,
       required void Function() deletePressed}) async {
     CalendarDialogBloc calendarDialogBloc = CalendarDialogBloc();
-
     return showDialog(
         barrierDismissible: false,
         context: context,
@@ -664,7 +644,8 @@ class _CalendarState extends State<Calendar> {
               ..add(CalendarDialogEvent.loading(
                   autovalidateMode: AutovalidateMode.disabled,
                   category: dropdownValue,
-                  isValidate: false)),
+                  isValidate:
+                      eventController.text.trim().isEmpty ? false : true)),
             child: AlertDialog(
               actionsPadding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
               titlePadding: EdgeInsets.zero,
@@ -709,7 +690,6 @@ class _CalendarState extends State<Calendar> {
                 return state.when(
                     initial: () => const CircularProgressIndicator(),
                     loaded: (autovalidateMode, category, isValidate) {
-                      log('${autovalidateMode.toString()} $category');
                       return Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -795,16 +775,14 @@ class _CalendarState extends State<Calendar> {
                                       dropdownValue = newValue!;
                                       calendarDialogBloc.add(
                                           CalendarDialogEvent.loading(
-                                              autovalidateMode: eventController
-                                                      .text
-                                                      .trim()
-                                                      .isNotEmpty
-                                                  ? AutovalidateMode.disabled
-                                                  : AutovalidateMode.always,
+                                              autovalidateMode:
+                                                  AutovalidateMode.always,
                                               category: newValue,
                                               isValidate: eventController.text
-                                                  .trim()
-                                                  .isEmpty));
+                                                      .trim()
+                                                      .isEmpty
+                                                  ? false
+                                                  : true));
                                     },
                                     items: dropDownList
                                         .map<DropdownMenuItem<String>>(
@@ -856,7 +834,6 @@ class _CalendarState extends State<Calendar> {
                               category: dropdownValue,
                               isValidate: false));
                         } else {
-                          log('SAVE');
                           savePressed();
                         }
                       },
