@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 
 class ThemeClass {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
+    isDark = isDarkTheme;
+
     return ThemeData(
       useMaterial3: true,
       fontFamily: "Nunito",
@@ -15,3 +17,5 @@ class ThemeClass {
     );
   }
 }
+
+bool isDark = false;

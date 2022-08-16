@@ -17,14 +17,14 @@ class FileUploadForm extends StatefulWidget {
 }
 
 class _FileUploadFormState extends State<FileUploadForm> {
-  FormUploadFileBloc formUploadFileBloc = FormUploadFileBloc();
-  FilePickerResult? file;
-  List<PlatformFile> filesList = [];
+  final FormUploadFileBloc _formUploadFileBloc = FormUploadFileBloc();
+  FilePickerResult? _file;
+  List<PlatformFile> _filesList = [];
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => formUploadFileBloc,
+      create: (context) => _formUploadFileBloc,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4),
@@ -55,7 +55,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
                       builder: (context, state) {
                         return state.when(
                           initial: () {
-                            filesList.clear();
+                            _filesList.clear();
                             return _emptyView();
                           },
                           fileSuccess: (fileData) {
@@ -180,7 +180,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
       child: FxButton(
         borderRadius: 4,
         onPressed: () {
-          formUploadFileBloc.add(const FormUploadFileEvent.clear());
+          _formUploadFileBloc.add(const FormUploadFileEvent.clear());
         },
         text: 'Send Files',
       ),
@@ -188,15 +188,15 @@ class _FileUploadFormState extends State<FileUploadForm> {
   }
 
   Future<void> _pickFile() async {
-    file = await FilePicker.platform.pickFiles(
+    _file = await FilePicker.platform.pickFiles(
       allowMultiple: true,
     );
-    if (file == null) return;
-    if (filesList.isEmpty) {
-      filesList = file!.files;
+    if (_file == null) return;
+    if (_filesList.isEmpty) {
+      _filesList = _file!.files;
     } else {
-      filesList.addAll(file!.files);
+      _filesList.addAll(_file!.files);
     }
-    formUploadFileBloc.add(FormUploadFileEvent.addFile(filesList));
+    _formUploadFileBloc.add(FormUploadFileEvent.addFile(_filesList));
   }
 }
