@@ -28,6 +28,7 @@ class BarChartSample2State extends State<BarChartSample2> {
     final barGroup5 = makeGroupData(4, 17, 6);
     final barGroup6 = makeGroupData(5, 19, 1.5);
     final barGroup7 = makeGroupData(6, 10, 1.5);
+    final barGroup8 = makeGroupData(7, 18, 17);
 
     final items = [
       barGroup1,
@@ -37,6 +38,7 @@ class BarChartSample2State extends State<BarChartSample2> {
       barGroup5,
       barGroup6,
       barGroup7,
+      barGroup8,
     ];
 
     rawBarGroups = items;
@@ -63,7 +65,6 @@ class BarChartSample2State extends State<BarChartSample2> {
                 child: BarChart(
                   BarChartData(
                     maxY: 20,
-
                     titlesData: FlTitlesData(
                       show: true,
                       rightTitles: AxisTitles(
@@ -114,11 +115,15 @@ class BarChartSample2State extends State<BarChartSample2> {
     );
     String text;
     if (value == 0) {
-      text = '1K';
+      text = '0';
+    } else if (value == 5) {
+      text = '25';
     } else if (value == 10) {
-      text = '5K';
+      text = '50';
+    } else if (value == 15) {
+      text = '75';
     } else if (value == 19) {
-      text = '10K';
+      text = '100';
     } else {
       return Container();
     }
@@ -130,8 +135,7 @@ class BarChartSample2State extends State<BarChartSample2> {
   }
 
   Widget bottomTitles(double value, TitleMeta meta) {
-    List<String> titles = ["Mn", "Te", "Wd", "Tu", "Fr", "St", "Su"];
-
+    List<String> titles = ["", "2012", "", "2014", "", "2016", "", "2018"];
     Widget text = Text(
       titles[value.toInt()],
       style: const TextStyle(
@@ -143,7 +147,7 @@ class BarChartSample2State extends State<BarChartSample2> {
 
     return SideTitleWidget(
       axisSide: meta.axisSide,
-      space: 16, //margin top
+      space: 12, //margin top
       child: text,
     );
   }
@@ -154,60 +158,16 @@ class BarChartSample2State extends State<BarChartSample2> {
         toY: y1,
         color: leftBarColor,
         width: width,
+        borderRadius: BorderRadius.zero,
       ),
       BarChartRodData(
         toY: y2,
         color: rightBarColor,
         width: width,
+        borderRadius: BorderRadius.zero,
       ),
     ]);
   }
 
-  Widget makeTransactionsIcon() {
-    const width = 4.5;
-    const space = 3.5;
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          width: width,
-          height: 10,
-          color: Colors.white.withOpacity(0.4),
-        ),
-        const SizedBox(
-          width: space,
-        ),
-        Container(
-          width: width,
-          height: 28,
-          color: Colors.white.withOpacity(0.8),
-        ),
-        const SizedBox(
-          width: space,
-        ),
-        Container(
-          width: width,
-          height: 42,
-          color: Colors.white.withOpacity(1),
-        ),
-        const SizedBox(
-          width: space,
-        ),
-        Container(
-          width: width,
-          height: 28,
-          color: Colors.white.withOpacity(0.8),
-        ),
-        const SizedBox(
-          width: space,
-        ),
-        Container(
-          width: width,
-          height: 10,
-          color: Colors.white.withOpacity(0.4),
-        ),
-      ],
-    );
-  }
+
 }

@@ -7,7 +7,32 @@ class LineChart1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return LineChart(
       LineChartData(
+        gridData: FlGridData(show: true,verticalInterval: 1,getDrawingHorizontalLine: (double) => FlLine(color: Colors.grey.withOpacity(0.1),),getDrawingVerticalLine:(double) => FlLine(color: Colors.grey.withOpacity(0.1),)),
         borderData: FlBorderData(show: false),
+        titlesData: FlTitlesData(
+          show: true,
+          rightTitles: AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          topTitles: AxisTitles(
+            sideTitles: SideTitles(showTitles: false),
+          ),
+          bottomTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              getTitlesWidget: getTitles,
+              reservedSize: 42,
+            ),
+          ),
+          leftTitles: AxisTitles(
+            sideTitles: SideTitles(
+              showTitles: true,
+              reservedSize: 28,
+              interval: 1,
+              getTitlesWidget: leftTitles,
+            ),
+          ),
+        ),
         lineBarsData: [
           LineChartBarData(spots: const [
             FlSpot(0, 0),
@@ -18,7 +43,7 @@ class LineChart1 extends StatelessWidget {
             FlSpot(5, 0.9243654263320322),
             FlSpot(6, 5.009729989790984),
             FlSpot(7, 2.83296505280733)
-          ], isCurved: true, barWidth: 2, color: Colors.blue),
+          ], isCurved: true, barWidth: 2, color: const Color(0xff444bb8)),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
             FlSpot(1, 0.8881858765835509),
@@ -28,7 +53,7 @@ class LineChart1 extends StatelessWidget {
             FlSpot(5, 2.0479143256070467),
             FlSpot(6, 1.0855914260893909),
             FlSpot(7, 2.216712037984714)
-          ], isCurved: true, barWidth: 2, color: Colors.green),
+          ], isCurved: true, barWidth: 2, color: const Color(0xff699990)),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
             FlSpot(1, 0.6013413129661813),
@@ -44,3 +69,104 @@ class LineChart1 extends StatelessWidget {
     );
   }
 }
+
+
+Widget leftTitles(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Color(0xff7589a2),
+    fontWeight: FontWeight.bold,
+    fontSize: 14,
+  );
+  String text;
+  if (value == 0) {
+    text = '0';
+  } else if (value == 1) {
+    text = '75';
+  } else if (value == 2) {
+    text = '150';
+  }
+  else if (value == 3) {
+    text = '225';
+  }
+  else if (value == 4) {
+    text = '300';
+  } else if (value == 5) {
+    text = '375';
+  }
+  else if (value == 6) {
+    text = '450';
+  }else {
+    return Container();
+  }
+  return SideTitleWidget(
+    axisSide: meta.axisSide,
+    space: 0,
+    child: Text(text, style: style),
+  );
+}
+
+Widget getTitles(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Color(0xff7589a2),
+    fontWeight: FontWeight.bold,
+    fontSize: 14,
+  );
+  String text;
+  switch (value.toString()) {
+    case '0':
+      text = '2012';
+      break;
+    case '0.5':
+      text = '';
+      break;
+    case '1':
+      text = '2013';
+      break;
+    case '1.5':
+      text = '';
+      break;
+    case '2':
+      text = '2014';
+      break;
+    case '2.5':
+      text = '';
+      break;
+    case '3':
+      text = '2015';
+      break;
+    case '3.5':
+      text = '';
+      break;
+    case '4':
+      text = '2016';
+      break;
+    case '4.5':
+      text = '';
+      break;
+    case '5':
+      text = '2017';
+      break;
+    case '5.5':
+      text = '';
+      break;
+    case '6':
+      text = '2018';
+      break;
+    case '6.5':
+      text = '';
+      break;
+    case '7':
+      text = '2019';
+      break;
+    default:
+      text = '2018';
+      break;
+  }
+  return SideTitleWidget(
+    axisSide: meta.axisSide,
+    space: 16.0,
+    child: Text(text, style: style),
+  );
+}
+
+

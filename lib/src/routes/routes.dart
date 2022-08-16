@@ -18,7 +18,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'float-chart'),
+        RedirectRoute(path: '', redirectTo: 'chartlist-chart'),
         AutoRoute(path: 'dashboard', page: TestWidget),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),

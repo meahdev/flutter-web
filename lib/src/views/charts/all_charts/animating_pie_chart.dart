@@ -18,6 +18,7 @@ class PieChart2State extends State {
         Expanded(
           child: PieChart(
             PieChartData(
+
                 sectionsSpace: 0,
                 centerSpaceRadius: 80,
                 sections: showingSections()),
@@ -35,32 +36,51 @@ class PieChart2State extends State {
         case 0:
           return PieChartSectionData(
             color: const Color(0xff616fd4),
+            value: 4,
+            title: '40%',
             radius: radius,
+            titleStyle: const TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xff616fd4)),
           );
         case 1:
           return PieChartSectionData(
             color: const Color(0xff37a499),
+            value: 10,
             radius: radius,
+            titleStyle: const TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xff37a499)),
           );
         case 2:
           return PieChartSectionData(
             color: const Color(0xfff8b427),
+            value: 40,
             radius: radius,
+            titleStyle: const TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xfff8b427)),
           );
         case 3:
           return PieChartSectionData(
             color: const Color(0xff333a3f),
+            value: 10,
             radius: radius,
+            titleStyle: const TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xff333a3f)),
           );
         case 4:
           return PieChartSectionData(
             color: const Color(0xff38a5f3),
+            value: 15,
             radius: radius,
+            titleStyle: const TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xff38a5f3)),
           );
         case 5:
           return PieChartSectionData(
             color: const Color(0xffeb4660),
             radius: radius,
+            value: 10,
+            titleStyle: const TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xffeb4660)),
           );
         case 6:
           return PieChartSectionData(

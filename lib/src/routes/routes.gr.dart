@@ -84,7 +84,7 @@ class AppRouter extends _i12.RootStackRouter {
           _i12.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'float-chart',
+              redirectTo: 'chartlist-chart',
               fullMatch: true),
           _i12.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),
