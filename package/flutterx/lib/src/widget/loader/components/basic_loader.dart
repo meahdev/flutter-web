@@ -3,8 +3,8 @@ import 'dart:math' as math;
 
 class BasicLoader extends StatefulWidget {
   final Color color;
-  final Duration? duration;
-  const BasicLoader({Key? key, required this.color, this.duration})
+  final double size;
+  const BasicLoader({Key? key, required this.color, this.size = 25})
       : super(key: key);
 
   @override
@@ -14,8 +14,7 @@ class BasicLoader extends StatefulWidget {
 class _BasicLoaderState extends State<BasicLoader>
     with TickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
-      vsync: this,
-      duration: widget.duration ?? const Duration(milliseconds: 900))
+      vsync: this, duration: const Duration(milliseconds: 900))
     ..repeat();
 
   @override
@@ -34,7 +33,10 @@ class _BasicLoaderState extends State<BasicLoader>
           child: child,
         );
       },
-      child: CircularProgressIndicator(value: 0.80, color: widget.color),
+      child: SizedBox(
+          height: widget.size,
+          width: widget.size,
+          child: CircularProgressIndicator(value: 0.80, color: widget.color)),
     );
   }
 }

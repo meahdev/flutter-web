@@ -1,18 +1,16 @@
 import 'package:flutter/widgets.dart';
 
-class PulseAnimation extends StatefulWidget {
-  final double? size;
+class PulseCircleLoader extends StatefulWidget {
+  final double size;
   final Color color;
-  final Duration? duration;
-  const PulseAnimation(
-      {Key? key, this.size, this.duration, required this.color})
+  const PulseCircleLoader({Key? key, this.size = 32, required this.color})
       : super(key: key);
 
   @override
-  State<PulseAnimation> createState() => _PulseAnimationState();
+  State<PulseCircleLoader> createState() => _PulseCircleLoaderState();
 }
 
-class _PulseAnimationState extends State<PulseAnimation>
+class _PulseCircleLoaderState extends State<PulseCircleLoader>
     with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -20,8 +18,7 @@ class _PulseAnimationState extends State<PulseAnimation>
   @override
   void initState() {
     _controller = (AnimationController(
-        vsync: this,
-        duration: widget.duration ?? const Duration(milliseconds: 1200)))
+        vsync: this, duration: const Duration(milliseconds: 1200)))
       ..addListener(() => setState(() {}))
       ..repeat();
     _animation = CurveTween(curve: Curves.easeInOut).animate(_controller);
@@ -42,7 +39,7 @@ class _PulseAnimationState extends State<PulseAnimation>
         child: Transform.scale(
           scale: _animation.value,
           child: SizedBox.fromSize(
-            size: Size.square(widget.size ?? 32),
+            size: Size.square(widget.size),
             child: DecoratedBox(
                 decoration:
                     BoxDecoration(shape: BoxShape.circle, color: widget.color)),

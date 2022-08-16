@@ -14,7 +14,7 @@ import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
 import 'package:admin_dashboard/src/views/ui_elements/badge/badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
-import 'package:admin_dashboard/src/views/ui_elements/loader/simple_loader.dart';
+import 'package:admin_dashboard/src/views/ui_elements/loader/loader.dart';
 import 'package:admin_dashboard/src/views/ui_elements/modal/modal.dart';
 import 'package:admin_dashboard/src/views/ui_elements/rating/rating.dart';
 import 'package:admin_dashboard/src/views/ui_elements/toast/toast.dart';
@@ -27,7 +27,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'simpleLoader'),
+        RedirectRoute(path: '', redirectTo: 'loaders'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),
@@ -38,7 +38,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'basic-action-email', page: BasicEmail),
         AutoRoute(path: 'alert-email', page: AlertEmail),
         AutoRoute(path: 'billing-model', page: BillingEmail),
-        AutoRoute(path: 'simpleLoader', page: SimpleLoader),
+        AutoRoute(path: 'loaders', page: Loaders),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

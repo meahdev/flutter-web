@@ -83,7 +83,7 @@ class _MenuBarState extends State<MenuBar> {
     BasicEmail(),
     AlertEmail(),
     BillingEmail(),
-    SimpleLoader(),
+    Loaders(),
   ];
 
   @override

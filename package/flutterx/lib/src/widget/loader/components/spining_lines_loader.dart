@@ -3,28 +3,24 @@ import 'dart:math';
 
 import 'package:flutter/widgets.dart';
 
-class SpinKitSpinningLines extends StatefulWidget {
+class SpinningLinesLoader extends StatefulWidget {
   final Color color;
   final double size;
   final double lineWidth;
   final int itemCount;
-  final Duration duration;
-  final AnimationController? controller;
-  const SpinKitSpinningLines({
-    Key? key,
-    required this.color,
-    this.size = 70,
-    this.lineWidth = 2.0,
-    this.itemCount = 5,
-    this.duration = const Duration(milliseconds: 3000),
-    this.controller,
-  }) : super(key: key);
+  const SpinningLinesLoader(
+      {Key? key,
+      required this.color,
+      this.size = 70,
+      this.lineWidth = 2.0,
+      this.itemCount = 5})
+      : super(key: key);
 
   @override
-  State<SpinKitSpinningLines> createState() => _SpinKitSpinningLinesState();
+  State<SpinningLinesLoader> createState() => _SpinningLinesLoaderState();
 }
 
-class _SpinKitSpinningLinesState extends State<SpinKitSpinningLines>
+class _SpinningLinesLoaderState extends State<SpinningLinesLoader>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -33,8 +29,8 @@ class _SpinKitSpinningLinesState extends State<SpinKitSpinningLines>
   void initState() {
     super.initState();
 
-    _controller = (widget.controller ??
-        AnimationController(vsync: this, duration: widget.duration))
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 3000))
       ..addListener(() => setState(() {}))
       ..repeat();
 
@@ -43,9 +39,7 @@ class _SpinKitSpinningLinesState extends State<SpinKitSpinningLines>
 
   @override
   void dispose() {
-    if (widget.controller == null) {
-      _controller.dispose();
-    }
+    _controller.dispose();
     super.dispose();
   }
 

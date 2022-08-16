@@ -1,29 +1,16 @@
 import 'package:flutter/widgets.dart';
 
-class SpinKitCubeGrid extends StatefulWidget {
-  final Color? color;
+class CubeGridLoader extends StatefulWidget {
+  final Color color;
   final double size;
-  final IndexedWidgetBuilder? itemBuilder;
-  final Duration duration;
-  final AnimationController? controller;
-  const SpinKitCubeGrid({
-    Key? key,
-    this.color,
-    this.size = 50.0,
-    this.itemBuilder,
-    this.duration = const Duration(milliseconds: 1200),
-    this.controller,
-  })  : assert(
-            !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
-                !(itemBuilder == null && color == null),
-            'You should specify either a itemBuilder or a color'),
-        super(key: key);
+  const CubeGridLoader({Key? key, required this.color, this.size = 50.0})
+      : super(key: key);
 
   @override
-  State<SpinKitCubeGrid> createState() => _SpinKitCubeGridState();
+  State<CubeGridLoader> createState() => _CubeGridLoaderState();
 }
 
-class _SpinKitCubeGridState extends State<SpinKitCubeGrid>
+class _CubeGridLoaderState extends State<CubeGridLoader>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _anim1;
@@ -36,8 +23,8 @@ class _SpinKitCubeGridState extends State<SpinKitCubeGrid>
   void initState() {
     super.initState();
 
-    _controller = (widget.controller ??
-        AnimationController(vsync: this, duration: widget.duration))
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1200))
       ..repeat(reverse: true);
     _anim1 = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
         parent: _controller,
@@ -58,9 +45,8 @@ class _SpinKitCubeGridState extends State<SpinKitCubeGrid>
 
   @override
   void dispose() {
-    if (widget.controller == null) {
-      _controller.dispose();
-    }
+    _controller.dispose();
+
     super.dispose();
   }
 
@@ -112,7 +98,6 @@ class _SpinKitCubeGridState extends State<SpinKitCubeGrid>
     );
   }
 
-  Widget _itemBuilder(int index) => widget.itemBuilder != null
-      ? widget.itemBuilder!(context, index)
-      : DecoratedBox(decoration: BoxDecoration(color: widget.color));
+  Widget _itemBuilder(int index) =>
+      DecoratedBox(decoration: BoxDecoration(color: widget.color));
 }

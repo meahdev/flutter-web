@@ -1,30 +1,19 @@
-import 'package:admin_dashboard/src/views/ui_elements/loader/components/delay_tween.dart';
 import 'package:flutter/material.dart';
-
-enum SpinKitWaveType { start, end, center }
+import 'package:flutterx/src/constant/enum.dart';
+import 'package:flutterx/src/widget/loader/components/delay_tween.dart';
 
 class WaveLoader extends StatefulWidget {
-  final Color? color;
+  final Color color;
   final int itemCount;
   final double size;
-  final SpinKitWaveType type;
-  final IndexedWidgetBuilder? itemBuilder;
-  final Duration duration;
-  final AnimationController? controller;
+  final WaveType type;
   const WaveLoader(
       {Key? key,
-      this.color,
+      required this.color,
       required this.itemCount,
       required this.size,
-      required this.type,
-      this.itemBuilder,
-      required this.duration,
-      this.controller})
-      : assert(
-            !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
-                !(itemBuilder == null && color == null),
-            'You should specify either a itemBuilder or a color'),
-        assert(itemCount >= 2, 'itemCount Cant be less then 2 '),
+      this.type = WaveType.start})
+      : assert(itemCount >= 2, 'itemCount Cant be less then 2 '),
         super(key: key);
 
   @override
@@ -37,30 +26,28 @@ class _WaveLoaderState extends State<WaveLoader> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _controller = (widget.controller ??
-        AnimationController(vsync: this, duration: widget.duration))
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1200))
       ..repeat();
   }
 
   @override
   void dispose() {
-    if (widget.controller == null) {
-      _controller.dispose();
-    }
+    _controller.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final List<double> _bars = getAnimationDelay(widget.itemCount);
+    final List<double> bars = getAnimationDelay(widget.itemCount);
     return Center(
       child: SizedBox.fromSize(
         size: Size(widget.size * 1.25, widget.size),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(_bars.length, (i) {
+          children: List.generate(bars.length, (i) {
             return ScaleYWidget(
-              scaleY: DelayTween(begin: .4, end: 1.0, delay: _bars[i])
+              scaleY: DelayTween(begin: 0.4, end: 1.0, delay: bars[i])
                   .animate(_controller),
               child: SizedBox.fromSize(
                   size: Size(widget.size / widget.itemCount, widget.size),
@@ -74,11 +61,11 @@ class _WaveLoaderState extends State<WaveLoader> with TickerProviderStateMixin {
 
   List<double> getAnimationDelay(int itemCount) {
     switch (widget.type) {
-      case SpinKitWaveType.start:
+      case WaveType.start:
         return _startAnimationDelay(itemCount);
-      case SpinKitWaveType.end:
+      case WaveType.end:
         return _endAnimationDelay(itemCount);
-      case SpinKitWaveType.center:
+      case WaveType.center:
       default:
         return _centerAnimationDelay(itemCount);
     }
@@ -118,9 +105,8 @@ class _WaveLoaderState extends State<WaveLoader> with TickerProviderStateMixin {
     ];
   }
 
-  Widget _itemBuilder(int index) => widget.itemBuilder != null
-      ? widget.itemBuilder!(context, index)
-      : DecoratedBox(decoration: BoxDecoration(color: widget.color));
+  Widget _itemBuilder(int index) =>
+      DecoratedBox(decoration: BoxDecoration(color: widget.color));
 }
 
 class ScaleYWidget extends AnimatedWidget {

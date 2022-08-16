@@ -1,22 +1,13 @@
 import 'package:flutter/widgets.dart';
 
 class RotatingPlainLoader extends StatefulWidget {
-  final Color? color;
+  final Color color;
   final double size;
-  final IndexedWidgetBuilder? itemBuilder;
-  final Duration duration;
-  final AnimationController? controller;
-  const RotatingPlainLoader(
-      {Key? key,
-      this.color,
-      required this.size,
-      this.itemBuilder,
-      required this.duration,
-      this.controller})
-      : assert(
-            !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
-                !(itemBuilder == null && color == null),
-            'You should specify either a itemBuilder or a color'),
+  const RotatingPlainLoader({
+    Key? key,
+    required this.color,
+    required this.size,
+  })  : 
         super(key: key);
 
   @override
@@ -33,8 +24,8 @@ class _RotatingPlainLoaderState extends State<RotatingPlainLoader>
   void initState() {
     super.initState();
 
-    _controller = (widget.controller ??
-        AnimationController(vsync: this, duration: widget.duration))
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1500))
       ..addListener(() => setState(() {}))
       ..repeat();
     _animation1 = Tween(begin: 0.0, end: 180.0).animate(CurvedAnimation(
@@ -47,9 +38,7 @@ class _RotatingPlainLoaderState extends State<RotatingPlainLoader>
 
   @override
   void dispose() {
-    if (widget.controller == null) {
-      _controller.dispose();
-    }
+    _controller.dispose();
     super.dispose();
   }
 

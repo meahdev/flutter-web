@@ -1,30 +1,21 @@
-import 'package:admin_dashboard/src/views/ui_elements/loader/components/delay_tween.dart';
-import 'package:flutter/widgets.dart';
 
-class SpinKitCircle extends StatefulWidget {
-  final Color? color;
+import 'package:flutter/widgets.dart';
+import 'package:flutterx/src/widget/loader/components/delay_tween.dart';
+
+class CircleLoader extends StatefulWidget {
+  final Color color;
   final double size;
-  final IndexedWidgetBuilder? itemBuilder;
-  final Duration duration;
-  final AnimationController? controller;
-  const SpinKitCircle({
+  const CircleLoader({
     Key? key,
-    this.color,
+    required this.color,
     this.size = 50.0,
-    this.itemBuilder,
-    this.duration = const Duration(milliseconds: 1200),
-    this.controller,
-  })  : assert(
-            !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
-                !(itemBuilder == null && color == null),
-            'You should specify either a itemBuilder or a color'),
-        super(key: key);
+  }) : super(key: key);
 
   @override
-  State<SpinKitCircle> createState() => _SpinKitCircleState();
+  State<CircleLoader> createState() => _CircleLoaderState();
 }
 
-class _SpinKitCircleState extends State<SpinKitCircle>
+class _CircleLoaderState extends State<CircleLoader>
     with SingleTickerProviderStateMixin {
   final List<double> delays = [
     .0,
@@ -46,16 +37,15 @@ class _SpinKitCircleState extends State<SpinKitCircle>
   void initState() {
     super.initState();
 
-    _controller = (widget.controller ??
-        AnimationController(vsync: this, duration: widget.duration))
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1200))
       ..repeat();
   }
 
   @override
   void dispose() {
-    if (widget.controller == null) {
-      _controller.dispose();
-    }
+    _controller.dispose();
+
     super.dispose();
   }
 
@@ -66,10 +56,10 @@ class _SpinKitCircleState extends State<SpinKitCircle>
         size: Size.square(widget.size),
         child: Stack(
           children: List.generate(delays.length, (index) {
-            final _position = widget.size * .5;
+            final position = widget.size * 0.5;
             return Positioned.fill(
-              left: _position,
-              top: _position,
+              left: position,
+              top: position,
               child: Transform(
                 transform: Matrix4.rotationZ(30.0 * index * 0.0174533),
                 child: Align(
@@ -91,9 +81,6 @@ class _SpinKitCircleState extends State<SpinKitCircle>
     );
   }
 
-  Widget _itemBuilder(int index) => widget.itemBuilder != null
-      ? widget.itemBuilder!(context, index)
-      : DecoratedBox(
-          decoration:
-              BoxDecoration(color: widget.color, shape: BoxShape.circle));
+  Widget _itemBuilder(int index) => DecoratedBox(
+      decoration: BoxDecoration(color: widget.color, shape: BoxShape.circle));
 }

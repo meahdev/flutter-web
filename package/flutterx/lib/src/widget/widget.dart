@@ -11,3 +11,4 @@ export 'slider/range_slider.dart';
 export 'slider/slider.dart';
 export 'toast/toast.dart';
 export 'toast/toast_provider.dart';
+export 'loader/loader.dart';

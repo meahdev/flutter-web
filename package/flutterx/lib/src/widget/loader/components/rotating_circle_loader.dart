@@ -1,29 +1,16 @@
 import 'package:flutter/widgets.dart';
 
-class SpinKitRotatingCircle extends StatefulWidget {
-  final Color? color;
+class RotatingCircleLoader extends StatefulWidget {
+  final Color color;
   final double size;
-  final IndexedWidgetBuilder? itemBuilder;
-  final Duration duration;
-  final AnimationController? controller;
-  const SpinKitRotatingCircle({
-    Key? key,
-    this.color,
-    this.size = 50.0,
-    this.itemBuilder,
-    this.duration = const Duration(milliseconds: 1200),
-    this.controller,
-  })  : assert(
-            !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
-                !(itemBuilder == null && color == null),
-            'You should specify either a itemBuilder or a color'),
-        super(key: key);
+  const RotatingCircleLoader({Key? key, required this.color, this.size = 50.0})
+      : super(key: key);
 
   @override
-  State<SpinKitRotatingCircle> createState() => _SpinKitRotatingCircleState();
+  State<RotatingCircleLoader> createState() => _RotatingCircleLoaderState();
 }
 
-class _SpinKitRotatingCircleState extends State<SpinKitRotatingCircle>
+class _RotatingCircleLoaderState extends State<RotatingCircleLoader>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation1;
@@ -33,8 +20,8 @@ class _SpinKitRotatingCircleState extends State<SpinKitRotatingCircle>
   void initState() {
     super.initState();
 
-    _controller = (widget.controller ??
-        AnimationController(vsync: this, duration: widget.duration))
+    _controller = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1200))
       ..addListener(() => setState(() {}))
       ..repeat();
     _animation1 = Tween(begin: 0.0, end: 180.0).animate(CurvedAnimation(
@@ -47,9 +34,7 @@ class _SpinKitRotatingCircleState extends State<SpinKitRotatingCircle>
 
   @override
   void dispose() {
-    if (widget.controller == null) {
-      _controller.dispose();
-    }
+    _controller.dispose();
     super.dispose();
   }
 
@@ -67,9 +52,6 @@ class _SpinKitRotatingCircleState extends State<SpinKitRotatingCircle>
     );
   }
 
-  Widget _itemBuilder(int index) => widget.itemBuilder != null
-      ? widget.itemBuilder!(context, index)
-      : DecoratedBox(
-          decoration:
-              BoxDecoration(color: widget.color, shape: BoxShape.circle));
+  Widget _itemBuilder(int index) => DecoratedBox(
+      decoration: BoxDecoration(color: widget.color, shape: BoxShape.circle));
 }

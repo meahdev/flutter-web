@@ -32,7 +32,7 @@ import '../views/menu_bar.dart' as _i1;
 import '../views/ui_elements/alert/alert_dialog.dart' as _i15;
 import '../views/ui_elements/badge/badge.dart' as _i14;
 import '../views/ui_elements/buttons/button.dart' as _i12;
-import '../views/ui_elements/loader/simple_loader.dart' as _i20;
+import '../views/ui_elements/loader/loader.dart' as _i20;
 import '../views/ui_elements/modal/modal.dart' as _i16;
 import '../views/ui_elements/rating/rating.dart' as _i13;
 import '../views/ui_elements/toast/toast.dart' as _i11;
@@ -119,9 +119,9 @@ class AppRouter extends _i21.RootStackRouter {
       return _i21.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i19.BillingEmail());
     },
-    SimpleLoader.name: (routeData) {
+    Loaders.name: (routeData) {
       return _i21.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i20.SimpleLoader());
+          routeData: routeData, child: const _i20.Loaders());
     }
   };
 
@@ -131,7 +131,7 @@ class AppRouter extends _i21.RootStackRouter {
           _i21.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'simpleLoader',
+              redirectTo: 'loaders',
               fullMatch: true),
           _i21.RouteConfig(Dashboard.name,
               path: 'dashboard', parent: MenuBar.name),
@@ -148,8 +148,7 @@ class AppRouter extends _i21.RootStackRouter {
               path: 'alert-email', parent: MenuBar.name),
           _i21.RouteConfig(BillingEmail.name,
               path: 'billing-model', parent: MenuBar.name),
-          _i21.RouteConfig(SimpleLoader.name,
-              path: 'simpleLoader', parent: MenuBar.name)
+          _i21.RouteConfig(Loaders.name, path: 'loaders', parent: MenuBar.name)
         ]),
         _i21.RouteConfig(LoginOne.name, path: '/login-one'),
         _i21.RouteConfig(LoginTwo.name, path: '/login-two'),
@@ -319,9 +318,9 @@ class BillingEmail extends _i21.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i20.SimpleLoader]
-class SimpleLoader extends _i21.PageRouteInfo<void> {
-  const SimpleLoader() : super(SimpleLoader.name, path: 'simpleLoader');
+/// [_i20.Loaders]
+class Loaders extends _i21.PageRouteInfo<void> {
+  const Loaders() : super(Loaders.name, path: 'loaders');
 
-  static const String name = 'SimpleLoader';
+  static const String name = 'Loaders';
 }
