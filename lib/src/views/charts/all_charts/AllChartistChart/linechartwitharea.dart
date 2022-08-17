@@ -113,7 +113,7 @@ Widget leftTitles(double value, TitleMeta meta) {
   }
   return SideTitleWidget(
     axisSide: meta.axisSide,
-    space: 0,
+    space: 12,
     child: Text(text, style: style),
   );
 }

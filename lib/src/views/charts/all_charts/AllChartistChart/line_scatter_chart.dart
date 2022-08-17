@@ -14,7 +14,6 @@ class _LineScatterChartState extends State {
   final maxX = 50.0;
   final maxY = 50.0;
   final radius = 4.0;
-
   Color blueColor = const Color(0xFF616fd4);
   Color yellowColor = const Color(0xFFf9b426);
 
@@ -136,7 +135,7 @@ Widget leftTitles(double value, TitleMeta meta) {
   }
   return SideTitleWidget(
     axisSide: meta.axisSide,
-    space: 0,
+    space: 10,
     child: Text(text, style: style),
   );
 }

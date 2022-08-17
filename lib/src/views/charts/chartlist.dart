@@ -19,26 +19,36 @@ class _ChartListChartState extends State<ChartListChart> {
       mainAxisSize: MainAxisSize.min,
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-              _card(ChartType.animatingPieChart, context, 'Animating a Donut with Svg.animate'),
+              _card(ChartType.animatingPieChart, context,
+                  'Animating a Donut with Svg.animate'),
               FxBox.h20,
               _card(ChartType.simplePieChart, context, 'Simple Pie Chart'),
               FxBox.h20,
-              _card(ChartType.advancedSmileChart, context, 'Advanced Smil Animations'),
+              _card(ChartType.advancedSmileChart, context,
+                  'Advanced Smil Animations'),
               FxBox.h20,
               _card(ChartType.simpleLineChart, context, 'Simple line chart'),
               FxBox.h20,
-              _card(ChartType.lineScatterChart, context, 'Line Scatter Diagram'),
+              _card(
+                  ChartType.lineScatterChart, context, 'Line Scatter Diagram'),
               FxBox.h20,
-              _card(ChartType.lineChartWithArea, context, 'Line chart with area'),
+              _card(
+                  ChartType.lineChartWithArea, context, 'Line chart with area'),
               FxBox.h20,
-              _card(ChartType.overlapBars, context, 'Overlapping bars on mobile'),
+              _card(
+                  ChartType.overlapBars, context, 'Overlapping bars on mobile'),
             ]
           : [
               Row(
                 children: [
-                  Expanded(child: _card(ChartType.animatingPieChart, context, 'Animating a Donut with Svg.animate')),
+                  Expanded(
+                    child: _card(ChartType.animatingPieChart, context,
+                        'Animating a Donut with Svg.animate'),
+                  ),
                   FxBox.w20,
-                  Expanded(child: _card(ChartType.simplePieChart, context, 'Simple Pie Chart'),
+                  Expanded(
+                    child: _card(
+                        ChartType.simplePieChart, context, 'Simple Pie Chart'),
                   ),
                 ],
               ),
@@ -152,8 +162,8 @@ getChartData(ChartType chartType, BuildContext context) {
           ],
         ),
       );
-    }else if (chartType == ChartType.simpleLineChart) {
-      return  Align(
+    } else if (chartType == ChartType.simpleLineChart) {
+      return Align(
         alignment: Alignment.center,
         child: Column(
           children: [
@@ -163,8 +173,7 @@ getChartData(ChartType chartType, BuildContext context) {
           ],
         ),
       );
-    }
-    else if (chartType == ChartType.overlapBars) {
+    } else if (chartType == ChartType.overlapBars) {
       return Align(
         alignment: Alignment.center,
         child: Column(
@@ -175,8 +184,7 @@ getChartData(ChartType chartType, BuildContext context) {
           ],
         ),
       );
-    }
-    else if (chartType == ChartType.simplePieChart) {
+    } else if (chartType == ChartType.simplePieChart) {
       return Align(
         alignment: Alignment.center,
         child: Column(
@@ -187,7 +195,7 @@ getChartData(ChartType chartType, BuildContext context) {
           ],
         ),
       );
-    }else if (chartType == ChartType.animatingPieChart) {
+    } else if (chartType == ChartType.animatingPieChart) {
       return Align(
         alignment: Alignment.center,
         child: Column(

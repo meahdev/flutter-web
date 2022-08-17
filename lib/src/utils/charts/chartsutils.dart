@@ -1,26 +1,22 @@
 import 'package:admin_dashboard/src/constant/enum.dart';
-import 'package:admin_dashboard/src/views/charts/all_charts/advanced_smil_chart.dart';
-import 'package:admin_dashboard/src/views/charts/all_charts/animating_pie_chart.dart';
-import 'package:admin_dashboard/src/views/charts/all_charts/charjs_bar_chart.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/advanced_smil_chart.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/animating_pie_chart.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/AllChartjsChart/charjs_bar_chart.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/chart_type.dart';
-import 'package:admin_dashboard/src/views/charts/all_charts/line_scatter_chart.dart';
-import 'package:admin_dashboard/src/views/charts/all_charts/linechartwitharea.dart';
-import 'package:admin_dashboard/src/views/charts/all_charts/simple_line_chart.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/line_scatter_chart.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/linechartwitharea.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/simple_line_chart.dart';
 
 
 getChart(ChartType chartType) {
   double numberOfFeatures = 3;
-  const ticks = [7, 14, 21, 28, 35];
   var features = ["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH"];
   var data = [
     [10.0, 20, 28, 5, 16, 15, 17, 6],
     [14.5, 1, 4, 14, 23, 10, 6, 19]
   ];
-
   features = features.sublist(0, numberOfFeatures.floor());
-  data = data
-      .map((graph) => graph.sublist(0, numberOfFeatures.floor()))
-      .toList();
+  data = data.map((graph) => graph.sublist(0, numberOfFeatures.floor())).toList();
   if (chartType == ChartType.lineChart) {
     return const LineChart1();
   } else if (chartType == ChartType.barChart) {

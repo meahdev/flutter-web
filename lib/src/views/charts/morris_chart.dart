@@ -33,20 +33,24 @@ class _MorrisChartState extends State<MorrisChart> {
               Row(
                 children: [
                   Expanded(
-                      child: _card(ChartType.lineChart, context, 'Line Chart')),
+                    child: _card(ChartType.lineChart, context, 'Line Chart'),
+                  ),
                   FxBox.w20,
                   Expanded(
-                      child: _card(ChartType.barChart, context, 'Bar Chart')),
+                    child: _card(ChartType.barChart, context, 'Bar Chart'),
+                  ),
                 ],
               ),
               FxBox.h20,
               Row(
                 children: [
                   Expanded(
-                      child: _card(ChartType.areaChart, context, 'Area Chart')),
+                    child: _card(ChartType.areaChart, context, 'Area Chart'),
+                  ),
                   FxBox.w20,
                   Expanded(
-                      child: _card(ChartType.piaChart, context, 'Donut Chart')),
+                    child: _card(ChartType.piaChart, context, 'Donut Chart'),
+                  ),
                 ],
               ),
               FxBox.h20,
@@ -59,7 +63,9 @@ class _MorrisChartState extends State<MorrisChart> {
 Widget _card(ChartType chartType, BuildContext context, String name) {
   return SizedBox(
     child: Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -152,17 +158,20 @@ getChartData(ChartType chartType, BuildContext context) {
     }
   } else {
     if (chartType == ChartType.lineChart) {
-      return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-        _richText('Activated', 25610, context),
-        _richText('Pending', 56210, context),
-        _richText('DeActivated', 12185, context),
-      ]);
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _richText('Activated', 25610, context),
+          _richText('Pending', 56210, context),
+          _richText('DeActivated', 12185, context),
+        ],
+      );
     } else if (chartType == ChartType.barChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           _richText('Activated', 695412, context),
-          _richText('Pending', 163542, context)
+          _richText('Pending', 163542, context),
         ],
       );
     } else if (chartType == ChartType.areaChart) {
@@ -209,7 +218,9 @@ Widget _richText(String type, int count, BuildContext context) {
             fontSize: 21,
           ),
         ),
-        TextSpan(text: upperCase(type)),
+        TextSpan(
+          text: upperCase(type),
+        ),
       ],
     ),
   );

@@ -2,17 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class SimpleLineChart extends StatelessWidget {
-  const  SimpleLineChart({Key? key}) : super(key: key);
-  //
-  // final List<FlSpot> dummyData1 = List.generate(8, (index) {
-  //   return FlSpot(index.toDouble(), index * Random().nextDouble());
-  // });
+  const SimpleLineChart({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    //print(dummyData1);
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: true,verticalInterval: 2,getDrawingHorizontalLine: (_) => FlLine(color: Colors.grey.withOpacity(0.1),),getDrawingVerticalLine:(_) => FlLine(color: Colors.grey.withOpacity(0.1),)),
+        gridData: FlGridData(
+            show: true,
+            verticalInterval: 2,
+            getDrawingHorizontalLine: (_) => FlLine(
+                  color: Colors.grey.withOpacity(0.1),
+                ),
+            getDrawingVerticalLine: (_) => FlLine(
+                  color: Colors.grey.withOpacity(0.1),
+                )),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
           show: true,
@@ -81,7 +85,7 @@ class SimpleLineChart extends StatelessWidget {
               FlSpot(9.5, 1),
             ],
             isCurved: true,
-            color: const Color(0xff6fab427),
+            color: const Color(0xff6fab42),
             barWidth: 2,
             isStrokeCapRound: false,
             dotData: FlDotData(
@@ -107,23 +111,20 @@ Widget leftTitles(double value, TitleMeta meta) {
     text = '2.5';
   } else if (value == 2) {
     text = '5';
-  }
-  else if (value == 3) {
+  } else if (value == 3) {
     text = '7.5';
-  }
-  else if (value == 4) {
+  } else if (value == 4) {
     text = '10';
   } else if (value == 5) {
     text = '12.5';
-  }
-  else if (value == 6) {
+  } else if (value == 6) {
     text = '15';
-  }else {
+  } else {
     return Container();
   }
   return SideTitleWidget(
     axisSide: meta.axisSide,
-    space: 0,
+    space: 5,
     child: Text(text, style: style),
   );
 }

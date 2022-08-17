@@ -1,6 +1,5 @@
 import 'package:admin_dashboard/src/views/badge/badge.dart';
 import 'package:admin_dashboard/src/views/buttons/button.dart';
-import 'package:admin_dashboard/src/views/charts/floatChart.dart';
 import 'package:admin_dashboard/src/views/charts/chartjs.dart';
 import 'package:admin_dashboard/src/views/charts/chartlist.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
@@ -18,7 +17,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'chartlist-chart'),
+        RedirectRoute(path: '', redirectTo: 'dashboard'),
         AutoRoute(path: 'dashboard', page: TestWidget),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),
@@ -28,7 +27,6 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'morris-chart', page: MorrisChart),
         AutoRoute(path: 'chartlist-chart', page: ChartListChart),
         AutoRoute(path: 'chartjs-chart', page: ChartJsChart),
-        AutoRoute(path: 'float-chart', page: FloatChart),
       ],
     ),
   ],

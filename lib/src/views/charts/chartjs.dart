@@ -16,10 +16,12 @@ class _ChartJsChartState extends State<ChartJsChart> {
   @override
   Widget build(BuildContext context) {
     return Column(
-
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
               _card(ChartType.chartJsBarChart, context, 'Bar Chart'),
+              FxBox.h20,
+              _card(ChartType.multipleStaticChart, context,
+                  'Multiple Statistics'),
               FxBox.h20,
               _card(ChartType.polarChart, context, 'Polar Chart'),
               FxBox.h20,
@@ -28,15 +30,27 @@ class _ChartJsChartState extends State<ChartJsChart> {
             ]
           : [
               Row(
-                children: [Expanded(child: _card(ChartType.chartJsBarChart, context, 'Bar Chart')),
+                children: [
+                  Expanded(
+                    child:
+                        _card(ChartType.chartJsBarChart, context, 'Bar Chart'),
+                  ),
+                  Expanded(
+                    child: _card(ChartType.multipleStaticChart, context,
+                        'Multiple Statistics'),
+                  ),
                 ],
               ),
               FxBox.h20,
               Row(
                 children: [
-                  Expanded(child: _card(ChartType.polarChart, context, 'Polar Chart')),
+                  Expanded(
+                    child: _card(ChartType.polarChart, context, 'Polar Chart'),
+                  ),
                   FxBox.w20,
-                  Expanded(child: _card(ChartType.radarChart, context, 'Radar Chart')),
+                  Expanded(
+                    child: _card(ChartType.radarChart, context, 'Radar Chart'),
+                  ),
                 ],
               ),
             ],
@@ -47,7 +61,9 @@ class _ChartJsChartState extends State<ChartJsChart> {
 Widget _card(ChartType chartType, BuildContext context, String name) {
   return SizedBox(
     child: Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -78,13 +94,28 @@ getChartData(ChartType chartType, BuildContext context) {
     if (chartType == ChartType.chartJsBarChart) {
       return Align(
         alignment: Alignment.center,
-        child: Column(children: [
-          _richText('Activated', 2541, context),
-          FxBox.h12,
-          _richText('Pending', 84845, context),
-          FxBox.h12,
-          _richText('DeActivated', 12001, context),
-        ]),
+        child: Column(
+          children: [
+            _richText('Activated', 2541, context),
+            FxBox.h12,
+            _richText('Pending', 84845, context),
+            FxBox.h12,
+            _richText('DeActivated', 12001, context),
+          ],
+        ),
+      );
+    } else if (chartType == ChartType.multipleStaticChart) {
+      return Align(
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+            _richText('Activated', 362411, context),
+            FxBox.h12,
+            _richText('Pending', 8489, context),
+            FxBox.h12,
+            _richText('DeActivated', 985412, context),
+          ],
+        ),
       );
     } else if (chartType == ChartType.radarChart) {
       return Align(
@@ -123,6 +154,15 @@ getChartData(ChartType chartType, BuildContext context) {
           _richText('DeActivated', 12001, context),
         ],
       );
+    } else if (chartType == ChartType.multipleStaticChart) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          _richText('Activated', 362411, context),
+          _richText('Pending', 8489, context),
+          _richText('DeActivated', 985412, context),
+        ],
+      );
     } else if (chartType == ChartType.radarChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -158,7 +198,9 @@ Widget _richText(String type, int count, BuildContext context) {
             fontSize: 21,
           ),
         ),
-        TextSpan(text: upperCase(type)),
+        TextSpan(
+          text: upperCase(type),
+        ),
       ],
     ),
   );

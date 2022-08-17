@@ -7,7 +7,6 @@ import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/utils/text_utils.dart';
-
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
 import 'package:admin_dashboard/src/widget/expantion_tile.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -42,7 +41,7 @@ class _MenuBarState extends State<MenuBar> {
   List<List<String>> componentsExpandList = [
     ['Toast', 'Buttons', 'Rating', 'Badge'],
     ['Cupertino Icons'],
-    ['Morris Chart','Chartist chart','ChartJs chart','Flot Chart'],
+    ['Morris Chart','Chartist chart','ChartJs chart'],
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
@@ -55,7 +54,6 @@ class _MenuBarState extends State<MenuBar> {
     MorrisChart(),
     ChartListChart(),
     ChartJsChart(),
-    FloatChart()
   ];
 
   @override

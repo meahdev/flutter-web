@@ -56,31 +56,31 @@ class ChartJsBarChart extends StatelessWidget {
     String text;
     switch (value.toInt()) {
       case 0:
-        text = 'January';
+        text = 'Jan';
         break;
       case 1:
-        text = 'February';
+        text = 'Feb';
         break;
       case 2:
-        text = 'March';
+        text = 'Mar';
         break;
       case 3:
-        text = 'April';
+        text = 'Apr';
         break;
       case 4:
         text = 'May';
         break;
       case 5:
-        text = 'June';
+        text = 'Jun';
         break;
       case 6:
-        text = 'July';
+        text = 'Jul';
         break;
       case 7:
-        text = 'August';
+        text = 'Aug';
         break;
       default:
-        text = 'September';
+        text = 'Sep';
         break;
     }
     return SideTitleWidget(

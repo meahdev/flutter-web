@@ -17,7 +17,9 @@ int getRouteIndex(String route) {
     return 8;
   }else if (route == 'Flot Chart') {
     return 9;
-  }  else {
+  } else if (route == 'Sparkline Chart') {
+    return 10;
+  } else {
     return 0;
   }
 }
