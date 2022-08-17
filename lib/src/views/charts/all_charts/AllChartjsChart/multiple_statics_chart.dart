@@ -22,25 +22,16 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
     return LineChartData(
       borderData: FlBorderData(border: const Border(bottom: BorderSide.none)),
       gridData: FlGridData(
-        show: false,
-        drawVerticalLine: true,
-        horizontalInterval: 1,
-        verticalInterval: 1,
-        getDrawingHorizontalLine: (value) {
-          return FlLine(
-            color: const Color(0xff37434d),
-            strokeWidth: 1,
-          );
-        },
-        getDrawingVerticalLine: (value) {
-          return FlLine(
-            color: const Color(0xff37434d),
-            strokeWidth: 1,
-          );
-        },
-      ),
+          show: true,
+          verticalInterval: 1,
+          getDrawingHorizontalLine: (_) => FlLine(
+                color: Colors.grey.withOpacity(0.1),
+              ),
+          getDrawingVerticalLine: (_) => FlLine(
+                color: Colors.grey.withOpacity(0.1),
+              )),
       titlesData: FlTitlesData(
-        show: false,
+        show: true,
         rightTitles: AxisTitles(
           sideTitles: SideTitles(showTitles: false),
         ),
@@ -50,8 +41,16 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
         bottomTitles: AxisTitles(
           sideTitles: SideTitles(
             showTitles: true,
-            reservedSize: 30,
+            getTitlesWidget: getTitles,
+            reservedSize: 42,
+          ),
+        ),
+        leftTitles: AxisTitles(
+          sideTitles: SideTitles(
+            showTitles: true,
+            reservedSize: 28,
             interval: 1,
+            getTitlesWidget: leftTitles,
           ),
         ),
       ),
@@ -76,8 +75,7 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
           dotData: FlDotData(
             show: false,
           ),
-          belowBarData: BarAreaData(
-              show: true, color: const Color(0xff97d1cd)),
+          belowBarData: BarAreaData(show: true, color: const Color(0xff97d1cd)),
         ),
         LineChartBarData(
           spots: const [
@@ -126,3 +124,109 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
   }
 }
 
+Widget leftTitles(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Color(0xff7589a2),
+    fontWeight: FontWeight.bold,
+    fontSize: 14,
+  );
+  String text;
+  if (value == 0) {
+    text = '0';
+  } else if (value == 1) {
+    text = '50';
+  } else if (value == 2) {
+    text = '100';
+  } else if (value == 3) {
+    text = '150';
+  } else if (value == 4) {
+    text = '200';
+  } else if (value == 5) {
+    text = '250';
+  } else if (value == 6) {
+    text = '300';
+  } else {
+    return Container();
+  }
+  return SideTitleWidget(
+    axisSide: meta.axisSide,
+    space: 0,
+    child: Text(text, style: style),
+  );
+}
+
+Widget getTitles(double value, TitleMeta meta) {
+  const style = TextStyle(
+    color: Color(0xff7589a2),
+    fontWeight: FontWeight.bold,
+    fontSize: 14,
+  );
+  String text;
+  switch (value.toString()) {
+    case '0':
+      text = '0';
+      break;
+    case '0.5':
+      text = '';
+      break;
+    case '1':
+      text = '';
+      break;
+    case '1.5':
+      text = '1.0';
+      break;
+    case '2':
+      text = '';
+      break;
+    case '2.5':
+      text = '';
+      break;
+    case '3':
+      text = '2.0';
+      break;
+    case '3.5':
+      text = '';
+      break;
+    case '4':
+      text = '';
+      break;
+    case '4.5':
+      text = '3.0';
+      break;
+    case '5':
+      text = '';
+      break;
+    case '5.5':
+      text = '';
+      break;
+    case '6':
+      text = '4.0';
+      break;
+    case '6.5':
+      text = '';
+      break;
+    case '7':
+      text = '';
+      break;
+    case '8':
+      text = '5.0';
+      break;
+    case '9':
+      text = '';
+      break;
+    case '10':
+      text = '6.0';
+      break;
+    case '11':
+      text = '';
+      break;
+    default:
+      text = '';
+      break;
+  }
+  return SideTitleWidget(
+    axisSide: meta.axisSide,
+    space: 16.0,
+    child: Text(text, style: style),
+  );
+}

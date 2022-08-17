@@ -7,6 +7,6 @@ export 'AllChartistChart/simplepie_chart.dart';
 export 'AllChartistChart/overlap_bar.dart';
 export 'AllChartjsChart/radar_chart.dart';
 export 'AllChartjsChart/polar_chart.dart';
-export 'AllChartjsChart/multiple_statics_chart.dart';
+
 
 

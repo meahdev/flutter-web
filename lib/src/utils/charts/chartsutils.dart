@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/enum.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/advanced_smil_chart.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/animating_pie_chart.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/AllChartjsChart/charjs_bar_chart.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/AllChartjsChart/multiple_statics_chart.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/chart_type.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/line_scatter_chart.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/linechartwitharea.dart';
