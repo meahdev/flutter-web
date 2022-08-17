@@ -18,15 +18,15 @@ class FxLoader extends StatelessWidget {
   final double lineWidth;
   final int itemCount;
   final WaveType wavetype;
-  const FxLoader(
-      {Key? key,
-      required this.loaderType,
-      required this.color,
-      required this.size,
-      this.lineWidth = 2.0,
-      this.itemCount = 5,
-      this.wavetype = WaveType.start})
-      : super(key: key);
+  const FxLoader({
+    Key? key,
+    required this.loaderType,
+    required this.color,
+    required this.size,
+    this.lineWidth = 2.0,
+    this.itemCount = 5,
+    this.wavetype = WaveType.start,
+  }) : super(key: key);
 
   const FxLoader.spinningLinesLoader({
     Key? key,

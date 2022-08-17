@@ -7,7 +7,10 @@ class DelayTween extends Tween<double> {
     double? begin,
     double? end,
     required this.delay,
-  }) : super(begin: begin, end: end);
+  }) : super(
+          begin: begin,
+          end: end,
+        );
 
   final double delay;
 

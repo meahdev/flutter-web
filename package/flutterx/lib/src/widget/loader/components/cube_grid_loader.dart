@@ -100,10 +100,11 @@ class _CubeGridLoaderState extends State<CubeGridLoader>
     return ScaleTransition(
       scale: animation,
       child: SizedBox.fromSize(
-          size: Size.square(widget.size / 3),
-          child: AnimatedPartWidget(
-            color: widget.color,
-          )),
+        size: Size.square(widget.size / 3),
+        child: AnimatedPartWidget(
+          color: widget.color,
+        ),
+      ),
     );
   }
 }

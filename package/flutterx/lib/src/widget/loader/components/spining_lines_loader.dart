@@ -91,7 +91,12 @@ class SpinningLinesPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     for (var i = 1; i <= itemCount; i++) {
-      _drawSpin(canvas, size, _linePaint, i);
+      _drawSpin(
+        canvas,
+        size,
+        _linePaint,
+        i,
+      );
     }
   }
 
@@ -125,7 +130,11 @@ class SpinningLinesPainter extends CustomPainter {
     path.lineTo(startX, startY);
 
     canvas.save();
-    _translateCanvas(canvas, size, spinnerSize);
+    _translateCanvas(
+      canvas,
+      size,
+      spinnerSize,
+    );
     _rotateCanvas(
       canvas,
       spinnerSize,
