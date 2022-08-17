@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:flutter/material.dart';
 
@@ -94,7 +95,7 @@ class _ComingSoonState extends State<ComingSoon> {
                       '$days',
                       style: const TextStyle(
                           fontSize: 40,
-                          color: Colors.indigo,
+                          color: ColorConst.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const Text(
@@ -123,7 +124,7 @@ class _ComingSoonState extends State<ComingSoon> {
                       '$hours',
                       style: const TextStyle(
                           fontSize: 40,
-                          color: Colors.indigo,
+                          color: ColorConst.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const Text(
@@ -152,7 +153,7 @@ class _ComingSoonState extends State<ComingSoon> {
                       '$minutes',
                       style: const TextStyle(
                           fontSize: 40,
-                          color: Colors.indigo,
+                          color: ColorConst.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const Text(
@@ -181,7 +182,7 @@ class _ComingSoonState extends State<ComingSoon> {
                       '$seconds',
                       style: const TextStyle(
                           fontSize: 40,
-                          color: Colors.indigo,
+                          color: ColorConst.primary,
                           fontWeight: FontWeight.bold),
                     ),
                     const Text(
@@ -208,12 +209,15 @@ class _ComingSoonState extends State<ComingSoon> {
                   suffixIcon: Padding(
                     padding: const EdgeInsets.only(right: 4),
                     child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(primary: Colors.indigo),
+                        style: ElevatedButton.styleFrom(
+                          primary: ColorConst.primary,
+                        ),
                         onPressed: () {},
                         child: const Text(
                           "Subscribe",
                           style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
+                              color: ColorConst.white,
+                              fontWeight: FontWeight.bold),
                         )),
                   ),
                   border: OutlineInputBorder(

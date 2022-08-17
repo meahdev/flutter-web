@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -58,15 +59,14 @@ class _FAQsState extends State<FAQs> {
                         child: Column(
                           children: [
                             const Icon(Icons.message_outlined,
-                                color: Colors.indigo),
+                                color: ColorConst.primary),
                             FxBox.h20,
                             const Text(
                               "Can't find what you are looking for?",
                               style: TextStyle(
                                   fontSize: 20,
                                   fontWeight: FontWeight.bold,
-                                  color: Color((0XFF5B626B))),
-                            ),
+                                  color: ColorConst.primary)),
                             FxBox.h12,
                             const Text(
                               "If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.",
@@ -80,7 +80,7 @@ class _FAQsState extends State<FAQs> {
                                   borderRadius: 4,
                                   onPressed: () {},
                                   text: "Email Us",
-                                  color: Colors.indigo.shade400,
+                                  color: ColorConst.primary,
                                 ),
                                 FxBox.w8,
                                 FxButton(
@@ -100,7 +100,7 @@ class _FAQsState extends State<FAQs> {
                               ),
                               leading: Icon(
                                 Icons.book_online_rounded,
-                                color: Colors.indigo,
+                                color: ColorConst.primary,
                               ),
                             ),
                             ExpansionPanelList.radio(
@@ -120,7 +120,7 @@ class _FAQsState extends State<FAQs> {
                                           item,
                                           style: TextStyle(
                                               color: isExpanded
-                                                  ? Colors.indigo
+                                                  ? ColorConst.primary
                                                   : Colors.black,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -141,7 +141,7 @@ class _FAQsState extends State<FAQs> {
                                       fontSize: 20)),
                               leading: Icon(
                                 Icons.book_online_rounded,
-                                color: Colors.indigo,
+                                color: ColorConst.primary,
                               ),
                             ),
                             ExpansionPanelList.radio(
@@ -161,7 +161,7 @@ class _FAQsState extends State<FAQs> {
                                           item,
                                           style: TextStyle(
                                               color: isExpanded
-                                                  ? Colors.indigo
+                                                  ? ColorConst.primary
                                                   : Colors.black,
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -186,7 +186,7 @@ class _FAQsState extends State<FAQs> {
                       child: Column(
                         children: [
                           const Icon(Icons.message_outlined,
-                              color: Colors.indigo),
+                              color: ColorConst.primary),
                           FxBox.h20,
                           const Text(
                             "Can't find what you are looking for?",
@@ -208,14 +208,14 @@ class _FAQsState extends State<FAQs> {
                                 borderRadius: 4,
                                 onPressed: () {},
                                 text: "Email Us",
-                                color: Colors.indigo.shade400,
+                                color: ColorConst.primary,
                               ),
                               FxBox.w8,
                               FxButton(
                                 borderRadius: 4,
                                 onPressed: () {},
                                 text: "Send us a tweet",
-                                color: Colors.teal.shade400,
+                                color: ColorConst.darkGreen,
                               ),
                             ],
                           ),
@@ -234,7 +234,7 @@ class _FAQsState extends State<FAQs> {
                                       ),
                                       leading: Icon(
                                         Icons.book_online_rounded,
-                                        color: Colors.indigo,
+                                        color: ColorConst.primary,
                                       ),
                                     ),
                                     FxBox.h16,
@@ -257,8 +257,8 @@ class _FAQsState extends State<FAQs> {
                                                   item,
                                                   style: TextStyle(
                                                       color: isExpanded
-                                                          ? Colors.indigo
-                                                          : Colors.black,
+                                                          ? ColorConst.primary
+                                                          : ColorConst.black,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
@@ -286,7 +286,7 @@ class _FAQsState extends State<FAQs> {
                                               fontSize: 20)),
                                       leading: Icon(
                                         Icons.book_online_rounded,
-                                        color: Colors.indigo,
+                                        color: ColorConst.primary,
                                       ),
                                     ),
                                     FxBox.h16,
@@ -309,8 +309,8 @@ class _FAQsState extends State<FAQs> {
                                                   item,
                                                   style: TextStyle(
                                                       color: isExpanded
-                                                          ? Colors.indigo
-                                                          : Colors.black,
+                                                          ? ColorConst.primary
+                                                          : ColorConst.black,
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),

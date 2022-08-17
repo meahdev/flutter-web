@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_string_interpolations, deprecated_member_use, depend_on_referenced_packages, unnecessary_brace_in_string_interps
 
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
@@ -144,7 +145,7 @@ class _MaintenanceState extends State<Maintenance> {
     return SizedBox(
       width: MediaQuery.of(context).size.width * .19,
       child: Card(
-        color: Colors.white,
+        color: ColorConst.white,
         child: Padding(
           padding: const EdgeInsets.all(25),
           child: Column(
@@ -177,8 +178,8 @@ class _MaintenanceState extends State<Maintenance> {
                           alignment: Alignment.topLeft,
                           child: Text(
                             '${email}',
-                            style: const TextStyle(
-                                color: Colors.indigo,
+                            style: const TextStyle(color:
+                                ColorConst.primary,
                                 fontWeight: FontWeight.bold),
                           )))
                   : const SizedBox.shrink(),
@@ -196,7 +197,7 @@ class _MaintenanceState extends State<Maintenance> {
     return SizedBox(
       width: MediaQuery.of(context).size.width * .65,
       child: Card(
-        color: Colors.white,
+        color: ColorConst.white,
         child: Padding(
           padding: const EdgeInsets.all(25),
           child: Column(
@@ -230,7 +231,7 @@ class _MaintenanceState extends State<Maintenance> {
                           child: Text(
                             '${email}',
                             style: const TextStyle(
-                                color: Colors.indigo,
+                                color: ColorConst.primary,
                                 fontWeight: FontWeight.bold),
                           )))
                   : const SizedBox.shrink(),

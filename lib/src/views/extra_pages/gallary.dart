@@ -531,4 +531,5 @@ class _GallaryState extends State<Gallary> {
       },
     );
   }
+
 }
