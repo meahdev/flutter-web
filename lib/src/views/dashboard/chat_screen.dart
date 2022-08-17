@@ -45,13 +45,6 @@ class _ChatscreenState extends State<Chatscreen> {
       'isCurrentUser': false,
     },
   ];
-  final ScrollController _scrollController = ScrollController();
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -66,14 +59,13 @@ class _ChatscreenState extends State<Chatscreen> {
               ConstText.lightText(
                 text: Strings.chat,
                 fontWeight: FontWeight.bold,
-                //color: ColorConst.grey800,
               ),
               FxBox.h10,
               ConstrainedBox(
                 constraints: const BoxConstraints(maxHeight: 350),
                 child: ListView.builder(
                   shrinkWrap: true,
-                  controller: _scrollController,
+                  controller: ScrollController(),
                   itemCount: _chatList.length,
                   itemBuilder: (context, index) {
                     return Column(
@@ -135,46 +127,47 @@ class _ChatscreenState extends State<Chatscreen> {
     bool isMe = false,
   }) {
     return Row(
-      mainAxisAlignment:
-          !isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
+      mainAxisAlignment: isMe ? MainAxisAlignment.end : MainAxisAlignment.start,
       children: [
-        isMe ? _userIcon() : FxBox.shrink,
-        ChatBubble(
-          alignment: !isMe ? Alignment.bottomLeft : Alignment.bottomRight,
-          padding: const EdgeInsets.all(12),
-          margin: const EdgeInsets.all(20),
-          shadowColor: Colors.transparent,
-          clipper: !isMe
-              ? ChatBubbleClipper1(type: BubbleType.sendBubble)
-              : ChatBubbleClipper1(type: BubbleType.receiverBubble),
-          backGroundColor: boxColor,
-          child: Container(
-            padding: isMe
-                ? const EdgeInsets.only(left: 12)
-                : const EdgeInsets.only(right: 12),
-            constraints: const BoxConstraints(maxWidth: 300),
-            child: Column(
-              crossAxisAlignment:
-                  !isMe ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ConstText.lightText(
-                  text: userName,
-                  textAlign: isMe ? TextAlign.right : TextAlign.left,
-                  color: ColorConst.primary,
-                  fontWeight: FontWeight.w700,
-                ),
-                ConstText.lightText(
-                  text: userMsg ?? '',
-                  textAlign: isMe ? TextAlign.right : TextAlign.left,
-                  color: usermsgColor,
-                  fontWeight: FontWeight.w500,
-                ),
-              ],
+        !isMe ? _userIcon() : FxBox.shrink,
+        Expanded(
+          child: ChatBubble(
+            alignment: !isMe ? Alignment.bottomLeft : Alignment.bottomRight,
+            padding: const EdgeInsets.all(12),
+            margin: const EdgeInsets.all(20),
+            shadowColor: Colors.transparent,
+            clipper: isMe
+                ? ChatBubbleClipper1(type: BubbleType.sendBubble)
+                : ChatBubbleClipper1(type: BubbleType.receiverBubble),
+            backGroundColor: boxColor,
+            child: Container(
+              padding: !isMe
+                  ? const EdgeInsets.only(left: 12)
+                  : const EdgeInsets.only(right: 12),
+              constraints: const BoxConstraints(maxWidth: 300),
+              child: Column(
+                crossAxisAlignment:
+                    !isMe ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ConstText.lightText(
+                    text: userName,
+                    textAlign: isMe ? TextAlign.right : TextAlign.left,
+                    color: ColorConst.primary,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  ConstText.lightText(
+                    text: userMsg ?? '',
+                    textAlign: isMe ? TextAlign.right : TextAlign.left,
+                    color: usermsgColor,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-        !isMe ? _userIcon() : FxBox.shrink,
+        isMe ? _userIcon() : FxBox.shrink,
       ],
     );
   }
@@ -192,7 +185,6 @@ class _ChatscreenState extends State<Chatscreen> {
                 decoration: InputDecoration(
                   hintText: Strings.enterYourText,
                   hintStyle: const TextStyle(
-                    // color: ColorConst.black.withOpacity(0.6),
                     fontSize: 14,
                   ),
                   contentPadding:
