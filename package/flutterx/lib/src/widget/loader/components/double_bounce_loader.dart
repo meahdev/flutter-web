@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 
 class DoubleBounceLoader extends StatefulWidget {
   final Color color;
@@ -19,17 +20,25 @@ class _DoubleBounceLoaderState extends State<DoubleBounceLoader>
   @override
   void initState() {
     super.initState();
-
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 2000))
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 2000,
+      ),
+    )
       ..addListener(() => setState(() {}))
       ..repeat(reverse: true);
-    _animation = Tween(begin: -1.0, end: 1.0)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    _animation = Tween(begin: -1.0, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
   }
 
   @override
   void dispose() {
+    _controller.removeListener(() {});
     _controller.dispose();
     super.dispose();
   }
@@ -42,14 +51,15 @@ class _DoubleBounceLoaderState extends State<DoubleBounceLoader>
           return Transform.scale(
             scale: (1.0 - i - _animation.value.abs()).abs(),
             child: SizedBox.fromSize(
-                size: Size.square(widget.size), child: _itemBuilder(i)),
+              size: Size.square(widget.size),
+              child: AnimatedPartWidget(
+                color: widget.color.withOpacity(0.6),
+                shape: BoxShape.circle,
+              ),
+            ),
           );
         }),
       ),
     );
   }
-
-  Widget _itemBuilder(int index) => DecoratedBox(
-      decoration: BoxDecoration(
-          shape: BoxShape.circle, color: widget.color.withOpacity(0.6)));
 }

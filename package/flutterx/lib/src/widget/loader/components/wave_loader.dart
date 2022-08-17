@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterx/src/constant/enum.dart';
+import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 import 'package:flutterx/src/widget/loader/delay_tween.dart';
 
 class WaveLoader extends StatefulWidget {
@@ -7,13 +8,13 @@ class WaveLoader extends StatefulWidget {
   final int itemCount;
   final double size;
   final WaveType type;
-  const WaveLoader(
-      {Key? key,
-      required this.color,
-      required this.itemCount,
-      required this.size,
-      this.type = WaveType.start})
-      : assert(itemCount >= 2, 'itemCount Cant be less then 2 '),
+  const WaveLoader({
+    Key? key,
+    required this.color,
+    required this.itemCount,
+    required this.size,
+    this.type = WaveType.start,
+  })  : assert(itemCount >= 2, 'itemCount Cant be less then 2 '),
         super(key: key);
 
   @override
@@ -27,8 +28,11 @@ class _WaveLoaderState extends State<WaveLoader> with TickerProviderStateMixin {
   void initState() {
     super.initState();
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1200))
-      ..repeat();
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 1200,
+      ),
+    )..repeat();
   }
 
   @override
@@ -51,7 +55,9 @@ class _WaveLoaderState extends State<WaveLoader> with TickerProviderStateMixin {
                   .animate(_controller),
               child: SizedBox.fromSize(
                   size: Size(widget.size / widget.itemCount, widget.size),
-                  child: _itemBuilder(i)),
+                  child: AnimatedPartWidget(
+                    color: widget.color,
+                  )),
             );
           }),
         ),
@@ -104,9 +110,6 @@ class _WaveLoaderState extends State<WaveLoader> with TickerProviderStateMixin {
           count ~/ 2, (index) => -1.0 + (index * 0.2) + 0.2),
     ];
   }
-
-  Widget _itemBuilder(int index) =>
-      DecoratedBox(decoration: BoxDecoration(color: widget.color));
 }
 
 class ScaleYWidget extends AnimatedWidget {

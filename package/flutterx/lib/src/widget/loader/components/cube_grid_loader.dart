@@ -1,10 +1,14 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 
 class CubeGridLoader extends StatefulWidget {
   final Color color;
   final double size;
-  const CubeGridLoader({Key? key, required this.color, this.size = 50.0})
-      : super(key: key);
+  const CubeGridLoader({
+    Key? key,
+    required this.color,
+    this.size = 50.0,
+  }) : super(key: key);
 
   @override
   State<CubeGridLoader> createState() => _CubeGridLoaderState();
@@ -24,8 +28,11 @@ class _CubeGridLoaderState extends State<CubeGridLoader>
     super.initState();
 
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1200))
-      ..repeat(reverse: true);
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 1200,
+      ),
+    )..repeat(reverse: true);
     _anim1 = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
         parent: _controller,
         curve: const Interval(0.1, 0.6, curve: Curves.easeIn)));
@@ -46,7 +53,6 @@ class _CubeGridLoaderState extends State<CubeGridLoader>
   @override
   void dispose() {
     _controller.dispose();
-
     super.dispose();
   }
 
@@ -94,10 +100,10 @@ class _CubeGridLoaderState extends State<CubeGridLoader>
     return ScaleTransition(
       scale: animation,
       child: SizedBox.fromSize(
-          size: Size.square(widget.size / 3), child: _itemBuilder(index)),
+          size: Size.square(widget.size / 3),
+          child: AnimatedPartWidget(
+            color: widget.color,
+          )),
     );
   }
-
-  Widget _itemBuilder(int index) =>
-      DecoratedBox(decoration: BoxDecoration(color: widget.color));
 }

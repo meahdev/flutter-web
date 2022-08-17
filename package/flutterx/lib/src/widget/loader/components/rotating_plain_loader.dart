@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 
 class RotatingPlainLoader extends StatefulWidget {
   final Color color;
@@ -7,8 +8,7 @@ class RotatingPlainLoader extends StatefulWidget {
     Key? key,
     required this.color,
     required this.size,
-  })  : 
-        super(key: key);
+  }) : super(key: key);
 
   @override
   State<RotatingPlainLoader> createState() => _RotatingPlainLoaderState();
@@ -25,7 +25,11 @@ class _RotatingPlainLoaderState extends State<RotatingPlainLoader>
     super.initState();
 
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1500))
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 1500,
+      ),
+    )
       ..addListener(() => setState(() {}))
       ..repeat();
     _animation1 = Tween(begin: 0.0, end: 180.0).animate(CurvedAnimation(
@@ -38,6 +42,7 @@ class _RotatingPlainLoaderState extends State<RotatingPlainLoader>
 
   @override
   void dispose() {
+    _controller.removeListener(() {});
     _controller.dispose();
     super.dispose();
   }
@@ -52,7 +57,9 @@ class _RotatingPlainLoaderState extends State<RotatingPlainLoader>
         alignment: FractionalOffset.center,
         child: SizedBox.fromSize(
           size: Size.square(widget.size),
-          child: DecoratedBox(decoration: BoxDecoration(color: widget.color)),
+          child: AnimatedPartWidget(
+            color: widget.color,
+          ),
         ),
       ),
     );

@@ -1,12 +1,15 @@
-
 import 'package:flutter/widgets.dart';
+import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 import 'package:flutterx/src/widget/loader/delay_tween.dart';
 
 class FadingCircleLoader extends StatefulWidget {
   final Color color;
   final double size;
-  const FadingCircleLoader({Key? key, required this.color, this.size = 50.0})
-      : super(key: key);
+  const FadingCircleLoader({
+    Key? key,
+    required this.color,
+    this.size = 50.0,
+  }) : super(key: key);
 
   @override
   State<FadingCircleLoader> createState() => _FadingCircleLoaderState();
@@ -15,7 +18,7 @@ class FadingCircleLoader extends StatefulWidget {
 class _FadingCircleLoaderState extends State<FadingCircleLoader>
     with SingleTickerProviderStateMixin {
   final List<double> delays = [
-    .0,
+    0.0,
     -1.1,
     -1.0,
     -0.9,
@@ -35,14 +38,16 @@ class _FadingCircleLoaderState extends State<FadingCircleLoader>
     super.initState();
 
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1200))
-      ..repeat();
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 1200,
+      ),
+    )..repeat();
   }
 
   @override
   void dispose() {
     _controller.dispose();
-
     super.dispose();
   }
 
@@ -53,7 +58,7 @@ class _FadingCircleLoaderState extends State<FadingCircleLoader>
         size: Size.square(widget.size),
         child: Stack(
           children: List.generate(12, (i) {
-            final position = widget.size * .5;
+            final position = widget.size * 0.5;
             return Positioned.fill(
               left: position,
               top: position,
@@ -62,11 +67,18 @@ class _FadingCircleLoaderState extends State<FadingCircleLoader>
                 child: Align(
                   alignment: Alignment.center,
                   child: FadeTransition(
-                    opacity: DelayTween(begin: 0.0, end: 1.0, delay: delays[i])
-                        .animate(_controller),
+                    opacity: DelayTween(
+                      begin: 0.0,
+                      end: 1.0,
+                      delay: delays[i],
+                    ).animate(_controller),
                     child: SizedBox.fromSize(
-                        size: Size.square(widget.size * 0.15),
-                        child: _itemBuilder(i)),
+                      size: Size.square(widget.size * 0.15),
+                      child: AnimatedPartWidget(
+                        color: widget.color,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -76,7 +88,4 @@ class _FadingCircleLoaderState extends State<FadingCircleLoader>
       ),
     );
   }
-
-  Widget _itemBuilder(int index) => DecoratedBox(
-      decoration: BoxDecoration(color: widget.color, shape: BoxShape.circle));
 }

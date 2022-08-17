@@ -8,13 +8,13 @@ class SpinningLinesLoader extends StatefulWidget {
   final double size;
   final double lineWidth;
   final int itemCount;
-  const SpinningLinesLoader(
-      {Key? key,
-      required this.color,
-      this.size = 70,
-      this.lineWidth = 2.0,
-      this.itemCount = 5})
-      : super(key: key);
+  const SpinningLinesLoader({
+    Key? key,
+    required this.color,
+    this.size = 50,
+    this.lineWidth = 2.0,
+    this.itemCount = 5,
+  }) : super(key: key);
 
   @override
   State<SpinningLinesLoader> createState() => _SpinningLinesLoaderState();
@@ -28,17 +28,20 @@ class _SpinningLinesLoaderState extends State<SpinningLinesLoader>
   @override
   void initState() {
     super.initState();
-
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 3000))
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 3000,
+      ),
+    )
       ..addListener(() => setState(() {}))
       ..repeat();
-
     _animation = Tween(begin: 0.0, end: 1.0).animate(_controller);
   }
 
   @override
   void dispose() {
+    _controller.removeListener(() {});
     _controller.dispose();
     super.dispose();
   }
@@ -55,7 +58,11 @@ class _SpinningLinesLoaderState extends State<SpinningLinesLoader>
               color: widget.color,
               itemCount: widget.itemCount,
             ),
-            child: SizedBox.fromSize(size: Size.square(widget.size)),
+            child: SizedBox.fromSize(
+              size: Size.square(
+                widget.size,
+              ),
+            ),
           );
         },
         animation: _animation,
@@ -133,8 +140,6 @@ class SpinningLinesPainter extends CustomPainter {
     canvas.translate(offset.dx, offset.dy);
   }
 
-  /// I use the following resource to calculate rotation of the canvas
-  /// https://stackoverflow.com/a/54336099/9689717
   void _rotateCanvas(Canvas canvas, Size size, double angle) {
     final double r =
         sqrt(size.width * size.width + size.height * size.height) / 2;

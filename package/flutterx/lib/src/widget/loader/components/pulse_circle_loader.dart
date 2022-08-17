@@ -1,10 +1,14 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 
 class PulseCircleLoader extends StatefulWidget {
   final double size;
   final Color color;
-  const PulseCircleLoader({Key? key, this.size = 32, required this.color})
-      : super(key: key);
+  const PulseCircleLoader({
+    Key? key,
+    this.size = 32,
+    required this.color,
+  }) : super(key: key);
 
   @override
   State<PulseCircleLoader> createState() => _PulseCircleLoaderState();
@@ -18,7 +22,11 @@ class _PulseCircleLoaderState extends State<PulseCircleLoader>
   @override
   void initState() {
     _controller = (AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1200)))
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 1200,
+      ),
+    ))
       ..addListener(() => setState(() {}))
       ..repeat();
     _animation = CurveTween(curve: Curves.easeInOut).animate(_controller);
@@ -27,6 +35,7 @@ class _PulseCircleLoaderState extends State<PulseCircleLoader>
 
   @override
   void dispose() {
+    _controller.removeListener(() {});
     _controller.dispose();
     super.dispose();
   }
@@ -40,9 +49,10 @@ class _PulseCircleLoaderState extends State<PulseCircleLoader>
           scale: _animation.value,
           child: SizedBox.fromSize(
             size: Size.square(widget.size),
-            child: DecoratedBox(
-                decoration:
-                    BoxDecoration(shape: BoxShape.circle, color: widget.color)),
+            child: AnimatedPartWidget(
+              color: widget.color,
+              shape: BoxShape.circle,
+            ),
           ),
         ),
       ),

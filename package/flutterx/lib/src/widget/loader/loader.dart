@@ -15,27 +15,18 @@ class FxLoader extends StatelessWidget {
   final LoaderType loaderType;
   final Color color;
   final double size;
-  final double? lineWidth;
-  final int? itemCount;
-  final WaveType? wavetype;
-  FxLoader(
+  final double lineWidth;
+  final int itemCount;
+  final WaveType wavetype;
+  const FxLoader(
       {Key? key,
       required this.loaderType,
       required this.color,
       required this.size,
-      this.lineWidth,
-      this.itemCount,
-      this.wavetype})
-      : assert(
-            loaderType == LoaderType.spiningLinesLoader &&
-                itemCount == null &&
-                lineWidth == null,
-            'You should specify lineWidth and itemCount in spiningLinesLoader'),
-        assert(loaderType == LoaderType.waveLoader && itemCount == null,
-            'You should specify itemCount in waveLoader'),
-        assert(loaderType == LoaderType.waveLoader && itemCount! >= 2,
-            'itemCount Can\'t be less then 2'),
-        super(key: key);
+      this.lineWidth = 2.0,
+      this.itemCount = 5,
+      this.wavetype = WaveType.start})
+      : super(key: key);
 
   const FxLoader.spinningLinesLoader({
     Key? key,
@@ -43,19 +34,19 @@ class FxLoader extends StatelessWidget {
     required this.size,
     required this.lineWidth,
     required this.itemCount,
-  })  : wavetype = null,
+  })  : wavetype = WaveType.start,
         loaderType = LoaderType.spiningLinesLoader,
         super(key: key);
 
-  FxLoader.waveLoader({
+  const FxLoader.waveLoader({
     Key? key,
     required this.color,
     required this.size,
     required this.itemCount,
     this.wavetype = WaveType.start,
-  })  : assert(itemCount! >= 2, 'itemCount Can\'t be less then 2'),
+  })  : assert(itemCount >= 2, 'itemCount Can\'t be less then 2'),
         loaderType = LoaderType.waveLoader,
-        lineWidth = null,
+        lineWidth = 2.0,
         super(key: key);
 
   @override
@@ -108,15 +99,15 @@ class FxLoader extends StatelessWidget {
       return SpinningLinesLoader(
         color: color,
         size: size,
-        itemCount: itemCount!,
-        lineWidth: lineWidth!,
+        itemCount: itemCount,
+        lineWidth: lineWidth,
       );
     } else if (loaderType == LoaderType.waveLoader) {
       return WaveLoader(
         color: color,
         size: size,
-        itemCount: itemCount!,
-        type: wavetype!,
+        itemCount: itemCount,
+        type: wavetype,
       );
     } else {
       return BasicLoader(

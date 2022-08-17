@@ -1,5 +1,5 @@
-
 import 'package:flutter/widgets.dart';
+import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 import 'package:flutterx/src/widget/loader/delay_tween.dart';
 
 class CircleLoader extends StatefulWidget {
@@ -36,16 +36,17 @@ class _CircleLoaderState extends State<CircleLoader>
   @override
   void initState() {
     super.initState();
-
     _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 1200))
-      ..repeat();
+      vsync: this,
+      duration: const Duration(
+        milliseconds: 1200,
+      ),
+    )..repeat();
   }
 
   @override
   void dispose() {
     _controller.dispose();
-
     super.dispose();
   }
 
@@ -65,12 +66,18 @@ class _CircleLoaderState extends State<CircleLoader>
                 child: Align(
                   alignment: Alignment.center,
                   child: ScaleTransition(
-                    scale:
-                        DelayTween(begin: 0.0, end: 1.0, delay: delays[index])
-                            .animate(_controller),
+                    scale: DelayTween(
+                      begin: 0.0,
+                      end: 1.0,
+                      delay: delays[index],
+                    ).animate(_controller),
                     child: SizedBox.fromSize(
-                        size: Size.square(widget.size * 0.15),
-                        child: _itemBuilder(index)),
+                      size: Size.square(widget.size * 0.15),
+                      child: AnimatedPartWidget(
+                        color: widget.color,
+                        shape: BoxShape.circle,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -80,7 +87,4 @@ class _CircleLoaderState extends State<CircleLoader>
       ),
     );
   }
-
-  Widget _itemBuilder(int index) => DecoratedBox(
-      decoration: BoxDecoration(color: widget.color, shape: BoxShape.circle));
 }
