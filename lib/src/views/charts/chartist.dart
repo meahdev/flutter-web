@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/enum.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/charts/chartsutils.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/text_utils.dart';
@@ -19,50 +20,46 @@ class _ChartListChartState extends State<ChartListChart> {
       mainAxisSize: MainAxisSize.min,
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-              _card(ChartType.animatingPieChart, context,
-                  'Animating a Donut with Svg.animate'),
+              _card(ChartType.animatingPieChart, context, Strings.animatingPieChart),
               FxBox.h20,
-              _card(ChartType.simplePieChart, context, 'Simple Pie Chart'),
+              _card(ChartType.simplePieChart, context, Strings.simplePieChart),
               FxBox.h20,
-              _card(ChartType.advancedSmileChart, context,
-                  'Advanced Smil Animations'),
+              _card(ChartType.advancedSmileChart, context, Strings.advanceSmileAnimationChart),
               FxBox.h20,
-              _card(ChartType.simpleLineChart, context, 'Simple line chart'),
+              _card(ChartType.simpleLineChart, context, Strings.simpleLineChart),
               FxBox.h20,
               _card(
-                  ChartType.lineScatterChart, context, 'Line Scatter Diagram'),
+                  ChartType.lineScatterChart, context, Strings.lineScatterChart),
               FxBox.h20,
               _card(
-                  ChartType.lineChartWithArea, context, 'Line chart with area'),
+                  ChartType.lineChartWithArea, context, Strings.lineChartWithArea),
               FxBox.h20,
               _card(
-                  ChartType.overlapBars, context, 'Overlapping bars on mobile'),
+                  ChartType.overlapBars, context, Strings.overlappingChart),
             ]
           : [
               Row(
                 children: [
                   Expanded(
                     child: _card(ChartType.animatingPieChart, context,
-                        'Animating a Donut with Svg.animate'),
+                        Strings.animatingPieChart),
                   ),
                   FxBox.w20,
                   Expanded(
                     child: _card(
-                        ChartType.simplePieChart, context, 'Simple Pie Chart'),
+                        ChartType.simplePieChart, context, Strings.simplePieChart),
                   ),
                 ],
               ),
               FxBox.h20,
               Row(
                 children: [
-                  Expanded(
-                    child: _card(ChartType.advancedSmileChart, context,
-                        'Advanced Smil Animations'),
+                  Expanded(child: _card(ChartType.advancedSmileChart, context, Strings.advanceSmileAnimationChart),
                   ),
                   FxBox.w20,
                   Expanded(
                     child: _card(ChartType.simpleLineChart, context,
-                        'Simple line chart'),
+                        Strings.simpleLineChart),
                   ),
                 ],
               ),
@@ -71,12 +68,12 @@ class _ChartListChartState extends State<ChartListChart> {
                 children: [
                   Expanded(
                     child: _card(ChartType.lineScatterChart, context,
-                        'Line Scatter Diagram'),
+                        Strings.lineScatterChart),
                   ),
                   FxBox.w20,
                   Expanded(
                     child: _card(ChartType.lineChartWithArea, context,
-                        'Line chart with area'),
+                        Strings.lineChartWithArea),
                   ),
                 ],
               ),
@@ -85,7 +82,7 @@ class _ChartListChartState extends State<ChartListChart> {
                 children: [
                   Expanded(
                     child: _card(ChartType.overlapBars, context,
-                        'Overlapping bars on mobile'),
+                        Strings.overlappingChart),
                   ),
                 ],
               ),
@@ -129,11 +126,11 @@ getChartData(ChartType chartType, BuildContext context) {
       return Align(
         alignment: Alignment.center,
         child: Column(children: [
-          _richText('Activated', 45410, context),
+          _richText(Strings.activated, 45410, context),
           FxBox.h12,
-          _richText('Pending', 4442, context),
+          _richText(Strings.pending, 4442, context),
           FxBox.h12,
-          _richText('DeActivated', 3201, context),
+          _richText(Strings.deactivated, 3201, context),
         ]),
       );
     } else if (chartType == ChartType.lineChartWithArea) {
@@ -141,11 +138,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 4234, context),
+            _richText(Strings.activated, 4234, context),
             FxBox.h12,
-            _richText('Pending', 64521, context),
+            _richText(Strings.pending, 64521, context),
             FxBox.h12,
-            _richText('DeActivated', 95521, context),
+            _richText(Strings.deactivated, 95521, context),
           ],
         ),
       );
@@ -154,11 +151,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 5677, context),
+            _richText(Strings.activated, 5677, context),
             FxBox.h12,
-            _richText('Pending', 2541, context),
+            _richText(Strings.pending, 2541, context),
             FxBox.h12,
-            _richText('DeActivated', 102030, context),
+            _richText(Strings.deactivated, 102030, context),
           ],
         ),
       );
@@ -167,9 +164,9 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 44242, context),
-            _richText('Pending', 75221, context),
-            _richText('Pending', 65221, context)
+            _richText(Strings.activated, 44242, context),
+            _richText(Strings.pending, 75221, context),
+            _richText(Strings.pending, 65221, context)
           ],
         ),
       );
@@ -178,9 +175,9 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 86541, context),
-            _richText('Pending', 2541, context),
-            _richText('DeActivated', 102030, context),
+            _richText(Strings.activated, 86541, context),
+            _richText(Strings.pending, 2541, context),
+            _richText(Strings.deactivated, 102030, context),
           ],
         ),
       );
@@ -189,9 +186,9 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 48484, context),
-            _richText('Pending', 48652, context),
-            _richText('DeActivated', 85412, context),
+            _richText(Strings.activated, 48484, context),
+            _richText(Strings.pending, 48652, context),
+            _richText(Strings.deactivated, 85412, context),
           ],
         ),
       );
@@ -200,9 +197,9 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 748949, context),
-            _richText('Pending', 5181, context),
-            _richText('DeActivated', 101025, context),
+            _richText(Strings.activated, 748949, context),
+            _richText(Strings.pending, 5181, context),
+            _richText(Strings.deactivated, 101025, context),
           ],
         ),
       );
@@ -210,62 +207,62 @@ getChartData(ChartType chartType, BuildContext context) {
   } else {
     if (chartType == ChartType.advancedSmileChart) {
       return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-        _richText('Activated', 45410, context),
-        _richText('Pending', 4442, context),
-        _richText('DeActivated', 3201, context),
+        _richText(Strings.activated, 45410, context),
+        _richText(Strings.pending, 4442, context),
+        _richText(Strings.deactivated, 3201, context),
       ]);
     } else if (chartType == ChartType.simpleLineChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 44242, context),
-          _richText('Pending', 75221, context),
-          _richText('Pending', 65221, context)
+          _richText(Strings.activated, 44242, context),
+          _richText(Strings.pending, 75221, context),
+          _richText(Strings.pending, 65221, context)
         ],
       );
     } else if (chartType == ChartType.lineChartWithArea) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 4234, context),
-          _richText('Pending', 64521, context),
-          _richText('DeActivated', 95521, context),
+          _richText(Strings.activated, 4234, context),
+          _richText(Strings.pending, 64521, context),
+          _richText(Strings.deactivated, 95521, context),
         ],
       );
     } else if (chartType == ChartType.simplePieChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 48484, context),
-          _richText('Pending', 48652, context),
-          _richText('DeActivated', 85412, context),
+          _richText(Strings.activated, 48484, context),
+          _richText(Strings.pending, 48652, context),
+          _richText(Strings.deactivated, 85412, context),
         ],
       );
     } else if (chartType == ChartType.animatingPieChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 748949, context),
-          _richText('Pending', 5181, context),
-          _richText('DeActivated', 101025, context),
+          _richText(Strings.activated, 748949, context),
+          _richText(Strings.pending, 5181, context),
+          _richText(Strings.deactivated, 101025, context),
         ],
       );
     } else if (chartType == ChartType.lineScatterChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 5677, context),
-          _richText('Pending', 5542, context),
-          _richText('DeActivated', 12422, context),
+          _richText(Strings.activated, 5677, context),
+          _richText(Strings.pending, 5542, context),
+          _richText(Strings.deactivated, 12422, context),
         ],
       );
     } else if (chartType == ChartType.overlapBars) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 86541, context),
-          _richText('Pending', 2541, context),
-          _richText('DeActivated', 102030, context),
+          _richText(Strings.activated, 86541, context),
+          _richText(Strings.pending, 2541, context),
+          _richText(Strings.deactivated, 102030, context),
         ],
       );
     }
@@ -285,7 +282,10 @@ Widget _richText(String type, int count, BuildContext context) {
             fontSize: 21,
           ),
         ),
-        TextSpan(text: upperCase(type)),
+        TextSpan(text: upperCase(type),style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 13,
+        ),),
       ],
     ),
   );

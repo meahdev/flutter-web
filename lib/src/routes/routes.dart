@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/views/badge/badge.dart';
 import 'package:admin_dashboard/src/views/buttons/button.dart';
 import 'package:admin_dashboard/src/views/charts/chartjs.dart';
-import 'package:admin_dashboard/src/views/charts/chartlist.dart';
+import 'package:admin_dashboard/src/views/charts/chartist.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/icons/cupertino_icon.dart';
 import 'package:admin_dashboard/src/views/menu_bar.dart';

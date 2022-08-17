@@ -35,4 +35,16 @@ class ColorConst {
   static Color get warningDark => const Color(0xffffb800);
   static Color get errorDark => const Color(0xffc7051b);
   static Color get infoDark => const Color(0xff03a9f4);
+
+  //chart Colors
+  static Color get blueChartColor => const Color(0xff3c4bcf);
+  static Color get greenChartColor => const Color(0xff37a499);
+  static Color get gridChartColor => const Color(0xffe9ebef);
+  static Color get gridTextColor => const Color(0xff7589a2);
+  static Color get greyChartColor => const Color(0xffcccccc);
+
+  //chartist
+  static Color get chartistBlueColor => const Color(0xff616fd4);
+  static Color get chartistYellowColor => const Color(0xfff9b426);
+  static Color get chartistGreenColor => const Color(0xff37a499);
 }

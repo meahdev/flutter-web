@@ -1,5 +1,7 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:admin_dashboard/src/constant/color.dart';
 
 class ColumnChart extends StatelessWidget {
   const ColumnChart({Key? key}) : super(key: key);
@@ -47,8 +49,9 @@ class ColumnChart extends StatelessWidget {
   }
 
   Widget getTitles(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff7589a2),
+    TextStyle style;
+    style =  TextStyle(
+      color: ColorConst.gridTextColor,
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
@@ -115,8 +118,9 @@ class ColumnChart extends StatelessWidget {
       );
 
   Widget leftTitles(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff7589a2),
+    TextStyle style;
+    style =  TextStyle(
+      color: ColorConst.gridTextColor,
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
@@ -165,7 +169,7 @@ class ColumnChart extends StatelessWidget {
                 toY: 10,
                 color: Colors.transparent,
                 rodStackItems: [
-                  BarChartRodStackItem(0, 5, const Color(0xff3c4bd0)),
+                  BarChartRodStackItem(0, 5, ColorConst.blueChartColor ),
                   BarChartRodStackItem(5, 10, Colors.grey.withOpacity(0.1)),
                 ],
                 borderRadius: BorderRadius.zero)

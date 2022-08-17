@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -8,7 +9,7 @@ class AdvancedSmilChart extends StatelessWidget {
     //print(dummyData1);
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: true,verticalInterval: 1,getDrawingHorizontalLine: (_) => FlLine(color: Colors.grey.withOpacity(0.1),),getDrawingVerticalLine:(_) => FlLine(color: Colors.grey.withOpacity(0.1),)),
+        gridData: FlGridData(show: true,verticalInterval: 1,getDrawingHorizontalLine: (_) => FlLine(color: ColorConst.gridChartColor,),getDrawingVerticalLine:(_) => FlLine(color: ColorConst.gridChartColor,)),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
           show: true,
@@ -44,7 +45,7 @@ class AdvancedSmilChart extends StatelessWidget {
             FlSpot(5, 0.9243654263320322),
             FlSpot(6, 5.009729989790984),
             FlSpot(7, 2.83296505280733)
-          ], isCurved: true, barWidth: 2, color: const Color(0xff6d6fb9)),
+          ], isCurved: true, barWidth: 2, color: ColorConst.chartistBlueColor),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
             FlSpot(1, 0.8881858765835509),
@@ -54,7 +55,7 @@ class AdvancedSmilChart extends StatelessWidget {
             FlSpot(5, 2.0479143256070467),
             FlSpot(6, 1.0855914260893909),
             FlSpot(7, 2.216712037984714)
-          ], isCurved: true, barWidth: 2, color: const Color(0xff4d938f)),
+          ], isCurved: true, barWidth: 2, color: ColorConst.chartistGreenColor),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
             FlSpot(1, 0.6013413129661813),
@@ -64,7 +65,7 @@ class AdvancedSmilChart extends StatelessWidget {
             FlSpot(5, 3.5461511007919997),
             FlSpot(6, 1.1322847934108373),
             FlSpot(7, 5.3243068400091165)
-          ], isCurved: true, barWidth: 2, color: const Color(0xff3b3d40)),
+          ], isCurved: true, barWidth: 2, color: ColorConst.black),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
             FlSpot(1, 0.4387327174115332),
@@ -74,7 +75,7 @@ class AdvancedSmilChart extends StatelessWidget {
             FlSpot(5, 1.858787928173573),
             FlSpot(6, 0.5207777705154775),
             FlSpot(7, 1.9613875628547217)
-          ], isCurved: true, barWidth: 2, color:const Color(0xffeaba67)),
+          ], isCurved: true, barWidth: 2, color:ColorConst.chartistYellowColor),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/enum.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/charts/chartsutils.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/text_utils.dart';
@@ -18,14 +19,13 @@ class _ChartJsChartState extends State<ChartJsChart> {
     return Column(
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-              _card(ChartType.chartJsBarChart, context, 'Bar Chart'),
+              _card(ChartType.chartJsBarChart, context, Strings.barChart),
               FxBox.h20,
-              _card(ChartType.multipleStaticChart, context,
-                  'Multiple Statistics'),
+              _card(ChartType.multipleStaticChart, context, Strings.multipleStaticsChart),
               FxBox.h20,
-              _card(ChartType.polarChart, context, 'Polar Chart'),
+              _card(ChartType.polarChart, context, Strings.polarChart),
               FxBox.h20,
-              _card(ChartType.radarChart, context, 'Radar Chart'),
+              _card(ChartType.radarChart, context, Strings.radarChart),
               FxBox.h20,
             ]
           : [
@@ -33,11 +33,11 @@ class _ChartJsChartState extends State<ChartJsChart> {
                 children: [
                   Expanded(
                     child:
-                        _card(ChartType.chartJsBarChart, context, 'Bar Chart'),
+                        _card(ChartType.chartJsBarChart, context, Strings.barChart),
                   ),
                   Expanded(
                     child: _card(ChartType.multipleStaticChart, context,
-                        'Multiple Statistics'),
+                        Strings.multipleStaticsChart),
                   ),
                 ],
               ),
@@ -45,11 +45,11 @@ class _ChartJsChartState extends State<ChartJsChart> {
               Row(
                 children: [
                   Expanded(
-                    child: _card(ChartType.polarChart, context, 'Polar Chart'),
+                    child: _card(ChartType.polarChart, context, Strings.polarChart),
                   ),
                   FxBox.w20,
                   Expanded(
-                    child: _card(ChartType.radarChart, context, 'Radar Chart'),
+                    child: _card(ChartType.radarChart, context, Strings.radarChart),
                   ),
                 ],
               ),
@@ -96,11 +96,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 2541, context),
+            _richText(Strings.activated, 2541, context),
             FxBox.h12,
-            _richText('Pending', 84845, context),
+            _richText(Strings.pending, 84845, context),
             FxBox.h12,
-            _richText('DeActivated', 12001, context),
+            _richText(Strings.deactivated, 12001, context),
           ],
         ),
       );
@@ -109,11 +109,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 362411, context),
+            _richText(Strings.activated, 362411, context),
             FxBox.h12,
-            _richText('Pending', 8489, context),
+            _richText(Strings.pending, 8489, context),
             FxBox.h12,
-            _richText('DeActivated', 985412, context),
+            _richText(Strings.deactivated, 985412, context),
           ],
         ),
       );
@@ -122,11 +122,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 694, context),
+            _richText(Strings.activated, 694, context),
             FxBox.h12,
-            _richText('Pending', 55210, context),
+            _richText(Strings.pending, 55210, context),
             FxBox.h12,
-            _richText('DeActivated', 489498, context),
+            _richText(Strings.deactivated, 489498, context),
           ],
         ),
       );
@@ -135,11 +135,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText('Activated', 4852, context),
+            _richText(Strings.activated, 4852, context),
             FxBox.h12,
-            _richText('Pending', 3652, context),
+            _richText(Strings.pending, 3652, context),
             FxBox.h12,
-            _richText('DeActivated', 85412, context),
+            _richText(Strings.deactivated, 85412, context),
           ],
         ),
       );
@@ -149,36 +149,36 @@ getChartData(ChartType chartType, BuildContext context) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 2541, context),
-          _richText('Pending', 84845, context),
-          _richText('DeActivated', 12001, context),
+          _richText(Strings.activated, 2541, context),
+          _richText(Strings.pending, 84845, context),
+          _richText(Strings.deactivated, 12001, context),
         ],
       );
     } else if (chartType == ChartType.multipleStaticChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 362411, context),
-          _richText('Pending', 8489, context),
-          _richText('DeActivated', 985412, context),
+          _richText(Strings.activated, 362411, context),
+          _richText(Strings.pending, 8489, context),
+          _richText(Strings.deactivated, 985412, context),
         ],
       );
     } else if (chartType == ChartType.radarChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 694, context),
-          _richText('Pending', 55210, context),
-          _richText('DeActivated', 489498, context),
+          _richText(Strings.activated, 694, context),
+          _richText(Strings.pending, 55210, context),
+          _richText(Strings.deactivated, 489498, context),
         ],
       );
     } else if (chartType == ChartType.polarChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText('Activated', 4852, context),
-          _richText('Pending', 3652, context),
-          _richText('DeActivated', 85412, context),
+          _richText(Strings.activated, 4852, context),
+          _richText(Strings.pending, 3652, context),
+          _richText(Strings.deactivated, 85412, context),
         ],
       );
     }
@@ -198,9 +198,10 @@ Widget _richText(String type, int count, BuildContext context) {
             fontSize: 21,
           ),
         ),
-        TextSpan(
-          text: upperCase(type),
-        ),
+        TextSpan(text: upperCase(type),style: const TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 13,
+        ),),
       ],
     ),
   );

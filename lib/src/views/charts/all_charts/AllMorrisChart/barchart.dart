@@ -1,5 +1,7 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:flutterx/flutterx.dart';
 
 class BarChartSample2 extends StatefulWidget {
   const BarChartSample2({Key? key}) : super(key: key);
@@ -9,8 +11,8 @@ class BarChartSample2 extends StatefulWidget {
 }
 
 class BarChartSample2State extends State<BarChartSample2> {
-  final Color leftBarColor = const Color(0xff3b4cce);
-  final Color rightBarColor = const Color(0xff3da397);
+  final Color leftBarColor = ColorConst.blueChartColor;
+  final Color rightBarColor = ColorConst.greenChartColor;
   final double width = 15;
 
   late List<BarChartGroupData> rawBarGroups;
@@ -97,9 +99,7 @@ class BarChartSample2State extends State<BarChartSample2> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 12,
-              ),
+             FxBox.h12
             ],
           ),
         ),
@@ -108,8 +108,9 @@ class BarChartSample2State extends State<BarChartSample2> {
   }
 
   Widget leftTitles(double value, TitleMeta meta) {
-    const style = TextStyle(
-      color: Color(0xff7589a2),
+    TextStyle style;
+    style =  TextStyle(
+      color: ColorConst.gridTextColor,
       fontWeight: FontWeight.bold,
       fontSize: 14,
     );
@@ -135,11 +136,12 @@ class BarChartSample2State extends State<BarChartSample2> {
   }
 
   Widget bottomTitles(double value, TitleMeta meta) {
+    TextStyle style;
     List<String> titles = ["", "2012", "", "2014", "", "2016", "", "2018"];
     Widget text = Text(
       titles[value.toInt()],
-      style: const TextStyle(
-        color: Color(0xff7589a2),
+      style:  TextStyle(
+        color: ColorConst.gridTextColor,
         fontWeight: FontWeight.bold,
         fontSize: 14,
       ),
@@ -168,6 +170,5 @@ class BarChartSample2State extends State<BarChartSample2> {
       ),
     ]);
   }
-
 
 }

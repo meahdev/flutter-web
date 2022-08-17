@@ -17,7 +17,7 @@ import 'package:flutter/material.dart' as _i12;
 import '../views/badge/badge.dart' as _i6;
 import '../views/buttons/button.dart' as _i4;
 import '../views/charts/chartjs.dart' as _i10;
-import '../views/charts/chartlist.dart' as _i9;
+import '../views/charts/chartist.dart' as _i9;
 import '../views/charts/morris_chart.dart' as _i8;
 import '../views/icons/cupertino_icon.dart' as _i7;
 import '../views/menu_bar.dart' as _i1;

@@ -39,8 +39,7 @@ class PieChart2State extends State {
             value: 4,
             title: '40%',
             radius: radius,
-            titleStyle: const TextStyle(
-                fontWeight: FontWeight.bold, color: Color(0xff616fd4)),
+            titleStyle: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xff616fd4)),
           );
         case 1:
           return PieChartSectionData(

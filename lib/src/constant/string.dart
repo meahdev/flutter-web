@@ -13,4 +13,23 @@ class Strings {
   static const String lightMode = 'Light Mode';
   static const String darkMode = 'Dark Mode';
   static const String chooseLayouts = 'Choose Layouts';
+  static const String activated = 'Activated';
+  static const String pending = 'Pending';
+  static const String deactivated = 'Deactivated';
+  static const String lineChart = 'Line Chart';
+  static const String areaChart = 'Area Chart';
+  static const String donutChart = 'Donut Chart';
+  static const String areaChat = 'Area Chart';
+  static const String columnChart = 'Column Chart';
+  static const String animatingPieChart = 'Animating a Donut with Svg.animate';
+  static const String advanceSmileAnimationChart = 'Advanced smil Animation';
+  static const String simpleLineChart = 'Simple line chart';
+  static const String lineScatterChart = 'Line Scatter Diagram';
+  static const String lineChartWithArea = 'Line chart with area';
+  static const String overlappingChart = 'Overlapping bars on mobile';
+  static const String simplePieChart = 'Simple Pie Chart';
+  static const String multipleStaticsChart =  'Multiple Statistics';
+  static const String polarChart =  'Polar Chart';
+  static const String radarChart =  'Radar Chart';
+  static const String barChart = 'Bar Chart';
 }

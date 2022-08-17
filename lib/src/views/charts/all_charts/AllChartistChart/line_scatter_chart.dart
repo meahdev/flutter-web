@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +15,8 @@ class _LineScatterChartState extends State {
   final maxX = 50.0;
   final maxY = 50.0;
   final radius = 4.0;
-  Color blueColor = const Color(0xFF616fd4);
-  Color yellowColor = const Color(0xFFf9b426);
+  Color blueColor = ColorConst.chartistBlueColor;
+  Color yellowColor = ColorConst.chartistYellowColor;
 
 
 
@@ -35,10 +36,10 @@ class _LineScatterChartState extends State {
             show: true,
             verticalInterval: 6,
             getDrawingHorizontalLine: (_) => FlLine(
-                  color: Colors.grey.withOpacity(0.1),
+                  color: ColorConst.gridChartColor,
                 ),
             getDrawingVerticalLine: (_) => FlLine(
-                  color: Colors.grey.withOpacity(0.1),
+                  color: ColorConst.gridChartColor,
                 )),
         titlesData: FlTitlesData(
           show: true,
@@ -84,16 +85,14 @@ class _LineScatterChartState extends State {
           color = Theme.of(context).colorScheme.brightness == Brightness.dark ? Colors.white : Colors.black;
         }else if(i < blueColorCount + blackColorCount + greenColor)
       {
-        color = const Color(0xff5cb6c4);
+        color = ColorConst.chartistGreenColor;
       }
       else {
         color = yellowColor;
       }
-
       return ScatterSpot(
         (Random().nextDouble() * (maxX - 8)) + 4,
         (Random().nextDouble() * (maxY - 8)) + 4,
-
         color: color,
         radius: (Random().nextDouble() * 2) + 4,
       );

@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
@@ -7,7 +8,7 @@ class LineChart1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: true,verticalInterval: 1,getDrawingHorizontalLine: (_) => FlLine(color: Colors.grey.withOpacity(0.1),),getDrawingVerticalLine:(_) => FlLine(color: Colors.grey.withOpacity(0.1),)),
+        gridData: FlGridData(show: true,verticalInterval: 1,getDrawingHorizontalLine: (_) => FlLine(color: ColorConst.gridChartColor,),getDrawingVerticalLine:(_) => FlLine(color: ColorConst.gridChartColor,)),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
           show: true,
@@ -42,8 +43,9 @@ class LineChart1 extends StatelessWidget {
             FlSpot(4, 3.36360317721251),
             FlSpot(5, 0.9243654263320322),
             FlSpot(6, 5.009729989790984),
+            FlSpot(6, 5.009729989790984),
             FlSpot(7, 2.83296505280733)
-          ], isCurved: true, barWidth: 2, color: const Color(0xff444bb8)),
+          ], isCurved: true, barWidth: 2, color: ColorConst.greenChartColor),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
             FlSpot(1, 0.8881858765835509),
@@ -53,7 +55,7 @@ class LineChart1 extends StatelessWidget {
             FlSpot(5, 2.0479143256070467),
             FlSpot(6, 1.0855914260893909),
             FlSpot(7, 2.216712037984714)
-          ], isCurved: true, barWidth: 2, color: const Color(0xff699990)),
+          ], isCurved: true, barWidth: 2, color: ColorConst.blueChartColor),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
             FlSpot(1, 0.6013413129661813),
@@ -63,7 +65,7 @@ class LineChart1 extends StatelessWidget {
             FlSpot(5, 3.5461511007919997),
             FlSpot(6, 1.1322847934108373),
             FlSpot(7, 5.3243068400091165)
-          ], isCurved: true, barWidth: 2, color: Colors.grey)
+          ], isCurved: true, barWidth: 2, color: ColorConst.greyChartColor)
         ],
       ),
     );
@@ -72,8 +74,9 @@ class LineChart1 extends StatelessWidget {
 
 
 Widget leftTitles(double value, TitleMeta meta) {
-  const style = TextStyle(
-    color: Color(0xff7589a2),
+  TextStyle style;
+  style =  TextStyle(
+    color: ColorConst.gridTextColor,
     fontWeight: FontWeight.bold,
     fontSize: 14,
   );
@@ -106,8 +109,9 @@ Widget leftTitles(double value, TitleMeta meta) {
 }
 
 Widget getTitles(double value, TitleMeta meta) {
-  const style = TextStyle(
-    color: Color(0xff7589a2),
+  TextStyle style;
+  style =  TextStyle(
+    color: ColorConst.gridTextColor,
     fontWeight: FontWeight.bold,
     fontSize: 14,
   );
