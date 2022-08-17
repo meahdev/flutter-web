@@ -110,25 +110,20 @@ class _SalesReportState extends State<SalesReport> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: const [
-        Expanded(
-          flex: 2,
-          child: Text(
-            'Jan 01 - Jan 31',
-            softWrap: true,
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.w500,
-            ),
+        Text(
+          'Jan 01 - Jan 31',
+          softWrap: true,
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.w500,
           ),
         ),
-        Expanded(
-          child: Text(
-            '\$${4230}',
-            softWrap: true,
-            style: TextStyle(
-              fontSize: 15,
-              fontWeight: FontWeight.bold,
-            ),
+        Text(
+          '\$${4230}',
+          softWrap: true,
+          style: TextStyle(
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ],

@@ -17,6 +17,8 @@ int getRouteIndex(String route) {
     return 8;
   } else if (route == 'Billing Email') {
     return 9;
+  } else if (route == 'Loaders') {
+    return 10;
   } else {
     return 0;
   }
