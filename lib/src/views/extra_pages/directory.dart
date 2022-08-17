@@ -1,5 +1,6 @@
 // ignore_for_file: unnecessary_const, unnecessary_string_interpolations
 
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +68,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                               child: Card(
                                 margin:
                                     const EdgeInsets.symmetric(vertical: 10),
-                                color: Colors.white,
+                                color: ColorConst.white,
                                 child: Padding(
                                   padding: const EdgeInsets.only(
                                       right: 20, top: 10, left: 20, bottom: 20),
@@ -94,7 +95,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                               Text(
                                                 "${nameList[index]}",
                                                 style: const TextStyle(
-                                                    color: Colors.indigo,
+                                                    color: ColorConst.primary,
                                                     fontSize: 20,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -120,7 +121,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                             children: [
                                               const CircleAvatar(
                                                 radius: 16,
-                                                backgroundColor: Colors.indigo,
+                                                backgroundColor: ColorConst.primary,
                                                 child: CircleAvatar(
                                                   backgroundImage:
                                                       const NetworkImage(
@@ -131,7 +132,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                               FxBox.h10,
                                               const CircleAvatar(
                                                 radius: 16,
-                                                backgroundColor: Colors.blue,
+                                                backgroundColor: ColorConst.blue,
                                                 child: const CircleAvatar(
                                                   backgroundImage: NetworkImage(
                                                       "https://i2-prod.birminghammail.co.uk/incoming/article18471307.ece/ALTERNATES/s1200c/1_Twitter-new-icon-mobile-app.jpg"),
@@ -179,7 +180,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                   child: Card(
                                     margin: const EdgeInsets.symmetric(
                                         vertical: 16, horizontal: 16),
-                                    color: Colors.white,
+                                    color: ColorConst.white,
                                     child: Padding(
                                       padding: const EdgeInsets.only(
                                           right: 20,
@@ -211,7 +212,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                                     Text(
                                                       "${nameList[index]}",
                                                       style: const TextStyle(
-                                                          color: Colors.indigo,
+                                                          color: ColorConst.primary,
                                                           fontSize: 20,
                                                           fontWeight:
                                                               FontWeight.bold),
@@ -238,7 +239,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                                   const CircleAvatar(
                                                     radius: 16,
                                                     backgroundColor:
-                                                        Colors.indigo,
+                                                        ColorConst.primary,
                                                     child: CircleAvatar(
                                                       backgroundImage:
                                                           const NetworkImage(
@@ -250,7 +251,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                                   const CircleAvatar(
                                                     radius: 16,
                                                     backgroundColor:
-                                                        Colors.blue,
+                                                        ColorConst.blue,
                                                     child: const CircleAvatar(
                                                       backgroundImage: NetworkImage(
                                                           "https://i2-prod.birminghammail.co.uk/incoming/article18471307.ece/ALTERNATES/s1200c/1_Twitter-new-icon-mobile-app.jpg"),
@@ -300,7 +301,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                             child: Card(
                               margin: const EdgeInsets.symmetric(
                                   vertical: 16, horizontal: 16),
-                              color: Colors.white,
+                              color: ColorConst.white,
                               child: Padding(
                                 padding: const EdgeInsets.only(
                                     right: 20, top: 10, left: 20, bottom: 20),
@@ -328,7 +329,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                               Text(
                                                 "${nameList[index]}",
                                                 style: const TextStyle(
-                                                    color: Colors.indigo,
+                                                    color: ColorConst.primary,
                                                     fontSize: 20,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -361,7 +362,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                                   return CircleAvatar(
                                                     radius: 16,
                                                     backgroundColor: isHover
-                                                        ? Colors.indigo.shade700
+                                                        ? ColorConst.primaryDark
                                                         : Colors
                                                             .indigo.shade400,
                                                     child: const CircleAvatar(
@@ -383,7 +384,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                                   return CircleAvatar(
                                                     radius: 16,
                                                     backgroundColor: isHover
-                                                        ? Colors.blue
+                                                        ? ColorConst.blue
                                                         : Colors.blue.shade400,
                                                     child: const CircleAvatar(
                                                       backgroundImage: AssetImage(
@@ -414,7 +415,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                                               text: 'Read More',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
-                                                  color: Color(0XFF626ed4)),
+                                                  color: ColorConst.primary ),
                                               mouseCursor:
                                                   SystemMouseCursors.click),
                                         ],

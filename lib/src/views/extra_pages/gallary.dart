@@ -1,3 +1,6 @@
+// ignore_for_file: avoid_print
+
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -26,28 +29,46 @@ class _GallaryState extends State<Gallary> {
   ];
 
   final headingList = [
-    "Open Imagination","Locked Steel Gate","Mack SunnGlass","Morning Duew",
-  "Consol Activity","Shake It","BackPpack Content","Sunset Bulb Glow",
-  "Open Imagination","Console Activity","Share It","Open Imagination",
+    "Open Imagination",
+    "Locked Steel Gate",
+    "Mack SunnGlass",
+    "Morning Duew",
+    "Consol Activity",
+    "Shake It",
+    "BackPpack Content",
+    "Sunset Bulb Glow",
+    "Open Imagination",
+    "Console Activity",
+    "Share It",
+    "Open Imagination",
   ];
 
   final nameList = [
-    "Abhi patel","Keval Gajera","Vishal Makwana","Parth Surani",
-    "Naman Rajodiya","Hatsh Chodavadiya","Akash Rathod","Anup chopde",
-    "Makwana Parth","Vignesh patel","Mahesh Patel","Akshay Malaviya",
+    "Abhi patel",
+    "Keval Gajera",
+    "Vishal Makwana",
+    "Parth Surani",
+    "Naman Rajodiya",
+    "Hatsh Chodavadiya",
+    "Akash Rathod",
+    "Anup chopde",
+    "Makwana Parth",
+    "Vignesh patel",
+    "Mahesh Patel",
+    "Akshay Malaviya",
   ];
 
   int selecteIndex = 0;
   bool isHover = false;
 
-  hoveractive(hoverState,index){
+  hoveractive(hoverState, index) {
     setState(() {
       isShow[index] = true;
     });
     print(hoverState.toString());
   }
 
-  hoverunactive(hoverState,index){
+  hoverunactive(hoverState, index) {
     setState(() {
       isShow[index] = false;
     });
@@ -85,39 +106,54 @@ class _GallaryState extends State<Gallary> {
                                     color: Colors.grey,
                                   ),
                                   child: MouseRegion(
-                                    onEnter: (event) => hoveractive(true,index),
-                                    onExit: (event) => hoverunactive(false,index),
+                                    onEnter: (event) =>
+                                        hoveractive(true, index),
+                                    onExit: (event) =>
+                                        hoverunactive(false, index),
                                     child: isShow[index]
-                                        ?
-                                    Container(
-                                      color: Colors.black.withOpacity(0.7),
-                                      padding: EdgeInsets.all(20),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                           Text(headingList[index],
-                                            style: const TextStyle(color: Colors.white,
-                                                fontWeight: FontWeight.bold,fontSize: 20),),
-                                       const Spacer(),
-                                          Row(
-                                         children: [
-                                            CircleAvatar(
-                                              backgroundImage: NetworkImage(photoList[index]),
-
-                                           ),
-                                           FxBox.w10,
-                                           Text(nameList[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
-                                         ],
-                                       )
-                                        ],
-                                      ),
-                                    )
-                                        
-                                        :
-                                    Image.network(
-                                      photoList[index],
-                                      fit: BoxFit.cover,
-                                    ),
+                                        ? Container(
+                                            color:
+                                                Colors.black.withOpacity(0.7),
+                                            padding: const EdgeInsets.all(20),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  headingList[index],
+                                                  style: const TextStyle(
+                                                      color: ColorConst.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 20),
+                                                ),
+                                                const Spacer(),
+                                                Row(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      backgroundImage:
+                                                          NetworkImage(
+                                                              photoList[index]),
+                                                    ),
+                                                    FxBox.w10,
+                                                    Text(
+                                                      nameList[index],
+                                                      style: const TextStyle(
+                                                          color:
+                                                              ColorConst.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 18),
+                                                    )
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        : Image.network(
+                                            photoList[index],
+                                            fit: BoxFit.cover,
+                                          ),
                                   ),
                                 ),
                               ),
@@ -144,37 +180,58 @@ class _GallaryState extends State<Gallary> {
                                         color: Colors.grey,
                                       ),
                                       child: MouseRegion(
-                                        onEnter: (event) => hoveractive(true,index),
-                                        onExit: (event) => hoverunactive(false,index),
-                                        child: isShow[index] ?
-                                        Container(
-                                          color: Colors.black.withOpacity(0.7),
-                                          padding: EdgeInsets.all(20),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                               Text(headingList[index],
-                                                style: const TextStyle(color: Colors.white,
-                                                    fontWeight: FontWeight.bold,fontSize: 20),),
-                                              const Spacer(),
-                                              Row(
-                                                children: [
-                                                   CircleAvatar(
-                                                    backgroundImage: NetworkImage(photoList[index]),
-
-                                                  ),
-                                                  FxBox.w10,
-                                                   Text(nameList[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
-                                                ],
+                                        onEnter: (event) =>
+                                            hoveractive(true, index),
+                                        onExit: (event) =>
+                                            hoverunactive(false, index),
+                                        child: isShow[index]
+                                            ? Container(
+                                                color: Colors.black
+                                                    .withOpacity(0.7),
+                                                padding:
+                                                    const EdgeInsets.all(20),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      headingList[index],
+                                                      style: const TextStyle(
+                                                          color:
+                                                              ColorConst.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20),
+                                                    ),
+                                                    const Spacer(),
+                                                    Row(
+                                                      children: [
+                                                        CircleAvatar(
+                                                          backgroundImage:
+                                                              NetworkImage(
+                                                                  photoList[
+                                                                      index]),
+                                                        ),
+                                                        FxBox.w10,
+                                                        Text(
+                                                          nameList[index],
+                                                          style: const TextStyle(
+                                                              color: ColorConst
+                                                                  .white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 18),
+                                                        )
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
                                               )
-                                            ],
-                                          ),
-                                        )
-                                            :
-                                        Image.network(
-                                          photoList[index],
-                                          fit: BoxFit.cover,
-                                        ),
+                                            : Image.network(
+                                                photoList[index],
+                                                fit: BoxFit.cover,
+                                              ),
                                       ),
                                     ),
                                   ),
@@ -200,37 +257,58 @@ class _GallaryState extends State<Gallary> {
                                         color: Colors.grey,
                                       ),
                                       child: MouseRegion(
-                                        onEnter: (event) => hoveractive(true,index),
-                                        onExit: (event) => hoverunactive(false,index),
-                                        child: isShow[index] ?
-                                        Container(
-                                          color: Colors.black.withOpacity(0.7),
-                                          padding: EdgeInsets.all(20),
-                                          child: Column(
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: [
-                                               Text(headingList[index],
-                                                style: const TextStyle(color: Colors.white,
-                                                    fontWeight: FontWeight.bold,fontSize: 20),),
-                                              const Spacer(),
-                                              Row(
-                                                children: [
-                                                   CircleAvatar(
-                                                    backgroundImage: NetworkImage(photoList[index]),
-
-                                                  ),
-                                                  FxBox.w10,
-                                                  Text(nameList[index],style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 18),)
-                                                ],
+                                        onEnter: (event) =>
+                                            hoveractive(true, index),
+                                        onExit: (event) =>
+                                            hoverunactive(false, index),
+                                        child: isShow[index]
+                                            ? Container(
+                                                color: Colors.black
+                                                    .withOpacity(0.7),
+                                                padding:
+                                                    const EdgeInsets.all(20),
+                                                child: Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                    Text(
+                                                      headingList[index],
+                                                      style: const TextStyle(
+                                                          color:
+                                                              ColorConst.white,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          fontSize: 20),
+                                                    ),
+                                                    const Spacer(),
+                                                    Row(
+                                                      children: [
+                                                        CircleAvatar(
+                                                          backgroundImage:
+                                                              NetworkImage(
+                                                                  photoList[
+                                                                      index]),
+                                                        ),
+                                                        FxBox.w10,
+                                                        Text(
+                                                          nameList[index],
+                                                          style: const TextStyle(
+                                                              color: ColorConst
+                                                                  .white,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
+                                                              fontSize: 18),
+                                                        )
+                                                      ],
+                                                    )
+                                                  ],
+                                                ),
                                               )
-                                            ],
-                                          ),
-                                        )
-                                            :
-                                       Image.network(
-                                          photoList[index],
-                                          fit: BoxFit.cover,
-                                        ),
+                                            : Image.network(
+                                                photoList[index],
+                                                fit: BoxFit.cover,
+                                              ),
                                       ),
                                     ),
                                   ),

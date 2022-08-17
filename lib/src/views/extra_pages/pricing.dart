@@ -2,6 +2,7 @@
 
 import 'dart:ui';
 
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -57,7 +58,7 @@ class _PricingState extends State<Pricing> {
                                               Text(
                                                 "${headingList[index]}",
                                                 style: const TextStyle(
-                                                    color: Color(0XFF5B626B),
+                                                    color: ColorConst.textColor,
                                                     fontSize: 22,
                                                     fontWeight:
                                                         FontWeight.bold),
@@ -65,7 +66,7 @@ class _PricingState extends State<Pricing> {
                                               const Text(
                                                 "Sed ut neque unde",
                                                 style: TextStyle(
-                                                    color: Color(0XFF5B626B),
+                                                    color: ColorConst.textColor,
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
@@ -74,40 +75,21 @@ class _PricingState extends State<Pricing> {
                                         ],
                                       ),
                                       FxBox.h24,
-                                      const ListTile(
-                                        title: Text(
-                                          "Free Live Support",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        leading: Icon(
-                                          Icons.check,
-                                          size: 19,
-                                          color: Colors.indigo,
-                                        ),
+                                      listTile(
+                                        text: "Free Live Support",
+                                        icons: Icons.check,
                                       ),
-                                      const ListTile(
-                                        title: Text(
-                                          "Unlimited User",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        leading: Icon(Icons.check,
-                                            size: 19, color: Colors.indigo),
+                                      listTile(
+                                        text: "Unlimited User",
+                                        icons: Icons.check,
                                       ),
-                                      const ListTile(
-                                        title: Text(
-                                          "No Time Tracking",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        leading: Icon(Icons.check,
-                                            size: 19, color: Colors.indigo),
+                                      listTile(
+                                        text: "No Time Tracking",
+                                        icons: Icons.check,
                                       ),
-                                      const ListTile(
-                                        title: Text(
-                                          "Free Setup",
-                                          style: TextStyle(fontSize: 15),
-                                        ),
-                                        leading: Icon(Icons.clear,
-                                            size: 19, color: Colors.indigo),
+                                      listTile(
+                                        text: "Free Setup",
+                                        icons: Icons.clear,
                                       ),
                                       FxBox.h32,
                                       Row(
@@ -124,7 +106,7 @@ class _PricingState extends State<Pricing> {
                                             "${priseList[index]}/ ",
                                             style: const TextStyle(
                                                 fontSize: 30,
-                                                color: Color(0XFF5B626B),
+                                                color: ColorConst.textColor,
                                                 fontWeight: FontWeight.bold),
                                           ),
                                           const Text(
@@ -139,27 +121,12 @@ class _PricingState extends State<Pricing> {
                                       SizedBox(
                                         width:
                                             MediaQuery.of(context).size.width,
-                                        child: ElevatedButton(
-                                            style: ButtonStyle(
-                                                elevation:
-                                                    MaterialStateProperty.all(
-                                                        0),
-                                                shape: MaterialStateProperty
-                                                    .all(RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(4))),
-                                                backgroundColor:
-                                                    MaterialStateProperty.all(
-                                                        Colors
-                                                            .indigo.shade400)),
-                                            onPressed: () {},
-                                            child: const Text(
-                                              "Sign up Now",
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold),
-                                            )),
+                                        child: FxButton(
+                                          borderRadius: 4,
+                                          color: ColorConst.primary,
+                                          text: "Sign up Now",
+                                          onPressed: () {},
+                                        ),
                                       )
                                     ],
                                   ),
@@ -193,8 +160,8 @@ class _PricingState extends State<Pricing> {
                                                   Text(
                                                     "${headingList[index]}",
                                                     style: const TextStyle(
-                                                        color:
-                                                            Color(0XFF5B626B),
+                                                        color: ColorConst
+                                                            .textColor,
                                                         fontSize: 22,
                                                         fontWeight:
                                                             FontWeight.bold),
@@ -202,8 +169,8 @@ class _PricingState extends State<Pricing> {
                                                   const Text(
                                                     "Sed ut neque unde",
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0XFF5B626B),
+                                                        color: ColorConst
+                                                            .textColor,
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -212,40 +179,21 @@ class _PricingState extends State<Pricing> {
                                             ],
                                           ),
                                           FxBox.h24,
-                                          const ListTile(
-                                            title: Text(
-                                              "Free Live Support",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
-                                            leading: Icon(
-                                              Icons.check,
-                                              size: 19,
-                                              color: Colors.indigo,
-                                            ),
+                                          listTile(
+                                            text: "Free Live Support",
+                                            icons: Icons.check,
                                           ),
-                                          const ListTile(
-                                            title: Text(
-                                              "Unlimited User",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
-                                            leading: Icon(Icons.check,
-                                                size: 19, color: Colors.indigo),
+                                          listTile(
+                                            text: "Unlimited User",
+                                            icons: Icons.check,
                                           ),
-                                          const ListTile(
-                                            title: Text(
-                                              "No Time Tracking",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
-                                            leading: Icon(Icons.check,
-                                                size: 19, color: Colors.indigo),
+                                          listTile(
+                                            text: "No Time Tracking",
+                                            icons: Icons.check,
                                           ),
-                                          const ListTile(
-                                            title: Text(
-                                              "Free Setup",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
-                                            leading: Icon(Icons.clear,
-                                                size: 19, color: Colors.indigo),
+                                          listTile(
+                                            text: "Free Setup",
+                                            icons: Icons.clear,
                                           ),
                                           FxBox.h32,
                                           Row(
@@ -262,7 +210,7 @@ class _PricingState extends State<Pricing> {
                                                 "${priseList[index]}/ ",
                                                 style: const TextStyle(
                                                     fontSize: 30,
-                                                    color: Color(0XFF5B626B),
+                                                    color: ColorConst.textColor,
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
@@ -279,29 +227,12 @@ class _PricingState extends State<Pricing> {
                                             width: MediaQuery.of(context)
                                                 .size
                                                 .width,
-                                            child: ElevatedButton(
-                                                style: ButtonStyle(
-                                                    elevation:
-                                                        MaterialStateProperty
-                                                            .all(0),
-                                                    shape: MaterialStateProperty
-                                                        .all(RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        4))),
-                                                    backgroundColor:
-                                                        MaterialStateProperty
-                                                            .all(Colors.indigo
-                                                                .shade400)),
-                                                onPressed: () {},
-                                                child: const Text(
-                                                  "Sign up Now",
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )),
+                                            child: FxButton(
+                                              borderRadius: 4,
+                                              color: ColorConst.primary,
+                                              text: "Sign up Now",
+                                              onPressed: () {},
+                                            ),
                                           )
                                         ],
                                       ),
@@ -334,8 +265,8 @@ class _PricingState extends State<Pricing> {
                                                   Text(
                                                     "${headingList[index]}",
                                                     style: const TextStyle(
-                                                        color:
-                                                            Color(0XFF5B626B),
+                                                        color: ColorConst
+                                                            .textColor,
                                                         fontSize: 22,
                                                         fontWeight:
                                                             FontWeight.bold),
@@ -343,8 +274,8 @@ class _PricingState extends State<Pricing> {
                                                   const Text(
                                                     "Sed ut neque unde",
                                                     style: TextStyle(
-                                                        color:
-                                                            Color(0XFF5B626B),
+                                                        color: ColorConst
+                                                            .textColor,
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
@@ -353,40 +284,21 @@ class _PricingState extends State<Pricing> {
                                             ],
                                           ),
                                           FxBox.h24,
-                                          const ListTile(
-                                            title: Text(
-                                              "Free Live Support",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
-                                            leading: Icon(
-                                              Icons.check,
-                                              size: 19,
-                                              color: Colors.indigo,
-                                            ),
+                                          listTile(
+                                            text: "Free Live Support",
+                                            icons: Icons.check,
                                           ),
-                                          const ListTile(
-                                            title: Text(
-                                              "Unlimited User",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
-                                            leading: Icon(Icons.check,
-                                                size: 19, color: Colors.indigo),
+                                          listTile(
+                                            text: "Unlimited User",
+                                            icons: Icons.check,
                                           ),
-                                          const ListTile(
-                                            title: Text(
-                                              "No Time Tracking",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
-                                            leading: Icon(Icons.check,
-                                                size: 19, color: Colors.indigo),
+                                          listTile(
+                                            text: "No Time Tracking",
+                                            icons: Icons.check,
                                           ),
-                                          const ListTile(
-                                            title: Text(
-                                              "Free Setup",
-                                              style: TextStyle(fontSize: 15),
-                                            ),
-                                            leading: Icon(Icons.clear,
-                                                size: 19, color: Colors.indigo),
+                                          listTile(
+                                            text: "Free Setup",
+                                            icons: Icons.clear,
                                           ),
                                           FxBox.h32,
                                           Row(
@@ -403,7 +315,7 @@ class _PricingState extends State<Pricing> {
                                                 "${priseList[index]}/ ",
                                                 style: const TextStyle(
                                                     fontSize: 30,
-                                                    color: Color(0XFF5B626B),
+                                                    color: ColorConst.textColor,
                                                     fontWeight:
                                                         FontWeight.bold),
                                               ),
@@ -420,29 +332,12 @@ class _PricingState extends State<Pricing> {
                                             width: MediaQuery.of(context)
                                                 .size
                                                 .width,
-                                            child: ElevatedButton(
-                                                style: ButtonStyle(
-                                                    elevation:
-                                                        MaterialStateProperty
-                                                            .all(0),
-                                                    shape: MaterialStateProperty
-                                                        .all(RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        4))),
-                                                    backgroundColor:
-                                                        MaterialStateProperty
-                                                            .all(Colors.indigo
-                                                                .shade400)),
-                                                onPressed: () {},
-                                                child: const Text(
-                                                  "Sign up Now",
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                                )),
+                                            child: FxButton(
+                                              borderRadius: 4,
+                                              color: ColorConst.primary,
+                                              text: "Sign up Now",
+                                              onPressed: () {},
+                                            ),
                                           )
                                         ],
                                       ),
@@ -454,4 +349,15 @@ class _PricingState extends State<Pricing> {
       ),
     );
   }
+
+  Widget listTile({String? text, IconData? icons}) {
+    return ListTile(
+      title: Text(
+        "${text}",
+        style: TextStyle(fontSize: 15),
+      ),
+      leading: Icon(icons, size: 19, color: ColorConst.primary),
+    );
+  }
+
 }

@@ -1,7 +1,9 @@
 // ignore_for_file: sized_box_for_whitespace
 
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterx/flutterx.dart';
 
 class Error404 extends StatefulWidget {
   const Error404({Key? key}) : super(key: key);
@@ -25,7 +27,7 @@ class _Error404State extends State<Error404> {
                     height: MediaQuery.of(context).size.height * .55,
                     width: MediaQuery.of(context).size.width * .60,
                     child: Card(
-                      color: Colors.white,
+                      color:ColorConst.white,
                       child: Padding(
                         padding: const EdgeInsets.all(70),
                         child: Row(
@@ -38,46 +40,31 @@ class _Error404State extends State<Error404> {
                                   const Text(
                                     "404!",
                                     style: TextStyle(
-                                        color: Colors.black,
+                                        color: ColorConst.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 80),
                                   ),
                                   const Text(
                                     "Sorry, page not found",
                                     style: TextStyle(
-                                        color: Color(0XFF5B626B),
+                                        color: ColorConst.textColor,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20),
                                   ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
+                                  FxBox.h20,
                                   const Text(
                                       "It will be as simple as Occidental in fact, it will be Occidental to an English person"),
-                                  const SizedBox(
-                                    height: 50,
-                                  ),
-                                  ElevatedButton.icon(
-                                      style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all(
-                                                  Colors.indigo.shade400),
-                                          shape: MaterialStateProperty.all(
-                                              RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          6)))),
+                                  FxBox.h52,
+                                  FxButton(borderRadius: 4,
+                                     text: "Back to Dashboard",
                                       onPressed: () {},
                                       icon: const Icon(
                                         Icons.home,
-                                        color: Colors.white,
+                                        color: ColorConst.white,
                                         size: 15,
                                       ),
-                                      label: const Text(
-                                        " Back to Dashboard",
-                                        style: TextStyle(color: Colors.white),
-                                      ))
-                                ],
+                                      )
+                                  ],
                               ),
                             ),
                             SizedBox(
@@ -103,7 +90,7 @@ class _Error404State extends State<Error404> {
                             const Text(
                               "404!",
                               style: TextStyle(
-                                  color: Colors.black,
+                                  color:ColorConst.black,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 80),
                             ),
@@ -114,38 +101,23 @@ class _Error404State extends State<Error404> {
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20),
                             ),
-                            const SizedBox(
-                              height: 20,
-                            ),
+                            FxBox.h20,
                             const Text(
                                 "It will be as simple as Occidental in fact, it will be"),
                             const Text("Occidental to an English person"),
-                            const SizedBox(
-                              height: 50,
-                            ),
-                            ElevatedButton.icon(
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStateProperty.all(
-                                        Colors.indigo.shade400),
-                                    shape: MaterialStateProperty.all(
-                                        RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(6)))),
+                            FxBox.h52,
+                            FxButton(borderRadius: 4,
+                              text: "Back to Dashboard",
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
                                 icon: const Icon(
                                   Icons.home,
-                                  color: Colors.white,
+                                  color: ColorConst.white,
                                   size: 15,
                                 ),
-                                label: const Text(
-                                  " Back to Dashboard",
-                                  style: TextStyle(color: Colors.white),
-                                )),
-                            const SizedBox(
-                              height: 20,
-                            ),
+                               ),
+                            FxBox.h20,
                             SizedBox(
                                 height: MediaQuery.of(context).size.height * .3,
                                 width: MediaQuery.of(context).size.width * .75,
