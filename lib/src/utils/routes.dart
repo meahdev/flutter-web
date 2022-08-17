@@ -17,6 +17,8 @@ int getRouteIndex(String route) {
     return 8;
   } else if (route == 'Form Repeater') {
     return 9;
+  } else if (route == 'Form Mask') {
+    return 10;
   } else {
     return 0;
   }

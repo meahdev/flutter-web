@@ -1,7 +1,9 @@
+import 'package:admin_dashboard/src/provider/form_repeater/bloc/form_repeater_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 
 class RepeaterForm extends StatefulWidget {
@@ -12,30 +14,45 @@ class RepeaterForm extends StatefulWidget {
 }
 
 class _RepeaterFormState extends State<RepeaterForm> {
-  FilePickerResult? _file;
-  List<Widget> _exampleWidgetsList = [];
-  List<Widget> _exampleWidgetsListMo = [];
-  final List<String> _fileNameList = ['No chosen file'];
+  final FormRepeaterBloc _formRepeaterBloc = FormRepeaterBloc();
 
-  @override
-  void initState() {
-    _exampleWidgetsList = [_exampleWeb()];
-    _exampleWidgetsListMo = [_exampleMobileNtablet()];
-    super.initState();
-  }
+  FilePickerResult? _file;
+  final List<String> _fileNameList = ['No chosen file'];
+  final List<TextEditingController> _messageControllerList = [
+    TextEditingController()
+  ];
+  final List<TextEditingController> _nameControllerList = [
+    TextEditingController()
+  ];
+  final List<TextEditingController> _emailControllerList = [
+    TextEditingController()
+  ];
+  final List<TextEditingController> _subjectControllerList = [
+    TextEditingController()
+  ];
+
+  final List<TextEditingController> _phoneControllerList = [
+    TextEditingController()
+  ];
+
+  String _isSelected = '';
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        _exampleForm(),
-        FxBox.h20,
-        _nestedForm(),
-      ],
+    BuildContext mainContext = context;
+    return BlocProvider(
+      create: (context) => _formRepeaterBloc,
+      child: Column(
+        children: [
+          _exampleForm(mainContext),
+          FxBox.h20,
+          _nestedForm(mainContext),
+        ],
+      ),
     );
   }
 
-  Widget _exampleForm() {
+  Widget _exampleForm(BuildContext mainContext) {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4.0),
@@ -52,146 +69,56 @@ class _RepeaterFormState extends State<RepeaterForm> {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: _exampleWidgetsList.length,
-              itemBuilder: (context, index) {
-                if (Responsive.isWeb(context)) {
-                  return Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(flex: 5, child: _exampleWidgetsList[index]),
-                      Expanded(
-                        flex: 5,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            _exampleCommonView(
-                              _commonText('Resume'),
-                              MouseRegion(
-                                cursor: SystemMouseCursors.click,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    _pickFile(index);
-                                  },
-                                  child: _resumeTextField(_fileNameList[index]),
-                                ),
-                              ),
-                            ),
-                            FxBox.w24,
-                            _exampleCommonView(
-                              _commonText('Message'),
-                              _messageTextField('Type here...'),
-                            ),
-                            FxBox.w24,
-                            Expanded(
-                              child: Padding(
-                                padding: const EdgeInsets.only(top: 36.0),
-                                child: FxButton(
-                                  borderRadius: 4.0,
-                                  text: 'Delete',
-                                  onPressed: () {
-                                    FxAlert.showAlert(
-                                      barrierDismissible: false,
-                                      context: context,
-                                      title: 'themesbrand.com says',
-                                      content: const Text(
-                                        'Are you sure you want to delete this element?',
-                                      ),
-                                      actions: [
-                                        FxButton(
-                                            buttonType: ButtonType.secondary,
-                                            text: 'Cancel',
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            }),
-                                        FxButton(
-                                            text: 'Ok',
-                                            onPressed: () {
-                                              _exampleWidgetsList
-                                                  .removeAt(index);
-                                              _exampleWidgetsListMo
-                                                  .removeAt(index);
-                                              _fileNameList.removeAt(index);
-                                              setState(() {});
-                                              Navigator.pop(context);
-                                            })
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  );
-                } else {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _exampleWidgetsListMo[index],
-                      _commonText('Resume'),
-                      MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () {
-                            _pickFile(index);
-                          },
-                          child: _resumeTextField(_fileNameList[index]),
-                        ),
-                      ),
-                      _commonText('Message'),
-                      _messageTextField('Type here...'),
-                      FxBox.h12,
-                      FxButton(
-                        fullWidth: true,
-                        borderRadius: 4.0,
-                        text: 'Delete',
-                        onPressed: () {
-                          FxAlert.showAlert(
-                            barrierDismissible: false,
-                            context: context,
-                            title: 'themesbrand.com says',
-                            content: const Text(
-                              'Are you sure you want to delete this element?',
-                            ),
-                            actions: [
-                              FxButton(
-                                  buttonType: ButtonType.secondary,
-                                  text: 'Cancel',
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  }),
-                              FxButton(
-                                  text: 'Ok',
-                                  onPressed: () {
-                                    _exampleWidgetsList.removeAt(index);
-                                    _exampleWidgetsListMo.removeAt(index);
-                                    _fileNameList.removeAt(index);
-                                    setState(() {});
-                                    Navigator.pop(context);
-                                  })
-                            ],
-                          );
-                        },
-                      ),
-                    ],
-                  );
-                }
+            BlocConsumer<FormRepeaterBloc, FormRepeaterState>(
+              listener: (context, state) {
+                state.whenOrNull(
+                  addSuceess: (fileName, nameController, emailController,
+                      subjectController, messageController) {
+                    _fileNameList.add(fileName);
+                    _messageControllerList.add(messageController);
+                    _nameControllerList.add(nameController);
+                    _emailControllerList.add(emailController);
+                    _subjectControllerList.add(subjectController);
+                  },
+                  deleteSuceess: (index) {
+                    _fileNameList.removeAt(index);
+                    _messageControllerList.removeAt(index);
+                    _nameControllerList.removeAt(index);
+                    _emailControllerList.removeAt(index);
+                    _subjectControllerList.removeAt(index);
+                  },
+                  addFileSuceess: (fileName, index) {
+                    _fileNameList[index] = fileName;
+                  },
+                );
+              },
+              builder: (context, state) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: _fileNameList.length,
+                  itemBuilder: (context, index) {
+                    if (Responsive.isWeb(mainContext)) {
+                      return _exampleFormWeb(index);
+                    } else {
+                      return _exampleTabNmobile(index);
+                    }
+                  },
+                );
               },
             ),
             FxBox.h24,
             FxButton(
+              height: 45,
               buttonType: ButtonType.success,
               borderRadius: 4.0,
               text: 'Add',
               onPressed: () {
-                _fileNameList.add('No chosen file');
-                _exampleWidgetsList.add(_exampleWeb());
-                _exampleWidgetsListMo.add(_exampleMobileNtablet());
-                setState(() {});
+                _formRepeaterBloc.add(FormRepeaterEvent.add(
+                    'No chosen file',
+                    TextEditingController(),
+                    TextEditingController(),
+                    TextEditingController(),
+                    TextEditingController()));
               },
             )
           ],
@@ -200,40 +127,114 @@ class _RepeaterFormState extends State<RepeaterForm> {
     );
   }
 
-  Widget _exampleWeb() {
+  Widget _exampleFormWeb(int index) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _exampleCommonView(
           _commonText('Name'),
-          _commonTextField('Enter your name'),
+          _commonTextField('Enter your name', _nameControllerList[index]),
         ),
         FxBox.w24,
         _exampleCommonView(
           _commonText('Email'),
-          _commonTextField('Enter your email'),
+          _commonTextField('Enter your email', _emailControllerList[index]),
         ),
         FxBox.w24,
         _exampleCommonView(
           _commonText('Subject'),
-          _commonTextField('Enter your subject'),
+          _commonTextField('Enter your subject', _subjectControllerList[index]),
         ),
         FxBox.w24,
+        _exampleCommonView(
+          _commonText('Resume'),
+          MouseRegion(
+            cursor: SystemMouseCursors.click,
+            child: GestureDetector(
+              onTap: () {
+                _pickFile(index);
+              },
+              child: _resumeTextField(_fileNameList[index]),
+            ),
+          ),
+        ),
+        FxBox.w24,
+        _exampleCommonView(
+          _commonText('Message'),
+          _commonTextField('Type here...', _messageControllerList[index],
+              maxLines: 2),
+        ),
+        FxBox.w24,
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 36.0),
+            child: _exampleDeleteButton(index, false),
+          ),
+        ),
       ],
     );
   }
 
-  Widget _exampleMobileNtablet() {
+  Widget _exampleTabNmobile(int index) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _commonText('Name'),
-        _commonTextField('Enter your name'),
+        _commonTextField('Enter your name', _nameControllerList[index]),
         _commonText('Email'),
-        _commonTextField('Enter your email'),
+        _commonTextField('Enter your email', _emailControllerList[index]),
         _commonText('Subject'),
-        _commonTextField('Enter your subject'),
+        _commonTextField('Enter your subject', _subjectControllerList[index]),
+        _commonText('Resume'),
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          child: GestureDetector(
+            onTap: () {
+              _pickFile(index);
+            },
+            child: _resumeTextField(_fileNameList[index]),
+          ),
+        ),
+        _commonText('Message'),
+        _commonTextField('Type here...', _messageControllerList[index],
+            maxLines: 2),
+        FxBox.h12,
+        _exampleDeleteButton(index, true),
       ],
+    );
+  }
+
+  Widget _exampleDeleteButton(int index, bool fullWidth) {
+    return FxButton(
+      height: 45,
+      fullWidth: fullWidth,
+      borderRadius: 4.0,
+      text: 'Delete',
+      onPressed: () {
+        FxAlert.showAlert(
+          barrierDismissible: false,
+          context: context,
+          title: 'themesbrand.com says',
+          content: const Text(
+            'Are you sure you want to delete this element?',
+          ),
+          actions: [
+            FxButton(
+                buttonType: ButtonType.secondary,
+                text: 'Cancel',
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
+            FxButton(
+              text: 'Ok',
+              onPressed: () {
+                _formRepeaterBloc.add(FormRepeaterEvent.delete(index));
+                Navigator.pop(context);
+              },
+            )
+          ],
+        );
+      },
     );
   }
 
@@ -256,17 +257,17 @@ class _RepeaterFormState extends State<RepeaterForm> {
     );
   }
 
-  Widget _commonTextField(String hintText) {
-    return SizedBox(
-      height: 35,
-      child: CustomTextField(
-        border: const OutlineInputBorder(),
-        hintText: hintText,
-        isDense: true,
-        contentPadding: const EdgeInsets.symmetric(
-          horizontal: 12,
-          vertical: 6,
-        ),
+  Widget _commonTextField(String hintText, TextEditingController controller,
+      {int? maxLines = 1}) {
+    return CustomTextField(
+      maxLines: maxLines,
+      controller: controller,
+      border: const OutlineInputBorder(),
+      hintText: hintText,
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
       ),
     );
   }
@@ -277,7 +278,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
         border: Border.all(),
         borderRadius: BorderRadius.circular(4.0),
       ),
-      height: 28,
+      height: 39,
       child: Row(
         children: [
           Container(
@@ -303,28 +304,14 @@ class _RepeaterFormState extends State<RepeaterForm> {
     );
   }
 
-  Widget _messageTextField(String hintText) {
-    return CustomTextField(
-      maxLines: 2,
-      border: const OutlineInputBorder(),
-      hintText: hintText,
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
-    );
-  }
-
   Future<void> _pickFile(int index) async {
     _file = await FilePicker.platform.pickFiles();
     if (_file == null) return;
-
-    _fileNameList[index] = _file!.files[0].name;
-    setState(() {});
+    _formRepeaterBloc
+        .add(FormRepeaterEvent.addFile(_file!.files[0].name, index));
   }
 
-  Widget _nestedForm() {
+  Widget _nestedForm(BuildContext mainContext) {
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4.0),
@@ -342,42 +329,77 @@ class _RepeaterFormState extends State<RepeaterForm> {
               ),
             ),
             _commonText('Name'),
-            _commonTextField('Enter your Name...'),
+            _commonTextField('Enter your Name...', TextEditingController()),
             _commonText('Email :'),
-            _commonTextField('Enter your Email...'),
+            _commonTextField('Enter your Email...', TextEditingController()),
             _commonText('Phone no :'),
-            Responsive.isWeb(context) || Responsive.isTablet(context)
-                ? Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        flex: 8,
-                        child: _commonTextField('Enter your phone no...'),
-                      ),
-                      FxBox.w24,
-                      Expanded(
-                        flex: 2,
-                        child: _deleteButton1(false),
-                      )
-                    ],
-                  )
-                : Column(
-                    children: [
-                      _commonTextField('Enter your phone no...'),
-                      FxBox.h12,
-                      _deleteButton1(true)
-                    ],
-                  ),
+            BlocConsumer<FormRepeaterBloc, FormRepeaterState>(
+              listener: (context, state) {
+                state.whenOrNull(
+                  addPhoneSuceess: (phoneController) {
+                    _phoneControllerList.add(phoneController);
+                  },
+                  deletePhoneSuceess: (index) {
+                    _phoneControllerList.removeAt(index);
+                  },
+                );
+              },
+              builder: (context, state) {
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: _phoneControllerList.length,
+                  itemBuilder: (context, index) {
+                    if (Responsive.isWeb(mainContext) ||
+                        Responsive.isTablet(mainContext)) {
+                      return Column(
+                        children: [
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                flex: 8,
+                                child: _commonTextField(
+                                    'Enter your phone no...',
+                                    _phoneControllerList[index]),
+                              ),
+                              FxBox.w24,
+                              Expanded(
+                                flex: 2,
+                                child: _nestedDeleteButton(false, index),
+                              )
+                            ],
+                          ),
+                          _phoneControllerList.length > 1
+                              ? FxBox.h16
+                              : const SizedBox.shrink()
+                        ],
+                      );
+                    } else {
+                      return Column(
+                        children: [
+                          _commonTextField('Enter your phone no...',
+                              _phoneControllerList[index]),
+                          FxBox.h12,
+                          _nestedDeleteButton(true, index)
+                        ],
+                      );
+                    }
+                  },
+                );
+              },
+            ),
             FxBox.h16,
-            _addButton(),
+            _addPhoneButton(),
             FxBox.h24,
             _commonText('Gender :'),
             _radioButton(),
             FxBox.h16,
             _commonText('Message'),
-            _messageTextField('Type text...'),
+            _commonTextField('Type text...', TextEditingController(),
+                maxLines: 2),
             FxBox.h16,
             FxButton(
+              height: 45,
               borderRadius: 4.0,
               text: 'Submit',
               onPressed: () {},
@@ -389,39 +411,61 @@ class _RepeaterFormState extends State<RepeaterForm> {
   }
 
   Widget _radioButton() {
-    return Row(
-      children: [
-        Radio(
-          value: 'Male',
-          groupValue: false,
-          onChanged: (value) {},
-        ),
-        const Text('Male'),
-        Radio(
-          value: 'Female',
-          groupValue: true,
-          onChanged: (value) {},
-        ),
-        const Text('Female'),
-      ],
+    return BlocBuilder<FormRepeaterBloc, FormRepeaterState>(
+      builder: (context, state) {
+        state.whenOrNull(
+          radioSelectSuceess: (value) {
+            _isSelected = value;
+          },
+        );
+        return Row(
+          children: [
+            Radio(
+              value: 'Male',
+              groupValue: _isSelected,
+              onChanged: (value) {
+                _formRepeaterBloc
+                    .add(FormRepeaterEvent.radioSelect(value.toString()));
+              },
+            ),
+            const Text('Male'),
+            Radio(
+              value: 'Female',
+              groupValue: _isSelected,
+              onChanged: (value) {
+                _formRepeaterBloc
+                    .add(FormRepeaterEvent.radioSelect(value.toString()));
+              },
+            ),
+            const Text('Female'),
+          ],
+        );
+      },
     );
   }
 
-  Widget _deleteButton1(bool fullWidth) {
+  Widget _nestedDeleteButton(bool fullWidth, int index) {
     return FxButton(
+      height: 45,
       fullWidth: fullWidth,
       borderRadius: 4.0,
       text: 'Delete',
-      onPressed: () {},
+      onPressed: () {
+        _formRepeaterBloc.add(FormRepeaterEvent.deletePhone(index));
+      },
     );
   }
 
-  Widget _addButton() {
+  Widget _addPhoneButton() {
     return FxButton(
+      height: 45,
       buttonType: ButtonType.success,
       borderRadius: 4.0,
-      text: 'Add',
-      onPressed: () {},
+      text: 'Add Number',
+      onPressed: () {
+        _formRepeaterBloc
+            .add(FormRepeaterEvent.addPhone(TextEditingController()));
+      },
     );
   }
 }
