@@ -27,7 +27,9 @@ int getRouteIndex(String route) {
     return 12;
   }  else if (route == 'Invoice') {
     return 13;
-  } else {
+  }  else if (route == 'Gallery') {
+    return 14;
+  }  else {
     return 0;
   }
 }
