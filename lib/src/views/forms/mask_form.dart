@@ -14,12 +14,23 @@ class MaskForm extends StatefulWidget {
 
 class _MaskFormState extends State<MaskForm> {
   MaskTextInputFormatter dateStyle1Formatter = MaskTextInputFormatter(
-    mask: 'dt/mm/yyyy',
-    filter: {'d': RegExp(r'[0-3]'), 't': RegExp(r'[0-1]')},
+    mask: '##/mm/dddd',
+    filter: {
+      '##/': RegExp("(0[1-9]|[12][0-9]|3[01])/"),
+      'mm/': RegExp("(0[1-9]|[12][0-9]|3[01])/"),
+      'dddd/': RegExp("(0[1-9]|[12][0-9]|3[01])"),
+    },
     type: MaskAutoCompletionType.lazy,
   );
 
   final TextEditingController _dateStyle1Controller = TextEditingController();
+  final TextEditingController _repeatController = TextEditingController();
+  final TextEditingController _dateStyle2Controller = TextEditingController();
+  final TextEditingController _maskController = TextEditingController();
+  final TextEditingController _dateTimeController = TextEditingController();
+  final TextEditingController _ipAddressController = TextEditingController();
+  final TextEditingController _currencyController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +64,7 @@ class _MaskFormState extends State<MaskForm> {
                           FxBox.w24,
                           _maskTextFieldCommonView(
                             _commonText('repeat'),
-                            _dateStyle1TextField(),
+                            _repeatTextField(),
                             'e.g "9999999999"',
                           ),
                         ],
@@ -63,13 +74,13 @@ class _MaskFormState extends State<MaskForm> {
                         children: [
                           _maskTextFieldCommonView(
                             _commonText('Date Style 2'),
-                            _dateStyle1TextField(),
+                            _dateStyle2TextField(),
                             'e.g "mm/dd/yyyy"',
                           ),
                           FxBox.w24,
                           _maskTextFieldCommonView(
                             _commonText('Mask'),
-                            _dateStyle1TextField(),
+                            _maskTextField(),
                             'e.g "99-9999999"',
                           ),
                         ],
@@ -79,13 +90,13 @@ class _MaskFormState extends State<MaskForm> {
                         children: [
                           _maskTextFieldCommonView(
                             _commonText('Date Time'),
-                            _dateStyle1TextField(),
+                            _dateTimeTextField(),
                             'e.g "yyyy-mm-dd\'T\'HH:MM:ss"',
                           ),
                           FxBox.w24,
                           _maskTextFieldCommonView(
                             _commonText('IP address'),
-                            _dateStyle1TextField(),
+                            _ipAddressTextField(),
                             'e.g "99.99.99.99"',
                           ),
                         ],
@@ -95,13 +106,13 @@ class _MaskFormState extends State<MaskForm> {
                         children: [
                           _maskTextFieldCommonView(
                             _commonText('Currency:'),
-                            _dateStyle1TextField(),
+                            _currencyTextField(),
                             'e.g "\$ 0.00"',
                           ),
                           FxBox.w24,
                           _maskTextFieldCommonView(
                             _commonText('Email address::'),
-                            _dateStyle1TextField(),
+                            _emailTextField(),
                             '_@_._',
                           ),
                         ],
@@ -116,31 +127,31 @@ class _MaskFormState extends State<MaskForm> {
                       const Text('e.g "dd/mm/yyyy"'),
                       FxBox.h12,
                       _commonText('repeat'),
-                      _dateStyle1TextField(),
+                      _repeatTextField(),
                       const Text('e.g "9999999999"'),
                       FxBox.h12,
                       _commonText('Date Style 2'),
-                      _dateStyle1TextField(),
+                      _dateStyle2TextField(),
                       const Text('e.g "mm/dd/yyyy"'),
                       FxBox.h12,
                       _commonText('Mask'),
-                      _dateStyle1TextField(),
+                      _maskTextField(),
                       const Text('e.g "99-9999999"'),
                       FxBox.h12,
                       _commonText('Date Time'),
-                      _dateStyle1TextField(),
+                      _dateTimeTextField(),
                       const Text('e.g "yyyy-mm-dd\'T\'HH:MM:ss"'),
                       FxBox.h12,
                       _commonText('IP address'),
-                      _dateStyle1TextField(),
+                      _ipAddressTextField(),
                       const Text('e.g "99.99.99.99"'),
                       FxBox.h12,
                       _commonText('Currency:'),
-                      _dateStyle1TextField(),
+                      _currencyTextField(),
                       const Text('e.g "\$ 0.00"'),
                       FxBox.h12,
                       _commonText('Email address::'),
-                      _dateStyle1TextField(),
+                      _emailTextField(),
                       const Text('_@_._'),
                     ],
                   )
@@ -168,6 +179,120 @@ class _MaskFormState extends State<MaskForm> {
           inputFormatters: [dateStyle1Formatter],
           border: const OutlineInputBorder(),
           hintText: isHover ? 'dd/mm/yyyy' : '',
+          isDense: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 12,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _repeatTextField() {
+    return CustomTextField(
+      controller: _repeatController,
+      border: const OutlineInputBorder(),
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
+      ),
+    );
+  }
+
+  Widget _dateStyle2TextField() {
+    return FxHover(
+      builder: (isHover) {
+        return CustomTextField(
+          controller: _dateStyle2Controller,
+          border: const OutlineInputBorder(),
+          hintText: isHover ? 'mm/dd/yyyy' : '',
+          isDense: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 12,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _maskTextField() {
+    return FxHover(
+      builder: (isHover) {
+        return CustomTextField(
+          controller: _maskController,
+          border: const OutlineInputBorder(),
+          hintText: isHover ? '__-_______' : '',
+          isDense: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 12,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _dateTimeTextField() {
+    return FxHover(
+      builder: (isHover) {
+        return CustomTextField(
+          controller: _dateTimeController,
+          border: const OutlineInputBorder(),
+          hintText: isHover ? 'yyyy-mm-dd\'T\'HH:MM:ss' : '',
+          isDense: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 12,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _ipAddressTextField() {
+    return FxHover(
+      builder: (isHover) {
+        return CustomTextField(
+          controller: _ipAddressController,
+          border: const OutlineInputBorder(),
+          hintText: isHover ? '_._._._' : '',
+          isDense: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 12,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _currencyTextField() {
+    return FxHover(
+      builder: (isHover) {
+        return CustomTextField(
+          controller: _currencyController,
+          border: const OutlineInputBorder(),
+          hintText: isHover ? '\$ 0.00' : '',
+          isDense: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 12,
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _emailTextField() {
+    return FxHover(
+      builder: (isHover) {
+        return CustomTextField(
+          controller: _emailController,
+          border: const OutlineInputBorder(),
+          hintText: isHover ? '_@_._' : '',
           isDense: true,
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 15,
