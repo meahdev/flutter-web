@@ -27,7 +27,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'loaders'),
+        RedirectRoute(path: '', redirectTo: 'dashboard'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),
