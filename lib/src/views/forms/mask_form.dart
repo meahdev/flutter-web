@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutterx/flutterx.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -13,14 +14,40 @@ class MaskForm extends StatefulWidget {
 }
 
 class _MaskFormState extends State<MaskForm> {
-  MaskTextInputFormatter dateStyle1Formatter = MaskTextInputFormatter(
-    mask: '##/mm/dddd',
+  final MaskTextInputFormatter _dateStyle1Formatter = MaskTextInputFormatter(
+    mask: '##/##/####',
+    filter: {'#': RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.eager,
+  );
+  final MaskTextInputFormatter _dateStyle2Formatter = MaskTextInputFormatter(
+    mask: '##/##/####',
+    filter: {'#': RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.eager,
+  );
+  final MaskTextInputFormatter _dateTimeFormatter = MaskTextInputFormatter(
+    mask: '####-##-##\'T\'##:##:##',
+    filter: {'#': RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.eager,
+  );
+
+  final MaskTextInputFormatter _maskFormatter = MaskTextInputFormatter(
+    mask: '##-#######',
+    filter: {'#': RegExp(r'[0-9]')},
+    type: MaskAutoCompletionType.eager,
+  );
+  final MaskTextInputFormatter _ipAddressFormatter = MaskTextInputFormatter(
+    mask: '##.##.##.##',
     filter: {
-      '##/': RegExp("(0[1-9]|[12][0-9]|3[01])/"),
-      'mm/': RegExp("(0[1-9]|[12][0-9]|3[01])/"),
-      'dddd/': RegExp("(0[1-9]|[12][0-9]|3[01])"),
+      '#': RegExp(r'[0-9]'),
     },
-    type: MaskAutoCompletionType.lazy,
+    type: MaskAutoCompletionType.eager,
+  );
+  final MaskTextInputFormatter _currencyFormatter = MaskTextInputFormatter(
+    mask: '\$ #',
+    filter: {
+      '#': RegExp(r'[0-9]'),
+    },
+    // type: MaskAutoCompletionType.eager,
   );
 
   final TextEditingController _dateStyle1Controller = TextEditingController();
@@ -31,7 +58,7 @@ class _MaskFormState extends State<MaskForm> {
   final TextEditingController _ipAddressController = TextEditingController();
   final TextEditingController _currencyController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-
+  String hash = '#';
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -55,6 +82,7 @@ class _MaskFormState extends State<MaskForm> {
                 ? Column(
                     children: [
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _maskTextFieldCommonView(
                             _commonText('Date Style 1'),
@@ -175,8 +203,29 @@ class _MaskFormState extends State<MaskForm> {
     return FxHover(
       builder: (isHover) {
         return CustomTextField(
+          autovalidateMode: AutovalidateMode.always,
           controller: _dateStyle1Controller,
-          inputFormatters: [dateStyle1Formatter],
+          inputFormatters: [_dateStyle1Formatter],
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return null;
+            }
+            final components = value.split("/");
+            if (components.length == 3) {
+              final day = int.tryParse(components[0]);
+              final month = int.tryParse(components[1]);
+              final year = int.tryParse(components[2]);
+              if (day != null && month != null && year != null) {
+                final date = DateTime(year, month, day);
+                if (date.year == year &&
+                    date.month == month &&
+                    date.day == day) {
+                  return null;
+                }
+              }
+            }
+            return "wrong date";
+          },
           border: const OutlineInputBorder(),
           hintText: isHover ? 'dd/mm/yyyy' : '',
           isDense: true,
@@ -191,6 +240,10 @@ class _MaskFormState extends State<MaskForm> {
 
   Widget _repeatTextField() {
     return CustomTextField(
+      inputFormatters: [
+        FilteringTextInputFormatter.digitsOnly,
+        LengthLimitingTextInputFormatter(10),
+      ],
       controller: _repeatController,
       border: const OutlineInputBorder(),
       isDense: true,
@@ -205,7 +258,30 @@ class _MaskFormState extends State<MaskForm> {
     return FxHover(
       builder: (isHover) {
         return CustomTextField(
+          autovalidateMode: AutovalidateMode.always,
           controller: _dateStyle2Controller,
+          inputFormatters: [_dateStyle2Formatter],
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return null;
+            }
+            final components = value.split("-");
+            if (components.length == 3) {
+              final month = int.tryParse(components[0]);
+              final day = int.tryParse(components[1]);
+              final year = int.tryParse(components[2]);
+
+              if (day != null && month != null && year != null) {
+                final date = DateTime(year, month, day);
+                if (date.year == year &&
+                    date.month == month &&
+                    date.day == day) {
+                  return null;
+                }
+              }
+            }
+            return "wrong date";
+          },
           border: const OutlineInputBorder(),
           hintText: isHover ? 'mm/dd/yyyy' : '',
           isDense: true,
@@ -222,6 +298,7 @@ class _MaskFormState extends State<MaskForm> {
     return FxHover(
       builder: (isHover) {
         return CustomTextField(
+          inputFormatters: [_maskFormatter],
           controller: _maskController,
           border: const OutlineInputBorder(),
           hintText: isHover ? '__-_______' : '',
@@ -239,10 +316,48 @@ class _MaskFormState extends State<MaskForm> {
     return FxHover(
       builder: (isHover) {
         return CustomTextField(
+          autovalidateMode: AutovalidateMode.always,
           controller: _dateTimeController,
           border: const OutlineInputBorder(),
+          inputFormatters: [_dateTimeFormatter],
           hintText: isHover ? 'yyyy-mm-dd\'T\'HH:MM:ss' : '',
           isDense: true,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return null;
+            }
+            final components = value.split("-");
+            if (components.length == 3) {
+              final year = int.tryParse(components[0]);
+              final month = int.tryParse(components[1]);
+              final day = int.tryParse(
+                  components[2].length == 2 ? components[2].split("'")[0] : '');
+
+              if (day != null && month != null && year != null) {
+                final date = DateTime(year, month, day);
+                if (date.year == year &&
+                    date.month == month &&
+                    date.day == day) {
+                  return null;
+                }
+                final hour =
+                    int.tryParse(components[2].split("'")[2].split(":")[0]);
+                final minute =
+                    int.tryParse(components[2].split("'")[2].split(":")[1]);
+                final second =
+                    int.tryParse(components[2].split("'")[2].split(":")[2]);
+                if (hour != null && minute != null && second != null) {
+                  final time = DateTime(hour, minute, second);
+                  if (time.hour == hour &&
+                      time.minute == minute &&
+                      time.second == second) {
+                    return null;
+                  }
+                }
+              }
+            }
+            return "wrong date";
+          },
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 15,
             vertical: 12,
@@ -256,6 +371,9 @@ class _MaskFormState extends State<MaskForm> {
     return FxHover(
       builder: (isHover) {
         return CustomTextField(
+          inputFormatters: [
+            _ipAddressFormatter,
+          ],
           controller: _ipAddressController,
           border: const OutlineInputBorder(),
           hintText: isHover ? '_._._._' : '',
@@ -273,6 +391,22 @@ class _MaskFormState extends State<MaskForm> {
     return FxHover(
       builder: (isHover) {
         return CustomTextField(
+          inputFormatters: [
+            _currencyFormatter,
+          ],
+          onChanged: (value) {
+            if (value.length >= 2) {
+              if ((value.length - 2) == hash.length) {
+                hash += '#';
+              } else {
+                hash = hash.substring(0, hash.length - 1);
+              }
+
+              _currencyController.value = _currencyFormatter.updateMask(
+                mask: '\$ $hash',
+              );
+            }
+          },
           controller: _currencyController,
           border: const OutlineInputBorder(),
           hintText: isHover ? '\$ 0.00' : '',

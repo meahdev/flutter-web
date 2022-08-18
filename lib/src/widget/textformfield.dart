@@ -24,6 +24,8 @@ class CustomTextField extends StatelessWidget {
   final int? maxLines;
   final String? prefixText;
   final TextStyle? style;
+  final int? maxLength;
+  final AutovalidateMode? autovalidateMode;
   const CustomTextField({
     Key? key,
     this.controller,
@@ -48,11 +50,15 @@ class CustomTextField extends StatelessWidget {
     this.maxLines = 1,
     this.prefixText,
     this.style,
+    this.maxLength,
+    this.autovalidateMode,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: autovalidateMode,
+      maxLength: maxLength,
       style: style,
       onTap: onTap,
       readOnly: readOnly,
