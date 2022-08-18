@@ -55,50 +55,48 @@ class OverlapBarState extends State<OverlapBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Expanded(
-          child: BarChart(
-            BarChartData(
-              groupsSpace: 100,
-              maxY: 20,
-              titlesData: FlTitlesData(
-                show: true,
-                rightTitles: AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
-                topTitles: AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
-                bottomTitles: AxisTitles(
-                  sideTitles: SideTitles(
-                    showTitles: true,
-                    getTitlesWidget: bottomTitles,
-                    reservedSize: 42,
-                  ),
-                ),
-                leftTitles: AxisTitles(
-                  sideTitles: SideTitles(
-                    showTitles: true,
-                    reservedSize: 28,
-                    interval: 1,
-                    getTitlesWidget: leftTitles,
-                  ),
+    return Column(children: <Widget>[
+      Expanded(
+        child: BarChart(
+          BarChartData(
+            groupsSpace: 100,
+            maxY: 20,
+            titlesData: FlTitlesData(
+              show: true,
+              rightTitles: AxisTitles(
+                sideTitles: SideTitles(showTitles: false),
+              ),
+              topTitles: AxisTitles(
+                sideTitles: SideTitles(showTitles: false),
+              ),
+              bottomTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  getTitlesWidget: bottomTitles,
+                  reservedSize: 42,
                 ),
               ),
-              borderData: FlBorderData(
-                show: false,
+              leftTitles: AxisTitles(
+                sideTitles: SideTitles(
+                  showTitles: true,
+                  reservedSize: 28,
+                  interval: 1,
+                  getTitlesWidget: leftTitles,
+                ),
               ),
-              barGroups: showingBarGroups,
-              gridData: FlGridData(show: false),
             ),
+            borderData: FlBorderData(
+              show: false,
+            ),
+            barGroups: showingBarGroups,
+            gridData: FlGridData(show: false),
           ),
         ),
-        const SizedBox(
-          height: 12,
-        ),
-      ]);
-
+      ),
+      const SizedBox(
+        height: 12,
+      ),
+    ]);
   }
 
   Widget leftTitles(double value, TitleMeta meta) {
@@ -112,19 +110,19 @@ class OverlapBarState extends State<OverlapBar> {
       text = '0';
     } else if (value == 3) {
       text = '1.2';
-    }  else if (value == 6) {
+    } else if (value == 6) {
       text = '2.5';
-    }  else if (value == 9) {
+    } else if (value == 9) {
       text = '3.7';
     } else if (value == 12) {
       text = '5.0';
-    }else if (value == 15) {
+    } else if (value == 15) {
       text = '6.2';
-    }else if (value == 18) {
+    } else if (value == 18) {
       text = '7.5';
-    }else if (value == 20) {
+    } else if (value == 20) {
       text = '9.0';
-    }else {
+    } else {
       return Container();
     }
     return SideTitleWidget(
@@ -135,13 +133,20 @@ class OverlapBarState extends State<OverlapBar> {
   }
 
   Widget bottomTitles(double value, TitleMeta meta) {
-    List<String> titles = ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun",
+    List<String> titles = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "Mai",
+      "Jun",
       "Jul",
       "Aug",
       "Sep",
       "Oct",
       "Nov",
-      "Dec"];
+      "Dec",
+    ];
     Widget text = Text(
       titles[value.toInt()],
       style: const TextStyle(
@@ -173,7 +178,4 @@ class OverlapBarState extends State<OverlapBar> {
       ),
     ]);
   }
-
-
-
 }

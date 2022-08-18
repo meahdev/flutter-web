@@ -43,7 +43,7 @@ class SimpleLineChart extends StatelessWidget {
           ),
         ),
         lineBarsData: [
-          LineChartBarData(
+          _lineChartBarData(
             spots: const [
               FlSpot(0, 5),
               FlSpot(2.6, 4),
@@ -52,15 +52,9 @@ class SimpleLineChart extends StatelessWidget {
               FlSpot(9.5, 3),
               FlSpot(11, 4),
             ],
-            isCurved: true,
             color: const Color(0xff6d6fb9),
-            barWidth: 2,
-            isStrokeCapRound: false,
-            dotData: FlDotData(
-              show: true,
-            ),
           ),
-          LineChartBarData(
+          _lineChartBarData(
             spots: const [
               FlSpot(0, 1),
               FlSpot(2.6, 2),
@@ -68,15 +62,9 @@ class SimpleLineChart extends StatelessWidget {
               FlSpot(8, 4),
               FlSpot(9.5, 2),
             ],
-            isCurved: true,
             color: const Color(0xff37a499),
-            barWidth: 2,
-            isStrokeCapRound: false,
-            dotData: FlDotData(
-              show: true,
-            ),
           ),
-          LineChartBarData(
+          _lineChartBarData(
             spots: const [
               FlSpot(0, 0),
               FlSpot(1.6, 1),
@@ -84,18 +72,28 @@ class SimpleLineChart extends StatelessWidget {
               FlSpot(8, 3),
               FlSpot(9.5, 1),
             ],
-            isCurved: true,
             color: const Color(0xff6fab42),
-            barWidth: 2,
-            isStrokeCapRound: false,
-            dotData: FlDotData(
-              show: true,
-            ),
           ),
         ],
       ),
     );
   }
+}
+
+LineChartBarData _lineChartBarData({
+  List<FlSpot>? spots,
+  Color? color,
+}) {
+  return LineChartBarData(
+    spots: spots,
+    isCurved: true,
+    color: color,
+    barWidth: 2,
+    isStrokeCapRound: false,
+    dotData: FlDotData(
+      show: true,
+    ),
+  );
 }
 
 Widget leftTitles(double value, TitleMeta meta) {

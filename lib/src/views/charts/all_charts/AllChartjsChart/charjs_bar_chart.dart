@@ -142,96 +142,70 @@ class ChartJsBarChart extends StatelessWidget {
     );
   }
 
+  BarChartRodData _barChartRodData({
+    required double toY,
+  }) {
+    return BarChartRodData(
+      width: width,
+      toY: toY,
+      color: chartJsBarChart,
+      borderRadius: BorderRadius.zero,
+    );
+  }
+
   List<BarChartGroupData> get barGroups => [
         BarChartGroupData(
           x: 0,
           barRods: [
-            BarChartRodData(
-              width: width,
-              toY: 15,
-              color: chartJsBarChart,
-              borderRadius: BorderRadius.zero,
-            )
+            _barChartRodData(toY: 15),
           ],
         ),
         BarChartGroupData(
           x: 1,
           barRods: [
-            BarChartRodData(
-                width: width,
-                toY: 10,
-                color: chartJsBarChart,
-                borderRadius: BorderRadius.zero)
+            _barChartRodData(toY: 10),
           ],
         ),
         BarChartGroupData(
           x: 2,
           barRods: [
-            BarChartRodData(
-                width: width,
-                toY: 14,
-                color: chartJsBarChart,
-                borderRadius: BorderRadius.zero)
+            _barChartRodData(toY: 14),
           ],
         ),
         BarChartGroupData(
           x: 3,
           barRods: [
-            BarChartRodData(
-                width: width,
-                toY: 15,
-                color: chartJsBarChart,
-                borderRadius: BorderRadius.zero)
+            _barChartRodData(toY: 15),
           ],
         ),
         BarChartGroupData(
           x: 4,
           barRods: [
-            BarChartRodData(
-                width: width,
-                toY: 13,
-                color: chartJsBarChart,
-                borderRadius: BorderRadius.zero)
+            _barChartRodData(toY: 13),
           ],
         ),
         BarChartGroupData(
           x: 5,
           barRods: [
-            BarChartRodData(
-                width: width,
-                toY: 10,
-                color: chartJsBarChart,
-                borderRadius: BorderRadius.zero)
+            _barChartRodData(toY: 10),
           ],
         ),
         BarChartGroupData(
           x: 6,
           barRods: [
-            BarChartRodData(
-                width: width,
-                toY: 13,
-                color: chartJsBarChart,
-                borderRadius: BorderRadius.zero)
+            _barChartRodData(toY: 13),
           ],
         ),
         BarChartGroupData(
           x: 7,
           barRods: [
-            BarChartRodData(
-                width: width,
-                toY: 5,
-                color: chartJsBarChart,
-                borderRadius: BorderRadius.zero)
+            _barChartRodData(toY: 5),
           ],
         ),
         BarChartGroupData(
           x: 8,
           barRods: [
-            BarChartRodData(
-                width: width,
-                toY: 10,
-                color: chartJsBarChart,
-                borderRadius: BorderRadius.zero)
+            _barChartRodData(toY: 10),
           ],
         ),
       ];

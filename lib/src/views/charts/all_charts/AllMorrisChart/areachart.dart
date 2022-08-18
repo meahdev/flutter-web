@@ -18,6 +18,27 @@ class _AreaChartState extends State<AreaChart> {
     );
   }
 
+  LineChartBarData _lineChartBarData({
+    List<FlSpot>? spots,
+    Color? color,
+    Color? barDataColor,
+  }) {
+    return LineChartBarData(
+      spots: spots,
+      isCurved: true,
+      barWidth: 0,
+      color: color,
+      isStrokeCapRound: true,
+      dotData: FlDotData(
+        show: false,
+      ),
+      belowBarData: BarAreaData(
+        show: true,
+        color: barDataColor,
+      ),
+    );
+  }
+
   LineChartData mainData() {
     return LineChartData(
       borderData: FlBorderData(border: const Border(bottom: BorderSide.none)),
@@ -60,7 +81,7 @@ class _AreaChartState extends State<AreaChart> {
       minY: 0,
       maxY: 6,
       lineBarsData: [
-        LineChartBarData(
+        _lineChartBarData(
           spots: const [
             FlSpot(0, 0),
             FlSpot(2.6, 2),
@@ -70,17 +91,10 @@ class _AreaChartState extends State<AreaChart> {
             FlSpot(9.5, 3),
             FlSpot(11, 4),
           ],
-          isCurved: true,
-          barWidth: 0,
           color: const Color(0xff81d7d0),
-          isStrokeCapRound: true,
-          dotData: FlDotData(
-            show: false,
-          ),
-          belowBarData: BarAreaData(
-              show: true, color: const Color(0xff81d7d0).withOpacity(0.5)),
+          barDataColor: const Color(0xff81d7d0).withOpacity(0.5),
         ),
-        LineChartBarData(
+        _lineChartBarData(
           spots: const [
             FlSpot(0, 0),
             FlSpot(1, 2),
@@ -90,19 +104,10 @@ class _AreaChartState extends State<AreaChart> {
             FlSpot(9.5, 3),
             FlSpot(11, 4),
           ],
-          isCurved: true,
           color: const Color(0xff5cb6c4),
-          barWidth: 0,
-          isStrokeCapRound: true,
-          dotData: FlDotData(
-            show: false,
-          ),
-          belowBarData: BarAreaData(
-            show: true,
-            color: const Color(0xff5cb6c4).withOpacity(0.5),
-          ),
+          barDataColor: const Color(0xff5cb6c4).withOpacity(0.5),
         ),
-        LineChartBarData(
+        _lineChartBarData(
           spots: const [
             FlSpot(0, 2),
             FlSpot(2, 4),
@@ -112,19 +117,10 @@ class _AreaChartState extends State<AreaChart> {
             FlSpot(9.5, 3),
             FlSpot(11, 4),
           ],
-          isCurved: true,
-          barWidth: 0,
           color: const Color(0xffaab1e6),
-          isStrokeCapRound: true,
-          dotData: FlDotData(
-            show: false,
-          ),
-          belowBarData: BarAreaData(
-              show: true, color: const Color(0xffaab1e6).withOpacity(0.5)),
+          barDataColor: const Color(0xffaab1e6).withOpacity(0.5),
         ),
       ],
     );
   }
 }
-
-

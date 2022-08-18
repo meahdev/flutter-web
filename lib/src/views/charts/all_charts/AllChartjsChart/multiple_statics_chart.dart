@@ -18,6 +18,26 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
     );
   }
 
+  LineChartBarData _lineChartBarData({
+    List<FlSpot>? spots,
+    Color? color,
+    Color? barDataColor,
+  }) {
+    return LineChartBarData(
+      spots: spots,
+      isCurved: false,
+      barWidth: 3,
+      color: color,
+      dotData: FlDotData(
+        show: false,
+      ),
+      belowBarData: BarAreaData(
+        show: true,
+        color: barDataColor,
+      ),
+    );
+  }
+
   LineChartData mainData() {
     return LineChartData(
       borderData: FlBorderData(border: const Border(bottom: BorderSide.none)),
@@ -59,7 +79,7 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
       minY: 0,
       maxY: 6,
       lineBarsData: [
-        LineChartBarData(
+        _lineChartBarData(
           spots: const [
             FlSpot(0, 0),
             FlSpot(2.6, 2),
@@ -69,15 +89,10 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
             FlSpot(9.5, 3),
             FlSpot(11, 4),
           ],
-          isCurved: false,
-          barWidth: 3,
           color: const Color(0xff59a99f),
-          dotData: FlDotData(
-            show: false,
-          ),
-          belowBarData: BarAreaData(show: true, color: const Color(0xff97d1cd)),
+          barDataColor: const Color(0xff97d1cd),
         ),
-        LineChartBarData(
+        _lineChartBarData(
           spots: const [
             FlSpot(0, 0),
             FlSpot(1, 2),
@@ -87,19 +102,23 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
             FlSpot(9.5, 3),
             FlSpot(11, 4),
           ],
-          isCurved: false,
-          barWidth: 3,
           color: const Color(0xff5cb6c4),
-          isStrokeCapRound: true,
-          dotData: FlDotData(
-            show: false,
-          ),
-          belowBarData: BarAreaData(
-            show: true,
-            color: const Color(0xff5cb6c4).withOpacity(0.5),
-          ),
+          barDataColor: const Color(0xff5cb6c4).withOpacity(0.5),
         ),
-        LineChartBarData(
+        _lineChartBarData(
+          spots: const [
+            FlSpot(0, 0),
+            FlSpot(1, 2),
+            FlSpot(3, 2),
+            FlSpot(5, 1.1),
+            FlSpot(6, 4),
+            FlSpot(9.5, 3),
+            FlSpot(11, 4),
+          ],
+          color: const Color(0xff5cb6c4),
+          barDataColor: const Color(0xff5cb6c4).withOpacity(0.5),
+        ),
+        _lineChartBarData(
           spots: const [
             FlSpot(0, 2),
             FlSpot(2, 4),
@@ -109,15 +128,8 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
             FlSpot(9.5, 3),
             FlSpot(11, 4),
           ],
-          isCurved: false,
-          barWidth: 3,
           color: const Color(0xffaab1e6),
-          isStrokeCapRound: true,
-          dotData: FlDotData(
-            show: false,
-          ),
-          belowBarData: BarAreaData(
-              show: true, color: const Color(0xffaab1e6).withOpacity(0.5)),
+          barDataColor: const Color(0xffaab1e6).withOpacity(0.5),
         ),
       ],
     );
