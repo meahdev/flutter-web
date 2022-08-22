@@ -1,5 +1,5 @@
-import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -21,7 +21,7 @@ class BillingEmail extends StatelessWidget {
             ),
             padding: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
-              color: ColorConst.white,
+              // color: ColorConst.white,
               border: Border.all(width: 3.0),
             ),
             child: Column(
@@ -30,15 +30,18 @@ class BillingEmail extends StatelessWidget {
                 FxBox.h40,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Text(
                       'Thanks for using',
-                      style: TextStyle(color: Colors.black, fontSize: 22),
+                      style: TextStyle(
+                        color: isDark ? Colors.white : Colors.black,
+                        fontSize: 22,
+                      ),
                     ),
                     Text(
                       ' ${Strings.siddhatva}.',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: isDark ? Colors.white : Colors.black,
                         fontSize: 25,
                         fontWeight: FontWeight.bold,
                       ),
@@ -74,23 +77,33 @@ class BillingEmail extends StatelessWidget {
                   },
                 ),
                 FxBox.h8,
-                const Divider(color: Colors.black, height: 8.0, thickness: 2.0),
+                Divider(
+                  color: isDark ? Colors.white : Colors.black,
+                  height: 8.0,
+                  thickness: 2.0,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
+                  children: [
                     Text(
                       "Total	",
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                          color: isDark ? Colors.white : Colors.black,
+                          fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "\$670.99",
                       style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
+                          color: isDark ? Colors.white : Colors.black,
+                          fontWeight: FontWeight.bold),
                     )
                   ],
                 ),
-                const Divider(color: Colors.black, height: 8.0, thickness: 2.0),
+                Divider(
+                  color: isDark ? Colors.white : Colors.black,
+                  height: 8.0,
+                  thickness: 2.0,
+                ),
                 FxBox.h60,
                 const Align(
                   alignment: Alignment.center,
