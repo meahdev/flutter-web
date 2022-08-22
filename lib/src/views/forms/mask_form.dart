@@ -268,7 +268,7 @@ class _MaskFormState extends State<MaskForm> {
             if (value == null || value.isEmpty) {
               return null;
             }
-            final components = value.split("-");
+            final components = value.split("/");
             if (components.length == 3) {
               final month = int.tryParse(components[0]);
               final day = int.tryParse(components[1]);

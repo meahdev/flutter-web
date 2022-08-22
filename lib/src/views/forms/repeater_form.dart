@@ -100,7 +100,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
                     if (Responsive.isWeb(mainContext)) {
                       return _exampleFormWeb(index);
                     } else {
-                      return _exampleTabNmobile(index);
+                      return _exampleTabNmobile(index, mainContext);
                     }
                   },
                 );
@@ -175,7 +175,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
     );
   }
 
-  Widget _exampleTabNmobile(int index) {
+  Widget _exampleTabNmobile(int index, BuildContext mainContext) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -196,10 +196,32 @@ class _RepeaterFormState extends State<RepeaterForm> {
           ),
         ),
         _commonText('Message'),
-        _commonTextField('Type here...', _messageControllerList[index],
-            maxLines: 2),
-        FxBox.h12,
-        _exampleDeleteButton(index, true),
+        Responsive.isTablet(mainContext)
+            ? Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 7,
+                    child: _commonTextField(
+                        'Type here...', _messageControllerList[index],
+                        maxLines: 2),
+                  ),
+                  FxBox.w24,
+                  Expanded(
+                    flex: 3,
+                    child: _exampleDeleteButton(index, true),
+                  ),
+                ],
+              )
+            : Column(
+                children: [
+                  _commonTextField(
+                      'Type here...', _messageControllerList[index],
+                      maxLines: 2),
+                  FxBox.h12,
+                  _exampleDeleteButton(index, true),
+                ],
+              ),
       ],
     );
   }
@@ -380,7 +402,8 @@ class _RepeaterFormState extends State<RepeaterForm> {
                           _commonTextField('Enter your phone no...',
                               _phoneControllerList[index]),
                           FxBox.h12,
-                          _nestedDeleteButton(true, index)
+                          _nestedDeleteButton(true, index),
+                          FxBox.h12,
                         ],
                       );
                     }
