@@ -17,7 +17,7 @@ import 'package:admin_dashboard/src/views/extra_pages/gallary.dart';
 import 'package:admin_dashboard/src/views/extra_pages/invoice.dart';
 import 'package:admin_dashboard/src/views/extra_pages/maintenance.dart';
 import 'package:admin_dashboard/src/views/extra_pages/pricing.dart';
-import 'package:admin_dashboard/src/views/extra_pages/timeline/timeline.dart';
+import 'package:admin_dashboard/src/views/extra_pages/timeline.dart';
 import 'package:admin_dashboard/src/views/icons/cupertino_icon.dart';
 import 'package:admin_dashboard/src/views/menu_bar.dart';
 import 'package:admin_dashboard/src/views/rating/rating.dart';
@@ -32,7 +32,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'faqs'),
+        RedirectRoute(path: '', redirectTo: 'pricing'),
         AutoRoute(path: 'dashboard', page: TestWidget),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),
@@ -40,10 +40,6 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'badge', page: Badge),
         AutoRoute(path: 'cupertino-icon', page: CupertinoIcon),
         AutoRoute(path: 'timeline', page: TimelineScreen),
-        AutoRoute(path: 'coming-soon', page: ComingSoon),
-        AutoRoute(path: 'error-404', page: Error404),
-        AutoRoute(path: 'error-500', page: Error500),
-        AutoRoute(path: 'maintenance', page: Maintenance),
         AutoRoute(path: 'pricing', page: Pricing),
         AutoRoute(path: 'directory', page: DirectoryPage),
         AutoRoute(path: 'faqs', page: FAQs),
@@ -59,6 +55,10 @@ import 'package:auto_route/auto_route.dart';
     AutoRoute(path: 'recover-password-two', page: RecoverPasswordTwo),
     AutoRoute(path: 'lock-screen-one', page: LockScreenOne),
     AutoRoute(path: 'lock-screen-two', page: LockScreenTwo),
+    AutoRoute(path: 'error-404', page: Error404),
+    AutoRoute(path: 'error-500', page: Error500),
+    AutoRoute(path: 'coming-soon', page: ComingSoon),
+    AutoRoute(path: 'maintenance', page: Maintenance),
   ],
 )
 class $AppRouter {}

@@ -24,23 +24,23 @@ import '../views/authentication/recover_password/recover_password_two.dart'
     as _i7;
 import '../views/authentication/register/register_one.dart' as _i4;
 import '../views/authentication/register/register_two.dart' as _i5;
-import '../views/badge/badge.dart' as _i14;
-import '../views/buttons/button.dart' as _i12;
-import '../views/extra_pages/coming_soon.dart' as _i17;
+import '../views/badge/badge.dart' as _i18;
+import '../views/buttons/button.dart' as _i16;
+import '../views/extra_pages/coming_soon.dart' as _i12;
 import '../views/extra_pages/directory.dart' as _i22;
-import '../views/extra_pages/error_404.dart' as _i18;
-import '../views/extra_pages/error_500.dart' as _i19;
+import '../views/extra_pages/error_404.dart' as _i10;
+import '../views/extra_pages/error_500.dart' as _i11;
 import '../views/extra_pages/faqs.dart' as _i23;
 import '../views/extra_pages/gallary.dart' as _i25;
 import '../views/extra_pages/invoice.dart' as _i24;
-import '../views/extra_pages/maintenance.dart' as _i20;
+import '../views/extra_pages/maintenance.dart' as _i13;
 import '../views/extra_pages/pricing.dart' as _i21;
-import '../views/extra_pages/timeline/timeline.dart' as _i16;
-import '../views/icons/cupertino_icon.dart' as _i15;
+import '../views/extra_pages/timeline.dart' as _i20;
+import '../views/icons/cupertino_icon.dart' as _i19;
 import '../views/menu_bar.dart' as _i1;
-import '../views/rating/rating.dart' as _i13;
-import '../views/test.dart' as _i10;
-import '../views/toast/toast.dart' as _i11;
+import '../views/rating/rating.dart' as _i17;
+import '../views/test.dart' as _i14;
+import '../views/toast/toast.dart' as _i15;
 
 class AppRouter extends _i26.RootStackRouter {
   AppRouter([_i27.GlobalKey<_i27.NavigatorState>? navigatorKey])
@@ -84,49 +84,49 @@ class AppRouter extends _i26.RootStackRouter {
       return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i9.LockScreenTwo());
     },
-    TestWidget.name: (routeData) {
-      return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i10.TestWidget());
-    },
-    Toast.name: (routeData) {
-      return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i11.Toast());
-    },
-    Button.name: (routeData) {
-      return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i12.Button());
-    },
-    Rating.name: (routeData) {
-      return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i13.Rating());
-    },
-    Badge.name: (routeData) {
-      return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i14.Badge());
-    },
-    CupertinoIcon.name: (routeData) {
-      return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i15.CupertinoIcon());
-    },
-    TimelineScreen.name: (routeData) {
-      return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i16.TimelineScreen());
-    },
-    ComingSoon.name: (routeData) {
-      return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i17.ComingSoon());
-    },
     Error404.name: (routeData) {
       return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i18.Error404());
+          routeData: routeData, child: const _i10.Error404());
     },
     Error500.name: (routeData) {
       return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i19.Error500());
+          routeData: routeData, child: const _i11.Error500());
+    },
+    ComingSoon.name: (routeData) {
+      return _i26.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i12.ComingSoon());
     },
     Maintenance.name: (routeData) {
       return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i20.Maintenance());
+          routeData: routeData, child: const _i13.Maintenance());
+    },
+    TestWidget.name: (routeData) {
+      return _i26.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i14.TestWidget());
+    },
+    Toast.name: (routeData) {
+      return _i26.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i15.Toast());
+    },
+    Button.name: (routeData) {
+      return _i26.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i16.Button());
+    },
+    Rating.name: (routeData) {
+      return _i26.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i17.Rating());
+    },
+    Badge.name: (routeData) {
+      return _i26.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i18.Badge());
+    },
+    CupertinoIcon.name: (routeData) {
+      return _i26.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i19.CupertinoIcon());
+    },
+    TimelineScreen.name: (routeData) {
+      return _i26.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i20.TimelineScreen());
     },
     Pricing.name: (routeData) {
       return _i26.MaterialPageX<dynamic>(
@@ -156,7 +156,7 @@ class AppRouter extends _i26.RootStackRouter {
           _i26.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'faqs',
+              redirectTo: 'pricing',
               fullMatch: true),
           _i26.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),
@@ -168,14 +168,6 @@ class AppRouter extends _i26.RootStackRouter {
               path: 'cupertino-icon', parent: MenuBar.name),
           _i26.RouteConfig(TimelineScreen.name,
               path: 'timeline', parent: MenuBar.name),
-          _i26.RouteConfig(ComingSoon.name,
-              path: 'coming-soon', parent: MenuBar.name),
-          _i26.RouteConfig(Error404.name,
-              path: 'error-404', parent: MenuBar.name),
-          _i26.RouteConfig(Error500.name,
-              path: 'error-500', parent: MenuBar.name),
-          _i26.RouteConfig(Maintenance.name,
-              path: 'maintenance', parent: MenuBar.name),
           _i26.RouteConfig(Pricing.name, path: 'pricing', parent: MenuBar.name),
           _i26.RouteConfig(DirectoryRoute.name,
               path: 'directory', parent: MenuBar.name),
@@ -190,7 +182,11 @@ class AppRouter extends _i26.RootStackRouter {
         _i26.RouteConfig(RecoverPasswordOne.name, path: 'recover-password-one'),
         _i26.RouteConfig(RecoverPasswordTwo.name, path: 'recover-password-two'),
         _i26.RouteConfig(LockScreenOne.name, path: 'lock-screen-one'),
-        _i26.RouteConfig(LockScreenTwo.name, path: 'lock-screen-two')
+        _i26.RouteConfig(LockScreenTwo.name, path: 'lock-screen-two'),
+        _i26.RouteConfig(Error404.name, path: 'error-404'),
+        _i26.RouteConfig(Error500.name, path: 'error-500'),
+        _i26.RouteConfig(ComingSoon.name, path: 'coming-soon'),
+        _i26.RouteConfig(Maintenance.name, path: 'maintenance')
       ];
 }
 
@@ -270,71 +266,7 @@ class LockScreenTwo extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i10.TestWidget]
-class TestWidget extends _i26.PageRouteInfo<void> {
-  const TestWidget() : super(TestWidget.name, path: 'dashboard');
-
-  static const String name = 'TestWidget';
-}
-
-/// generated route for
-/// [_i11.Toast]
-class Toast extends _i26.PageRouteInfo<void> {
-  const Toast() : super(Toast.name, path: 'toast');
-
-  static const String name = 'Toast';
-}
-
-/// generated route for
-/// [_i12.Button]
-class Button extends _i26.PageRouteInfo<void> {
-  const Button() : super(Button.name, path: 'button');
-
-  static const String name = 'Button';
-}
-
-/// generated route for
-/// [_i13.Rating]
-class Rating extends _i26.PageRouteInfo<void> {
-  const Rating() : super(Rating.name, path: 'rating');
-
-  static const String name = 'Rating';
-}
-
-/// generated route for
-/// [_i14.Badge]
-class Badge extends _i26.PageRouteInfo<void> {
-  const Badge() : super(Badge.name, path: 'badge');
-
-  static const String name = 'Badge';
-}
-
-/// generated route for
-/// [_i15.CupertinoIcon]
-class CupertinoIcon extends _i26.PageRouteInfo<void> {
-  const CupertinoIcon() : super(CupertinoIcon.name, path: 'cupertino-icon');
-
-  static const String name = 'CupertinoIcon';
-}
-
-/// generated route for
-/// [_i16.TimelineScreen]
-class TimelineScreen extends _i26.PageRouteInfo<void> {
-  const TimelineScreen() : super(TimelineScreen.name, path: 'timeline');
-
-  static const String name = 'TimelineScreen';
-}
-
-/// generated route for
-/// [_i17.ComingSoon]
-class ComingSoon extends _i26.PageRouteInfo<void> {
-  const ComingSoon() : super(ComingSoon.name, path: 'coming-soon');
-
-  static const String name = 'ComingSoon';
-}
-
-/// generated route for
-/// [_i18.Error404]
+/// [_i10.Error404]
 class Error404 extends _i26.PageRouteInfo<void> {
   const Error404() : super(Error404.name, path: 'error-404');
 
@@ -342,7 +274,7 @@ class Error404 extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i19.Error500]
+/// [_i11.Error500]
 class Error500 extends _i26.PageRouteInfo<void> {
   const Error500() : super(Error500.name, path: 'error-500');
 
@@ -350,11 +282,75 @@ class Error500 extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i20.Maintenance]
+/// [_i12.ComingSoon]
+class ComingSoon extends _i26.PageRouteInfo<void> {
+  const ComingSoon() : super(ComingSoon.name, path: 'coming-soon');
+
+  static const String name = 'ComingSoon';
+}
+
+/// generated route for
+/// [_i13.Maintenance]
 class Maintenance extends _i26.PageRouteInfo<void> {
   const Maintenance() : super(Maintenance.name, path: 'maintenance');
 
   static const String name = 'Maintenance';
+}
+
+/// generated route for
+/// [_i14.TestWidget]
+class TestWidget extends _i26.PageRouteInfo<void> {
+  const TestWidget() : super(TestWidget.name, path: 'dashboard');
+
+  static const String name = 'TestWidget';
+}
+
+/// generated route for
+/// [_i15.Toast]
+class Toast extends _i26.PageRouteInfo<void> {
+  const Toast() : super(Toast.name, path: 'toast');
+
+  static const String name = 'Toast';
+}
+
+/// generated route for
+/// [_i16.Button]
+class Button extends _i26.PageRouteInfo<void> {
+  const Button() : super(Button.name, path: 'button');
+
+  static const String name = 'Button';
+}
+
+/// generated route for
+/// [_i17.Rating]
+class Rating extends _i26.PageRouteInfo<void> {
+  const Rating() : super(Rating.name, path: 'rating');
+
+  static const String name = 'Rating';
+}
+
+/// generated route for
+/// [_i18.Badge]
+class Badge extends _i26.PageRouteInfo<void> {
+  const Badge() : super(Badge.name, path: 'badge');
+
+  static const String name = 'Badge';
+}
+
+/// generated route for
+/// [_i19.CupertinoIcon]
+class CupertinoIcon extends _i26.PageRouteInfo<void> {
+  const CupertinoIcon() : super(CupertinoIcon.name, path: 'cupertino-icon');
+
+  static const String name = 'CupertinoIcon';
+}
+
+/// generated route for
+/// [_i20.TimelineScreen]
+class TimelineScreen extends _i26.PageRouteInfo<void> {
+  const TimelineScreen() : super(TimelineScreen.name, path: 'timeline');
+
+  static const String name = 'TimelineScreen';
 }
 
 /// generated route for

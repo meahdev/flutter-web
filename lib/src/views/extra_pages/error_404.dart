@@ -27,7 +27,6 @@ class _Error404State extends State<Error404> {
                     height: MediaQuery.of(context).size.height * .55,
                     width: MediaQuery.of(context).size.width * .60,
                     child: Card(
-                      color:ColorConst.white,
                       child: Padding(
                         padding: const EdgeInsets.all(70),
                         child: Row(
@@ -55,16 +54,17 @@ class _Error404State extends State<Error404> {
                                   const Text(
                                       "It will be as simple as Occidental in fact, it will be Occidental to an English person"),
                                   FxBox.h52,
-                                  FxButton(borderRadius: 4,
-                                     text: "Back to Dashboard",
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.home,
-                                        color: ColorConst.white,
-                                        size: 15,
-                                      ),
-                                      )
-                                  ],
+                                  FxButton(
+                                    borderRadius: 4,
+                                    text: "Back to Dashboard",
+                                    onPressed: () {},
+                                    icon: const Icon(
+                                      Icons.home,
+                                      color: ColorConst.white,
+                                      size: 15,
+                                    ),
+                                  )
+                                ],
                               ),
                             ),
                             SizedBox(
@@ -90,38 +90,42 @@ class _Error404State extends State<Error404> {
                             const Text(
                               "404!",
                               style: TextStyle(
-                                  color:ColorConst.black,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 80),
+                                color: ColorConst.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 80,
+                              ),
                             ),
                             const Text(
                               "Sorry, page not found",
                               style: TextStyle(
-                                  color: Color(0XFF5B626B),
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20),
+                                color: Color(0XFF5B626B),
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ),
                             ),
                             FxBox.h20,
                             const Text(
                                 "It will be as simple as Occidental in fact, it will be"),
                             const Text("Occidental to an English person"),
                             FxBox.h52,
-                            FxButton(borderRadius: 4,
+                            FxButton(
+                              borderRadius: 4,
                               text: "Back to Dashboard",
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                                icon: const Icon(
-                                  Icons.home,
-                                  color: ColorConst.white,
-                                  size: 15,
-                                ),
-                               ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(
+                                Icons.home,
+                                color: ColorConst.white,
+                                size: 15,
+                              ),
+                            ),
                             FxBox.h20,
                             SizedBox(
-                                height: MediaQuery.of(context).size.height * .3,
-                                width: MediaQuery.of(context).size.width * .75,
-                                child: Image.asset("assets/images/image.png")),
+                              height: MediaQuery.of(context).size.height * .3,
+                              width: MediaQuery.of(context).size.width * .75,
+                              child: Image.asset("assets/images/image.png"),
+                            ),
                           ],
                         ),
                       ),

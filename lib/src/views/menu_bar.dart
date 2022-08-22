@@ -68,7 +68,6 @@ class _MenuBarState extends State<MenuBar> {
       'Timeline',
       'Invoice',
       'Directory',
-      'Starter Page',
       'Error 404',
       'Error 500',
       'Pricing',
@@ -87,10 +86,6 @@ class _MenuBarState extends State<MenuBar> {
     Toast(),
     CupertinoIcon(),
     TimelineScreen(),
-    ComingSoon(),
-    Error404(),
-    Error500(),
-    Maintenance(),
     Pricing(),
     DirectoryRoute(),
     FAQs(),
@@ -471,6 +466,10 @@ class _MenuBarState extends State<MenuBar> {
                 context.router.push(const LockScreenOne());
               } else if (items[index] == 'Lock Screen 2') {
                 context.router.push(const LockScreenTwo());
+              } else if (items[index] == 'Error 404') {
+                context.router.push(const Error404());
+              } else if (items[index] == 'Error 500') {
+                context.router.push(const Error500());
               } else {
                 tabsRouter.setActiveIndex(getRouteIndex(items[index]));
               }

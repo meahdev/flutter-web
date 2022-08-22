@@ -27,18 +27,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: ColorConst.white,
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
-        boxShadow: [
-          BoxShadow(
-            color: ColorConst.appbarLightBG,
-            blurRadius: 0.2,
-            spreadRadius: 0.2,
-          )
-        ],
-      ),
+    return Card(
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(top: 18.0),
@@ -133,7 +122,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
             ),
             beforeLineStyle: const LineStyle(
               color: ColorConst.darkFontColor,
-              thickness: 5,
+              thickness: 3,
             ),
           );
         },

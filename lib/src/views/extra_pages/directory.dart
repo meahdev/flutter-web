@@ -61,373 +61,117 @@ class _DirectoryPageState extends State<DirectoryPage> {
           children: [
             Responsive.isMobile(context)
                 ? Wrap(
-                    children: List.generate(
-                        9,
-                        (index) => SizedBox(
-                              width: MediaQuery.of(context).size.width * .80,
-                              child: Card(
-                                margin:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                color: ColorConst.white,
-                                child: Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 20, top: 10, left: 20, bottom: 20),
-                                  child: Column(
-                                    children: [
-                                      Row(
-                                        children: [
-                                          CircleAvatar(
-                                            radius: 45,
-                                            backgroundColor:
-                                                Colors.grey.shade300,
-                                            child: CircleAvatar(
-                                              backgroundImage: NetworkImage(
-                                                  "${photoList[index]}"),
-                                              radius: 40,
-                                            ),
-                                          ),
-                                          FxBox.w10,
-                                          Wrap(
-                                            direction: Axis.vertical,
-                                            crossAxisAlignment:
-                                                WrapCrossAlignment.center,
-                                            children: [
-                                              Text(
-                                                "${nameList[index]}",
-                                                style: const TextStyle(
-                                                    color: ColorConst.primary,
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              const Text(
-                                                "Creative Director",
-                                                style: TextStyle(
-                                                    color: const Color(
-                                                        0XFF5B626B)),
-                                              ),
-                                              Text(
-                                                "${emailList[index]}",
-                                                style: const TextStyle(
-                                                    color:
-                                                        const Color(0XFF5B626B),
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                          const Spacer(),
-                                          Column(
-                                            children: [
-                                              const CircleAvatar(
-                                                radius: 16,
-                                                backgroundColor: ColorConst.primary,
-                                                child: CircleAvatar(
-                                                  backgroundImage:
-                                                      const NetworkImage(
-                                                          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAvVBMVEX///9LAIJFAH87AHpDAH3Vx+BIAICifb7OxtqJa6lRAIfBrtLz7ffi1+vs4/KmgsGBXqXq4PF8VqGEY6dgEJFvMJt4TKBlHZVrKJj8+v338vp6QqOAS6eEUqp1OZ+McKuKWq6XfLOQY7GrisVbAI+UeLGsk8OnjMCihb2WcrSNZq/PvN6cgrfBqNO4m82yk8nNwNq0ochaI4uSbLJREoZ2U5xqP5ZgLZDd0OcqAHLGutV4Tp9bHoy9o9G+qs/RnPo1AAAENElEQVR4nO3dW1faQBSGYTMJUWI4qZUmVuWgIgoKHoB6+v8/q2h1VWqs7GE6e0/yvVdeufazHGAgE1xb4ymZlzbOhxcXl5fdbrf22vq8t59r3ddqpYRpSs2SuFo573UOjgLf94Ml8k9cEsaV0clZ0/MDFYbekgXuCOPRuDz15rhlbY4JK4/lB0XVOSScHU8iHd6zsOeAsHp95enxXoQp9/xfdqm1Op0RJpU9fwWffGE6vFKr+ObCU9HC+PRmpT+geGHc13+GcUKYbi2/dXFT2FrxIShe2DEBlCzsmvDNhetShefT1R+DooWNeyNrVK4w7ZnxzYV9mcLSlZk1KlaY9g2tUbHCiimfVGHSCowJlUhh1RzQU9cShbXcC3dMPZFKFc58c0CZQpOL1FNnMbfnY3sGF6lIYcPYfkaqcHhjEChSWDMJ9FRHnnDb5CKVKExvje26hQpnk7z/DU19fPEmbIkTDlf+mFu68CQyCRQp1HGEv1MfC+QJe9RFGqrAi64O9ia7mdXE7bwHRKGK6uO7UWk2m1Uyq3KDPjSgvRyGk1HVgSv170raJGE4bXBPTI0oVEPugcklxxRhGHHPSy89pAjVPve89GjCoMs9L724TBH67j0M1+JtkrDEPS+9Kk1Y4Z6XHlEob8fyZdU66Zkm/0Jxbxy+rkETinvj8HWNLdIrPoQCIwrdeuP0EoQQyo8o5B5XI5rQ4x5XIwgLJnTxYxoI/xIecY+rEYQQyo8m3OEeVyMIF4VN7nH/VVzKbEg5bBI2s3/J+ypsbz82fvqZkS4Bh9m/43181/E3TJ6T/TzGO7tsCcd8q9SS8I4LaEsY8l2dsiMMo9wLm7O8Cw/4rjDaEapdvvM2loR1viuMloR9viuMdoTBgO/qlCUh41cMWVqlYzagrT3NZt6FUd6F4cN53oXTUd6FE75tqR2humc8+GZHWGc8Bm5HWGY8FmZH2GY8ymBHOOADWnouPcm70Mu98OYx58Lw4SnvwinjttSOcMJ5t4IV4S7n3Qo2hOqW86S7FeE25+lMK6u0zAi083rYz73w1H1hxh34fwpZtzRrGyrKjASMytkdHh63B4PeI+ttUfHTZlYXpNMmR3FG6XOJ2DPupDu7CnCuDUKJQVg0Yf5PX0IoMQghlB/pbnUnhbR9KYQSgxBC+UG4KBR9V9AnQQih/CDMgZDybWYQigxCCOUH4aLwO/e4GkEIofwghFB+pO+ChlBkEEIoPwgXhd+4x9UIQgjlVwAh5X+UQCgyCCGUH4RFEx5wj6sRSagglBiE7gtJ/x0QQpFBCKH8aMI97nE1ghBC+UEIofwgLJrwB/e4GkHovjA5hhBC6UEIofwgXBTuc4+rEYQQyg9CCOUHYdGELe5xNUraEEIoPQghlB+ERRN2uMfVCUII5QchhPIrgNAPls5vcU+r0+Y6oeF/HuYXB2aOhM5VcuwAAAAASUVORK5CYII="),
-                                                  radius: 6,
-                                                ),
-                                              ),
-                                              FxBox.h10,
-                                              const CircleAvatar(
-                                                radius: 16,
-                                                backgroundColor: ColorConst.blue,
-                                                child: const CircleAvatar(
-                                                  backgroundImage: NetworkImage(
-                                                      "https://i2-prod.birminghammail.co.uk/incoming/article18471307.ece/ALTERNATES/s1200c/1_Twitter-new-icon-mobile-app.jpg"),
-                                                  radius: 15,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      FxBox.h10,
-                                      Divider(
-                                        color: Colors.grey.shade300,
-                                      ),
-                                      FxBox.h10,
-                                      RichText(
-                                        text: TextSpan(
-                                          text:
-                                              'Intro : At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis atque corrupti quos dolores et...  ',
-                                          style: DefaultTextStyle.of(context)
-                                              .style,
-                                          children: const <TextSpan>[
-                                            TextSpan(
-                                                text: 'Read More',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    color: Color(0XFF626ed4)),
-                                                mouseCursor:
-                                                    SystemMouseCursors.click),
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            )))
+                    children: List.generate(9, (index) => _profileCard(index)),
+                  )
                 : Responsive.isTablet(context)
                     ? Wrap(
                         children: List.generate(
-                            9,
-                            (index) => SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * .45,
-                                  child: Card(
-                                    margin: const EdgeInsets.symmetric(
-                                        vertical: 16, horizontal: 16),
-                                    color: ColorConst.white,
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(
-                                          right: 20,
-                                          top: 10,
-                                          left: 20,
-                                          bottom: 20),
-                                      child: Column(
-                                        children: [
-                                          Row(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 45,
-                                                backgroundColor:
-                                                    Colors.grey.shade300,
-                                                child: CircleAvatar(
-                                                  backgroundImage: NetworkImage(
-                                                      "${photoList[index]}"),
-                                                  radius: 40,
-                                                ),
-                                              ),
-                                              FxBox.w10,
-                                              Expanded(
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      "${nameList[index]}",
-                                                      style: const TextStyle(
-                                                          color: ColorConst.primary,
-                                                          fontSize: 20,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                    const Text(
-                                                      "Creative Director",
-                                                      style: TextStyle(
-                                                          color: const Color(
-                                                              0XFF5B626B)),
-                                                    ),
-                                                    Text(
-                                                      "${emailList[index]}",
-                                                      style: const TextStyle(
-                                                          color: const Color(
-                                                              0XFF5B626B),
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                              Column(
-                                                children: [
-                                                  const CircleAvatar(
-                                                    radius: 16,
-                                                    backgroundColor:
-                                                        ColorConst.primary,
-                                                    child: CircleAvatar(
-                                                      backgroundImage:
-                                                          const NetworkImage(
-                                                              "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAvVBMVEX///9LAIJFAH87AHpDAH3Vx+BIAICifb7OxtqJa6lRAIfBrtLz7ffi1+vs4/KmgsGBXqXq4PF8VqGEY6dgEJFvMJt4TKBlHZVrKJj8+v338vp6QqOAS6eEUqp1OZ+McKuKWq6XfLOQY7GrisVbAI+UeLGsk8OnjMCihb2WcrSNZq/PvN6cgrfBqNO4m82yk8nNwNq0ochaI4uSbLJREoZ2U5xqP5ZgLZDd0OcqAHLGutV4Tp9bHoy9o9G+qs/RnPo1AAAENElEQVR4nO3dW1faQBSGYTMJUWI4qZUmVuWgIgoKHoB6+v8/q2h1VWqs7GE6e0/yvVdeufazHGAgE1xb4ymZlzbOhxcXl5fdbrf22vq8t59r3ddqpYRpSs2SuFo573UOjgLf94Ml8k9cEsaV0clZ0/MDFYbekgXuCOPRuDz15rhlbY4JK4/lB0XVOSScHU8iHd6zsOeAsHp95enxXoQp9/xfdqm1Op0RJpU9fwWffGE6vFKr+ObCU9HC+PRmpT+geGHc13+GcUKYbi2/dXFT2FrxIShe2DEBlCzsmvDNhetShefT1R+DooWNeyNrVK4w7ZnxzYV9mcLSlZk1KlaY9g2tUbHCiimfVGHSCowJlUhh1RzQU9cShbXcC3dMPZFKFc58c0CZQpOL1FNnMbfnY3sGF6lIYcPYfkaqcHhjEChSWDMJ9FRHnnDb5CKVKExvje26hQpnk7z/DU19fPEmbIkTDlf+mFu68CQyCRQp1HGEv1MfC+QJe9RFGqrAi64O9ia7mdXE7bwHRKGK6uO7UWk2m1Uyq3KDPjSgvRyGk1HVgSv170raJGE4bXBPTI0oVEPugcklxxRhGHHPSy89pAjVPve89GjCoMs9L724TBH67j0M1+JtkrDEPS+9Kk1Y4Z6XHlEob8fyZdU66Zkm/0Jxbxy+rkETinvj8HWNLdIrPoQCIwrdeuP0EoQQyo8o5B5XI5rQ4x5XIwgLJnTxYxoI/xIecY+rEYQQyo8m3OEeVyMIF4VN7nH/VVzKbEg5bBI2s3/J+ypsbz82fvqZkS4Bh9m/43181/E3TJ6T/TzGO7tsCcd8q9SS8I4LaEsY8l2dsiMMo9wLm7O8Cw/4rjDaEapdvvM2loR1viuMloR9viuMdoTBgO/qlCUh41cMWVqlYzagrT3NZt6FUd6F4cN53oXTUd6FE75tqR2humc8+GZHWGc8Bm5HWGY8FmZH2GY8ymBHOOADWnouPcm70Mu98OYx58Lw4SnvwinjttSOcMJ5t4IV4S7n3Qo2hOqW86S7FeE25+lMK6u0zAi083rYz73w1H1hxh34fwpZtzRrGyrKjASMytkdHh63B4PeI+ttUfHTZlYXpNMmR3FG6XOJ2DPupDu7CnCuDUKJQVg0Yf5PX0IoMQghlB/pbnUnhbR9KYQSgxBC+UG4KBR9V9AnQQih/CDMgZDybWYQigxCCOUH4aLwO/e4GkEIofwghFB+pO+ChlBkEEIoPwgXhd+4x9UIQgjlVwAh5X+UQCgyCCGUH4RFEx5wj6sRSagglBiE7gtJ/x0QQpFBCKH8aMI97nE1ghBC+UEIofwgLJrwB/e4GkHovjA5hhBC6UEIofwgXBTuc4+rEYQQyg9CCOUHYdGELe5xNUraEEIoPQghlB+ERRN2uMfVCUII5QchhPIrgNAPls5vcU+r0+Y6oeF/HuYXB2aOhM5VcuwAAAAASUVORK5CYII="),
-                                                      radius: 6,
-                                                    ),
-                                                  ),
-                                                  FxBox.h10,
-                                                  const CircleAvatar(
-                                                    radius: 16,
-                                                    backgroundColor:
-                                                        ColorConst.blue,
-                                                    child: const CircleAvatar(
-                                                      backgroundImage: NetworkImage(
-                                                          "https://i2-prod.birminghammail.co.uk/incoming/article18471307.ece/ALTERNATES/s1200c/1_Twitter-new-icon-mobile-app.jpg"),
-                                                      radius: 15,
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          ),
-                                          FxBox.h10,
-                                          Divider(
-                                            color: Colors.grey.shade300,
-                                          ),
-                                          FxBox.h10,
-                                          RichText(
-                                            text: TextSpan(
-                                              text:
-                                                  'Intro : At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis atque corrupti quos dolores et...  ',
-                                              style:
-                                                  DefaultTextStyle.of(context)
-                                                      .style,
-                                              children: const <TextSpan>[
-                                                TextSpan(
-                                                    text: 'Read More',
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color:
-                                                            Color(0XFF626ed4)),
-                                                    mouseCursor:
-                                                        SystemMouseCursors
-                                                            .click),
-                                              ],
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                )))
+                          9,
+                          (index) => SizedBox(
+                            width: MediaQuery.of(context).size.width * .45,
+                            child: _profileCard(index),
+                          ),
+                        ),
+                      )
                     : Wrap(
                         children: List.generate(
                           9,
                           (index) => SizedBox(
                             width: MediaQuery.of(context).size.width * .25,
-                            child: Card(
-                              margin: const EdgeInsets.symmetric(
-                                  vertical: 16, horizontal: 16),
-                              color: ColorConst.white,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    right: 20, top: 10, left: 20, bottom: 20),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        CircleAvatar(
-                                          radius: 45,
-                                          backgroundColor: Colors.grey.shade300,
-                                          child: CircleAvatar(
-                                            backgroundImage: NetworkImage(
-                                                "${photoList[index]}"),
-                                            radius: 40,
-                                          ),
-                                        ),
-                                        FxBox.w10,
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "${nameList[index]}",
-                                                style: const TextStyle(
-                                                    color: ColorConst.primary,
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                              const Text(
-                                                "Creative Director",
-                                                style: TextStyle(
-                                                    color: const Color(
-                                                        0XFF5B626B)),
-                                              ),
-                                              Text(
-                                                "${emailList[index]}",
-                                                style: const TextStyle(
-                                                    color:
-                                                        const Color(0XFF5B626B),
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                        Column(
-                                          children: [
-                                            InkWell(
-                                              borderRadius:
-                                                  BorderRadius.circular(100),
-                                              onTap: () {},
-                                              child: FxHover(
-                                                builder: (isHover) {
-                                                  return CircleAvatar(
-                                                    radius: 16,
-                                                    backgroundColor: isHover
-                                                        ? ColorConst.primaryDark
-                                                        : Colors
-                                                            .indigo.shade400,
-                                                    child: const CircleAvatar(
-                                                      backgroundImage: NetworkImage(
-                                                          "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAvVBMVEX///9LAIJFAH87AHpDAH3Vx+BIAICifb7OxtqJa6lRAIfBrtLz7ffi1+vs4/KmgsGBXqXq4PF8VqGEY6dgEJFvMJt4TKBlHZVrKJj8+v338vp6QqOAS6eEUqp1OZ+McKuKWq6XfLOQY7GrisVbAI+UeLGsk8OnjMCihb2WcrSNZq/PvN6cgrfBqNO4m82yk8nNwNq0ochaI4uSbLJREoZ2U5xqP5ZgLZDd0OcqAHLGutV4Tp9bHoy9o9G+qs/RnPo1AAAENElEQVR4nO3dW1faQBSGYTMJUWI4qZUmVuWgIgoKHoB6+v8/q2h1VWqs7GE6e0/yvVdeufazHGAgE1xb4ymZlzbOhxcXl5fdbrf22vq8t59r3ddqpYRpSs2SuFo573UOjgLf94Ml8k9cEsaV0clZ0/MDFYbekgXuCOPRuDz15rhlbY4JK4/lB0XVOSScHU8iHd6zsOeAsHp95enxXoQp9/xfdqm1Op0RJpU9fwWffGE6vFKr+ObCU9HC+PRmpT+geGHc13+GcUKYbi2/dXFT2FrxIShe2DEBlCzsmvDNhetShefT1R+DooWNeyNrVK4w7ZnxzYV9mcLSlZk1KlaY9g2tUbHCiimfVGHSCowJlUhh1RzQU9cShbXcC3dMPZFKFc58c0CZQpOL1FNnMbfnY3sGF6lIYcPYfkaqcHhjEChSWDMJ9FRHnnDb5CKVKExvje26hQpnk7z/DU19fPEmbIkTDlf+mFu68CQyCRQp1HGEv1MfC+QJe9RFGqrAi64O9ia7mdXE7bwHRKGK6uO7UWk2m1Uyq3KDPjSgvRyGk1HVgSv170raJGE4bXBPTI0oVEPugcklxxRhGHHPSy89pAjVPve89GjCoMs9L724TBH67j0M1+JtkrDEPS+9Kk1Y4Z6XHlEob8fyZdU66Zkm/0Jxbxy+rkETinvj8HWNLdIrPoQCIwrdeuP0EoQQyo8o5B5XI5rQ4x5XIwgLJnTxYxoI/xIecY+rEYQQyo8m3OEeVyMIF4VN7nH/VVzKbEg5bBI2s3/J+ypsbz82fvqZkS4Bh9m/43181/E3TJ6T/TzGO7tsCcd8q9SS8I4LaEsY8l2dsiMMo9wLm7O8Cw/4rjDaEapdvvM2loR1viuMloR9viuMdoTBgO/qlCUh41cMWVqlYzagrT3NZt6FUd6F4cN53oXTUd6FE75tqR2humc8+GZHWGc8Bm5HWGY8FmZH2GY8ymBHOOADWnouPcm70Mu98OYx58Lw4SnvwinjttSOcMJ5t4IV4S7n3Qo2hOqW86S7FeE25+lMK6u0zAi083rYz73w1H1hxh34fwpZtzRrGyrKjASMytkdHh63B4PeI+ttUfHTZlYXpNMmR3FG6XOJ2DPupDu7CnCuDUKJQVg0Yf5PX0IoMQghlB/pbnUnhbR9KYQSgxBC+UG4KBR9V9AnQQih/CDMgZDybWYQigxCCOUH4aLwO/e4GkEIofwghFB+pO+ChlBkEEIoPwgXhd+4x9UIQgjlVwAh5X+UQCgyCCGUH4RFEx5wj6sRSagglBiE7gtJ/x0QQpFBCKH8aMI97nE1ghBC+UEIofwgLJrwB/e4GkHovjA5hhBC6UEIofwgXBTuc4+rEYQQyg9CCOUHYdGELe5xNUraEEIoPQghlB+ERRN2uMfVCUII5QchhPIrgNAPls5vcU+r0+Y6oeF/HuYXB2aOhM5VcuwAAAAASUVORK5CYII="),
-                                                      radius: 6,
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                            FxBox.h10,
-                                            InkWell(
-                                              onTap: () {},
-                                              borderRadius:
-                                                  BorderRadius.circular(100),
-                                              child: FxHover(
-                                                builder: (isHover) {
-                                                  return CircleAvatar(
-                                                    radius: 16,
-                                                    backgroundColor: isHover
-                                                        ? ColorConst.blue
-                                                        : Colors.blue.shade400,
-                                                    child: const CircleAvatar(
-                                                      backgroundImage: AssetImage(
-                                                          "assets/images/twiter.png"),
-                                                      radius: 8,
-                                                    ),
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                    FxBox.h10,
-                                    Divider(
-                                      color: Colors.grey.shade300,
-                                    ),
-                                    FxBox.h10,
-                                    RichText(
-                                      text: TextSpan(
-                                        text:
-                                            'Intro : At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis atque corrupti quos dolores et...  ',
-                                        style:
-                                            DefaultTextStyle.of(context).style,
-                                        children: const <TextSpan>[
-                                          TextSpan(
-                                              text: 'Read More',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  color: ColorConst.primary ),
-                                              mouseCursor:
-                                                  SystemMouseCursors.click),
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
+                            child: _profileCard(index),
                           ),
                         ),
                       ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _profileCard(int index) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 44,
+                  backgroundColor: Colors.grey.shade300,
+                  child: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                      "${photoList[index]}",
+                    ),
+                    radius: 40,
+                  ),
+                ),
+                FxBox.w16,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "${nameList[index]}",
+                      style: const TextStyle(
+                        color: ColorConst.primary,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                    const Text(
+                      "Creative Director",
+                      style: TextStyle(
+                        color: const Color(0XFF5B626B),
+                      ),
+                    ),
+                    FxBox.h8,
+                    Text(
+                      "${emailList[index]}",
+                      style: const TextStyle(
+                        color: const Color(0XFF5B626B),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                Column(
+                  children: [
+                    const CircleAvatar(
+                      radius: 15,
+                      backgroundColor: ColorConst.primary,
+                    ),
+                    FxBox.h10,
+                    const CircleAvatar(
+                      radius: 15,
+                      backgroundColor: ColorConst.blue,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Divider(
+              color: Colors.grey.shade300,
+              height: 36.0,
+            ),
+            RichText(
+              text: TextSpan(
+                text:
+                    'Intro : At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis atque corrupti quos dolores et...  ',
+                style: DefaultTextStyle.of(context).style,
+                children: const <TextSpan>[
+                  TextSpan(
+                    text: 'Read More',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color(0XFF626ed4),
+                    ),
+                    mouseCursor: SystemMouseCursors.click,
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),
