@@ -99,6 +99,7 @@ class _MaskFormState extends State<MaskForm> {
                       ),
                       FxBox.h12,
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _maskTextFieldCommonView(
                             _commonText('Date Style 2'),
@@ -115,6 +116,7 @@ class _MaskFormState extends State<MaskForm> {
                       ),
                       FxBox.h12,
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _maskTextFieldCommonView(
                             _commonText('Date Time'),
@@ -131,6 +133,7 @@ class _MaskFormState extends State<MaskForm> {
                       ),
                       FxBox.h12,
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _maskTextFieldCommonView(
                             _commonText('Currency:'),
@@ -330,8 +333,7 @@ class _MaskFormState extends State<MaskForm> {
             if (components.length == 3) {
               final year = int.tryParse(components[0]);
               final month = int.tryParse(components[1]);
-              final day = int.tryParse(
-                  components[2].length == 2 ? components[2].split("'")[0] : '');
+              final day = int.tryParse(components[2].split("'")[0]);
 
               if (day != null && month != null && year != null) {
                 final date = DateTime(year, month, day);
@@ -340,23 +342,9 @@ class _MaskFormState extends State<MaskForm> {
                     date.day == day) {
                   return null;
                 }
-                final hour =
-                    int.tryParse(components[2].split("'")[2].split(":")[0]);
-                final minute =
-                    int.tryParse(components[2].split("'")[2].split(":")[1]);
-                final second =
-                    int.tryParse(components[2].split("'")[2].split(":")[2]);
-                if (hour != null && minute != null && second != null) {
-                  final time = DateTime(hour, minute, second);
-                  if (time.hour == hour &&
-                      time.minute == minute &&
-                      time.second == second) {
-                    return null;
-                  }
-                }
               }
             }
-            return "wrong date";
+            return "Wrong date";
           },
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 15,
@@ -424,10 +412,21 @@ class _MaskFormState extends State<MaskForm> {
     return FxHover(
       builder: (isHover) {
         return CustomTextField(
+          autovalidateMode: AutovalidateMode.always,
           controller: _emailController,
           border: const OutlineInputBorder(),
           hintText: isHover ? '_@_._' : '',
           isDense: true,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return null;
+            }
+            if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
+                .hasMatch(value)) {
+              return 'Enter valid email';
+            }
+            return null;
+          },
           contentPadding: const EdgeInsets.symmetric(
             horizontal: 15,
             vertical: 12,
