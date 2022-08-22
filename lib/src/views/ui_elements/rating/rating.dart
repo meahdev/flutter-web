@@ -98,8 +98,7 @@ class _RatingState extends State<Rating> {
       child: Column(
         children: [
           Text(
-            title,
-            style: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700),
+            title, style: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700),
           ),
           FxBox.h16,
           FxRatingBar(

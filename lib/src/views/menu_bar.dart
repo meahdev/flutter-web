@@ -34,11 +34,12 @@ class _MenuBarState extends State<MenuBar> {
 
   Map<String, String> componentData = {
     Strings.uiElements: IconlyBroken.box,
+    Strings.chart: IconlyBroken.chart,
   };
 
   Map<String, String> extrasData = {
     Strings.authentication: IconlyBroken.archive,
-    Strings.emailTemplates: IconlyBroken.archive,
+    Strings.emailTemplates: IconlyBroken.emailTemplate,
   };
 
   List<List<String>> componentsExpandList = [
@@ -51,7 +52,7 @@ class _MenuBarState extends State<MenuBar> {
       Strings.modal,
       Strings.loader
     ],
-    [Strings.cupertinoIcons]
+    ['Morris Chart','Chartist chart','ChartJs chart']
   ];
 
   List<List<String>> extrasExpandList = [
@@ -84,6 +85,9 @@ class _MenuBarState extends State<MenuBar> {
     AlertEmail(),
     BillingEmail(),
     Loaders(),
+    MorrisChart(),
+    ChartListChart(),
+    ChartJsChart(),
   ];
 
   @override

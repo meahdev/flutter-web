@@ -9,16 +9,11 @@ class IconlyBroken {
   static const String calendar = '${_assetPath}calendar-2.svg';
   static const String edit = '${_assetPath}edit.svg';
   static const String box = '${_assetPath}box-1.svg';
-  static const String smileEmoji = '${_assetPath}emoji-happy.svg';
   static const String archive = '${_assetPath}archive-2.svg';
-  static const String bookMark = '${_assetPath}bookmark-2.svg';
-  static const String more = '${_assetPath}more.svg';
-  static const String bookSquare = '${_assetPath}book-square.svg';
   static const String closeSquare = '${_assetPath}close-square.svg';
-  static const String addSquare = '${_assetPath}add-square.svg';
   static const String drawer = '${_assetPath}category.svg';
-  static const String arrowUp = '${_assetPath}arrow-up-3.svg';
   static const String arrowDown = '${_assetPath}arrow-down-2.svg';
   static const String successCircle = '${_assetPath}checkbox-circle.svg';
-  static const String lock = '${_assetPath}lock-2.svg';
+  static const String chart = '${_assetPath}chart-pie.svg';
+  static const String emailTemplate = '${_assetPath}sms.svg';
 }

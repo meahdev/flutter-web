@@ -60,4 +60,9 @@ class ColorConst {
   //monthly earning
   static const Color chartBorderColor = Color(0xff6d6fb9);
   static const Color chartForgoundColor = Color(0xffced2f1);
+  //chart Colors
+  static Color get blueChartColor => const Color(0xff3c4bcf);
+  static Color get gridChartColor => const Color(0xffe9ebef);
+  static Color get gridTextColor => const Color(0xff7589a2);
+  static Color get greyChartColor => const Color(0xffcccccc);
 }

@@ -9,6 +9,9 @@ import 'package:admin_dashboard/src/views/authentication/register/register_two.d
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
+import 'package:admin_dashboard/src/views/charts/chartjs.dart';
+import 'package:admin_dashboard/src/views/charts/chartist.dart';
+import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/menu_bar.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
@@ -37,8 +40,11 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'modal', page: Modal),
         AutoRoute(path: 'basic-action-email', page: BasicEmail),
         AutoRoute(path: 'alert-email', page: AlertEmail),
-        AutoRoute(path: 'billing-model', page: BillingEmail),
+        AutoRoute(path: 'billing-email', page: BillingEmail),
         AutoRoute(path: 'loaders', page: Loaders),
+        AutoRoute(path: 'morris-chart', page: MorrisChart),
+        AutoRoute(path: 'chartlist-chart', page: ChartListChart),
+        AutoRoute(path: 'chartjs-chart', page: ChartJsChart),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),
