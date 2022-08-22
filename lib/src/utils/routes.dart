@@ -11,24 +11,16 @@ int getRouteIndex(String route) {
     return 5;
   } else if (route == 'Timeline') {
     return 6;
-  } else if (route == 'Coming soon') {
-    return 7;
-  } else if (route == 'Error 404') {
-    return 8;
-  } else if (route == 'Error 500') {
-    return 9;
-  } else if (route == 'Maintenence') {
-    return 10;
   } else if (route == 'Pricing') {
-    return 11;
+    return 7;
   } else if (route == 'Directory') {
-    return 11;
+    return 8;
   }  else if (route == 'FAQs') {
-    return 12;
+    return 9;
   }  else if (route == 'Invoice') {
-    return 13;
+    return 10;
   }  else if (route == 'Gallery') {
-    return 14;
+    return 11;
   }  else {
     return 0;
   }

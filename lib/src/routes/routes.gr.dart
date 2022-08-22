@@ -156,7 +156,7 @@ class AppRouter extends _i26.RootStackRouter {
           _i26.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'pricing',
+              redirectTo: 'faqs',
               fullMatch: true),
           _i26.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),
@@ -175,18 +175,20 @@ class AppRouter extends _i26.RootStackRouter {
           _i26.RouteConfig(Invoice.name, path: 'invoice', parent: MenuBar.name),
           _i26.RouteConfig(Gallary.name, path: 'gallary', parent: MenuBar.name)
         ]),
-        _i26.RouteConfig(LoginOne.name, path: 'login-one'),
-        _i26.RouteConfig(LoginTwo.name, path: 'login-two'),
-        _i26.RouteConfig(RegisterOne.name, path: 'register-one'),
-        _i26.RouteConfig(RegisterTwo.name, path: 'register-two'),
-        _i26.RouteConfig(RecoverPasswordOne.name, path: 'recover-password-one'),
-        _i26.RouteConfig(RecoverPasswordTwo.name, path: 'recover-password-two'),
-        _i26.RouteConfig(LockScreenOne.name, path: 'lock-screen-one'),
-        _i26.RouteConfig(LockScreenTwo.name, path: 'lock-screen-two'),
-        _i26.RouteConfig(Error404.name, path: 'error-404'),
-        _i26.RouteConfig(Error500.name, path: 'error-500'),
-        _i26.RouteConfig(ComingSoon.name, path: 'coming-soon'),
-        _i26.RouteConfig(Maintenance.name, path: 'maintenance')
+        _i26.RouteConfig(LoginOne.name, path: '/login-one'),
+        _i26.RouteConfig(LoginTwo.name, path: '/login-two'),
+        _i26.RouteConfig(RegisterOne.name, path: '/register-one'),
+        _i26.RouteConfig(RegisterTwo.name, path: '/register-two'),
+        _i26.RouteConfig(RecoverPasswordOne.name,
+            path: '/recover-password-one'),
+        _i26.RouteConfig(RecoverPasswordTwo.name,
+            path: '/recover-password-two'),
+        _i26.RouteConfig(LockScreenOne.name, path: '/lock-screen-one'),
+        _i26.RouteConfig(LockScreenTwo.name, path: '/lock-screen-two'),
+        _i26.RouteConfig(Error404.name, path: '/error-404'),
+        _i26.RouteConfig(Error500.name, path: '/error-500'),
+        _i26.RouteConfig(ComingSoon.name, path: '/coming-soon'),
+        _i26.RouteConfig(Maintenance.name, path: '/maintenance')
       ];
 }
 
@@ -202,7 +204,7 @@ class MenuBar extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i2.LoginOne]
 class LoginOne extends _i26.PageRouteInfo<void> {
-  const LoginOne() : super(LoginOne.name, path: 'login-one');
+  const LoginOne() : super(LoginOne.name, path: '/login-one');
 
   static const String name = 'LoginOne';
 }
@@ -210,7 +212,7 @@ class LoginOne extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i3.LoginTwo]
 class LoginTwo extends _i26.PageRouteInfo<void> {
-  const LoginTwo() : super(LoginTwo.name, path: 'login-two');
+  const LoginTwo() : super(LoginTwo.name, path: '/login-two');
 
   static const String name = 'LoginTwo';
 }
@@ -218,7 +220,7 @@ class LoginTwo extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i4.RegisterOne]
 class RegisterOne extends _i26.PageRouteInfo<void> {
-  const RegisterOne() : super(RegisterOne.name, path: 'register-one');
+  const RegisterOne() : super(RegisterOne.name, path: '/register-one');
 
   static const String name = 'RegisterOne';
 }
@@ -226,7 +228,7 @@ class RegisterOne extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i5.RegisterTwo]
 class RegisterTwo extends _i26.PageRouteInfo<void> {
-  const RegisterTwo() : super(RegisterTwo.name, path: 'register-two');
+  const RegisterTwo() : super(RegisterTwo.name, path: '/register-two');
 
   static const String name = 'RegisterTwo';
 }
@@ -235,7 +237,7 @@ class RegisterTwo extends _i26.PageRouteInfo<void> {
 /// [_i6.RecoverPasswordOne]
 class RecoverPasswordOne extends _i26.PageRouteInfo<void> {
   const RecoverPasswordOne()
-      : super(RecoverPasswordOne.name, path: 'recover-password-one');
+      : super(RecoverPasswordOne.name, path: '/recover-password-one');
 
   static const String name = 'RecoverPasswordOne';
 }
@@ -244,7 +246,7 @@ class RecoverPasswordOne extends _i26.PageRouteInfo<void> {
 /// [_i7.RecoverPasswordTwo]
 class RecoverPasswordTwo extends _i26.PageRouteInfo<void> {
   const RecoverPasswordTwo()
-      : super(RecoverPasswordTwo.name, path: 'recover-password-two');
+      : super(RecoverPasswordTwo.name, path: '/recover-password-two');
 
   static const String name = 'RecoverPasswordTwo';
 }
@@ -252,7 +254,7 @@ class RecoverPasswordTwo extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i8.LockScreenOne]
 class LockScreenOne extends _i26.PageRouteInfo<void> {
-  const LockScreenOne() : super(LockScreenOne.name, path: 'lock-screen-one');
+  const LockScreenOne() : super(LockScreenOne.name, path: '/lock-screen-one');
 
   static const String name = 'LockScreenOne';
 }
@@ -260,7 +262,7 @@ class LockScreenOne extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i9.LockScreenTwo]
 class LockScreenTwo extends _i26.PageRouteInfo<void> {
-  const LockScreenTwo() : super(LockScreenTwo.name, path: 'lock-screen-two');
+  const LockScreenTwo() : super(LockScreenTwo.name, path: '/lock-screen-two');
 
   static const String name = 'LockScreenTwo';
 }
@@ -268,7 +270,7 @@ class LockScreenTwo extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i10.Error404]
 class Error404 extends _i26.PageRouteInfo<void> {
-  const Error404() : super(Error404.name, path: 'error-404');
+  const Error404() : super(Error404.name, path: '/error-404');
 
   static const String name = 'Error404';
 }
@@ -276,7 +278,7 @@ class Error404 extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i11.Error500]
 class Error500 extends _i26.PageRouteInfo<void> {
-  const Error500() : super(Error500.name, path: 'error-500');
+  const Error500() : super(Error500.name, path: '/error-500');
 
   static const String name = 'Error500';
 }
@@ -284,7 +286,7 @@ class Error500 extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i12.ComingSoon]
 class ComingSoon extends _i26.PageRouteInfo<void> {
-  const ComingSoon() : super(ComingSoon.name, path: 'coming-soon');
+  const ComingSoon() : super(ComingSoon.name, path: '/coming-soon');
 
   static const String name = 'ComingSoon';
 }
@@ -292,7 +294,7 @@ class ComingSoon extends _i26.PageRouteInfo<void> {
 /// generated route for
 /// [_i13.Maintenance]
 class Maintenance extends _i26.PageRouteInfo<void> {
-  const Maintenance() : super(Maintenance.name, path: 'maintenance');
+  const Maintenance() : super(Maintenance.name, path: '/maintenance');
 
   static const String name = 'Maintenance';
 }

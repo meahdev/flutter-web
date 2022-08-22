@@ -470,6 +470,10 @@ class _MenuBarState extends State<MenuBar> {
                 context.router.push(const Error404());
               } else if (items[index] == 'Error 500') {
                 context.router.push(const Error500());
+              } else if (items[index] == 'Maintenence') {
+                context.router.push(const Maintenance());
+              } else if (items[index] == 'Coming soon') {
+                context.router.push(const ComingSoon());
               } else {
                 tabsRouter.setActiveIndex(getRouteIndex(items[index]));
               }

@@ -18,124 +18,128 @@ class _MaintenanceState extends State<Maintenance> {
   @override
   Widget build(BuildContext context) {
     return Responsive.isWeb(context) || Responsive.isTablet(context)
-        ? Container(
-            margin: const EdgeInsets.all(30),
-            child: Center(
-              child: Column(
-                children: [
-                  const Text(
-                    "${Strings.siddhatva}",
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Color(0XFF5B626B),
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * .3,
-                      width: MediaQuery.of(context).size.width * .75,
-                      child: Image.asset("assets/images/image1.png")),
-                  const Text(
-                    "Site is Under Maintenance",
-                    style: TextStyle(
-                        color: Color(0XFF5B626B),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Text(
-                    "Please check back in sometime.",
-                    style: TextStyle(color: Color(0XFF5B626B)),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _container(
-                        Icons.flight_land_outlined,
-                        "WHY IS THE SITE DOWN?",
-                        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.",
-                        "",
-                      ),
-                      FxBox.w6,
-                      _container(
-                        Icons.timer,
-                        "WHAT IS THE DOWNTIME?",
-                        "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical.",
-                        "",
-                      ),
-                      FxBox.w6,
-                      _container(
-                          Icons.email,
-                          "DO YOU NEED SUPPORT?",
-                          "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embar..",
-                          "no-reply@domain.com"),
-                    ],
-                  )
-                ],
+        ? Scaffold(
+          body: Container(
+              margin: const EdgeInsets.all(30),
+              child: Center(
+                child: Column(
+                  children: [
+                    const Text(
+                      "${Strings.siddhatva}",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Color(0XFF5B626B),
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                        height: MediaQuery.of(context).size.height * .3,
+                        width: MediaQuery.of(context).size.width * .75,
+                        child: Image.asset("assets/images/image1.png")),
+                    const Text(
+                      "Site is Under Maintenance",
+                      style: TextStyle(
+                          color: Color(0XFF5B626B),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const Text(
+                      "Please check back in sometime.",
+                      style: TextStyle(color: Color(0XFF5B626B)),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        _container(
+                          Icons.flight_land_outlined,
+                          "WHY IS THE SITE DOWN?",
+                          "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.",
+                          "",
+                        ),
+                        FxBox.w6,
+                        _container(
+                          Icons.timer,
+                          "WHAT IS THE DOWNTIME?",
+                          "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical.",
+                          "",
+                        ),
+                        FxBox.w6,
+                        _container(
+                            Icons.email,
+                            "DO YOU NEED SUPPORT?",
+                            "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embar..",
+                            "no-reply@domain.com"),
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
-          )
-        : Container(
-            margin: const EdgeInsets.all(30),
-            child: Center(
-              child: Column(
-                children: [
-                  const Text(
-                    "${Strings.siddhatva}",
-                    style: TextStyle(
-                        fontSize: 25,
-                        color: Color(0XFF5B626B),
-                        fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(
-                      height: MediaQuery.of(context).size.height * .3,
-                      width: MediaQuery.of(context).size.width * .75,
-                      child: Image.asset("assets/images/image1.png")),
-                  const Text(
-                    "Site is Under Maintenance",
-                    style: TextStyle(
-                        color: Color(0XFF5B626B),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Text(
-                    "Please check back in sometime.",
-                    style: TextStyle(color: Color(0XFF5B626B)),
-                  ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  _containermobile(
-                    Icons.flight_land_outlined,
-                    "WHY IS THE SITE DOWN?",
-                    "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.",
-                    "  ",
-                  ),
-                  FxBox.h20,
-                  _containermobile(
-                    Icons.timer,
-                    "WHAT IS THE DOWNTIME?",
-                    "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical.",
-                    "",
-                  ),
-                  FxBox.h20,
-                  _containermobile(
-                      Icons.email,
-                      "DO YOU NEED SUPPORT?",
-                      "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embar..",
-                      "no-reply@domain.com")
-                ],
+        )
+        : Scaffold(
+          body: Container(
+              margin: const EdgeInsets.all(30),
+              child: Center(
+                child: Column(
+                  children: [
+                    const Text(
+                      "${Strings.siddhatva}",
+                      style: TextStyle(
+                          fontSize: 25,
+                          color: Color(0XFF5B626B),
+                          fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                        height: MediaQuery.of(context).size.height * .3,
+                        width: MediaQuery.of(context).size.width * .75,
+                        child: Image.asset("assets/images/image1.png")),
+                    const Text(
+                      "Site is Under Maintenance",
+                      style: TextStyle(
+                          color: Color(0XFF5B626B),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25),
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    const Text(
+                      "Please check back in sometime.",
+                      style: TextStyle(color: Color(0XFF5B626B)),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    _containermobile(
+                      Icons.flight_land_outlined,
+                      "WHY IS THE SITE DOWN?",
+                      "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.",
+                      "  ",
+                    ),
+                    FxBox.h20,
+                    _containermobile(
+                      Icons.timer,
+                      "WHAT IS THE DOWNTIME?",
+                      "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical.",
+                      "",
+                    ),
+                    FxBox.h20,
+                    _containermobile(
+                        Icons.email,
+                        "DO YOU NEED SUPPORT?",
+                        "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embar..",
+                        "no-reply@domain.com")
+                  ],
+                ),
               ),
             ),
-          );
+        );
   }
 
   Widget _container(
