@@ -4,10 +4,12 @@ import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 class RotatingPlainLoader extends StatefulWidget {
   final Color color;
   final double size;
+  final Duration? duration;
   const RotatingPlainLoader({
     Key? key,
     required this.color,
     required this.size,
+    this.duration,
   }) : super(key: key);
 
   @override
@@ -26,9 +28,10 @@ class _RotatingPlainLoaderState extends State<RotatingPlainLoader>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(
-        milliseconds: 1500,
-      ),
+      duration: widget.duration ??
+          const Duration(
+            milliseconds: 1500,
+          ),
     )
       ..addListener(() => setState(() {}))
       ..repeat();
@@ -63,17 +66,15 @@ class _RotatingPlainLoaderState extends State<RotatingPlainLoader>
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Transform(
-        transform: Matrix4.identity()
-          ..rotateX((0 - _animation1.value) * 0.0174533)
-          ..rotateY((0 - _animation2.value) * 0.0174533),
-        alignment: FractionalOffset.center,
-        child: SizedBox.fromSize(
-          size: Size.square(widget.size),
-          child: AnimatedPartWidget(
-            color: widget.color,
-          ),
+    return Transform(
+      transform: Matrix4.identity()
+        ..rotateX((0 - _animation1.value) * 0.0174533)
+        ..rotateY((0 - _animation2.value) * 0.0174533),
+      alignment: FractionalOffset.center,
+      child: SizedBox.fromSize(
+        size: Size.square(widget.size),
+        child: AnimatedPartWidget(
+          color: widget.color,
         ),
       ),
     );

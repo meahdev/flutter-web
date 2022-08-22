@@ -8,12 +8,14 @@ class SpinningLinesLoader extends StatefulWidget {
   final double size;
   final double lineWidth;
   final int itemCount;
+  final Duration? duration;
   const SpinningLinesLoader({
     Key? key,
     required this.color,
     this.size = 50,
     this.lineWidth = 2.0,
     this.itemCount = 5,
+    this.duration,
   }) : super(key: key);
 
   @override
@@ -30,9 +32,10 @@ class _SpinningLinesLoaderState extends State<SpinningLinesLoader>
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(
-        milliseconds: 3000,
-      ),
+      duration: widget.duration ??
+          const Duration(
+            milliseconds: 3000,
+          ),
     )
       ..addListener(() => setState(() {}))
       ..repeat();
@@ -48,25 +51,23 @@ class _SpinningLinesLoaderState extends State<SpinningLinesLoader>
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: AnimatedBuilder(
-        builder: (BuildContext context, Widget? child) {
-          return CustomPaint(
-            painter: SpinningLinesPainter(
-              _animation.value,
-              lineWidth: widget.lineWidth,
-              color: widget.color,
-              itemCount: widget.itemCount,
+    return AnimatedBuilder(
+      builder: (BuildContext context, Widget? child) {
+        return CustomPaint(
+          painter: SpinningLinesPainter(
+            _animation.value,
+            lineWidth: widget.lineWidth,
+            color: widget.color,
+            itemCount: widget.itemCount,
+          ),
+          child: SizedBox.fromSize(
+            size: Size.square(
+              widget.size,
             ),
-            child: SizedBox.fromSize(
-              size: Size.square(
-                widget.size,
-              ),
-            ),
-          );
-        },
-        animation: _animation,
-      ),
+          ),
+        );
+      },
+      animation: _animation,
     );
   }
 }

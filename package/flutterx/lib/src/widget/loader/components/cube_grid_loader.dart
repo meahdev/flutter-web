@@ -4,10 +4,12 @@ import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 class CubeGridLoader extends StatefulWidget {
   final Color color;
   final double size;
+  final Duration? duration;
   const CubeGridLoader({
     Key? key,
     required this.color,
     this.size = 50.0,
+    this.duration,
   }) : super(key: key);
 
   @override
@@ -29,9 +31,10 @@ class _CubeGridLoaderState extends State<CubeGridLoader>
 
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(
-        milliseconds: 1200,
-      ),
+      duration: widget.duration ??
+          const Duration(
+            milliseconds: 1200,
+          ),
     )..repeat(reverse: true);
     _anim1 = Tween(begin: 1.0, end: 0.0).animate(CurvedAnimation(
         parent: _controller,

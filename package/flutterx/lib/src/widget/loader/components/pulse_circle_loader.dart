@@ -4,10 +4,12 @@ import 'package:flutterx/src/widget/loader/components/animated_widget.dart';
 class PulseCircleLoader extends StatefulWidget {
   final double size;
   final Color color;
+  final Duration? duration;
   const PulseCircleLoader({
     Key? key,
     this.size = 32,
     required this.color,
+    this.duration,
   }) : super(key: key);
 
   @override
@@ -23,9 +25,10 @@ class _PulseCircleLoaderState extends State<PulseCircleLoader>
   void initState() {
     _controller = (AnimationController(
       vsync: this,
-      duration: const Duration(
-        milliseconds: 1200,
-      ),
+      duration: widget.duration ??
+          const Duration(
+            milliseconds: 1200,
+          ),
     ))
       ..addListener(() => setState(() {}))
       ..repeat();
@@ -42,17 +45,15 @@ class _PulseCircleLoaderState extends State<PulseCircleLoader>
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Opacity(
-        opacity: 1.0 - _animation.value,
-        child: Transform.scale(
-          scale: _animation.value,
-          child: SizedBox.fromSize(
-            size: Size.square(widget.size),
-            child: AnimatedPartWidget(
-              color: widget.color,
-              shape: BoxShape.circle,
-            ),
+    return Opacity(
+      opacity: 1.0 - _animation.value,
+      child: Transform.scale(
+        scale: _animation.value,
+        child: SizedBox.fromSize(
+          size: Size.square(widget.size),
+          child: AnimatedPartWidget(
+            color: widget.color,
+            shape: BoxShape.circle,
           ),
         ),
       ),

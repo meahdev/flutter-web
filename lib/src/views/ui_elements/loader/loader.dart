@@ -10,37 +10,27 @@ class Loaders extends StatefulWidget {
 }
 
 class _LoadersState extends State<Loaders> {
-  final List<Color> colors = const [
-    Color(0xFF626ED4),
-    Color(0xFFE9ECEF),
-    Color(0xFF38A4F8),
-    Color(0xFFF8B425),
-    Color(0xFFEC4561),
-    Color(0xFF343A40),
-  ];
-
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Wrap(
       children: [
         FxBox.h20,
         _cardWidget(
-          label: 'Spining circle Loader',
-          widget: const FxLoader(
-            loaderType: LoaderType.basicLoader,
+          label: 'Basic Loader',
+          widget: const FxLoader.basicLoader(
+            duration: Duration(milliseconds: 900),
             color: ColorConst.primary,
-            size: 35,
+            size: 40,
           ),
         ),
         FxBox.h20,
         _cardWidget(
           label: 'Spining circle Loader',
           widget: const FxLoader.spinningLinesLoader(
-            color: ColorConst.white,
+            duration: Duration(milliseconds: 3000),
+            color: ColorConst.chartColorBlue,
             itemCount: 5,
-            size: 50,
+            size: 70,
             lineWidth: 2,
           ),
         ),
@@ -49,6 +39,7 @@ class _LoadersState extends State<Loaders> {
           label: 'Wave Loader',
           widget: FxLoader.waveLoader(
             color: ColorConst.info,
+            duration: const Duration(milliseconds: 1200),
             itemCount: 5,
             size: 40,
             wavetype: WaveType.start,
@@ -57,78 +48,64 @@ class _LoadersState extends State<Loaders> {
         FxBox.h20,
         _cardWidget(
           label: 'Circle Loader',
-          widget: FxLoader(
-            loaderType: LoaderType.circleLoader,
+          widget: FxLoader.circleLoader(
             color: ColorConst.warning,
-            itemCount: 5,
-            size: 50,
-            wavetype: WaveType.start,
+            duration: const Duration(milliseconds: 1200),
+            size: 60,
           ),
         ),
         FxBox.h20,
         _cardWidget(
           label: 'Cube Grid Loader',
-          widget: FxLoader(
-            loaderType: LoaderType.cubeGridLoader,
+          widget: FxLoader.cubeGridLoader(
             color: ColorConst.error,
-            itemCount: 5,
+            duration: const Duration(milliseconds: 1200),
             size: 50,
-            wavetype: WaveType.start,
           ),
         ),
         FxBox.h20,
         _cardWidget(
           label: 'Double Bounce Loader',
-          widget: const FxLoader(
-            loaderType: LoaderType.doubleBounceLoader,
+          widget: const FxLoader.doubleBounceLoader(
             color: ColorConst.primary,
-            itemCount: 5,
+            duration: Duration(milliseconds: 2000),
             size: 50,
-            wavetype: WaveType.start,
           ),
         ),
         FxBox.h20,
         _cardWidget(
           label: 'Fading circle Loader',
-          widget: const FxLoader(
-            loaderType: LoaderType.fadingCircleLoader,
-            color: ColorConst.white,
-            itemCount: 5,
+          widget: const FxLoader.fadingCircleLoader(
+            color: ColorConst.chartColorBlue,
+            duration: Duration(milliseconds: 1200),
             size: 50,
-            wavetype: WaveType.start,
           ),
         ),
         FxBox.h20,
         _cardWidget(
           label: 'Pulse circle Loader',
-          widget: FxLoader(
-            loaderType: LoaderType.pulseCircleLoader,
+          widget: FxLoader.pulseCircleLoader(
             color: ColorConst.info,
-            itemCount: 5,
+            duration: const Duration(milliseconds: 1200),
             size: 50,
-            wavetype: WaveType.start,
           ),
         ),
         FxBox.h20,
         _cardWidget(
           label: 'Rotating circle Loader',
-          widget: FxLoader(
-            loaderType: LoaderType.rotatingCircleLoader,
+          widget: FxLoader.rotatingCircleLoader(
             color: ColorConst.warning,
-            itemCount: 5,
+            duration: const Duration(milliseconds: 1200),
             size: 50,
-            wavetype: WaveType.start,
           ),
         ),
         FxBox.h20,
         _cardWidget(
           label: 'Rotating Plain Square Loader',
-          widget: FxLoader(
-            loaderType: LoaderType.rotatingPlainLoader,
+          widget: FxLoader.rotatingPlainLoader(
             color: ColorConst.error,
-            itemCount: 5,
+            duration: const Duration(milliseconds: 1500),
             size: 50,
-            wavetype: WaveType.start,
           ),
         ),
       ],
@@ -136,21 +113,31 @@ class _LoadersState extends State<Loaders> {
   }
 
   Widget _cardWidget({required String label, required Widget widget}) {
-    return Card(
-      child: Column(
-        children: [
-          Text(
-            label,
-            style: const TextStyle(
-              color: Color(0XFF5B626B),
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+        height: 200,
+        width: 200,
+        child: Card(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  label,
+                  style: const TextStyle(
+                    color: Color(0XFF5B626B),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
+                ),
+                FxBox.h32,
+                widget,
+              ],
             ),
           ),
-          FxBox.h12,
-          widget,
-          FxBox.h12,
-        ],
+        ),
       ),
     );
   }

@@ -8,12 +8,14 @@ class WaveLoader extends StatefulWidget {
   final int itemCount;
   final double size;
   final WaveType type;
+  final Duration? duration;
   const WaveLoader({
     Key? key,
     required this.color,
     required this.itemCount,
     required this.size,
     this.type = WaveType.start,
+    this.duration,
   })  : assert(itemCount >= 2, 'itemCount Cant be less then 2 '),
         super(key: key);
 
@@ -29,9 +31,10 @@ class _WaveLoaderState extends State<WaveLoader> with TickerProviderStateMixin {
     super.initState();
     _controller = AnimationController(
       vsync: this,
-      duration: const Duration(
-        milliseconds: 1200,
-      ),
+      duration: widget.duration ??
+          const Duration(
+            milliseconds: 1200,
+          ),
     )..repeat();
   }
 
@@ -44,23 +47,21 @@ class _WaveLoaderState extends State<WaveLoader> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final List<double> bars = getAnimationDelay(widget.itemCount);
-    return Center(
-      child: SizedBox.fromSize(
-        size: Size(widget.size * 1.25, widget.size),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(bars.length, (i) {
-            return ScaleYWidget(
-              scaleY: DelayTween(begin: 0.4, end: 1.0, delay: bars[i])
-                  .animate(_controller),
-              child: SizedBox.fromSize(
-                  size: Size(widget.size / widget.itemCount, widget.size),
-                  child: AnimatedPartWidget(
-                    color: widget.color,
-                  )),
-            );
-          }),
-        ),
+    return SizedBox.fromSize(
+      size: Size(widget.size * 1.25, widget.size),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: List.generate(bars.length, (i) {
+          return ScaleYWidget(
+            scaleY: DelayTween(begin: 0.4, end: 1.0, delay: bars[i])
+                .animate(_controller),
+            child: SizedBox.fromSize(
+                size: Size(widget.size / widget.itemCount, widget.size),
+                child: AnimatedPartWidget(
+                  color: widget.color,
+                )),
+          );
+        }),
       ),
     );
   }
