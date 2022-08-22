@@ -24,6 +24,9 @@ class ColorConst {
   //form upload file
   static const Color file = Color(0xffdddddd);
 
+  //wizard form
+  static const Color stepperBackGround = Color(0xffdaddf5);
+
   //dark
 
   static const Color appbarDarkBG = Color(0xFF2F323C);

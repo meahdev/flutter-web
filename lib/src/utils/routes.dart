@@ -19,6 +19,8 @@ int getRouteIndex(String route) {
     return 9;
   } else if (route == 'Form Mask') {
     return 10;
+  } else if (route == 'Form Wizard') {
+    return 11;
   } else {
     return 0;
   }

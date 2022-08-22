@@ -47,6 +47,7 @@ class _MenuBarState extends State<MenuBar> {
       'Form File Upload',
       'Form Repeater',
       'Form Mask',
+      'Form Wizard',
     ],
   ];
 
@@ -62,6 +63,7 @@ class _MenuBarState extends State<MenuBar> {
     FileUploadForm(),
     RepeaterForm(),
     MaskForm(),
+    WizardForm(),
   ];
 
   @override
