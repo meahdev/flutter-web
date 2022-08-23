@@ -11,28 +11,28 @@ class FAQs extends StatefulWidget {
 }
 
 class _FAQsState extends State<FAQs> {
-  final titleList = [
+  final _dataGeneralList = [
     "The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental.",
     "Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar",
     "If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple",
     "Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar",
   ];
 
-  final dataList = [
+  final _generalList = [
     "What is Lorem Ipsum?",
     "Where does it come from?",
     "Why do we use it?",
     "Where can I get some?",
   ];
 
-  final titleList1 = [
+  final _dataPricingNplanList = [
     "The new common language will be more simple and regular than the existing European languages. It will be as simple as Occidental; in fact, it will be Occidental.",
     "Everyone realizes why a new common language would be desirable: one could refuse to pay expensive translators. To achieve this, it would be necessary to have uniform grammar",
     "If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages. The new common language will be more simple",
     "Everyone realizes why a new common language would be desirable one could refuse to pay expensive translators. Toachieve this, it would be necessary to have uniform grammar",
   ];
 
-  final dataList1 = [
+  final _pricingNplanList = [
     "Where can I get some?",
     "Why do we use it?",
     "Where does it come from?",
@@ -122,7 +122,7 @@ class _FAQsState extends State<FAQs> {
           ),
         ),
         FxBox.h16,
-        _expansionList(titleList, dataList),
+        _expansionList(_generalList, _dataGeneralList),
       ],
     );
   }
@@ -144,7 +144,7 @@ class _FAQsState extends State<FAQs> {
           ),
         ),
         FxBox.h16,
-        _expansionList(titleList1, dataList1),
+        _expansionList(_pricingNplanList, _dataPricingNplanList),
       ],
     );
   }
