@@ -41,196 +41,111 @@ class _FAQsState extends State<FAQs> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: SingleChildScrollView(
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.only(
+          left: 72,
+          right: 72,
+          top: 60,
+          bottom: 20,
+        ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Responsive.isMobile(context) || Responsive.isTablet(context)
-                ? SizedBox(
-                    width: MediaQuery.of(context).size.width * .9,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, right: 20, bottom: 20, top: 60),
-                        child: Column(
-                          children: [
-                            const Icon(
-                              Icons.message_outlined,
-                              color: ColorConst.primary,
-                            ),
-                            FxBox.h20,
-                            const Text(
-                              "Can't find what you are looking for?",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: ColorConst.primary,
-                              ),
-                            ),
-                            FxBox.h12,
-                            const Text(
-                              "If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.",
-                              style: TextStyle(fontSize: 14),
-                            ),
-                            FxBox.h20,
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                FxButton(
-                                  borderRadius: 4,
-                                  onPressed: () {},
-                                  text: "Email Us",
-                                ),
-                                FxBox.w8,
-                                FxButton(
-                                  borderRadius: 4,
-                                  onPressed: () {},
-                                  text: "Send us a tweet",
-                                  buttonType: ButtonType.success,
-                                ),
-                              ],
-                            ),
-                            FxBox.h44,
-                            const ListTile(
-                              title: Text(
-                                "General Questions",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              leading: Icon(
-                                Icons.book_online_rounded,
-                                color: ColorConst.primary,
-                              ),
-                            ),
-                            _expansionList(titleList, dataList),
-                            FxBox.h44,
-                            const ListTile(
-                              title: Text(
-                                "Pricing & Plans",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              leading: Icon(
-                                Icons.book_online_rounded,
-                                color: ColorConst.primary,
-                              ),
-                            ),
-                            _expansionList(titleList1, dataList1),
-                          ],
-                        ),
-                      ),
-                    ),
+            const Icon(Icons.message_outlined, color: ColorConst.primary),
+            FxBox.h20,
+            const Text(
+              "Can't find what you are looking for?",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: Color((0XFF5B626B)),
+              ),
+            ),
+            FxBox.h12,
+            const SizedBox(
+              width: 550,
+              child: Text(
+                "If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.",
+                style: TextStyle(fontSize: 14),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            FxBox.h20,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FxButton(
+                  borderRadius: 4,
+                  onPressed: () {},
+                  text: "Email Us",
+                ),
+                FxBox.w8,
+                FxButton(
+                  borderRadius: 4,
+                  onPressed: () {},
+                  text: "Send us a tweet",
+                  buttonType: ButtonType.success,
+                ),
+              ],
+            ),
+            FxBox.h64,
+            Responsive.isWeb(context)
+                ? Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(child: _listOne()),
+                      FxBox.w(100.0),
+                      Expanded(child: _listTwo())
+                    ],
                   )
-                : Card(
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        left: 88,
-                        right: 88,
-                        top: 52,
-                      ),
-                      child: Column(
-                        children: [
-                          const Icon(Icons.message_outlined,
-                              color: ColorConst.primary),
-                          FxBox.h20,
-                          const Text(
-                            "Can't find what you are looking for?",
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Color((0XFF5B626B))),
-                          ),
-                          FxBox.h12,
-                          const SizedBox(
-                            width: 550,
-                            child: Text(
-                              "If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.",
-                              style: TextStyle(fontSize: 14),
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                          FxBox.h20,
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              FxButton(
-                                borderRadius: 4,
-                                onPressed: () {},
-                                text: "Email Us",
-                                color: ColorConst.primary,
-                              ),
-                              FxBox.w8,
-                              FxButton(
-                                borderRadius: 4,
-                                onPressed: () {},
-                                text: "Send us a tweet",
-                                color: ColorConst.darkGreen,
-                              ),
-                            ],
-                          ),
-                          FxBox.h64,
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    const ListTile(
-                                      title: Text(
-                                        "General Questions",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      leading: Icon(
-                                        Icons.book_online_rounded,
-                                        color: ColorConst.primary,
-                                      ),
-                                    ),
-                                    FxBox.h16,
-                                    _expansionList(titleList, dataList),
-                                  ],
-                                ),
-                              ),
-                              FxBox.w40,
-                              Expanded(
-                                child: Column(
-                                  children: [
-                                    const ListTile(
-                                      title: Text(
-                                        "Pricing & Plans",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      leading: Icon(
-                                        Icons.book_online_rounded,
-                                        color: ColorConst.primary,
-                                      ),
-                                    ),
-                                    FxBox.h16,
-                                    _expansionList(titleList1, dataList1),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
+                : Column(children: [_listOne(), FxBox.h44, _listTwo()]),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _listOne() {
+    return Column(
+      children: [
+        const ListTile(
+          title: Text(
+            "General Questions",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          leading: Icon(
+            Icons.book_online_rounded,
+            color: ColorConst.primary,
+          ),
+        ),
+        FxBox.h16,
+        _expansionList(titleList, dataList),
+      ],
+    );
+  }
+
+  Widget _listTwo() {
+    return Column(
+      children: [
+        const ListTile(
+          title: Text(
+            "Pricing & Plans",
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          leading: Icon(
+            Icons.book_online_rounded,
+            color: ColorConst.primary,
+          ),
+        ),
+        FxBox.h16,
+        _expansionList(titleList1, dataList1),
+      ],
     );
   }
 
@@ -248,6 +163,7 @@ class _FAQsState extends State<FAQs> {
             value: item,
             headerBuilder: (BuildContext context, bool isExpanded) {
               return ListTile(
+                hoverColor: Colors.transparent,
                 title: Text(
                   item,
                   style: TextStyle(
@@ -258,6 +174,7 @@ class _FAQsState extends State<FAQs> {
               );
             },
             body: ListTile(
+              hoverColor: Colors.transparent,
               title: Text(
                 title.elementAt(
                   list.indexWhere(

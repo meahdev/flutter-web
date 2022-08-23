@@ -19,7 +19,7 @@ class _MaintenanceState extends State<Maintenance> {
   Widget build(BuildContext context) {
     return Responsive.isWeb(context) || Responsive.isTablet(context)
         ? Scaffold(
-          body: Container(
+            body: Container(
               margin: const EdgeInsets.all(30),
               child: Center(
                 child: Column(
@@ -27,63 +27,63 @@ class _MaintenanceState extends State<Maintenance> {
                     const Text(
                       "${Strings.siddhatva}",
                       style: TextStyle(
-                          fontSize: 25,
-                          color: Color(0XFF5B626B),
-                          fontWeight: FontWeight.bold),
+                        fontSize: 25,
+                        color: Color(0XFF5B626B),
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     SizedBox(
-                        height: MediaQuery.of(context).size.height * .3,
-                        width: MediaQuery.of(context).size.width * .75,
-                        child: Image.asset("assets/images/image1.png")),
+                      height: MediaQuery.of(context).size.height * .3,
+                      width: MediaQuery.of(context).size.width * .75,
+                      child: Image.asset("assets/images/image1.png"),
+                    ),
                     const Text(
                       "Site is Under Maintenance",
                       style: TextStyle(
-                          color: Color(0XFF5B626B),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 25),
+                        color: Color(0XFF5B626B),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
                     ),
-                    const SizedBox(
-                      height: 8,
-                    ),
+                    FxBox.h8,
                     const Text(
                       "Please check back in sometime.",
                       style: TextStyle(color: Color(0XFF5B626B)),
                     ),
-                    const SizedBox(
-                      height: 30,
-                    ),
+                    FxBox.h32,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         _container(
-                          Icons.flight_land_outlined,
+                          Icons.flight_takeoff_rounded,
                           "WHY IS THE SITE DOWN?",
                           "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration.",
                           "",
                         ),
                         FxBox.w6,
                         _container(
-                          Icons.timer,
+                          Icons.access_time_filled_rounded,
                           "WHAT IS THE DOWNTIME?",
                           "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical.",
                           "",
                         ),
                         FxBox.w6,
                         _container(
-                            Icons.email,
-                            "DO YOU NEED SUPPORT?",
-                            "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embar..",
-                            "no-reply@domain.com"),
+                          Icons.email_rounded,
+                          "DO YOU NEED SUPPORT?",
+                          "If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embar..",
+                          "no-reply@domain.com",
+                        ),
                       ],
                     )
                   ],
                 ),
               ),
             ),
-        )
+          )
         : Scaffold(
-          body: Container(
+            body: Container(
               margin: const EdgeInsets.all(30),
               child: Center(
                 child: Column(
@@ -139,7 +139,7 @@ class _MaintenanceState extends State<Maintenance> {
                 ),
               ),
             ),
-        );
+          );
   }
 
   Widget _container(
@@ -182,8 +182,8 @@ class _MaintenanceState extends State<Maintenance> {
                           alignment: Alignment.topLeft,
                           child: Text(
                             '${email}',
-                            style: const TextStyle(color:
-                                ColorConst.primary,
+                            style: const TextStyle(
+                                color: ColorConst.primary,
                                 fontWeight: FontWeight.bold),
                           )))
                   : const SizedBox.shrink(),
