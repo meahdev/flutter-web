@@ -304,9 +304,15 @@ class _RepeaterFormState extends State<RepeaterForm> {
       child: Row(
         children: [
           Container(
-            color: Colors.grey,
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 12),
+            decoration: const BoxDecoration(
+              color: Colors.grey,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(4.0),
+                topLeft: Radius.circular(4.0),
+              ),
+            ),
             height: double.infinity,
             child: const Text('Choose file'),
           ),
