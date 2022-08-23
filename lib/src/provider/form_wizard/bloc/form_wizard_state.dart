@@ -8,4 +8,7 @@ class FormWizardState with _$FormWizardState {
   const factory FormWizardState.previousSuccess(int index) = _PreviousSuccess;
   const factory FormWizardState.finishSuccess(bool isFinish) = _FinishSuccess;
   const factory FormWizardState.stepperSuccess(int index) = _StepperSuccess;
+  const factory FormWizardState.dropDownSuccess(String value) =
+      _DropDownSuccess;
+  const factory FormWizardState.checkSuccess(bool value) = _CheckSuccess;
 }

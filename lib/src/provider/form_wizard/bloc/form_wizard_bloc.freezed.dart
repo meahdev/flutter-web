@@ -22,6 +22,8 @@ mixin _$FormWizardEvent {
     required TResult Function(int index) previousClick,
     required TResult Function(bool isFinish) finishClick,
     required TResult Function(int index) stepperClick,
+    required TResult Function(String value) dropDown,
+    required TResult Function(bool value) check,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +32,8 @@ mixin _$FormWizardEvent {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +42,8 @@ mixin _$FormWizardEvent {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +53,8 @@ mixin _$FormWizardEvent {
     required TResult Function(_PreviousClick value) previousClick,
     required TResult Function(_FinishClick value) finishClick,
     required TResult Function(_StepperClick value) stepperClick,
+    required TResult Function(_DropDown value) dropDown,
+    required TResult Function(_Check value) check,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +63,8 @@ mixin _$FormWizardEvent {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +73,8 @@ mixin _$FormWizardEvent {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -165,6 +177,8 @@ class _$_NextClick implements _NextClick {
     required TResult Function(int index) previousClick,
     required TResult Function(bool isFinish) finishClick,
     required TResult Function(int index) stepperClick,
+    required TResult Function(String value) dropDown,
+    required TResult Function(bool value) check,
   }) {
     return nextClick(index, clickCount);
   }
@@ -176,6 +190,8 @@ class _$_NextClick implements _NextClick {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
   }) {
     return nextClick?.call(index, clickCount);
   }
@@ -187,6 +203,8 @@ class _$_NextClick implements _NextClick {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
     required TResult orElse(),
   }) {
     if (nextClick != null) {
@@ -202,6 +220,8 @@ class _$_NextClick implements _NextClick {
     required TResult Function(_PreviousClick value) previousClick,
     required TResult Function(_FinishClick value) finishClick,
     required TResult Function(_StepperClick value) stepperClick,
+    required TResult Function(_DropDown value) dropDown,
+    required TResult Function(_Check value) check,
   }) {
     return nextClick(this);
   }
@@ -213,6 +233,8 @@ class _$_NextClick implements _NextClick {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
   }) {
     return nextClick?.call(this);
   }
@@ -224,6 +246,8 @@ class _$_NextClick implements _NextClick {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
     required TResult orElse(),
   }) {
     if (nextClick != null) {
@@ -313,6 +337,8 @@ class _$_PreviousClick implements _PreviousClick {
     required TResult Function(int index) previousClick,
     required TResult Function(bool isFinish) finishClick,
     required TResult Function(int index) stepperClick,
+    required TResult Function(String value) dropDown,
+    required TResult Function(bool value) check,
   }) {
     return previousClick(index);
   }
@@ -324,6 +350,8 @@ class _$_PreviousClick implements _PreviousClick {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
   }) {
     return previousClick?.call(index);
   }
@@ -335,6 +363,8 @@ class _$_PreviousClick implements _PreviousClick {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
     required TResult orElse(),
   }) {
     if (previousClick != null) {
@@ -350,6 +380,8 @@ class _$_PreviousClick implements _PreviousClick {
     required TResult Function(_PreviousClick value) previousClick,
     required TResult Function(_FinishClick value) finishClick,
     required TResult Function(_StepperClick value) stepperClick,
+    required TResult Function(_DropDown value) dropDown,
+    required TResult Function(_Check value) check,
   }) {
     return previousClick(this);
   }
@@ -361,6 +393,8 @@ class _$_PreviousClick implements _PreviousClick {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
   }) {
     return previousClick?.call(this);
   }
@@ -372,6 +406,8 @@ class _$_PreviousClick implements _PreviousClick {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
     required TResult orElse(),
   }) {
     if (previousClick != null) {
@@ -459,6 +495,8 @@ class _$_FinishClick implements _FinishClick {
     required TResult Function(int index) previousClick,
     required TResult Function(bool isFinish) finishClick,
     required TResult Function(int index) stepperClick,
+    required TResult Function(String value) dropDown,
+    required TResult Function(bool value) check,
   }) {
     return finishClick(isFinish);
   }
@@ -470,6 +508,8 @@ class _$_FinishClick implements _FinishClick {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
   }) {
     return finishClick?.call(isFinish);
   }
@@ -481,6 +521,8 @@ class _$_FinishClick implements _FinishClick {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
     required TResult orElse(),
   }) {
     if (finishClick != null) {
@@ -496,6 +538,8 @@ class _$_FinishClick implements _FinishClick {
     required TResult Function(_PreviousClick value) previousClick,
     required TResult Function(_FinishClick value) finishClick,
     required TResult Function(_StepperClick value) stepperClick,
+    required TResult Function(_DropDown value) dropDown,
+    required TResult Function(_Check value) check,
   }) {
     return finishClick(this);
   }
@@ -507,6 +551,8 @@ class _$_FinishClick implements _FinishClick {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
   }) {
     return finishClick?.call(this);
   }
@@ -518,6 +564,8 @@ class _$_FinishClick implements _FinishClick {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
     required TResult orElse(),
   }) {
     if (finishClick != null) {
@@ -605,6 +653,8 @@ class _$_StepperClick implements _StepperClick {
     required TResult Function(int index) previousClick,
     required TResult Function(bool isFinish) finishClick,
     required TResult Function(int index) stepperClick,
+    required TResult Function(String value) dropDown,
+    required TResult Function(bool value) check,
   }) {
     return stepperClick(index);
   }
@@ -616,6 +666,8 @@ class _$_StepperClick implements _StepperClick {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
   }) {
     return stepperClick?.call(index);
   }
@@ -627,6 +679,8 @@ class _$_StepperClick implements _StepperClick {
     TResult Function(int index)? previousClick,
     TResult Function(bool isFinish)? finishClick,
     TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
     required TResult orElse(),
   }) {
     if (stepperClick != null) {
@@ -642,6 +696,8 @@ class _$_StepperClick implements _StepperClick {
     required TResult Function(_PreviousClick value) previousClick,
     required TResult Function(_FinishClick value) finishClick,
     required TResult Function(_StepperClick value) stepperClick,
+    required TResult Function(_DropDown value) dropDown,
+    required TResult Function(_Check value) check,
   }) {
     return stepperClick(this);
   }
@@ -653,6 +709,8 @@ class _$_StepperClick implements _StepperClick {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
   }) {
     return stepperClick?.call(this);
   }
@@ -664,6 +722,8 @@ class _$_StepperClick implements _StepperClick {
     TResult Function(_PreviousClick value)? previousClick,
     TResult Function(_FinishClick value)? finishClick,
     TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
     required TResult orElse(),
   }) {
     if (stepperClick != null) {
@@ -683,6 +743,319 @@ abstract class _StepperClick implements FormWizardEvent {
 }
 
 /// @nodoc
+abstract class _$$_DropDownCopyWith<$Res> {
+  factory _$$_DropDownCopyWith(
+          _$_DropDown value, $Res Function(_$_DropDown) then) =
+      __$$_DropDownCopyWithImpl<$Res>;
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$_DropDownCopyWithImpl<$Res>
+    extends _$FormWizardEventCopyWithImpl<$Res>
+    implements _$$_DropDownCopyWith<$Res> {
+  __$$_DropDownCopyWithImpl(
+      _$_DropDown _value, $Res Function(_$_DropDown) _then)
+      : super(_value, (v) => _then(v as _$_DropDown));
+
+  @override
+  _$_DropDown get _value => super._value as _$_DropDown;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_$_DropDown(
+      value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DropDown implements _DropDown {
+  const _$_DropDown(this.value);
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'FormWizardEvent.dropDown(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DropDown &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DropDownCopyWith<_$_DropDown> get copyWith =>
+      __$$_DropDownCopyWithImpl<_$_DropDown>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index, int clickCount) nextClick,
+    required TResult Function(int index) previousClick,
+    required TResult Function(bool isFinish) finishClick,
+    required TResult Function(int index) stepperClick,
+    required TResult Function(String value) dropDown,
+    required TResult Function(bool value) check,
+  }) {
+    return dropDown(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int index, int clickCount)? nextClick,
+    TResult Function(int index)? previousClick,
+    TResult Function(bool isFinish)? finishClick,
+    TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
+  }) {
+    return dropDown?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index, int clickCount)? nextClick,
+    TResult Function(int index)? previousClick,
+    TResult Function(bool isFinish)? finishClick,
+    TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
+    required TResult orElse(),
+  }) {
+    if (dropDown != null) {
+      return dropDown(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NextClick value) nextClick,
+    required TResult Function(_PreviousClick value) previousClick,
+    required TResult Function(_FinishClick value) finishClick,
+    required TResult Function(_StepperClick value) stepperClick,
+    required TResult Function(_DropDown value) dropDown,
+    required TResult Function(_Check value) check,
+  }) {
+    return dropDown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_NextClick value)? nextClick,
+    TResult Function(_PreviousClick value)? previousClick,
+    TResult Function(_FinishClick value)? finishClick,
+    TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
+  }) {
+    return dropDown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NextClick value)? nextClick,
+    TResult Function(_PreviousClick value)? previousClick,
+    TResult Function(_FinishClick value)? finishClick,
+    TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
+    required TResult orElse(),
+  }) {
+    if (dropDown != null) {
+      return dropDown(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DropDown implements FormWizardEvent {
+  const factory _DropDown(final String value) = _$_DropDown;
+
+  String get value;
+  @JsonKey(ignore: true)
+  _$$_DropDownCopyWith<_$_DropDown> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_CheckCopyWith<$Res> {
+  factory _$$_CheckCopyWith(_$_Check value, $Res Function(_$_Check) then) =
+      __$$_CheckCopyWithImpl<$Res>;
+  $Res call({bool value});
+}
+
+/// @nodoc
+class __$$_CheckCopyWithImpl<$Res> extends _$FormWizardEventCopyWithImpl<$Res>
+    implements _$$_CheckCopyWith<$Res> {
+  __$$_CheckCopyWithImpl(_$_Check _value, $Res Function(_$_Check) _then)
+      : super(_value, (v) => _then(v as _$_Check));
+
+  @override
+  _$_Check get _value => super._value as _$_Check;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_$_Check(
+      value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Check implements _Check {
+  const _$_Check(this.value);
+
+  @override
+  final bool value;
+
+  @override
+  String toString() {
+    return 'FormWizardEvent.check(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Check &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CheckCopyWith<_$_Check> get copyWith =>
+      __$$_CheckCopyWithImpl<_$_Check>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index, int clickCount) nextClick,
+    required TResult Function(int index) previousClick,
+    required TResult Function(bool isFinish) finishClick,
+    required TResult Function(int index) stepperClick,
+    required TResult Function(String value) dropDown,
+    required TResult Function(bool value) check,
+  }) {
+    return check(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int index, int clickCount)? nextClick,
+    TResult Function(int index)? previousClick,
+    TResult Function(bool isFinish)? finishClick,
+    TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
+  }) {
+    return check?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index, int clickCount)? nextClick,
+    TResult Function(int index)? previousClick,
+    TResult Function(bool isFinish)? finishClick,
+    TResult Function(int index)? stepperClick,
+    TResult Function(String value)? dropDown,
+    TResult Function(bool value)? check,
+    required TResult orElse(),
+  }) {
+    if (check != null) {
+      return check(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NextClick value) nextClick,
+    required TResult Function(_PreviousClick value) previousClick,
+    required TResult Function(_FinishClick value) finishClick,
+    required TResult Function(_StepperClick value) stepperClick,
+    required TResult Function(_DropDown value) dropDown,
+    required TResult Function(_Check value) check,
+  }) {
+    return check(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_NextClick value)? nextClick,
+    TResult Function(_PreviousClick value)? previousClick,
+    TResult Function(_FinishClick value)? finishClick,
+    TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
+  }) {
+    return check?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NextClick value)? nextClick,
+    TResult Function(_PreviousClick value)? previousClick,
+    TResult Function(_FinishClick value)? finishClick,
+    TResult Function(_StepperClick value)? stepperClick,
+    TResult Function(_DropDown value)? dropDown,
+    TResult Function(_Check value)? check,
+    required TResult orElse(),
+  }) {
+    if (check != null) {
+      return check(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Check implements FormWizardEvent {
+  const factory _Check(final bool value) = _$_Check;
+
+  bool get value;
+  @JsonKey(ignore: true)
+  _$$_CheckCopyWith<_$_Check> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$FormWizardState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -691,6 +1064,8 @@ mixin _$FormWizardState {
     required TResult Function(int index) previousSuccess,
     required TResult Function(bool isFinish) finishSuccess,
     required TResult Function(int index) stepperSuccess,
+    required TResult Function(String value) dropDownSuccess,
+    required TResult Function(bool value) checkSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -700,6 +1075,8 @@ mixin _$FormWizardState {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -709,6 +1086,8 @@ mixin _$FormWizardState {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -719,6 +1098,8 @@ mixin _$FormWizardState {
     required TResult Function(_PreviousSuccess value) previousSuccess,
     required TResult Function(_FinishSuccess value) finishSuccess,
     required TResult Function(_StepperSuccess value) stepperSuccess,
+    required TResult Function(_DropDownSuccess value) dropDownSuccess,
+    required TResult Function(_CheckSuccess value) checkSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -728,6 +1109,8 @@ mixin _$FormWizardState {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -737,6 +1120,8 @@ mixin _$FormWizardState {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -803,6 +1188,8 @@ class _$_Initial implements _Initial {
     required TResult Function(int index) previousSuccess,
     required TResult Function(bool isFinish) finishSuccess,
     required TResult Function(int index) stepperSuccess,
+    required TResult Function(String value) dropDownSuccess,
+    required TResult Function(bool value) checkSuccess,
   }) {
     return initial();
   }
@@ -815,6 +1202,8 @@ class _$_Initial implements _Initial {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
   }) {
     return initial?.call();
   }
@@ -827,6 +1216,8 @@ class _$_Initial implements _Initial {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -843,6 +1234,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_PreviousSuccess value) previousSuccess,
     required TResult Function(_FinishSuccess value) finishSuccess,
     required TResult Function(_StepperSuccess value) stepperSuccess,
+    required TResult Function(_DropDownSuccess value) dropDownSuccess,
+    required TResult Function(_CheckSuccess value) checkSuccess,
   }) {
     return initial(this);
   }
@@ -855,6 +1248,8 @@ class _$_Initial implements _Initial {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
   }) {
     return initial?.call(this);
   }
@@ -867,6 +1262,8 @@ class _$_Initial implements _Initial {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -961,6 +1358,8 @@ class _$_NextSuccess implements _NextSuccess {
     required TResult Function(int index) previousSuccess,
     required TResult Function(bool isFinish) finishSuccess,
     required TResult Function(int index) stepperSuccess,
+    required TResult Function(String value) dropDownSuccess,
+    required TResult Function(bool value) checkSuccess,
   }) {
     return nextSuccess(index, clickCount);
   }
@@ -973,6 +1372,8 @@ class _$_NextSuccess implements _NextSuccess {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
   }) {
     return nextSuccess?.call(index, clickCount);
   }
@@ -985,6 +1386,8 @@ class _$_NextSuccess implements _NextSuccess {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (nextSuccess != null) {
@@ -1001,6 +1404,8 @@ class _$_NextSuccess implements _NextSuccess {
     required TResult Function(_PreviousSuccess value) previousSuccess,
     required TResult Function(_FinishSuccess value) finishSuccess,
     required TResult Function(_StepperSuccess value) stepperSuccess,
+    required TResult Function(_DropDownSuccess value) dropDownSuccess,
+    required TResult Function(_CheckSuccess value) checkSuccess,
   }) {
     return nextSuccess(this);
   }
@@ -1013,6 +1418,8 @@ class _$_NextSuccess implements _NextSuccess {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
   }) {
     return nextSuccess?.call(this);
   }
@@ -1025,6 +1432,8 @@ class _$_NextSuccess implements _NextSuccess {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (nextSuccess != null) {
@@ -1115,6 +1524,8 @@ class _$_PreviousSuccess implements _PreviousSuccess {
     required TResult Function(int index) previousSuccess,
     required TResult Function(bool isFinish) finishSuccess,
     required TResult Function(int index) stepperSuccess,
+    required TResult Function(String value) dropDownSuccess,
+    required TResult Function(bool value) checkSuccess,
   }) {
     return previousSuccess(index);
   }
@@ -1127,6 +1538,8 @@ class _$_PreviousSuccess implements _PreviousSuccess {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
   }) {
     return previousSuccess?.call(index);
   }
@@ -1139,6 +1552,8 @@ class _$_PreviousSuccess implements _PreviousSuccess {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (previousSuccess != null) {
@@ -1155,6 +1570,8 @@ class _$_PreviousSuccess implements _PreviousSuccess {
     required TResult Function(_PreviousSuccess value) previousSuccess,
     required TResult Function(_FinishSuccess value) finishSuccess,
     required TResult Function(_StepperSuccess value) stepperSuccess,
+    required TResult Function(_DropDownSuccess value) dropDownSuccess,
+    required TResult Function(_CheckSuccess value) checkSuccess,
   }) {
     return previousSuccess(this);
   }
@@ -1167,6 +1584,8 @@ class _$_PreviousSuccess implements _PreviousSuccess {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
   }) {
     return previousSuccess?.call(this);
   }
@@ -1179,6 +1598,8 @@ class _$_PreviousSuccess implements _PreviousSuccess {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (previousSuccess != null) {
@@ -1267,6 +1688,8 @@ class _$_FinishSuccess implements _FinishSuccess {
     required TResult Function(int index) previousSuccess,
     required TResult Function(bool isFinish) finishSuccess,
     required TResult Function(int index) stepperSuccess,
+    required TResult Function(String value) dropDownSuccess,
+    required TResult Function(bool value) checkSuccess,
   }) {
     return finishSuccess(isFinish);
   }
@@ -1279,6 +1702,8 @@ class _$_FinishSuccess implements _FinishSuccess {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
   }) {
     return finishSuccess?.call(isFinish);
   }
@@ -1291,6 +1716,8 @@ class _$_FinishSuccess implements _FinishSuccess {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (finishSuccess != null) {
@@ -1307,6 +1734,8 @@ class _$_FinishSuccess implements _FinishSuccess {
     required TResult Function(_PreviousSuccess value) previousSuccess,
     required TResult Function(_FinishSuccess value) finishSuccess,
     required TResult Function(_StepperSuccess value) stepperSuccess,
+    required TResult Function(_DropDownSuccess value) dropDownSuccess,
+    required TResult Function(_CheckSuccess value) checkSuccess,
   }) {
     return finishSuccess(this);
   }
@@ -1319,6 +1748,8 @@ class _$_FinishSuccess implements _FinishSuccess {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
   }) {
     return finishSuccess?.call(this);
   }
@@ -1331,6 +1762,8 @@ class _$_FinishSuccess implements _FinishSuccess {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (finishSuccess != null) {
@@ -1419,6 +1852,8 @@ class _$_StepperSuccess implements _StepperSuccess {
     required TResult Function(int index) previousSuccess,
     required TResult Function(bool isFinish) finishSuccess,
     required TResult Function(int index) stepperSuccess,
+    required TResult Function(String value) dropDownSuccess,
+    required TResult Function(bool value) checkSuccess,
   }) {
     return stepperSuccess(index);
   }
@@ -1431,6 +1866,8 @@ class _$_StepperSuccess implements _StepperSuccess {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
   }) {
     return stepperSuccess?.call(index);
   }
@@ -1443,6 +1880,8 @@ class _$_StepperSuccess implements _StepperSuccess {
     TResult Function(int index)? previousSuccess,
     TResult Function(bool isFinish)? finishSuccess,
     TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (stepperSuccess != null) {
@@ -1459,6 +1898,8 @@ class _$_StepperSuccess implements _StepperSuccess {
     required TResult Function(_PreviousSuccess value) previousSuccess,
     required TResult Function(_FinishSuccess value) finishSuccess,
     required TResult Function(_StepperSuccess value) stepperSuccess,
+    required TResult Function(_DropDownSuccess value) dropDownSuccess,
+    required TResult Function(_CheckSuccess value) checkSuccess,
   }) {
     return stepperSuccess(this);
   }
@@ -1471,6 +1912,8 @@ class _$_StepperSuccess implements _StepperSuccess {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
   }) {
     return stepperSuccess?.call(this);
   }
@@ -1483,6 +1926,8 @@ class _$_StepperSuccess implements _StepperSuccess {
     TResult Function(_PreviousSuccess value)? previousSuccess,
     TResult Function(_FinishSuccess value)? finishSuccess,
     TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
     required TResult orElse(),
   }) {
     if (stepperSuccess != null) {
@@ -1498,5 +1943,333 @@ abstract class _StepperSuccess implements FormWizardState {
   int get index;
   @JsonKey(ignore: true)
   _$$_StepperSuccessCopyWith<_$_StepperSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_DropDownSuccessCopyWith<$Res> {
+  factory _$$_DropDownSuccessCopyWith(
+          _$_DropDownSuccess value, $Res Function(_$_DropDownSuccess) then) =
+      __$$_DropDownSuccessCopyWithImpl<$Res>;
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$_DropDownSuccessCopyWithImpl<$Res>
+    extends _$FormWizardStateCopyWithImpl<$Res>
+    implements _$$_DropDownSuccessCopyWith<$Res> {
+  __$$_DropDownSuccessCopyWithImpl(
+      _$_DropDownSuccess _value, $Res Function(_$_DropDownSuccess) _then)
+      : super(_value, (v) => _then(v as _$_DropDownSuccess));
+
+  @override
+  _$_DropDownSuccess get _value => super._value as _$_DropDownSuccess;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_$_DropDownSuccess(
+      value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_DropDownSuccess implements _DropDownSuccess {
+  const _$_DropDownSuccess(this.value);
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'FormWizardState.dropDownSuccess(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_DropDownSuccess &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_DropDownSuccessCopyWith<_$_DropDownSuccess> get copyWith =>
+      __$$_DropDownSuccessCopyWithImpl<_$_DropDownSuccess>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index, int clickCount) nextSuccess,
+    required TResult Function(int index) previousSuccess,
+    required TResult Function(bool isFinish) finishSuccess,
+    required TResult Function(int index) stepperSuccess,
+    required TResult Function(String value) dropDownSuccess,
+    required TResult Function(bool value) checkSuccess,
+  }) {
+    return dropDownSuccess(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index, int clickCount)? nextSuccess,
+    TResult Function(int index)? previousSuccess,
+    TResult Function(bool isFinish)? finishSuccess,
+    TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
+  }) {
+    return dropDownSuccess?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index, int clickCount)? nextSuccess,
+    TResult Function(int index)? previousSuccess,
+    TResult Function(bool isFinish)? finishSuccess,
+    TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
+    required TResult orElse(),
+  }) {
+    if (dropDownSuccess != null) {
+      return dropDownSuccess(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_NextSuccess value) nextSuccess,
+    required TResult Function(_PreviousSuccess value) previousSuccess,
+    required TResult Function(_FinishSuccess value) finishSuccess,
+    required TResult Function(_StepperSuccess value) stepperSuccess,
+    required TResult Function(_DropDownSuccess value) dropDownSuccess,
+    required TResult Function(_CheckSuccess value) checkSuccess,
+  }) {
+    return dropDownSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_NextSuccess value)? nextSuccess,
+    TResult Function(_PreviousSuccess value)? previousSuccess,
+    TResult Function(_FinishSuccess value)? finishSuccess,
+    TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
+  }) {
+    return dropDownSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_NextSuccess value)? nextSuccess,
+    TResult Function(_PreviousSuccess value)? previousSuccess,
+    TResult Function(_FinishSuccess value)? finishSuccess,
+    TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
+    required TResult orElse(),
+  }) {
+    if (dropDownSuccess != null) {
+      return dropDownSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _DropDownSuccess implements FormWizardState {
+  const factory _DropDownSuccess(final String value) = _$_DropDownSuccess;
+
+  String get value;
+  @JsonKey(ignore: true)
+  _$$_DropDownSuccessCopyWith<_$_DropDownSuccess> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_CheckSuccessCopyWith<$Res> {
+  factory _$$_CheckSuccessCopyWith(
+          _$_CheckSuccess value, $Res Function(_$_CheckSuccess) then) =
+      __$$_CheckSuccessCopyWithImpl<$Res>;
+  $Res call({bool value});
+}
+
+/// @nodoc
+class __$$_CheckSuccessCopyWithImpl<$Res>
+    extends _$FormWizardStateCopyWithImpl<$Res>
+    implements _$$_CheckSuccessCopyWith<$Res> {
+  __$$_CheckSuccessCopyWithImpl(
+      _$_CheckSuccess _value, $Res Function(_$_CheckSuccess) _then)
+      : super(_value, (v) => _then(v as _$_CheckSuccess));
+
+  @override
+  _$_CheckSuccess get _value => super._value as _$_CheckSuccess;
+
+  @override
+  $Res call({
+    Object? value = freezed,
+  }) {
+    return _then(_$_CheckSuccess(
+      value == freezed
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_CheckSuccess implements _CheckSuccess {
+  const _$_CheckSuccess(this.value);
+
+  @override
+  final bool value;
+
+  @override
+  String toString() {
+    return 'FormWizardState.checkSuccess(value: $value)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_CheckSuccess &&
+            const DeepCollectionEquality().equals(other.value, value));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_CheckSuccessCopyWith<_$_CheckSuccess> get copyWith =>
+      __$$_CheckSuccessCopyWithImpl<_$_CheckSuccess>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(int index, int clickCount) nextSuccess,
+    required TResult Function(int index) previousSuccess,
+    required TResult Function(bool isFinish) finishSuccess,
+    required TResult Function(int index) stepperSuccess,
+    required TResult Function(String value) dropDownSuccess,
+    required TResult Function(bool value) checkSuccess,
+  }) {
+    return checkSuccess(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index, int clickCount)? nextSuccess,
+    TResult Function(int index)? previousSuccess,
+    TResult Function(bool isFinish)? finishSuccess,
+    TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
+  }) {
+    return checkSuccess?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(int index, int clickCount)? nextSuccess,
+    TResult Function(int index)? previousSuccess,
+    TResult Function(bool isFinish)? finishSuccess,
+    TResult Function(int index)? stepperSuccess,
+    TResult Function(String value)? dropDownSuccess,
+    TResult Function(bool value)? checkSuccess,
+    required TResult orElse(),
+  }) {
+    if (checkSuccess != null) {
+      return checkSuccess(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_NextSuccess value) nextSuccess,
+    required TResult Function(_PreviousSuccess value) previousSuccess,
+    required TResult Function(_FinishSuccess value) finishSuccess,
+    required TResult Function(_StepperSuccess value) stepperSuccess,
+    required TResult Function(_DropDownSuccess value) dropDownSuccess,
+    required TResult Function(_CheckSuccess value) checkSuccess,
+  }) {
+    return checkSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_NextSuccess value)? nextSuccess,
+    TResult Function(_PreviousSuccess value)? previousSuccess,
+    TResult Function(_FinishSuccess value)? finishSuccess,
+    TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
+  }) {
+    return checkSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_NextSuccess value)? nextSuccess,
+    TResult Function(_PreviousSuccess value)? previousSuccess,
+    TResult Function(_FinishSuccess value)? finishSuccess,
+    TResult Function(_StepperSuccess value)? stepperSuccess,
+    TResult Function(_DropDownSuccess value)? dropDownSuccess,
+    TResult Function(_CheckSuccess value)? checkSuccess,
+    required TResult orElse(),
+  }) {
+    if (checkSuccess != null) {
+      return checkSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckSuccess implements FormWizardState {
+  const factory _CheckSuccess(final bool value) = _$_CheckSuccess;
+
+  bool get value;
+  @JsonKey(ignore: true)
+  _$$_CheckSuccessCopyWith<_$_CheckSuccess> get copyWith =>
       throw _privateConstructorUsedError;
 }

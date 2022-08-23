@@ -17,6 +17,10 @@ class FormWizardBloc extends Bloc<FormWizardEvent, FormWizardState> {
         emit(FormWizardState.finishSuccess(event.isFinish));
       } else if (event is _StepperClick) {
         emit(FormWizardState.stepperSuccess(event.index));
+      } else if (event is _DropDown) {
+        emit(FormWizardState.dropDownSuccess(event.value));
+      } else if (event is _Check) {
+        emit(FormWizardState.checkSuccess(event.value));
       }
     });
   }

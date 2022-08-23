@@ -15,10 +15,40 @@ class WizardForm extends StatefulWidget {
 
 class _WizardFormState extends State<WizardForm> {
   final FormWizardBloc _formWizardBloc = FormWizardBloc();
-
+  final List<TextEditingController> _controllerList = [
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+    TextEditingController(),
+  ];
+  final TextEditingController _cardController = TextEditingController();
+  final List<String> _cardList = [
+    'American Express',
+    'Visa',
+    'MasterCard',
+    'Discover'
+  ];
   int index = 0;
   int clickCount = 0;
   bool isFinish = false;
+  bool _isCheck = false;
+  String? _dropDownValue;
 
   @override
   Widget build(BuildContext context) {
@@ -181,25 +211,11 @@ class _WizardFormState extends State<WizardForm> {
                               ],
                             ),
                   FxBox.h24,
-                  Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(child: _commonTitle('Contact Person')),
-                          FxBox.w16,
-                          Expanded(
-                              flex: 4,
-                              child: _commonTextField('Enter your name')),
-                          FxBox.w48,
-                          Expanded(child: _commonTitle('Mobile No.')),
-                          FxBox.w16,
-                          Expanded(
-                              flex: 4,
-                              child: _commonTextField('Enter your number')),
-                        ],
-                      )
-                    ],
-                  ),
+                  if (index == 0) _sellerDetailData(),
+                  if (index == 1) _companyDocumentsData(),
+                  if (index == 2) _bankDetailsData(),
+                  if (index == 3) _confirmDetailData(),
+                  FxBox.h24,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -326,17 +342,20 @@ class _WizardFormState extends State<WizardForm> {
     }
   }
 
-  Widget _commonTitle(String text) {
+  Widget _commonTitle(String text, {TextAlign? textAlign}) {
     return Text(
       text,
+      textAlign: textAlign,
       style: const TextStyle(
         fontWeight: FontWeight.w500,
       ),
     );
   }
 
-  Widget _commonTextField(String hintText, {int? maxLines = 1}) {
+  Widget _commonTextField(String hintText, TextEditingController controller,
+      {int? maxLines = 1}) {
     return CustomTextField(
+      controller: controller,
       maxLines: maxLines,
       border: const OutlineInputBorder(),
       hintText: hintText,
@@ -345,6 +364,616 @@ class _WizardFormState extends State<WizardForm> {
         horizontal: 15,
         vertical: 12,
       ),
+    );
+  }
+
+  Widget _sellerDetailData() {
+    return Responsive.isWeb(context)
+        ? Column(
+            children: [
+              _dataViewWebCommon(
+                'Contact Person',
+                'Enter your name',
+                'Mobile No.',
+                'Enter your number',
+                null,
+                _controllerList[0],
+                _controllerList[1],
+              ),
+              FxBox.h24,
+              _dataViewWebCommon(
+                'Landline No.',
+                'Enter your number',
+                'Email Address',
+                'Enter your email',
+                null,
+                _controllerList[2],
+                _controllerList[3],
+              ),
+              FxBox.h24,
+              _dataViewWebCommon(
+                'Address 1',
+                'Enter your first address',
+                'Warehouse Address',
+                'Enter your second address',
+                3,
+                _controllerList[4],
+                _controllerList[5],
+              ),
+              FxBox.h24,
+              _dataViewWebCommon(
+                'Company Type',
+                'Enter your company name',
+                'Live Market A/C',
+                'Enter A/C number',
+                null,
+                _controllerList[6],
+                _controllerList[7],
+              ),
+              FxBox.h24,
+              _dataViewWebCommon(
+                'Product Category',
+                '',
+                'Product Sub Category',
+                '',
+                null,
+                _controllerList[8],
+                _controllerList[9],
+              ),
+            ],
+          )
+        : Responsive.isTablet(context)
+            ? Column(
+                children: [
+                  _dataViewTabCommon(
+                    'Contact Person',
+                    'Enter your name',
+                    'Mobile No.',
+                    'Enter your number',
+                    null,
+                    _controllerList[0],
+                    _controllerList[1],
+                  ),
+                  FxBox.h24,
+                  _dataViewTabCommon(
+                    'Landline No.',
+                    'Enter your number',
+                    'Email Address',
+                    'Enter your email',
+                    null,
+                    _controllerList[2],
+                    _controllerList[3],
+                  ),
+                  FxBox.h24,
+                  _dataViewTabCommon(
+                    'Address 1',
+                    'Enter your first address',
+                    'Warehouse Address',
+                    'Enter your second address',
+                    3,
+                    _controllerList[4],
+                    _controllerList[5],
+                  ),
+                  FxBox.h24,
+                  _dataViewTabCommon(
+                    'Company Type',
+                    'Enter your company name',
+                    'Live Market A/C',
+                    'Enter A/C number',
+                    null,
+                    _controllerList[6],
+                    _controllerList[7],
+                  ),
+                  FxBox.h24,
+                  _dataViewTabCommon(
+                    'Product Category',
+                    '',
+                    'Product Sub Category',
+                    '',
+                    null,
+                    _controllerList[8],
+                    _controllerList[9],
+                  )
+                ],
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _commonTitle('Contact Person'),
+                  FxBox.h8,
+                  _commonTextField('Enter your name', _controllerList[0]),
+                  FxBox.h24,
+                  _commonTitle('Mobile No.'),
+                  FxBox.h8,
+                  _commonTextField('Enter your number', _controllerList[1]),
+                  FxBox.h24,
+                  _commonTitle('Landline No.'),
+                  FxBox.h8,
+                  _commonTextField('Enter your number', _controllerList[2]),
+                  FxBox.h24,
+                  _commonTitle('Email Address'),
+                  FxBox.h8,
+                  _commonTextField('Enter your email', _controllerList[3]),
+                  FxBox.h24,
+                  _commonTitle('Address 1'),
+                  FxBox.h8,
+                  _commonTextField(
+                    'Enter your first address',
+                    _controllerList[4],
+                    maxLines: 3,
+                  ),
+                  FxBox.h24,
+                  _commonTitle('Warehouse Address'),
+                  FxBox.h8,
+                  _commonTextField(
+                    'Enter your second address',
+                    _controllerList[5],
+                    maxLines: 3,
+                  ),
+                  FxBox.h24,
+                  _commonTitle('Company Type'),
+                  FxBox.h8,
+                  _commonTextField(
+                    'Enter your company name',
+                    _controllerList[6],
+                  ),
+                  FxBox.h24,
+                  _commonTitle('Live Market A/C'),
+                  FxBox.h8,
+                  _commonTextField(
+                    'Enter A/C number',
+                    _controllerList[7],
+                  ),
+                  FxBox.h24,
+                  _commonTitle('Product Category'),
+                  FxBox.h8,
+                  _commonTextField(
+                    '',
+                    _controllerList[8],
+                  ),
+                  FxBox.h24,
+                  _commonTitle('Product Sub Category'),
+                  FxBox.h8,
+                  _commonTextField(
+                    '',
+                    _controllerList[9],
+                  ),
+                ],
+              );
+  }
+
+  Widget _companyDocumentsData() {
+    return Responsive.isWeb(context)
+        ? Column(
+            children: [
+              _dataViewWebCommon(
+                'PAN Card',
+                'Enter pancard number',
+                'VAT/TIN No.',
+                'Enter tin number',
+                null,
+                _controllerList[10],
+                _controllerList[11],
+              ),
+              FxBox.h24,
+              _dataViewWebCommon(
+                'CST No.',
+                'Enter cst number',
+                'Service Tax No.',
+                'Service tix number',
+                null,
+                _controllerList[12],
+                _controllerList[13],
+              ),
+              FxBox.h24,
+              _dataViewWebCommon(
+                'Company UIN',
+                'Enter uin pin',
+                'Declaration',
+                '',
+                null,
+                _controllerList[14],
+                _controllerList[15],
+              ),
+            ],
+          )
+        : Responsive.isTablet(context)
+            ? Column(
+                children: [
+                  _dataViewTabCommon(
+                    'PAN Card',
+                    'Enter pancard number',
+                    'VAT/TIN No.',
+                    'Enter tin number',
+                    null,
+                    _controllerList[10],
+                    _controllerList[11],
+                  ),
+                  FxBox.h24,
+                  _dataViewTabCommon(
+                    'CST No.',
+                    'Enter cst number',
+                    'Service Tax No.',
+                    'Service tix number',
+                    null,
+                    _controllerList[12],
+                    _controllerList[13],
+                  ),
+                  FxBox.h24,
+                  _dataViewTabCommon(
+                    'Company UIN',
+                    'Enter uin pin',
+                    'Declaration',
+                    '',
+                    null,
+                    _controllerList[14],
+                    _controllerList[15],
+                  ),
+                ],
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _commonTitle('PAN Card'),
+                  FxBox.h8,
+                  _commonTextField('Enter pancard number', _controllerList[10]),
+                  FxBox.h24,
+                  _commonTitle('VAT/TIN No.'),
+                  FxBox.h8,
+                  _commonTextField('Enter tin number', _controllerList[11]),
+                  FxBox.h24,
+                  _commonTitle('CST No.'),
+                  FxBox.h8,
+                  _commonTextField('Enter cst number', _controllerList[12]),
+                  FxBox.h24,
+                  _commonTitle('Service Tax No.'),
+                  FxBox.h8,
+                  _commonTextField('Service tix number', _controllerList[13]),
+                  FxBox.h24,
+                  _commonTitle('Company UIN'),
+                  FxBox.h8,
+                  _commonTextField('Enter uin pin', _controllerList[14]),
+                  FxBox.h24,
+                  _commonTitle('Declaration'),
+                  FxBox.h8,
+                  _commonTextField('', _controllerList[15]),
+                ],
+              );
+  }
+
+  Widget _bankDetailsData() {
+    return Responsive.isWeb(context)
+        ? Column(
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: _commonTitle(
+                      'Name on Card',
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                  FxBox.w16,
+                  Expanded(
+                      flex: 4,
+                      child: _commonTextField(
+                        'Enter card name',
+                        _controllerList[16],
+                      )),
+                  FxBox.w24,
+                  Expanded(
+                    child: _commonTitle(
+                      'Credit Card Type',
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                  FxBox.w16,
+                  Expanded(flex: 4, child: _creditCardTextField())
+                ],
+              ),
+              FxBox.h24,
+              _dataViewWebCommon(
+                  'Credit Card Number',
+                  'Enter credit card number',
+                  'Card Verification Number',
+                  'Enter verification number',
+                  null,
+                  _controllerList[17],
+                  _controllerList[18]),
+              FxBox.h24,
+              Row(
+                children: [
+                  Expanded(
+                    child: _commonTitle(
+                      'Expiration Date',
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                  FxBox.w16,
+                  Expanded(
+                      flex: 4,
+                      child: _commonTextField(
+                        'DD /MM /YYYY',
+                        _controllerList[19],
+                      )),
+                  FxBox.w24,
+                  const Expanded(child: SizedBox()),
+                  FxBox.w16,
+                  const Expanded(flex: 4, child: SizedBox()),
+                ],
+              ),
+            ],
+          )
+        : Responsive.isTablet(context)
+            ? Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            _commonTitle('Name on Card'),
+                            FxBox.h8,
+                            _commonTextField(
+                              'Enter card name',
+                              _controllerList[16],
+                            )
+                          ],
+                        ),
+                      ),
+                      FxBox.w24,
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            _commonTitle('Credit Card Type'),
+                            FxBox.h8,
+                            _creditCardTextField(),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                  FxBox.h24,
+                  _dataViewTabCommon(
+                    'Credit Card Number',
+                    'Enter credit card number',
+                    'Card Verification Number',
+                    'Enter verification number',
+                    null,
+                    _controllerList[17],
+                    _controllerList[18],
+                  ),
+                  FxBox.h24,
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            _commonTitle('Expiration Date'),
+                            FxBox.h8,
+                            _commonTextField(
+                              'DD /MM /YYYY',
+                              _controllerList[19],
+                            )
+                          ],
+                        ),
+                      ),
+                      FxBox.w24,
+                      Expanded(
+                          child: Column(
+                        children: [
+                          const SizedBox(),
+                          FxBox.h8,
+                          const SizedBox(),
+                        ],
+                      ))
+                    ],
+                  )
+                ],
+              )
+            : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _commonTitle('Name on Card'),
+                  FxBox.h8,
+                  _commonTextField('Enter card number', _controllerList[16]),
+                  FxBox.h24,
+                  _commonTitle('Credit Card Type'),
+                  FxBox.h8,
+                  _creditCardTextField(),
+                  FxBox.h24,
+                  _commonTitle('Credit Card Number'),
+                  FxBox.h8,
+                  _commonTextField(
+                      'Enter credit card number', _controllerList[17]),
+                  FxBox.h24,
+                  _commonTitle('Card Verification Number'),
+                  FxBox.h8,
+                  _commonTextField(
+                      'Enter verification number', _controllerList[18]),
+                  FxBox.h24,
+                  _commonTitle('Expiration Date'),
+                  FxBox.h8,
+                  _commonTextField('DD /MM/ YYYY', _controllerList[19]),
+                ],
+              );
+  }
+
+  Widget _confirmDetailData() {
+    return Column(
+      children: [
+        FxBox.h24,
+        Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Row(
+            children: [
+              BlocBuilder<FormWizardBloc, FormWizardState>(
+                builder: (context, state) {
+                  state.whenOrNull(
+                    checkSuccess: (value) {
+                      _isCheck = value;
+                    },
+                  );
+                  return SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: Checkbox(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      ),
+                      value: _isCheck,
+                      onChanged: (value) {
+                        _formWizardBloc.add(FormWizardEvent.check(value!));
+                      },
+                    ),
+                  );
+                },
+              ),
+              FxBox.w8,
+              const Expanded(
+                child: Text(
+                  'I agree with the Terms and Conditions.',
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
+              )
+            ],
+          ),
+        ),
+        FxBox.h24,
+      ],
+    );
+  }
+
+  Widget _dataViewWebCommon(
+    String title1,
+    String hint1,
+    String title2,
+    String hint2,
+    int? maxLines,
+    TextEditingController controller1,
+    TextEditingController controller2,
+  ) {
+    return Row(
+      crossAxisAlignment:
+          maxLines == 3 ? CrossAxisAlignment.start : CrossAxisAlignment.center,
+      children: [
+        Expanded(
+          child: _commonTitle(
+            title1,
+            textAlign: TextAlign.end,
+          ),
+        ),
+        FxBox.w16,
+        Expanded(
+            flex: 4,
+            child: _commonTextField(
+              hint1,
+              controller1,
+              maxLines: maxLines,
+            )),
+        FxBox.w24,
+        Expanded(
+            child: _commonTitle(
+          title2,
+          textAlign: TextAlign.end,
+        )),
+        FxBox.w16,
+        Expanded(
+            flex: 4,
+            child: _commonTextField(
+              hint2,
+              controller2,
+              maxLines: maxLines,
+            )),
+      ],
+    );
+  }
+
+  Widget _dataViewTabCommon(
+    String title1,
+    String hint1,
+    String title2,
+    String hint2,
+    int? maxLines,
+    TextEditingController controller1,
+    TextEditingController controller2,
+  ) {
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              _commonTitle(title1),
+              FxBox.h8,
+              _commonTextField(hint1, controller1, maxLines: maxLines)
+            ],
+          ),
+        ),
+        FxBox.w24,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              _commonTitle(title2),
+              FxBox.h8,
+              _commonTextField(hint2, controller2, maxLines: maxLines),
+            ],
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _creditCardTextField() {
+    return BlocConsumer<FormWizardBloc, FormWizardState>(
+      listener: (context, state) {
+        state.whenOrNull(
+          dropDownSuccess: (value) {
+            _dropDownValue = value;
+            _cardController.text = value;
+          },
+        );
+      },
+      builder: (context, state) {
+        return CustomTextField(
+          suffixIcon: DropdownButtonHideUnderline(
+            child: ButtonTheme(
+              alignedDropdown: true,
+              child: DropdownButton(
+                hint: const Text('--Please Select--'),
+                borderRadius: BorderRadius.circular(4),
+                elevation: 0,
+                isExpanded: true,
+                isDense: true,
+                focusColor: ColorConst.transparent,
+                value: _dropDownValue,
+                items: _cardList.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  _formWizardBloc
+                      .add(FormWizardEvent.dropDown(value.toString()));
+                },
+              ),
+            ),
+          ),
+          controller: _cardController,
+          border: const OutlineInputBorder(),
+          isDense: true,
+          readOnly: true,
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: 15,
+            vertical: 12,
+          ),
+        );
+      },
     );
   }
 }

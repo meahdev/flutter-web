@@ -7,4 +7,6 @@ class FormWizardEvent with _$FormWizardEvent {
   const factory FormWizardEvent.previousClick(int index) = _PreviousClick;
   const factory FormWizardEvent.finishClick(bool isFinish) = _FinishClick;
   const factory FormWizardEvent.stepperClick(int index) = _StepperClick;
+  const factory FormWizardEvent.dropDown(String value) = _DropDown;
+  const factory FormWizardEvent.check(bool value) = _Check;
 }
