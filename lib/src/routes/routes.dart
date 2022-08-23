@@ -14,6 +14,10 @@ import 'package:admin_dashboard/src/views/charts/chartist.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/menu_bar.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
+import 'package:admin_dashboard/src/views/tables/basic_table.dart';
+import 'package:admin_dashboard/src/views/tables/data_tables.dart';
+import 'package:admin_dashboard/src/views/tables/editable_table.dart';
+import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
 import 'package:admin_dashboard/src/views/ui_elements/badge/badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
@@ -30,7 +34,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'loaders'),
+        RedirectRoute(path: '', redirectTo: 'editable-table'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),
@@ -45,6 +49,10 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'morris-chart', page: MorrisChart),
         AutoRoute(path: 'chartlist-chart', page: ChartListChart),
         AutoRoute(path: 'chartjs-chart', page: ChartJsChart),
+        AutoRoute(path: 'basic-table', page: BasicTable),
+        AutoRoute(path: 'data-table', page: Datatable),
+        AutoRoute(path: 'responsive-table', page: ResponsiveTable),
+        AutoRoute(path: 'editable-table', page: EditableTable),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

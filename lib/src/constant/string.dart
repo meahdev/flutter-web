@@ -28,7 +28,8 @@ class Strings {
   static const String calender = 'Calender';
   static const String textEditor = 'Text Editor';
   static const String uiElements = 'UI Elements';
-  static const String chart = 'Charts';
+  static const String charts = 'Charts';
+  static const String tables = 'Tables';
   static const String authentication = 'Authentication';
   static const String emailTemplates = 'Email Templates';
 
@@ -42,6 +43,17 @@ class Strings {
   static const String loader = 'Loaders';
   static const String cupertinoIcons = 'Cupertino Icons';
   static const String latestTransaction = 'Latest Transaction';
+
+  // charts option
+  static const String morrisChart = 'Morris Chart';
+  static const String chartistChart = 'Chartist Chart';
+  static const String chartJsChart = 'ChartJs Chart';
+
+  // tables option
+  static const String basicTable = 'Basic Table';
+  static const String dataTable = 'Data Table';
+  static const String responsiveTable = 'Responsive Table';
+  static const String editableTable = 'Editable Table';
 
   // authentication option
   static const String loginOne = 'Login 1';

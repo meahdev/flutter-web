@@ -46,8 +46,8 @@ class _LoadersState extends State<Loaders> {
             widget: const FxLoader.spinningLinesLoader(
               duration: Duration(milliseconds: 3000),
               color: ColorConst.chartColorBlue,
-              itemCount: 5,
-              size: 70,
+              itemCount: 3,
+              size: 50,
               lineWidth: 2,
             ),
           ),

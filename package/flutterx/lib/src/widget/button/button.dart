@@ -24,6 +24,7 @@ class FxButton extends StatelessWidget {
   final bool autofocus;
   final String? text;
   final Color? textColor;
+  final Color? hoverTextColor;
   final FontWeight? textWeight;
   final bool enableFeedback;
   final EdgeInsetsGeometry? padding;
@@ -50,6 +51,7 @@ class FxButton extends StatelessWidget {
     this.focusNode,
     this.text,
     this.textColor,
+    this.hoverTextColor,
     this.textWeight,
     this.enableFeedback = true,
     this.padding = const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
@@ -63,38 +65,6 @@ class FxButton extends StatelessWidget {
         assert(text != null || icon != null),
         assert(elevation == null || elevation >= 0.0),
         assert(hoverElevation == null || hoverElevation >= 0.0),
-        super(key: key);
-
-  const FxButton.whatsApp({
-    Key? key,
-    this.fullWidth = false,
-    this.icon = const Icon(Icons.whatsapp_rounded),
-    this.isOutlineButton = false,
-    this.borderWidth = 1.0,
-    this.borderRadius = 52.0,
-    required this.onPressed,
-    this.onLongPress,
-    this.onHighlightChanged,
-    this.mouseCursor,
-    this.minWidth,
-    this.height,
-    this.autofocus = false,
-    this.focusNode,
-    this.text = 'WhatsApp',
-    this.textWeight,
-    this.enableFeedback = true,
-    this.padding = const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
-    this.elevation,
-    this.hoverElevation,
-  })  : assert((fullWidth && minWidth == null) ||
-            (!fullWidth && minWidth != null) ||
-            (!fullWidth && minWidth == null)),
-        assert(elevation == null || elevation >= 0.0),
-        assert(hoverElevation == null || hoverElevation >= 0.0),
-        buttonType = null,
-        color = FxColor.whatsApp,
-        hoverColor = FxColor.whatsAppDark,
-        textColor = null,
         super(key: key);
 
   @override
@@ -139,7 +109,7 @@ class FxButton extends StatelessWidget {
                   : minWidth,
           height: text == null ? 56.0 : height,
           textColor: isHover
-              ? textColor ??
+              ? hoverTextColor ??
                   _getHoverFontColor(colorScheme, buttonType, isOutlineButton)
               : textColor ??
                   _getFontColor(colorScheme, buttonType, isOutlineButton),

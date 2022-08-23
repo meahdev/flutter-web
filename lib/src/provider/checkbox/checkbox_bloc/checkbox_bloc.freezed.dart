@@ -35,17 +35,17 @@ mixin _$CheckboxEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StartCheckbox value) started,
+    required TResult Function(_Started value) started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_StartCheckbox value)? started,
+    TResult Function(_Started value)? started,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StartCheckbox value)? started,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -86,31 +86,29 @@ class _$CheckboxEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_StartCheckboxCopyWith<$Res>
+abstract class _$$_StartedCopyWith<$Res>
     implements $CheckboxEventCopyWith<$Res> {
-  factory _$$_StartCheckboxCopyWith(
-          _$_StartCheckbox value, $Res Function(_$_StartCheckbox) then) =
-      __$$_StartCheckboxCopyWithImpl<$Res>;
+  factory _$$_StartedCopyWith(
+          _$_Started value, $Res Function(_$_Started) then) =
+      __$$_StartedCopyWithImpl<$Res>;
   @override
   $Res call({bool isChecked});
 }
 
 /// @nodoc
-class __$$_StartCheckboxCopyWithImpl<$Res>
-    extends _$CheckboxEventCopyWithImpl<$Res>
-    implements _$$_StartCheckboxCopyWith<$Res> {
-  __$$_StartCheckboxCopyWithImpl(
-      _$_StartCheckbox _value, $Res Function(_$_StartCheckbox) _then)
-      : super(_value, (v) => _then(v as _$_StartCheckbox));
+class __$$_StartedCopyWithImpl<$Res> extends _$CheckboxEventCopyWithImpl<$Res>
+    implements _$$_StartedCopyWith<$Res> {
+  __$$_StartedCopyWithImpl(_$_Started _value, $Res Function(_$_Started) _then)
+      : super(_value, (v) => _then(v as _$_Started));
 
   @override
-  _$_StartCheckbox get _value => super._value as _$_StartCheckbox;
+  _$_Started get _value => super._value as _$_Started;
 
   @override
   $Res call({
     Object? isChecked = freezed,
   }) {
-    return _then(_$_StartCheckbox(
+    return _then(_$_Started(
       isChecked: isChecked == freezed
           ? _value.isChecked
           : isChecked // ignore: cast_nullable_to_non_nullable
@@ -121,8 +119,8 @@ class __$$_StartCheckboxCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_StartCheckbox implements _StartCheckbox {
-  const _$_StartCheckbox({required this.isChecked});
+class _$_Started implements _Started {
+  const _$_Started({required this.isChecked});
 
   @override
   final bool isChecked;
@@ -136,7 +134,7 @@ class _$_StartCheckbox implements _StartCheckbox {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StartCheckbox &&
+            other is _$_Started &&
             const DeepCollectionEquality().equals(other.isChecked, isChecked));
   }
 
@@ -146,8 +144,8 @@ class _$_StartCheckbox implements _StartCheckbox {
 
   @JsonKey(ignore: true)
   @override
-  _$$_StartCheckboxCopyWith<_$_StartCheckbox> get copyWith =>
-      __$$_StartCheckboxCopyWithImpl<_$_StartCheckbox>(this, _$identity);
+  _$$_StartedCopyWith<_$_Started> get copyWith =>
+      __$$_StartedCopyWithImpl<_$_Started>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -180,7 +178,7 @@ class _$_StartCheckbox implements _StartCheckbox {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StartCheckbox value) started,
+    required TResult Function(_Started value) started,
   }) {
     return started(this);
   }
@@ -188,7 +186,7 @@ class _$_StartCheckbox implements _StartCheckbox {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_StartCheckbox value)? started,
+    TResult Function(_Started value)? started,
   }) {
     return started?.call(this);
   }
@@ -196,7 +194,7 @@ class _$_StartCheckbox implements _StartCheckbox {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_StartCheckbox value)? started,
+    TResult Function(_Started value)? started,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -206,15 +204,14 @@ class _$_StartCheckbox implements _StartCheckbox {
   }
 }
 
-abstract class _StartCheckbox implements CheckboxEvent {
-  const factory _StartCheckbox({required final bool isChecked}) =
-      _$_StartCheckbox;
+abstract class _Started implements CheckboxEvent {
+  const factory _Started({required final bool isChecked}) = _$_Started;
 
   @override
   bool get isChecked;
   @override
   @JsonKey(ignore: true)
-  _$$_StartCheckboxCopyWith<_$_StartCheckbox> get copyWith =>
+  _$$_StartedCopyWith<_$_Started> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

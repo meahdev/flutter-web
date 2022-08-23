@@ -14,6 +14,7 @@ class IconlyBroken {
   static const String drawer = '${_assetPath}category.svg';
   static const String arrowDown = '${_assetPath}arrow-down-2.svg';
   static const String successCircle = '${_assetPath}checkbox-circle.svg';
-  static const String chart = '${_assetPath}chart-pie.svg';
+  static const String charts = '${_assetPath}chart-pie.svg';
   static const String emailTemplate = '${_assetPath}sms.svg';
+  static const String tables = '${_assetPath}grid-2.svg';
 }

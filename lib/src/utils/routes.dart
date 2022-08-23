@@ -1,30 +1,40 @@
+import 'package:admin_dashboard/src/constant/string.dart';
+
 int getRouteIndex(String route) {
-  if (route == 'Buttons') {
+  if (route == Strings.buttons) {
     return 1;
-  } else if (route == 'Rating') {
+  } else if (route == Strings.rating) {
     return 2;
-  } else if (route == 'Badge') {
+  } else if (route == Strings.badge) {
     return 3;
-  } else if (route == 'Toast') {
+  } else if (route == Strings.toast) {
     return 4;
-  } else if (route == 'Alert Dialog') {
+  } else if (route == Strings.alertDialog) {
     return 5;
-  } else if (route == 'Modal') {
+  } else if (route == Strings.modal) {
     return 6;
-  } else if (route == 'Basic Action Email') {
+  } else if (route == Strings.basicActionEmail) {
     return 7;
-  } else if (route == 'Alert Email') {
+  } else if (route == Strings.alertEmail) {
     return 8;
-  } else if (route == 'Billing Email') {
+  } else if (route == Strings.billingEmail) {
     return 9;
-  } else if (route == 'Loaders') {
+  } else if (route == Strings.loader) {
     return 10;
-  } else if (route == 'Morris Chart') {
+  } else if (route == Strings.morrisChart) {
     return 11;
-  } else if (route == 'Chartist chart') {
+  } else if (route == Strings.chartistChart) {
     return 12;
-  } else if (route == 'ChartJs chart') {
+  } else if (route == Strings.chartJsChart) {
     return 13;
+  } else if (route == Strings.basicTable) {
+    return 14;
+  } else if (route == Strings.dataTable) {
+    return 15;
+  } else if (route == Strings.responsiveTable) {
+    return 16;
+  } else if (route == Strings.editableTable) {
+    return 17;
   } else {
     return 0;
   }

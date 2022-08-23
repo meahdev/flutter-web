@@ -34,7 +34,8 @@ class _MenuBarState extends State<MenuBar> {
 
   Map<String, String> componentData = {
     Strings.uiElements: IconlyBroken.box,
-    Strings.chart: IconlyBroken.chart,
+    Strings.charts: IconlyBroken.charts,
+    Strings.tables: IconlyBroken.tables,
   };
 
   Map<String, String> extrasData = {
@@ -52,7 +53,13 @@ class _MenuBarState extends State<MenuBar> {
       Strings.modal,
       Strings.loader
     ],
-    ['Morris Chart','Chartist chart','ChartJs chart']
+    [Strings.morrisChart, Strings.chartistChart, Strings.chartJsChart],
+    [
+      Strings.basicTable,
+      Strings.dataTable,
+      Strings.responsiveTable,
+      Strings.editableTable,
+    ],
   ];
 
   List<List<String>> extrasExpandList = [
@@ -88,6 +95,10 @@ class _MenuBarState extends State<MenuBar> {
     MorrisChart(),
     ChartListChart(),
     ChartJsChart(),
+    BasicTable(),
+    Datatable(),
+    ResponsiveTable(),
+    EditableTable(),
   ];
 
   @override
