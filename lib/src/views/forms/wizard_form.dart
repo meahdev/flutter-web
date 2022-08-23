@@ -44,9 +44,9 @@ class _WizardFormState extends State<WizardForm> {
     'MasterCard',
     'Discover'
   ];
-  int index = 0;
-  int clickCount = 0;
-  bool isFinish = false;
+  int _index = 0;
+  int _clickCount = 0;
+  bool _isFinish = false;
   bool _isCheck = false;
   String? _dropDownValue;
 
@@ -58,17 +58,17 @@ class _WizardFormState extends State<WizardForm> {
         listener: (context, state) {
           state.whenOrNull(
             nextSuccess: (nextIndex, clickCounter) {
-              index = nextIndex;
-              clickCount = clickCounter;
+              _index = nextIndex;
+              _clickCount = clickCounter;
             },
             finishSuccess: (isFinished) {
-              isFinish = isFinished;
+              _isFinish = isFinished;
             },
             previousSuccess: (previousIndex) {
-              index = previousIndex;
+              _index = previousIndex;
             },
             stepperSuccess: (stepperIndex) {
-              index = stepperIndex;
+              _index = stepperIndex;
             },
           );
         },
@@ -94,29 +94,44 @@ class _WizardFormState extends State<WizardForm> {
                               child: GestureDetector(
                                 onTap: _selleronTap,
                                 child: _stepperTitle(
-                                    '1.', 'Seller Deatils', index),
+                                  '1.',
+                                  'Seller Deatils',
+                                  _index,
+                                ),
                               ),
                             ),
                             FxBox.w8,
                             Expanded(
                               child: GestureDetector(
-                                  onTap: _companyonTap,
-                                  child: _stepperTitle(
-                                      '2.', 'Company Document', index)),
+                                onTap: _companyonTap,
+                                child: _stepperTitle(
+                                  '2.',
+                                  'Company Document',
+                                  _index,
+                                ),
+                              ),
                             ),
                             FxBox.w8,
                             Expanded(
                               child: GestureDetector(
-                                  onTap: _bankonTap,
-                                  child: _stepperTitle(
-                                      '3.', 'Bank Deatils', index)),
+                                onTap: _bankonTap,
+                                child: _stepperTitle(
+                                  '3.',
+                                  'Bank Deatils',
+                                  _index,
+                                ),
+                              ),
                             ),
                             FxBox.w8,
                             Expanded(
                               child: GestureDetector(
-                                  onTap: _confirmonTap,
-                                  child: _stepperTitle(
-                                      '4.', 'Confirm Deatil', index)),
+                                onTap: _confirmonTap,
+                                child: _stepperTitle(
+                                  '4.',
+                                  'Confirm Deatil',
+                                  _index,
+                                ),
+                              ),
                             ),
                           ],
                         )
@@ -131,19 +146,20 @@ class _WizardFormState extends State<WizardForm> {
                                         child: _stepperTitle(
                                           '1.',
                                           'Seller Deatils',
-                                          index,
+                                          _index,
                                         ),
                                       ),
                                     ),
                                     FxBox.w8,
                                     Expanded(
                                       child: GestureDetector(
-                                          onTap: _companyonTap,
-                                          child: _stepperTitle(
-                                            '2.',
-                                            'Company Document',
-                                            index,
-                                          )),
+                                        onTap: _companyonTap,
+                                        child: _stepperTitle(
+                                          '2.',
+                                          'Company Document',
+                                          _index,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -152,9 +168,13 @@ class _WizardFormState extends State<WizardForm> {
                                   children: [
                                     Expanded(
                                       child: GestureDetector(
-                                          onTap: _bankonTap,
-                                          child: _stepperTitle(
-                                              '3.', 'Bank Deatils', index)),
+                                        onTap: _bankonTap,
+                                        child: _stepperTitle(
+                                          '3.',
+                                          'Bank Deatils',
+                                          _index,
+                                        ),
+                                      ),
                                     ),
                                     FxBox.w8,
                                     Expanded(
@@ -163,7 +183,7 @@ class _WizardFormState extends State<WizardForm> {
                                         child: _stepperTitle(
                                           '4.',
                                           'Confirm Deatil',
-                                          index,
+                                          _index,
                                         ),
                                       ),
                                     ),
@@ -178,7 +198,7 @@ class _WizardFormState extends State<WizardForm> {
                                   child: _stepperTitle(
                                     '1.',
                                     'Seller Deatils',
-                                    index,
+                                    _index,
                                   ),
                                 ),
                                 FxBox.h8,
@@ -187,7 +207,7 @@ class _WizardFormState extends State<WizardForm> {
                                   child: _stepperTitle(
                                     '2.',
                                     'Company Document',
-                                    index,
+                                    _index,
                                   ),
                                 ),
                                 FxBox.h8,
@@ -196,7 +216,7 @@ class _WizardFormState extends State<WizardForm> {
                                   child: _stepperTitle(
                                     '3.',
                                     'Bank Deatils',
-                                    index,
+                                    _index,
                                   ),
                                 ),
                                 FxBox.h8,
@@ -205,31 +225,33 @@ class _WizardFormState extends State<WizardForm> {
                                   child: _stepperTitle(
                                     '4.',
                                     'Confirm Deatil',
-                                    index,
+                                    _index,
                                   ),
                                 ),
                               ],
                             ),
                   FxBox.h24,
-                  if (index == 0) _sellerDetailData(),
-                  if (index == 1) _companyDocumentsData(),
-                  if (index == 2) _bankDetailsData(),
-                  if (index == 3) _confirmDetailData(),
+                  if (_index == 0) _sellerDetailData(),
+                  if (_index == 1) _companyDocumentsData(),
+                  if (_index == 2) _bankDetailsData(),
+                  if (_index == 3) _confirmDetailData(),
                   FxBox.h24,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       FxButton(
                         borderRadius: 4.0,
-                        onPressed: index == 0
+                        onPressed: _index == 0
                             ? null
                             : () {
-                                if (isFinish) {
+                                if (_isFinish) {
                                   _formWizardBloc.add(
-                                      const FormWizardEvent.finishClick(false));
+                                    const FormWizardEvent.finishClick(false),
+                                  );
                                 }
                                 _formWizardBloc.add(
-                                    FormWizardEvent.previousClick(index - 1));
+                                  FormWizardEvent.previousClick(_index - 1),
+                                );
                               },
                         text: 'Previous',
                       ),
@@ -237,15 +259,22 @@ class _WizardFormState extends State<WizardForm> {
                       FxButton(
                         borderRadius: 4.0,
                         onPressed: () {
-                          if (index < 3) {
-                            _formWizardBloc.add(FormWizardEvent.nextClick(
-                                index + 1, clickCount + 1));
-                          } else if (index == 3) {
-                            _formWizardBloc
-                                .add(const FormWizardEvent.finishClick(true));
+                          if (_index < 3) {
+                            _formWizardBloc.add(
+                              FormWizardEvent.nextClick(
+                                _index + 1,
+                                _index == _clickCount
+                                    ? _clickCount + 1
+                                    : _clickCount,
+                              ),
+                            );
+                          } else if (_index == 3) {
+                            _formWizardBloc.add(
+                              const FormWizardEvent.finishClick(true),
+                            );
                           }
                         },
-                        text: index != 3 ? 'Next' : 'Finish',
+                        text: _index != 3 ? 'Next' : 'Finish',
                       ),
                     ],
                   )
@@ -264,7 +293,7 @@ class _WizardFormState extends State<WizardForm> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(5.0),
-        color: isSelected && !isFinish
+        color: isSelected && !_isFinish
             ? ColorConst.primary
             : ColorConst.stepperBackGround,
       ),
@@ -279,7 +308,7 @@ class _WizardFormState extends State<WizardForm> {
               shape: BoxShape.circle,
               border: Border.all(
                 width: 2.0,
-                color: isSelected && !isFinish
+                color: isSelected && !_isFinish
                     ? ColorConst.white
                     : ColorConst.primary,
               ),
@@ -289,7 +318,7 @@ class _WizardFormState extends State<WizardForm> {
               style: TextStyle(
                 fontSize: 16.0,
                 fontWeight: FontWeight.w500,
-                color: isSelected && !isFinish
+                color: isSelected && !_isFinish
                     ? ColorConst.white
                     : ColorConst.primary,
               ),
@@ -300,7 +329,7 @@ class _WizardFormState extends State<WizardForm> {
             child: Text(
               title,
               style: TextStyle(
-                color: isSelected && !isFinish
+                color: isSelected && !_isFinish
                     ? ColorConst.white
                     : ColorConst.primary,
               ),
@@ -313,31 +342,31 @@ class _WizardFormState extends State<WizardForm> {
 
   void _selleronTap() {
     _formWizardBloc.add(const FormWizardEvent.stepperClick(0));
-    if (isFinish) {
+    if (_isFinish) {
       _formWizardBloc.add(const FormWizardEvent.finishClick(false));
     }
   }
 
   void _companyonTap() {
-    if (clickCount > 0) {
+    if (_clickCount > 0) {
       _formWizardBloc.add(const FormWizardEvent.stepperClick(1));
     }
-    if (isFinish) {
+    if (_isFinish) {
       _formWizardBloc.add(const FormWizardEvent.finishClick(false));
     }
   }
 
   void _bankonTap() {
-    if (clickCount > 1) {
+    if (_clickCount > 1) {
       _formWizardBloc.add(const FormWizardEvent.stepperClick(2));
     }
-    if (isFinish) {
+    if (_isFinish) {
       _formWizardBloc.add(const FormWizardEvent.finishClick(false));
     }
   }
 
   void _confirmonTap() {
-    if (clickCount > 2) {
+    if (_clickCount > 2) {
       _formWizardBloc.add(const FormWizardEvent.stepperClick(3));
     }
   }
@@ -346,9 +375,7 @@ class _WizardFormState extends State<WizardForm> {
     return Text(
       text,
       textAlign: textAlign,
-      style: const TextStyle(
-        fontWeight: FontWeight.w500,
-      ),
+      style: const TextStyle(fontWeight: FontWeight.w500),
     );
   }
 
@@ -520,24 +547,15 @@ class _WizardFormState extends State<WizardForm> {
                   FxBox.h24,
                   _commonTitle('Live Market A/C'),
                   FxBox.h8,
-                  _commonTextField(
-                    'Enter A/C number',
-                    _controllerList[7],
-                  ),
+                  _commonTextField('Enter A/C number', _controllerList[7]),
                   FxBox.h24,
                   _commonTitle('Product Category'),
                   FxBox.h8,
-                  _commonTextField(
-                    '',
-                    _controllerList[8],
-                  ),
+                  _commonTextField('', _controllerList[8]),
                   FxBox.h24,
                   _commonTitle('Product Sub Category'),
                   FxBox.h8,
-                  _commonTextField(
-                    '',
-                    _controllerList[9],
-                  ),
+                  _commonTextField('', _controllerList[9]),
                 ],
               );
   }
@@ -655,11 +673,12 @@ class _WizardFormState extends State<WizardForm> {
                   ),
                   FxBox.w16,
                   Expanded(
-                      flex: 4,
-                      child: _commonTextField(
-                        'Enter card name',
-                        _controllerList[16],
-                      )),
+                    flex: 4,
+                    child: _commonTextField(
+                      'Enter card name',
+                      _controllerList[16],
+                    ),
+                  ),
                   FxBox.w24,
                   Expanded(
                     child: _commonTitle(
@@ -673,13 +692,14 @@ class _WizardFormState extends State<WizardForm> {
               ),
               FxBox.h24,
               _dataViewWebCommon(
-                  'Credit Card Number',
-                  'Enter credit card number',
-                  'Card Verification Number',
-                  'Enter verification number',
-                  null,
-                  _controllerList[17],
-                  _controllerList[18]),
+                'Credit Card Number',
+                'Enter credit card number',
+                'Card Verification Number',
+                'Enter verification number',
+                null,
+                _controllerList[17],
+                _controllerList[18],
+              ),
               FxBox.h24,
               Row(
                 children: [
@@ -691,11 +711,12 @@ class _WizardFormState extends State<WizardForm> {
                   ),
                   FxBox.w16,
                   Expanded(
-                      flex: 4,
-                      child: _commonTextField(
-                        'DD /MM /YYYY',
-                        _controllerList[19],
-                      )),
+                    flex: 4,
+                    child: _commonTextField(
+                      'DD /MM /YYYY',
+                      _controllerList[19],
+                    ),
+                  ),
                   FxBox.w24,
                   const Expanded(child: SizedBox()),
                   FxBox.w16,
@@ -763,13 +784,14 @@ class _WizardFormState extends State<WizardForm> {
                       ),
                       FxBox.w24,
                       Expanded(
-                          child: Column(
-                        children: [
-                          const SizedBox(),
-                          FxBox.h8,
-                          const SizedBox(),
-                        ],
-                      ))
+                        child: Column(
+                          children: [
+                            const SizedBox(),
+                            FxBox.h8,
+                            const SizedBox(),
+                          ],
+                        ),
+                      )
                     ],
                   )
                 ],
@@ -788,7 +810,9 @@ class _WizardFormState extends State<WizardForm> {
                   _commonTitle('Credit Card Number'),
                   FxBox.h8,
                   _commonTextField(
-                      'Enter credit card number', _controllerList[17]),
+                    'Enter credit card number',
+                    _controllerList[17],
+                  ),
                   FxBox.h24,
                   _commonTitle('Card Verification Number'),
                   FxBox.h8,
@@ -868,26 +892,29 @@ class _WizardFormState extends State<WizardForm> {
         ),
         FxBox.w16,
         Expanded(
-            flex: 4,
-            child: _commonTextField(
-              hint1,
-              controller1,
-              maxLines: maxLines,
-            )),
+          flex: 4,
+          child: _commonTextField(
+            hint1,
+            controller1,
+            maxLines: maxLines,
+          ),
+        ),
         FxBox.w24,
         Expanded(
-            child: _commonTitle(
-          title2,
-          textAlign: TextAlign.end,
-        )),
+          child: _commonTitle(
+            title2,
+            textAlign: TextAlign.end,
+          ),
+        ),
         FxBox.w16,
         Expanded(
-            flex: 4,
-            child: _commonTextField(
-              hint2,
-              controller2,
-              maxLines: maxLines,
-            )),
+          flex: 4,
+          child: _commonTextField(
+            hint2,
+            controller2,
+            maxLines: maxLines,
+          ),
+        ),
       ],
     );
   }
@@ -958,8 +985,9 @@ class _WizardFormState extends State<WizardForm> {
                   );
                 }).toList(),
                 onChanged: (value) {
-                  _formWizardBloc
-                      .add(FormWizardEvent.dropDown(value.toString()));
+                  _formWizardBloc.add(
+                    FormWizardEvent.dropDown(value.toString()),
+                  );
                 },
               ),
             ),
