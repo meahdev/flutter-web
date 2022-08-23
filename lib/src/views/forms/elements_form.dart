@@ -66,9 +66,6 @@ class _ElementsFormState extends State<ElementsForm> {
     return BlocProvider(
       create: (context) => _formElementsBloc,
       child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-        ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -92,7 +89,8 @@ class _ElementsFormState extends State<ElementsForm> {
                         FxBox.h16,
                         _colorTextField(),
                         FxBox.h16,
-                        _selectTextField(),
+                        // _selectTextField(),
+                        _selectTextFieldMobile(),
                       ],
                     )
                   : Column(
@@ -110,6 +108,26 @@ class _ElementsFormState extends State<ElementsForm> {
         ),
       ),
     );
+  }
+
+  Widget _responsive(Widget childOne, Widget childTwo) {
+    return Responsive.isMobile(context)
+        ? Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [childOne, childTwo],
+          )
+        : Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: childOne,
+              ),
+              Expanded(
+                flex: 8,
+                child: childTwo,
+              ),
+            ],
+          );
   }
 
   Widget _textFieldNormal(List<String> headingList, List<String> hintList) {
@@ -481,19 +499,21 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _selectTextFieldMobile() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _commonText(Strings.select),
-        _dropDown(),
-      ],
-    );
+    return _responsive(_commonText(Strings.select), _dropDown());
+    // return Column(
+    //   crossAxisAlignment: CrossAxisAlignment.start,
+    //   children: [
+    //     _commonText(Strings.select),
+    //     _dropDown(),
+    //   ],
+    // );
   }
 
   Widget _commonText(String text) {
     return Padding(
       padding: EdgeInsets.symmetric(
-          vertical: Responsive.isMobile(context) ? 8.0 : 0.0),
+        vertical: Responsive.isMobile(context) ? 8.0 : 0.0,
+      ),
       child: Text(
         text,
         style: const TextStyle(

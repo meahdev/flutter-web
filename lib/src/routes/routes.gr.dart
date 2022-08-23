@@ -94,7 +94,7 @@ class AppRouter extends _i14.RootStackRouter {
           _i14.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'dashboard',
+              redirectTo: 'form-elements',
               fullMatch: true),
           _i14.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),
