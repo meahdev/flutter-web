@@ -126,8 +126,9 @@ class _CalendarState extends State<Calendar> {
                 ColoredBox(
                   color: Colors.white,
                   child: Padding(
-                      padding: const EdgeInsets.all(1),
-                      child: _tableCalendar(context: context)),
+                    padding: const EdgeInsets.all(1),
+                    child: _tableCalendar(context: context),
+                  ),
                 )
               ],
             ),
@@ -389,13 +390,16 @@ class _CalendarState extends State<Calendar> {
                     ? currentMonthPageIndex = pageController.page!
                     : null;
               },
+              currentDay: DateTime.now(),
               rowHeight: 100,
               daysOfWeekHeight: 40,
               startingDayOfWeek: StartingDayOfWeek.sunday,
+              availableGestures: AvailableGestures.none,
               daysOfWeekStyle: const DaysOfWeekStyle(
                 decoration: BoxDecoration(
-                  border:
-                      Border.symmetric(vertical: BorderSide(color: Colors.red)),
+                  border: Border.symmetric(
+                    vertical: BorderSide(color: Colors.red),
+                  ),
                 ),
                 weekdayStyle: TextStyle(color: Color(0xFF4F4F4F)),
                 weekendStyle: TextStyle(color: Color(0xFF6A6A6A)),
@@ -418,9 +422,10 @@ class _CalendarState extends State<Calendar> {
                 canMarkersOverflow: true,
                 selectedDecoration: const BoxDecoration(color: Colors.red),
                 todayTextStyle: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFFFAFAFA),
-                    fontSize: 18.0),
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFFFAFAFA),
+                  fontSize: 18.0,
+                ),
                 tableBorder: const TableBorder(
                   top: BorderSide(color: Color(0xFFe9ecef)),
                   bottom: BorderSide(color: Color(0xFFe9ecef)),
@@ -428,7 +433,9 @@ class _CalendarState extends State<Calendar> {
                   right: BorderSide(color: Color(0xFFe9ecef)),
                 ),
                 todayDecoration: const BoxDecoration(
-                    color: Colors.orange, shape: BoxShape.circle),
+                  color: Colors.orange,
+                  shape: BoxShape.circle,
+                ),
               ),
               headerStyle: const HeaderStyle(
                 titleCentered: true,
@@ -439,11 +446,12 @@ class _CalendarState extends State<Calendar> {
               ),
               onDaySelected: (date, events) {
                 _displayTextInputDialog(
-                    context: context,
-                    savePressed: () {
-                      _handleSaveTap(date: date);
-                    },
-                    deletePressed: () {});
+                  context: context,
+                  savePressed: () {
+                    _handleSaveTap(date: date);
+                  },
+                  deletePressed: () {},
+                );
               },
               calendarBuilders: CalendarBuilders(
                   headerTitleBuilder: (context, day) => Row(
@@ -452,12 +460,14 @@ class _CalendarState extends State<Calendar> {
                           Row(
                             children: [
                               FxButton(
+                                minWidth: 24,
                                 onPressed: () {
                                   if (newpageController != null) {
                                     newpageController!.previousPage(
-                                        duration:
-                                            const Duration(microseconds: 400),
-                                        curve: Curves.easeInOut);
+                                      duration:
+                                          const Duration(microseconds: 400),
+                                      curve: Curves.easeInOut,
+                                    );
                                   }
                                 },
                                 icon: const Icon(
@@ -468,6 +478,7 @@ class _CalendarState extends State<Calendar> {
                                 color: const Color(0xFF626DE4),
                               ),
                               FxButton(
+                                minWidth: 24,
                                 onPressed: () {
                                   if (newpageController != null) {
                                     newpageController!.nextPage(

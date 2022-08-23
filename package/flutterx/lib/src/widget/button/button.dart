@@ -129,12 +129,8 @@ class FxButton extends StatelessWidget {
                   : color ?? _getButtonColor(colorScheme, buttonType, true)!,
             ),
           ),
-          minWidth: icon != null
-              ? 56.0
-              : fullWidth
-                  ? double.infinity
-                  : minWidth,
-          height: text == null ? 56.0 : height,
+          minWidth: fullWidth ? double.infinity : minWidth,
+          height: height,
           textColor: isHover
               ? textColor ??
                   _getHoverFontColor(colorScheme, buttonType, isOutlineButton)
