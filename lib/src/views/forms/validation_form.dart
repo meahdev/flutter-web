@@ -18,7 +18,7 @@ class ValidationForm extends StatefulWidget {
 class _ValidationFormState extends State<ValidationForm> {
   //first form
 
-  final FormValidationBloc _formValidationBloc = FormValidationBloc();
+  final FormValidationBloc _formValidationBloc1 = FormValidationBloc();
 
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
@@ -26,7 +26,7 @@ class _ValidationFormState extends State<ValidationForm> {
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _zipController = TextEditingController();
   final TextEditingController _stateController = TextEditingController();
-  AutovalidateMode _iconValidateMode = AutovalidateMode.disabled;
+  AutovalidateMode _firstValidateMode = AutovalidateMode.disabled;
 
   final List<String> _stateList = ['Gujarat', 'Assam', 'Bihar'];
   String? _dropDownValue;
@@ -57,43 +57,16 @@ class _ValidationFormState extends State<ValidationForm> {
   final TextEditingController _regularExpController = TextEditingController();
 
   @override
-  void dispose() {
-    _firstNameController.dispose();
-    _lastNameController.dispose();
-    _userNameController.dispose();
-    _cityController.dispose();
-    _zipController.dispose();
-    _stateController.dispose();
-    _requiredController.dispose();
-    _passwordController.dispose();
-    _rePasswordController.dispose();
-    _emailController.dispose();
-    _urlController.dispose();
-    _digitController.dispose();
-    _numberController.dispose();
-    _alphaNumericController.dispose();
-    _textAreaController.dispose();
-    _minLengthController.dispose();
-    _maxLengthController.dispose();
-    _rangeLengthController.dispose();
-    _minValueController.dispose();
-    _maxValueController.dispose();
-    _rangeValueController.dispose();
-    _regularExpController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         BlocProvider(
-          create: (context) => _formValidationBloc,
+          create: (context) => _formValidationBloc1,
           child: BlocBuilder<FormValidationBloc, FormValidationState>(
             builder: (context, state) {
               state.whenOrNull(
                 formSubmitSuccess: () {
-                  _iconValidateMode = AutovalidateMode.always;
+                  _firstValidateMode = AutovalidateMode.always;
                 },
                 checkBoxSuccess: (value) {
                   _isCheck = value;
@@ -111,24 +84,26 @@ class _ValidationFormState extends State<ValidationForm> {
                       _formHeadingCommon('Validation type'),
                       FxBox.h24,
                       Form(
-                        autovalidateMode: _iconValidateMode,
+                        autovalidateMode: _firstValidateMode,
                         child: Responsive.isWeb(context) ||
                                 Responsive.isTablet(context)
-                            ? _validationWithIcon()
-                            : __validationWithIconMobile(),
+                            ? _validationForm1()
+                            : __validationForm1Mobile(),
                       ),
                       FxBox.h24,
                       _termNConditionField(),
                       _isCheck == false &&
-                              _iconValidateMode == AutovalidateMode.always
+                              _firstValidateMode == AutovalidateMode.always
                           ? _termNConditionErrorMsg()
                           : const SizedBox.shrink(),
                       FxBox.h24,
                       FxButton(
                         borderRadius: 4,
                         onPressed: () {
-                          _formValidationBloc
-                              .add(const FormValidationEvent.submit());
+                          if (_firstValidateMode != AutovalidateMode.always) {
+                            _formValidationBloc1
+                                .add(const FormValidationEvent.submit());
+                          }
                         },
                         text: 'Submit form',
                       ),
@@ -146,15 +121,11 @@ class _ValidationFormState extends State<ValidationForm> {
                 children: [
                   Expanded(child: _validationForm2()),
                   FxBox.w12,
-                  Expanded(child: _validationRangeForm())
+                  Expanded(child: _validationForm3())
                 ],
               )
             : Column(
-                children: [
-                  _validationForm2(),
-                  FxBox.h12,
-                  _validationRangeForm()
-                ],
+                children: [_validationForm2(), FxBox.h12, _validationForm3()],
               ),
       ],
     );
@@ -189,7 +160,7 @@ class _ValidationFormState extends State<ValidationForm> {
             ),
             value: _isCheck,
             onChanged: (value) {
-              _formValidationBloc.add(FormValidationEvent.checkBox(value!));
+              _formValidationBloc1.add(FormValidationEvent.checkBox(value!));
             },
           ),
         ),
@@ -201,7 +172,7 @@ class _ValidationFormState extends State<ValidationForm> {
     );
   }
 
-  Widget _validationWithIcon() {
+  Widget _validationForm1() {
     return Column(
       children: [
         Row(
@@ -247,7 +218,7 @@ class _ValidationFormState extends State<ValidationForm> {
     );
   }
 
-  Widget __validationWithIconMobile() {
+  Widget __validationForm1Mobile() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -287,8 +258,7 @@ class _ValidationFormState extends State<ValidationForm> {
   }
 
   Widget _firstNameTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.name,
+    return _textField(
       controller: _firstNameController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -296,19 +266,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Mark',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _lastfirstNameTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.name,
+    return _textField(
       controller: _lastNameController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -316,20 +279,13 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Otto',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _userNameTextField() {
-    return CustomTextField(
+    return _textField(
       prefixIcon: const Icon(Icons.alternate_email_sharp),
-      keyboardType: TextInputType.name,
       controller: _userNameController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -337,18 +293,11 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _cityTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.name,
+    return _textField(
       controller: _cityController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -356,12 +305,6 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
@@ -376,7 +319,7 @@ class _ValidationFormState extends State<ValidationForm> {
         );
       },
       builder: (context, state) {
-        return CustomTextField(
+        return _textField(
           suffixIcon: DropdownButtonHideUnderline(
             child: ButtonTheme(
               alignedDropdown: true,
@@ -395,7 +338,7 @@ class _ValidationFormState extends State<ValidationForm> {
                   );
                 }).toList(),
                 onChanged: (value) {
-                  _formValidationBloc
+                  _formValidationBloc1
                       .add(FormValidationEvent.dropDown(value.toString()));
                 },
               ),
@@ -408,21 +351,14 @@ class _ValidationFormState extends State<ValidationForm> {
             }
             return null;
           },
-          border: const OutlineInputBorder(),
-          isDense: true,
           readOnly: true,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 12,
-          ),
         );
       },
     );
   }
 
   Widget _zipTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.name,
+    return _textField(
       controller: _zipController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -430,12 +366,6 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
@@ -486,8 +416,11 @@ class _ValidationFormState extends State<ValidationForm> {
                         FxButton(
                           borderRadius: 4,
                           onPressed: () {
-                            formValidationBloc2
-                                .add(const FormValidationEvent.submit());
+                            if (_secondValidateMode !=
+                                AutovalidateMode.always) {
+                              formValidationBloc2
+                                  .add(const FormValidationEvent.submit());
+                            }
                           },
                           text: 'Submit',
                         ),
@@ -521,8 +454,7 @@ class _ValidationFormState extends State<ValidationForm> {
   }
 
   Widget _requiredTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.name,
+    return _textField(
       controller: _requiredController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -530,20 +462,13 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Type something',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _passwordTextField() {
-    return CustomTextField(
+    return _textField(
       obscureText: true,
-      keyboardType: TextInputType.name,
       controller: _passwordController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -551,20 +476,13 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Password',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _rePasswordTextField() {
-    return CustomTextField(
+    return _textField(
       obscureText: true,
-      keyboardType: TextInputType.name,
       controller: _rePasswordController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -574,19 +492,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Re-Type Password',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _emailTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.emailAddress,
+    return _textField(
       controller: _emailController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -597,19 +508,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Enter a valid email',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _urlTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.url,
+    return _textField(
       controller: _urlController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -621,19 +525,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'URL',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _digitsTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.number,
+    return _textField(
       controller: _digitController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -643,18 +540,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Enter only digits',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _numberTextField() {
-    return CustomTextField(
+    return _textField(
       keyboardType: const TextInputType.numberWithOptions(decimal: true),
       controller: _numberController,
       validator: (value) {
@@ -666,18 +557,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Enter only numbers',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _alphanumericTextField() {
-    return CustomTextField(
+    return _textField(
       controller: _alphaNumericController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -687,19 +572,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Enter alphanumeric numbers',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _textAreaTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.multiline,
+    return _textField(
       maxLines: 5,
       controller: _textAreaController,
       validator: (value) {
@@ -708,17 +586,11 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Type here',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
-  Widget _validationRangeForm() {
+  Widget _validationForm3() {
     return BlocProvider(
       create: (context) => formValidationBloc3,
       child: BlocBuilder<FormValidationBloc, FormValidationState>(
@@ -761,8 +633,10 @@ class _ValidationFormState extends State<ValidationForm> {
                         FxButton(
                           borderRadius: 4,
                           onPressed: () {
-                            formValidationBloc3
-                                .add(const FormValidationEvent.submit());
+                            if (_thirdValidateMode != AutovalidateMode.always) {
+                              formValidationBloc3
+                                  .add(const FormValidationEvent.submit());
+                            }
                           },
                           text: 'Submit',
                         ),
@@ -794,8 +668,7 @@ class _ValidationFormState extends State<ValidationForm> {
   }
 
   Widget _minLengthTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.name,
+    return _textField(
       controller: _minLengthController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -805,19 +678,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Min 6 chars.',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _maxLengthTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.name,
+    return _textField(
       controller: _maxLengthController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -827,19 +693,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Max 6 chars.',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _rangeLengthTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.name,
+    return _textField(
       controller: _rangeLengthController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -849,19 +708,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Text Between 5 - 10 chars lenght',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _minValueTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.number,
+    return _textField(
       controller: _minValueController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -872,19 +724,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Min value is 6',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _maxValueTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.number,
+    return _textField(
       controller: _maxValueController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -895,19 +740,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Max value is 6',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _rangeValueTextField() {
-    return CustomTextField(
-      keyboardType: TextInputType.number,
+    return _textField(
       controller: _rangeValueController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -919,18 +757,12 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Number between  6 - 100',
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _regularExpTextField() {
-    return CustomTextField(
+    return _textField(
       controller: _regularExpController,
       validator: (value) {
         if (value!.trim().isEmpty) {
@@ -941,8 +773,32 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      border: const OutlineInputBorder(),
       hintText: 'Hex. Color',
+    );
+  }
+
+  Widget _textField({
+    String? Function(String?)? validator,
+    TextEditingController? controller,
+    String? hintText,
+    TextInputType? keyboardType,
+    Widget? prefixIcon,
+    Widget? suffixIcon,
+    bool? readOnly,
+    bool? obscureText,
+    int? maxLines,
+  }) {
+    return CustomTextField(
+      maxLines: maxLines ?? 1,
+      obscureText: obscureText ?? false,
+      readOnly: readOnly ?? false,
+      prefixIcon: prefixIcon,
+      suffixIcon: suffixIcon,
+      keyboardType: keyboardType,
+      controller: controller,
+      validator: validator,
+      border: const OutlineInputBorder(),
+      hintText: hintText,
       isDense: true,
       contentPadding: const EdgeInsets.symmetric(
         horizontal: 15,

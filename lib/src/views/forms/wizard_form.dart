@@ -732,7 +732,7 @@ class _WizardFormState extends State<WizardForm> {
                     children: [
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             _commonTitle('Name on Card'),
                             FxBox.h8,
@@ -746,7 +746,7 @@ class _WizardFormState extends State<WizardForm> {
                       FxBox.w24,
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             _commonTitle('Credit Card Type'),
                             FxBox.h8,
@@ -771,7 +771,7 @@ class _WizardFormState extends State<WizardForm> {
                     children: [
                       Expanded(
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             _commonTitle('Expiration Date'),
                             FxBox.h8,
@@ -932,7 +932,7 @@ class _WizardFormState extends State<WizardForm> {
       children: [
         Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _commonTitle(title1),
               FxBox.h8,
@@ -943,7 +943,7 @@ class _WizardFormState extends State<WizardForm> {
         FxBox.w24,
         Expanded(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _commonTitle(title2),
               FxBox.h8,

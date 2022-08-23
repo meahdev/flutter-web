@@ -47,7 +47,6 @@ class _MaskFormState extends State<MaskForm> {
     filter: {
       '#': RegExp(r'[0-9]'),
     },
-    // type: MaskAutoCompletionType.eager,
   );
 
   final TextEditingController _dateStyle1Controller = TextEditingController();
@@ -205,7 +204,7 @@ class _MaskFormState extends State<MaskForm> {
   Widget _dateStyle1TextField() {
     return FxHover(
       builder: (isHover) {
-        return CustomTextField(
+        return _textField(
           autovalidateMode: AutovalidateMode.always,
           controller: _dateStyle1Controller,
           inputFormatters: [_dateStyle1Formatter],
@@ -229,38 +228,26 @@ class _MaskFormState extends State<MaskForm> {
             }
             return "wrong date";
           },
-          border: const OutlineInputBorder(),
           hintText: isHover ? 'dd/mm/yyyy' : '',
-          isDense: true,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 12,
-          ),
         );
       },
     );
   }
 
   Widget _repeatTextField() {
-    return CustomTextField(
+    return _textField(
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly,
         LengthLimitingTextInputFormatter(10),
       ],
       controller: _repeatController,
-      border: const OutlineInputBorder(),
-      isDense: true,
-      contentPadding: const EdgeInsets.symmetric(
-        horizontal: 15,
-        vertical: 12,
-      ),
     );
   }
 
   Widget _dateStyle2TextField() {
     return FxHover(
       builder: (isHover) {
-        return CustomTextField(
+        return _textField(
           autovalidateMode: AutovalidateMode.always,
           controller: _dateStyle2Controller,
           inputFormatters: [_dateStyle2Formatter],
@@ -285,13 +272,7 @@ class _MaskFormState extends State<MaskForm> {
             }
             return "wrong date";
           },
-          border: const OutlineInputBorder(),
           hintText: isHover ? 'mm/dd/yyyy' : '',
-          isDense: true,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 12,
-          ),
         );
       },
     );
@@ -300,16 +281,10 @@ class _MaskFormState extends State<MaskForm> {
   Widget _maskTextField() {
     return FxHover(
       builder: (isHover) {
-        return CustomTextField(
+        return _textField(
           inputFormatters: [_maskFormatter],
           controller: _maskController,
-          border: const OutlineInputBorder(),
           hintText: isHover ? '__-_______' : '',
-          isDense: true,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 12,
-          ),
         );
       },
     );
@@ -318,13 +293,11 @@ class _MaskFormState extends State<MaskForm> {
   Widget _dateTimeTextField() {
     return FxHover(
       builder: (isHover) {
-        return CustomTextField(
+        return _textField(
           autovalidateMode: AutovalidateMode.always,
           controller: _dateTimeController,
-          border: const OutlineInputBorder(),
           inputFormatters: [_dateTimeFormatter],
           hintText: isHover ? 'yyyy-mm-dd\'T\'HH:MM:ss' : '',
-          isDense: true,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return null;
@@ -346,10 +319,6 @@ class _MaskFormState extends State<MaskForm> {
             }
             return "Wrong date";
           },
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 12,
-          ),
         );
       },
     );
@@ -358,18 +327,12 @@ class _MaskFormState extends State<MaskForm> {
   Widget _ipAddressTextField() {
     return FxHover(
       builder: (isHover) {
-        return CustomTextField(
+        return _textField(
           inputFormatters: [
             _ipAddressFormatter,
           ],
           controller: _ipAddressController,
-          border: const OutlineInputBorder(),
           hintText: isHover ? '_._._._' : '',
-          isDense: true,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 12,
-          ),
         );
       },
     );
@@ -378,7 +341,7 @@ class _MaskFormState extends State<MaskForm> {
   Widget _currencyTextField() {
     return FxHover(
       builder: (isHover) {
-        return CustomTextField(
+        return _textField(
           inputFormatters: [
             _currencyFormatter,
           ],
@@ -396,13 +359,7 @@ class _MaskFormState extends State<MaskForm> {
             }
           },
           controller: _currencyController,
-          border: const OutlineInputBorder(),
           hintText: isHover ? '\$ 0.00' : '',
-          isDense: true,
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 12,
-          ),
         );
       },
     );
@@ -411,12 +368,10 @@ class _MaskFormState extends State<MaskForm> {
   Widget _emailTextField() {
     return FxHover(
       builder: (isHover) {
-        return CustomTextField(
+        return _textField(
           autovalidateMode: AutovalidateMode.always,
           controller: _emailController,
-          border: const OutlineInputBorder(),
           hintText: isHover ? '_@_._' : '',
-          isDense: true,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return null;
@@ -427,10 +382,6 @@ class _MaskFormState extends State<MaskForm> {
             }
             return null;
           },
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: 15,
-            vertical: 12,
-          ),
         );
       },
     );
@@ -442,6 +393,30 @@ class _MaskFormState extends State<MaskForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [title, textField, Text(egText)],
+      ),
+    );
+  }
+
+  Widget _textField({
+    String? hintText,
+    String? Function(String?)? validator,
+    List<TextInputFormatter>? inputFormatters,
+    AutovalidateMode? autovalidateMode,
+    TextEditingController? controller,
+    void Function(String)? onChanged,
+  }) {
+    return CustomTextField(
+      onChanged: onChanged,
+      autovalidateMode: autovalidateMode,
+      controller: controller,
+      inputFormatters: inputFormatters,
+      validator: validator,
+      border: const OutlineInputBorder(),
+      hintText: hintText,
+      isDense: true,
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 12,
       ),
     );
   }

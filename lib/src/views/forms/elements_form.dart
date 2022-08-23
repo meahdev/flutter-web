@@ -76,33 +76,21 @@ class _ElementsFormState extends State<ElementsForm> {
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
               ),
               FxBox.h24,
-              Responsive.isWeb(context) || Responsive.isTablet(context)
-                  ? Column(
-                      children: [
-                        _textFieldNormal(_headingList, _hintList),
-                        FxBox.h8,
-                        _passwordTextField(),
-                        FxBox.h16,
-                        _numberTextField(),
-                        FxBox.h16,
-                        _dateNtimeTextField(),
-                        FxBox.h16,
-                        _colorTextField(),
-                        FxBox.h16,
-                        // _selectTextField(),
-                        _selectTextFieldMobile(),
-                      ],
-                    )
-                  : Column(
-                      children: [
-                        _textFieldNormalMobile(_headingList, _hintList),
-                        _passwordTextFieldMobile(),
-                        _numberTextFieldMobile(),
-                        _dateNtimeTextFieldMobile(),
-                        _colorTextFieldMobile(),
-                        _selectTextFieldMobile(),
-                      ],
-                    ),
+              Column(
+                children: [
+                  _textFieldNormal(_headingList, _hintList),
+                  FxBox.h8,
+                  _passwordTextField(),
+                  FxBox.h16,
+                  _numberTextField(),
+                  FxBox.h16,
+                  _dateNtimeTextField(),
+                  FxBox.h16,
+                  _colorTextField(),
+                  FxBox.h16,
+                  _selectTextField(),
+                ],
+              ),
             ],
           ),
         ),
@@ -138,42 +126,14 @@ class _ElementsFormState extends State<ElementsForm> {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 8.0),
-          child: Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: _commonText(
-                  headingList[index],
-                ),
-              ),
-              Flexible(
-                flex: 8,
-                child: _listBox(hintList[index]),
-              )
-            ],
-          ),
-        );
-      },
-    );
-  }
-
-  Widget _textFieldNormalMobile(
-    List<String> headingList,
-    List<String> hintList,
-  ) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: headingList.length,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          child: _responsive(
             _commonText(
               headingList[index],
             ),
-            _listBox(hintList[index]),
-          ],
+            _listBox(
+              hintList[index],
+            ),
+          ),
         );
       },
     );
@@ -194,28 +154,7 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _passwordTextField() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 2,
-          child: _commonText(Strings.password),
-        ),
-        Flexible(
-          flex: 8,
-          child: _passWordBox(),
-        )
-      ],
-    );
-  }
-
-  Widget _passwordTextFieldMobile() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _commonText(Strings.password),
-        _passWordBox(),
-      ],
-    );
+    return _responsive(_commonText(Strings.password), _passWordBox());
   }
 
   Widget _passWordBox() {
@@ -234,53 +173,13 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _numberTextField() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 2,
-          child: _commonText(Strings.number),
-        ),
-        Flexible(
-          flex: 8,
-          child: _numberIncrementDecrement(),
-        )
-      ],
-    );
-  }
-
-  Widget _numberTextFieldMobile() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _commonText(Strings.number),
-        _numberIncrementDecrement(),
-      ],
-    );
+    return _responsive(
+        _commonText(Strings.number), _numberIncrementDecrement());
   }
 
   Widget _dateNtimeTextField() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 2,
-          child: _commonText(Strings.dateAndtime),
-        ),
-        Flexible(
-          flex: 8,
-          child: _dateAndTimePickerBox(),
-        ),
-      ],
-    );
-  }
-
-  Widget _dateNtimeTextFieldMobile() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _commonText(Strings.dateAndtime),
-        _dateAndTimePickerBox(),
-      ],
-    );
+    return _responsive(
+        _commonText(Strings.dateAndtime), _dateAndTimePickerBox());
   }
 
   Widget _dateAndTimePickerBox() {
@@ -413,28 +312,7 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _colorTextField() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 2,
-          child: _commonText(Strings.color),
-        ),
-        Flexible(
-          flex: 8,
-          child: _colorpicker(),
-        )
-      ],
-    );
-  }
-
-  Widget _colorTextFieldMobile() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _commonText(Strings.color),
-        _colorpicker(),
-      ],
-    );
+    return _responsive(_commonText(Strings.color), _colorpicker());
   }
 
   Widget _colorpicker() {
@@ -484,29 +362,7 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _selectTextField() {
-    return Row(
-      children: [
-        Expanded(
-          flex: 2,
-          child: _commonText(Strings.select),
-        ),
-        Flexible(
-          flex: 8,
-          child: _dropDown(),
-        ),
-      ],
-    );
-  }
-
-  Widget _selectTextFieldMobile() {
     return _responsive(_commonText(Strings.select), _dropDown());
-    // return Column(
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //     _commonText(Strings.select),
-    //     _dropDown(),
-    //   ],
-    // );
   }
 
   Widget _commonText(String text) {
