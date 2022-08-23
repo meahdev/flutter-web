@@ -32,7 +32,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'faqs'),
+        RedirectRoute(path: '', redirectTo: 'gallery'),
         AutoRoute(path: 'dashboard', page: TestWidget),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),
@@ -44,7 +44,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'directory', page: DirectoryPage),
         AutoRoute(path: 'faqs', page: FAQs),
         AutoRoute(path: 'invoice', page: Invoice),
-        AutoRoute(path: 'gallary', page: Gallary),
+        AutoRoute(path: 'gallery', page: Gallery),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

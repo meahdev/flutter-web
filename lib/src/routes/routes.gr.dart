@@ -144,9 +144,9 @@ class AppRouter extends _i26.RootStackRouter {
       return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i24.Invoice());
     },
-    Gallary.name: (routeData) {
+    Gallery.name: (routeData) {
       return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i25.Gallary());
+          routeData: routeData, child: const _i25.Gallery());
     }
   };
 
@@ -156,7 +156,7 @@ class AppRouter extends _i26.RootStackRouter {
           _i26.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'faqs',
+              redirectTo: 'gallery',
               fullMatch: true),
           _i26.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),
@@ -173,7 +173,7 @@ class AppRouter extends _i26.RootStackRouter {
               path: 'directory', parent: MenuBar.name),
           _i26.RouteConfig(FAQs.name, path: 'faqs', parent: MenuBar.name),
           _i26.RouteConfig(Invoice.name, path: 'invoice', parent: MenuBar.name),
-          _i26.RouteConfig(Gallary.name, path: 'gallary', parent: MenuBar.name)
+          _i26.RouteConfig(Gallery.name, path: 'gallery', parent: MenuBar.name)
         ]),
         _i26.RouteConfig(LoginOne.name, path: '/login-one'),
         _i26.RouteConfig(LoginTwo.name, path: '/login-two'),
@@ -388,9 +388,9 @@ class Invoice extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i25.Gallary]
-class Gallary extends _i26.PageRouteInfo<void> {
-  const Gallary() : super(Gallary.name, path: 'gallary');
+/// [_i25.Gallery]
+class Gallery extends _i26.PageRouteInfo<void> {
+  const Gallery() : super(Gallery.name, path: 'gallery');
 
-  static const String name = 'Gallary';
+  static const String name = 'Gallery';
 }

@@ -1,18 +1,16 @@
-// ignore_for_file: avoid_print
-
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class Gallary extends StatefulWidget {
-  const Gallary({Key? key}) : super(key: key);
+class Gallery extends StatefulWidget {
+  const Gallery({Key? key}) : super(key: key);
 
   @override
-  State<Gallary> createState() => _GallaryState();
+  State<Gallery> createState() => _GalleryState();
 }
 
-class _GallaryState extends State<Gallary> {
+class _GalleryState extends State<Gallery> {
   final photoList = [
     "https://image.shutterstock.com/image-photo/young-beautiful-happy-businesswoman-sitting-260nw-165623561.jpg",
     "https://image.shutterstock.com/image-photo/young-beautiful-happy-businesswoman-sitting-260nw-165623561.jpg",
@@ -49,7 +47,7 @@ class _GallaryState extends State<Gallary> {
     "Vishal Makwana",
     "Parth Surani",
     "Naman Rajodiya",
-    "Hatsh Chodavadiya",
+    "Harsh Chodvadiya",
     "Akash Rathod",
     "Anup chopde",
     "Makwana Parth",
@@ -65,14 +63,12 @@ class _GallaryState extends State<Gallary> {
     setState(() {
       isShow[index] = true;
     });
-    print(hoverState.toString());
   }
 
   hoverunactive(hoverState, index) {
     setState(() {
       isShow[index] = false;
     });
-    print(hoverState.toString());
   }
 
   List<bool> isShow = List.generate(12, (index) => false);
@@ -89,230 +85,218 @@ class _GallaryState extends State<Gallary> {
             Responsive.isMobile(context)
                 ? Wrap(
                     children: List.generate(
-                        12,
-                        (index) => Container(
-                              margin: const EdgeInsets.all(12),
-                              width: MediaQuery.of(context).size.width * .70,
-                              height: MediaQuery.of(context).size.height * .30,
-                              child: GestureDetector(
-                                onTap: () {
-                                  setState(() => selecteIndex = index);
-                                  popup();
-                                },
-                                child: Container(
-                                  clipBehavior: Clip.hardEdge,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Colors.grey,
-                                  ),
-                                  child: MouseRegion(
-                                    onEnter: (event) =>
-                                        hoveractive(true, index),
-                                    onExit: (event) =>
-                                        hoverunactive(false, index),
-                                    child: isShow[index]
-                                        ? Container(
-                                            color:
-                                                Colors.black.withOpacity(0.7),
-                                            padding: const EdgeInsets.all(20),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  headingList[index],
-                                                  style: const TextStyle(
-                                                      color: ColorConst.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 20),
-                                                ),
-                                                const Spacer(),
-                                                Row(
-                                                  children: [
-                                                    CircleAvatar(
-                                                      backgroundImage:
-                                                          NetworkImage(
-                                                              photoList[index]),
-                                                    ),
-                                                    FxBox.w10,
-                                                    Text(
-                                                      nameList[index],
-                                                      style: const TextStyle(
-                                                          color:
-                                                              ColorConst.white,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 18),
-                                                    )
-                                                  ],
-                                                )
-                                              ],
+                      12,
+                      (index) => Container(
+                        margin: const EdgeInsets.all(12),
+                        width: MediaQuery.of(context).size.width * .70,
+                        height: MediaQuery.of(context).size.height * .30,
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() => selecteIndex = index);
+                            popup();
+                          },
+                          child: Container(
+                            clipBehavior: Clip.hardEdge,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: Colors.grey,
+                            ),
+                            child: MouseRegion(
+                              onEnter: (event) => hoveractive(true, index),
+                              onExit: (event) => hoverunactive(false, index),
+                              child: isShow[index]
+                                  ? Container(
+                                      color: Colors.black.withOpacity(0.7),
+                                      padding: const EdgeInsets.all(20),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            headingList[index],
+                                            style: const TextStyle(
+                                              color: ColorConst.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20,
                                             ),
-                                          )
-                                        : Image.network(
-                                            photoList[index],
-                                            fit: BoxFit.cover,
                                           ),
-                                  ),
-                                ),
-                              ),
-                            )))
+                                          const Spacer(),
+                                          Row(
+                                            children: [
+                                              CircleAvatar(
+                                                backgroundImage: NetworkImage(
+                                                  photoList[index],
+                                                ),
+                                              ),
+                                              FxBox.w10,
+                                              Text(
+                                                nameList[index],
+                                                style: const TextStyle(
+                                                  color: ColorConst.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 18,
+                                                ),
+                                              )
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                  : Image.network(
+                                      photoList[index],
+                                      fit: BoxFit.cover,
+                                    ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
                 : Responsive.isTablet(context)
                     ? Wrap(
                         children: List.generate(
-                            12,
-                            (index) => Container(
-                                  margin: const EdgeInsets.all(12),
-                                  width:
-                                      MediaQuery.of(context).size.width * .35,
-                                  height:
-                                      MediaQuery.of(context).size.height * .30,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      setState(() => selecteIndex = index);
-                                      popup2();
-                                    },
-                                    child: Container(
-                                      clipBehavior: Clip.hardEdge,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: Colors.grey,
-                                      ),
-                                      child: MouseRegion(
-                                        onEnter: (event) =>
-                                            hoveractive(true, index),
-                                        onExit: (event) =>
-                                            hoverunactive(false, index),
-                                        child: isShow[index]
-                                            ? Container(
-                                                color: Colors.black
-                                                    .withOpacity(0.7),
-                                                padding:
-                                                    const EdgeInsets.all(20),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      headingList[index],
-                                                      style: const TextStyle(
-                                                          color:
-                                                              ColorConst.white,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 20),
-                                                    ),
-                                                    const Spacer(),
-                                                    Row(
-                                                      children: [
-                                                        CircleAvatar(
-                                                          backgroundImage:
-                                                              NetworkImage(
-                                                                  photoList[
-                                                                      index]),
-                                                        ),
-                                                        FxBox.w10,
-                                                        Text(
-                                                          nameList[index],
-                                                          style: const TextStyle(
-                                                              color: ColorConst
-                                                                  .white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 18),
-                                                        )
-                                                      ],
-                                                    )
-                                                  ],
+                          12,
+                          (index) => Container(
+                            margin: const EdgeInsets.all(12),
+                            width: MediaQuery.of(context).size.width * .35,
+                            height: MediaQuery.of(context).size.height * .30,
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() => selecteIndex = index);
+                                popup2();
+                              },
+                              child: Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.grey,
+                                ),
+                                child: MouseRegion(
+                                  onEnter: (event) => hoveractive(true, index),
+                                  onExit: (event) =>
+                                      hoverunactive(false, index),
+                                  child: isShow[index]
+                                      ? Container(
+                                          color: Colors.black.withOpacity(0.7),
+                                          padding: const EdgeInsets.all(20),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                headingList[index],
+                                                style: const TextStyle(
+                                                  color: ColorConst.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
                                                 ),
-                                              )
-                                            : Image.network(
-                                                photoList[index],
-                                                fit: BoxFit.cover,
                                               ),
-                                      ),
-                                    ),
-                                  ),
-                                )))
+                                              const Spacer(),
+                                              Row(
+                                                children: [
+                                                  CircleAvatar(
+                                                    backgroundImage:
+                                                        NetworkImage(
+                                                      photoList[index],
+                                                    ),
+                                                  ),
+                                                  FxBox.w10,
+                                                  Text(
+                                                    nameList[index],
+                                                    style: const TextStyle(
+                                                      color: ColorConst.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 18,
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      : Image.network(
+                                          photoList[index],
+                                          fit: BoxFit.cover,
+                                        ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
                     : Wrap(
                         children: List.generate(
-                            12,
-                            (index) => Container(
-                                  margin: const EdgeInsets.all(12),
-                                  width:
-                                      MediaQuery.of(context).size.width * .17,
-                                  height:
-                                      MediaQuery.of(context).size.height * .30,
-                                  child: GestureDetector(
-                                    onTap: () {
-                                      setState(() => selecteIndex = index);
-                                      popup3();
-                                    },
-                                    child: Container(
-                                      clipBehavior: Clip.hardEdge,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: Colors.grey,
-                                      ),
-                                      child: MouseRegion(
-                                        onEnter: (event) =>
-                                            hoveractive(true, index),
-                                        onExit: (event) =>
-                                            hoverunactive(false, index),
-                                        child: isShow[index]
-                                            ? Container(
-                                                color: Colors.black
-                                                    .withOpacity(0.7),
-                                                padding:
-                                                    const EdgeInsets.all(20),
-                                                child: Column(
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Text(
-                                                      headingList[index],
-                                                      style: const TextStyle(
-                                                          color:
-                                                              ColorConst.white,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          fontSize: 20),
-                                                    ),
-                                                    const Spacer(),
-                                                    Row(
-                                                      children: [
-                                                        CircleAvatar(
-                                                          backgroundImage:
-                                                              NetworkImage(
-                                                                  photoList[
-                                                                      index]),
-                                                        ),
-                                                        FxBox.w10,
-                                                        Text(
-                                                          nameList[index],
-                                                          style: const TextStyle(
-                                                              color: ColorConst
-                                                                  .white,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 18),
-                                                        )
-                                                      ],
-                                                    )
-                                                  ],
+                          12,
+                          (index) => Container(
+                            margin: const EdgeInsets.all(12),
+                            width: MediaQuery.of(context).size.width * .17,
+                            height: MediaQuery.of(context).size.height * .30,
+                            child: GestureDetector(
+                              onTap: () {
+                                setState(() => selecteIndex = index);
+                                popup3();
+                              },
+                              child: Container(
+                                clipBehavior: Clip.hardEdge,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.grey,
+                                ),
+                                child: MouseRegion(
+                                  onEnter: (event) => hoveractive(true, index),
+                                  onExit: (event) =>
+                                      hoverunactive(false, index),
+                                  child: isShow[index]
+                                      ? Container(
+                                          color: Colors.black.withOpacity(0.7),
+                                          padding: const EdgeInsets.all(20),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                headingList[index],
+                                                style: const TextStyle(
+                                                  color: ColorConst.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20,
                                                 ),
-                                              )
-                                            : Image.network(
-                                                photoList[index],
-                                                fit: BoxFit.cover,
                                               ),
-                                      ),
-                                    ),
-                                  ),
-                                )))
+                                              const Spacer(),
+                                              Row(
+                                                children: [
+                                                  CircleAvatar(
+                                                    backgroundImage:
+                                                        NetworkImage(
+                                                      photoList[index],
+                                                    ),
+                                                  ),
+                                                  FxBox.w10,
+                                                  Text(
+                                                    nameList[index],
+                                                    style: const TextStyle(
+                                                      color: ColorConst.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 18,
+                                                    ),
+                                                  )
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        )
+                                      : Image.network(
+                                          photoList[index],
+                                          fit: BoxFit.cover,
+                                        ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
           ],
         ),
       ),
@@ -328,7 +312,6 @@ class _GallaryState extends State<Gallary> {
       barrierLabel: 'Dialog',
       builder: (context) {
         return Stack(
-          // mainAxisAlignment: MainAxisAlignment.center,
           alignment: Alignment.center,
           children: [
             StatefulBuilder(builder: (context, setState) {
@@ -341,11 +324,15 @@ class _GallaryState extends State<Gallary> {
                       Align(
                         alignment: Alignment.topRight,
                         child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Icon(Icons.clear,
-                                color: Colors.white, size: 23)),
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Icon(
+                            Icons.clear,
+                            color: Colors.white,
+                            size: 23,
+                          ),
+                        ),
                       ),
                       Image.network(
                         photoList[selecteIndex],
@@ -358,7 +345,8 @@ class _GallaryState extends State<Gallary> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                      top: (MediaQuery.of(context).size.height / 2) - 23),
+                    top: (MediaQuery.of(context).size.height / 2) - 23,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -368,17 +356,24 @@ class _GallaryState extends State<Gallary> {
                             setState(() => selecteIndex = selecteIndex - 1);
                           }
                         },
-                        child: const Icon(Icons.skip_previous,
-                            color: Colors.black, size: 35),
+                        child: const Icon(
+                          Icons.skip_previous,
+                          color: Colors.black,
+                          size: 35,
+                        ),
                       ),
                       GestureDetector(
-                          onTap: () {
-                            if (selecteIndex < photoList.length - 2) {
-                              setState(() => selecteIndex = selecteIndex + 1);
-                            }
-                          },
-                          child: const Icon(Icons.skip_next,
-                              color: Colors.black, size: 35)),
+                        onTap: () {
+                          if (selecteIndex < photoList.length - 2) {
+                            setState(() => selecteIndex = selecteIndex + 1);
+                          }
+                        },
+                        child: const Icon(
+                          Icons.skip_next,
+                          color: Colors.black,
+                          size: 35,
+                        ),
+                      ),
                     ],
                   ),
                 )
@@ -399,7 +394,6 @@ class _GallaryState extends State<Gallary> {
       barrierLabel: 'Dialog',
       builder: (context) {
         return Stack(
-          // mainAxisAlignment: MainAxisAlignment.center,
           alignment: Alignment.center,
           children: [
             StatefulBuilder(builder: (context, setState) {
@@ -412,11 +406,15 @@ class _GallaryState extends State<Gallary> {
                       Align(
                         alignment: Alignment.topRight,
                         child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Icon(Icons.clear,
-                                color: Colors.white, size: 23)),
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Icon(
+                            Icons.clear,
+                            color: Colors.white,
+                            size: 23,
+                          ),
+                        ),
                       ),
                       Image.network(
                         photoList[selecteIndex],
@@ -429,7 +427,8 @@ class _GallaryState extends State<Gallary> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                      top: (MediaQuery.of(context).size.height / 2) - 23),
+                    top: (MediaQuery.of(context).size.height / 2) - 23,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -439,17 +438,24 @@ class _GallaryState extends State<Gallary> {
                             setState(() => selecteIndex = selecteIndex - 1);
                           }
                         },
-                        child: const Icon(Icons.skip_previous,
-                            color: Colors.white, size: 35),
+                        child: const Icon(
+                          Icons.skip_previous,
+                          color: Colors.white,
+                          size: 35,
+                        ),
                       ),
                       GestureDetector(
-                          onTap: () {
-                            if (selecteIndex < photoList.length - 2) {
-                              setState(() => selecteIndex = selecteIndex + 1);
-                            }
-                          },
-                          child: const Icon(Icons.skip_next,
-                              color: Colors.white, size: 35)),
+                        onTap: () {
+                          if (selecteIndex < photoList.length - 2) {
+                            setState(() => selecteIndex = selecteIndex + 1);
+                          }
+                        },
+                        child: const Icon(
+                          Icons.skip_next,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                      ),
                     ],
                   ),
                 )
@@ -465,12 +471,10 @@ class _GallaryState extends State<Gallary> {
     await showDialog(
       context: context,
       barrierColor: Colors.black12.withOpacity(0.8),
-      // Background color
       barrierDismissible: false,
       barrierLabel: 'Dialog',
       builder: (context) {
         return Stack(
-          // mainAxisAlignment: MainAxisAlignment.center,
           alignment: Alignment.center,
           children: [
             StatefulBuilder(builder: (context, setState) {
@@ -483,11 +487,15 @@ class _GallaryState extends State<Gallary> {
                       Align(
                         alignment: Alignment.topRight,
                         child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Icon(Icons.clear,
-                                color: Colors.white, size: 23)),
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Icon(
+                            Icons.clear,
+                            color: Colors.white,
+                            size: 23,
+                          ),
+                        ),
                       ),
                       Image.network(
                         photoList[selecteIndex],
@@ -500,7 +508,8 @@ class _GallaryState extends State<Gallary> {
                 ),
                 Padding(
                   padding: EdgeInsets.only(
-                      top: (MediaQuery.of(context).size.height / 2) - 23),
+                    top: (MediaQuery.of(context).size.height / 2) - 23,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -510,17 +519,24 @@ class _GallaryState extends State<Gallary> {
                             setState(() => selecteIndex = selecteIndex - 1);
                           }
                         },
-                        child: const Icon(Icons.skip_previous,
-                            color: Colors.white, size: 35),
+                        child: const Icon(
+                          Icons.skip_previous,
+                          color: Colors.white,
+                          size: 35,
+                        ),
                       ),
                       GestureDetector(
-                          onTap: () {
-                            if (selecteIndex < photoList.length - 2) {
-                              setState(() => selecteIndex = selecteIndex + 1);
-                            }
-                          },
-                          child: const Icon(Icons.skip_next,
-                              color: Colors.white, size: 35)),
+                        onTap: () {
+                          if (selecteIndex < photoList.length - 2) {
+                            setState(() => selecteIndex = selecteIndex + 1);
+                          }
+                        },
+                        child: const Icon(
+                          Icons.skip_next,
+                          color: Colors.white,
+                          size: 35,
+                        ),
+                      ),
                     ],
                   ),
                 )
@@ -531,5 +547,4 @@ class _GallaryState extends State<Gallary> {
       },
     );
   }
-
 }

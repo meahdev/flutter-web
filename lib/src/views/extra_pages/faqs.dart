@@ -98,7 +98,13 @@ class _FAQsState extends State<FAQs> {
                       Expanded(child: _listTwo())
                     ],
                   )
-                : Column(children: [_listOne(), FxBox.h44, _listTwo()]),
+                : Column(
+                    children: [
+                      _listOne(),
+                      FxBox.h44,
+                      _listTwo(),
+                    ],
+                  ),
           ],
         ),
       ),
@@ -122,7 +128,7 @@ class _FAQsState extends State<FAQs> {
           ),
         ),
         FxBox.h16,
-        _expansionList(_generalList, _dataGeneralList),
+        _expansionList(_dataGeneralList, _generalList),
       ],
     );
   }
@@ -144,7 +150,7 @@ class _FAQsState extends State<FAQs> {
           ),
         ),
         FxBox.h16,
-        _expansionList(_pricingNplanList, _dataPricingNplanList),
+        _expansionList(_dataPricingNplanList, _pricingNplanList),
       ],
     );
   }
