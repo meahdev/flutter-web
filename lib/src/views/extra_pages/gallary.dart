@@ -75,231 +75,244 @@ class _GalleryState extends State<Gallery> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Responsive.isMobile(context)
-                ? Wrap(
-                    children: List.generate(
-                      12,
-                      (index) => Container(
-                        margin: const EdgeInsets.all(12),
-                        width: MediaQuery.of(context).size.width * .70,
-                        height: MediaQuery.of(context).size.height * .30,
-                        child: GestureDetector(
-                          onTap: () {
-                            setState(() => selecteIndex = index);
-                            popup();
-                          },
-                          child: Container(
-                            clipBehavior: Clip.hardEdge,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.grey,
-                            ),
-                            child: MouseRegion(
-                              onEnter: (event) => hoveractive(true, index),
-                              onExit: (event) => hoverunactive(false, index),
-                              child: isShow[index]
-                                  ? Container(
-                                      color: Colors.black.withOpacity(0.7),
-                                      padding: const EdgeInsets.all(20),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            headingList[index],
-                                            style: const TextStyle(
-                                              color: ColorConst.white,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 20,
-                                            ),
-                                          ),
-                                          const Spacer(),
-                                          Row(
-                                            children: [
-                                              CircleAvatar(
-                                                backgroundImage: NetworkImage(
-                                                  photoList[index],
-                                                ),
-                                              ),
-                                              FxBox.w10,
-                                              Text(
-                                                nameList[index],
-                                                style: const TextStyle(
-                                                  color: ColorConst.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 18,
-                                                ),
-                                              )
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  : Image.network(
-                                      photoList[index],
-                                      fit: BoxFit.cover,
-                                    ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                : Responsive.isTablet(context)
-                    ? Wrap(
-                        children: List.generate(
-                          12,
-                          (index) => Container(
-                            margin: const EdgeInsets.all(12),
-                            width: MediaQuery.of(context).size.width * .35,
-                            height: MediaQuery.of(context).size.height * .30,
-                            child: GestureDetector(
-                              onTap: () {
-                                setState(() => selecteIndex = index);
-                                popup2();
-                              },
-                              child: Container(
-                                clipBehavior: Clip.hardEdge,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey,
-                                ),
-                                child: MouseRegion(
-                                  onEnter: (event) => hoveractive(true, index),
-                                  onExit: (event) =>
-                                      hoverunactive(false, index),
-                                  child: isShow[index]
-                                      ? Container(
-                                          color: Colors.black.withOpacity(0.7),
-                                          padding: const EdgeInsets.all(20),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                headingList[index],
-                                                style: const TextStyle(
-                                                  color: ColorConst.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20,
-                                                ),
-                                              ),
-                                              const Spacer(),
-                                              Row(
-                                                children: [
-                                                  CircleAvatar(
-                                                    backgroundImage:
-                                                        NetworkImage(
-                                                      photoList[index],
-                                                    ),
-                                                  ),
-                                                  FxBox.w10,
-                                                  Text(
-                                                    nameList[index],
-                                                    style: const TextStyle(
-                                                      color: ColorConst.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 18,
-                                                    ),
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      : Image.network(
-                                          photoList[index],
-                                          fit: BoxFit.cover,
-                                        ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-                    : Wrap(
-                        children: List.generate(
-                          12,
-                          (index) => Container(
-                            margin: const EdgeInsets.all(12),
-                            width: MediaQuery.of(context).size.width * .17,
-                            height: MediaQuery.of(context).size.height * .30,
-                            child: GestureDetector(
-                              onTap: () {
-                                setState(() => selecteIndex = index);
-                                popup3();
-                              },
-                              child: Container(
-                                clipBehavior: Clip.hardEdge,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color: Colors.grey,
-                                ),
-                                child: MouseRegion(
-                                  onEnter: (event) => hoveractive(true, index),
-                                  onExit: (event) =>
-                                      hoverunactive(false, index),
-                                  child: isShow[index]
-                                      ? Container(
-                                          color: Colors.black.withOpacity(0.7),
-                                          padding: const EdgeInsets.all(20),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                headingList[index],
-                                                style: const TextStyle(
-                                                  color: ColorConst.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 20,
-                                                ),
-                                              ),
-                                              const Spacer(),
-                                              Row(
-                                                children: [
-                                                  CircleAvatar(
-                                                    backgroundImage:
-                                                        NetworkImage(
-                                                      photoList[index],
-                                                    ),
-                                                  ),
-                                                  FxBox.w10,
-                                                  Text(
-                                                    nameList[index],
-                                                    style: const TextStyle(
-                                                      color: ColorConst.white,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 18,
-                                                    ),
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      : Image.network(
-                                          photoList[index],
-                                          fit: BoxFit.cover,
-                                        ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      )
-          ],
-        ),
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        // Responsive.isMobile(context)
+        // ?
+        GridView.builder(
+          shrinkWrap: true,
+          itemCount: photoList.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 4,
+            crossAxisSpacing: 24.0,
+            mainAxisSpacing: 24.0,
+            childAspectRatio: 3 / 2,
+          ),
+          itemBuilder: (context, index) {
+            return Container(
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5.0),
+              ),
+              child: Image.network(
+                photoList[index],
+                alignment: Alignment.topCenter,
+                fit: BoxFit.cover,
+              ),
+            );
+          },
+        )
+        // Wrap(
+        //     children: List.generate(
+        //       12,
+        //       (index) => Container(
+        //         margin: const EdgeInsets.all(12),
+        //         width: MediaQuery.of(context).size.width * .70,
+        //         height: MediaQuery.of(context).size.height * .30,
+        //         child: GestureDetector(
+        //           onTap: () {
+        //             setState(() => selecteIndex = index);
+        //             popup();
+        //           },
+        //           child: Container(
+        //             clipBehavior: Clip.hardEdge,
+        //             decoration: BoxDecoration(
+        //               borderRadius: BorderRadius.circular(8),
+        //               color: Colors.grey,
+        //             ),
+        //             child: MouseRegion(
+        //               onEnter: (event) => hoveractive(true, index),
+        //               onExit: (event) => hoverunactive(false, index),
+        //               child: isShow[index]
+        //                   ? Container(
+        //                       color: Colors.black.withOpacity(0.7),
+        //                       padding: const EdgeInsets.all(20),
+        //                       child: Column(
+        //                         crossAxisAlignment:
+        //                             CrossAxisAlignment.start,
+        //                         children: [
+        //                           Text(
+        //                             headingList[index],
+        //                             style: const TextStyle(
+        //                               color: ColorConst.white,
+        //                               fontWeight: FontWeight.bold,
+        //                               fontSize: 20,
+        //                             ),
+        //                           ),
+        //                           const Spacer(),
+        //                           Row(
+        //                             children: [
+        //                               CircleAvatar(
+        //                                 backgroundImage: NetworkImage(
+        //                                   photoList[index],
+        //                                 ),
+        //                               ),
+        //                               FxBox.w10,
+        //                               Text(
+        //                                 nameList[index],
+        //                                 style: const TextStyle(
+        //                                   color: ColorConst.white,
+        //                                   fontWeight: FontWeight.bold,
+        //                                   fontSize: 18,
+        //                                 ),
+        //                               )
+        //                             ],
+        //                           )
+        //                         ],
+        //                       ),
+        //                     )
+        //                   : Image.network(
+        //                       photoList[index],
+        //                       fit: BoxFit.cover,
+        //                     ),
+        //             ),
+        //           ),
+        //         ),
+        //       ),
+        //     ),
+        //   )
+
+        // : Responsive.isTablet(context)
+        //     ? Wrap(
+        //         children: List.generate(
+        //           12,
+        //           (index) => Container(
+        //             margin: const EdgeInsets.all(12),
+        //             width: MediaQuery.of(context).size.width * .35,
+        //             height: MediaQuery.of(context).size.height * .30,
+        //             child: GestureDetector(
+        //               onTap: () {
+        //                 setState(() => selecteIndex = index);
+        //                 popup2();
+        //               },
+        //               child: Container(
+        //                 clipBehavior: Clip.hardEdge,
+        //                 decoration: BoxDecoration(
+        //                   borderRadius: BorderRadius.circular(8),
+        //                   color: Colors.grey,
+        //                 ),
+        //                 child: MouseRegion(
+        //                   onEnter: (event) => hoveractive(true, index),
+        //                   onExit: (event) => hoverunactive(false, index),
+        //                   child: isShow[index]
+        //                       ? Container(
+        //                           color: Colors.black.withOpacity(0.7),
+        //                           padding: const EdgeInsets.all(20),
+        //                           child: Column(
+        //                             crossAxisAlignment:
+        //                                 CrossAxisAlignment.start,
+        //                             children: [
+        //                               Text(
+        //                                 headingList[index],
+        //                                 style: const TextStyle(
+        //                                   color: ColorConst.white,
+        //                                   fontWeight: FontWeight.bold,
+        //                                   fontSize: 20,
+        //                                 ),
+        //                               ),
+        //                               const Spacer(),
+        //                               Row(
+        //                                 children: [
+        //                                   CircleAvatar(
+        //                                     backgroundImage: NetworkImage(
+        //                                       photoList[index],
+        //                                     ),
+        //                                   ),
+        //                                   FxBox.w10,
+        //                                   Text(
+        //                                     nameList[index],
+        //                                     style: const TextStyle(
+        //                                       color: ColorConst.white,
+        //                                       fontWeight: FontWeight.bold,
+        //                                       fontSize: 18,
+        //                                     ),
+        //                                   )
+        //                                 ],
+        //                               )
+        //                             ],
+        //                           ),
+        //                         )
+        //                       : Image.network(
+        //                           photoList[index],
+        //                           fit: BoxFit.cover,
+        //                         ),
+        //                 ),
+        //               ),
+        //             ),
+        //           ),
+        //         ),
+        //       )
+        //     : Wrap(
+        //         children: List.generate(
+        //           12,
+        //           (index) => Container(
+        //             margin: const EdgeInsets.all(12),
+        //             width: MediaQuery.of(context).size.width * .17,
+        //             height: MediaQuery.of(context).size.height * .30,
+        //             child: GestureDetector(
+        //               onTap: () {
+        //                 setState(() => selecteIndex = index);
+        //                 popup3();
+        //               },
+        //               child: Container(
+        //                 clipBehavior: Clip.hardEdge,
+        //                 decoration: BoxDecoration(
+        //                   borderRadius: BorderRadius.circular(8),
+        //                   color: Colors.grey,
+        //                 ),
+        //                 child: MouseRegion(
+        //                   onEnter: (event) => hoveractive(true, index),
+        //                   onExit: (event) => hoverunactive(false, index),
+        //                   child: isShow[index]
+        //                       ? Container(
+        //                           color: Colors.black.withOpacity(0.7),
+        //                           padding: const EdgeInsets.all(20),
+        //                           child: Column(
+        //                             crossAxisAlignment:
+        //                                 CrossAxisAlignment.start,
+        //                             children: [
+        //                               Text(
+        //                                 headingList[index],
+        //                                 style: const TextStyle(
+        //                                   color: ColorConst.white,
+        //                                   fontWeight: FontWeight.bold,
+        //                                   fontSize: 20,
+        //                                 ),
+        //                               ),
+        //                               const Spacer(),
+        //                               Row(
+        //                                 children: [
+        //                                   CircleAvatar(
+        //                                     backgroundImage: NetworkImage(
+        //                                       photoList[index],
+        //                                     ),
+        //                                   ),
+        //                                   FxBox.w10,
+        //                                   Text(
+        //                                     nameList[index],
+        //                                     style: const TextStyle(
+        //                                       color: ColorConst.white,
+        //                                       fontWeight: FontWeight.bold,
+        //                                       fontSize: 18,
+        //                                     ),
+        //                                   )
+        //                                 ],
+        //                               )
+        //                             ],
+        //                           ),
+        //                         )
+        //                       : Image.network(
+        //                           photoList[index],
+        //                           fit: BoxFit.cover,
+        //                         ),
+        //                 ),
+        //               ),
+        //             ),
+        //           ),
+        //         ),
+        //       )
+      ],
     );
   }
 
