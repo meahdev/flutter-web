@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/provider/calendar/calendar_dialog/bloc/calendar_dialog_bloc.dart';
 import 'package:admin_dashboard/src/provider/calendar/calendar_format/calendar_format_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -14,8 +15,9 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-  final CalendarFormatBloc _calendarFormatBloc = CalendarFormatBloc();
-  // final CalendarDialogBloc _calendarDialogBloc = CalendarDialogBloc();
+  late final CalendarFormatBloc _calendarFormatBloc = CalendarFormatBloc()
+    ..add(CalendarFormatEvent.loading(
+        calendarFormat: CalendarFormat.month, eventsList: eventMap));
 
   TextEditingController eventController = TextEditingController();
 
@@ -60,13 +62,13 @@ class _CalendarState extends State<Calendar> {
   ];
 
   List<Color> coloredList = [
-    const Color(0xFF626ED4),
-    const Color(0xFFec4561),
-    const Color(0xFF02A499),
-    const Color(0xFF626ED4),
-    const Color(0xFF38A4F8),
-    const Color(0xFF343A40),
-    const Color(0xFFF8B425),
+    ColorConst.primary,
+    ColorConst.error,
+    ColorConst.success,
+    ColorConst.primary,
+    ColorConst.info,
+    ColorConst.dark,
+    ColorConst.warning,
   ];
 
   List<String> months = <String>[
@@ -83,13 +85,6 @@ class _CalendarState extends State<Calendar> {
     'Nov',
     'Dec'
   ];
-
-  @override
-  void initState() {
-    _calendarFormatBloc.add(CalendarFormatEvent.loading(
-        calendarFormat: CalendarFormat.month, eventsList: eventMap));
-    super.initState();
-  }
 
   @override
   void dispose() {
@@ -111,7 +106,7 @@ class _CalendarState extends State<Calendar> {
                 Expanded(
                   flex: 4,
                   child: ColoredBox(
-                    color: Colors.white,
+                    color: ColorConst.white,
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: _tableCalendar(context: context),
@@ -124,7 +119,7 @@ class _CalendarState extends State<Calendar> {
               children: [
                 _mobileView(),
                 ColoredBox(
-                  color: Colors.white,
+                  color: ColorConst.white,
                   child: Padding(
                     padding: const EdgeInsets.all(1),
                     child: _tableCalendar(context: context),
@@ -137,7 +132,7 @@ class _CalendarState extends State<Calendar> {
 
   Widget _mobileView() {
     return Container(
-      color: Colors.white,
+      color: ColorConst.white,
       margin: const EdgeInsets.all(8),
       padding: const EdgeInsets.all(20),
       child: Column(
@@ -147,45 +142,49 @@ class _CalendarState extends State<Calendar> {
             width: MediaQuery.of(context).size.width,
             height: 34,
             child: FxButton(
-                onPressed: () {
-                  _displayTextInputDialog(
-                      context: context,
-                      savePressed: () {
-                        _handleSaveTap(
-                            date: DateTime.parse(
-                                '${DateTime.now().toString().split(" ")[0]} 00:00:00.000Z'));
-                      },
-                      deletePressed: () {});
-                },
-                icon: const Icon(
-                  Icons.add_circle_outline,
-                  color: Colors.white,
-                  size: 15,
-                ),
-                text: 'Create New Event',
-                borderRadius: 5),
+              onPressed: () {
+                _displayTextInputDialog(
+                  context: context,
+                  savePressed: () {
+                    _handleSaveTap(
+                      date: DateTime.parse(
+                        '${DateTime.now().toString().split(" ")[0]} 00:00:00.000Z',
+                      ),
+                    );
+                  },
+                  deletePressed: () {},
+                );
+              },
+              icon: const Icon(
+                Icons.add_circle_outline,
+                color: ColorConst.white,
+                size: 15,
+              ),
+              text: 'Create New Event',
+              borderRadius: 5,
+            ),
           ),
           FxBox.h24,
           const Text(
             'Drag and drop your event or click in the calendar',
-            style: TextStyle(color: Color(0xFF707070), fontSize: 14),
+            style: TextStyle(color: ColorConst.grey800, fontSize: 14),
           ),
           FxBox.h12,
-          _addEventButtons(
-              color: const Color(0xFF02A499), label: 'New Event Planning'),
+          _addEventButtons(color: ColorConst.teal, label: 'New Event Planning'),
           FxBox.h6,
-          _addEventButtons(color: const Color(0xFF38A4F8), label: 'Meeting'),
-          FxBox.h6,
-          _addEventButtons(
-              color: const Color(0xFFF8B425), label: 'Generating Reports'),
+          _addEventButtons(color: ColorConst.info, label: 'Meeting'),
           FxBox.h6,
           _addEventButtons(
-              color: const Color(0xFFEC4561), label: 'Create New theme'),
+              color: ColorConst.warning, label: 'Generating Reports'),
+          FxBox.h6,
+          _addEventButtons(
+              color: ColorConst.error.withOpacity(0.8),
+              label: 'Create New theme'),
           FxBox.h40,
           const Text(
             'Activity',
             style: TextStyle(
-                color: Color(0xFF5B626B),
+                color: ColorConst.lightblackFontColor,
                 fontSize: 16,
                 fontWeight: FontWeight.w600),
           ),
@@ -201,7 +200,7 @@ class _CalendarState extends State<Calendar> {
                   child: VerticalDivider(
                     endIndent: 5,
                     indent: 5,
-                    color: Color(0xFF5B626B),
+                    color: ColorConst.lightblackFontColor,
                   ),
                 ),
                 Positioned(
@@ -217,21 +216,21 @@ class _CalendarState extends State<Calendar> {
                           'Andrei Coman magna sed porta finibus, risus posted a new article: Forget UX Rowland',
                           maxLines: 3,
                           style: TextStyle(
-                              color: Color(0xFF5B626B),
+                              color: ColorConst.lightblackFontColor,
                               fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
                           'Zack Wetass, sed porta finibus, risus Chris Wallace Commented Developer Moreno',
                           style: TextStyle(
-                              color: Color(0xFF5B626B),
+                              color: ColorConst.lightblackFontColor,
                               fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
                         Text(
                           'Zack Wetass, Chris combined Commented UX Murphy',
                           style: TextStyle(
-                              color: Color(0xFF5B626B),
+                              color: ColorConst.lightblackFontColor,
                               fontSize: 14,
                               fontWeight: FontWeight.bold),
                         ),
@@ -246,17 +245,17 @@ class _CalendarState extends State<Calendar> {
                     Icon(
                       Icons.fiber_manual_record,
                       size: 20,
-                      color: Color(0xFF02A499),
+                      color: ColorConst.teal,
                     ),
                     Icon(
                       Icons.fiber_manual_record,
                       size: 20,
-                      color: Color(0xFF02A499),
+                      color: ColorConst.teal,
                     ),
                     Icon(
                       Icons.fiber_manual_record,
                       size: 20,
-                      color: Color(0xFF02A499),
+                      color: ColorConst.teal,
                     ),
                   ],
                 ),
@@ -284,12 +283,15 @@ class _CalendarState extends State<Calendar> {
                     borderRadius: BorderRadius.circular(2.0))),
             icon: const Icon(
               Icons.fiber_manual_record,
-              color: Colors.white,
+              color: ColorConst.white,
               size: 12,
             ),
             label: Text(
               label,
-              style: const TextStyle(color: Colors.white, fontSize: 14),
+              style: const TextStyle(
+                color: ColorConst.white,
+                fontSize: 14,
+              ),
             )),
       ),
     );
@@ -301,7 +303,6 @@ class _CalendarState extends State<Calendar> {
         top: 20,
         left: 0,
         right: 0,
-        bottom: 0,
         child: ListView.builder(
             itemCount: list.length,
             shrinkWrap: true,
@@ -314,7 +315,6 @@ class _CalendarState extends State<Calendar> {
                     eventController.text = list[index]["eventName"];
                     dropdownValue = dropDownList
                         .elementAt(list[index]["dropdownValue"] ?? 0);
-
                     _displayTextInputDialog(
                         context: context,
                         savePressed: () {
@@ -336,7 +336,7 @@ class _CalendarState extends State<Calendar> {
                   child: Text(list[index]["eventName"],
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style: const TextStyle(color: Colors.white)),
+                      style: const TextStyle(color: ColorConst.white)),
                 ),
               );
             }));
@@ -349,8 +349,7 @@ class _CalendarState extends State<Calendar> {
         final values = eventMap[date] as List<Map<String, dynamic>>;
         values.add({
           'eventName': eventController.text.trim(),
-          'dropdownValue':
-              dropDownList.indexWhere((element) => element == dropdownValue)
+          'dropdownValue': dropDownList.indexOf(dropdownValue)
         });
         eventController.clear();
         eventMap[date] = values;
@@ -363,8 +362,7 @@ class _CalendarState extends State<Calendar> {
         eventMap[date] = [
           {
             'eventName': eventController.text.trim(),
-            'dropdownValue':
-                dropDownList.indexWhere((element) => element == dropdownValue)
+            'dropdownValue': dropDownList.indexOf(dropdownValue)
           }
         ];
         eventController.clear();
@@ -393,19 +391,9 @@ class _CalendarState extends State<Calendar> {
               currentDay: DateTime.now(),
               rowHeight: 100,
               daysOfWeekHeight: 40,
-              startingDayOfWeek: StartingDayOfWeek.sunday,
-              availableGestures: AvailableGestures.none,
-              daysOfWeekStyle: const DaysOfWeekStyle(
-                decoration: BoxDecoration(
-                  border: Border.symmetric(
-                    vertical: BorderSide(color: Colors.red),
-                  ),
-                ),
-                weekdayStyle: TextStyle(color: Color(0xFF4F4F4F)),
-                weekendStyle: TextStyle(color: Color(0xFF6A6A6A)),
-              ),
-              firstDay: DateTime.utc(2010, 10, 16),
-              lastDay: DateTime.utc(2030, 3, 14),
+              startingDayOfWeek: StartingDayOfWeek.monday,
+              firstDay: DateTime.utc(2015, 10, 16),
+              lastDay: DateTime.utc(2030, 10, 14),
               focusedDay: DateTime.now(),
               headerVisible: true,
               availableCalendarFormats: const {
@@ -416,25 +404,17 @@ class _CalendarState extends State<Calendar> {
               calendarFormat: calendarFormat,
               calendarStyle: CalendarStyle(
                 defaultDecoration: BoxDecoration(
-                  border: Border.all(color: Colors.black, width: 0.5),
+                  border: Border.all(color: ColorConst.black, width: 0.5),
                 ),
                 cellMargin: const EdgeInsets.all(0.0),
                 canMarkersOverflow: true,
-                selectedDecoration: const BoxDecoration(color: Colors.red),
                 todayTextStyle: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFFFAFAFA),
+                  color: ColorConst.white,
                   fontSize: 18.0,
                 ),
-                tableBorder: const TableBorder(
-                  top: BorderSide(color: Color(0xFFe9ecef)),
-                  bottom: BorderSide(color: Color(0xFFe9ecef)),
-                  left: BorderSide(color: Color(0xFFe9ecef)),
-                  right: BorderSide(color: Color(0xFFe9ecef)),
-                ),
-                todayDecoration: const BoxDecoration(
-                  color: Colors.orange,
-                  shape: BoxShape.circle,
+                tableBorder: TableBorder.all(
+                  color: ColorConst.appbarLightBG,
                 ),
               ),
               headerStyle: const HeaderStyle(
@@ -454,186 +434,179 @@ class _CalendarState extends State<Calendar> {
                 );
               },
               calendarBuilders: CalendarBuilders(
-                  headerTitleBuilder: (context, day) => Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              FxButton(
-                                minWidth: 24,
+                headerTitleBuilder: (context, day) => Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        FxButton(
+                          minWidth: 24,
+                          onPressed: () {
+                            if (newpageController != null) {
+                              newpageController!.previousPage(
+                                duration: const Duration(microseconds: 400),
+                                curve: Curves.easeInOut,
+                              );
+                            }
+                          },
+                          icon: const Icon(
+                            Icons.navigate_before,
+                            color: ColorConst.white,
+                          ),
+                          borderRadius: 3,
+                          color: ColorConst.lightblackFontColor,
+                        ),
+                        FxButton(
+                          minWidth: 24,
+                          onPressed: () {
+                            if (newpageController != null) {
+                              newpageController!.nextPage(
+                                  duration: const Duration(milliseconds: 400),
+                                  curve: Curves.easeIn);
+                            }
+                          },
+                          icon: const Icon(
+                            Icons.navigate_next,
+                            color: ColorConst.white,
+                          ),
+                          borderRadius: 3,
+                          color: ColorConst.lightblackFontColor,
+                        ),
+                        Responsive.isWeb(context)
+                            ? FxBox.w10
+                            : const SizedBox.shrink(),
+                        Responsive.isWeb(context)
+                            ? FxButton(
                                 onPressed: () {
-                                  if (newpageController != null) {
-                                    newpageController!.previousPage(
-                                      duration:
-                                          const Duration(microseconds: 400),
-                                      curve: Curves.easeInOut,
-                                    );
+                                  if (newpageController!.page !=
+                                      currentMonthPageIndex) {
+                                    if (newpageController != null) {
+                                      newpageController!.jumpToPage(
+                                          currentMonthPageIndex.toInt());
+                                    }
                                   }
                                 },
-                                icon: const Icon(
-                                  Icons.navigate_before,
-                                  color: Colors.white,
-                                ),
+                                text: 'Today',
                                 borderRadius: 3,
-                                color: const Color(0xFF626DE4),
-                              ),
-                              FxButton(
-                                minWidth: 24,
-                                onPressed: () {
-                                  if (newpageController != null) {
-                                    newpageController!.nextPage(
-                                        duration:
-                                            const Duration(milliseconds: 400),
-                                        curve: Curves.easeIn);
-                                  }
-                                },
-                                icon: const Icon(
-                                  Icons.navigate_next,
-                                  color: Colors.white,
-                                ),
-                                borderRadius: 3,
-                                color: const Color(0xFF626DE4),
-                              ),
-                              Responsive.isWeb(context)
-                                  ? FxBox.w10
-                                  : const SizedBox.shrink(),
-                              Responsive.isWeb(context)
-                                  ? FxButton(
-                                      onPressed: () {
-                                        if (newpageController!.page !=
-                                            currentMonthPageIndex) {
-                                          if (newpageController != null) {
-                                            newpageController!.jumpToPage(
-                                                currentMonthPageIndex.toInt());
-                                          }
-                                        }
-                                      },
-                                      text: 'Today',
-                                      borderRadius: 3,
-                                      color: const Color(0xFF626DE4)
-                                          .withOpacity(
-                                              day.month == DateTime.now().month
-                                                  ? 0.5
-                                                  : 1),
-                                      height: 43,
-                                    )
-                                  : const SizedBox.shrink(),
-                            ],
-                          ),
-                          Text(
-                            '${months.elementAt(day.month - 1)} ${day.year}'
-                                .toUpperCase(),
-                            style: const TextStyle(
-                                fontSize: 16,
-                                color: Color(0xFF5B626B),
-                                fontWeight: FontWeight.w600),
-                          ),
-                          Row(
-                            children: [
-                              FxButton(
-                                onPressed: () {
-                                  calendarFormat != CalendarFormat.month
-                                      ? _calendarFormat = CalendarFormat.month
-                                      : null;
-
-                                  calendarFormat != CalendarFormat.month
-                                      ? _calendarFormatBloc.add(
-                                          CalendarFormatEvent.loading(
-                                              calendarFormat:
-                                                  CalendarFormat.month,
-                                              eventsList: eventMap))
-                                      : null;
-                                },
-                                text: 'Month',
-                                borderRadius: 0,
-                                color: calendarFormat != CalendarFormat.week
-                                    ? const Color(0xFF626DE4)
-                                    : const Color(0xFF4E58AA),
+                                color: ColorConst.primary.withOpacity(
+                                    day.month == DateTime.now().month
+                                        ? 0.5
+                                        : 1),
                                 height: 43,
-                              ),
-                              FxButton(
-                                onPressed: () {
-                                  calendarFormat != CalendarFormat.week
-                                      ? _calendarFormat = CalendarFormat.week
-                                      : null;
-                                  calendarFormat != CalendarFormat.week
-                                      ? _calendarFormatBloc.add(
-                                          CalendarFormatEvent.loading(
-                                              calendarFormat:
-                                                  CalendarFormat.week,
-                                              eventsList: eventMap))
-                                      : null;
-                                },
-                                text: 'Week',
-                                borderRadius: 0,
-                                color: calendarFormat != CalendarFormat.week
-                                    ? const Color(0xFF626DE4)
-                                    : const Color(0xFF4E58AA),
-                                height: 43,
-                              ),
-                              FxButton(
-                                onPressed: () {
-                                  calendarFormat != CalendarFormat.twoWeeks
-                                      ? _calendarFormat =
-                                          CalendarFormat.twoWeeks
-                                      : null;
-
-                                  calendarFormat != CalendarFormat.twoWeeks
-                                      ? _calendarFormatBloc.add(
-                                          CalendarFormatEvent.loading(
-                                              calendarFormat:
-                                                  CalendarFormat.twoWeeks,
-                                              eventsList: eventMap))
-                                      : null;
-                                },
-                                text: '2 Week',
-                                borderRadius: 0,
-                                color: calendarFormat != CalendarFormat.week
-                                    ? const Color(0xFF626DE4)
-                                    : const Color(0xFF4E58AA),
-                                height: 43,
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                  todayBuilder: (context, date, events) {
-                    List<Map<String, dynamic>> list = eventsList[date] ?? [];
-                    return Stack(
-                      children: [
-                        Container(
-                            alignment: Alignment.topRight,
-                            padding: const EdgeInsets.all(3),
-                            decoration: const BoxDecoration(
-                              color: Color(0xFFd7edfe),
-                            ),
-                            child: Text(
-                              '${date.day} ',
-                              style: const TextStyle(color: Color(0xFF226295)),
-                            )),
-                        _eventButton(list: list, date: date)
+                              )
+                            : const SizedBox.shrink(),
                       ],
-                    );
-                  },
-                  defaultBuilder: (context, day, focusedDay) {
-                    List<Map<String, dynamic>> list = eventsList[day] ?? [];
-                    return Stack(
+                    ),
+                    Text(
+                      '${months.elementAt(day.month - 1)} ${day.year}'
+                          .toUpperCase(),
+                      style: const TextStyle(
+                          fontSize: 16,
+                          color: ColorConst.lightblackFontColor,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Row(
                       children: [
-                        Container(
-                            alignment: Alignment.topRight,
-                            padding: const EdgeInsets.all(3),
-                            decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: const Color(0xFFe9ecef),
-                                    width: 0.5)),
-                            child: Text(
-                              '${day.day}',
-                              style: const TextStyle(color: Colors.black),
-                            )),
-                        _eventButton(list: list, date: day),
+                        FxButton(
+                          onPressed: () {
+                            calendarFormat != CalendarFormat.month
+                                ? _calendarFormat = CalendarFormat.month
+                                : null;
+
+                            calendarFormat != CalendarFormat.month
+                                ? _calendarFormatBloc.add(
+                                    CalendarFormatEvent.loading(
+                                        calendarFormat: CalendarFormat.month,
+                                        eventsList: eventMap))
+                                : null;
+                          },
+                          text: 'Month',
+                          borderRadius: 0,
+                          color: calendarFormat == CalendarFormat.month
+                              ? ColorConst.primary
+                              : ColorConst.primary.withOpacity(0.7),
+                          height: 43,
+                        ),
+                        FxButton(
+                          onPressed: () {
+                            calendarFormat != CalendarFormat.week
+                                ? _calendarFormat = CalendarFormat.week
+                                : null;
+                            calendarFormat != CalendarFormat.week
+                                ? _calendarFormatBloc.add(
+                                    CalendarFormatEvent.loading(
+                                        calendarFormat: CalendarFormat.week,
+                                        eventsList: eventMap))
+                                : null;
+                          },
+                          text: 'Week',
+                          borderRadius: 0,
+                          color: calendarFormat == CalendarFormat.week
+                              ? ColorConst.primary
+                              : ColorConst.primary.withOpacity(0.7),
+                          height: 43,
+                        ),
+                        FxButton(
+                          onPressed: () {
+                            calendarFormat != CalendarFormat.twoWeeks
+                                ? _calendarFormat = CalendarFormat.twoWeeks
+                                : null;
+
+                            calendarFormat != CalendarFormat.twoWeeks
+                                ? _calendarFormatBloc.add(
+                                    CalendarFormatEvent.loading(
+                                        calendarFormat: CalendarFormat.twoWeeks,
+                                        eventsList: eventMap))
+                                : null;
+                          },
+                          text: '2 Week',
+                          borderRadius: 0,
+                          color: calendarFormat == CalendarFormat.twoWeeks
+                              ? ColorConst.primary
+                              : ColorConst.primary.withOpacity(0.7),
+                          height: 43,
+                        ),
                       ],
-                    );
-                  }),
+                    ),
+                  ],
+                ),
+                todayBuilder: (context, date, events) {
+                  List<Map<String, dynamic>> list = eventsList[date] ?? [];
+                  return Stack(
+                    children: [
+                      Container(
+                          alignment: Alignment.topRight,
+                          padding: const EdgeInsets.all(3),
+                          decoration: BoxDecoration(
+                            color: ColorConst.drawerHover.withOpacity(0.7),
+                          ),
+                          child: Text(
+                            date.day.toString(),
+                            style: const TextStyle(color: ColorConst.primary),
+                          )),
+                      _eventButton(list: list, date: date)
+                    ],
+                  );
+                },
+                defaultBuilder: (context, day, focusedDay) {
+                  List<Map<String, dynamic>> list = eventsList[day] ?? [];
+                  return Stack(
+                    children: [
+                      Container(
+                          alignment: Alignment.topRight,
+                          padding: const EdgeInsets.all(3),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: ColorConst.darkFontColor, width: 0.5)),
+                          child: Text(
+                            day.day.toString(),
+                            style: const TextStyle(color: ColorConst.black),
+                          )),
+                      _eventButton(list: list, date: day),
+                    ],
+                  );
+                },
+              ),
             );
           },
         );
@@ -658,7 +631,7 @@ class _CalendarState extends State<Calendar> {
                   isValidate:
                       eventController.text.trim().isEmpty ? false : true)),
             child: AlertDialog(
-              actionsPadding: const EdgeInsets.fromLTRB(20.0, 0.0, 0.0, 0.0),
+              actionsPadding: const EdgeInsets.only(left: 20.0),
               titlePadding: EdgeInsets.zero,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(5.0))),
@@ -676,7 +649,7 @@ class _CalendarState extends State<Calendar> {
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF5B626B)),
+                              color: ColorConst.lightblackFontColor),
                         ),
                         const Spacer(),
                         IconButton(
@@ -688,7 +661,7 @@ class _CalendarState extends State<Calendar> {
                             },
                             icon: const Icon(
                               Icons.clear,
-                              color: Color(0xFF5B626B),
+                              color: ColorConst.lightblackFontColor,
                             )),
                       ],
                     ),
@@ -710,7 +683,7 @@ class _CalendarState extends State<Calendar> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
-                                  color: Color(0xFF5B626B)),
+                                  color: ColorConst.lightblackFontColor),
                             ),
                             FxBox.h10,
                             TextFormField(
@@ -739,15 +712,15 @@ class _CalendarState extends State<Calendar> {
                                   ),
                                   suffixIcon: autovalidateMode ==
                                           AutovalidateMode.always
-                                      ? const Icon(
+                                      ? Icon(
                                           Icons.error_outline,
-                                          color: Colors.red,
+                                          color: ColorConst.error,
                                         )
                                       : isValidate
                                           ? const Icon(
                                               Icons.done,
                                               size: 25,
-                                              color: Color(0xFF02A499),
+                                              color: ColorConst.teal,
                                             )
                                           : null,
                                   errorBorder: OutlineInputBorder(
@@ -755,6 +728,8 @@ class _CalendarState extends State<Calendar> {
                                       borderSide: const BorderSide(
                                           color: Colors.red, width: 0.5)),
                                   border: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                          color: ColorConst.black),
                                       borderRadius: BorderRadius.circular(3))),
                             ),
                             FxBox.h20,
@@ -763,15 +738,18 @@ class _CalendarState extends State<Calendar> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
-                                  color: Color(0xFF5B626B)),
+                                  color: ColorConst.lightblackFontColor),
                             ),
                             FxBox.h10,
                             Container(
                               height: 35,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(3),
-                                  border: Border.all(color: Colors.grey)),
                               width: 350,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(3),
+                                border: Border.all(
+                                  color: ColorConst.grey800,
+                                ),
+                              ),
                               child: DropdownButtonHideUnderline(
                                 child: ButtonTheme(
                                   alignedDropdown: true,
@@ -781,19 +759,22 @@ class _CalendarState extends State<Calendar> {
                                     icon: const Icon(
                                         Icons.keyboard_arrow_down_sharp),
                                     elevation: 16,
-                                    style: const TextStyle(color: Colors.black),
+                                    style: const TextStyle(
+                                        color: ColorConst.black),
                                     onChanged: (String? newValue) {
                                       dropdownValue = newValue!;
                                       calendarDialogBloc.add(
-                                          CalendarDialogEvent.loading(
-                                              autovalidateMode:
-                                                  AutovalidateMode.always,
-                                              category: newValue,
-                                              isValidate: eventController.text
-                                                      .trim()
-                                                      .isEmpty
-                                                  ? false
-                                                  : true));
+                                        CalendarDialogEvent.loading(
+                                          autovalidateMode:
+                                              AutovalidateMode.always,
+                                          category: newValue,
+                                          isValidate: eventController.text
+                                                  .trim()
+                                                  .isEmpty
+                                              ? false
+                                              : true,
+                                        ),
+                                      );
                                     },
                                     items: dropDownList
                                         .map<DropdownMenuItem<String>>(
@@ -816,10 +797,10 @@ class _CalendarState extends State<Calendar> {
                     FxButton(
                       onPressed: deletePressed,
                       text: 'Delete',
-                      textColor: Colors.white,
+                      textColor: ColorConst.white,
                       borderRadius: 5,
-                      hoverColor: Colors.red,
-                      color: const Color(0xFFEC4561),
+                      hoverColor: ColorConst.error,
+                      color: ColorConst.error.withOpacity(0.7),
                       height: 35,
                     ),
                     const Spacer(),
@@ -830,29 +811,32 @@ class _CalendarState extends State<Calendar> {
                         Navigator.pop(context);
                       },
                       text: 'Close',
-                      textColor: Colors.black,
+                      textColor: ColorConst.black,
                       borderRadius: 5,
-                      hoverColor: Colors.grey.shade200,
-                      color: const Color(0xFFE9ECEF),
+                      hoverColor: ColorConst.white,
+                      color: ColorConst.white12,
                       height: 35,
                     ),
                     FxBox.w10,
                     FxButton(
                       onPressed: () {
                         if (eventController.text.trim().isEmpty) {
-                          calendarDialogBloc.add(CalendarDialogEvent.loading(
+                          calendarDialogBloc.add(
+                            CalendarDialogEvent.loading(
                               autovalidateMode: AutovalidateMode.always,
                               category: dropdownValue,
-                              isValidate: false));
+                              isValidate: false,
+                            ),
+                          );
                         } else {
                           savePressed();
                         }
                       },
                       text: 'Save',
-                      textColor: Colors.white,
+                      textColor: ColorConst.white,
                       borderRadius: 5,
-                      hoverColor: Colors.teal,
-                      color: const Color(0xFF02A499),
+                      hoverColor: ColorConst.teal,
+                      color: ColorConst.teal.withOpacity(0.7),
                       height: 35,
                     ),
                   ],
