@@ -1,7 +1,4 @@
-// ignore_for_file: unnecessary_const, unnecessary_string_interpolations
-
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -52,40 +49,36 @@ class _DirectoryPageState extends State<DirectoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Responsive.isMobile(context)
-                ? Wrap(
-                    children: List.generate(9, (index) => _profileCard(index)),
-                  )
-                : Responsive.isTablet(context)
-                    ? Wrap(
-                        children: List.generate(
-                          9,
-                          (index) => SizedBox(
-                            width: MediaQuery.of(context).size.width * .45,
-                            child: _profileCard(index),
-                          ),
-                        ),
-                      )
-                    : Wrap(
-                        children: List.generate(
-                          9,
-                          (index) => SizedBox(
-                            width: MediaQuery.of(context).size.width * .25,
-                            child: _profileCard(index),
-                          ),
-                        ),
-                      ),
-          ],
-        ),
-      ),
-    );
+    return Responsive.isMobile(context)
+        ? Wrap(
+            runSpacing: 20.0,
+            children: List.generate(9, (index) => _profileCard(index)),
+          )
+        : Responsive.isTablet(context)
+            ? Wrap(
+                spacing: 20.0,
+                runSpacing: 20.0,
+                children: List.generate(
+                  9,
+                  (index) => SizedBox(
+                    width: MediaQuery.of(context).size.width / 2 - 34,
+                    child: _profileCard(index),
+                  ),
+                ),
+              )
+            : Wrap(
+                spacing: 20.0,
+                runSpacing: 20.0,
+                children: List.generate(
+                  9,
+                  (index) => SizedBox(
+                    width: MediaQuery.of(context).size.width < 1300
+                        ? (MediaQuery.of(context).size.width - 308) / 2
+                        : (MediaQuery.of(context).size.width - 328) / 3,
+                    child: _profileCard(index),
+                  ),
+                ),
+              );
   }
 
   Widget _profileCard(int index) {
@@ -102,40 +95,44 @@ class _DirectoryPageState extends State<DirectoryPage> {
                   backgroundColor: Colors.grey.shade300,
                   child: CircleAvatar(
                     backgroundImage: NetworkImage(
-                      "${photoList[index]}",
+                      photoList[index],
                     ),
                     radius: 40,
                   ),
                 ),
                 FxBox.w16,
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${nameList[index]}",
-                      style: const TextStyle(
-                        color: ColorConst.primary,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w800,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        nameList[index],
+                        softWrap: true,
+                        maxLines: 2,
+                        style: const TextStyle(
+                          color: ColorConst.primary,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w800,
+                        ),
                       ),
-                    ),
-                    const Text(
-                      "Creative Director",
-                      style: TextStyle(
-                        color: const Color(0XFF5B626B),
+                      const Text(
+                        "Creative Director",
+                        style: TextStyle(
+                          color: Color(0XFF5B626B),
+                        ),
                       ),
-                    ),
-                    FxBox.h8,
-                    Text(
-                      "${emailList[index]}",
-                      style: const TextStyle(
-                        color: const Color(0XFF5B626B),
-                        fontWeight: FontWeight.bold,
+                      FxBox.h8,
+                      Text(
+                        emailList[index],
+                        style: const TextStyle(
+                          color: Color(0XFF5B626B),
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-                const Spacer(),
+                FxBox.w24,
                 Column(
                   children: [
                     const CircleAvatar(

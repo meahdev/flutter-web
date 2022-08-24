@@ -41,7 +41,6 @@ class _MyAppState extends State<MyApp> {
                 routeInformationParser: _appRouter.defaultRouteParser(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeClass.themeData(themeMode, context),
-                // home: const Dashboard(),
                 scrollBehavior: const MaterialScrollBehavior().copyWith(
                   dragDevices: {
                     PointerDeviceKind.mouse,

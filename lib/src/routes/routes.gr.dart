@@ -156,7 +156,7 @@ class AppRouter extends _i26.RootStackRouter {
           _i26.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'gallery',
+              redirectTo: 'invoice',
               fullMatch: true),
           _i26.RouteConfig(TestWidget.name,
               path: 'dashboard', parent: MenuBar.name),

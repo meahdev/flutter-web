@@ -1,5 +1,3 @@
-// ignore_for_file: depend_on_referenced_packages
-
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +18,8 @@ class _InvoiceState extends State<Invoice> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Card(
-          margin: const EdgeInsets.all(20),
           child: Padding(
-            padding: const EdgeInsets.all(30),
+            padding: const EdgeInsets.all(20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
