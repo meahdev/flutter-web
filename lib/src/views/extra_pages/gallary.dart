@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -83,23 +84,70 @@ class _GalleryState extends State<Gallery> {
         GridView.builder(
           shrinkWrap: true,
           itemCount: photoList.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: Responsive.isWeb(context)
+                ? 4
+                : Responsive.isTablet(context)
+                    ? 2
+                    : 1,
             crossAxisSpacing: 24.0,
             mainAxisSpacing: 24.0,
             childAspectRatio: 3 / 2,
           ),
           itemBuilder: (context, index) {
-            return Container(
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-              ),
-              child: Image.network(
-                photoList[index],
-                alignment: Alignment.topCenter,
-                fit: BoxFit.cover,
-              ),
+            return FxHover(
+              builder: (isHover) {
+                return Container(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5.0),
+                    color: isHover ? ColorConst.black.withOpacity(0.7) : null,
+                  ),
+                  padding: isHover ? const EdgeInsets.all(20) : null,
+                  child: isHover
+                      ? Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                headingList[index],
+                                style: const TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  color: ColorConst.white,
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ),
+                            const Spacer(),
+                            Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundImage: NetworkImage(
+                                    photoList[index],
+                                  ),
+                                ),
+                                FxBox.w10,
+                                Expanded(
+                                  child: Text(
+                                    nameList[index],
+                                    style: const TextStyle(
+                                      color: ColorConst.white,
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 15,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        )
+                      : Image.network(
+                          photoList[index],
+                          alignment: Alignment.topCenter,
+                          fit: BoxFit.cover,
+                        ),
+                );
+              },
             );
           },
         )
