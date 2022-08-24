@@ -91,47 +91,19 @@ class _WizardFormState extends State<WizardForm> {
                       ? Row(
                           children: [
                             Expanded(
-                              child: GestureDetector(
-                                onTap: _selleronTap,
-                                child: _stepperTitle(
-                                  '1.',
-                                  'Seller Deatils',
-                                  _index,
-                                ),
-                              ),
+                              child: _stepperTitle(1, 'Seller Deatils'),
                             ),
                             FxBox.w8,
                             Expanded(
-                              child: GestureDetector(
-                                onTap: _companyonTap,
-                                child: _stepperTitle(
-                                  '2.',
-                                  'Company Document',
-                                  _index,
-                                ),
-                              ),
+                              child: _stepperTitle(2, 'Company Document'),
                             ),
                             FxBox.w8,
                             Expanded(
-                              child: GestureDetector(
-                                onTap: _bankonTap,
-                                child: _stepperTitle(
-                                  '3.',
-                                  'Bank Deatils',
-                                  _index,
-                                ),
-                              ),
+                              child: _stepperTitle(3, 'Bank Deatils'),
                             ),
                             FxBox.w8,
                             Expanded(
-                              child: GestureDetector(
-                                onTap: _confirmonTap,
-                                child: _stepperTitle(
-                                  '4.',
-                                  'Confirm Deatil',
-                                  _index,
-                                ),
-                              ),
+                              child: _stepperTitle(4, 'Confirm Deatil'),
                             ),
                           ],
                         )
@@ -141,25 +113,12 @@ class _WizardFormState extends State<WizardForm> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: GestureDetector(
-                                        onTap: _selleronTap,
-                                        child: _stepperTitle(
-                                          '1.',
-                                          'Seller Deatils',
-                                          _index,
-                                        ),
-                                      ),
+                                      child: _stepperTitle(1, 'Seller Deatils'),
                                     ),
                                     FxBox.w8,
                                     Expanded(
-                                      child: GestureDetector(
-                                        onTap: _companyonTap,
-                                        child: _stepperTitle(
-                                          '2.',
-                                          'Company Document',
-                                          _index,
-                                        ),
-                                      ),
+                                      child:
+                                          _stepperTitle(2, 'Company Document'),
                                     ),
                                   ],
                                 ),
@@ -167,25 +126,11 @@ class _WizardFormState extends State<WizardForm> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: GestureDetector(
-                                        onTap: _bankonTap,
-                                        child: _stepperTitle(
-                                          '3.',
-                                          'Bank Deatils',
-                                          _index,
-                                        ),
-                                      ),
+                                      child: _stepperTitle(3, 'Bank Deatils'),
                                     ),
                                     FxBox.w8,
                                     Expanded(
-                                      child: GestureDetector(
-                                        onTap: _confirmonTap,
-                                        child: _stepperTitle(
-                                          '4.',
-                                          'Confirm Deatil',
-                                          _index,
-                                        ),
-                                      ),
+                                      child: _stepperTitle(4, 'Confirm Deatil'),
                                     ),
                                   ],
                                 )
@@ -193,41 +138,13 @@ class _WizardFormState extends State<WizardForm> {
                             )
                           : Column(
                               children: [
-                                GestureDetector(
-                                  onTap: _selleronTap,
-                                  child: _stepperTitle(
-                                    '1.',
-                                    'Seller Deatils',
-                                    _index,
-                                  ),
-                                ),
+                                _stepperTitle(1, 'Seller Deatils'),
                                 FxBox.h8,
-                                GestureDetector(
-                                  onTap: _companyonTap,
-                                  child: _stepperTitle(
-                                    '2.',
-                                    'Company Document',
-                                    _index,
-                                  ),
-                                ),
+                                _stepperTitle(2, 'Company Document'),
                                 FxBox.h8,
-                                GestureDetector(
-                                  onTap: _bankonTap,
-                                  child: _stepperTitle(
-                                    '3.',
-                                    'Bank Deatils',
-                                    _index,
-                                  ),
-                                ),
+                                _stepperTitle(3, 'Bank Deatils'),
                                 FxBox.h8,
-                                GestureDetector(
-                                  onTap: _confirmonTap,
-                                  child: _stepperTitle(
-                                    '4.',
-                                    'Confirm Deatil',
-                                    _index,
-                                  ),
-                                ),
+                                _stepperTitle(4, 'Confirm Deatil'),
                               ],
                             ),
                   FxBox.h24,
@@ -287,88 +204,69 @@ class _WizardFormState extends State<WizardForm> {
     );
   }
 
-  Widget _stepperTitle(String number, String title, int index) {
-    final isSelected = index == (int.parse(number.substring(0, 1)) - 1);
+  Widget _stepperTitle(int number, String title) {
+    final isSelected = _index == number - 1;
+    final tapIndex = number - 1;
 
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5.0),
-        color: isSelected && !_isFinish
-            ? ColorConst.primary
-            : ColorConst.stepperBackGround,
-      ),
-      padding: const EdgeInsets.all(15.0),
-      child: Row(
-        children: [
-          Container(
-            alignment: Alignment.center,
-            height: 38,
-            width: 38,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(
-                width: 2.0,
-                color: isSelected && !_isFinish
-                    ? ColorConst.white
-                    : ColorConst.primary,
+    return GestureDetector(
+      onTap: () {
+        if (_clickCount >= tapIndex) {
+          _formWizardBloc.add(FormWizardEvent.stepperClick(tapIndex));
+        }
+
+        if (_isFinish && tapIndex < 3) {
+          _formWizardBloc.add(const FormWizardEvent.finishClick(false));
+        }
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5.0),
+          color: isSelected && !_isFinish
+              ? ColorConst.primary
+              : ColorConst.stepperBackGround,
+        ),
+        padding: const EdgeInsets.all(15.0),
+        child: Row(
+          children: [
+            Container(
+              alignment: Alignment.center,
+              height: 38,
+              width: 38,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  width: 2.0,
+                  color: isSelected && !_isFinish
+                      ? ColorConst.white
+                      : ColorConst.primary,
+                ),
+              ),
+              child: Text(
+                '$number.',
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w500,
+                  color: isSelected && !_isFinish
+                      ? ColorConst.white
+                      : ColorConst.primary,
+                ),
               ),
             ),
-            child: Text(
-              number,
-              style: TextStyle(
-                fontSize: 16.0,
-                fontWeight: FontWeight.w500,
-                color: isSelected && !_isFinish
-                    ? ColorConst.white
-                    : ColorConst.primary,
+            FxBox.w10,
+            Expanded(
+              child: Text(
+                title,
+                style: TextStyle(
+                  color: isSelected && !_isFinish
+                      ? ColorConst.white
+                      : ColorConst.primary,
+                ),
               ),
-            ),
-          ),
-          FxBox.w10,
-          Expanded(
-            child: Text(
-              title,
-              style: TextStyle(
-                color: isSelected && !_isFinish
-                    ? ColorConst.white
-                    : ColorConst.primary,
-              ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
-  }
-
-  void _selleronTap() {
-    _formWizardBloc.add(const FormWizardEvent.stepperClick(0));
-    if (_isFinish) {
-      _formWizardBloc.add(const FormWizardEvent.finishClick(false));
-    }
-  }
-
-  void _companyonTap() {
-    if (_clickCount > 0) {
-      _formWizardBloc.add(const FormWizardEvent.stepperClick(1));
-    }
-    if (_isFinish) {
-      _formWizardBloc.add(const FormWizardEvent.finishClick(false));
-    }
-  }
-
-  void _bankonTap() {
-    if (_clickCount > 1) {
-      _formWizardBloc.add(const FormWizardEvent.stepperClick(2));
-    }
-    if (_isFinish) {
-      _formWizardBloc.add(const FormWizardEvent.finishClick(false));
-    }
-  }
-
-  void _confirmonTap() {
-    if (_clickCount > 2) {
-      _formWizardBloc.add(const FormWizardEvent.stepperClick(3));
-    }
   }
 
   Widget _commonTitle(String text, {TextAlign? textAlign}) {
