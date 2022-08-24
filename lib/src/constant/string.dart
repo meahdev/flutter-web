@@ -31,6 +31,7 @@ class Strings {
   static const String charts = 'Charts';
   static const String tables = 'Tables';
   static const String authentication = 'Authentication';
+  static const String extraPages = 'Extra Pages';
   static const String emailTemplates = 'Email Templates';
 
   // ui elements option
@@ -41,8 +42,9 @@ class Strings {
   static const String alertDialog = 'Alert Dialog';
   static const String modal = 'Modal';
   static const String loader = 'Loaders';
-  static const String cupertinoIcons = 'Cupertino Icons';
+  static const String tabs = 'Tabs';
   static const String latestTransaction = 'Latest Transaction';
+  static const String carousel = 'Carousel';
 
   // charts option
   static const String morrisChart = 'Morris Chart';
@@ -64,6 +66,18 @@ class Strings {
   static const String recoverPasswordTwo = 'Recover Password 2';
   static const String lockScreenOne = 'Lock Screen 1';
   static const String lockScreenTwo = 'Lock Screen 2';
+
+  // extra pages option
+  static const String timeline = 'Timeline';
+  static const String invoice = 'Invoice';
+  static const String directory = 'Directory';
+  static const String error404 = 'Error 404';
+  static const String error500 = 'Error 500';
+  static const String pricing = 'Pricing';
+  static const String gallery = 'Gallery';
+  static const String maintenence = 'Maintenence';
+  static const String comingSoon = 'Coming Soon';
+  static const String faqs = 'FAQs';
 
   // email templates option
   static const String basicActionEmail = 'Basic Action Email';
@@ -162,8 +176,8 @@ class Strings {
   static const String lineChartWithArea = 'Line chart with area';
   static const String overlappingChart = 'Overlapping bars on mobile';
   static const String simplePieChart = 'Simple Pie Chart';
-  static const String multipleStaticsChart =  'Multiple Statistics';
-  static const String polarChart =  'Polar Chart';
-  static const String radarChart =  'Radar Chart';
+  static const String multipleStaticsChart = 'Multiple Statistics';
+  static const String polarChart = 'Polar Chart';
+  static const String radarChart = 'Radar Chart';
   static const String barChart = 'Bar Chart';
 }

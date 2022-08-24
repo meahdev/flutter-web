@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 import 'package:data_table_2/data_table_2.dart';
@@ -120,9 +121,11 @@ class _InvoiceState extends State<Invoice> {
                     dataRowHeight: 50,
                     horizontalMargin: 0,
                     columnSpacing: 8.0,
-                    headingTextStyle: const TextStyle(
+                    headingTextStyle: TextStyle(
                       fontSize: 15,
-                      color: ColorConst.textColor,
+                      color: isDark
+                          ? ColorConst.darkFontColor
+                          : ColorConst.textColor,
                       fontWeight: FontWeight.w600,
                     ),
                     columns: const <DataColumn>[
@@ -145,31 +148,47 @@ class _InvoiceState extends State<Invoice> {
                         ),
                       ),
                     ],
-                    rows: const <DataRow>[
+                    rows: <DataRow>[
                       DataRow2(
                         cells: <DataCell>[
                           DataCell(
                             Text(
                               'BS-400',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                           DataCell(
                             Text(
                               '\$10.99',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                           DataCell(
                             Text(
                               '1',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                           DataCell(
                             Text(
                               '\$10.99',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                         ],
@@ -179,25 +198,41 @@ class _InvoiceState extends State<Invoice> {
                           DataCell(
                             Text(
                               'BS-400',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                           DataCell(
                             Text(
                               '\$20.00	',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                           DataCell(
                             Text(
                               '3',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                           DataCell(
                             Text(
                               '\$60.00',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                         ],
@@ -207,38 +242,56 @@ class _InvoiceState extends State<Invoice> {
                           DataCell(
                             Text(
                               'BS-1000',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                           DataCell(
                             Text(
                               '\$600.00',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                           DataCell(
                             Text(
                               '1',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                           DataCell(
                             Text(
                               '\$600.00',
-                              style: TextStyle(color: ColorConst.textColor),
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                              ),
                             ),
                           ),
                         ],
                       ),
                       DataRow2(
                         cells: <DataCell>[
-                          DataCell(Text("")),
-                          DataCell(Text("")),
+                          const DataCell(Text("")),
+                          const DataCell(Text("")),
                           DataCell(
                             Text(
                               'Subtotal',
                               style: TextStyle(
-                                color: ColorConst.textColor,
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -247,7 +300,9 @@ class _InvoiceState extends State<Invoice> {
                             Text(
                               '\$670.00',
                               style: TextStyle(
-                                color: ColorConst.textColor,
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -256,13 +311,15 @@ class _InvoiceState extends State<Invoice> {
                       ),
                       DataRow2(
                         cells: <DataCell>[
-                          DataCell(Text("")),
-                          DataCell(Text("")),
+                          const DataCell(Text("")),
+                          const DataCell(Text("")),
                           DataCell(
                             Text(
                               'Shipping',
                               style: TextStyle(
-                                color: ColorConst.textColor,
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -271,7 +328,9 @@ class _InvoiceState extends State<Invoice> {
                             Text(
                               '\$15',
                               style: TextStyle(
-                                color: ColorConst.textColor,
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
@@ -280,13 +339,15 @@ class _InvoiceState extends State<Invoice> {
                       ),
                       DataRow2(
                         cells: <DataCell>[
-                          DataCell(Text("")),
-                          DataCell(Text("")),
+                          const DataCell(Text("")),
+                          const DataCell(Text("")),
                           DataCell(
                             Text(
                               'Total',
                               style: TextStyle(
-                                color: ColorConst.textColor,
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -296,7 +357,9 @@ class _InvoiceState extends State<Invoice> {
                               '\$685.99',
                               style: TextStyle(
                                 fontSize: 20,
-                                color: ColorConst.textColor,
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),

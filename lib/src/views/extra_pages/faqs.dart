@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -53,12 +54,12 @@ class _FAQsState extends State<FAQs> {
           children: [
             const Icon(Icons.message_outlined, color: ColorConst.primary),
             FxBox.h20,
-            const Text(
+            Text(
               "Can't find what you are looking for?",
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: Color((0XFF5B626B)),
+                color: isDark ? ColorConst.darkFontColor : ColorConst.textColor,
               ),
             ),
             FxBox.h12,

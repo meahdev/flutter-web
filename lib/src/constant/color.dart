@@ -19,7 +19,7 @@ class ColorConst {
   static const Color lightFontColor = Color(0xFF5B626B);
   static const Color darkFontColor = Color(0xFFE9ECEF);
   static const Color endDrawerImageBorder = Color(0xFFdee2e6);
-  static const Color drawerHover = Color(0xFFB4C9DE);
+  static const Color drawerHover = Color(0xFFD4D9DE);
   static const Color searchIcon = Color(0xFF525f80);
   static const Color backgroundColor = Color(0xFFccedeb);
   static const Color borderColor = Color(0xFFb3e4e0);

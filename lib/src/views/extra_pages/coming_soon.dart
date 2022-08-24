@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -58,27 +59,30 @@ class ComingSoonState extends State<ComingSoon> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               FxBox.h20,
-              const Text(
+              Text(
                 Strings.siddhatva,
                 style: TextStyle(
                   fontSize: 25,
-                  color: Color(0XFF5B626B),
+                  color:
+                      isDark ? ColorConst.darkFontColor : ColorConst.textColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               FxBox.h20,
-              const Text(
+              Text(
                 "Let's get started with Veltrix",
                 style: TextStyle(
-                  color: Color(0XFF5B626B),
+                  color:
+                      isDark ? ColorConst.darkFontColor : ColorConst.textColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 27,
                 ),
               ),
-              const Text(
+              Text(
                 "It will be as simple as Occidental in fact it will be Occidental.",
                 style: TextStyle(
-                  color: Color(0XFF5B626B),
+                  color:
+                      isDark ? ColorConst.darkFontColor : ColorConst.textColor,
                 ),
               ),
               FxBox.h52,
@@ -127,33 +131,31 @@ class ComingSoonState extends State<ComingSoon> {
   }
 
   Widget _timerBox(String title, String value) {
-    return Container(
-      height: 130,
-      width: 130,
-      decoration: BoxDecoration(
-        color: Colors.grey.shade100,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            value,
-            style: const TextStyle(
-              fontSize: 40,
-              color: ColorConst.primary,
-              fontWeight: FontWeight.bold,
+    return Card(
+      child: SizedBox(
+        height: 130,
+        width: 130,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              value,
+              style: const TextStyle(
+                fontSize: 40,
+                color: ColorConst.primary,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Text(
-            title,
-            style: const TextStyle(
-              color: Color(0XFF5B626B),
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          )
-        ],
+            Text(
+              title,
+              style: TextStyle(
+                color: isDark ? ColorConst.darkFontColor : ColorConst.textColor,
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

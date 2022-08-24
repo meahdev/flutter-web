@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -51,15 +52,16 @@ class _Error500State extends State<Error500> {
                                     const Text(
                                       "500",
                                       style: TextStyle(
-                                        color: ColorConst.black,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 80,
                                       ),
                                     ),
-                                    const Text(
+                                    Text(
                                       "Internal Server Error",
                                       style: TextStyle(
-                                        color: ColorConst.textColor,
+                                        color: isDark
+                                            ? ColorConst.darkFontColor
+                                            : ColorConst.textColor,
                                         fontWeight: FontWeight.bold,
                                         fontSize: 20,
                                       ),
@@ -97,15 +99,16 @@ class _Error500State extends State<Error500> {
                               const Text(
                                 "500",
                                 style: TextStyle(
-                                  color: ColorConst.black,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 80,
                                 ),
                               ),
-                              const Text(
+                              Text(
                                 "Internal Server Error",
                                 style: TextStyle(
-                                  color: ColorConst.textColor,
+                                  color: isDark
+                                      ? ColorConst.darkFontColor
+                                      : ColorConst.textColor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
                                 ),

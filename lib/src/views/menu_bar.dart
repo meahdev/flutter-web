@@ -41,10 +41,7 @@ class _MenuBarState extends State<MenuBar> {
   Map<String, String> extrasData = {
     Strings.authentication: IconlyBroken.archive,
     Strings.emailTemplates: IconlyBroken.emailTemplate,
-  };
-
-  Map<String, String> extraPagesData = {
-    'Extra Pages': IconlyBroken.emailTemplate,
+    Strings.extraPages: IconlyBroken.extraPages,
   };
 
   List<List<String>> componentsExpandList = [
@@ -55,7 +52,9 @@ class _MenuBarState extends State<MenuBar> {
       Strings.badge,
       Strings.alertDialog,
       Strings.modal,
-      Strings.loader
+      Strings.loader,
+      Strings.tabs,
+      Strings.carousel,
     ],
     [Strings.morrisChart, Strings.chartistChart, Strings.chartJsChart],
     [
@@ -66,7 +65,7 @@ class _MenuBarState extends State<MenuBar> {
     ],
   ];
 
-  List<List<String>> authenticationExpandList = [
+  List<List<String>> extrasExpandList = [
     [
       Strings.loginOne,
       Strings.loginTwo,
@@ -82,20 +81,17 @@ class _MenuBarState extends State<MenuBar> {
       Strings.alertEmail,
       Strings.billingEmail,
     ],
-  ];
-
-  List<List<String>> extrasPagesExpandList = [
     [
-      'Timeline',
-      'Invoice',
-      'Directory',
-      'Error 404',
-      'Error 500',
-      'Pricing',
-      'Gallery',
-      'Maintenence',
-      'Coming soon',
-      'FAQs'
+      Strings.timeline,
+      Strings.invoice,
+      Strings.directory,
+      Strings.error404,
+      Strings.error500,
+      Strings.pricing,
+      Strings.gallery,
+      Strings.maintenence,
+      Strings.comingSoon,
+      Strings.faqs,
     ],
   ];
 
@@ -124,6 +120,8 @@ class _MenuBarState extends State<MenuBar> {
     FAQs(),
     Invoice(),
     Gallery(),
+    Carousel(),
+    TabScreen(),
   ];
 
   @override
@@ -331,6 +329,7 @@ class _MenuBarState extends State<MenuBar> {
         width: 240,
         color: ColorConst.drawerBG,
         child: SingleChildScrollView(
+          controller: ScrollController(),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -346,19 +345,13 @@ class _MenuBarState extends State<MenuBar> {
                 isExpanded: true,
                 children: componentsExpandList,
               ),
-              // Extras
+              // extras
               _menuHeading(Strings.extras),
-              // _menuList(
-              //   tabsRouter: tabsRouter,
-              //   items: authenticationData,
-              //   isExpanded: true,
-              //   children: authenticationExpandList,
-              // ),
               _menuList(
                 tabsRouter: tabsRouter,
-                items: extraPagesData,
+                items: extrasData,
                 isExpanded: true,
-                children: extrasPagesExpandList,
+                children: extrasExpandList,
               ),
               FxBox.h20,
             ],
@@ -501,7 +494,7 @@ class _MenuBarState extends State<MenuBar> {
                 context.router.push(const Error500());
               } else if (items[index] == 'Maintenence') {
                 context.router.push(const Maintenance());
-              } else if (items[index] == 'Coming soon') {
+              } else if (items[index] == 'Coming Soon') {
                 context.router.push(const ComingSoon());
               } else {
                 tabsRouter.setActiveIndex(getRouteIndex(items[index]));

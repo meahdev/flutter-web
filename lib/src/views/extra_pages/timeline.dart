@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/models/steps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -17,7 +18,7 @@ class TimelineScreen extends StatefulWidget {
 class _TimelineScreenState extends State<TimelineScreen> {
   List<Steps> _steps = [];
 
-  final borderRadius = BorderRadius.circular(10); // Image border
+  final borderRadius = BorderRadius.circular(10);
 
   @override
   void initState() {
@@ -80,22 +81,19 @@ class _TimelineScreenState extends State<TimelineScreen> {
       delegate: SliverChildBuilderDelegate(
         (BuildContext context, int index) {
           if (index.isOdd) {
-            return const TimelineDivider(
-              color: ColorConst.darkFontColor,
+            return TimelineDivider(
+              color:
+                  isDark ? ColorConst.darkContainer : ColorConst.darkFontColor,
               thickness: 3,
               begin: 0.1,
               end: 0.9,
             );
           }
-
           final int itemIndex = index ~/ 2;
           final Steps step = steps![itemIndex];
-
           final bool isLeftAlign = itemIndex.isEven;
-
           final child = _timelineStepsChild(
               step.title, step.message, isLeftAlign, itemIndex);
-
           final isFirst = itemIndex == 0;
           final isLast = itemIndex == steps.length - 1;
           double indicatorY;
@@ -106,7 +104,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
           } else {
             indicatorY = 0.5;
           }
-
           return TimelineTile(
             alignment: TimelineAlign.manual,
             endChild: isLeftAlign ? child : null,
@@ -120,8 +117,9 @@ class _TimelineScreenState extends State<TimelineScreen> {
               indicatorXY: indicatorY,
               indicator: _timelineStepIndicator(step.step.toInt()),
             ),
-            beforeLineStyle: const LineStyle(
-              color: ColorConst.darkFontColor,
+            beforeLineStyle: LineStyle(
+              color:
+                  isDark ? ColorConst.darkContainer : ColorConst.darkFontColor,
               thickness: 3,
             ),
           );
@@ -152,29 +150,15 @@ class _TimelineScreenState extends State<TimelineScreen> {
       String title, String subtitle, bool isLeftAlign, int itemIndex) {
     return Padding(
       padding: isLeftAlign
-          ?
-          // ? (Responsive.isWeb(context))
-          //     ? EdgeInsets.only(
-          //         right: MediaQuery.of(context).size.width / 3.5,
-          //         top: 16,
-          //         bottom: 16,
-          //         left: 10)
-          //     :
-          const EdgeInsets.only(right: 32, top: 16, bottom: 16, left: 10)
-          // : (Responsive.isWeb(context))
-          //     ? EdgeInsets.only(
-          //         left: MediaQuery.of(context).size.width / 3.5,
-          //         top: 16,
-          //         bottom: 16,
-          //         right: 10)
+          ? const EdgeInsets.only(right: 32, top: 16, bottom: 16, left: 10)
           : const EdgeInsets.only(left: 32, top: 16, bottom: 16, right: 10),
       child: Container(
         margin: const EdgeInsets.only(left: 15, top: 35, right: 15, bottom: 25),
         padding:
             const EdgeInsets.only(left: 20, top: 25, right: 20, bottom: 25),
-        decoration: const BoxDecoration(
-          color: ColorConst.darkFontColor,
-          borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        decoration: BoxDecoration(
+          color: isDark ? ColorConst.darkContainer : ColorConst.darkFontColor,
+          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
         ),
         child: Column(
           crossAxisAlignment:
@@ -186,7 +170,8 @@ class _TimelineScreenState extends State<TimelineScreen> {
               textAlign: isLeftAlign ? TextAlign.left : TextAlign.right,
               fontSize: 16,
               fontWeight: FontWeight.w700,
-              textColor: ColorConst.lightFontColor,
+              textColor:
+                  isDark ? ColorConst.darkFontColor : ColorConst.lightFontColor,
             ),
             const SizedBox(height: 16),
             CustomText(
@@ -194,7 +179,8 @@ class _TimelineScreenState extends State<TimelineScreen> {
               textAlign: isLeftAlign ? TextAlign.left : TextAlign.right,
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              textColor: ColorConst.lightFontColor,
+              textColor:
+                  isDark ? ColorConst.darkFontColor : ColorConst.lightFontColor,
               overflow: (itemIndex == 3)
                   ? TextOverflow.ellipsis
                   : TextOverflow.visible,

@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -115,17 +116,21 @@ class _DirectoryPageState extends State<DirectoryPage> {
                           fontWeight: FontWeight.w800,
                         ),
                       ),
-                      const Text(
+                      Text(
                         "Creative Director",
                         style: TextStyle(
-                          color: Color(0XFF5B626B),
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.lightFontColor,
                         ),
                       ),
                       FxBox.h8,
                       Text(
                         emailList[index],
-                        style: const TextStyle(
-                          color: Color(0XFF5B626B),
+                        style: TextStyle(
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.lightFontColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

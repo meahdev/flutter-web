@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -25,11 +26,13 @@ class _MaintenanceState extends State<Maintenance> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const Text(
+                  Text(
                     Strings.siddhatva,
                     style: TextStyle(
                       fontSize: 25,
-                      color: Color(0XFF5B626B),
+                      color: isDark
+                          ? ColorConst.darkFontColor
+                          : ColorConst.textColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -38,18 +41,24 @@ class _MaintenanceState extends State<Maintenance> {
                     width: 320,
                     child: Image.asset("assets/images/image1.png"),
                   ),
-                  const Text(
+                  Text(
                     "Site is Under Maintenance",
                     style: TextStyle(
-                      color: Color(0XFF5B626B),
+                      color: isDark
+                          ? ColorConst.darkFontColor
+                          : ColorConst.textColor,
                       fontWeight: FontWeight.bold,
                       fontSize: 25,
                     ),
                   ),
                   FxBox.h8,
-                  const Text(
+                  Text(
                     "Please check back in sometime.",
-                    style: TextStyle(color: Color(0XFF5B626B)),
+                    style: TextStyle(
+                      color: isDark
+                          ? ColorConst.darkFontColor
+                          : ColorConst.textColor,
+                    ),
                   ),
                   FxBox.h32,
                   Responsive.isMobile(context)
@@ -103,8 +112,8 @@ class _MaintenanceState extends State<Maintenance> {
     String paragraph,
     String email,
   ) {
-    TextStyle style = const TextStyle(
-      color: Color(0XFF5B626B),
+    TextStyle style = TextStyle(
+      color: isDark ? ColorConst.darkFontColor : ColorConst.textColor,
       fontWeight: FontWeight.bold,
       fontSize: 15,
     );
@@ -123,7 +132,10 @@ class _MaintenanceState extends State<Maintenance> {
               FxBox.h16,
               Text(
                 paragraph,
-                style: const TextStyle(color: Color(0XFF5B626B)),
+                style: TextStyle(
+                  color:
+                      isDark ? ColorConst.darkFontColor : ColorConst.textColor,
+                ),
               ),
               email.isNotEmpty
                   ? GestureDetector(

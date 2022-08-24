@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -92,16 +93,20 @@ class _PricingState extends State<Pricing> {
                     children: [
                       Text(
                         title,
-                        style: const TextStyle(
-                          color: ColorConst.textColor,
+                        style: TextStyle(
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.textColor,
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const Text(
+                      Text(
                         "Sed ut neque unde",
                         style: TextStyle(
-                          color: ColorConst.textColor,
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.textColor,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -139,9 +144,11 @@ class _PricingState extends State<Pricing> {
                   ),
                   Text(
                     "$price/ ",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 30,
-                      color: ColorConst.textColor,
+                      color: isDark
+                          ? ColorConst.darkFontColor
+                          : ColorConst.textColor,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
