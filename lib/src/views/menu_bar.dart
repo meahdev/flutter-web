@@ -43,6 +43,10 @@ class _MenuBarState extends State<MenuBar> {
     Strings.emailTemplates: IconlyBroken.emailTemplate,
   };
 
+  Map<String, String> extraPagesData = {
+    'Extra Pages': IconlyBroken.emailTemplate,
+  };
+
   List<List<String>> componentsExpandList = [
     [
       Strings.toast,
@@ -62,7 +66,7 @@ class _MenuBarState extends State<MenuBar> {
     ],
   ];
 
-  List<List<String>> extrasExpandList = [
+  List<List<String>> authenticationExpandList = [
     [
       Strings.loginOne,
       Strings.loginTwo,
@@ -77,6 +81,21 @@ class _MenuBarState extends State<MenuBar> {
       Strings.basicActionEmail,
       Strings.alertEmail,
       Strings.billingEmail,
+    ],
+  ];
+
+  List<List<String>> extrasPagesExpandList = [
+    [
+      'Timeline',
+      'Invoice',
+      'Directory',
+      'Error 404',
+      'Error 500',
+      'Pricing',
+      'Gallery',
+      'Maintenence',
+      'Coming soon',
+      'FAQs'
     ],
   ];
 
@@ -99,6 +118,12 @@ class _MenuBarState extends State<MenuBar> {
     Datatable(),
     ResponsiveTable(),
     EditableTable(),
+    TimelineScreen(),
+    Pricing(),
+    DirectoryRoute(),
+    FAQs(),
+    Invoice(),
+    Gallery(),
   ];
 
   @override
@@ -323,11 +348,17 @@ class _MenuBarState extends State<MenuBar> {
               ),
               // Extras
               _menuHeading(Strings.extras),
+              // _menuList(
+              //   tabsRouter: tabsRouter,
+              //   items: authenticationData,
+              //   isExpanded: true,
+              //   children: authenticationExpandList,
+              // ),
               _menuList(
                 tabsRouter: tabsRouter,
-                items: extrasData,
+                items: extraPagesData,
                 isExpanded: true,
-                children: extrasExpandList,
+                children: extrasPagesExpandList,
               ),
               FxBox.h20,
             ],
@@ -464,6 +495,14 @@ class _MenuBarState extends State<MenuBar> {
                 context.router.push(const LockScreenOne());
               } else if (items[index] == 'Lock Screen 2') {
                 context.router.push(const LockScreenTwo());
+              } else if (items[index] == 'Error 404') {
+                context.router.push(const Error404());
+              } else if (items[index] == 'Error 500') {
+                context.router.push(const Error500());
+              } else if (items[index] == 'Maintenence') {
+                context.router.push(const Maintenance());
+              } else if (items[index] == 'Coming soon') {
+                context.router.push(const ComingSoon());
               } else {
                 tabsRouter.setActiveIndex(getRouteIndex(items[index]));
               }

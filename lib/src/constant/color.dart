@@ -23,6 +23,8 @@ class ColorConst {
   static const Color searchIcon = Color(0xFF525f80);
   static const Color backgroundColor = Color(0xFFccedeb);
   static const Color borderColor = Color(0xFFb3e4e0);
+  static const Color textColor = Color(0XFF5B626B);
+  static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, .55);
 
   // authentication
   static const Color darkContainer = Color(0xff323a4e);

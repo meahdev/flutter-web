@@ -35,7 +35,19 @@ int getRouteIndex(String route) {
     return 16;
   } else if (route == Strings.editableTable) {
     return 17;
-  } else {
+  } else if (route == 'Timeline') {
+    return 6;
+  } else if (route == 'Pricing') {
+    return 7;
+  } else if (route == 'Directory') {
+    return 8;
+  }  else if (route == 'FAQs') {
+    return 9;
+  }  else if (route == 'Invoice') {
+    return 10;
+  }  else if (route == 'Gallery') {
+    return 11;
+  }  else {
     return 0;
   }
 }

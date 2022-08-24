@@ -12,6 +12,16 @@ import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
 import 'package:admin_dashboard/src/views/charts/chartjs.dart';
 import 'package:admin_dashboard/src/views/charts/chartist.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
+import 'package:admin_dashboard/src/views/extra_pages/coming_soon.dart';
+import 'package:admin_dashboard/src/views/extra_pages/directory.dart';
+import 'package:admin_dashboard/src/views/extra_pages/error_404.dart';
+import 'package:admin_dashboard/src/views/extra_pages/error_500.dart';
+import 'package:admin_dashboard/src/views/extra_pages/faqs.dart';
+import 'package:admin_dashboard/src/views/extra_pages/gallary.dart';
+import 'package:admin_dashboard/src/views/extra_pages/invoice.dart';
+import 'package:admin_dashboard/src/views/extra_pages/maintenance.dart';
+import 'package:admin_dashboard/src/views/extra_pages/pricing.dart';
+import 'package:admin_dashboard/src/views/extra_pages/timeline.dart';
 import 'package:admin_dashboard/src/views/menu_bar.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
 import 'package:admin_dashboard/src/views/tables/basic_table.dart';
@@ -34,7 +44,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'editable-table'),
+        RedirectRoute(path: '', redirectTo: 'dashboard'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button', page: Button),
@@ -53,16 +63,26 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'data-table', page: Datatable),
         AutoRoute(path: 'responsive-table', page: ResponsiveTable),
         AutoRoute(path: 'editable-table', page: EditableTable),
+        AutoRoute(path: 'timeline', page: TimelineScreen),
+        AutoRoute(path: 'pricing', page: Pricing),
+        AutoRoute(path: 'directory', page: DirectoryPage),
+        AutoRoute(path: 'faqs', page: FAQs),
+        AutoRoute(path: 'invoice', page: Invoice),
+        AutoRoute(path: 'gallery', page: Gallery),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),
     AutoRoute(path: '/login-two', page: LoginTwo),
     AutoRoute(path: '/register-one', page: RegisterOne),
     AutoRoute(path: '/register-two', page: RegisterTwo),
-    AutoRoute(path: '/recover-password', page: RecoverPasswordOne),
+    AutoRoute(path: '/recover-password-one', page: RecoverPasswordOne),
     AutoRoute(path: '/recover-password-two', page: RecoverPasswordTwo),
     AutoRoute(path: '/lock-screen-one', page: LockScreenOne),
     AutoRoute(path: '/lock-screen-two', page: LockScreenTwo),
+    AutoRoute(path: '/error-404', page: Error404),
+    AutoRoute(path: '/error-500', page: Error500),
+    AutoRoute(path: '/coming-soon', page: ComingSoon),
+    AutoRoute(path: '/maintenance', page: Maintenance),
   ],
 )
 class $AppRouter {}
