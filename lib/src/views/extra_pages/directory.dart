@@ -1,6 +1,8 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
+import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -143,11 +145,21 @@ class _DirectoryPageState extends State<DirectoryPage> {
                     const CircleAvatar(
                       radius: 15,
                       backgroundColor: ColorConst.primary,
+                      child: SvgIcon(
+                        icon: IconlyBroken.facebook,
+                        color: ColorConst.white,
+                        size: 14.0,
+                      ),
                     ),
                     FxBox.h10,
                     const CircleAvatar(
                       radius: 15,
                       backgroundColor: ColorConst.blue,
+                      child: SvgIcon(
+                        icon: IconlyBroken.twitter,
+                        color: ColorConst.white,
+                        size: 14.0,
+                      ),
                     ),
                   ],
                 ),

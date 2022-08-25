@@ -95,59 +95,65 @@ class _GalleryState extends State<Gallery> {
             childAspectRatio: 3 / 2,
           ),
           itemBuilder: (context, index) {
-            return FxHover(
-              builder: (isHover) {
-                return Container(
-                  clipBehavior: Clip.antiAlias,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    color: isHover ? ColorConst.black.withOpacity(0.7) : null,
-                  ),
-                  padding: isHover ? const EdgeInsets.all(20) : null,
-                  child: isHover
-                      ? Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Text(
-                                headingList[index],
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: ColorConst.white,
-                                  fontSize: 18,
+            return GestureDetector(
+              onTap: () {
+                setState(() => selecteIndex = index);
+                showPopUp();
+              },
+              child: FxHover(
+                builder: (isHover) {
+                  return Container(
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5.0),
+                      color: isHover ? ColorConst.black.withOpacity(0.7) : null,
+                    ),
+                    padding: isHover ? const EdgeInsets.all(20) : null,
+                    child: isHover
+                        ? Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  headingList[index],
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color: ColorConst.white,
+                                    fontSize: 18,
+                                  ),
                                 ),
                               ),
-                            ),
-                            const Spacer(),
-                            Row(
-                              children: [
-                                CircleAvatar(
-                                  backgroundImage: NetworkImage(
-                                    photoList[index],
-                                  ),
-                                ),
-                                FxBox.w10,
-                                Expanded(
-                                  child: Text(
-                                    nameList[index],
-                                    style: const TextStyle(
-                                      color: ColorConst.white,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 15,
+                              const Spacer(),
+                              Row(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundImage: NetworkImage(
+                                      photoList[index],
                                     ),
                                   ),
-                                )
-                              ],
-                            )
-                          ],
-                        )
-                      : Image.network(
-                          photoList[index],
-                          alignment: Alignment.topCenter,
-                          fit: BoxFit.cover,
-                        ),
-                );
-              },
+                                  FxBox.w10,
+                                  Expanded(
+                                    child: Text(
+                                      nameList[index],
+                                      style: const TextStyle(
+                                        color: ColorConst.white,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 15,
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )
+                            ],
+                          )
+                        : Image.network(
+                            photoList[index],
+                            alignment: Alignment.topCenter,
+                            fit: BoxFit.cover,
+                          ),
+                  );
+                },
+              ),
             );
           },
         )
@@ -364,11 +370,39 @@ class _GalleryState extends State<Gallery> {
     );
   }
 
+  Future<void> showPopUp() {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  constraints: const BoxConstraints(
+                    minHeight: 560,
+                    minWidth: 720,
+                  ),
+                  child: Image.network(
+                    photoList[selecteIndex],
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Future<void> popup() async {
     await showDialog(
       context: context,
       barrierColor: Colors.black12.withOpacity(0.8),
-      // Background color
       barrierDismissible: false,
       barrierLabel: 'Dialog',
       builder: (context) {

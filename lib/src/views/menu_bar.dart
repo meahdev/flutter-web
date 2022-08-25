@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -547,7 +548,7 @@ class _MenuBarState extends State<MenuBar> {
       );
 
   Widget _footer() => Container(
-        color: Theme.of(context).colorScheme.onInverseSurface,
+        color: isDark ? ColorConst.footerDark : ColorConst.footerLight,
         height: 60,
         width: Responsive.isWeb(context)
             ? MediaQuery.of(context).size.width - 240

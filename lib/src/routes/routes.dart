@@ -53,7 +53,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'carousel'),
+        RedirectRoute(path: '', redirectTo: 'gallery'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'calendar', page: Calendar),
         AutoRoute(path: 'toast', page: Toast),

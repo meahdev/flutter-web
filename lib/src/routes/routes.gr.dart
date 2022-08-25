@@ -261,7 +261,7 @@ class AppRouter extends _i47.RootStackRouter {
           _i47.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'carousel',
+              redirectTo: 'gallery',
               fullMatch: true),
           _i47.RouteConfig(Dashboard.name,
               path: 'dashboard', parent: MenuBar.name),

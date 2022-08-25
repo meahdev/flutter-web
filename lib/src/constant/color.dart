@@ -7,7 +7,6 @@ class ColorConst {
   static const Color primary = Color(0xFF626ed4);
   static const Color primaryDark = Color.fromARGB(255, 54, 64, 152);
   static const Color appbarLightBG = Color(0xFFE9E9EF);
-  // static const Color textFieldBG = Color(0xFFDBDBE6);
   static const Color drawerBG = Color(0xFF333547);
   static const Color drawerTextColor = Color(0xFFA8C2D8);
   static const Color transparent = Color(0x00000000);
@@ -20,13 +19,12 @@ class ColorConst {
   static const Color lightFontColor = Color(0xFF5B626B);
   static const Color darkFontColor = Color(0xFFE9ECEF);
   static const Color lightblackFontColor = Color(0xFF5B626B);
-  static const Color endDrawerImageBorder = Color(0xFFdee2e6);
   static const Color drawerHover = Color(0xFFD4D9DE);
-  static const Color searchIcon = Color(0xFF525f80);
   static const Color backgroundColor = Color(0xFFccedeb);
   static const Color borderColor = Color(0xFFb3e4e0);
   static const Color textColor = Color(0XFF5B626B);
-  static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, 0.55);
+  static const Color footerLight = Color(0xfff0edf9);
+  static const Color footerDark = Color(0xff2e3344);
 
   //form upload file
   static const Color file = Color(0xffdddddd);
@@ -39,13 +37,8 @@ class ColorConst {
   static const Color darkFooterText = Color(0xff868993);
 
   // chat screen
-  static const Color chatColor = Color(0xFF2f3cab);
   static const Color sendButtonColor = Color(0xFF02a499);
   static const Color lightGrey = Color(0xFFdee2e6);
-
-  // dark
-  static const Color appbarDarkBG = Color(0xFF2F323C);
-  static const Color endDrawerDarkScrim = Color.fromRGBO(239, 242, 247, 0.55);
 
   static Color get success => const Color(0xff53a653);
   static Color get warning => const Color(0xffffcc00);
@@ -60,7 +53,6 @@ class ColorConst {
 
   //table hover color
   static const Color tableHover = Color(0xFFf8f9fa);
-
   static Color get darkGreen => const Color(0xff02a499);
   static Color get darkGreen2 => const Color(0xff01625c);
 
@@ -72,6 +64,7 @@ class ColorConst {
   //monthly earning
   static const Color chartBorderColor = Color(0xff6d6fb9);
   static const Color chartForgoundColor = Color(0xffced2f1);
+
   //chart Colors
   static Color get blueChartColor => const Color(0xff3c4bcf);
   static Color get gridChartColor => const Color(0xffe9ebef);
