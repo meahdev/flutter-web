@@ -1,10 +1,12 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/provider/carousel/bloc/carousel_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 
 class Carousel extends StatefulWidget {
@@ -15,10 +17,10 @@ class Carousel extends StatefulWidget {
 }
 
 class _CarouselState extends State<Carousel> {
+  final CarouselBloc _carouselBloc = CarouselBloc();
   final CarouselController _withControlController = CarouselController();
   final CarouselController _withIndicatorController = CarouselController();
   final CarouselController _withCaptionsController = CarouselController();
-  final CarouselController _crossFadeController = CarouselController();
   final List<String> _imageList = [
     "https://image.shutterstock.com/image-photo/young-beautiful-happy-businesswoman-sitting-260nw-165623561.jpg",
     "data:image/jpeg;base64,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",
@@ -31,54 +33,63 @@ class _CarouselState extends State<Carousel> {
     'Third slide label',
   ];
 
-  int _index = 0;
+  int _slideOnlyindex = 0;
+  int _controlsIndex = 0;
+  int _indicatorIndex = 0;
+  int _captionIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Responsive.isWeb(context)
-            ? Column(
-                children: [
-                  Row(
-                    children: [
-                      Expanded(child: _slidesOnly()),
-                      FxBox.w24,
-                      Expanded(child: _withControls())
-                    ],
-                  ),
-                  FxBox.h24,
-                  Row(
-                    children: [
-                      Expanded(child: _withIndicators()),
-                      FxBox.w24,
-                      Expanded(child: _withCaptions())
-                    ],
-                  ),
-                  FxBox.h24,
-                  Row(
-                    children: [
-                      Expanded(child: _crossfade()),
-                      FxBox.w24,
-                      const Expanded(child: SizedBox())
-                    ],
-                  ),
-                ],
-              )
-            : Column(
-                children: [
-                  _slidesOnly(),
-                  FxBox.h24,
-                  _withControls(),
-                  FxBox.h24,
-                  _withIndicators(),
-                  FxBox.h24,
-                  _withCaptions(),
-                  FxBox.h24,
-                  _crossfade(),
-                ],
-              )
-      ],
+    return BlocProvider(
+      create: (context) => _carouselBloc,
+      child: BlocBuilder<CarouselBloc, CarouselState>(
+        builder: (context, state) {
+          state.whenOrNull(
+            pageChangeSuccess:
+                (slideOnlyindex, controlsIndex, indicatorIndex, captionIndex) {
+              _slideOnlyindex = slideOnlyindex;
+              _controlsIndex = controlsIndex;
+              _indicatorIndex = indicatorIndex;
+              _captionIndex = captionIndex;
+            },
+          );
+          return Column(
+            children: [
+              Responsive.isWeb(context)
+                  ? Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(child: _slidesOnly()),
+                            FxBox.w24,
+                            Expanded(child: _withControls())
+                          ],
+                        ),
+                        FxBox.h24,
+                        Row(
+                          children: [
+                            Expanded(child: _withIndicators()),
+                            FxBox.w24,
+                            Expanded(child: _withCaptions())
+                          ],
+                        ),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        _slidesOnly(),
+                        FxBox.h24,
+                        _withControls(),
+                        FxBox.h24,
+                        _withIndicators(),
+                        FxBox.h24,
+                        _withCaptions(),
+                      ],
+                    )
+            ],
+          );
+        },
+      ),
     );
   }
 
@@ -126,6 +137,17 @@ class _CarouselState extends State<Carousel> {
             .toList(),
         options: CarouselOptions(
           viewportFraction: 1.0,
+          initialPage: _slideOnlyindex,
+          onPageChanged: (index, reason) {
+            _carouselBloc.add(
+              CarouselEvent.pageChange(
+                index,
+                _controlsIndex,
+                _indicatorIndex,
+                _captionIndex,
+              ),
+            );
+          },
         ),
       ),
     );
@@ -148,6 +170,17 @@ class _CarouselState extends State<Carousel> {
                 .toList(),
             options: CarouselOptions(
               viewportFraction: 1.0,
+              initialPage: _controlsIndex,
+              onPageChanged: (index, reason) {
+                _carouselBloc.add(
+                  CarouselEvent.pageChange(
+                    _slideOnlyindex,
+                    index,
+                    _indicatorIndex,
+                    _captionIndex,
+                  ),
+                );
+              },
             ),
           ),
           _commonArrow(IconlyBroken.arrowRightRound, _withControlController),
@@ -163,22 +196,29 @@ class _CarouselState extends State<Carousel> {
       Stack(
         alignment: Alignment.center,
         children: [
-          CarouselSlider.builder(
+          CarouselSlider(
             carouselController: _withIndicatorController,
-            itemCount: _imageList.length,
-            itemBuilder: (context, index, realIndex) {
-              return Image.network(
-                _imageList[index],
-                fit: BoxFit.cover,
-                width: double.infinity,
-              );
-            },
+            items: _imageList
+                .map(
+                  (image) => Image.network(
+                    image,
+                    fit: BoxFit.cover,
+                    width: double.infinity,
+                  ),
+                )
+                .toList(),
             options: CarouselOptions(
               viewportFraction: 1.0,
+              initialPage: _indicatorIndex,
               onPageChanged: (index, reason) {
-                setState(() {
-                  _index = index;
-                });
+                _carouselBloc.add(
+                  CarouselEvent.pageChange(
+                    _slideOnlyindex,
+                    _controlsIndex,
+                    index,
+                    _captionIndex,
+                  ),
+                );
               },
             ),
           ),
@@ -194,7 +234,7 @@ class _CarouselState extends State<Carousel> {
                   return Container(
                     margin: const EdgeInsets.symmetric(horizontal: 3),
                     width: 30,
-                    color: _index == index
+                    color: _indicatorIndex == index
                         ? ColorConst.white
                         : ColorConst.white.withOpacity(0.55),
                   );
@@ -232,6 +272,7 @@ class _CarouselState extends State<Carousel> {
                     child: Text(
                       _captionList[index],
                       style: const TextStyle(
+                        color: ColorConst.white,
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
                       ),
@@ -242,6 +283,17 @@ class _CarouselState extends State<Carousel> {
             },
             options: CarouselOptions(
               viewportFraction: 1.0,
+              initialPage: _captionIndex,
+              onPageChanged: (index, reason) {
+                _carouselBloc.add(
+                  CarouselEvent.pageChange(
+                    _slideOnlyindex,
+                    _controlsIndex,
+                    _indicatorIndex,
+                    index,
+                  ),
+                );
+              },
             ),
           ),
           _commonArrow(IconlyBroken.arrowRightRound, _withCaptionsController),
@@ -249,31 +301,6 @@ class _CarouselState extends State<Carousel> {
         ],
       ),
     );
-  }
-
-  Widget _crossfade() {
-    return _commonView(
-        'Crossfade',
-        Stack(
-          alignment: Alignment.center,
-          children: [
-            CarouselSlider(
-              carouselController: _crossFadeController,
-              items: _imageList
-                  .map((image) => Image.network(
-                        image,
-                        fit: BoxFit.cover,
-                        width: double.infinity,
-                      ))
-                  .toList(),
-              options: CarouselOptions(
-                viewportFraction: 1.0,
-              ),
-            ),
-            _commonArrow(IconlyBroken.arrowRightRound, _crossFadeController),
-            _commonArrow(IconlyBroken.arrowLeftRound, _crossFadeController),
-          ],
-        ));
   }
 
   Widget _commonArrow(String arrow, CarouselController controller) {
