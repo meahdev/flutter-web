@@ -34,6 +34,7 @@ class _MenuBarState extends State<MenuBar> {
 
   Map<String, String> componentData = {
     Strings.uiElements: IconlyBroken.box,
+    Strings.forms: IconlyBroken.forms,
     Strings.charts: IconlyBroken.charts,
     Strings.tables: IconlyBroken.tables,
   };
@@ -55,6 +56,14 @@ class _MenuBarState extends State<MenuBar> {
       Strings.loader,
       Strings.tabs,
       Strings.carousel,
+    ],
+    [
+      Strings.formElements,
+      Strings.formValidation,
+      Strings.formFileUpload,
+      Strings.formRepeater,
+      Strings.formWizard,
+      Strings.formMask,
     ],
     [Strings.morrisChart, Strings.chartistChart, Strings.chartJsChart],
     [
@@ -123,6 +132,12 @@ class _MenuBarState extends State<MenuBar> {
     Carousel(),
     TabScreen(),
     Calendar(),
+    ElementsForm(),
+    ValidationForm(),
+    FileUploadForm(),
+    RepeaterForm(),
+    WizardForm(),
+    MaskForm(),
   ];
 
   @override

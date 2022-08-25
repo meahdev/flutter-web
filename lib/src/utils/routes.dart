@@ -53,6 +53,18 @@ int getRouteIndex(String route) {
     return 25;
   } else if (route == Strings.calendar) {
     return 26;
+  } else if (route == Strings.formElements) {
+    return 27;
+  } else if (route == Strings.formValidation) {
+    return 28;
+  } else if (route == Strings.formFileUpload) {
+    return 29;
+  } else if (route == Strings.formRepeater) {
+    return 30;
+  } else if (route == Strings.formWizard) {
+    return 31;
+  } else if (route == Strings.formMask) {
+    return 32;
   } else {
     return 0;
   }

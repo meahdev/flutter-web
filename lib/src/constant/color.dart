@@ -28,6 +28,12 @@ class ColorConst {
   static const Color textColor = Color(0XFF5B626B);
   static const Color endDrawerLightScrim = Color.fromRGBO(52, 58, 64, 0.55);
 
+  //form upload file
+  static const Color file = Color(0xffdddddd);
+
+  //wizard form
+  static const Color stepperBackGround = Color(0xffdaddf5);
+
   // authentication
   static const Color darkContainer = Color(0xff323a4e);
   static const Color darkFooterText = Color(0xff868993);

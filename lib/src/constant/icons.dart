@@ -20,4 +20,5 @@ class IconlyBroken {
   static const String tables = '${_assetPath}grid-2.svg';
   static const String arrowLeftRound = '${_assetPath}arrow-left.svg';
   static const String arrowRightRound = '${_assetPath}arrow-right-2.svg';
+  static const String forms = '${_assetPath}receipt-2-1.svg';
 }

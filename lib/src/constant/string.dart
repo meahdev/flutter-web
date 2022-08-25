@@ -1,6 +1,6 @@
 class Strings {
   static const String login = 'Login';
-  static const String email = 'Email Id';
+  static const String emailId = 'Email Id';
   static const String view = 'View';
   static const String edit = 'Edit';
   static const String delete = 'Delete';
@@ -28,6 +28,7 @@ class Strings {
   static const String calendar = 'Calendar';
   static const String textEditor = 'Text Editor';
   static const String uiElements = 'UI Elements';
+  static const String forms = 'Forms';
   static const String charts = 'Charts';
   static const String tables = 'Tables';
   static const String authentication = 'Authentication';
@@ -45,6 +46,14 @@ class Strings {
   static const String tabs = 'Tabs';
   static const String latestTransaction = 'Latest Transaction';
   static const String carousel = 'Carousel';
+
+  // forms option
+  static const String formElements = 'Form Elements';
+  static const String formValidation = 'Form Validation';
+  static const String formFileUpload = 'Form File Upload';
+  static const String formRepeater = 'Form Repeater';
+  static const String formWizard = 'Form Wizard';
+  static const String formMask = 'Form Mask';
 
   // charts option
   static const String morrisChart = 'Morris Chart';
@@ -180,4 +189,16 @@ class Strings {
   static const String polarChart = 'Polar Chart';
   static const String radarChart = 'Radar Chart';
   static const String barChart = 'Bar Chart';
+
+  //form elements
+  static const String text = 'Text';
+  static const String search = 'Search';
+  static const String email = 'Email';
+  static const String url = 'Url';
+  static const String telephone = 'Telephone';
+  static const String number = 'Number';
+  static const String dateAndtime = 'Date And Time';
+  static const String select = 'Select';
+  static const String color = 'Color';
+  static const String pickColor = 'Pick Color';
 }

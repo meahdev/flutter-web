@@ -23,6 +23,12 @@ import 'package:admin_dashboard/src/views/extra_pages/invoice.dart';
 import 'package:admin_dashboard/src/views/extra_pages/maintenance.dart';
 import 'package:admin_dashboard/src/views/extra_pages/pricing.dart';
 import 'package:admin_dashboard/src/views/extra_pages/timeline.dart';
+import 'package:admin_dashboard/src/views/forms/elements_form.dart';
+import 'package:admin_dashboard/src/views/forms/file_upload_form.dart';
+import 'package:admin_dashboard/src/views/forms/mask_form.dart';
+import 'package:admin_dashboard/src/views/forms/repeater_form.dart';
+import 'package:admin_dashboard/src/views/forms/validation_form.dart';
+import 'package:admin_dashboard/src/views/forms/wizard_form.dart';
 import 'package:admin_dashboard/src/views/menu_bar.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
 import 'package:admin_dashboard/src/views/tables/basic_table.dart';
@@ -75,6 +81,12 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'invoice', page: Invoice),
         AutoRoute(path: 'gallery', page: Gallery),
         AutoRoute(path: 'carousel', page: Carousel),
+        AutoRoute(path: 'form-elements', page: ElementsForm),
+        AutoRoute(path: 'form-validation', page: ValidationForm),
+        AutoRoute(path: 'form-uploads', page: FileUploadForm),
+        AutoRoute(path: 'form-repeater', page: RepeaterForm),
+        AutoRoute(path: 'form-mask', page: MaskForm),
+        AutoRoute(path: 'form-wizard', page: WizardForm),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

@@ -97,11 +97,7 @@ class _CustomTabViewState extends State<CustomTabView>
                   },
                   tabs: List.generate(
                     getLength(),
-                    (index) => Container(
-                      // constraints: BoxConstraints(
-                      //   minWidth:
-                      //       widget.tabType == TabType.defaultTabs ? 0.0 : 100,
-                      // ),
+                    (index) => SizedBox(
                       width: widget.tabType == TabType.defaultTabs
                           ? null
                           : _getWidth(context),
