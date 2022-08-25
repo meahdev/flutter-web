@@ -51,6 +51,8 @@ int getRouteIndex(String route) {
     return 24;
   } else if (route == Strings.tabs) {
     return 25;
+  } else if (route == Strings.calendar) {
+    return 26;
   } else {
     return 0;
   }

@@ -28,7 +28,7 @@ class _MenuBarState extends State<MenuBar> {
 
   Map<String, String> mainData = {
     Strings.dashboard: IconlyBroken.home,
-    Strings.calender: IconlyBroken.calendar,
+    Strings.calendar: IconlyBroken.calendar,
     Strings.textEditor: IconlyBroken.edit,
   };
 
@@ -122,6 +122,7 @@ class _MenuBarState extends State<MenuBar> {
     Gallery(),
     Carousel(),
     TabScreen(),
+    Calendar(),
   ];
 
   @override
@@ -442,7 +443,8 @@ class _MenuBarState extends State<MenuBar> {
               mouseCursor: SystemMouseCursors.click,
               horizontalTitleGap: 0.0,
               onTap: () {
-                tabsRouter.setActiveIndex(0);
+                tabsRouter
+                    .setActiveIndex(getRouteIndex(items.keys.elementAt(index)));
                 _scaffoldDrawerKey.currentState?.closeDrawer();
               },
             );
