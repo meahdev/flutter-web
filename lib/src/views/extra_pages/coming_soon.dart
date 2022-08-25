@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/provider/coming_soon/bloc/coming_soon_bloc_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 
 class ComingSoon extends StatefulWidget {
@@ -17,6 +19,11 @@ class ComingSoon extends StatefulWidget {
 class ComingSoonState extends State<ComingSoon> {
   Timer? countdownTimer;
   Duration myDuration = const Duration(days: 5);
+  ComingSoonBlocBloc comingSoonBloc = ComingSoonBlocBloc();
+  String? days;
+  String? hours;
+  String? minutes;
+  String? _seconds;
 
   @override
   void initState() {
@@ -31,101 +38,154 @@ class ComingSoonState extends State<ComingSoon> {
 
   void setCountDown() {
     const reduceSecondsBy = 1;
-    setState(() {
-      final seconds = myDuration.inSeconds - reduceSecondsBy;
-      if (seconds < 0) {
-        countdownTimer!.cancel();
-      } else {
-        myDuration = Duration(seconds: seconds);
-      }
-    });
+
+    final seconds = myDuration.inSeconds - reduceSecondsBy;
+    if (seconds < 0) {
+      countdownTimer!.cancel();
+    } else {
+      comingSoonBloc.add(ComingSoonBlocEvent.started(seconds));
+    }
+  }
+
+  @override
+  void dispose() {
+    countdownTimer?.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     String strDigits(int n) => n.toString().padLeft(2, '0');
-    final days = strDigits(myDuration.inDays.remainder(90));
-    final hours = strDigits(myDuration.inHours.remainder(24));
-    final minutes = strDigits(myDuration.inMinutes.remainder(60));
-    final seconds = strDigits(myDuration.inSeconds.remainder(60));
-    return Scaffold(
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        alignment: Alignment.center,
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              FxBox.h20,
-              Text(
-                Strings.siddhatva,
-                style: TextStyle(
-                  fontSize: 25,
-                  color:
-                      isDark ? ColorConst.darkFontColor : ColorConst.textColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              FxBox.h20,
-              Text(
-                "Let's get started with Veltrix",
-                style: TextStyle(
-                  color:
-                      isDark ? ColorConst.darkFontColor : ColorConst.textColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 27,
-                ),
-              ),
-              Text(
-                "It will be as simple as Occidental in fact it will be Occidental.",
-                style: TextStyle(
-                  color:
-                      isDark ? ColorConst.darkFontColor : ColorConst.textColor,
-                ),
-              ),
-              FxBox.h52,
-              Responsive.isWeb(context)
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _timerBox('Days', days),
-                        FxBox.w20,
-                        _timerBox('Hours', hours),
-                        FxBox.w20,
-                        _timerBox('Minutes', minutes),
-                        FxBox.w20,
-                        _timerBox('Seconds', seconds),
-                      ],
-                    )
-                  : Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            _timerBox('Days', days),
-                            FxBox.w20,
-                            _timerBox('Hours', hours),
-                          ],
-                        ),
-                        FxBox.h20,
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            _timerBox('Minutes', minutes),
-                            FxBox.w20,
-                            _timerBox('Seconds', seconds),
-                          ],
-                        ),
-                      ],
+
+    return BlocProvider(
+      create: (context) => comingSoonBloc,
+      child: BlocBuilder<ComingSoonBlocBloc, ComingSoonBlocState>(
+        builder: (context, state) {
+          state.whenOrNull(
+            startSuccess: (seconds) {
+              myDuration = Duration(seconds: seconds);
+              days = strDigits(myDuration.inDays.remainder(90));
+              hours = strDigits(myDuration.inHours.remainder(24));
+              minutes = strDigits(myDuration.inMinutes.remainder(60));
+              _seconds = strDigits(myDuration.inSeconds.remainder(60));
+            },
+          );
+          return Scaffold(
+            body: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              alignment: Alignment.center,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    FxBox.h20,
+                    Text(
+                      Strings.siddhatva,
+                      style: TextStyle(
+                        fontSize: 25,
+                        color: isDark
+                            ? ColorConst.darkFontColor
+                            : ColorConst.textColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-              FxBox.h44,
-              _emailField(),
-              FxBox.h20,
-            ],
-          ),
-        ),
+                    FxBox.h20,
+                    Text(
+                      "Let's get started with Veltrix",
+                      style: TextStyle(
+                        color: isDark
+                            ? ColorConst.darkFontColor
+                            : ColorConst.textColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 27,
+                      ),
+                    ),
+                    Text(
+                      "It will be as simple as Occidental in fact it will be Occidental.",
+                      style: TextStyle(
+                        color: isDark
+                            ? ColorConst.darkFontColor
+                            : ColorConst.textColor,
+                      ),
+                    ),
+                    FxBox.h52,
+                    Responsive.isWeb(context)
+                        ? Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              _timerBox(
+                                  'Days',
+                                  days ??
+                                      strDigits(
+                                          myDuration.inDays.remainder(90))),
+                              FxBox.w20,
+                              _timerBox(
+                                  'Hours',
+                                  hours ??
+                                      strDigits(
+                                          myDuration.inHours.remainder(24))),
+                              FxBox.w20,
+                              _timerBox(
+                                  'Minutes',
+                                  minutes ??
+                                      strDigits(
+                                          myDuration.inMinutes.remainder(60))),
+                              FxBox.w20,
+                              _timerBox(
+                                  'Seconds',
+                                  _seconds ??
+                                      strDigits(
+                                          myDuration.inSeconds.remainder(60))),
+                            ],
+                          )
+                        : Column(
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  _timerBox(
+                                      'Days',
+                                      days ??
+                                          strDigits(
+                                              myDuration.inDays.remainder(90))),
+                                  FxBox.w20,
+                                  _timerBox(
+                                      'Hours',
+                                      hours ??
+                                          strDigits(myDuration.inHours
+                                              .remainder(24))),
+                                ],
+                              ),
+                              FxBox.h20,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  _timerBox(
+                                      'Minutes',
+                                      minutes ??
+                                          strDigits(myDuration.inMinutes
+                                              .remainder(60))),
+                                  FxBox.w20,
+                                  _timerBox(
+                                      'Seconds',
+                                      _seconds ??
+                                          strDigits(myDuration.inSeconds
+                                              .remainder(60))),
+                                ],
+                              ),
+                            ],
+                          ),
+                    FxBox.h44,
+                    _emailField(),
+                    FxBox.h20,
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
       ),
     );
   }
