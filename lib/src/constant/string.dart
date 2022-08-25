@@ -26,7 +26,6 @@ class Strings {
   // drawer menu heading
   static const String dashboard = 'Dashboard';
   static const String calendar = 'Calendar';
-  static const String textEditor = 'Text Editor';
   static const String uiElements = 'UI Elements';
   static const String forms = 'Forms';
   static const String charts = 'Charts';

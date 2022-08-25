@@ -74,7 +74,9 @@ class _Error500State extends State<Error500> {
                                     FxButton(
                                       borderRadius: 4,
                                       text: "Back to Dashboard",
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
                                       icon: const Icon(Icons.home, size: 15),
                                     )
                                   ],

@@ -26,10 +26,11 @@ class _MenuBarState extends State<MenuBar> {
   final GlobalKey<ScaffoldState> _scaffoldDrawerKey =
       GlobalKey<ScaffoldState>();
 
+  final ScrollController _scrollController = ScrollController();
+
   Map<String, String> mainData = {
     Strings.dashboard: IconlyBroken.home,
     Strings.calendar: IconlyBroken.calendar,
-    Strings.textEditor: IconlyBroken.edit,
   };
 
   Map<String, String> componentData = {
@@ -144,7 +145,6 @@ class _MenuBarState extends State<MenuBar> {
   Widget build(BuildContext context) {
     return AutoTabsRouter(
       routes: _routes,
-      homeIndex: 6,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
         return Scaffold(
@@ -167,7 +167,7 @@ class _MenuBarState extends State<MenuBar> {
                     : const SizedBox.shrink(),
                 Expanded(
                   child: CustomScrollView(
-                    controller: ScrollController(),
+                    controller: _scrollController,
                     slivers: [
                       SliverList(
                         delegate: SliverChildListDelegate(
@@ -189,9 +189,8 @@ class _MenuBarState extends State<MenuBar> {
                                   FxBox.h8,
                                   _routesDeatils(tabsRouter),
                                   FxBox.h20,
-                                  child,
+                                  getRouteWidget(tabsRouter.activeIndex),
                                   FxBox.h20,
-                                  // _footer(),
                                 ],
                               ),
                             ),
@@ -200,6 +199,7 @@ class _MenuBarState extends State<MenuBar> {
                       ),
                       SliverFillRemaining(
                         hasScrollBody: false,
+                        fillOverscroll: true,
                         child: Column(
                           children: <Widget>[
                             const Expanded(
@@ -477,8 +477,11 @@ class _MenuBarState extends State<MenuBar> {
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) => FxHover(
         builder: (isHover) {
-          Color color =
-              isHover ? ColorConst.drawerHover : ColorConst.drawerIcon;
+          Color color = isHover
+              ? ColorConst.drawerHover
+              : upperCase(tabsRouter.currentPath) == items[index]
+                  ? ColorConst.drawerHover
+                  : ColorConst.drawerIcon;
           return ListTile(
             dense: true,
             visualDensity: const VisualDensity(vertical: -3),

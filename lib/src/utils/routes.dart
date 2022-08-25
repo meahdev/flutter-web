@@ -1,4 +1,38 @@
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/views/calender/calender.dart';
+import 'package:admin_dashboard/src/views/charts/all_charts/AllChartjsChart/charjs_bar_chart.dart';
+import 'package:admin_dashboard/src/views/charts/chartist.dart';
+import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
+import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
+import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
+import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
+import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
+import 'package:admin_dashboard/src/views/extra_pages/directory.dart';
+import 'package:admin_dashboard/src/views/extra_pages/faqs.dart';
+import 'package:admin_dashboard/src/views/extra_pages/gallary.dart';
+import 'package:admin_dashboard/src/views/extra_pages/invoice.dart';
+import 'package:admin_dashboard/src/views/extra_pages/pricing.dart';
+import 'package:admin_dashboard/src/views/extra_pages/timeline.dart';
+import 'package:admin_dashboard/src/views/forms/elements_form.dart';
+import 'package:admin_dashboard/src/views/forms/file_upload_form.dart';
+import 'package:admin_dashboard/src/views/forms/mask_form.dart';
+import 'package:admin_dashboard/src/views/forms/repeater_form.dart';
+import 'package:admin_dashboard/src/views/forms/validation_form.dart';
+import 'package:admin_dashboard/src/views/forms/wizard_form.dart';
+import 'package:admin_dashboard/src/views/tables/basic_table.dart';
+import 'package:admin_dashboard/src/views/tables/data_tables.dart';
+import 'package:admin_dashboard/src/views/tables/editable_table.dart';
+import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
+import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
+import 'package:admin_dashboard/src/views/ui_elements/badge/badge.dart';
+import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
+import 'package:admin_dashboard/src/views/ui_elements/carousel/carousel.dart';
+import 'package:admin_dashboard/src/views/ui_elements/loader/loader.dart';
+import 'package:admin_dashboard/src/views/ui_elements/modal/modal.dart';
+import 'package:admin_dashboard/src/views/ui_elements/rating/rating.dart';
+import 'package:admin_dashboard/src/views/ui_elements/tabbar/tabs_screen.dart';
+import 'package:admin_dashboard/src/views/ui_elements/toast/toast.dart';
+import 'package:flutter/material.dart';
 
 int getRouteIndex(String route) {
   if (route == Strings.buttons) {
@@ -67,5 +101,75 @@ int getRouteIndex(String route) {
     return 32;
   } else {
     return 0;
+  }
+}
+
+Widget getRouteWidget(int index) {
+  if (index == 1) {
+    return const Button();
+  } else if (index == 2) {
+    return const Rating();
+  } else if (index == 3) {
+    return const Badge();
+  } else if (index == 4) {
+    return const Toast();
+  } else if (index == 5) {
+    return const AlertDialogBox();
+  } else if (index == 6) {
+    return const Modal();
+  } else if (index == 7) {
+    return const BasicEmail();
+  } else if (index == 8) {
+    return const AlertEmail();
+  } else if (index == 9) {
+    return const BillingEmail();
+  } else if (index == 10) {
+    return const Loaders();
+  } else if (index == 11) {
+    return const MorrisChart();
+  } else if (index == 12) {
+    return const ChartListChart();
+  } else if (index == 13) {
+    return const ChartJsBarChart();
+  } else if (index == 14) {
+    return const BasicTable();
+  } else if (index == 15) {
+    return const Datatable();
+  } else if (index == 16) {
+    return const ResponsiveTable();
+  } else if (index == 17) {
+    return const EditableTable();
+  } else if (index == 18) {
+    return const TimelineScreen();
+  } else if (index == 19) {
+    return const Pricing();
+  } else if (index == 20) {
+    return const DirectoryPage();
+  } else if (index == 21) {
+    return const FAQs();
+  } else if (index == 22) {
+    return const Invoice();
+  } else if (index == 23) {
+    return const Gallery();
+  } else if (index == 24) {
+    return const Carousel();
+  } else if (index == 25) {
+    return const TabScreen();
+  } else if (index == 26) {
+    return const Calendar();
+  } else if (index == 27) {
+    return const ElementsForm();
+  } else if (index == 28) {
+    return const ValidationForm();
+  } else if (index == 29) {
+    return const FileUploadForm();
+  } else if (index == 30) {
+    return const RepeaterForm();
+  } else if (index == 31) {
+    return const WizardForm();
+  } else if (index == 32) {
+    return const MaskForm();
+  } else {
+    return const Dashboard();
   }
 }

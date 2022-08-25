@@ -17,7 +17,6 @@ class Datatable extends StatefulWidget {
 class _DatatableState extends State<Datatable> {
   final DataTableBloc _dataTableBloc = DataTableBloc();
   List<int> ls = List<int>.generate(57, (index) => index + 1);
-  int _isselect = 10;
   int _dropValue = 10;
   int _page = 0;
 
@@ -57,10 +56,6 @@ class _DatatableState extends State<Datatable> {
                           }).toList(),
                           onChanged: (value) {
                             if (value != null) {
-                              double b = ls.length / value;
-                              _isselect = ls.length % value == 0
-                                  ? b.toInt()
-                                  : (b + 1).toInt();
                               _dropValue = value;
                               _start = 0;
                               _end = value < ls.length ? value : ls.length;
@@ -175,8 +170,8 @@ class _DatatableState extends State<Datatable> {
           FxButton(
             onPressed: () {
               if (_page > 0) {
-                  _page = _page - 1;
-                  _dataTableBloc.add(const DataTableEvent.rebuild());
+                _page = _page - 1;
+                _dataTableBloc.add(const DataTableEvent.rebuild());
               }
               updateData();
             },
@@ -207,18 +202,18 @@ class _DatatableState extends State<Datatable> {
                         : Theme.of(context).colorScheme.onPrimaryContainer,
                 borderWidth: 0.0,
                 onPressed: () {
-                    _page = index;
-                    updateData();
-                    _dataTableBloc.add(const DataTableEvent.rebuild());
+                  _page = index;
+                  updateData();
+                  _dataTableBloc.add(const DataTableEvent.rebuild());
                 },
               ),
             ),
           ),
           FxButton(
             onPressed: () {
-              if (_page < _isselect - 1) {
-                  _page = _page + 1;
-                  _dataTableBloc.add(const DataTableEvent.rebuild());
+              if (_page < (ls.length / _dropValue).ceil() - 1) {
+                _page = _page + 1;
+                _dataTableBloc.add(const DataTableEvent.rebuild());
               }
               updateData();
             },

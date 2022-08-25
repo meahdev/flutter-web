@@ -75,7 +75,7 @@ class _Error404State extends State<Error404> {
                                     FxButton(
                                       borderRadius: 4,
                                       text: "Back to Dashboard",
-                                      onPressed: () {},
+                                      onPressed: () {Navigator.pop(context);},
                                       icon: const Icon(
                                         Icons.home,
                                         size: 15,

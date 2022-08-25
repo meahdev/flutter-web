@@ -7,7 +7,6 @@ class IconlyBroken {
   static const String arrowRight3 = '${_assetPath}arrow-right-3.svg';
   static const String home = '${_assetPath}home-2.svg';
   static const String calendar = '${_assetPath}calendar-2.svg';
-  static const String edit = '${_assetPath}edit.svg';
   static const String box = '${_assetPath}box-1.svg';
   static const String archive = '${_assetPath}archive-2.svg';
   static const String closeSquare = '${_assetPath}close-square.svg';
