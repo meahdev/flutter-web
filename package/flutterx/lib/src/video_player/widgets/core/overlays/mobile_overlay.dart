@@ -25,9 +25,8 @@ class _MobileOverlay extends StatelessWidget {
             Expanded(
               child: _VideoGestureDetector(
                 tag: tag,
-                onDoubleTap: _isRtl()
-                    ? podCtr.onRightDoubleTap
-                    : podCtr.onLeftDoubleTap,
+                onDoubleTap:
+                    _isRtl() ? podCtr.onRightDoubleTap : podCtr.onLeftDoubleTap,
                 child: ColoredBox(
                   color: overlayColor,
                   child: _LeftRightDoubleTapBox(
@@ -55,9 +54,8 @@ class _MobileOverlay extends StatelessWidget {
             Expanded(
               child: _VideoGestureDetector(
                 tag: tag,
-                onDoubleTap: _isRtl()
-                    ? podCtr.onLeftDoubleTap
-                    : podCtr.onRightDoubleTap,
+                onDoubleTap:
+                    _isRtl() ? podCtr.onLeftDoubleTap : podCtr.onRightDoubleTap,
                 child: ColoredBox(
                   color: overlayColor,
                   child: _LeftRightDoubleTapBox(
@@ -164,8 +162,8 @@ class _LeftRightDoubleTapBox extends StatelessWidget {
                 children: [
                   Lottie.asset(
                     isLeft
-                        ? 'packages/pod_player/assets/forward_left.json'
-                        : 'packages/pod_player/assets/forward_right.json',
+                        ? 'packages/flutterx/assets/forward_left.json'
+                        : 'packages/flutterx/assets/forward_right.json',
                   ),
                   if (isLeft
                       ? podCtr.isLeftDbTapIconVisible

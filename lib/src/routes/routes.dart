@@ -44,6 +44,7 @@ import 'package:admin_dashboard/src/views/ui_elements/modal/modal.dart';
 import 'package:admin_dashboard/src/views/ui_elements/rating/rating.dart';
 import 'package:admin_dashboard/src/views/ui_elements/tabbar/tabs_screen.dart';
 import 'package:admin_dashboard/src/views/ui_elements/toast/toast.dart';
+import 'package:admin_dashboard/src/views/ui_elements/videos/video_screen.dart';
 import 'package:auto_route/auto_route.dart';
 
 @MaterialAutoRouter(
@@ -53,7 +54,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'gallery'),
+        RedirectRoute(path: '', redirectTo: 'video-player'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'calendar', page: Calendar),
         AutoRoute(path: 'toast', page: Toast),
@@ -87,6 +88,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'form-repeater', page: RepeaterForm),
         AutoRoute(path: 'form-mask', page: MaskForm),
         AutoRoute(path: 'form-wizard', page: WizardForm),
+        AutoRoute(path: 'video-player', page: VideoScreen),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

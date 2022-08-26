@@ -29,9 +29,11 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
+# /Users/sarvadhi2/Documents/gitLab/flutter-admin-dashboard/package/flutterx/assets
   # To add assets to your package, add an assets section, like this:
-  # assets:
+  assets:
+    - assets/
+
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
   #

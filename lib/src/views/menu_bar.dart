@@ -58,6 +58,7 @@ class _MenuBarState extends State<MenuBar> {
       Strings.loader,
       Strings.tabs,
       Strings.carousel,
+      Strings.videoScreen,
     ],
     [
       Strings.formElements,
@@ -140,6 +141,7 @@ class _MenuBarState extends State<MenuBar> {
     RepeaterForm(),
     WizardForm(),
     MaskForm(),
+    VideoScreen()
   ];
 
   @override

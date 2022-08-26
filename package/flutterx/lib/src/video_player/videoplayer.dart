@@ -14,13 +14,13 @@ enum VideoFrom { network, asset, file }
 class FxVideoPlayer extends StatefulWidget {
   final VideoFrom videoFrom;
   final List<String> videoList;
+  final int initialVideoIndex;
   final double? videoAspectRatio;
-  final PodPlayerLabels? buttonLabels;
   final double progressBarHeight;
   final double barCircleRadius;
-  final Color barCircleColor;
+  final Color? barCircleColor;
   final Color bufferedBarColor;
-  final Color playingBarColor;
+  final Color? playingBarColor;
   final Color barBackgroundColor;
   final Color backgroundColor;
   final Color controllIconsColor;
@@ -32,28 +32,30 @@ class FxVideoPlayer extends StatefulWidget {
     Key? key,
     required this.videoFrom,
     required this.videoList,
+    this.initialVideoIndex = 0,
     this.videoAspectRatio,
-    this.buttonLabels,
     this.progressBarHeight = 3.5,
     this.barCircleRadius = 8,
-    this.barCircleColor = Colors.blue,
+    this.barCircleColor,
     this.bufferedBarColor = const Color.fromRGBO(255, 255, 255, 0.38),
-    this.playingBarColor = Colors.blue,
+    this.playingBarColor,
     this.barBackgroundColor = Colors.blueGrey,
-    this.backgroundColor = Colors.black,
+    this.backgroundColor = Colors.transparent,
     this.controllIconsColor = Colors.white,
     this.durationTextColor = Colors.white,
     this.nextIconColor = Colors.white,
     this.prevIconColor = Colors.white,
   })  : assert((videoList.isNotEmpty), 'videoList cant\'t be Empty'),
         assert((videoList[0].isNotEmpty), 'check First\'s link of List'),
+        assert(!(initialVideoIndex > videoList.length),
+            'provide Index within VideoList'),
         super(key: key);
 
   @override
-  FxVideoPlayerState createState() => FxVideoPlayerState();
+  State<FxVideoPlayer> createState() => _FxVideoPlayerState();
 }
 
-class FxVideoPlayerState extends State<FxVideoPlayer> {
+class _FxVideoPlayerState extends State<FxVideoPlayer> {
   late PodPlayerController podController;
 
   String errorMessage = '';
@@ -97,20 +99,27 @@ class FxVideoPlayerState extends State<FxVideoPlayer> {
   PlayVideoFrom getPlayVideoFrom(String path) {
     if (widget.videoFrom == VideoFrom.network) {
       return PlayVideoFrom.network(
-        widget.videoList[0],
+        widget.videoList[widget.initialVideoIndex],
       );
     } else if (widget.videoFrom == VideoFrom.asset) {
       return PlayVideoFrom.asset(
-        widget.videoList[0],
+        widget.videoList[widget.initialVideoIndex],
       );
     } else if (widget.videoFrom == VideoFrom.file) {
       return PlayVideoFrom.file(
-        widget.videoList[0],
+        widget.videoList[widget.initialVideoIndex],
       );
     } else {
       return PlayVideoFrom.network(
-        widget.videoList[0],
+        widget.videoList[widget.initialVideoIndex],
       );
+    }
+  }
+
+  void checkState() {
+    podController.pause();
+    if (widget.initialVideoIndex > 0) {
+      setState(() {});
     }
   }
 
@@ -123,7 +132,7 @@ class FxVideoPlayerState extends State<FxVideoPlayer> {
         videoQualityPriority: [720, 360],
       ),
       playVideoFrom: getPlayVideoFrom(widget.videoList[0]),
-    )..initialise();
+    )..initialise().then((value) => checkState());
     super.initState();
   }
 
@@ -135,9 +144,7 @@ class FxVideoPlayerState extends State<FxVideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height - 56,
+    return IntrinsicHeight(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: PodVideoPlayer(
@@ -160,26 +167,24 @@ class FxVideoPlayerState extends State<FxVideoPlayer> {
               changeVideo(forward: false);
             }
           },
-
-          videoAspectRatio: widget.videoAspectRatio ??
-              podController.videoPlayerValue?.aspectRatio ??
-              16 / 9,
-          podPlayerLabels: widget.buttonLabels ??
-              const PodPlayerLabels(
-                play: "PLAY",
-                pause: "PAUSE",
-                error: "ERROR WHILE TRYING TO PLAY VIDEO",
-                exitFullScreen: "EXIT FULL SCREEN",
-                fullscreen: "FULL SCREEN",
-                loopVideo: "LOOP VIDEO",
-                mute: "MUTE",
-                playbackSpeed: "PLAYBACK SPEED",
-                settings: "SETTINGS",
-                unmute: "UNMUTE",
-                optionEnabled: "YES",
-                optionDisabled: "NO",
-                quality: "QUALITY",
-              ),
+          videoAspectRatio: widget.videoAspectRatio ?? (16 / 9),
+          matchFrameAspectRatioToVideo: true,
+          matchVideoAspectRatioToFrame: true,
+          podPlayerLabels: const PodPlayerLabels(
+            play: "PLAY",
+            pause: "PAUSE",
+            error: "ERROR WHILE TRYING TO PLAY VIDEO",
+            exitFullScreen: "EXIT FULL SCREEN",
+            fullscreen: "FULL SCREEN",
+            loopVideo: "LOOP VIDEO",
+            mute: "MUTE",
+            playbackSpeed: "PLAYBACK SPEED",
+            settings: "SETTINGS",
+            unmute: "UNMUTE",
+            optionEnabled: "YES",
+            optionDisabled: "NO",
+            quality: "QUALITY",
+          ),
           onVideoError: () {
             return Center(
               child: Container(
@@ -192,26 +197,13 @@ class FxVideoPlayerState extends State<FxVideoPlayer> {
               ),
             );
           },
-          // overlayBuilder: (options) {
-          //   return Container(
-          //     width: MediaQuery.of(context).size.width,
-          //     height: MediaQuery.of(context).size.height,
-          //     color: Colors.black,
-          //     padding: EdgeInsets.all(15),
-          //     child: Icon(
-          //       Icons.warning_amber,
-          //       color: Colors.yellow,
-          //       size: 70,
-          //     ),
-          //   );
-          // },
-          matchFrameAspectRatioToVideo: true,
-          matchVideoAspectRatioToFrame: true,
           backgroundColor: widget.backgroundColor,
           podProgressBarConfig: PodProgressBarConfig(
             padding: kIsWeb ? EdgeInsets.zero : const EdgeInsets.all(8),
-            playingBarColor: widget.playingBarColor,
-            circleHandlerColor: widget.barCircleColor,
+            playingBarColor:
+                widget.playingBarColor ?? Theme.of(context).colorScheme.primary,
+            circleHandlerColor:
+                widget.barCircleColor ?? Theme.of(context).colorScheme.primary,
             backgroundColor: widget.barBackgroundColor,
             bufferedBarColor: widget.bufferedBarColor,
             circleHandlerRadius: widget.barCircleRadius,
