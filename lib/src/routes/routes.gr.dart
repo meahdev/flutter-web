@@ -37,7 +37,7 @@ import '../views/extra_pages/directory.dart' as _i36;
 import '../views/extra_pages/error_404.dart' as _i10;
 import '../views/extra_pages/error_500.dart' as _i11;
 import '../views/extra_pages/faqs.dart' as _i37;
-import '../views/extra_pages/gallary.dart' as _i39;
+import '../views/extra_pages/gallery.dart' as _i39;
 import '../views/extra_pages/invoice.dart' as _i38;
 import '../views/extra_pages/maintenance.dart' as _i13;
 import '../views/extra_pages/pricing.dart' as _i35;

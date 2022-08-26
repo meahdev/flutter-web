@@ -9,7 +9,7 @@ import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
 import 'package:admin_dashboard/src/views/extra_pages/directory.dart';
 import 'package:admin_dashboard/src/views/extra_pages/faqs.dart';
-import 'package:admin_dashboard/src/views/extra_pages/gallary.dart';
+import 'package:admin_dashboard/src/views/extra_pages/gallery.dart';
 import 'package:admin_dashboard/src/views/extra_pages/invoice.dart';
 import 'package:admin_dashboard/src/views/extra_pages/pricing.dart';
 import 'package:admin_dashboard/src/views/extra_pages/timeline.dart';

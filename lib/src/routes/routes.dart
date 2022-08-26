@@ -18,7 +18,7 @@ import 'package:admin_dashboard/src/views/extra_pages/directory.dart';
 import 'package:admin_dashboard/src/views/extra_pages/error_404.dart';
 import 'package:admin_dashboard/src/views/extra_pages/error_500.dart';
 import 'package:admin_dashboard/src/views/extra_pages/faqs.dart';
-import 'package:admin_dashboard/src/views/extra_pages/gallary.dart';
+import 'package:admin_dashboard/src/views/extra_pages/gallery.dart';
 import 'package:admin_dashboard/src/views/extra_pages/invoice.dart';
 import 'package:admin_dashboard/src/views/extra_pages/maintenance.dart';
 import 'package:admin_dashboard/src/views/extra_pages/pricing.dart';
