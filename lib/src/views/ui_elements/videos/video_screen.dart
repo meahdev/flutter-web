@@ -25,7 +25,7 @@ class _VideoScreenState extends State<VideoScreen> {
   ];
 
   TextStyle textStyle = const TextStyle(
-      color: ColorConst.lightblackFontColor,
+      color: ColorConst.lightFontColor,
       fontSize: 16,
       fontWeight: FontWeight.w600);
 

@@ -18,7 +18,6 @@ class ColorConst {
   static const Color teal = Color(0xFF02A499);
   static const Color lightFontColor = Color(0xFF5B626B);
   static const Color darkFontColor = Color(0xFFE9ECEF);
-  static const Color lightblackFontColor = Color(0xFF5B626B);
   static const Color drawerHover = Color(0xFFD4D9DE);
   static const Color backgroundColor = Color(0xFFccedeb);
   static const Color borderColor = Color(0xFFb3e4e0);

@@ -82,8 +82,6 @@ class _GalleryState extends State<Gallery> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                // _galleryBloc.add(GalleryEvent.next(index));
-                // // setState(() => selecteIndex = index);
                 showPopUp(index);
               },
               child: FxHover(

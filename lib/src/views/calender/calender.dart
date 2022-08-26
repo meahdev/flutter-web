@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/calendar/calendar_dialog/bloc/calendar_dialog_bloc.dart';
 import 'package:admin_dashboard/src/provider/calendar/calendar_format/calendar_format_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -29,26 +32,52 @@ class _CalendarState extends State<Calendar> {
 
   CalendarFormat _calendarFormat = CalendarFormat.month;
 
-  Map<DateTime, List<Map<String, dynamic>>> eventMap = {
-    DateTime.parse('2022-08-13 00:00:00.000Z'): [
+  String creatRandomDate({required bool currentmonth}) {
+    DateTime date = DateTime(
+        DateTime.now().year, DateTime.now().month + (currentmonth ? 1 : 2), 0);
+    int rng = Random().nextInt(date.day);
+
+    if (rng == 0) {
+      rng = rng + 1;
+    }
+    String month = DateTime.now().month <= 9
+        ? '0${DateTime.now().month + (currentmonth ? 0 : 1)}'
+        : (DateTime.now().month + (currentmonth ? 0 : 1)).toString();
+    String day = rng <= 9 ? '0$rng' : rng.toString();
+    return DateTime.parse('${DateTime.now().year}-$month-$day')
+        .toString()
+        .split(" ")[0];
+  }
+
+  late Map<DateTime, List<Map<String, dynamic>>> eventMap = {
+    DateTime.parse('${creatRandomDate(currentmonth: true)} 00:00:00.000Z'): [
       {'eventName': 'Holiday', 'dropdownValue': 4}
     ],
-    DateTime.parse('2022-08-04 00:00:00.000Z'): [
+    DateTime.parse('${creatRandomDate(currentmonth: true)} 00:00:00.000Z'): [
       {'eventName': 'Shoping', 'dropdownValue': 5}
     ],
-    DateTime.parse('2022-08-17 00:00:00.000Z'): [
+    DateTime.parse('${creatRandomDate(currentmonth: true)} 00:00:00.000Z'): [
       {'eventName': 'summit', 'dropdownValue': 1}
     ],
-    DateTime.parse('2022-08-07 00:00:00.000Z'): [
+    DateTime.parse('${creatRandomDate(currentmonth: true)} 00:00:00.000Z'): [
       {'eventName': 'lunch', 'dropdownValue': 3},
       {'eventName': 'Meeting', 'dropdownValue': 4}
     ],
-    DateTime.parse('2022-08-26 00:00:00.000Z'): [
+    DateTime.parse('${creatRandomDate(currentmonth: true)} 00:00:00.000Z'): [
       {'eventName': 'Trip', 'dropdownValue': 6}
     ],
-    DateTime.parse('2022-08-26 00:00:00.000Z'): [
+    DateTime.parse('${creatRandomDate(currentmonth: true)} 00:00:00.000Z'): [
+      {'eventName': 'Visit showroom', 'dropdownValue': 2}
+    ],
+    DateTime.parse('${creatRandomDate(currentmonth: true)} 00:00:00.000Z'): [
       {'eventName': 'GD', 'dropdownValue': 0}
-    ]
+    ],
+    DateTime.parse('${creatRandomDate(currentmonth: false)} 00:00:00.000Z'): [
+      {'eventName': 'BirthDay Party', 'dropdownValue': 5}
+    ],
+    DateTime.parse('${creatRandomDate(currentmonth: false)} 00:00:00.000Z'): [
+      {'eventName': 'Repeating Event', 'dropdownValue': 2}
+    ],
   };
 
   List<String> dropDownList = const [
@@ -103,166 +132,183 @@ class _CalendarState extends State<Calendar> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(flex: 2, child: _mobileView()),
+                FxBox.w20,
                 Expanded(
                   flex: 4,
-                  child: ColoredBox(
-                    color: ColorConst.white,
+                  child: Card(
+                    color: isDark ? ColorConst.cardDark : ColorConst.white,
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(16.0),
                       child: _tableCalendar(context: context),
                     ),
                   ),
-                )
+                ),
               ],
             )
           : Column(
               children: [
                 _mobileView(),
-                ColoredBox(
-                  color: ColorConst.white,
+                FxBox.h20,
+                Card(
+                  color: isDark ? ColorConst.cardDark : ColorConst.white,
                   child: Padding(
-                    padding: const EdgeInsets.all(1),
+                    padding: const EdgeInsets.all(16.0),
                     child: _tableCalendar(context: context),
                   ),
-                )
+                ),
               ],
             ),
     );
   }
 
   Widget _mobileView() {
-    return Container(
-      color: ColorConst.white,
-      margin: const EdgeInsets.all(8),
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: 34,
-            child: FxButton(
-              onPressed: () {
-                _displayTextInputDialog(
-                  context: context,
-                  savePressed: () {
-                    _handleSaveTap(
-                      date: DateTime.parse(
-                        '${DateTime.now().toString().split(" ")[0]} 00:00:00.000Z',
-                      ),
-                    );
-                  },
-                  deletePressed: () {},
-                );
-              },
-              icon: const Icon(
-                Icons.add_circle_outline,
-                color: ColorConst.white,
-                size: 15,
+    return Card(
+      color: isDark ? ColorConst.cardDark : ColorConst.white,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: 34,
+              child: FxButton(
+                onPressed: () {
+                  _displayTextInputDialog(
+                    context: context,
+                    savePressed: () {
+                      _handleSaveTap(
+                        date: DateTime.parse(
+                          '${DateTime.now().toString().split(" ")[0]} 00:00:00.000Z',
+                        ),
+                      );
+                    },
+                    deletePressed: () {},
+                  );
+                },
+                icon: Icon(
+                  Icons.add_circle_outline,
+                  color: isDark ? ColorConst.darkFontColor : ColorConst.white,
+                  size: 15,
+                ),
+                text: 'Create New Event',
+                borderRadius: 5,
+                color: isDark ? ColorConst.primary : null,
               ),
-              text: 'Create New Event',
-              borderRadius: 5,
             ),
-          ),
-          FxBox.h24,
-          const Text(
-            'Drag and drop your event or click in the calendar',
-            style: TextStyle(color: ColorConst.grey800, fontSize: 14),
-          ),
-          FxBox.h12,
-          _addEventButtons(color: ColorConst.teal, label: 'New Event Planning'),
-          FxBox.h6,
-          _addEventButtons(color: ColorConst.info, label: 'Meeting'),
-          FxBox.h6,
-          _addEventButtons(
-              color: ColorConst.warning, label: 'Generating Reports'),
-          FxBox.h6,
-          _addEventButtons(
-              color: ColorConst.error.withOpacity(0.8),
-              label: 'Create New theme'),
-          FxBox.h40,
-          const Text(
-            'Activity',
-            style: TextStyle(
-                color: ColorConst.lightblackFontColor,
-                fontSize: 16,
-                fontWeight: FontWeight.w600),
-          ),
-          FxBox.h16,
-          SizedBox(
-            width: double.infinity,
-            height: 250,
-            child: Stack(
-              fit: StackFit.loose,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 1.5),
-                  child: VerticalDivider(
-                    endIndent: 5,
-                    indent: 5,
-                    color: ColorConst.lightblackFontColor,
-                  ),
-                ),
-                Positioned(
-                  left: 25,
-                  right: 1,
-                  child: SizedBox(
-                    height: 250,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Andrei Coman magna sed porta finibus, risus posted a new article: Forget UX Rowland',
-                          maxLines: 3,
-                          style: TextStyle(
-                              color: ColorConst.lightblackFontColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Zack Wetass, sed porta finibus, risus Chris Wallace Commented Developer Moreno',
-                          style: TextStyle(
-                              color: ColorConst.lightblackFontColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          'Zack Wetass, Chris combined Commented UX Murphy',
-                          style: TextStyle(
-                              color: ColorConst.lightblackFontColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
+            FxBox.h24,
+            const Text(
+              'Drag and drop your event or click in the calendar',
+              style: TextStyle(color: ColorConst.lightFontColor, fontSize: 14),
+            ),
+            FxBox.h12,
+            _addEventButtons(
+                color: ColorConst.teal, label: 'New Event Planning'),
+            FxBox.h6,
+            _addEventButtons(color: ColorConst.info, label: 'Meeting'),
+            FxBox.h6,
+            _addEventButtons(
+                color: ColorConst.warning, label: 'Generating Reports'),
+            FxBox.h6,
+            _addEventButtons(
+                color: ColorConst.error.withOpacity(0.8),
+                label: 'Create New theme'),
+            FxBox.h40,
+            Text(
+              'Activity',
+              style: TextStyle(
+                  color: isDark
+                      ? ColorConst.darkFontColor
+                      : ColorConst.lightFontColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600),
+            ),
+            FxBox.h16,
+            SizedBox(
+              width: double.infinity,
+              height: 250,
+              child: Stack(
+                fit: StackFit.loose,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 1.5),
+                    child: VerticalDivider(
+                      endIndent: 5,
+                      indent: 5,
+                      color: ColorConst.lightFontColor,
                     ),
                   ),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Icon(
-                      Icons.fiber_manual_record,
-                      size: 20,
-                      color: ColorConst.teal,
+                  Positioned(
+                    left: 25,
+                    right: 1,
+                    child: SizedBox(
+                      height: 250,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Andrei Coman magna sed porta finibus, risus posted a new article: Forget UX Rowland',
+                            maxLines: 3,
+                            style: TextStyle(
+                              color: isDark
+                                  ? ColorConst.darkFontColor
+                                  : ColorConst.lightFontColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Zack Wetass, sed porta finibus, risus Chris Wallace Commented Developer Moreno',
+                            style: TextStyle(
+                              color: isDark
+                                  ? ColorConst.darkFontColor
+                                  : ColorConst.lightFontColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Zack Wetass, Chris combined Commented UX Murphy',
+                            style: TextStyle(
+                              color: isDark
+                                  ? ColorConst.darkFontColor
+                                  : ColorConst.lightFontColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    Icon(
-                      Icons.fiber_manual_record,
-                      size: 20,
-                      color: ColorConst.teal,
-                    ),
-                    Icon(
-                      Icons.fiber_manual_record,
-                      size: 20,
-                      color: ColorConst.teal,
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const [
+                      Icon(
+                        Icons.fiber_manual_record,
+                        size: 20,
+                        color: ColorConst.teal,
+                      ),
+                      Icon(
+                        Icons.fiber_manual_record,
+                        size: 20,
+                        color: ColorConst.teal,
+                      ),
+                      Icon(
+                        Icons.fiber_manual_record,
+                        size: 20,
+                        color: ColorConst.teal,
+                      ),
+                    ],
+                  ),
+                  FxBox.h20
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -397,25 +443,31 @@ class _CalendarState extends State<Calendar> {
               lastDay: DateTime.utc(2030, 10, 14),
               focusedDay: DateTime.now(),
               headerVisible: true,
-              availableCalendarFormats: const {
-                CalendarFormat.month: 'Month',
-                CalendarFormat.week: 'Week',
-                CalendarFormat.twoWeeks: 'twoWeeks',
-              },
               calendarFormat: calendarFormat,
+              daysOfWeekStyle: DaysOfWeekStyle(
+                weekdayStyle: TextStyle(
+                    color: isDark
+                        ? ColorConst.darkFontColor
+                        : ColorConst.lightFontColor),
+                weekendStyle: TextStyle(
+                    color: isDark
+                        ? ColorConst.darkFontColor
+                        : ColorConst.lightFontColor),
+              ),
               calendarStyle: CalendarStyle(
                 defaultDecoration: BoxDecoration(
-                  border: Border.all(color: ColorConst.black, width: 0.5),
+                  border: Border.all(
+                      color: isDark
+                          ? ColorConst.appbarLightBG
+                          : ColorConst.cardDark,
+                      width: 0.5),
                 ),
                 cellMargin: const EdgeInsets.all(0.0),
                 canMarkersOverflow: true,
-                todayTextStyle: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: ColorConst.white,
-                  fontSize: 18.0,
-                ),
                 tableBorder: TableBorder.all(
-                  color: ColorConst.appbarLightBG,
+                  color: isDark
+                      ? const Color(0xFF454D66)
+                      : const Color(0xFFE9ECEF),
                 ),
               ),
               headerStyle: const HeaderStyle(
@@ -442,6 +494,7 @@ class _CalendarState extends State<Calendar> {
                       children: [
                         FxButton(
                           minWidth: 24,
+                          color: isDark ? ColorConst.primary : null,
                           onPressed: () {
                             if (newpageController != null) {
                               newpageController!.previousPage(
@@ -456,8 +509,10 @@ class _CalendarState extends State<Calendar> {
                           ),
                           borderRadius: 3,
                         ),
+                        FxBox.w2,
                         FxButton(
                           minWidth: 24,
+                          color: isDark ? ColorConst.primary : null,
                           onPressed: () {
                             if (newpageController != null) {
                               newpageController!.nextPage(
@@ -486,11 +541,11 @@ class _CalendarState extends State<Calendar> {
                                   }
                                 },
                                 text: 'Today',
+                                textColor: Colors.white,
                                 borderRadius: 3,
                                 color: ColorConst.primary.withOpacity(
-                                    day.month == DateTime.now().month
-                                        ? 0.5
-                                        : 1),
+                                  day.month == DateTime.now().month ? 0.8 : 1,
+                                ),
                                 height: 43,
                               )
                             : const SizedBox.shrink(),
@@ -499,9 +554,11 @@ class _CalendarState extends State<Calendar> {
                     Text(
                       '${months.elementAt(day.month - 1)} ${day.year}'
                           .toUpperCase(),
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontSize: 16,
-                          color: ColorConst.lightblackFontColor,
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.lightFontColor,
                           fontWeight: FontWeight.w600),
                     ),
                     Row(
@@ -511,18 +568,22 @@ class _CalendarState extends State<Calendar> {
                             calendarFormat != CalendarFormat.month
                                 ? _calendarFormat = CalendarFormat.month
                                 : null;
-
                             calendarFormat != CalendarFormat.month
                                 ? _calendarFormatBloc.add(
                                     CalendarFormatEvent.loading(
-                                        calendarFormat: CalendarFormat.month,
-                                        eventsList: eventMap))
+                                      calendarFormat: CalendarFormat.month,
+                                      eventsList: eventMap,
+                                    ),
+                                  )
                                 : null;
                           },
                           text: 'Month',
+                          textColor: ColorConst.darkFontColor,
                           borderRadius: 0,
                           color: calendarFormat == CalendarFormat.month
-                              ? ColorConst.primary
+                              ? isDark
+                                  ? ColorConst.primary
+                                  : null
                               : ColorConst.primary.withOpacity(0.7),
                           height: 43,
                         ),
@@ -534,14 +595,19 @@ class _CalendarState extends State<Calendar> {
                             calendarFormat != CalendarFormat.week
                                 ? _calendarFormatBloc.add(
                                     CalendarFormatEvent.loading(
-                                        calendarFormat: CalendarFormat.week,
-                                        eventsList: eventMap))
+                                      calendarFormat: CalendarFormat.week,
+                                      eventsList: eventMap,
+                                    ),
+                                  )
                                 : null;
                           },
                           text: 'Week',
+                          textColor: ColorConst.darkFontColor,
                           borderRadius: 0,
                           color: calendarFormat == CalendarFormat.week
-                              ? ColorConst.primary
+                              ? isDark
+                                  ? ColorConst.primary
+                                  : null
                               : ColorConst.primary.withOpacity(0.7),
                           height: 43,
                         ),
@@ -554,14 +620,19 @@ class _CalendarState extends State<Calendar> {
                             calendarFormat != CalendarFormat.twoWeeks
                                 ? _calendarFormatBloc.add(
                                     CalendarFormatEvent.loading(
-                                        calendarFormat: CalendarFormat.twoWeeks,
-                                        eventsList: eventMap))
+                                      calendarFormat: CalendarFormat.twoWeeks,
+                                      eventsList: eventMap,
+                                    ),
+                                  )
                                 : null;
                           },
                           text: '2 Week',
+                          textColor: ColorConst.darkFontColor,
                           borderRadius: 0,
                           color: calendarFormat == CalendarFormat.twoWeeks
-                              ? ColorConst.primary
+                              ? isDark
+                                  ? ColorConst.primary
+                                  : null
                               : ColorConst.primary.withOpacity(0.7),
                           height: 43,
                         ),
@@ -574,15 +645,17 @@ class _CalendarState extends State<Calendar> {
                   return Stack(
                     children: [
                       Container(
-                          alignment: Alignment.topRight,
-                          padding: const EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                            color: ColorConst.drawerHover.withOpacity(0.7),
-                          ),
-                          child: Text(
-                            date.day.toString(),
-                            style: const TextStyle(color: ColorConst.primary),
-                          )),
+                        alignment: Alignment.topRight,
+                        color: ColorConst.info.withOpacity(0.2),
+                        padding: const EdgeInsets.all(3),
+                        child: Text(
+                          date.day.toString(),
+                          style: TextStyle(
+                              color: isDark
+                                  ? ColorConst.darkFontColor
+                                  : ColorConst.primary),
+                        ),
+                      ),
                       _eventButton(list: list, date: date)
                     ],
                   );
@@ -592,15 +665,17 @@ class _CalendarState extends State<Calendar> {
                   return Stack(
                     children: [
                       Container(
-                          alignment: Alignment.topRight,
-                          padding: const EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                              border: Border.all(
-                                  color: ColorConst.darkFontColor, width: 0.5)),
-                          child: Text(
-                            day.day.toString(),
-                            style: const TextStyle(color: ColorConst.black),
-                          )),
+                        alignment: Alignment.topRight,
+                        padding: const EdgeInsets.all(3),
+                        child: Text(
+                          day.day.toString(),
+                          style: TextStyle(
+                            color: isDark
+                                ? ColorConst.darkFontColor
+                                : ColorConst.lightFontColor,
+                          ),
+                        ),
+                      ),
                       _eventButton(list: list, date: day),
                     ],
                   );
@@ -648,7 +723,7 @@ class _CalendarState extends State<Calendar> {
                           style: TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w600,
-                              color: ColorConst.lightblackFontColor),
+                              color: ColorConst.lightFontColor),
                         ),
                         const Spacer(),
                         IconButton(
@@ -660,7 +735,7 @@ class _CalendarState extends State<Calendar> {
                             },
                             icon: const Icon(
                               Icons.clear,
-                              color: ColorConst.lightblackFontColor,
+                              color: ColorConst.lightFontColor,
                             )),
                       ],
                     ),
@@ -682,7 +757,7 @@ class _CalendarState extends State<Calendar> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
-                                  color: ColorConst.lightblackFontColor),
+                                  color: ColorConst.lightFontColor),
                             ),
                             FxBox.h10,
                             TextFormField(
@@ -737,7 +812,7 @@ class _CalendarState extends State<Calendar> {
                               style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 14,
-                                  color: ColorConst.lightblackFontColor),
+                                  color: ColorConst.lightFontColor),
                             ),
                             FxBox.h10,
                             Container(
