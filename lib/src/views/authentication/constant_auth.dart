@@ -42,7 +42,7 @@ class ConstantAuth {
 
   static Widget footerText() {
     return CustomText(
-      title: Strings.loginFooterText,
+      title: Strings.footerText,
       fontSize: 13.0,
       fontWeight: FontWeight.w700,
       textColor: isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,

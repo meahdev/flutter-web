@@ -556,6 +556,6 @@ class _MenuBarState extends State<MenuBar> {
             ? MediaQuery.of(context).size.width - 240
             : MediaQuery.of(context).size.width,
         alignment: Alignment.center,
-        child: const Text('Footer'),
+        child: const Text(Strings.footerText),
       );
 }

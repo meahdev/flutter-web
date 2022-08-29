@@ -54,7 +54,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'calendar'),
+        RedirectRoute(path: '', redirectTo: 'video-player'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'calendar', page: Calendar),
         AutoRoute(path: 'toast', page: Toast),

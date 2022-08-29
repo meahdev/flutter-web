@@ -136,7 +136,6 @@ class _CalendarState extends State<Calendar> {
                 Expanded(
                   flex: 4,
                   child: Card(
-                    // color: isDark ? ColorConst.cardDark : ColorConst.white,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: _tableCalendar(context: context),
@@ -150,7 +149,6 @@ class _CalendarState extends State<Calendar> {
                 _mobileView(),
                 FxBox.h20,
                 Card(
-                  // color: isDark ? ColorConst.cardDark : ColorConst.white,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: _tableCalendar(context: context),
@@ -163,7 +161,6 @@ class _CalendarState extends State<Calendar> {
 
   Widget _mobileView() {
     return Card(
-      color: isDark ? ColorConst.cardDark : ColorConst.white,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

@@ -10,6 +10,9 @@ class Strings {
 
   static const String admin = 'Admin';
 
+  static const String footerText =
+      '© 2022 Siddhatva. Crafted with ❤️ by Sarvadhi';
+
   // appbar
   static const String searchHint = 'Search...';
 
@@ -128,8 +131,6 @@ class Strings {
   static const String loginLabel = 'Log In';
   static const String rememberMeLabel = 'Remember me';
   static const String forgotPassword = 'Forgot your password';
-  static const String loginFooterText =
-      '@ 2022 Siddhatva. Crafted with ❤️ by Themesbrand';
 
   // Register
   static const String freeRegister = 'Free Register';

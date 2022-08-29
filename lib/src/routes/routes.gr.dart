@@ -266,7 +266,7 @@ class AppRouter extends _i48.RootStackRouter {
           _i48.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'calendar',
+              redirectTo: 'video-player',
               fullMatch: true),
           _i48.RouteConfig(Dashboard.name,
               path: 'dashboard', parent: MenuBar.name),

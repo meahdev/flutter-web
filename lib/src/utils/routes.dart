@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/calender/calender.dart';
-import 'package:admin_dashboard/src/views/charts/all_charts/AllChartjsChart/charjs_bar_chart.dart';
 import 'package:admin_dashboard/src/views/charts/chartist.dart';
+import 'package:admin_dashboard/src/views/charts/chartjs.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
@@ -133,7 +133,7 @@ Widget getRouteWidget(int index) {
   } else if (index == 12) {
     return const ChartListChart();
   } else if (index == 13) {
-    return const ChartJsBarChart();
+    return const ChartJsChart();
   } else if (index == 14) {
     return const BasicTable();
   } else if (index == 15) {

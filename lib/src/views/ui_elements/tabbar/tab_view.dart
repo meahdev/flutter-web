@@ -126,7 +126,7 @@ class _CustomTabViewState extends State<CustomTabView>
             child: IntrinsicHeight(
               child: TabBarView(
                 controller: _tabController,
-                physics: const BouncingScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 dragStartBehavior: DragStartBehavior.down,
                 children: List.generate(
                   widget.tabsElements.length,

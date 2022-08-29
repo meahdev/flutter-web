@@ -28,7 +28,7 @@ class _VideoScreenState extends State<VideoScreen> {
 
   double getWidth({required BuildContext ctx}) {
     if (Responsive.isWeb(ctx)) {
-      return ((MediaQuery.of(ctx).size.width / 2) - (180));
+      return ((MediaQuery.of(ctx).size.width - 240) / 2 - 34);
     } else {
       return (MediaQuery.of(ctx).size.width);
     }
@@ -36,63 +36,59 @@ class _VideoScreenState extends State<VideoScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Wrap(
-        alignment: WrapAlignment.start,
-        crossAxisAlignment: WrapCrossAlignment.start,
-        runSpacing: 20,
-        spacing: 10,
-        children: [
-          FxBox.h16,
-          wrapedWidget(
-            ctx: context,
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Aspect Ratio 21:9', style: textStyle),
-                    FxBox.h20,
-                    IntrinsicHeight(
-                      child: FxVideoPlayer(
-                        videoFrom: VideoFrom.network,
-                        videoList: [urls[0]],
-                        videoAspectRatio: 21 / 9,
-                      ),
+    return Wrap(
+      alignment: WrapAlignment.start,
+      crossAxisAlignment: WrapCrossAlignment.start,
+      runSpacing: 20,
+      spacing: 20,
+      children: [
+        wrapedWidget(
+          ctx: context,
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Aspect Ratio 21:9', style: textStyle),
+                  FxBox.h20,
+                  IntrinsicHeight(
+                    child: FxVideoPlayer(
+                      videoFrom: VideoFrom.network,
+                      videoList: [urls[0]],
+                      videoAspectRatio: 21 / 9,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-          FxBox.h16,
-          wrapedWidget(
-            ctx: context,
-            child: Card(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Aspect Ratio 1:1', style: textStyle),
-                    FxBox.h20,
-                    IntrinsicHeight(
-                      child: FxVideoPlayer(
-                        videoFrom: VideoFrom.network,
-                        videoList: urls,
-                        initialVideoIndex: 0,
-                        videoAspectRatio: 1 / 1,
-                      ),
+        ),
+        wrapedWidget(
+          ctx: context,
+          child: Card(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Aspect Ratio 1:1', style: textStyle),
+                  FxBox.h20,
+                  IntrinsicHeight(
+                    child: FxVideoPlayer(
+                      videoFrom: VideoFrom.network,
+                      videoList: urls,
+                      initialVideoIndex: 0,
+                      videoAspectRatio: 1 / 1,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),
-          FxBox.h16,
-        ],
-      ),
+        ),
+        FxBox.h16,
+      ],
     );
   }
 

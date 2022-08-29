@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -156,8 +157,10 @@ class _LoadersState extends State<Loaders> {
               children: [
                 Text(
                   label,
-                  style: const TextStyle(
-                    color: Color(0XFF5B626B),
+                  style: TextStyle(
+                    color: isDark
+                        ? ColorConst.darkFontColor
+                        : ColorConst.lightFontColor,
                     fontWeight: FontWeight.w600,
                     fontSize: 16,
                   ),
