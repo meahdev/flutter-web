@@ -136,7 +136,7 @@ class _CalendarState extends State<Calendar> {
                 Expanded(
                   flex: 4,
                   child: Card(
-                    color: isDark ? ColorConst.cardDark : ColorConst.white,
+                    // color: isDark ? ColorConst.cardDark : ColorConst.white,
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: _tableCalendar(context: context),
@@ -150,7 +150,7 @@ class _CalendarState extends State<Calendar> {
                 _mobileView(),
                 FxBox.h20,
                 Card(
-                  color: isDark ? ColorConst.cardDark : ColorConst.white,
+                  // color: isDark ? ColorConst.cardDark : ColorConst.white,
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: _tableCalendar(context: context),
@@ -186,20 +186,22 @@ class _CalendarState extends State<Calendar> {
                     deletePressed: () {},
                   );
                 },
-                icon: Icon(
+                icon: const Icon(
                   Icons.add_circle_outline,
-                  color: isDark ? ColorConst.darkFontColor : ColorConst.white,
                   size: 15,
                 ),
                 text: 'Create New Event',
                 borderRadius: 5,
-                color: isDark ? ColorConst.primary : null,
               ),
             ),
             FxBox.h24,
-            const Text(
+            Text(
               'Drag and drop your event or click in the calendar',
-              style: TextStyle(color: ColorConst.lightFontColor, fontSize: 14),
+              style: TextStyle(
+                  color: isDark
+                      ? const Color(0xFF9ca8b3)
+                      : ColorConst.lightFontColor,
+                  fontSize: 14),
             ),
             FxBox.h12,
             _addEventButtons(
