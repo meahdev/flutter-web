@@ -58,7 +58,7 @@ class _MenuBarState extends State<MenuBar> {
       Strings.loader,
       Strings.tabs,
       Strings.carousel,
-      Strings.videoScreen,
+      Strings.videoPlayer,
     ],
     [
       Strings.formElements,

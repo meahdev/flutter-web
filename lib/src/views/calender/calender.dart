@@ -117,7 +117,7 @@ class _CalendarState extends State<Calendar> {
 
   @override
   void dispose() {
-    newpageController?.dispose();
+    newpageController!.dispose();
     eventController.dispose();
     super.dispose();
   }

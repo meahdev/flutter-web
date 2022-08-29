@@ -100,7 +100,7 @@ int getRouteIndex(String route) {
     return 31;
   } else if (route == Strings.formMask) {
     return 32;
-  } else if (route == Strings.videoScreen) {
+  } else if (route == Strings.videoPlayer) {
     return 33;
   } else {
     return 0;

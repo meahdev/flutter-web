@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -25,9 +22,9 @@ class _VideoScreenState extends State<VideoScreen> {
   ];
 
   TextStyle textStyle = const TextStyle(
-      color: ColorConst.lightFontColor,
-      fontSize: 16,
-      fontWeight: FontWeight.w600);
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+  );
 
   double getWidth({required BuildContext ctx}) {
     if (Responsive.isWeb(ctx)) {
@@ -50,7 +47,6 @@ class _VideoScreenState extends State<VideoScreen> {
           wrapedWidget(
             ctx: context,
             child: Card(
-              color: ColorConst.white,
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
@@ -74,7 +70,6 @@ class _VideoScreenState extends State<VideoScreen> {
           wrapedWidget(
             ctx: context,
             child: Card(
-              color: ColorConst.white,
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
@@ -86,7 +81,7 @@ class _VideoScreenState extends State<VideoScreen> {
                       child: FxVideoPlayer(
                         videoFrom: VideoFrom.network,
                         videoList: urls,
-                        initialVideoIndex: Random().nextInt(urls.length),
+                        initialVideoIndex: 0,
                         videoAspectRatio: 1 / 1,
                       ),
                     ),

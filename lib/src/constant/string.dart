@@ -42,10 +42,10 @@ class Strings {
   static const String alertDialog = 'Alert Dialog';
   static const String modal = 'Modal';
   static const String loader = 'Loaders';
-  static const String videoScreen = 'VideoScreen';
   static const String tabs = 'Tabs';
   static const String latestTransaction = 'Latest Transaction';
   static const String carousel = 'Carousel';
+  static const String videoPlayer = 'Video Player';
 
   // forms option
   static const String formElements = 'Form Elements';
