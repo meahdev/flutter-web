@@ -69,4 +69,8 @@ class ColorConst {
   static Color get gridChartColor => const Color(0xffe9ebef);
   static Color get gridTextColor => const Color(0xff7589a2);
   static Color get greyChartColor => const Color(0xffcccccc);
+
+  //calendar
+  static const Color calDarkBorder = Color(0xFF454D66);
+  static const Color callighBorder = Color(0xFFE9ECEF);
 }
