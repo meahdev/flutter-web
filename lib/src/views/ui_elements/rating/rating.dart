@@ -70,15 +70,6 @@ class _RatingState extends State<Rating> {
               ],
               color: Colors.red,
             ),
-            _ratingBar(
-              title: 'Default rating',
-              icon: [
-                CupertinoIcons.star,
-                CupertinoIcons.star_fill,
-                CupertinoIcons.star_lefthalf_fill
-              ],
-              length: 10,
-            ),
           ],
         ),
       ),
@@ -98,7 +89,8 @@ class _RatingState extends State<Rating> {
       child: Column(
         children: [
           Text(
-            title, style: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700),
+            title,
+            style: const TextStyle(fontSize: 15.0, fontWeight: FontWeight.w700),
           ),
           FxBox.h16,
           FxRatingBar(

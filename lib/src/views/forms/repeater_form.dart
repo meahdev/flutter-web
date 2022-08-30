@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/provider/form_repeater/bloc/form_repeater_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -297,7 +298,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
   Widget _resumeTextField(String fileName) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(),
+        border: Border.all(color: ColorConst.lightGrey.withOpacity(0.4)),
         borderRadius: BorderRadius.circular(4.0),
       ),
       height: 39,
@@ -306,18 +307,15 @@ class _RepeaterFormState extends State<RepeaterForm> {
           Container(
             alignment: Alignment.center,
             padding: const EdgeInsets.symmetric(horizontal: 12),
-            decoration: const BoxDecoration(
-              color: Colors.grey,
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(4.0),
-                topLeft: Radius.circular(4.0),
+            decoration: BoxDecoration(
+              color: ColorConst.lightGrey.withOpacity(0.4),
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(3.0),
+                topLeft: Radius.circular(3.0),
               ),
             ),
             height: double.infinity,
             child: const Text('Choose file'),
-          ),
-          const VerticalDivider(
-            width: 0,
           ),
           Expanded(
               child: Padding(

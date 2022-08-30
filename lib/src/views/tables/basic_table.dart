@@ -1,8 +1,10 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 
 class BasicTable extends StatelessWidget {
@@ -124,46 +126,50 @@ class BasicTable extends StatelessWidget {
   }
 
   Widget _stripedTable() {
-    return SizedBox(
-      height: 200,
-      child: DataTable2(
-        minWidth: 600,
-        showBottomBorder: true,
-        dividerThickness: 1,
-        columns: _dataColumn(),
-        rows: [
-          DataRow2(
-            color: MaterialStateProperty.all(
-              isDark ? ColorConst.darkContainer : Colors.grey.shade200,
-            ),
-            cells: [
-              DataCell(sizedBox(text: "1")),
-              DataCell(sizedBox(text: "bhavesh")),
-              DataCell(sizedBox(text: "vaghasiya")),
-              DataCell(sizedBox(text: "@flutter")),
+    return BlocBuilder<ThemeModeBloc, ThemeModeState>(
+      builder: (context, state) {
+        return SizedBox(
+          height: 200,
+          child: DataTable2(
+            minWidth: 600,
+            showBottomBorder: true,
+            dividerThickness: 1,
+            columns: _dataColumn(),
+            rows: [
+              DataRow2(
+                color: MaterialStateProperty.all(
+                  isDark ? ColorConst.darkContainer : Colors.grey.shade200,
+                ),
+                cells: [
+                  DataCell(sizedBox(text: "1")),
+                  DataCell(sizedBox(text: "bhavesh")),
+                  DataCell(sizedBox(text: "vaghasiya")),
+                  DataCell(sizedBox(text: "@flutter")),
+                ],
+              ),
+              DataRow2(
+                cells: [
+                  DataCell(sizedBox(text: "2")),
+                  DataCell(sizedBox(text: "vishal")),
+                  DataCell(sizedBox(text: "makwana")),
+                  DataCell(sizedBox(text: "@android")),
+                ],
+              ),
+              DataRow2(
+                color: MaterialStateProperty.all(
+                  isDark ? ColorConst.darkContainer : Colors.grey.shade200,
+                ),
+                cells: [
+                  DataCell(sizedBox(text: "3")),
+                  DataCell(sizedBox(text: "keval")),
+                  DataCell(sizedBox(text: "gajera")),
+                  DataCell(sizedBox(text: "@flutter")),
+                ],
+              ),
             ],
           ),
-          DataRow2(
-            cells: [
-              DataCell(sizedBox(text: "2")),
-              DataCell(sizedBox(text: "vishal")),
-              DataCell(sizedBox(text: "makwana")),
-              DataCell(sizedBox(text: "@android")),
-            ],
-          ),
-          DataRow2(
-            color: MaterialStateProperty.all(
-              isDark ? ColorConst.darkContainer : Colors.grey.shade200,
-            ),
-            cells: [
-              DataCell(sizedBox(text: "3")),
-              DataCell(sizedBox(text: "keval")),
-              DataCell(sizedBox(text: "gajera")),
-              DataCell(sizedBox(text: "@flutter")),
-            ],
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 

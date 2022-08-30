@@ -79,7 +79,9 @@ class _FxRatingBarState extends State<FxRatingBar> {
     if (index >= currentRating!) {
       icon = Icon(
         widget.defaultIcon,
-        color: color ?? widget.borderColor ?? Theme.of(context).colorScheme.primary,
+        color: color ??
+            widget.borderColor ??
+            Theme.of(context).colorScheme.primary,
         size: widget.size,
       );
     } else if (index >
@@ -115,7 +117,7 @@ class _FxRatingBarState extends State<FxRatingBar> {
                 onHover: (event) {
                   RenderBox? box = context.findRenderObject() as RenderBox?;
                   var pos = box!.globalToLocal(event.position);
-                  var i = pos.dx / widget.size;
+                  var i = pos.dx / (widget.size + widget.spacing);
                   var newRating =
                       widget.allowHalfRating ? i : i.round().toDouble();
                   if (newRating > widget.length) {

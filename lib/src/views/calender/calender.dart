@@ -4,7 +4,10 @@ import 'dart:math';
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/calendar/calendar_dialog/bloc/calendar_dialog_bloc.dart';
+import 'package:admin_dashboard/src/provider/calendar/calendar_drag/bloc/calendar_drag_bloc.dart';
 import 'package:admin_dashboard/src/provider/calendar/calendar_format/calendar_format_bloc.dart';
+import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
+import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,14 +25,15 @@ class _CalendarState extends State<Calendar> {
   late final CalendarFormatBloc _calendarFormatBloc = CalendarFormatBloc()
     ..add(CalendarFormatEvent.loading(
         calendarFormat: CalendarFormat.month, eventsList: eventMap));
+  final CalendarDragBloc _calendarDragBloc = CalendarDragBloc()
+    ..add(const CalendarDragEvent.started(dragStarted: false));
 
   TextEditingController eventController = TextEditingController();
 
   PageController? newpageController;
-  final StreamController<bool> _isDarkController =
-      StreamController<bool>.broadcast();
 
   String dropdownValue = '--Select--';
+  bool dragOn = false;
 
   double currentMonthPageIndex = 0.0;
 
@@ -96,7 +100,7 @@ class _CalendarState extends State<Calendar> {
   List<Color> coloredList = [
     ColorConst.primary,
     ColorConst.error,
-    ColorConst.success,
+    ColorConst.calSuccess,
     ColorConst.primary,
     ColorConst.info,
     ColorConst.dark,
@@ -120,10 +124,8 @@ class _CalendarState extends State<Calendar> {
 
   @override
   void initState() {
-    
     super.initState();
   }
-
 
   @override
   void dispose() {
@@ -134,8 +136,15 @@ class _CalendarState extends State<Calendar> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) => _calendarFormatBloc,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => _calendarFormatBloc,
+        ),
+        BlocProvider(
+          create: (_) => _calendarDragBloc,
+        ),
+      ],
       child: Responsive.isWeb(context)
           ? Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -185,10 +194,11 @@ class _CalendarState extends State<Calendar> {
                     context: context,
                     savePressed: () {
                       _handleSaveTap(
-                        date: DateTime.parse(
-                          '${DateTime.now().toString().split(" ")[0]} 00:00:00.000Z',
-                        ),
-                      );
+                          doPopup: true,
+                          date: DateTime.parse(
+                            '${DateTime.now().toString().split(" ")[0]} 00:00:00.000Z',
+                          ),
+                          index: null);
                     },
                     deletePressed: () {},
                   );
@@ -202,35 +212,32 @@ class _CalendarState extends State<Calendar> {
               ),
             ),
             FxBox.h24,
-            Text(
+            const Text(
               'Drag and drop your event or click in the calendar',
-              style: TextStyle(
-                  color: isDark
-                      ? const Color(0xFF9ca8b3)
-                      : ColorConst.lightFontColor,
-                  fontSize: 14),
+              style: TextStyle(fontSize: 14),
             ),
             FxBox.h12,
             _addEventButtons(
-                color: ColorConst.teal, label: 'New Event Planning'),
-            FxBox.h6,
-            _addEventButtons(color: ColorConst.info, label: 'Meeting'),
+                color: ColorConst.calSuccess,
+                label: 'New Event Planning',
+                colorIndex: 2),
             FxBox.h6,
             _addEventButtons(
-                color: ColorConst.warning, label: 'Generating Reports'),
+                color: ColorConst.info, label: 'Meeting', colorIndex: 4),
+            FxBox.h6,
+            _addEventButtons(
+                color: ColorConst.warning,
+                label: 'Generating Reports',
+                colorIndex: 6),
             FxBox.h6,
             _addEventButtons(
                 color: ColorConst.error.withOpacity(0.8),
-                label: 'Create New theme'),
+                label: 'Create New theme',
+                colorIndex: 1),
             FxBox.h40,
-            Text(
+            const Text(
               'Activity',
-              style: TextStyle(
-                  color: isDark
-                      ? ColorConst.darkFontColor
-                      : ColorConst.lightFontColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
             FxBox.h16,
             SizedBox(
@@ -255,14 +262,11 @@ class _CalendarState extends State<Calendar> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             'Andrei Coman magna sed porta finibus, risus posted a new article: Forget UX Rowland',
                             maxLines: 3,
                             style: TextStyle(
-                              color: isDark
-                                  ? ColorConst.darkFontColor
-                                  : ColorConst.lightFontColor,
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
@@ -270,9 +274,6 @@ class _CalendarState extends State<Calendar> {
                           Text(
                             'Zack Wetass, sed porta finibus, risus Chris Wallace Commented Developer Moreno',
                             style: TextStyle(
-                              color: isDark
-                                  ? ColorConst.darkFontColor
-                                  : ColorConst.lightFontColor,
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
@@ -280,9 +281,6 @@ class _CalendarState extends State<Calendar> {
                           Text(
                             'Zack Wetass, Chris combined Commented UX Murphy',
                             style: TextStyle(
-                              color: isDark
-                                  ? ColorConst.darkFontColor
-                                  : ColorConst.lightFontColor,
                               fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
@@ -322,32 +320,66 @@ class _CalendarState extends State<Calendar> {
     );
   }
 
-  Widget _addEventButtons({required String label, required Color color}) {
-    return SizedBox(
-      width: double.infinity,
-      height: 34,
-      child: Padding(
+  Widget _addEventButtons(
+      {required String label, required Color color, required int colorIndex}) {
+    return Draggable(
+      data: {'eventName': label, 'dropdownValue': colorIndex},
+      onDragStarted: () {
+        _calendarDragBloc
+            .add(const CalendarDragEvent.started(dragStarted: true));
+      },
+      onDragEnd: (details) => _calendarDragBloc
+          .add(const CalendarDragEvent.started(dragStarted: false)),
+      feedback: Padding(
         padding: const EdgeInsets.only(right: 8),
         child: ElevatedButton.icon(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-                enabledMouseCursor: SystemMouseCursors.allScroll,
-                primary: color,
-                alignment: Alignment.centerLeft,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(2.0))),
-            icon: const Icon(
-              Icons.fiber_manual_record,
-              color: ColorConst.white,
-              size: 12,
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+              enabledMouseCursor: SystemMouseCursors.allScroll,
+              primary: color,
+              alignment: Alignment.centerLeft,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5.0))),
+          icon: const Icon(
+            Icons.fiber_manual_record,
+            color: Colors.white,
+            size: 12,
+          ),
+          label: Text(
+            label,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
             ),
-            label: Text(
-              label,
-              style: const TextStyle(
+          ),
+        ),
+      ),
+      child: SizedBox(
+        width: double.infinity,
+        height: 34,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 8),
+          child: ElevatedButton.icon(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                  enabledMouseCursor: SystemMouseCursors.allScroll,
+                  primary: color,
+                  alignment: Alignment.centerLeft,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(2.0))),
+              icon: const Icon(
+                Icons.fiber_manual_record,
                 color: ColorConst.white,
-                fontSize: 14,
+                size: 12,
               ),
-            )),
+              label: Text(
+                label,
+                style: const TextStyle(
+                  color: ColorConst.white,
+                  fontSize: 14,
+                ),
+              )),
+        ),
       ),
     );
   }
@@ -355,64 +387,78 @@ class _CalendarState extends State<Calendar> {
   Widget _eventButton(
       {required List<Map<String, dynamic>> list, required DateTime date}) {
     return Positioned(
-        top: 20,
-        left: 0,
-        right: 0,
-        child: ListView.builder(
-            itemCount: list.length,
-            shrinkWrap: true,
-            itemBuilder: (BuildContext context, int index) {
-              return Padding(
-                padding: const EdgeInsets.all(2),
-                child: MaterialButton(
-                  minWidth: 10,
-                  onPressed: () {
-                    eventController.text = list[index]["eventName"];
-                    dropdownValue = dropDownList
-                        .elementAt(list[index]["dropdownValue"] ?? 0);
-                    _displayTextInputDialog(
-                        context: context,
-                        savePressed: () {
-                          _handleSaveTap(date: date);
-                        },
-                        deletePressed: () {
-                          list.removeAt(index);
-                          eventMap[date] = list;
-                          eventController.clear();
-                          dropdownValue = '--Select--';
-                          _calendarFormatBloc.add(CalendarFormatEvent.loading(
-                              calendarFormat: _calendarFormat,
-                              eventsList: eventMap));
-                          Navigator.pop(context);
-                        });
+      top: 20,
+      left: 0,
+      right: 0,
+      child: ListView.builder(
+        itemCount: list.length,
+        shrinkWrap: true,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            padding: const EdgeInsets.all(2),
+            child: MaterialButton(
+              minWidth: 10,
+              onPressed: () {
+                eventController.text = list[index]["eventName"];
+                dropdownValue =
+                    dropDownList.elementAt(list[index]["dropdownValue"] ?? 0);
+                _displayTextInputDialog(
+                  context: context,
+                  savePressed: () {
+                    _handleSaveTap(date: date, doPopup: true, index: index);
                   },
-                  color:
-                      coloredList.elementAt(list[index]["dropdownValue"] ?? 0),
-                  child: Text(list[index]["eventName"],
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: const TextStyle(color: ColorConst.white)),
-                ),
-              );
-            }));
+                  deletePressed: () {
+                    list.removeAt(index);
+                    eventMap[date] = list;
+                    eventController.clear();
+                    dropdownValue = '--Select--';
+                    _calendarFormatBloc.add(CalendarFormatEvent.loading(
+                        calendarFormat: _calendarFormat, eventsList: eventMap));
+                    Navigator.pop(context);
+                  },
+                );
+              },
+              color: coloredList.elementAt(list[index]["dropdownValue"] ?? 0),
+              child: Text(list[index]["eventName"],
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: const TextStyle(color: ColorConst.white)),
+            ),
+          );
+        },
+      ),
+    );
   }
 
-  void _handleSaveTap({required DateTime date}) {
+  void _handleSaveTap({
+    required DateTime date,
+    required bool doPopup,
+    required int? index,
+  }) {
     if (eventController.text.isNotEmpty) {
       bool isContains = eventMap.containsKey(date);
       if (isContains) {
         final values = eventMap[date] as List<Map<String, dynamic>>;
-        values.add({
-          'eventName': eventController.text.trim(),
-          'dropdownValue': dropDownList.indexOf(dropdownValue)
-        });
+        if (index != null) {
+          values[index] = {
+            'eventName': eventController.text.trim(),
+            'dropdownValue': dropDownList.indexOf(dropdownValue)
+          };
+        } else {
+          values.add({
+            'eventName': eventController.text.trim(),
+            'dropdownValue': dropDownList.indexOf(dropdownValue)
+          });
+        }
+
         eventController.clear();
         eventMap[date] = values;
-        debugPrint(eventMap.toString());
         dropdownValue = '--Select--';
         _calendarFormatBloc.add(CalendarFormatEvent.loading(
             calendarFormat: _calendarFormat, eventsList: eventMap));
-        Navigator.pop(context);
+        if (doPopup) {
+          Navigator.pop(context);
+        }
       } else {
         eventMap[date] = [
           {
@@ -424,7 +470,9 @@ class _CalendarState extends State<Calendar> {
         dropdownValue = '--Select--';
         _calendarFormatBloc.add(CalendarFormatEvent.loading(
             calendarFormat: _calendarFormat, eventsList: eventMap));
-        Navigator.pop(context);
+        if (doPopup) {
+          Navigator.pop(context);
+        }
       }
     }
   }
@@ -435,253 +483,305 @@ class _CalendarState extends State<Calendar> {
         return state.when(
           initial: () => const CircularProgressIndicator(),
           loaded: (calendarFormat, eventsList) {
-            return TableCalendar(
-              onCalendarCreated: (pageController) async {
-                newpageController = pageController;
-                await Future.delayed(const Duration(seconds: 2));
-                currentMonthPageIndex == 0.0
-                    ? currentMonthPageIndex = pageController.page!
-                    : null;
-              },
-              currentDay: DateTime.now(),
-              rowHeight: 100,
-              availableGestures: AvailableGestures.none,
-              daysOfWeekHeight: 40,
-              startingDayOfWeek: StartingDayOfWeek.monday,
-              firstDay: DateTime.utc(2015, 10, 16),
-              lastDay: DateTime.utc(2030, 10, 14),
-              focusedDay: DateTime.now(),
-              headerVisible: true,
-              calendarFormat: calendarFormat,
-              daysOfWeekStyle: DaysOfWeekStyle(
-                weekdayStyle: TextStyle(
-                    color: isDark
-                        ? ColorConst.darkFontColor
-                        : ColorConst.lightFontColor),
-                weekendStyle: TextStyle(
-                    color: isDark
-                        ? ColorConst.darkFontColor
-                        : ColorConst.lightFontColor),
-              ),
-              calendarStyle: CalendarStyle(
-                defaultDecoration: BoxDecoration(
-                  border: Border.all(
-                      color: isDark
-                          ? ColorConst.calDarkBorder
-                          : ColorConst.callighBorder,
-                      width: 0.5),
-                ),
-                cellMargin: const EdgeInsets.all(0.0),
-                canMarkersOverflow: true,
-                tableBorder: TableBorder.all(
-                  color: isDark
-                      ? ColorConst.calDarkBorder
-                      : ColorConst.callighBorder,
-                ),
-              ),
-              headerStyle: const HeaderStyle(
-                titleCentered: true,
-                formatButtonShowsNext: false,
-                formatButtonVisible: false,
-                leftChevronVisible: false,
-                rightChevronVisible: false,
-              ),
-              onDaySelected: (date, events) {
-                _displayTextInputDialog(
-                  context: context,
-                  savePressed: () {
-                    _handleSaveTap(date: date);
-                  },
-                  deletePressed: () {},
-                );
-              },
-              calendarBuilders: CalendarBuilders(
-                headerTitleBuilder: (context, day) => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        FxButton(
-                          minWidth: 27.5,
-                          color: isDark ? ColorConst.primary : null,
-                          onPressed: () {
-                            if (newpageController != null) {
-                              newpageController!.previousPage(
-                                duration: const Duration(microseconds: 400),
-                                curve: Curves.easeInOut,
-                              );
-                            }
-                          },
-                          icon: const Icon(
-                            Icons.navigate_before,
-                            color: ColorConst.white,
-                          ),
-                          borderRadius: 3,
-                        ),
-                        FxBox.w2,
-                        FxButton(
-                          minWidth: 27.5,
-                          color: isDark ? ColorConst.primary : null,
-                          onPressed: () {
-                            if (newpageController != null) {
-                              newpageController!.nextPage(
-                                  duration: const Duration(milliseconds: 400),
-                                  curve: Curves.easeIn);
-                            }
-                          },
-                          icon: const Icon(
-                            Icons.navigate_next,
-                            color: ColorConst.white,
-                          ),
-                          borderRadius: 3,
-                        ),
-                        Responsive.isWeb(context)
-                            ? FxBox.w10
-                            : const SizedBox.shrink(),
-                        Responsive.isWeb(context)
-                            ? FxButton(
+            return BlocBuilder<ThemeModeBloc, ThemeModeState>(
+              builder: (context1, state1) {
+                return state1.when(
+                  initial: () => const SizedBox.shrink(),
+                  success: (themeMode) => TableCalendar(
+                    onCalendarCreated: (pageController) async {
+                      newpageController = pageController;
+                      await Future.delayed(const Duration(seconds: 2));
+                      currentMonthPageIndex == 0.0
+                          ? currentMonthPageIndex = pageController.page!
+                          : null;
+                    },
+                    currentDay: DateTime.now(),
+                    rowHeight: 100,
+                    availableGestures: AvailableGestures.none,
+                    daysOfWeekHeight: 40,
+                    startingDayOfWeek: StartingDayOfWeek.monday,
+                    firstDay: DateTime.utc(2015, 10, 16),
+                    lastDay: DateTime.utc(2030, 10, 14),
+                    focusedDay: DateTime.now(),
+                    headerVisible: true,
+                    calendarFormat: calendarFormat,
+                    daysOfWeekStyle: DaysOfWeekStyle(
+                      weekdayStyle: TextStyle(
+                          color: themeMode
+                              ? ColorConst.darkFontColor
+                              : ColorConst.lightFontColor),
+                      weekendStyle: TextStyle(
+                          color: themeMode
+                              ? ColorConst.darkFontColor
+                              : ColorConst.lightFontColor),
+                    ),
+                    calendarStyle: CalendarStyle(
+                      defaultDecoration: BoxDecoration(
+                        border: Border.all(
+                            color: themeMode
+                                ? ColorConst.calDarkBorder
+                                : ColorConst.callighBorder,
+                            width: 0.5),
+                      ),
+                      cellMargin: const EdgeInsets.all(0.0),
+                      canMarkersOverflow: true,
+                      tableBorder: TableBorder.all(
+                        color: themeMode
+                            ? ColorConst.calDarkBorder
+                            : ColorConst.callighBorder,
+                      ),
+                    ),
+                    headerStyle: const HeaderStyle(
+                      titleCentered: true,
+                      formatButtonShowsNext: false,
+                      formatButtonVisible: false,
+                      leftChevronVisible: false,
+                      rightChevronVisible: false,
+                    ),
+                    onDaySelected: (date, events) {
+                      _displayTextInputDialog(
+                        context: context,
+                        savePressed: () {
+                          _handleSaveTap(
+                              date: date, doPopup: true, index: null);
+                        },
+                        deletePressed: () {},
+                      );
+                    },
+                    calendarBuilders: CalendarBuilders(
+                      headerTitleBuilder: (context, day) => Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              FxButton(
+                                minWidth: 27.5,
+                                color: isDark ? ColorConst.primary : null,
                                 onPressed: () {
-                                  if (newpageController!.page !=
-                                      currentMonthPageIndex) {
-                                    if (newpageController != null) {
-                                      newpageController!.jumpToPage(
-                                          currentMonthPageIndex.toInt());
-                                    }
+                                  if (newpageController != null) {
+                                    newpageController!.previousPage(
+                                      duration:
+                                          const Duration(microseconds: 400),
+                                      curve: Curves.easeInOut,
+                                    );
                                   }
                                 },
-                                text: 'Today',
-                                textColor: Colors.white,
+                                icon: const Icon(
+                                  Icons.navigate_before,
+                                  color: ColorConst.white,
+                                ),
                                 borderRadius: 3,
-                                color: ColorConst.primary.withOpacity(
-                                  day.month == DateTime.now().month ? 0.8 : 1,
+                              ),
+                              FxBox.w2,
+                              FxButton(
+                                minWidth: 27.5,
+                                color: isDark ? ColorConst.primary : null,
+                                onPressed: () {
+                                  if (newpageController != null) {
+                                    newpageController!.nextPage(
+                                        duration:
+                                            const Duration(milliseconds: 400),
+                                        curve: Curves.easeIn);
+                                  }
+                                },
+                                icon: const Icon(
+                                  Icons.navigate_next,
+                                  color: ColorConst.white,
                                 ),
-                                height: 43,
-                              )
-                            : const SizedBox.shrink(),
-                      ],
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: Text(
-                          '${months.elementAt(day.month - 1)} ${day.year}'
-                              .toUpperCase(),
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                              fontSize: 16, fontWeight: FontWeight.w600),
-                        ),
-                      ),
-                    ),
-                    FxButton(
-                      onPressed: () {
-                        calendarFormat != CalendarFormat.month
-                            ? _calendarFormat = CalendarFormat.month
-                            : null;
-                        calendarFormat != CalendarFormat.month
-                            ? _calendarFormatBloc.add(
-                                CalendarFormatEvent.loading(
-                                  calendarFormat: CalendarFormat.month,
-                                  eventsList: eventMap,
-                                ),
-                              )
-                            : null;
-                      },
-                      text: 'Month',
-                      textColor: ColorConst.darkFontColor,
-                      borderRadius: 0,
-                      color: calendarFormat == CalendarFormat.month
-                          ? isDark
-                              ? ColorConst.primary
-                              : null
-                          : ColorConst.primary.withOpacity(0.7),
-                      height: 43,
-                    ),
-                    FxButton(
-                      onPressed: () {
-                        calendarFormat != CalendarFormat.week
-                            ? _calendarFormat = CalendarFormat.week
-                            : null;
-                        calendarFormat != CalendarFormat.week
-                            ? _calendarFormatBloc.add(
-                                CalendarFormatEvent.loading(
-                                  calendarFormat: CalendarFormat.week,
-                                  eventsList: eventMap,
-                                ),
-                              )
-                            : null;
-                      },
-                      text: 'Week',
-                      textColor: ColorConst.darkFontColor,
-                      borderRadius: 0,
-                      color: calendarFormat == CalendarFormat.week
-                          ? isDark
-                              ? ColorConst.primary
-                              : null
-                          : ColorConst.primary.withOpacity(0.7),
-                      height: 43,
-                    ),
-                    FxButton(
-                      onPressed: () {
-                        calendarFormat != CalendarFormat.twoWeeks
-                            ? _calendarFormat = CalendarFormat.twoWeeks
-                            : null;
+                                borderRadius: 3,
+                              ),
+                              Responsive.isWeb(context)
+                                  ? FxBox.w10
+                                  : const SizedBox.shrink(),
+                              Responsive.isWeb(context)
+                                  ? FxButton(
+                                      onPressed: () {
+                                        if (newpageController!.page !=
+                                            currentMonthPageIndex) {
+                                          if (newpageController != null) {
+                                            newpageController!.jumpToPage(
+                                                currentMonthPageIndex.toInt());
+                                          }
+                                        }
+                                      },
+                                      text: 'Today',
+                                      textColor: Colors.white,
+                                      borderRadius: 3,
+                                      color: ColorConst.primary.withOpacity(
+                                        day.month == DateTime.now().month
+                                            ? 0.8
+                                            : 1,
+                                      ),
+                                      height: 43,
+                                    )
+                                  : const SizedBox.shrink(),
+                            ],
+                          ),
+                          Expanded(
+                            child: Center(
+                              child: Text(
+                                '${months.elementAt(day.month - 1)} ${day.year}'
+                                    .toUpperCase(),
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ),
+                          FxButton(
+                            onPressed: () {
+                              calendarFormat != CalendarFormat.month
+                                  ? _calendarFormat = CalendarFormat.month
+                                  : null;
+                              calendarFormat != CalendarFormat.month
+                                  ? _calendarFormatBloc.add(
+                                      CalendarFormatEvent.loading(
+                                        calendarFormat: CalendarFormat.month,
+                                        eventsList: eventMap,
+                                      ),
+                                    )
+                                  : null;
+                            },
+                            text: 'Month',
+                            textColor: ColorConst.darkFontColor,
+                            borderRadius: 0,
+                            color: calendarFormat == CalendarFormat.month
+                                ? isDark
+                                    ? ColorConst.primary
+                                    : null
+                                : ColorConst.primary.withOpacity(0.7),
+                            height: 43,
+                          ),
+                          FxButton(
+                            onPressed: () {
+                              calendarFormat != CalendarFormat.week
+                                  ? _calendarFormat = CalendarFormat.week
+                                  : null;
+                              calendarFormat != CalendarFormat.week
+                                  ? _calendarFormatBloc.add(
+                                      CalendarFormatEvent.loading(
+                                        calendarFormat: CalendarFormat.week,
+                                        eventsList: eventMap,
+                                      ),
+                                    )
+                                  : null;
+                            },
+                            text: 'Week',
+                            textColor: ColorConst.darkFontColor,
+                            borderRadius: 0,
+                            color: calendarFormat == CalendarFormat.week
+                                ? isDark
+                                    ? ColorConst.primary
+                                    : null
+                                : ColorConst.primary.withOpacity(0.7),
+                            height: 43,
+                          ),
+                          FxButton(
+                            onPressed: () {
+                              calendarFormat != CalendarFormat.twoWeeks
+                                  ? _calendarFormat = CalendarFormat.twoWeeks
+                                  : null;
 
-                        calendarFormat != CalendarFormat.twoWeeks
-                            ? _calendarFormatBloc.add(
-                                CalendarFormatEvent.loading(
-                                  calendarFormat: CalendarFormat.twoWeeks,
-                                  eventsList: eventMap,
+                              calendarFormat != CalendarFormat.twoWeeks
+                                  ? _calendarFormatBloc.add(
+                                      CalendarFormatEvent.loading(
+                                        calendarFormat: CalendarFormat.twoWeeks,
+                                        eventsList: eventMap,
+                                      ),
+                                    )
+                                  : null;
+                            },
+                            text: '2 Week',
+                            textColor: ColorConst.darkFontColor,
+                            borderRadius: 0,
+                            color: calendarFormat == CalendarFormat.twoWeeks
+                                ? isDark
+                                    ? ColorConst.primary
+                                    : null
+                                : ColorConst.primary.withOpacity(0.7),
+                            height: 43,
+                          ),
+                        ],
+                      ),
+                      todayBuilder: (context, date, events) {
+                        List<Map<String, dynamic>> list =
+                            eventsList[date] ?? [];
+                        return _dragTarget(
+                          day: date,
+                          list: list,
+                          child: Stack(
+                            children: [
+                              Container(
+                                alignment: Alignment.topRight,
+                                color: ColorConst.info.withOpacity(0.2),
+                                padding: const EdgeInsets.all(3),
+                                child: Text(
+                                  date.day.toString(),
                                 ),
-                              )
-                            : null;
+                              ),
+                              _eventButton(list: list, date: date)
+                            ],
+                          ),
+                        );
                       },
-                      text: '2 Week',
-                      textColor: ColorConst.darkFontColor,
-                      borderRadius: 0,
-                      color: calendarFormat == CalendarFormat.twoWeeks
-                          ? isDark
-                              ? ColorConst.primary
-                              : null
-                          : ColorConst.primary.withOpacity(0.7),
-                      height: 43,
+                      defaultBuilder: (context, day, focusedDay) {
+                        List<Map<String, dynamic>> list = eventsList[day] ?? [];
+                        return _dragTarget(
+                          day: day,
+                          list: list,
+                          child:
+                              BlocBuilder<CalendarDragBloc, CalendarDragState>(
+                            builder: (context, state) {
+                              return state.when(
+                                initial: () => const SizedBox(),
+                                dragStart: (dragStarted) => FxHover(
+                                  builder: (isHover) => Stack(
+                                    children: [
+                                      Container(
+                                        alignment: Alignment.topRight,
+                                        color: isHover && dragStarted
+                                            ? ColorConst.info.withOpacity(0.1)
+                                            : null,
+                                        padding: const EdgeInsets.all(3),
+                                        child: Text(
+                                          day.day.toString(),
+                                        ),
+                                      ),
+                                      _eventButton(list: list, date: day),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
                     ),
-                  ],
-                ),
-                todayBuilder: (context, date, events) {
-                  List<Map<String, dynamic>> list = eventsList[date] ?? [];
-                  return Stack(
-                    children: [
-                      Container(
-                        alignment: Alignment.topRight,
-                        color: ColorConst.info.withOpacity(0.2),
-                        padding: const EdgeInsets.all(3),
-                        child: Text(
-                          date.day.toString(),
-                        ),
-                      ),
-                      _eventButton(list: list, date: date)
-                    ],
-                  );
-                },
-                defaultBuilder: (context, day, focusedDay) {
-                  List<Map<String, dynamic>> list = eventsList[day] ?? [];
-                  return Stack(
-                    children: [
-                      Container(
-                        alignment: Alignment.topRight,
-                        padding: const EdgeInsets.all(3),
-                        child: Text(
-                          day.day.toString(),
-                        ),
-                      ),
-                      _eventButton(list: list, date: day),
-                    ],
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             );
           },
         );
       },
+    );
+  }
+
+  Widget _dragTarget(
+      {required DateTime day,
+      required Widget child,
+      required List<Map<String, dynamic>> list}) {
+    return DragTarget(
+      onWillAccept: (data) {
+        return true;
+      },
+      onAccept: (data) {
+        Map<String, dynamic> newMap = data as Map<String, dynamic>;
+        eventController.text = newMap["eventName"].toString();
+        dropdownValue = dropDownList.elementAt(newMap["dropdownValue"]);
+        _handleSaveTap(date: day, doPopup: false, index: null);
+      },
+      builder: (context, candidateData, rejectedData) => child,
     );
   }
 
@@ -718,9 +818,9 @@ class _CalendarState extends State<Calendar> {
                         const Text(
                           'Event',
                           style: TextStyle(
-                              fontSize: 17,
-                              fontWeight: FontWeight.w600,
-                              color: ColorConst.lightFontColor),
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                         const Spacer(),
                         IconButton(
@@ -880,12 +980,8 @@ class _CalendarState extends State<Calendar> {
                         Navigator.pop(context);
                       },
                       text: 'Close',
-                      textColor: isDark
-                          ? ColorConst.darkFontColor
-                          : ColorConst.lightFontColor,
+                      buttonType: ButtonType.secondary,
                       borderRadius: 5,
-                      hoverColor: ColorConst.transparent.withOpacity(0.80),
-                      color: ColorConst.transparent,
                       height: 35,
                     ),
                     FxBox.w10,
@@ -904,12 +1000,8 @@ class _CalendarState extends State<Calendar> {
                         }
                       },
                       text: 'Save',
+                      buttonType: ButtonType.success,
                       borderRadius: 5,
-                      textColor: isDark
-                          ? ColorConst.darkFontColor
-                          : ColorConst.lightFontColor,
-                      hoverColor: ColorConst.teal,
-                      color: ColorConst.teal.withOpacity(0.7),
                       height: 35,
                     ),
                   ],

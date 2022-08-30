@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 
 class Pricing extends StatefulWidget {
@@ -88,29 +90,33 @@ class _PricingState extends State<Pricing> {
                 children: [
                   Icon(icon),
                   const Spacer(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text(
-                        title,
-                        style: TextStyle(
-                          color: isDark
-                              ? ColorConst.darkFontColor
-                              : ColorConst.textColor,
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(
-                        "Sed ut neque unde",
-                        style: TextStyle(
-                          color: isDark
-                              ? ColorConst.darkFontColor
-                              : ColorConst.textColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
+                  BlocBuilder<ThemeModeBloc, ThemeModeState>(
+                    builder: (context, state) {
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            title,
+                            style: TextStyle(
+                              color: isDark
+                                  ? ColorConst.darkFontColor
+                                  : ColorConst.textColor,
+                              fontSize: 22,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "Sed ut neque unde",
+                            style: TextStyle(
+                              color: isDark
+                                  ? ColorConst.darkFontColor
+                                  : ColorConst.textColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),
@@ -142,15 +148,19 @@ class _PricingState extends State<Pricing> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Text(
-                    "$price/ ",
-                    style: TextStyle(
-                      fontSize: 30,
-                      color: isDark
-                          ? ColorConst.darkFontColor
-                          : ColorConst.textColor,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  BlocBuilder<ThemeModeBloc, ThemeModeState>(
+                    builder: (context, state) {
+                      return Text(
+                        "$price/ ",
+                        style: TextStyle(
+                          fontSize: 30,
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.textColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      );
+                    },
                   ),
                   const Text(
                     "Per month",

@@ -8,7 +8,15 @@ class LineChart1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: true,verticalInterval: 1,getDrawingHorizontalLine: (_) => FlLine(color: ColorConst.gridChartColor,),getDrawingVerticalLine:(_) => FlLine(color: ColorConst.gridChartColor,)),
+        gridData: FlGridData(
+            show: false,
+            verticalInterval: 1,
+            getDrawingHorizontalLine: (_) => FlLine(
+                  color: ColorConst.gridChartColor,
+                ),
+            getDrawingVerticalLine: (_) => FlLine(
+                  color: ColorConst.gridChartColor,
+                )),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
           show: true,
@@ -37,34 +45,34 @@ class LineChart1 extends StatelessWidget {
         lineBarsData: [
           LineChartBarData(spots: const [
             FlSpot(0, 0),
-            FlSpot(1, 0.07203827674494101),
-            FlSpot(2, 1.699962728354877),
-            FlSpot(3, 0.5569359871120536),
-            FlSpot(4, 3.36360317721251),
-            FlSpot(5, 0.9243654263320322),
-            FlSpot(6, 5.009729989790984),
-            FlSpot(6, 5.009729989790984),
-            FlSpot(7, 2.83296505280733)
+            FlSpot(1, 0.07),
+            FlSpot(2, 1.69),
+            FlSpot(3, 0.55),
+            FlSpot(4, 3.36),
+            FlSpot(5, 0.92),
+            FlSpot(6, 5.00),
+            FlSpot(6, 5.00),
+            FlSpot(7, 2.83)
           ], isCurved: true, barWidth: 2, color: ColorConst.chartColorGreen),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
-            FlSpot(1, 0.8881858765835509),
-            FlSpot(2, 0.13714336946062744),
-            FlSpot(3, 2.706569222866368),
-            FlSpot(4, 2.3666293026081062),
-            FlSpot(5, 2.0479143256070467),
-            FlSpot(6, 1.0855914260893909),
-            FlSpot(7, 2.216712037984714)
+            FlSpot(1, 0.88),
+            FlSpot(2, 0.13),
+            FlSpot(3, 2.70),
+            FlSpot(4, 2.36),
+            FlSpot(5, 2.04),
+            FlSpot(6, 1.08),
+            FlSpot(7, 2.21)
           ], isCurved: true, barWidth: 2, color: ColorConst.blueChartColor),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
-            FlSpot(1, 0.6013413129661813),
-            FlSpot(2, 0.8856980928056246),
-            FlSpot(3, 1.841570541554197),
-            FlSpot(4, 1.5742790861676772),
-            FlSpot(5, 3.5461511007919997),
-            FlSpot(6, 1.1322847934108373),
-            FlSpot(7, 5.3243068400091165)
+            FlSpot(1, 0.60),
+            FlSpot(2, 0.88),
+            FlSpot(3, 1.84),
+            FlSpot(4, 1.57),
+            FlSpot(5, 3.54),
+            FlSpot(6, 1.13),
+            FlSpot(7, 5.32)
           ], isCurved: true, barWidth: 2, color: ColorConst.greyChartColor)
         ],
       ),
@@ -72,10 +80,9 @@ class LineChart1 extends StatelessWidget {
   }
 }
 
-
 Widget leftTitles(double value, TitleMeta meta) {
   TextStyle style;
-  style =  TextStyle(
+  style = TextStyle(
     color: ColorConst.gridTextColor,
     fontWeight: FontWeight.bold,
     fontSize: 14,
@@ -87,18 +94,15 @@ Widget leftTitles(double value, TitleMeta meta) {
     text = '75';
   } else if (value == 2) {
     text = '150';
-  }
-  else if (value == 3) {
+  } else if (value == 3) {
     text = '225';
-  }
-  else if (value == 4) {
+  } else if (value == 4) {
     text = '300';
   } else if (value == 5) {
     text = '375';
-  }
-  else if (value == 6) {
+  } else if (value == 6) {
     text = '450';
-  }else {
+  } else {
     return Container();
   }
   return SideTitleWidget(
@@ -110,7 +114,7 @@ Widget leftTitles(double value, TitleMeta meta) {
 
 Widget getTitles(double value, TitleMeta meta) {
   TextStyle style;
-  style =  TextStyle(
+  style = TextStyle(
     color: ColorConst.gridTextColor,
     fontWeight: FontWeight.bold,
     fontSize: 14,
@@ -172,5 +176,3 @@ Widget getTitles(double value, TitleMeta meta) {
     child: Text(text, style: style),
   );
 }
-
-

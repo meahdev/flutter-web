@@ -73,4 +73,5 @@ class ColorConst {
   //calendar
   static const Color calDarkBorder = Color(0xFF454D66);
   static const Color callighBorder = Color(0xFFE9ECEF);
+  static const Color calSuccess = Color(0xFF02A499);
 }

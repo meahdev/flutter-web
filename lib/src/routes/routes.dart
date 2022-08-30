@@ -54,7 +54,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'calendar'),
+        RedirectRoute(path: '', redirectTo: 'dashboard'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'calendar', page: Calendar),
         AutoRoute(path: 'toast', page: Toast),
@@ -69,7 +69,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'alert-email', page: AlertEmail),
         AutoRoute(path: 'billing-email', page: BillingEmail),
         AutoRoute(path: 'morris-chart', page: MorrisChart),
-        AutoRoute(path: 'chartlist-chart', page: ChartListChart),
+        AutoRoute(path: 'chartist-chart', page: ChartListChart),
         AutoRoute(path: 'chartjs-chart', page: ChartJsChart),
         AutoRoute(path: 'basic-table', page: BasicTable),
         AutoRoute(path: 'data-table', page: Datatable),

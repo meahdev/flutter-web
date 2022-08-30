@@ -3,13 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 
 class AdvancedSmilChart extends StatelessWidget {
- const  AdvancedSmilChart({Key? key}) : super(key: key);
- @override
+  const AdvancedSmilChart({Key? key}) : super(key: key);
+  @override
   Widget build(BuildContext context) {
     //print(dummyData1);
     return LineChart(
       LineChartData(
-        gridData: FlGridData(show: true,verticalInterval: 1,getDrawingHorizontalLine: (_) => FlLine(color: ColorConst.gridChartColor,),getDrawingVerticalLine:(_) => FlLine(color: ColorConst.gridChartColor,)),
+        gridData: FlGridData(
+            show: true,
+            verticalInterval: 1,
+            getDrawingHorizontalLine: (_) =>
+                FlLine(color: ColorConst.gridChartColor, strokeWidth: 0.5),
+            getDrawingVerticalLine: (_) =>
+                FlLine(color: ColorConst.gridChartColor, strokeWidth: 0.5)),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
           show: true,
@@ -36,46 +42,56 @@ class AdvancedSmilChart extends StatelessWidget {
           ),
         ),
         lineBarsData: [
+          LineChartBarData(
+            spots: const [
+              FlSpot(0, 0),
+              FlSpot(1, 0.07),
+              FlSpot(2, 1.69),
+              FlSpot(3, 0.55),
+              FlSpot(4, 3.36),
+              FlSpot(5, 0.92),
+              FlSpot(6, 5.00),
+              FlSpot(7, 2.83)
+            ],
+            isCurved: true,
+            barWidth: 2,
+            color: ColorConst.chartColorBlue,
+          ),
+          LineChartBarData(
+            spots: const [
+              FlSpot(0, 0),
+              FlSpot(1, 0.88),
+              FlSpot(2, 0.13),
+              FlSpot(3, 2.70),
+              FlSpot(4, 2.36),
+              FlSpot(5, 2.04),
+              FlSpot(6, 1.08),
+              FlSpot(7, 2.21)
+            ],
+            isCurved: true,
+            barWidth: 2,
+            color: ColorConst.chartColorGreen,
+          ),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
-            FlSpot(1, 0.07203827674494101),
-            FlSpot(2, 1.699962728354877),
-            FlSpot(3, 0.5569359871120536),
-            FlSpot(4, 3.36360317721251),
-            FlSpot(5, 0.9243654263320322),
-            FlSpot(6, 5.009729989790984),
-            FlSpot(7, 2.83296505280733)
-          ], isCurved: true, barWidth: 2, color: ColorConst.chartColorBlue),
-          LineChartBarData(spots: const [
-            FlSpot(0, 0),
-            FlSpot(1, 0.8881858765835509),
-            FlSpot(2, 0.13714336946062744),
-            FlSpot(3, 2.706569222866368),
-            FlSpot(4, 2.3666293026081062),
-            FlSpot(5, 2.0479143256070467),
-            FlSpot(6, 1.0855914260893909),
-            FlSpot(7, 2.216712037984714)
-          ], isCurved: true, barWidth: 2, color: ColorConst.chartColorGreen),
-          LineChartBarData(spots: const [
-            FlSpot(0, 0),
-            FlSpot(1, 0.6013413129661813),
-            FlSpot(2, 0.8856980928056246),
-            FlSpot(3, 1.841570541554197),
-            FlSpot(4, 1.5742790861676772),
-            FlSpot(5, 3.5461511007919997),
-            FlSpot(6, 1.1322847934108373),
-            FlSpot(7, 5.3243068400091165)
+            FlSpot(1, 0.60),
+            FlSpot(2, 0.88),
+            FlSpot(3, 1.84),
+            FlSpot(4, 1.57),
+            FlSpot(5, 3.54),
+            FlSpot(6, 1.13),
+            FlSpot(7, 5.32)
           ], isCurved: true, barWidth: 2, color: ColorConst.black),
           LineChartBarData(spots: const [
             FlSpot(0, 0),
-            FlSpot(1, 0.4387327174115332),
-            FlSpot(2, 0.9976448079103646),
-            FlSpot(3, 1.950667141363143),
-            FlSpot(4, 1.2727444333933056),
-            FlSpot(5, 1.858787928173573),
-            FlSpot(6, 0.5207777705154775),
-            FlSpot(7, 1.9613875628547217)
-          ], isCurved: true, barWidth: 2, color:ColorConst.chartColorYellow),
+            FlSpot(1, 0.43),
+            FlSpot(2, 0.997),
+            FlSpot(3, 1.95),
+            FlSpot(4, 1.27),
+            FlSpot(5, 1.85),
+            FlSpot(6, 0.52),
+            FlSpot(7, 1.96)
+          ], isCurved: true, barWidth: 2, color: ColorConst.chartColorYellow),
         ],
       ),
     );
@@ -95,18 +111,15 @@ Widget leftTitles(double value, TitleMeta meta) {
     text = '2.5';
   } else if (value == 2) {
     text = '5';
-  }
-  else if (value == 3) {
+  } else if (value == 3) {
     text = '7.5';
-  }
-  else if (value == 4) {
+  } else if (value == 4) {
     text = '10';
   } else if (value == 5) {
     text = '12.5';
-  }
-  else if (value == 6) {
+  } else if (value == 6) {
     text = '15';
-  }else {
+  } else {
     return Container();
   }
   return SideTitleWidget(
@@ -179,8 +192,3 @@ Widget getTitles(double value, TitleMeta meta) {
     child: Text(text, style: style),
   );
 }
-
-
-
-
-

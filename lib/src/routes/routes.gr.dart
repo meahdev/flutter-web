@@ -266,7 +266,7 @@ class AppRouter extends _i48.RootStackRouter {
           _i48.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'calendar',
+              redirectTo: 'dashboard',
               fullMatch: true),
           _i48.RouteConfig(Dashboard.name,
               path: 'dashboard', parent: MenuBar.name),
@@ -290,7 +290,7 @@ class AppRouter extends _i48.RootStackRouter {
           _i48.RouteConfig(MorrisChart.name,
               path: 'morris-chart', parent: MenuBar.name),
           _i48.RouteConfig(ChartListChart.name,
-              path: 'chartlist-chart', parent: MenuBar.name),
+              path: 'chartist-chart', parent: MenuBar.name),
           _i48.RouteConfig(ChartJsChart.name,
               path: 'chartjs-chart', parent: MenuBar.name),
           _i48.RouteConfig(BasicTable.name,
@@ -565,7 +565,7 @@ class MorrisChart extends _i48.PageRouteInfo<void> {
 /// generated route for
 /// [_i28.ChartListChart]
 class ChartListChart extends _i48.PageRouteInfo<void> {
-  const ChartListChart() : super(ChartListChart.name, path: 'chartlist-chart');
+  const ChartListChart() : super(ChartListChart.name, path: 'chartist-chart');
 
   static const String name = 'ChartListChart';
 }

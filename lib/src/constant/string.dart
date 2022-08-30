@@ -61,7 +61,7 @@ class Strings {
   // charts option
   static const String morrisChart = 'Morris Chart';
   static const String chartistChart = 'Chartist Chart';
-  static const String chartJsChart = 'ChartJs Chart';
+  static const String chartJsChart = 'Chartjs Chart';
 
   // tables option
   static const String basicTable = 'Basic Table';
@@ -198,7 +198,7 @@ class Strings {
   static const String url = 'Url';
   static const String telephone = 'Telephone';
   static const String number = 'Number';
-  static const String dateAndtime = 'Date And Time';
+  static const String dateAndtime = 'Date';
   static const String select = 'Select';
   static const String color = 'Color';
   static const String pickColor = 'Pick Color';

@@ -8,7 +8,6 @@ import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/lin
 import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/linechartwitharea.dart';
 import 'package:admin_dashboard/src/views/charts/all_charts/AllChartistChart/simple_line_chart.dart';
 
-
 getChart(ChartType chartType) {
   double numberOfFeatures = 3;
   var features = ["AA", "BB", "CC", "DD", "EE", "FF", "GG", "HH"];
@@ -17,7 +16,8 @@ getChart(ChartType chartType) {
     [14.5, 1, 4, 14, 23, 10, 6, 19]
   ];
   features = features.sublist(0, numberOfFeatures.floor());
-  data = data.map((graph) => graph.sublist(0, numberOfFeatures.floor())).toList();
+  data =
+      data.map((graph) => graph.sublist(0, numberOfFeatures.floor())).toList();
   if (chartType == ChartType.lineChart) {
     return const LineChart1();
   } else if (chartType == ChartType.barChart) {
@@ -36,20 +36,19 @@ getChart(ChartType chartType) {
     return const SimpleLineChart();
   } else if (chartType == ChartType.simplePieChart) {
     return const SimplePieChart();
-  }else if (chartType == ChartType.animatingPieChart) {
+  } else if (chartType == ChartType.animatingPieChart) {
     return const AnimatingPieChart();
-  }else if (chartType == ChartType.lineScatterChart) {
+  } else if (chartType == ChartType.lineScatterChart) {
     return const LineScatterChart();
-  }else if (chartType == ChartType.overlapBars) {
+  } else if (chartType == ChartType.overlapBars) {
     return const OverlapBar();
-  }else if (chartType == ChartType.chartJsBarChart) {
+  } else if (chartType == ChartType.chartJsBarChart) {
     return const ChartJsBarChart();
-  }else if (chartType == ChartType.radarChart) {
+  } else if (chartType == ChartType.radarChart) {
     return const RadarChartSample1();
-  }else if (chartType == ChartType.polarChart) {
+  } else if (chartType == ChartType.polarChart) {
     return const PolarChart();
-  }
-  else if (chartType == ChartType.multipleStaticChart) {
+  } else if (chartType == ChartType.multipleStaticChart) {
     return const MultipleStaticChart();
   }
 }

@@ -3,8 +3,10 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/utils/models/steps.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
@@ -34,10 +36,14 @@ class _TimelineScreenState extends State<TimelineScreen> {
           padding: const EdgeInsets.only(top: 18.0),
           child: Column(
             children: [
-              CustomScrollView(
-                shrinkWrap: true,
-                physics: const ScrollPhysics(),
-                slivers: <Widget>[_timelineSteps(steps: _steps)],
+              BlocBuilder<ThemeModeBloc, ThemeModeState>(
+                builder: (context, state) {
+                  return CustomScrollView(
+                    shrinkWrap: true,
+                    physics: const ScrollPhysics(),
+                    slivers: <Widget>[_timelineSteps(steps: _steps)],
+                  );
+                },
               ),
               const SizedBox(height: 8),
             ],

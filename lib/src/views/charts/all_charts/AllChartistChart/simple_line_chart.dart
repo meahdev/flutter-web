@@ -131,70 +131,34 @@ Widget getTitles(double value, TitleMeta meta) {
   const style = TextStyle(
     color: Color(0xff7589a2),
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 12,
   );
   String text;
   switch (value.toString()) {
     case '0':
       text = 'Monday';
       break;
-    case '0.5':
-      text = '';
-      break;
-    case '1':
-      text = '';
-      break;
-    case '1.5':
-      text = '';
-      break;
+
     case '2':
       text = 'Tuesday';
       break;
-    case '2.5':
-      text = '';
-      break;
-    case '3':
-      text = '';
-      break;
-    case '3.5':
-      text = '';
-      break;
+
     case '4':
       text = 'Wednesday';
       break;
-    case '4.5':
-      text = '';
-      break;
-    case '5':
-      text = '';
-      break;
-    case '5.5':
-      text = '';
-      break;
+
     case '6':
       text = 'Thursday';
       break;
-    case '6.5':
-      text = '';
-      break;
-    case '7':
-      text = '';
-      break;
+
     case '8':
       text = 'Friday';
       break;
-    case '9':
-      text = '';
-      break;
+
     case '10':
       text = 'Saturday';
       break;
-    case '11':
-      text = '';
-      break;
-    case '12':
-      text = '';
-      break;
+
     default:
       text = '';
       break;
@@ -204,7 +168,10 @@ Widget getTitles(double value, TitleMeta meta) {
     child: SideTitleWidget(
       axisSide: meta.axisSide,
       space: 12.0,
-      child: Text(text, style: style),
+      child: Text(
+        text,
+        style: style,
+      ),
     ),
   );
 }

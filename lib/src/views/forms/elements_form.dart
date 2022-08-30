@@ -191,6 +191,7 @@ class _ElementsFormState extends State<ElementsForm> {
       return SizedBox(
         height: 35,
         child: CustomTextField(
+          readOnly: true,
           suffixIcon: const Padding(
             padding: EdgeInsets.all(8.0),
             child: SvgIcon(
@@ -230,6 +231,7 @@ class _ElementsFormState extends State<ElementsForm> {
         builder: (context, child) {
           return Theme(
             data: ThemeData(
+              colorSchemeSeed: ColorConst.primary,
               dialogTheme: DialogTheme(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4),
@@ -272,9 +274,11 @@ class _ElementsFormState extends State<ElementsForm> {
             border: const OutlineInputBorder(),
             contentPadding: const EdgeInsets.fromLTRB(12.0, 3.0, 6.0, 6.0),
             suffixIcon: Column(
-              mainAxisSize: MainAxisSize.min,
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
+                  flex: 1,
                   child: _inkButton(
                     icon: Icons.arrow_drop_up_sharp,
                     onTap: () {
@@ -288,8 +292,9 @@ class _ElementsFormState extends State<ElementsForm> {
                     },
                   ),
                 ),
+                // FxBox.h2,
                 Expanded(
-                  flex: 2,
+                  flex: 1,
                   child: _inkButton(
                     icon: Icons.arrow_drop_down_sharp,
                     onTap: () {
@@ -302,7 +307,7 @@ class _ElementsFormState extends State<ElementsForm> {
                       );
                     },
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -430,10 +435,13 @@ class _ElementsFormState extends State<ElementsForm> {
     required IconData icon,
     void Function()? onTap,
   }) {
-    return InkWell(
-      onTap: onTap,
-      child: Icon(
+    return IconButton(
+      padding: EdgeInsets.zero,
+      splashRadius: 2.0,
+      onPressed: onTap,
+      icon: Icon(
         icon,
+        size: 22,
       ),
     );
   }
