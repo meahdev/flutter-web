@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -23,24 +24,16 @@ class ChartJsBarChart extends StatelessWidget {
 
   BarTouchData barTouchData(BuildContext context) {
     return BarTouchData(
-      enabled: false,
+      enabled: true,
       touchTooltipData: BarTouchTooltipData(
-        tooltipBgColor: Colors.green,
-        tooltipPadding: const EdgeInsets.all(0),
-        tooltipMargin: 8,
-        getTooltipItem: (
-          BarChartGroupData group,
-          int groupIndex,
-          BarChartRodData rod,
-          int rodIndex,
-        ) {
+        tooltipBgColor: ColorConst.grey800,
+        getTooltipItem: (group, groupIndex, rod, rodIndex) {
           return BarTooltipItem(
-            rod.toY.round().toString(),
-            TextStyle(
-                color: Theme.of(context).brightness == Brightness.light
-                    ? Colors.black
-                    : Colors.white,
-                fontWeight: FontWeight.bold),
+            rod.toY.toString(),
+            const TextStyle(
+              color: ColorConst.darkFontColor,
+              fontWeight: FontWeight.w700,
+            ),
           );
         },
       ),

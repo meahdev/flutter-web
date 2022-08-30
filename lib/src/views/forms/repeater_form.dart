@@ -1,5 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/provider/form_repeater/bloc/form_repeater_bloc.dart';
+import 'package:admin_dashboard/src/provider/form/form_repeater/bloc/form_repeater_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:file_picker/file_picker.dart';

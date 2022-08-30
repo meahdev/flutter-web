@@ -18,19 +18,19 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$FormUploadFileEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PlatformFile> filesList) addFile,
+    required TResult Function(List<dynamic> filesList) addFile,
     required TResult Function() clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<PlatformFile> filesList)? addFile,
+    TResult Function(List<dynamic> filesList)? addFile,
     TResult Function()? clear,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PlatformFile> filesList)? addFile,
+    TResult Function(List<dynamic> filesList)? addFile,
     TResult Function()? clear,
     required TResult orElse(),
   }) =>
@@ -78,7 +78,7 @@ abstract class _$$_AddFileCopyWith<$Res> {
   factory _$$_AddFileCopyWith(
           _$_AddFile value, $Res Function(_$_AddFile) then) =
       __$$_AddFileCopyWithImpl<$Res>;
-  $Res call({List<PlatformFile> filesList});
+  $Res call({List<dynamic> filesList});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$_AddFileCopyWithImpl<$Res>
       filesList == freezed
           ? _value._filesList
           : filesList // ignore: cast_nullable_to_non_nullable
-              as List<PlatformFile>,
+              as List<dynamic>,
     ));
   }
 }
@@ -107,11 +107,11 @@ class __$$_AddFileCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_AddFile implements _AddFile {
-  const _$_AddFile(final List<PlatformFile> filesList) : _filesList = filesList;
+  const _$_AddFile(final List<dynamic> filesList) : _filesList = filesList;
 
-  final List<PlatformFile> _filesList;
+  final List<dynamic> _filesList;
   @override
-  List<PlatformFile> get filesList {
+  List<dynamic> get filesList {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_filesList);
   }
@@ -142,7 +142,7 @@ class _$_AddFile implements _AddFile {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PlatformFile> filesList) addFile,
+    required TResult Function(List<dynamic> filesList) addFile,
     required TResult Function() clear,
   }) {
     return addFile(filesList);
@@ -151,7 +151,7 @@ class _$_AddFile implements _AddFile {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<PlatformFile> filesList)? addFile,
+    TResult Function(List<dynamic> filesList)? addFile,
     TResult Function()? clear,
   }) {
     return addFile?.call(filesList);
@@ -160,7 +160,7 @@ class _$_AddFile implements _AddFile {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PlatformFile> filesList)? addFile,
+    TResult Function(List<dynamic> filesList)? addFile,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
@@ -203,9 +203,9 @@ class _$_AddFile implements _AddFile {
 }
 
 abstract class _AddFile implements FormUploadFileEvent {
-  const factory _AddFile(final List<PlatformFile> filesList) = _$_AddFile;
+  const factory _AddFile(final List<dynamic> filesList) = _$_AddFile;
 
-  List<PlatformFile> get filesList;
+  List<dynamic> get filesList;
   @JsonKey(ignore: true)
   _$$_AddFileCopyWith<_$_AddFile> get copyWith =>
       throw _privateConstructorUsedError;
@@ -250,7 +250,7 @@ class _$_Clear implements _Clear {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(List<PlatformFile> filesList) addFile,
+    required TResult Function(List<dynamic> filesList) addFile,
     required TResult Function() clear,
   }) {
     return clear();
@@ -259,7 +259,7 @@ class _$_Clear implements _Clear {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(List<PlatformFile> filesList)? addFile,
+    TResult Function(List<dynamic> filesList)? addFile,
     TResult Function()? clear,
   }) {
     return clear?.call();
@@ -268,7 +268,7 @@ class _$_Clear implements _Clear {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PlatformFile> filesList)? addFile,
+    TResult Function(List<dynamic> filesList)? addFile,
     TResult Function()? clear,
     required TResult orElse(),
   }) {
@@ -319,19 +319,19 @@ mixin _$FormUploadFileState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PlatformFile> filesList) fileSuccess,
+    required TResult Function(List<dynamic> filesList) fileSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PlatformFile> filesList)? fileSuccess,
+    TResult Function(List<dynamic> filesList)? fileSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PlatformFile> filesList)? fileSuccess,
+    TResult Function(List<dynamic> filesList)? fileSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -414,7 +414,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PlatformFile> filesList) fileSuccess,
+    required TResult Function(List<dynamic> filesList) fileSuccess,
   }) {
     return initial();
   }
@@ -423,7 +423,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PlatformFile> filesList)? fileSuccess,
+    TResult Function(List<dynamic> filesList)? fileSuccess,
   }) {
     return initial?.call();
   }
@@ -432,7 +432,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PlatformFile> filesList)? fileSuccess,
+    TResult Function(List<dynamic> filesList)? fileSuccess,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -482,7 +482,7 @@ abstract class _$$_FileSuccessCopyWith<$Res> {
   factory _$$_FileSuccessCopyWith(
           _$_FileSuccess value, $Res Function(_$_FileSuccess) then) =
       __$$_FileSuccessCopyWithImpl<$Res>;
-  $Res call({List<PlatformFile> filesList});
+  $Res call({List<dynamic> filesList});
 }
 
 /// @nodoc
@@ -504,7 +504,7 @@ class __$$_FileSuccessCopyWithImpl<$Res>
       filesList == freezed
           ? _value._filesList
           : filesList // ignore: cast_nullable_to_non_nullable
-              as List<PlatformFile>,
+              as List<dynamic>,
     ));
   }
 }
@@ -512,12 +512,11 @@ class __$$_FileSuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_FileSuccess implements _FileSuccess {
-  const _$_FileSuccess(final List<PlatformFile> filesList)
-      : _filesList = filesList;
+  const _$_FileSuccess(final List<dynamic> filesList) : _filesList = filesList;
 
-  final List<PlatformFile> _filesList;
+  final List<dynamic> _filesList;
   @override
-  List<PlatformFile> get filesList {
+  List<dynamic> get filesList {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_filesList);
   }
@@ -549,7 +548,7 @@ class _$_FileSuccess implements _FileSuccess {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<PlatformFile> filesList) fileSuccess,
+    required TResult Function(List<dynamic> filesList) fileSuccess,
   }) {
     return fileSuccess(filesList);
   }
@@ -558,7 +557,7 @@ class _$_FileSuccess implements _FileSuccess {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PlatformFile> filesList)? fileSuccess,
+    TResult Function(List<dynamic> filesList)? fileSuccess,
   }) {
     return fileSuccess?.call(filesList);
   }
@@ -567,7 +566,7 @@ class _$_FileSuccess implements _FileSuccess {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<PlatformFile> filesList)? fileSuccess,
+    TResult Function(List<dynamic> filesList)? fileSuccess,
     required TResult orElse(),
   }) {
     if (fileSuccess != null) {
@@ -609,10 +608,9 @@ class _$_FileSuccess implements _FileSuccess {
 }
 
 abstract class _FileSuccess implements FormUploadFileState {
-  const factory _FileSuccess(final List<PlatformFile> filesList) =
-      _$_FileSuccess;
+  const factory _FileSuccess(final List<dynamic> filesList) = _$_FileSuccess;
 
-  List<PlatformFile> get filesList;
+  List<dynamic> get filesList;
   @JsonKey(ignore: true)
   _$$_FileSuccessCopyWith<_$_FileSuccess> get copyWith =>
       throw _privateConstructorUsedError;

@@ -9,6 +9,29 @@ class AdvancedSmilChart extends StatelessWidget {
     //print(dummyData1);
     return LineChart(
       LineChartData(
+        lineTouchData: LineTouchData(
+          enabled: true,
+          touchTooltipData: LineTouchTooltipData(
+            tooltipBgColor: ColorConst.grey800,
+            getTooltipItems: (touchedSpots) {
+              List<double> value = [];
+              for (LineBarSpot lineBarSpot in touchedSpots) {
+                value.add(lineBarSpot.y);
+              }
+              return value
+                  .map(
+                    (e) => LineTooltipItem(
+                      e.toString(),
+                      const TextStyle(
+                        color: ColorConst.darkFontColor,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  )
+                  .toList();
+            },
+          ),
+        ),
         gridData: FlGridData(
             show: true,
             verticalInterval: 1,

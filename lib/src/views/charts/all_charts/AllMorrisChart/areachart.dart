@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -41,6 +42,29 @@ class _AreaChartState extends State<AreaChart> {
 
   LineChartData mainData() {
     return LineChartData(
+      lineTouchData: LineTouchData(
+        enabled: true,
+        touchTooltipData: LineTouchTooltipData(
+          tooltipBgColor: ColorConst.grey800,
+          getTooltipItems: (touchedSpots) {
+            List<double> value = [];
+            for (LineBarSpot lineBarSpot in touchedSpots) {
+              value.add(lineBarSpot.y);
+            }
+            return value
+                .map(
+                  (e) => LineTooltipItem(
+                    e.toString(),
+                    const TextStyle(
+                      color: ColorConst.darkFontColor,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                )
+                .toList();
+          },
+        ),
+      ),
       borderData: FlBorderData(border: const Border(bottom: BorderSide.none)),
       gridData: FlGridData(
         show: false,

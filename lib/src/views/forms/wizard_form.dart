@@ -1,5 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/provider/form_wizard/bloc/form_wizard_bloc.dart';
+import 'package:admin_dashboard/src/provider/form/form_wizard/bloc/form_wizard_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';

@@ -52,64 +52,71 @@ class BarChartSample2State extends State<BarChartSample2> {
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: 1,
-      child: Card(
-        elevation: 0,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-        color: Colors.transparent,
-        child: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Expanded(
-                child: BarChart(
-                  BarChartData(
-                    maxY: 20,
-                    titlesData: FlTitlesData(
-                      show: true,
-                      rightTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      topTitles: AxisTitles(
-                        sideTitles: SideTitles(showTitles: false),
-                      ),
-                      bottomTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          getTitlesWidget: bottomTitles,
-                          reservedSize: 42,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Expanded(
+            child: BarChart(
+              BarChartData(
+                barTouchData: BarTouchData(
+                  enabled: true,
+                  touchTooltipData: BarTouchTooltipData(
+                    tooltipBgColor: ColorConst.grey800,
+                    getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                      return BarTooltipItem(
+                        rod.toY.toString(),
+                        const TextStyle(
+                          color: ColorConst.darkFontColor,
+                          fontWeight: FontWeight.w700,
                         ),
-                      ),
-                      leftTitles: AxisTitles(
-                        sideTitles: SideTitles(
-                          showTitles: true,
-                          reservedSize: 28,
-                          interval: 1,
-                          getTitlesWidget: leftTitles,
-                        ),
-                      ),
-                    ),
-                    borderData: FlBorderData(
-                      show: false,
-                    ),
-                    barGroups: showingBarGroups,
-                    gridData: FlGridData(show: false),
+                      );
+                    },
                   ),
                 ),
+                maxY: 20,
+                titlesData: FlTitlesData(
+                  show: true,
+                  rightTitles: AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  topTitles: AxisTitles(
+                    sideTitles: SideTitles(showTitles: false),
+                  ),
+                  bottomTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      getTitlesWidget: bottomTitles,
+                      reservedSize: 42,
+                    ),
+                  ),
+                  leftTitles: AxisTitles(
+                    sideTitles: SideTitles(
+                      showTitles: true,
+                      reservedSize: 28,
+                      interval: 1,
+                      getTitlesWidget: leftTitles,
+                    ),
+                  ),
+                ),
+                borderData: FlBorderData(
+                  show: false,
+                ),
+                barGroups: showingBarGroups,
+                gridData: FlGridData(show: false),
               ),
-             FxBox.h12
-            ],
+            ),
           ),
-        ),
+          FxBox.h12
+        ],
       ),
     );
   }
 
   Widget leftTitles(double value, TitleMeta meta) {
     TextStyle style;
-    style =  TextStyle(
+    style = TextStyle(
       color: ColorConst.gridTextColor,
       fontWeight: FontWeight.bold,
       fontSize: 14,
@@ -139,7 +146,7 @@ class BarChartSample2State extends State<BarChartSample2> {
     List<String> titles = ["", "2012", "", "2014", "", "2016", "", "2018"];
     Widget text = Text(
       titles[value.toInt()],
-      style:  TextStyle(
+      style: TextStyle(
         color: ColorConst.gridTextColor,
         fontWeight: FontWeight.bold,
         fontSize: 14,
@@ -169,5 +176,4 @@ class BarChartSample2State extends State<BarChartSample2> {
       ),
     ]);
   }
-
 }

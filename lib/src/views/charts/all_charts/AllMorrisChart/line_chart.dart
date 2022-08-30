@@ -8,15 +8,39 @@ class LineChart1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return LineChart(
       LineChartData(
+        lineTouchData: LineTouchData(
+          enabled: true,
+          touchTooltipData: LineTouchTooltipData(
+            tooltipBgColor: ColorConst.grey800,
+            getTooltipItems: (touchedSpots) {
+              List<double> value = [];
+              for (LineBarSpot lineBarSpot in touchedSpots) {
+                value.add(lineBarSpot.y);
+              }
+              return value
+                  .map(
+                    (e) => LineTooltipItem(
+                      e.toString(),
+                      const TextStyle(
+                        color: ColorConst.darkFontColor,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  )
+                  .toList();
+            },
+          ),
+        ),
         gridData: FlGridData(
-            show: false,
-            verticalInterval: 1,
-            getDrawingHorizontalLine: (_) => FlLine(
-                  color: ColorConst.gridChartColor,
-                ),
-            getDrawingVerticalLine: (_) => FlLine(
-                  color: ColorConst.gridChartColor,
-                )),
+          show: false,
+          verticalInterval: 1,
+          getDrawingHorizontalLine: (_) => FlLine(
+            color: ColorConst.gridChartColor,
+          ),
+          getDrawingVerticalLine: (_) => FlLine(
+            color: ColorConst.gridChartColor,
+          ),
+        ),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
           show: true,
@@ -43,37 +67,52 @@ class LineChart1 extends StatelessWidget {
           ),
         ),
         lineBarsData: [
-          LineChartBarData(spots: const [
-            FlSpot(0, 0),
-            FlSpot(1, 0.07),
-            FlSpot(2, 1.69),
-            FlSpot(3, 0.55),
-            FlSpot(4, 3.36),
-            FlSpot(5, 0.92),
-            FlSpot(6, 5.00),
-            FlSpot(6, 5.00),
-            FlSpot(7, 2.83)
-          ], isCurved: true, barWidth: 2, color: ColorConst.chartColorGreen),
-          LineChartBarData(spots: const [
-            FlSpot(0, 0),
-            FlSpot(1, 0.88),
-            FlSpot(2, 0.13),
-            FlSpot(3, 2.70),
-            FlSpot(4, 2.36),
-            FlSpot(5, 2.04),
-            FlSpot(6, 1.08),
-            FlSpot(7, 2.21)
-          ], isCurved: true, barWidth: 2, color: ColorConst.blueChartColor),
-          LineChartBarData(spots: const [
-            FlSpot(0, 0),
-            FlSpot(1, 0.60),
-            FlSpot(2, 0.88),
-            FlSpot(3, 1.84),
-            FlSpot(4, 1.57),
-            FlSpot(5, 3.54),
-            FlSpot(6, 1.13),
-            FlSpot(7, 5.32)
-          ], isCurved: true, barWidth: 2, color: ColorConst.greyChartColor)
+          LineChartBarData(
+            spots: const [
+              FlSpot(0, 0),
+              FlSpot(1, 0.07),
+              FlSpot(2, 1.69),
+              FlSpot(3, 0.55),
+              FlSpot(4, 3.36),
+              FlSpot(5, 0.92),
+              FlSpot(6, 5.00),
+              FlSpot(6, 5.00),
+              FlSpot(7, 2.83)
+            ],
+            isCurved: true,
+            barWidth: 2,
+            color: ColorConst.chartColorGreen,
+          ),
+          LineChartBarData(
+            spots: const [
+              FlSpot(0, 0),
+              FlSpot(1, 0.88),
+              FlSpot(2, 0.13),
+              FlSpot(3, 2.70),
+              FlSpot(4, 2.36),
+              FlSpot(5, 2.04),
+              FlSpot(6, 1.08),
+              FlSpot(7, 2.21)
+            ],
+            isCurved: true,
+            barWidth: 2,
+            color: ColorConst.blueChartColor,
+          ),
+          LineChartBarData(
+            spots: const [
+              FlSpot(0, 0),
+              FlSpot(1, 0.60),
+              FlSpot(2, 0.88),
+              FlSpot(3, 1.84),
+              FlSpot(4, 1.57),
+              FlSpot(5, 3.54),
+              FlSpot(6, 1.13),
+              FlSpot(7, 5.32)
+            ],
+            isCurved: true,
+            barWidth: 2,
+            color: ColorConst.greyChartColor,
+          )
         ],
       ),
     );

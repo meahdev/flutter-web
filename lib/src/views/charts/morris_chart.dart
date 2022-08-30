@@ -34,7 +34,8 @@ class _MorrisChartState extends State<MorrisChart> {
               Row(
                 children: [
                   Expanded(
-                    child: _card(ChartType.lineChart, context, Strings.lineChart),
+                    child:
+                        _card(ChartType.lineChart, context, Strings.lineChart),
                   ),
                   FxBox.w20,
                   Expanded(
@@ -46,11 +47,13 @@ class _MorrisChartState extends State<MorrisChart> {
               Row(
                 children: [
                   Expanded(
-                    child: _card(ChartType.areaChart, context, Strings.areaChart),
+                    child:
+                        _card(ChartType.areaChart, context, Strings.areaChart),
                   ),
                   FxBox.w20,
                   Expanded(
-                    child: _card(ChartType.piaChart, context, Strings.donutChart),
+                    child:
+                        _card(ChartType.piaChart, context, Strings.donutChart),
                   ),
                 ],
               ),
@@ -62,31 +65,26 @@ class _MorrisChartState extends State<MorrisChart> {
 }
 
 Widget _card(ChartType chartType, BuildContext context, String name) {
-  return SizedBox(
-    child: Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              name,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            ),
-            FxBox.h12,
-            getChartData(chartType, context),
-            FxBox.h12,
-            SizedBox(
-              width: double.infinity,
-              height: 400,
-              child: getChart(chartType),
-            ),
-          ],
-        ),
+  return Card(
+    child: Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            name,
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+          FxBox.h12,
+          getChartData(chartType, context),
+          FxBox.h12,
+          SizedBox(
+            width: double.infinity,
+            height: 400,
+            child: getChart(chartType),
+          ),
+        ],
       ),
     ),
   );
@@ -219,10 +217,13 @@ Widget _richText(String type, int count, BuildContext context) {
             fontSize: 22,
           ),
         ),
-        TextSpan(text: upperCase(type),style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 13,
-        ),),
+        TextSpan(
+          text: upperCase(type),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 13,
+          ),
+        ),
       ],
     ),
   );

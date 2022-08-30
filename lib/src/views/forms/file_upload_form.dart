@@ -1,13 +1,14 @@
 import 'dart:ui';
 
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/provider/form_upload_file/bloc/form_upload_file_bloc.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/provider/form/form_upload_file/bloc/form_upload_file_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
-import 'package:file_picker/file_picker.dart';
+import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dropzone/flutter_dropzone.dart';
 import 'package:flutterx/flutterx.dart';
-import 'package:mime_type/mime_type.dart';
 
 class FileUploadForm extends StatefulWidget {
   const FileUploadForm({Key? key}) : super(key: key);
@@ -18,17 +19,14 @@ class FileUploadForm extends StatefulWidget {
 
 class _FileUploadFormState extends State<FileUploadForm> {
   final FormUploadFileBloc _formUploadFileBloc = FormUploadFileBloc();
-  FilePickerResult? _file;
-  List<PlatformFile> _filesList = [];
+  late DropzoneViewController _controller;
+  List<dynamic> _filesList = [];
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => _formUploadFileBloc,
       child: Card(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
-        ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
@@ -40,30 +38,52 @@ class _FileUploadFormState extends State<FileUploadForm> {
               ),
               FxBox.h24,
               GestureDetector(
-                onTap: () {
-                  _pickFile();
+                onTap: () async {
+                  List<dynamic> files =
+                      await _controller.pickFiles(multiple: true);
+                  _dropFile(files);
                 },
                 child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    padding: const EdgeInsets.all(40.0),
-                    constraints: const BoxConstraints(
-                        minHeight: 270, minWidth: double.infinity),
-                    child: BlocBuilder<FormUploadFileBloc, FormUploadFileState>(
-                      builder: (context, state) {
-                        return state.when(
-                          initial: () {
-                            _filesList.clear();
-                            return _emptyView();
-                          },
-                          fileSuccess: (fileData) {
-                            return _hasDataView(fileData);
-                          },
-                        );
-                      },
-                    )),
+                  decoration: BoxDecoration(
+                    border: Border.all(),
+                    borderRadius: BorderRadius.circular(4.0),
+                  ),
+                  padding: const EdgeInsets.all(20.0),
+                  constraints: const BoxConstraints(
+                    minHeight: 270.0,
+                    maxWidth: double.infinity,
+                    maxHeight: 270.0,
+                  ),
+                  child: BlocBuilder<FormUploadFileBloc, FormUploadFileState>(
+                    builder: (context, state) {
+                      return Stack(
+                        clipBehavior: Clip.antiAlias,
+                        children: [
+                          DropzoneView(
+                            operation: DragOperation.copy,
+                            onCreated: (controller) => _controller = controller,
+                            onLoaded: () {},
+                            onHover: () {},
+                            onLeave: () {},
+                            onDropMultiple: (value) async {
+                              _dropFile(value!);
+                            },
+                          ),
+                          Center(
+                            child: SingleChildScrollView(
+                              controller: ScrollController(),
+                              child: state.when(
+                                initial: () => _emptyView(),
+                                fileSuccess: (filesList) =>
+                                    _hasDataView(filesList),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                ),
               ),
               const SizedBox(height: 40),
               _sendFileButton()
@@ -76,6 +96,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
 
   Widget _emptyView() {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Icon(
@@ -92,44 +113,87 @@ class _FileUploadFormState extends State<FileUploadForm> {
     );
   }
 
-  Widget _hasDataView(List<PlatformFile> fileData) {
+  Widget _hasDataView(List<dynamic> fileData) {
     return Wrap(
       runSpacing: 30.0,
       spacing: 30.0,
       children: fileData.map(
         (e) {
-          final kb = e.size / 1000;
-          final mb = kb / 1024;
-          final size = (kb >= 100)
-              ? '${mb.toStringAsFixed(1)} MB'
-              : '${kb.toStringAsFixed(1)} KB';
-          final fileType = mimeFromExtension(e.extension!);
-          final isImage = fileType!.startsWith('image') ? true : false;
-          return FxHover(builder: (isHover) {
-            return Container(
-              height: 120,
-              width: 120,
-              decoration: BoxDecoration(
-                image: isImage
-                    ? DecorationImage(
-                        image: MemoryImage(e.bytes!), fit: BoxFit.cover)
-                    : null,
-                color: ColorConst.file,
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: isImage
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(20.0),
-                      child: BackdropFilter(
-                          filter: isHover
-                              ? ImageFilter.blur(sigmaX: 10, sigmaY: 10)
-                              : ImageFilter.blur(sigmaX: 0.1, sigmaY: 0.1),
-                          child:
-                              isHover ? _fileDetailView(size, e.name) : null),
-                    )
-                  : _fileDetailView(size, e.name),
-            );
-          });
+          return FutureBuilder<Map<String, dynamic>>(
+              future: _fileData(e),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
+                  return FxBox.shrink;
+                }
+                final kb = snapshot.data!['size'] / 1000;
+                final mb = kb / 1024;
+                final size = (kb >= 100)
+                    ? '${mb.toStringAsFixed(1)} MB'
+                    : '${kb.toStringAsFixed(1)} KB';
+                final fileType = snapshot.data!['mime'];
+                final isImage = fileType!.startsWith('image') ? true : false;
+                return FxHover(builder: (isHover) {
+                  return Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Container(
+                        height: 120,
+                        width: 120,
+                        decoration: BoxDecoration(
+                          image: isImage
+                              ? DecorationImage(
+                                  image: MemoryImage(snapshot.data!['bytes']),
+                                  fit: BoxFit.cover,
+                                )
+                              : null,
+                          color: ColorConst.file,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        child: isImage
+                            ? ClipRRect(
+                                borderRadius: BorderRadius.circular(20.0),
+                                child: BackdropFilter(
+                                    filter: isHover
+                                        ? ImageFilter.blur(
+                                            sigmaX: 10, sigmaY: 10)
+                                        : ImageFilter.blur(
+                                            sigmaX: 0.1, sigmaY: 0.1),
+                                    child: isHover
+                                        ? _fileDetailView(
+                                            size,
+                                            snapshot.data!['name'],
+                                          )
+                                        : null),
+                              )
+                            : _fileDetailView(size, snapshot.data!['name']),
+                      ),
+                      Positioned(
+                        right: 0.0,
+                        child: InkWell(
+                          hoverColor: Colors.transparent,
+                          splashColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () {
+                            // fileData.remove(e);
+                            // _formUploadFileBloc
+                            //     .add(FormUploadFileEvent.addFile(_filesList));
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(4.0),
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: const SvgIcon(
+                              icon: IconlyBroken.closeSquare,
+                              size: 14.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                });
+              });
         },
       ).toList(),
     );
@@ -187,16 +251,29 @@ class _FileUploadFormState extends State<FileUploadForm> {
     );
   }
 
-  Future<void> _pickFile() async {
-    _file = await FilePicker.platform.pickFiles(
-      allowMultiple: true,
-    );
-    if (_file == null) return;
+  Future<void> _dropFile(files) async {
     if (_filesList.isEmpty) {
-      _filesList = _file!.files;
+      if (files.length == 1) {
+        _filesList = files;
+      } else {
+        _filesList.addAll(files);
+      }
     } else {
-      _filesList.addAll(_file!.files);
+      if (files.length == 1) {
+        _filesList.add(files[0]);
+      } else {
+        _filesList.addAll(files);
+      }
     }
     _formUploadFileBloc.add(FormUploadFileEvent.addFile(_filesList));
+  }
+
+  Future<Map<String, dynamic>> _fileData(file) async {
+    return {
+      'name': await _controller.getFilename(file),
+      'size': await _controller.getFileSize(file),
+      'mime': await _controller.getFileMIME(file),
+      'bytes': await _controller.getFileData(file),
+    };
   }
 }

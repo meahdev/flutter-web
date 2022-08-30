@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
-import 'package:admin_dashboard/src/provider/form_elements/bloc/form_elements_bloc.dart';
+import 'package:admin_dashboard/src/provider/form/form_elements/bloc/form_elements_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';

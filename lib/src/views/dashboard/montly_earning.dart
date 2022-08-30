@@ -14,18 +14,29 @@ class Monthlyearning extends StatefulWidget {
 }
 
 class _MonthlyearningState extends State<Monthlyearning> {
-  List<Color> gradientColors = [
-    const Color(0xff23b6e6),
-    const Color(0xff02d39a),
-    const Color(0xffaab1e6),
-  ];
-  bool showAvg = false;
   LineChartData mainData() {
     return LineChartData(
       lineTouchData: LineTouchData(
-          touchTooltipData: LineTouchTooltipData(
-        tooltipBgColor: ColorConst.grey800,
-      )),
+        enabled: true,
+        touchTooltipData: LineTouchTooltipData(
+          getTooltipItems: (touchedSpots) {
+            double value = 0.0;
+            for (LineBarSpot lineBarSpot in touchedSpots) {
+              value = lineBarSpot.y;
+            }
+            return [
+              LineTooltipItem(
+                value.toString(),
+                const TextStyle(
+                  color: ColorConst.darkFontColor,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ];
+          },
+          tooltipBgColor: ColorConst.grey800,
+        ),
+      ),
       borderData: FlBorderData(
         show: false,
       ),

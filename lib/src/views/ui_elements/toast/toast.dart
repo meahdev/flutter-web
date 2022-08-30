@@ -149,7 +149,7 @@ class _ToastState extends State<Toast> {
                   message: 'Primary',
                   icon: _iconList[0],
                 ),
-                ToastPosition.bottomLeft,
+                ToastPosition.topRight,
               ),
               FxBox.h12,
               _toast(
@@ -158,7 +158,7 @@ class _ToastState extends State<Toast> {
                   message: 'Success',
                   icon: _iconList[1],
                 ),
-                ToastPosition.bottomLeft,
+                ToastPosition.topRight,
               ),
               FxBox.h12,
               _toast(
@@ -167,7 +167,7 @@ class _ToastState extends State<Toast> {
                   message: 'Error',
                   icon: _iconList[2],
                 ),
-                ToastPosition.bottom,
+                ToastPosition.topRight,
               ),
               FxBox.h12,
               _toast(
@@ -176,7 +176,7 @@ class _ToastState extends State<Toast> {
                   message: 'Warning',
                   icon: _iconList[3],
                 ),
-                ToastPosition.bottom,
+                ToastPosition.topRight,
               ),
               FxBox.h12,
               _toast(
@@ -185,7 +185,7 @@ class _ToastState extends State<Toast> {
                   message: 'Info',
                   icon: _iconList[4],
                 ),
-                ToastPosition.bottom,
+                ToastPosition.topRight,
               ),
             ],
           ),

@@ -44,9 +44,25 @@ class _SalesanalyticsState extends State<Salesanalytics> {
   LineChartData mainData(List<FlSpot> list) {
     return LineChartData(
       lineTouchData: LineTouchData(
-          touchTooltipData: LineTouchTooltipData(
-        tooltipBgColor: ColorConst.grey800,
-      )),
+        touchTooltipData: LineTouchTooltipData(
+          getTooltipItems: (touchedSpots) {
+            double value = 0.0;
+            for (LineBarSpot lineBarSpot in touchedSpots) {
+              value = lineBarSpot.y;
+            }
+            return [
+              LineTooltipItem(
+                value.toString(),
+                const TextStyle(
+                  color: ColorConst.darkFontColor,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ];
+          },
+          tooltipBgColor: ColorConst.grey800,
+        ),
+      ),
       borderData: FlBorderData(
         show: false,
       ),

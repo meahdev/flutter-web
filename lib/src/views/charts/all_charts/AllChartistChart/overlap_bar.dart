@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -59,6 +60,21 @@ class OverlapBarState extends State<OverlapBar> {
       Expanded(
         child: BarChart(
           BarChartData(
+            barTouchData: BarTouchData(
+              enabled: true,
+              touchTooltipData: BarTouchTooltipData(
+                tooltipBgColor: ColorConst.grey800,
+                getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                  return BarTooltipItem(
+                    rod.toY.toString(),
+                    const TextStyle(
+                      color: ColorConst.darkFontColor,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  );
+                },
+              ),
+            ),
             groupsSpace: 100,
             maxY: 20,
             titlesData: FlTitlesData(

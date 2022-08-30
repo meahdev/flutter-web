@@ -7,6 +7,7 @@
 // ignore_for_file: depend_on_referenced_packages
 
 import 'package:file_picker/_internal/file_picker_web.dart';
+import 'package:flutter_dropzone_web/flutter_dropzone_plugin.dart';
 import 'package:url_launcher_web/url_launcher_web.dart';
 import 'package:video_player_web/video_player_web.dart';
 import 'package:wakelock_web/wakelock_web.dart';
@@ -16,6 +17,7 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 // ignore: public_member_api_docs
 void registerPlugins(Registrar registrar) {
   FilePickerWeb.registerWith(registrar);
+  FlutterDropzonePlugin.registerWith(registrar);
   UrlLauncherPlugin.registerWith(registrar);
   VideoPlayerPlugin.registerWith(registrar);
   WakelockWeb.registerWith(registrar);
