@@ -27,41 +27,43 @@ class _LoginOneState extends State<LoginOne> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 40, right: 40),
-            child: Stack(
-              children: [
-                Column(
-                  children: [
-                    const SizedBox(height: 30),
-                    ConstantAuth.headerView(
-                      Strings.welcomeBack,
-                      Strings.loginHeaderText,
-                      context,
-                    ),
-                    _bottomView(),
-                  ],
-                ),
-                ConstantAuth.greenCircle(),
-                ConstantAuth.whiteCircle(),
-                ConstantAuth.logoView(),
-              ],
+    return SelectionArea(
+      child: Scaffold(
+        body: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 40, right: 40),
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      const SizedBox(height: 30),
+                      ConstantAuth.headerView(
+                        Strings.welcomeBack,
+                        Strings.loginHeaderText,
+                        context,
+                      ),
+                      _bottomView(),
+                    ],
+                  ),
+                  ConstantAuth.greenCircle(),
+                  ConstantAuth.whiteCircle(),
+                  ConstantAuth.logoView(),
+                ],
+              ),
             ),
-          ),
-          FxBox.h48,
-          ConstantAuth.signUp(
-            context,
-            false,
-            Strings.dontHaveAccount,
-            Strings.signUpNow,
-          ),
-          FxBox.h16,
-          ConstantAuth.footerText(),
-        ],
+            FxBox.h48,
+            ConstantAuth.signUp(
+              context,
+              false,
+              Strings.dontHaveAccount,
+              Strings.signUpNow,
+            ),
+            FxBox.h16,
+            ConstantAuth.footerText(),
+          ],
+        ),
       ),
     );
   }

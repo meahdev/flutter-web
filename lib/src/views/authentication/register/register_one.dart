@@ -20,39 +20,41 @@ class _RegisterOneState extends State<RegisterOne> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(mainAxisSize: MainAxisSize.min, children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 40, right: 40),
-          child: Stack(
-            children: [
-              Column(
-                children: [
-                  const SizedBox(height: 30),
-                  ConstantAuth.headerView(
-                    Strings.freeRegister,
-                    Strings.registerHeaderText,
-                    context,
-                  ),
-                  _bottomView(),
-                ],
-              ),
-              ConstantAuth.greenCircle(),
-              ConstantAuth.whiteCircle(),
-              ConstantAuth.logoView(),
-            ],
+    return SelectionArea(
+      child: Scaffold(
+        body: Column(mainAxisSize: MainAxisSize.min, children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 40, right: 40),
+            child: Stack(
+              children: [
+                Column(
+                  children: [
+                    const SizedBox(height: 30),
+                    ConstantAuth.headerView(
+                      Strings.freeRegister,
+                      Strings.registerHeaderText,
+                      context,
+                    ),
+                    _bottomView(),
+                  ],
+                ),
+                ConstantAuth.greenCircle(),
+                ConstantAuth.whiteCircle(),
+                ConstantAuth.logoView(),
+              ],
+            ),
           ),
-        ),
-        FxBox.h48,
-        ConstantAuth.login(
-          context,
-          false,
-          Strings.alreayAccountExist,
-          Strings.login,
-        ),
-        FxBox.h16,
-        ConstantAuth.footerText(),
-      ]),
+          FxBox.h48,
+          ConstantAuth.login(
+            context,
+            false,
+            Strings.alreayAccountExist,
+            Strings.login,
+          ),
+          FxBox.h16,
+          ConstantAuth.footerText(),
+        ]),
+      ),
     );
   }
 

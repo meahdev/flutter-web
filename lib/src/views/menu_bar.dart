@@ -172,72 +172,75 @@ class _MenuBarState extends State<MenuBar> {
       routes: _routes,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
-        return Scaffold(
-          key: _scaffoldKey,
-          endDrawer: Drawer(
-            width: 280,
-            child: SettingDrawer(scaffoldKey: _scaffoldKey),
-          ),
-          appBar: _appBar(),
-          body: Scaffold(
-            key: _scaffoldDrawerKey,
-            drawerScrimColor: ColorConst.transparent,
-            drawer: _sidebar(tabsRouter),
-            body: Row(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Responsive.isWeb(context)
-                    ? _sidebar(tabsRouter)
-                    : const SizedBox.shrink(),
-                Expanded(
-                  child: CustomScrollView(
-                    controller: _scrollController,
-                    slivers: [
-                      SliverList(
-                        delegate: SliverChildListDelegate(
-                          [
-                            Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 24.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  FxBox.h20,
-                                  Text(
-                                    upperCase(tabsRouter.currentPath),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge!
-                                        .copyWith(fontWeight: FontWeight.bold),
-                                  ),
-                                  FxBox.h8,
-                                  _routesDeatils(tabsRouter),
-                                  FxBox.h20,
-                                  getRouteWidget(tabsRouter.activeIndex),
-                                  FxBox.h20,
-                                ],
+        return SelectionArea(
+          child: Scaffold(
+            key: _scaffoldKey,
+            endDrawer: Drawer(
+              width: 280,
+              child: SettingDrawer(scaffoldKey: _scaffoldKey),
+            ),
+            appBar: _appBar(),
+            body: Scaffold(
+              key: _scaffoldDrawerKey,
+              drawerScrimColor: ColorConst.transparent,
+              drawer: _sidebar(tabsRouter),
+              body: Row(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Responsive.isWeb(context)
+                      ? _sidebar(tabsRouter)
+                      : const SizedBox.shrink(),
+                  Expanded(
+                    child: CustomScrollView(
+                      controller: _scrollController,
+                      slivers: [
+                        SliverList(
+                          delegate: SliverChildListDelegate(
+                            [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    FxBox.h20,
+                                    Text(
+                                      upperCase(tabsRouter.currentPath),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold),
+                                    ),
+                                    FxBox.h8,
+                                    _routesDeatils(tabsRouter),
+                                    FxBox.h20,
+                                    getRouteWidget(tabsRouter.activeIndex),
+                                    FxBox.h20,
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      SliverFillRemaining(
-                        hasScrollBody: false,
-                        fillOverscroll: true,
-                        child: Column(
-                          children: <Widget>[
-                            const Expanded(
-                              child: SizedBox.shrink(),
-                            ),
-                            _footer(),
-                          ],
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          fillOverscroll: true,
+                          child: Column(
+                            children: <Widget>[
+                              const Expanded(
+                                child: SizedBox.shrink(),
+                              ),
+                              _footer(),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
