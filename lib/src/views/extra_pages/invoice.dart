@@ -155,219 +155,50 @@ class _InvoiceState extends State<Invoice> {
                         rows: <DataRow>[
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(
-                                Text(
-                                  'BS-400',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '\$10.99',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '1',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '\$10.99',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
+                              DataCell(_dataCell('BS-400')),
+                              DataCell(_dataCell('\$10.99')),
+                              DataCell(_dataCell('1')),
+                              DataCell(_dataCell('\$10.99')),
                             ],
                           ),
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(
-                                Text(
-                                  'BS-400',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '\$20.00	',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '3',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '\$60.00',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
+                              DataCell(_dataCell('BS-400')),
+                              DataCell(_dataCell('\$20.00	')),
+                              DataCell(_dataCell('3')),
+                              DataCell(_dataCell('\$60.00')),
                             ],
                           ),
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(
-                                Text(
-                                  'BS-1000',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '\$600.00',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '1',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '\$600.00',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                  ),
-                                ),
-                              ),
+                              DataCell(_dataCell('BS-1000')),
+                              DataCell(_dataCell('\$600.00')),
+                              DataCell(_dataCell('1')),
+                              DataCell(_dataCell('\$600.00')),
                             ],
                           ),
                           DataRow2(
                             cells: <DataCell>[
                               const DataCell(Text("")),
                               const DataCell(Text("")),
-                              DataCell(
-                                Text(
-                                  'Subtotal',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '\$670.00',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
+                              DataCell(_dataCell('Subtotal')),
+                              DataCell(_dataCell('\$670.00')),
                             ],
                           ),
                           DataRow2(
                             cells: <DataCell>[
                               const DataCell(Text("")),
                               const DataCell(Text("")),
-                              DataCell(
-                                Text(
-                                  'Shipping',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '\$15',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
+                              DataCell(_dataCell('Shipping')),
+                              DataCell(_dataCell('\$15')),
                             ],
                           ),
                           DataRow2(
                             cells: <DataCell>[
                               const DataCell(Text("")),
                               const DataCell(Text("")),
-                              DataCell(
-                                Text(
-                                  'Total',
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              DataCell(
-                                Text(
-                                  '\$685.99',
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                              DataCell(_dataCell('Total')),
+                              DataCell(_dataCell('\$685.99')),
                             ],
                           ),
                         ],
@@ -411,6 +242,15 @@ class _InvoiceState extends State<Invoice> {
           ),
         ),
       ],
+    );
+  }
+
+  Widget _dataCell(text) {
+    return Text(
+      text,
+      style: TextStyle(
+        color: isDark ? ColorConst.darkFontColor : ColorConst.textColor,
+      ),
     );
   }
 }

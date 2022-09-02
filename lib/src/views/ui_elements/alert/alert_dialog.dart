@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -36,37 +37,37 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
           runSpacing: 56,
           children: [
             _alertButton(
-              title: 'Simple Alert',
-              text: 'Simple Alert',
+              title: Strings.simpleAlert,
+              text: Strings.simpleAlert,
               buttons: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'OK',
+                  text: Strings.ok,
                 ),
               ],
             ),
             _alertButton(
-              title: 'Icon Alert',
-              text: 'Icon Alert',
+              title: Strings.iconAlert,
+              text: Strings.iconAlert,
               icon: const Icon(Icons.error_rounded, size: 30.0),
               buttons: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'OK',
+                  text: Strings.ok,
                 ),
               ],
             ),
             _alertButton(
-              title: 'Alert With Two Button',
-              text: 'Alert With Two Button',
+              title: Strings.alertWithTwoButton,
+              text: Strings.alertWithTwoButton,
               buttons: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'OK',
+                  text: Strings.ok,
                 ),
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Cancel',
+                  text: Strings.cancle,
                   buttonType: ButtonType.secondary,
                 ),
               ],
@@ -82,12 +83,12 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
               buttons: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Confirm',
+                  text: Strings.confirm,
                   buttonType: ButtonType.success,
                 ),
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Cancel',
+                  text: Strings.cancle,
                   buttonType: ButtonType.secondary,
                 ),
               ],
@@ -99,7 +100,7 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
               buttons: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'OK',
+                  text: Strings.ok,
                 ),
               ],
             ),
@@ -120,7 +121,7 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
               buttons: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'OK',
+                  text: Strings.ok,
                 ),
               ],
             ),
@@ -147,7 +148,7 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
           ),
           FxBox.h16,
           FxButton(
-            text: 'Click Me',
+            text: Strings.clickMe,
             onPressed: () {
               FxAlert.showAlert(
                 icon: icon,

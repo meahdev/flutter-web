@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form/form_validation/bloc/form_validation_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -262,7 +263,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _firstNameController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return 'Please provide valid name.';
+          return Strings.validName;
         }
         return null;
       },
@@ -275,7 +276,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _lastNameController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return 'Please provide valid name.';
+          return Strings.validName;
         }
         return null;
       },
@@ -289,7 +290,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _userNameController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return 'Please choose username.';
+          return Strings.chooseUser;
         }
         return null;
       },
@@ -301,7 +302,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _cityController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return 'Please provide valid city.';
+          return Strings.validCity;
         }
         return null;
       },
@@ -347,7 +348,7 @@ class _ValidationFormState extends State<ValidationForm> {
           controller: _stateController,
           validator: (value) {
             if (value!.trim().isEmpty) {
-              return 'Please choose state.';
+              return Strings.chooseState;
             }
             return null;
           },
@@ -362,7 +363,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _zipController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return 'Please provide valid zip.';
+          return Strings.validZip;
         }
         return null;
       },
@@ -422,7 +423,7 @@ class _ValidationFormState extends State<ValidationForm> {
                                   .add(const FormValidationEvent.submit());
                             }
                           },
-                          text: 'Submit',
+                          text: Strings.submit,
                         ),
                         FxBox.w8,
                         FxButton(
@@ -439,7 +440,7 @@ class _ValidationFormState extends State<ValidationForm> {
                             _alphaNumericController.clear();
                             _textAreaController.clear();
                           },
-                          text: 'Cancel',
+                          text: Strings.cancle,
                         )
                       ],
                     ),
@@ -638,7 +639,7 @@ class _ValidationFormState extends State<ValidationForm> {
                                   .add(const FormValidationEvent.submit());
                             }
                           },
-                          text: 'Submit',
+                          text: Strings.submit,
                         ),
                         FxBox.w8,
                         FxButton(
@@ -653,7 +654,7 @@ class _ValidationFormState extends State<ValidationForm> {
                             _rangeValueController.clear();
                             _regularExpController.clear();
                           },
-                          text: 'Cancel',
+                          text: Strings.cancle,
                         )
                       ],
                     ),
@@ -672,7 +673,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _minLengthController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return Strings.valueRequired;
         } else if (value.length < 6) {
           return "This value is too short. It should have 6 characters or more.";
         }
@@ -687,7 +688,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _maxLengthController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return Strings.valueRequired;
         } else if (value.length > 6) {
           return "This value is too long. It should have 6 characters or fewer.";
         }
@@ -702,7 +703,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _rangeLengthController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return Strings.valueRequired;
         } else if (value.length < 5 || value.length > 10) {
           return "This value length is invalid. It should be between 5 and 10 characters long.";
         }
@@ -717,7 +718,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _minValueController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return Strings.valueRequired;
         } else if (double.tryParse(value) == null ||
             double.tryParse(value)! < 6) {
           return "This value should be greater than or equal to 6.";
@@ -733,7 +734,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _maxValueController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return Strings.valueRequired;
         } else if (double.tryParse(value) == null ||
             double.tryParse(value)! > 6) {
           return "This value should be lower than or equal to 6.";
@@ -749,7 +750,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _rangeValueController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return Strings.valueRequired;
         } else if (double.tryParse(value) == null ||
             double.tryParse(value)! < 6 ||
             double.tryParse(value)! > 100) {
@@ -766,7 +767,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _regularExpController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return Strings.valueRequired;
         } else if (!RegExp("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$")
             .hasMatch(value)) {
           return "This value seems to be invalid.";

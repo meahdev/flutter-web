@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -14,7 +15,7 @@ class ResponsiveTable extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const Text(
-              'Responsive table',
+              Strings.responsiveTable,
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.bold,

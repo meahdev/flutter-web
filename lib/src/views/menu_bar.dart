@@ -108,9 +108,9 @@ class _MenuBarState extends State<MenuBar> {
   ];
 
   final List<String> _items = [
-    'Profile',
-    'Settings',
-    'Lock screen',
+    Strings.profile,
+    Strings.settings,
+    Strings.lockScreen,
   ];
 
   final List<String> _notificationTitle = [
@@ -398,7 +398,7 @@ class _MenuBarState extends State<MenuBar> {
                       padding:
                           EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
                       child: Text(
-                        'Notifications (258)',
+                        '${Strings.notifications} (258)',
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
@@ -444,7 +444,7 @@ class _MenuBarState extends State<MenuBar> {
                       child: Align(
                         alignment: Alignment.center,
                         child: Text(
-                          'View all',
+                          Strings.viewAll,
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -501,7 +501,7 @@ class _MenuBarState extends State<MenuBar> {
         const DropdownMenuItem(
           value: 'Logout',
           child: Text(
-            'Logout',
+            Strings.logout,
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.bold,

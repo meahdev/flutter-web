@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form/form_wizard/bloc/form_wizard_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -170,7 +171,7 @@ class _WizardFormState extends State<WizardForm> {
                                   FormWizardEvent.previousClick(_index - 1),
                                 );
                               },
-                        text: 'Previous',
+                        text: Strings.previous,
                       ),
                       FxBox.w16,
                       FxButton(
@@ -191,7 +192,7 @@ class _WizardFormState extends State<WizardForm> {
                             );
                           }
                         },
-                        text: _index != 3 ? 'Next' : 'Finish',
+                        text: _index != 3 ? Strings.next : Strings.finish,
                       ),
                     ],
                   )

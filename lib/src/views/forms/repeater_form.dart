@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form/form_repeater/bloc/form_repeater_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -428,7 +429,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
             FxButton(
               height: 45,
               borderRadius: 4.0,
-              text: 'Submit',
+              text: Strings.submit,
               onPressed: () {},
             )
           ],
@@ -476,7 +477,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
       height: 45,
       fullWidth: fullWidth,
       borderRadius: 4.0,
-      text: 'Delete',
+      text: Strings.delete,
       onPressed: () {
         _formRepeaterBloc.add(FormRepeaterEvent.deletePhone(index));
       },
@@ -488,7 +489,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
       height: 45,
       buttonType: ButtonType.success,
       borderRadius: 4.0,
-      text: 'Add Number',
+      text: Strings.addNumber,
       onPressed: () {
         _formRepeaterBloc
             .add(FormRepeaterEvent.addPhone(TextEditingController()));

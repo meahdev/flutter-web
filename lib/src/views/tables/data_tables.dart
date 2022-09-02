@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/table/datatable/bloc/data_table_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -217,7 +218,7 @@ class _DatatableState extends State<Datatable> {
               }
               updateData();
             },
-            text: 'Next',
+            text: Strings.next,
             borderRadius: 0.0,
             borderWidth: 0.0,
             color: ColorConst.white,

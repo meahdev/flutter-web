@@ -141,7 +141,7 @@ class _MaintenanceState extends State<Maintenance> {
                   ? GestureDetector(
                       onTap: () async {
                         String email = 'no-reply@domain.com';
-                        String subject = 'This is a  email';
+                        String subject = 'This is a email';
                         String body = 'Hello Mr./Mrs.';
                         String emailUrl =
                             "mailto:$email?subject=$subject&body=$body";

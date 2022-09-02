@@ -202,4 +202,59 @@ class Strings {
   static const String select = 'Select';
   static const String color = 'Color';
   static const String pickColor = 'Pick Color';
+
+  // menubar
+
+  static const String logout = 'Logout';
+  static const String notifications = 'Notifications';
+  static const String viewAll = 'View all';
+  static const String profile = 'Profile';
+  static const String lockScreen = 'Lock screen';
+
+  // alert dialog
+
+  static const String simpleAlert = 'Simple Alert';
+  static const String ok = 'OK';
+  static const String iconAlert = 'Icon Alert';
+  static const String alertWithTwoButton = 'Alert With Two Button';
+  static const String cancle = 'Cancel';
+  static const String confirm = 'Confirm';
+  static const String clickMe = 'Click Me';
+
+  // badge
+
+  static const String success = 'Success';
+  static const String error = 'Error';
+  static const String info = 'Info';
+  static const String primary = 'Primary';
+
+  // modal
+  static const String close = 'Close';
+  static const String saveChange = 'Save changes';
+
+  // table
+  static const String dartTable = 'Dark table';
+  static const String stripedRow = 'Striped rows';
+  static const String hoverableRow = 'Hoverable rows';
+  static const String borderedTable = 'Bordered table';
+  static const String borderLessTable = 'Borderless table';
+  static const String smallTable = 'Small table';
+  static const String contextualTable = 'Contextual table';
+  static const String next = 'Next';
+
+  // form
+
+  static const String dropzone = 'Dropzone';
+  static const String submit = 'Submit';
+  static const String addNumber = 'Add Number';
+  static const String finish = 'Finish';
+  static const String previous = 'Previous';
+
+  // validation
+  static const String validName = 'Please provide valid name.';
+  static const String chooseUser = 'Please choose username.';
+  static const String validCity = 'Please provide valid city.';
+  static const String chooseState = 'Please choose state.';
+  static const String validZip = 'Please provide valid zip.';
+  static const String valueRequired = 'This value is required.';
 }

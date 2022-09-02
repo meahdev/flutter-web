@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -18,12 +19,13 @@ class BasicTable extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child:
-                        _tableCard(title: 'Basic table', child: _basicTable()),
+                    child: _tableCard(
+                        title: Strings.basicTable, child: _basicTable()),
                   ),
                   FxBox.w20,
                   Expanded(
-                    child: _tableCard(title: 'Dark table', child: _darkTable()),
+                    child: _tableCard(
+                        title: Strings.dartTable, child: _darkTable()),
                   ),
                 ],
               ),
@@ -32,12 +34,12 @@ class BasicTable extends StatelessWidget {
                 children: [
                   Expanded(
                     child: _tableCard(
-                        title: 'Striped rows', child: _stripedTable()),
+                        title: Strings.stripedRow, child: _stripedTable()),
                   ),
                   FxBox.w20,
                   Expanded(
                     child: _tableCard(
-                        title: 'Hoverable rows', child: _hoverableTable()),
+                        title: Strings.hoverableRow, child: _hoverableTable()),
                   ),
                 ],
               ),
@@ -46,12 +48,13 @@ class BasicTable extends StatelessWidget {
                 children: [
                   Expanded(
                     child: _tableCard(
-                        title: 'Bordered table', child: _borderedTable()),
+                        title: Strings.borderedTable, child: _borderedTable()),
                   ),
                   FxBox.w20,
                   Expanded(
                     child: _tableCard(
-                        title: 'Borderless table', child: _borderlessTable()),
+                        title: Strings.borderLessTable,
+                        child: _borderlessTable()),
                   ),
                 ],
               ),
@@ -59,33 +62,36 @@ class BasicTable extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
-                    child:
-                        _tableCard(title: 'Small table', child: _smallTable()),
+                    child: _tableCard(
+                        title: Strings.smallTable, child: _smallTable()),
                   ),
                   FxBox.w20,
                   Expanded(
                     child: _tableCard(
-                        title: 'Contextual table', child: _contextualTable()),
+                        title: Strings.contextualTable,
+                        child: _contextualTable()),
                   ),
                 ],
               ),
             ]
           : [
-              _tableCard(title: 'Basic table', child: _basicTable()),
+              _tableCard(title: Strings.basicTable, child: _basicTable()),
               FxBox.h20,
-              _tableCard(title: 'Dark table', child: _darkTable()),
+              _tableCard(title: Strings.dartTable, child: _darkTable()),
               FxBox.h20,
-              _tableCard(title: 'Striped rows', child: _stripedTable()),
+              _tableCard(title: Strings.stripedRow, child: _stripedTable()),
               FxBox.h20,
-              _tableCard(title: 'Hoverable rows', child: _hoverableTable()),
+              _tableCard(title: Strings.hoverableRow, child: _hoverableTable()),
               FxBox.h20,
-              _tableCard(title: 'Bordered table', child: _borderedTable()),
+              _tableCard(title: Strings.borderedTable, child: _borderedTable()),
               FxBox.h20,
-              _tableCard(title: 'Borderless table', child: _borderlessTable()),
+              _tableCard(
+                  title: Strings.borderLessTable, child: _borderlessTable()),
               FxBox.h20,
-              _tableCard(title: 'Small table', child: _smallTable()),
+              _tableCard(title: Strings.smallTable, child: _smallTable()),
               FxBox.h20,
-              _tableCard(title: 'Contextual table', child: _contextualTable()),
+              _tableCard(
+                  title: Strings.contextualTable, child: _contextualTable()),
             ],
     );
   }

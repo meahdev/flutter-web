@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -18,7 +19,7 @@ class Badge extends StatelessWidget {
             ],
           )
         : Row(
-          mainAxisSize: MainAxisSize.min,
+            mainAxisSize: MainAxisSize.min,
             children: [
               Expanded(child: _badge(context, false)),
               FxBox.w12,
@@ -52,24 +53,24 @@ class Badge extends StatelessWidget {
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  FxBadge(text: 'Primary', isOutlined: isOutline),
+                  FxBadge(text: Strings.primary, isOutlined: isOutline),
                   FxBadge(
-                    text: 'Success',
+                    text: Strings.success,
                     color: ColorConst.success,
                     isOutlined: isOutline,
                   ),
                   FxBadge(
-                    text: 'Error',
+                    text: Strings.error,
                     color: ColorConst.error,
                     isOutlined: isOutline,
                   ),
                   FxBadge(
-                    text: 'Info',
+                    text: Strings.info,
                     color: ColorConst.infoDark,
                     isOutlined: isOutline,
                   ),
                   FxBadge(
-                    text: 'Badge',
+                    text: Strings.badge,
                     color: Theme.of(context).colorScheme.tertiary,
                     isOutlined: isOutline,
                   ),

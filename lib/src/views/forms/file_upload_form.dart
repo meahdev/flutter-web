@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form/form_upload_file/bloc/form_upload_file_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -33,7 +34,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Dropzone",
+                Strings.dropzone,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
               FxBox.h24,

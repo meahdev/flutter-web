@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
@@ -50,12 +51,12 @@ class _ModalState extends State<Modal> {
               actions: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Close',
+                  text: Strings.close,
                   buttonType: ButtonType.secondary,
                 ),
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Save changes',
+                  text: Strings.saveChange,
                 ),
               ],
             ),
@@ -68,12 +69,12 @@ class _ModalState extends State<Modal> {
               actions: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Close',
+                  text: Strings.close,
                   buttonType: ButtonType.secondary,
                 ),
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Save changes',
+                  text: Strings.saveChange,
                 ),
               ],
             ),
@@ -86,12 +87,12 @@ class _ModalState extends State<Modal> {
               actions: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Close',
+                  text: Strings.close,
                   buttonType: ButtonType.secondary,
                 ),
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Save changes',
+                  text: Strings.saveChange,
                 ),
               ],
             ),
@@ -103,12 +104,12 @@ class _ModalState extends State<Modal> {
               actions: [
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Close',
+                  text: Strings.close,
                   buttonType: ButtonType.secondary,
                 ),
                 FxButton(
                   onPressed: () => Navigator.pop(context),
-                  text: 'Save changes',
+                  text: Strings.saveChange,
                 ),
               ],
             ),
@@ -133,7 +134,7 @@ class _ModalState extends State<Modal> {
           ),
           FxBox.h16,
           FxButton(
-            text: 'Click Me',
+            text: Strings.clickMe,
             onPressed: () {
               FxModal.showModel(
                 context: context,
