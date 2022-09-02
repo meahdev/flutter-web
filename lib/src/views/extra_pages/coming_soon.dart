@@ -232,7 +232,7 @@ class ComingSoonState extends State<ComingSoon> {
             padding: const EdgeInsets.only(right: 4),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: ColorConst.primary,
+                backgroundColor: ColorConst.primary,
               ),
               onPressed: () {},
               child: const Text(

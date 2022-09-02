@@ -207,7 +207,6 @@ class BasicTable extends StatelessWidget {
       height: 200,
       child: DataTable2(
         minWidth: 600,
-        dataRowColor: MaterialStateProperty.resolveWith(_getDataRowColor),
         dividerThickness: 1,
         showCheckboxColumn: false,
         showBottomBorder: true,
@@ -425,18 +424,5 @@ class BasicTable extends StatelessWidget {
       softWrap: true,
       style: TextStyle(fontSize: 16, fontWeight: fontwidget),
     );
-  }
-
-  Color _getDataRowColor(Set<MaterialState> states) {
-    const Set<MaterialState> interactiveStates = <MaterialState>{
-      MaterialState.pressed,
-      MaterialState.hovered,
-      MaterialState.focused,
-    };
-
-    if (states.any(interactiveStates.contains)) {
-      return isDark ? ColorConst.darkContainer : Colors.grey.shade200;
-    }
-    return Colors.transparent;
   }
 }

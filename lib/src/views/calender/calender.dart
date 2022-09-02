@@ -48,7 +48,7 @@ class _CalendarState extends State<Calendar> {
       rng = rng + 1;
     }
     String month = DateTime.now().month <= 9
-        ? '0${DateTime.now().month + (currentmonth ? 0 : 1)}'
+        ? '0${DateTime.now().month}'
         : (DateTime.now().month + (currentmonth ? 0 : 1)).toString();
     String day = rng <= 9 ? '0$rng' : rng.toString();
     return DateTime.parse('${DateTime.now().year}-$month-$day')
@@ -335,11 +335,13 @@ class _CalendarState extends State<Calendar> {
         child: ElevatedButton.icon(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-              enabledMouseCursor: SystemMouseCursors.allScroll,
-              primary: color,
-              alignment: Alignment.centerLeft,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0))),
+            enabledMouseCursor: SystemMouseCursors.allScroll,
+            backgroundColor: color,
+            alignment: Alignment.centerLeft,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
+          ),
           icon: const Icon(
             Icons.fiber_manual_record,
             color: Colors.white,
@@ -362,11 +364,13 @@ class _CalendarState extends State<Calendar> {
           child: ElevatedButton.icon(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                  enabledMouseCursor: SystemMouseCursors.allScroll,
-                  primary: color,
-                  alignment: Alignment.centerLeft,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(2.0))),
+                enabledMouseCursor: SystemMouseCursors.allScroll,
+                backgroundColor: color,
+                alignment: Alignment.centerLeft,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(2.0),
+                ),
+              ),
               icon: const Icon(
                 Icons.fiber_manual_record,
                 color: ColorConst.white,
@@ -796,16 +800,19 @@ class _CalendarState extends State<Calendar> {
         builder: (context) {
           return BlocProvider(
             create: (context) => calendarDialogBloc
-              ..add(CalendarDialogEvent.loading(
+              ..add(
+                CalendarDialogEvent.loading(
                   autovalidateMode: AutovalidateMode.disabled,
                   category: dropdownValue,
                   isValidate:
-                      eventController.text.trim().isEmpty ? false : true)),
+                      eventController.text.trim().isEmpty ? false : true,
+                ),
+              ),
             child: AlertDialog(
-              actionsPadding: const EdgeInsets.only(left: 20.0),
               titlePadding: EdgeInsets.zero,
               shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5.0))),
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              ),
               title: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -824,16 +831,17 @@ class _CalendarState extends State<Calendar> {
                         ),
                         const Spacer(),
                         IconButton(
-                            splashRadius: 25,
-                            onPressed: () {
-                              eventController.clear();
-                              dropdownValue = '--Select--';
-                              Navigator.pop(context);
-                            },
-                            icon: const Icon(
-                              Icons.clear,
-                              color: ColorConst.lightFontColor,
-                            )),
+                          splashRadius: 25,
+                          onPressed: () {
+                            eventController.clear();
+                            dropdownValue = '--Select--';
+                            Navigator.pop(context);
+                          },
+                          icon: const Icon(
+                            Icons.clear,
+                            color: ColorConst.lightFontColor,
+                          ),
+                        ),
                       ],
                     ),
                   ),

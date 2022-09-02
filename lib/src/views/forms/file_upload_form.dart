@@ -57,6 +57,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
                   child: BlocBuilder<FormUploadFileBloc, FormUploadFileState>(
                     builder: (context, state) {
                       return Stack(
+                        alignment: Alignment.center,
                         clipBehavior: Clip.antiAlias,
                         children: [
                           DropzoneView(
@@ -69,14 +70,13 @@ class _FileUploadFormState extends State<FileUploadForm> {
                               _dropFile(value!);
                             },
                           ),
-                          Center(
-                            child: SingleChildScrollView(
-                              controller: ScrollController(),
-                              child: state.when(
-                                initial: () => _emptyView(),
-                                fileSuccess: (filesList) =>
-                                    _hasDataView(filesList),
-                              ),
+                          SingleChildScrollView(
+                            controller: ScrollController(),
+                            child: state.when(
+                              initial: () => _emptyView(),
+                              fileSuccess: (filesList) => filesList.isEmpty
+                                  ? _emptyView()
+                                  : _hasDataView(filesList),
                             ),
                           ),
                         ],
@@ -174,9 +174,9 @@ class _FileUploadFormState extends State<FileUploadForm> {
                           splashColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () {
-                            // fileData.remove(e);
-                            // _formUploadFileBloc
-                            //     .add(FormUploadFileEvent.addFile(_filesList));
+                            _filesList.removeAt(fileData.indexOf(e));
+                            _formUploadFileBloc
+                                .add(FormUploadFileEvent.addFile(_filesList));
                           },
                           child: Container(
                             padding: const EdgeInsets.all(4.0),

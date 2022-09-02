@@ -64,6 +64,7 @@ class BillingEmail extends StatelessWidget {
                     ListView.separated(
                       shrinkWrap: true,
                       itemCount: 3,
+                      physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         return Row(
                           children: const [

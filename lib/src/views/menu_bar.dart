@@ -107,6 +107,28 @@ class _MenuBarState extends State<MenuBar> {
     ],
   ];
 
+  final List<String> _items = [
+    'Profile',
+    'Settings',
+    'Lock screen',
+  ];
+
+  final List<String> _notificationTitle = [
+    'Your order is placed',
+    'New message received',
+    'Your item is shipped',
+    'Your order is placed',
+    // 'New message received',
+  ];
+
+  final List<String> _notificationSubtitle = [
+    'Dummy text of the printing and typesetting industry.',
+    'You have 87 unread messages',
+    'It is a long established fact that a reader will',
+    'Dummy text of the printing and typesetting industry.',
+    // 'You have 87 unread messages',
+  ];
+
   final List<PageRouteInfo<dynamic>> _routes = const [
     Dashboard(),
     Button(),
@@ -313,23 +335,8 @@ class _MenuBarState extends State<MenuBar> {
                     ),
                   ),
                 ),
-          MaterialButton(
-            height: double.infinity,
-            minWidth: 60,
-            hoverColor: ColorConst.transparent,
-            onPressed: () {},
-            child: const SvgIcon(icon: IconlyBroken.notification),
-          ),
-          MaterialButton(
-            height: double.infinity,
-            minWidth: 60,
-            hoverColor: ColorConst.transparent,
-            onPressed: () {},
-            child: const CircleAvatar(
-              maxRadius: 16,
-              backgroundImage: NetworkImage(Images.profileImage),
-            ),
-          ),
+          _notification(),
+          _profile(),
           MaterialButton(
             height: double.infinity,
             minWidth: 60,
@@ -341,6 +348,185 @@ class _MenuBarState extends State<MenuBar> {
           ),
         ],
       );
+
+  Widget _notification() {
+    return FxDropdownButton(
+      focusColor: Colors.transparent,
+      underline: FxBox.shrink,
+      customButton: const MaterialButton(
+        height: double.infinity,
+        minWidth: 60,
+        hoverColor: ColorConst.transparent,
+        onPressed: null,
+        child: SvgIcon(icon: IconlyBroken.notification),
+      ),
+      customItemsIndexes: const [1],
+      customItemsHeight: 0,
+      onChanged: (value) {},
+      dropdownWidth: 298,
+      dropdownPadding: const EdgeInsets.symmetric(vertical: 6),
+      dropdownDecoration: BoxDecoration(
+        color: isDark ? ColorConst.cardDark : Colors.white,
+        border: Border.all(
+          color: isDark
+              ? ColorConst.lightGrey.withOpacity(0.1)
+              : ColorConst.lightGrey.withOpacity(0.5),
+        ),
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+      scrollbarAlwaysShow: false,
+      dropdownElevation: 0,
+      offset: const Offset(-246, 0),
+      itemHeight: 352,
+      items: [
+        DropdownMenuItem(
+          alignment: AlignmentDirectional.topStart,
+          value: '',
+          child: SizedBox(
+            height: 344,
+            child: ScrollConfiguration(
+              behavior:
+                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: SingleChildScrollView(
+                controller: ScrollController(),
+                physics: const NeverScrollableScrollPhysics(),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 4.0, vertical: 8.0),
+                      child: Text(
+                        'Notifications (258)',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    FxBox.h8,
+                    SizedBox(
+                      height: 260,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _notificationTitle.length,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            contentPadding:
+                                const EdgeInsets.symmetric(horizontal: 4.0),
+                            title: Text(
+                              _notificationTitle[index],
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Text(
+                              _notificationSubtitle[index],
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .copyWith(
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .labelMedium!
+                                        .color!
+                                        .withOpacity(0.5),
+                                  ),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    const Divider(color: ColorConst.lightGrey, height: 8.0),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: Text(
+                          'View all',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _profile() {
+    return FxDropdownButton(
+      focusColor: Colors.transparent,
+      underline: FxBox.shrink,
+      customButton: const MaterialButton(
+        height: double.infinity,
+        minWidth: 60,
+        hoverColor: ColorConst.transparent,
+        onPressed: null,
+        child: CircleAvatar(
+          maxRadius: 16,
+          backgroundImage: NetworkImage(Images.profileImage),
+        ),
+      ),
+      customItemsIndexes: const [3],
+      customItemsHeight: 8,
+      onChanged: (value) {},
+      items: [
+        ..._items.map(
+          (e) => DropdownMenuItem(
+            value: e,
+            child: Text(
+              e,
+              style: const TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ),
+        const DropdownMenuItem<Divider>(
+          enabled: false,
+          child: Divider(color: ColorConst.lightGrey),
+        ),
+        const DropdownMenuItem(
+          value: 'Logout',
+          child: Text(
+            'Logout',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
+      itemHeight: 48,
+      itemPadding: const EdgeInsets.only(left: 16, right: 16),
+      dropdownWidth: 160,
+      dropdownPadding: const EdgeInsets.symmetric(vertical: 6),
+      dropdownDecoration: BoxDecoration(
+        color: isDark ? ColorConst.cardDark : Colors.white,
+        border: Border.all(
+          color: isDark
+              ? ColorConst.lightGrey.withOpacity(0.1)
+              : ColorConst.lightGrey.withOpacity(0.5),
+        ),
+        borderRadius: BorderRadius.circular(4.0),
+      ),
+      dropdownElevation: 0,
+      offset: const Offset(-108, 0),
+    );
+  }
 
   /// drawer / sidebar
   Widget _sidebar(TabsRouter tabsRouter) => Container(

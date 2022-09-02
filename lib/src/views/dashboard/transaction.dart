@@ -15,19 +15,6 @@ class Transaction extends StatefulWidget {
 }
 
 class _TransactionState extends State<Transaction> {
-  Color _getDataRowColor(Set<MaterialState> states) {
-    const Set<MaterialState> interactiveStates = <MaterialState>{
-      MaterialState.pressed,
-      MaterialState.hovered,
-      MaterialState.focused,
-    };
-
-    if (states.any(interactiveStates.contains)) {
-      return isDark ? ColorConst.grey800 : ColorConst.tableHover;
-    }
-    return Colors.transparent;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -50,22 +37,22 @@ class _TransactionState extends State<Transaction> {
                 children: [
                   DataTable(
                     showCheckboxColumn: false,
-                    dataRowColor:
-                        MaterialStateProperty.resolveWith((_getDataRowColor)),
                     columnSpacing: Responsive.isTablet(context) ? 120 : 90,
                     showBottomBorder: true,
                     dataRowHeight: 70,
                     border: TableBorder(
                       bottom: BorderSide(
-                          width: 1,
-                          color: isDark
-                              ? ColorConst.white.withOpacity(0.25)
-                              : Colors.grey.shade200),
+                        width: 1,
+                        color: isDark
+                            ? ColorConst.white.withOpacity(0.25)
+                            : Colors.grey.shade200,
+                      ),
                       horizontalInside: BorderSide(
-                          width: 1,
-                          color: isDark
-                              ? ColorConst.white.withOpacity(0.25)
-                              : Colors.grey.shade50),
+                        width: 1,
+                        color: isDark
+                            ? ColorConst.white.withOpacity(0.25)
+                            : Colors.grey.shade50,
+                      ),
                     ),
                     columns: [
                       DataColumn(label: _tableHeader('(#) Id')),
