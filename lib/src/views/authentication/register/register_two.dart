@@ -21,25 +21,23 @@ class _RegisterTwoState extends State<RegisterTwo> {
 
   @override
   Widget build(BuildContext context) {
-    return SelectionArea(
-      child: Scaffold(
-        body: Stack(
-          children: [
-            ConstantAuth.homeBackground(context),
-            Container(
-              width: 420,
-              height: MediaQuery.of(context).size.height,
-              color: isDark ? ColorConst.darkContainer : ColorConst.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _mainView(),
-                ],
-              ),
+    return Scaffold(
+      body: Stack(
+        children: [
+          ConstantAuth.homeBackground(context),
+          Container(
+            width: 420,
+            height: MediaQuery.of(context).size.height,
+            color: isDark ? ColorConst.darkContainer : ColorConst.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _mainView(),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

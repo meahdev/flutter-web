@@ -16,61 +16,59 @@ class Maintenance extends StatefulWidget {
 class _MaintenanceState extends State<Maintenance> {
   @override
   Widget build(BuildContext context) {
-    return SelectionArea(
-      child: Scaffold(
-        body: Container(
-          margin: const EdgeInsets.all(30),
-          child: Center(
-            child: ScrollConfiguration(
-              behavior:
-                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    Text(
-                      Strings.siddhatva,
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: isDark
-                            ? ColorConst.darkFontColor
-                            : ColorConst.textColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+    return Scaffold(
+      body: Container(
+        margin: const EdgeInsets.all(30),
+        child: Center(
+          child: ScrollConfiguration(
+            behavior:
+                ScrollConfiguration.of(context).copyWith(scrollbars: false),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Text(
+                    Strings.siddhatva,
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: isDark
+                          ? ColorConst.darkFontColor
+                          : ColorConst.textColor,
+                      fontWeight: FontWeight.bold,
                     ),
-                    SizedBox(
-                      height: 236,
-                      width: 320,
-                      child: Image.asset("assets/images/image1.png"),
+                  ),
+                  SizedBox(
+                    height: 236,
+                    width: 320,
+                    child: Image.asset("assets/images/image1.png"),
+                  ),
+                  Text(
+                    "Site is Under Maintenance",
+                    style: TextStyle(
+                      color: isDark
+                          ? ColorConst.darkFontColor
+                          : ColorConst.textColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
                     ),
-                    Text(
-                      "Site is Under Maintenance",
-                      style: TextStyle(
-                        color: isDark
-                            ? ColorConst.darkFontColor
-                            : ColorConst.textColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
-                      ),
+                  ),
+                  FxBox.h8,
+                  Text(
+                    "Please check back in sometime.",
+                    style: TextStyle(
+                      color: isDark
+                          ? ColorConst.darkFontColor
+                          : ColorConst.textColor,
                     ),
-                    FxBox.h8,
-                    Text(
-                      "Please check back in sometime.",
-                      style: TextStyle(
-                        color: isDark
-                            ? ColorConst.darkFontColor
-                            : ColorConst.textColor,
-                      ),
-                    ),
-                    FxBox.h32,
-                    Responsive.isMobile(context)
-                        ? Column(children: _list())
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: _list(),
-                          )
-                  ],
-                ),
+                  ),
+                  FxBox.h32,
+                  Responsive.isMobile(context)
+                      ? Column(children: _list())
+                      : Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: _list(),
+                        )
+                ],
               ),
             ),
           ),

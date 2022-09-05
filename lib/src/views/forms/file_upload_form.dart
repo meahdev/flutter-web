@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/form/form_upload_file/bloc/form_upload_file_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -147,7 +148,9 @@ class _FileUploadFormState extends State<FileUploadForm> {
                                   fit: BoxFit.cover,
                                 )
                               : null,
-                          color: ColorConst.file,
+                          color: isDark
+                              ? ColorConst.lightFontColor
+                              : ColorConst.file,
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: isImage
@@ -175,7 +178,9 @@ class _FileUploadFormState extends State<FileUploadForm> {
                           splashColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () {
-                            _filesList.removeAt(fileData.indexOf(e));
+                            List<dynamic> tempList = _filesList.toList();
+                            tempList.removeAt(fileData.indexOf(e));
+                            _filesList = tempList;
                             _formUploadFileBloc
                                 .add(FormUploadFileEvent.addFile(_filesList));
                           },
