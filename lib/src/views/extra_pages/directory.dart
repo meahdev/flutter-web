@@ -37,15 +37,15 @@ class _DirectoryPageState extends State<DirectoryPage> {
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSobvnMKSeJSKrg0DjnaSC4llKa-4wxRDDK4w&usqp=CAU",
   ];
   final emailList = [
-    "Jerome@veltrix.com",
-    "Adam@veltrix.com",
-    "Stanley@veltrix.com",
-    "Ben@veltrix.com",
-    "John@veltrix.com",
-    "Antonio@veltrix.com",
-    "Jerome@veltrix.com",
-    "Adam@veltrix.com",
-    "Stanley@veltrix.com"
+    "Jerome@fdash.com",
+    "Adam@fdash.com",
+    "Stanley@fdash.com",
+    "Ben@fdash.com",
+    "John@fdash.com",
+    "Antonio@fdash.com",
+    "Jerome@fdash.com",
+    "Adam@fdash.com",
+    "Stanley@fdash.com"
   ];
 
   bool isHover = false;

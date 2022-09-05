@@ -43,7 +43,7 @@ class BillingEmail extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          ' ${Strings.siddhatva}.',
+                          ' ${Strings.fdash}.',
                           style: TextStyle(
                             color: isDark ? Colors.white : Colors.black,
                             fontSize: 25,
@@ -113,12 +113,12 @@ class BillingEmail extends StatelessWidget {
                     const Align(
                       alignment: Alignment.center,
                       child: Text(
-                          "${Strings.siddhatva} Inc. 2896 Howell Rd, Russellville, AR, 72823"),
+                          "${Strings.fdash} Inc. 2896 Howell Rd, Russellville, AR, 72823"),
                     ),
                     FxBox.h20,
                     const Align(
                       alignment: Alignment.center,
-                      child: Text("2022 © ${Strings.siddhatva}."),
+                      child: Text("2022 © ${Strings.fdash}."),
                     ),
                   ],
                 );

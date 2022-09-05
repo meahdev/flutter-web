@@ -82,7 +82,7 @@ class ComingSoonState extends State<ComingSoon> {
                   children: [
                     FxBox.h20,
                     Text(
-                      Strings.siddhatva,
+                      Strings.fdash,
                       style: TextStyle(
                         fontSize: 25,
                         color: isDark

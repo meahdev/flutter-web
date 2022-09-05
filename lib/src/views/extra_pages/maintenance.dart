@@ -27,7 +27,7 @@ class _MaintenanceState extends State<Maintenance> {
               child: Column(
                 children: [
                   Text(
-                    Strings.siddhatva,
+                    Strings.fdash,
                     style: TextStyle(
                       fontSize: 25,
                       color: isDark

@@ -4,14 +4,12 @@ class Strings {
   static const String view = 'View';
   static const String edit = 'Edit';
   static const String delete = 'Delete';
-  static const String veltrix = 'Veltrix';
-  static const String siddhatva = 'Siddhatva';
+  static const String fdash = 'F-Dash';
   static const String lightMode = 'Light Mode';
 
   static const String admin = 'Admin';
 
-  static const String footerText =
-      '© 2022 Siddhatva. Crafted with ❤️ by Sarvadhi';
+  static const String footerText = '© 2022 F-Dash. Crafted with ❤️ by Sarvadhi';
 
   // appbar
   static const String searchHint = 'Search...';
@@ -121,7 +119,7 @@ class Strings {
 
   // Login
   static const String welcomeBack = 'Welcome Back !';
-  static const String loginHeaderText = 'Sign in to continue to Siddhatva.';
+  static const String loginHeaderText = 'Sign in to continue to F-Dash.';
   static const String username = 'Username';
   static const String enterUsername = 'Enter username';
   static const String password = 'Password';
@@ -134,13 +132,12 @@ class Strings {
 
   // Register
   static const String freeRegister = 'Free Register';
-  static const String registerHeaderText =
-      'Get your free Siddhatva account now.';
+  static const String registerHeaderText = 'Get your free F-Dash account now.';
   static const String emailText = 'Email';
   static const String enteremail = 'Enter email';
   static const String register = 'Register';
   static const String termsServiceText1 =
-      'By registering you agree to the Siddhatva ';
+      'By registering you agree to the F-Dash ';
   static const String termsServiceText2 = 'Terms of Use';
   static const String alreayAccountExist = 'Already have an account ? ';
 

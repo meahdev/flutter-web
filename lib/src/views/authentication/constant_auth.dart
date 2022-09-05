@@ -202,7 +202,7 @@ class ConstantAuth {
         ),
         FxBox.w4,
         CustomText(
-          title: Strings.siddhatva.toUpperCase(),
+          title: Strings.fdash,
           fontSize: 24,
           fontWeight: FontWeight.w600,
           textColor: color,

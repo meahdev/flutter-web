@@ -46,14 +46,14 @@ class BasicEmail extends StatelessWidget {
                 ),
                 FxBox.h20,
                 const Text(
-                  Strings.siddhatva,
+                  Strings.fdash,
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 const Text("Support Team"),
                 FxBox.h36,
                 const Align(
                   alignment: Alignment.center,
-                  child: Text("2022 © ${Strings.siddhatva}."),
+                  child: Text("2022 © ${Strings.fdash}."),
                 ),
               ],
             ),

@@ -91,7 +91,7 @@ class AlertEmail extends StatelessWidget {
                           text: 'Thanks for choosing',
                           children: <InlineSpan>[
                             TextSpan(
-                              text: '  ${Strings.siddhatva}',
+                              text: '  ${Strings.fdash}',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
                             TextSpan(text: ' Admin.'),
@@ -100,14 +100,14 @@ class AlertEmail extends StatelessWidget {
                       ),
                       FxBox.h20,
                       const Text(
-                        Strings.siddhatva,
+                        Strings.fdash,
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       const Text('Support Team'),
                       FxBox.h36,
                       const Align(
                         alignment: Alignment.center,
-                        child: Text('2022 © ${Strings.siddhatva}.'),
+                        child: Text('2022 © ${Strings.fdash}.'),
                       ),
                     ],
                   ),
