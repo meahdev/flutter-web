@@ -78,7 +78,7 @@ class FxModal {
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               style: const TextStyle(
-                                fontSize: 17.5,
+                                fontSize: 18.5,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),

@@ -74,7 +74,7 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
         children: [
           Text(
             name,
-            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
           ),
           FxBox.h12,
           getChartData(chartType, context),
@@ -96,11 +96,11 @@ getChartData(ChartType chartType, BuildContext context) {
       return Align(
         alignment: Alignment.center,
         child: Column(children: [
-          _richText(Strings.activated, 25610, context),
+          _richText(Strings.activated, 18610, context),
           FxBox.h12,
-          _richText(Strings.pending, 56210, context),
+          _richText(Strings.pending, 42210, context),
           FxBox.h12,
-          _richText(Strings.deactivated, 12185, context),
+          _richText(Strings.deactivated, 10185, context),
         ]),
       );
     } else if (chartType == ChartType.barChart) {
@@ -108,9 +108,9 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 695412, context),
+            _richText(Strings.activated, 42010, context),
             FxBox.h12,
-            _richText(Strings.pending, 163542, context),
+            _richText(Strings.pending, 68210, context),
             FxBox.h12,
           ],
         ),
@@ -120,11 +120,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 86541, context),
+            _richText(Strings.activated, 42010, context),
             FxBox.h12,
-            _richText(Strings.pending, 2541, context),
+            _richText(Strings.pending, 2041, context),
             FxBox.h12,
-            _richText(Strings.deactivated, 102030, context),
+            _richText(Strings.deactivated, 68210, context),
           ],
         ),
       );
@@ -133,11 +133,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 3201, context),
+            _richText(Strings.activated, 2041, context),
             FxBox.h12,
-            _richText(Strings.pending, 85120, context),
+            _richText(Strings.pending, 42010, context),
             FxBox.h12,
-            _richText(Strings.deactivated, 65214, context),
+            _richText(Strings.deactivated, 68210, context),
           ],
         ),
       );
@@ -146,11 +146,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 86541, context),
+            _richText(Strings.activated, 42010, context),
             FxBox.h12,
-            _richText(Strings.pending, 2541, context),
+            _richText(Strings.pending, 2041, context),
             FxBox.h12,
-            _richText(Strings.deactivated, 102030, context),
+            _richText(Strings.deactivated, 68210, context),
           ],
         ),
       );
@@ -160,44 +160,44 @@ getChartData(ChartType chartType, BuildContext context) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 25610, context),
-          _richText(Strings.pending, 56210, context),
-          _richText(Strings.deactivated, 12185, context),
+          _richText(Strings.activated, 42010, context),
+          _richText(Strings.pending, 56910, context),
+          _richText(Strings.deactivated, 68210, context),
         ],
       );
     } else if (chartType == ChartType.barChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 695412, context),
-          _richText(Strings.pending, 163542, context),
+          _richText(Strings.activated, 605312, context),
+          _richText(Strings.pending, 123442, context),
         ],
       );
     } else if (chartType == ChartType.areaChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 86541, context),
-          _richText(Strings.pending, 2541, context),
-          _richText(Strings.deactivated, 102030, context),
+          _richText(Strings.activated, 82531, context),
+          _richText(Strings.pending, 2521, context),
+          _richText(Strings.deactivated, 102335, context),
         ],
       );
     } else if (chartType == ChartType.piaChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 3201, context),
-          _richText(Strings.pending, 85120, context),
-          _richText(Strings.deactivated, 65214, context),
+          _richText(Strings.activated, 3251, context),
+          _richText(Strings.pending, 85330, context),
+          _richText(Strings.deactivated, 346414, context),
         ],
       );
     } else if (chartType == ChartType.colomnChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 86541, context),
-          _richText(Strings.pending, 2541, context),
-          _richText(Strings.deactivated, 102030, context),
+          _richText(Strings.activated, 86231, context),
+          _richText(Strings.pending, 2441, context),
+          _richText(Strings.deactivated, 102400, context),
         ],
       );
     }
@@ -214,14 +214,14 @@ Widget _richText(String type, int count, BuildContext context) {
           text: upperCase('$count\n'),
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 22,
+            fontSize: 23,
           ),
         ),
         TextSpan(
           text: upperCase(type),
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 13,
+            fontSize: 14,
           ),
         ),
       ],

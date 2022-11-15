@@ -52,7 +52,7 @@ class ColumnChart extends StatelessWidget {
     style =  TextStyle(
       color: ColorConst.gridTextColor,
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 15,
     );
     String text;
     switch (value.toInt()) {
@@ -121,7 +121,7 @@ class ColumnChart extends StatelessWidget {
     style =  TextStyle(
       color: ColorConst.gridTextColor,
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 15,
     );
     String text;
     if (value == 0) {

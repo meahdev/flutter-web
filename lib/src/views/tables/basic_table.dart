@@ -354,7 +354,7 @@ class BasicTable extends StatelessWidget {
             Text(
               title,
               style: const TextStyle(
-                fontSize: 17,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -428,7 +428,7 @@ class BasicTable extends StatelessWidget {
     return Text(
       '$text',
       softWrap: true,
-      style: TextStyle(fontSize: 16, fontWeight: fontwidget),
+      style: TextStyle(fontSize: 17, fontWeight: fontwidget),
     );
   }
 }

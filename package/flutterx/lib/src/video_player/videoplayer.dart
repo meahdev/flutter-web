@@ -193,7 +193,7 @@ class _FxVideoPlayerState extends State<FxVideoPlayer> {
                 color: Colors.black,
                 padding: const EdgeInsets.all(15),
                 child: Text('Please check URL OR Path :::: $errorMessage',
-                    style: const TextStyle(color: Colors.white, fontSize: 18)),
+                    style: const TextStyle(color: Colors.white, fontSize: 19)),
               ),
             );
           },

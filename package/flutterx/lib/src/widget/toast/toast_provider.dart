@@ -126,7 +126,7 @@ class ToastWithColor extends ToastProvider {
                 style: textStyle ??
                     TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 16,
+                      fontSize: 17,
                       color: isLightBackground
                           ? backgroundColor ??
                               Theme.of(context).colorScheme.primary
@@ -224,7 +224,7 @@ class ToastWithoutColor extends ToastProvider {
       padding: const EdgeInsets.all(12.0),
       width: isWeb ? toastWidth ?? 500 : MediaQuery.of(context).size.width - 32,
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(radius),
         boxShadow: [
           BoxShadow(
@@ -262,7 +262,7 @@ class ToastWithoutColor extends ToastProvider {
               style: textStyle ??
                   const TextStyle(
                     fontWeight: FontWeight.w500,
-                    fontSize: 16,
+                    fontSize: 17,
                   ),
             ),
           ),

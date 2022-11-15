@@ -17,58 +17,60 @@ class _MaintenanceState extends State<Maintenance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        margin: const EdgeInsets.all(30),
-        child: Center(
-          child: ScrollConfiguration(
-            behavior:
-                ScrollConfiguration.of(context).copyWith(scrollbars: false),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Text(
-                    Strings.fdash,
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: isDark
-                          ? ColorConst.darkFontColor
-                          : ColorConst.textColor,
-                      fontWeight: FontWeight.bold,
+      body: SelectionArea(
+        child: Container(
+          margin: const EdgeInsets.all(30),
+          child: Center(
+            child: ScrollConfiguration(
+              behavior:
+                  ScrollConfiguration.of(context).copyWith(scrollbars: false),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text(
+                      Strings.fdash,
+                      style: TextStyle(
+                        fontSize: 26,
+                        color: isDark
+                            ? ColorConst.darkFontColor
+                            : ColorConst.textColor,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 236,
-                    width: 320,
-                    child: Image.asset("assets/images/image1.png"),
-                  ),
-                  Text(
-                    "Site is Under Maintenance",
-                    style: TextStyle(
-                      color: isDark
-                          ? ColorConst.darkFontColor
-                          : ColorConst.textColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                    SizedBox(
+                      height: 236,
+                      width: 320,
+                      child: Image.asset("assets/images/image1.png"),
                     ),
-                  ),
-                  FxBox.h8,
-                  Text(
-                    "Please check back in sometime.",
-                    style: TextStyle(
-                      color: isDark
-                          ? ColorConst.darkFontColor
-                          : ColorConst.textColor,
+                    Text(
+                      "Site is Under Maintenance",
+                      style: TextStyle(
+                        color: isDark
+                            ? ColorConst.darkFontColor
+                            : ColorConst.textColor,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 26,
+                      ),
                     ),
-                  ),
-                  FxBox.h32,
-                  Responsive.isMobile(context)
-                      ? Column(children: _list())
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: _list(),
-                        )
-                ],
+                    FxBox.h8,
+                    Text(
+                      "Please check back in sometime.",
+                      style: TextStyle(
+                        color: isDark
+                            ? ColorConst.darkFontColor
+                            : ColorConst.textColor,
+                      ),
+                    ),
+                    FxBox.h32,
+                    Responsive.isMobile(context)
+                        ? Column(children: _list())
+                        : Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: _list(),
+                          )
+                  ],
+                ),
               ),
             ),
           ),
@@ -115,7 +117,7 @@ class _MaintenanceState extends State<Maintenance> {
     TextStyle style = TextStyle(
       color: isDark ? ColorConst.darkFontColor : ColorConst.textColor,
       fontWeight: FontWeight.bold,
-      fontSize: 15,
+      fontSize: 16,
     );
     return SizedBox(
       width: Responsive.isMobile(context)

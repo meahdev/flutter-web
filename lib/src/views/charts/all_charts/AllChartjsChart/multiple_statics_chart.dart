@@ -152,8 +152,8 @@ class _MultipleStaticChartState extends State<MultipleStaticChart> {
             FlSpot(9.5, 3),
             FlSpot(11, 4),
           ],
-          color: const Color(0xffaab1e6),
-          barDataColor: const Color(0xffaab1e6).withOpacity(0.5),
+          color: ColorConst.primary,
+          barDataColor: ColorConst.primary.withOpacity(0.5),
         ),
       ],
     );
@@ -164,7 +164,7 @@ Widget leftTitles(double value, TitleMeta meta) {
   const style = TextStyle(
     color: Color(0xff7589a2),
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 15,
   );
   String text;
   if (value == 0) {
@@ -195,7 +195,7 @@ Widget getTitles(double value, TitleMeta meta) {
   const style = TextStyle(
     color: Color(0xff7589a2),
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 15,
   );
   String text;
   switch (value.toString()) {

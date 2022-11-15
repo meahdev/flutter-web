@@ -78,7 +78,7 @@ class AdvancedSmilChart extends StatelessWidget {
             ],
             isCurved: true,
             barWidth: 2,
-            color: ColorConst.chartColorBlue,
+            color: ColorConst.primary,
           ),
           LineChartBarData(
             spots: const [
@@ -125,7 +125,7 @@ Widget leftTitles(double value, TitleMeta meta) {
   const style = TextStyle(
     color: Color(0xff7589a2),
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 15,
   );
   String text;
   if (value == 0) {
@@ -156,7 +156,7 @@ Widget getTitles(double value, TitleMeta meta) {
   const style = TextStyle(
     color: Color(0xff7589a2),
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 15,
   );
   String text;
   switch (value.toString()) {

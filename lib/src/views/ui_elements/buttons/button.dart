@@ -204,7 +204,7 @@ class _ButtonState extends State<Button> {
         const Text(
           'Simple buttons',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -231,7 +231,7 @@ class _ButtonState extends State<Button> {
         const Text(
           'Outline buttons',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -259,7 +259,7 @@ class _ButtonState extends State<Button> {
         const Text(
           'Simple with icon buttons',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -287,7 +287,7 @@ class _ButtonState extends State<Button> {
         const Text(
           'Outline with icon buttons',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -316,7 +316,7 @@ class _ButtonState extends State<Button> {
         const Text(
           'Simple icon buttons',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -343,7 +343,7 @@ class _ButtonState extends State<Button> {
         const Text(
           'Outline icon buttons',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -371,7 +371,7 @@ class _ButtonState extends State<Button> {
         const Text(
           'Social buttons',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -402,7 +402,7 @@ class _ButtonState extends State<Button> {
         const Text(
           'Outlined social buttons',
           style: TextStyle(
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
         ),

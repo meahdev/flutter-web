@@ -71,132 +71,134 @@ class ComingSoonState extends State<ComingSoon> {
             },
           );
           return Scaffold(
-            body: Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
-              alignment: Alignment.center,
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    FxBox.h20,
-                    Text(
-                      Strings.fdash,
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: isDark
-                            ? ColorConst.darkFontColor
-                            : ColorConst.textColor,
-                        fontWeight: FontWeight.bold,
+            body: SelectionArea(
+              child: Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                alignment: Alignment.center,
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      FxBox.h20,
+                      Text(
+                        Strings.fdash,
+                        style: TextStyle(
+                          fontSize: 26,
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.textColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    FxBox.h20,
-                    Text(
-                      "Let's get started with Sarvadhi",
-                      style: TextStyle(
-                        color: isDark
-                            ? ColorConst.darkFontColor
-                            : ColorConst.textColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 27,
+                      FxBox.h20,
+                      Text(
+                        "Let's get started with Sarvadhi",
+                        style: TextStyle(
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.textColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                        ),
                       ),
-                    ),
-                    Text(
-                      "It will be as simple as Occidental in fact it will be Occidental.",
-                      style: TextStyle(
-                        color: isDark
-                            ? ColorConst.darkFontColor
-                            : ColorConst.textColor,
+                      Text(
+                        "It will be as simple as Occidental in fact it will be Occidental.",
+                        style: TextStyle(
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.textColor,
+                        ),
                       ),
-                    ),
-                    FxBox.h52,
-                    Responsive.isWeb(context)
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              _timerBox(
-                                'Days',
-                                days ??
-                                    strDigits(
-                                      myDuration.inDays.remainder(90),
+                      FxBox.h52,
+                      Responsive.isWeb(context)
+                          ? Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                _timerBox(
+                                  'Days',
+                                  days ??
+                                      strDigits(
+                                        myDuration.inDays.remainder(90),
+                                      ),
+                                ),
+                                FxBox.w20,
+                                _timerBox(
+                                  'Hours',
+                                  hours ??
+                                      strDigits(
+                                        myDuration.inHours.remainder(24),
+                                      ),
+                                ),
+                                FxBox.w20,
+                                _timerBox(
+                                  'Minutes',
+                                  minutes ??
+                                      strDigits(
+                                        myDuration.inMinutes.remainder(60),
+                                      ),
+                                ),
+                                FxBox.w20,
+                                _timerBox(
+                                  'Seconds',
+                                  _seconds ??
+                                      strDigits(
+                                        myDuration.inSeconds.remainder(60),
+                                      ),
+                                ),
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    _timerBox(
+                                      'Days',
+                                      days ??
+                                          strDigits(
+                                            myDuration.inDays.remainder(90),
+                                          ),
                                     ),
-                              ),
-                              FxBox.w20,
-                              _timerBox(
-                                'Hours',
-                                hours ??
-                                    strDigits(
-                                      myDuration.inHours.remainder(24),
+                                    FxBox.w20,
+                                    _timerBox(
+                                      'Hours',
+                                      hours ??
+                                          strDigits(
+                                            myDuration.inHours.remainder(24),
+                                          ),
                                     ),
-                              ),
-                              FxBox.w20,
-                              _timerBox(
-                                'Minutes',
-                                minutes ??
-                                    strDigits(
-                                      myDuration.inMinutes.remainder(60),
+                                  ],
+                                ),
+                                FxBox.h20,
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    _timerBox(
+                                      'Minutes',
+                                      minutes ??
+                                          strDigits(
+                                            myDuration.inMinutes.remainder(60),
+                                          ),
                                     ),
-                              ),
-                              FxBox.w20,
-                              _timerBox(
-                                'Seconds',
-                                _seconds ??
-                                    strDigits(
-                                      myDuration.inSeconds.remainder(60),
+                                    FxBox.w20,
+                                    _timerBox(
+                                      'Seconds',
+                                      _seconds ??
+                                          strDigits(
+                                            myDuration.inSeconds.remainder(60),
+                                          ),
                                     ),
-                              ),
-                            ],
-                          )
-                        : Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  _timerBox(
-                                    'Days',
-                                    days ??
-                                        strDigits(
-                                          myDuration.inDays.remainder(90),
-                                        ),
-                                  ),
-                                  FxBox.w20,
-                                  _timerBox(
-                                    'Hours',
-                                    hours ??
-                                        strDigits(
-                                          myDuration.inHours.remainder(24),
-                                        ),
-                                  ),
-                                ],
-                              ),
-                              FxBox.h20,
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  _timerBox(
-                                    'Minutes',
-                                    minutes ??
-                                        strDigits(
-                                          myDuration.inMinutes.remainder(60),
-                                        ),
-                                  ),
-                                  FxBox.w20,
-                                  _timerBox(
-                                    'Seconds',
-                                    _seconds ??
-                                        strDigits(
-                                          myDuration.inSeconds.remainder(60),
-                                        ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                    FxBox.h44,
-                    _emailField(),
-                    FxBox.h20,
-                  ],
+                                  ],
+                                ),
+                              ],
+                            ),
+                      FxBox.h44,
+                      _emailField(),
+                      FxBox.h20,
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -217,7 +219,7 @@ class ComingSoonState extends State<ComingSoon> {
             Text(
               value,
               style: const TextStyle(
-                fontSize: 40,
+                fontSize: 41,
                 color: ColorConst.primary,
                 fontWeight: FontWeight.bold,
               ),
@@ -226,7 +228,7 @@ class ComingSoonState extends State<ComingSoon> {
               title,
               style: TextStyle(
                 color: isDark ? ColorConst.darkFontColor : ColorConst.textColor,
-                fontSize: 16,
+                fontSize: 17,
                 fontWeight: FontWeight.bold,
               ),
             )

@@ -110,7 +110,7 @@ class PolarChartState extends State {
               title: '',
               radius: 100,
               titleStyle: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff3c4bcf)),
               titlePositionPercentageOffset: 0.55,
@@ -122,7 +122,7 @@ class PolarChartState extends State {
               title: '',
               radius: 70,
               titleStyle: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff3ba4f8)),
               titlePositionPercentageOffset: 0.55,
@@ -135,7 +135,7 @@ class PolarChartState extends State {
               title: '',
               radius: 100,
               titleStyle: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff35a599)),
               titlePositionPercentageOffset: 0.6,
@@ -148,7 +148,7 @@ class PolarChartState extends State {
               title: '',
               radius: 50,
               titleStyle: const TextStyle(
-                  fontSize: 18,
+                  fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Color(0xffed4562)),
               titlePositionPercentageOffset: 0.55,
@@ -195,7 +195,7 @@ class Indicator extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-              fontSize: 16, fontWeight: FontWeight.bold, color: textColor),
+              fontSize: 17, fontWeight: FontWeight.bold, color: textColor),
         )
       ],
     );

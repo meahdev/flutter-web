@@ -67,7 +67,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
             const Text(
               'Example',
               style: TextStyle(
-                fontSize: 16.0,
+                fontSize: 17.0,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -351,7 +351,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
             const Text(
               'Nested',
               style: TextStyle(
-                fontSize: 16.0,
+                fontSize: 17.0,
                 fontWeight: FontWeight.w600,
               ),
             ),

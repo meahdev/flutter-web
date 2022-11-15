@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -10,30 +11,29 @@ class SimplePieChart extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-          child: PieChart(
-              PieChartData(
-                  sectionsSpace: 0,
-                  centerSpaceRadius: 0,
-                  sections: getSectionData()
-              )),
+          child: PieChart(PieChartData(
+              sectionsSpace: 0,
+              centerSpaceRadius: 0,
+              sections: getSectionData())),
         ),
       ],
     );
   }
 }
+
 List<PieChartSectionData> getSectionData() {
   return [
     PieChartSectionData(
       value: 20,
       title: '20%',
       radius: 170,
-      color: const Color(0xff6d6fb9),
+      color: ColorConst.primary,
     ),
     PieChartSectionData(
       value: 35,
       title: '35%',
       radius: 170,
-      color:  const Color(0xff4d938f),
+      color: const Color(0xff4d938f),
     ),
     PieChartSectionData(
       value: 15,
@@ -44,7 +44,7 @@ List<PieChartSectionData> getSectionData() {
     PieChartSectionData(
       value: 30,
       title: '30%',
-      radius: 170 ,
+      radius: 170,
       color: const Color(0xffeaba67),
     ),
   ];

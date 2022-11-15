@@ -20,22 +20,24 @@ class _RecoverPasswordTwoState extends State<RecoverPasswordTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          ConstantAuth.homeBackground(context),
-          Container(
-            width: 420,
-            height: MediaQuery.of(context).size.height,
-            color: isDark ? ColorConst.darkContainer : ColorConst.white,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _mainView(),
-              ],
+      body: SelectionArea(
+        child: Stack(
+          children: [
+            ConstantAuth.homeBackground(context),
+            Container(
+              width: 420,
+              height: MediaQuery.of(context).size.height,
+              color: isDark ? ColorConst.darkContainer : ColorConst.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _mainView(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -55,7 +57,7 @@ class _RecoverPasswordTwoState extends State<RecoverPasswordTwo> {
           Center(
             child: CustomText(
               title: Strings.resetPassword,
-              fontSize: 18,
+              fontSize: 19,
               fontWeight: FontWeight.w800,
               textColor:
                   isDark ? ColorConst.darkFontColor : ColorConst.lightFontColor,
@@ -95,7 +97,7 @@ class _RecoverPasswordTwoState extends State<RecoverPasswordTwo> {
       ),
       child: CustomText(
         title: Strings.emailInstructions,
-        fontSize: 14,
+        fontSize: 15,
         fontWeight: FontWeight.w700,
         textColor: ColorConst.darkGreen2,
       ),

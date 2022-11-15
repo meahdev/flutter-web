@@ -20,22 +20,24 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: [
-          ConstantAuth.homeBackground(context),
-          Container(
-            width: 420,
-            height: MediaQuery.of(context).size.height,
-            color: isDark ? ColorConst.darkContainer : ColorConst.white,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _mainView(),
-              ],
+      body: SelectionArea(
+        child: Stack(
+          children: [
+            ConstantAuth.homeBackground(context),
+            Container(
+              width: 420,
+              height: MediaQuery.of(context).size.height,
+              color: isDark ? ColorConst.darkContainer : ColorConst.white,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _mainView(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -55,7 +57,7 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
           Center(
             child: CustomText(
               title: Strings.locked,
-              fontSize: 18,
+              fontSize: 19,
               fontWeight: FontWeight.w800,
               textColor: isDark
                   ? ColorConst.darkFooterText
@@ -66,7 +68,7 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
           Center(
             child: CustomText(
               title: Strings.lockedDescription,
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.w700,
               textColor: isDark
                   ? ColorConst.darkFooterText
@@ -118,7 +120,7 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
           FxBox.h16,
           CustomText(
             title: 'Robert Smith',
-            fontSize: 16,
+            fontSize: 17,
             fontWeight: FontWeight.w800,
             textColor:
                 isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,

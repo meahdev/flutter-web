@@ -27,7 +27,7 @@ class _DashboardState extends State<Dashboard> {
         Column(
           children: [
             const Listitem(),
-            FxBox.h20,
+            FxBox.h32,
             Responsive.isWeb(context)
                 ? Row(
                     children: [
@@ -35,7 +35,7 @@ class _DashboardState extends State<Dashboard> {
                         flex: 3,
                         child: Monthlyearning(),
                       ),
-                      FxBox.w20,
+                      FxBox.w32,
                       const Expanded(
                         child: Salesanalytics(),
                       ),
@@ -44,11 +44,11 @@ class _DashboardState extends State<Dashboard> {
                 : Column(
                     children: [
                       const Monthlyearning(),
-                      FxBox.h20,
+                      FxBox.h32,
                       const Salesanalytics(),
                     ],
                   ),
-            FxBox.h20,
+            FxBox.h32,
             Responsive.isWeb(context)
                 ? Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,22 +56,22 @@ class _DashboardState extends State<Dashboard> {
                       const Expanded(
                         child: SalesReport(),
                       ),
-                      FxBox.w20,
+                      FxBox.w32,
                       const Expanded(
                         child: Activity(),
                       ),
-                      FxBox.w20,
+                      FxBox.w32,
                       Expanded(
                         child: Column(
                           children: [
                             Row(
                               children: [
                                 const Expanded(child: StatusBox()),
-                                FxBox.w20,
+                                FxBox.w32,
                                 const Expanded(child: TopProductSale()),
                               ],
                             ),
-                            FxBox.h20,
+                            FxBox.h32,
                             const Clienresponse(),
                           ],
                         ),
@@ -81,29 +81,29 @@ class _DashboardState extends State<Dashboard> {
                 : Column(
                     children: [
                       const SalesReport(),
-                      FxBox.h20,
+                      FxBox.h32,
                       const Activity(),
-                      FxBox.h20,
+                      FxBox.h32,
                       Responsive.isTablet(context)
                           ? Row(
                               children: [
                                 const Expanded(child: StatusBox()),
-                                FxBox.w20,
+                                FxBox.w32,
                                 const Expanded(child: TopProductSale()),
                               ],
                             )
                           : Column(
                               children: [
                                 const StatusBox(),
-                                FxBox.h20,
+                                FxBox.h32,
                                 const TopProductSale(),
                               ],
                             ),
-                      FxBox.h20,
+                      FxBox.h32,
                       const Clienresponse(),
                     ],
                   ),
-            FxBox.h20,
+            FxBox.h32,
             Responsive.isWeb(context)
                 ? Row(
                     children: [
@@ -111,7 +111,7 @@ class _DashboardState extends State<Dashboard> {
                         flex: 2,
                         child: Transaction(),
                       ),
-                      FxBox.w20,
+                      FxBox.w32,
                       const Expanded(
                         child: Chatscreen(),
                       ),
@@ -120,7 +120,7 @@ class _DashboardState extends State<Dashboard> {
                 : Column(
                     children: [
                       const Transaction(),
-                      FxBox.h20,
+                      FxBox.h32,
                       const Chatscreen(),
                     ],
                   ),

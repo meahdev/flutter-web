@@ -20,22 +20,24 @@ class _ChartListChartState extends State<ChartListChart> {
       mainAxisSize: MainAxisSize.min,
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-              _card(ChartType.animatingPieChart, context, Strings.animatingPieChart),
+              _card(ChartType.animatingPieChart, context,
+                  Strings.animatingPieChart),
               FxBox.h20,
               _card(ChartType.simplePieChart, context, Strings.simplePieChart),
               FxBox.h20,
-              _card(ChartType.advancedSmileChart, context, Strings.advanceSmileAnimationChart),
-              FxBox.h20,
-              _card(ChartType.simpleLineChart, context, Strings.simpleLineChart),
-              FxBox.h20,
-              _card(
-                  ChartType.lineScatterChart, context, Strings.lineScatterChart),
+              _card(ChartType.advancedSmileChart, context,
+                  Strings.advanceSmileAnimationChart),
               FxBox.h20,
               _card(
-                  ChartType.lineChartWithArea, context, Strings.lineChartWithArea),
+                  ChartType.simpleLineChart, context, Strings.simpleLineChart),
               FxBox.h20,
-              _card(
-                  ChartType.overlapBars, context, Strings.overlappingChart),
+              _card(ChartType.lineScatterChart, context,
+                  Strings.lineScatterChart),
+              FxBox.h20,
+              _card(ChartType.lineChartWithArea, context,
+                  Strings.lineChartWithArea),
+              FxBox.h20,
+              _card(ChartType.overlapBars, context, Strings.overlappingChart),
             ]
           : [
               Row(
@@ -46,15 +48,17 @@ class _ChartListChartState extends State<ChartListChart> {
                   ),
                   FxBox.w20,
                   Expanded(
-                    child: _card(
-                        ChartType.simplePieChart, context, Strings.simplePieChart),
+                    child: _card(ChartType.simplePieChart, context,
+                        Strings.simplePieChart),
                   ),
                 ],
               ),
               FxBox.h20,
               Row(
                 children: [
-                  Expanded(child: _card(ChartType.advancedSmileChart, context, Strings.advanceSmileAnimationChart),
+                  Expanded(
+                    child: _card(ChartType.advancedSmileChart, context,
+                        Strings.advanceSmileAnimationChart),
                   ),
                   FxBox.w20,
                   Expanded(
@@ -103,7 +107,7 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
           children: [
             Text(
               name,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
             FxBox.h12,
             getChartData(chartType, context),
@@ -126,11 +130,11 @@ getChartData(ChartType chartType, BuildContext context) {
       return Align(
         alignment: Alignment.center,
         child: Column(children: [
-          _richText(Strings.activated, 45410, context),
+          _richText(Strings.activated, 40410, context),
           FxBox.h12,
-          _richText(Strings.pending, 4442, context),
+          _richText(Strings.pending, 4042, context),
           FxBox.h12,
-          _richText(Strings.deactivated, 3201, context),
+          _richText(Strings.deactivated, 3291, context),
         ]),
       );
     } else if (chartType == ChartType.lineChartWithArea) {
@@ -138,11 +142,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 4234, context),
+            _richText(Strings.activated, 4204, context),
             FxBox.h12,
-            _richText(Strings.pending, 64521, context),
+            _richText(Strings.pending, 67591, context),
             FxBox.h12,
-            _richText(Strings.deactivated, 95521, context),
+            _richText(Strings.deactivated, 90581, context),
           ],
         ),
       );
@@ -151,11 +155,11 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 5677, context),
+            _richText(Strings.activated, 5697, context),
             FxBox.h12,
-            _richText(Strings.pending, 2541, context),
+            _richText(Strings.pending, 2331, context),
             FxBox.h12,
-            _richText(Strings.deactivated, 102030, context),
+            _richText(Strings.deactivated, 109330, context),
           ],
         ),
       );
@@ -164,9 +168,9 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 44242, context),
-            _richText(Strings.pending, 75221, context),
-            _richText(Strings.pending, 65221, context)
+            _richText(Strings.activated, 48942, context),
+            _richText(Strings.pending, 79201, context),
+            _richText(Strings.pending, 25331, context)
           ],
         ),
       );
@@ -175,9 +179,9 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 86541, context),
-            _richText(Strings.pending, 2541, context),
-            _richText(Strings.deactivated, 102030, context),
+            _richText(Strings.activated, 85531, context),
+            _richText(Strings.pending, 2251, context),
+            _richText(Strings.deactivated, 152620, context),
           ],
         ),
       );
@@ -186,9 +190,9 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 48484, context),
-            _richText(Strings.pending, 48652, context),
-            _richText(Strings.deactivated, 85412, context),
+            _richText(Strings.activated, 38464, context),
+            _richText(Strings.pending, 42652, context),
+            _richText(Strings.deactivated, 25452, context),
           ],
         ),
       );
@@ -197,9 +201,9 @@ getChartData(ChartType chartType, BuildContext context) {
         alignment: Alignment.center,
         child: Column(
           children: [
-            _richText(Strings.activated, 748949, context),
-            _richText(Strings.pending, 5181, context),
-            _richText(Strings.deactivated, 101025, context),
+            _richText(Strings.activated, 768699, context),
+            _richText(Strings.pending, 5561, context),
+            _richText(Strings.deactivated, 161620, context),
           ],
         ),
       );
@@ -207,62 +211,62 @@ getChartData(ChartType chartType, BuildContext context) {
   } else {
     if (chartType == ChartType.advancedSmileChart) {
       return Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-        _richText(Strings.activated, 45410, context),
-        _richText(Strings.pending, 4442, context),
-        _richText(Strings.deactivated, 3201, context),
+        _richText(Strings.activated, 40410, context),
+        _richText(Strings.pending, 4042, context),
+        _richText(Strings.deactivated, 3291, context),
       ]);
     } else if (chartType == ChartType.simpleLineChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 44242, context),
-          _richText(Strings.pending, 75221, context),
-          _richText(Strings.pending, 65221, context)
+          _richText(Strings.activated, 4204, context),
+          _richText(Strings.pending, 67591, context),
+          _richText(Strings.deactivated, 90581, context),
         ],
       );
     } else if (chartType == ChartType.lineChartWithArea) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 4234, context),
-          _richText(Strings.pending, 64521, context),
-          _richText(Strings.deactivated, 95521, context),
+          _richText(Strings.activated, 5697, context),
+          _richText(Strings.pending, 2331, context),
+          _richText(Strings.deactivated, 109330, context),
         ],
       );
     } else if (chartType == ChartType.simplePieChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 48484, context),
-          _richText(Strings.pending, 48652, context),
-          _richText(Strings.deactivated, 85412, context),
+          _richText(Strings.activated, 38464, context),
+          _richText(Strings.pending, 42652, context),
+          _richText(Strings.deactivated, 25452, context),
         ],
       );
     } else if (chartType == ChartType.animatingPieChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 748949, context),
-          _richText(Strings.pending, 5181, context),
-          _richText(Strings.deactivated, 101025, context),
+          _richText(Strings.activated, 768699, context),
+          _richText(Strings.pending, 5561, context),
+          _richText(Strings.deactivated, 161620, context),
         ],
       );
     } else if (chartType == ChartType.lineScatterChart) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 5677, context),
-          _richText(Strings.pending, 5542, context),
-          _richText(Strings.deactivated, 12422, context),
+          _richText(Strings.activated, 5697, context),
+          _richText(Strings.pending, 2331, context),
+          _richText(Strings.deactivated, 109330, context),
         ],
       );
     } else if (chartType == ChartType.overlapBars) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          _richText(Strings.activated, 86541, context),
-          _richText(Strings.pending, 2541, context),
-          _richText(Strings.deactivated, 102030, context),
+          _richText(Strings.activated, 85531, context),
+          _richText(Strings.pending, 2251, context),
+          _richText(Strings.deactivated, 152620, context),
         ],
       );
     }
@@ -279,13 +283,16 @@ Widget _richText(String type, int count, BuildContext context) {
           text: upperCase('$count\n'),
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 21,
+            fontSize: 22,
           ),
         ),
-        TextSpan(text: upperCase(type),style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 13,
-        ),),
+        TextSpan(
+          text: upperCase(type),
+          style: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
+        ),
       ],
     ),
   );

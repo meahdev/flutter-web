@@ -39,14 +39,14 @@ class BillingEmail extends StatelessWidget {
                           'Thanks for using',
                           style: TextStyle(
                             color: isDark ? Colors.white : Colors.black,
-                            fontSize: 22,
+                            fontSize: 23,
                           ),
                         ),
                         Text(
                           ' ${Strings.fdash}.',
                           style: TextStyle(
                             color: isDark ? Colors.white : Colors.black,
-                            fontSize: 25,
+                            fontSize: 26,
                             fontWeight: FontWeight.bold,
                           ),
                         ),

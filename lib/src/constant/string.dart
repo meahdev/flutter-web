@@ -4,12 +4,12 @@ class Strings {
   static const String view = 'View';
   static const String edit = 'Edit';
   static const String delete = 'Delete';
-  static const String fdash = 'F-Dash';
+  static const String fdash = 'Admin';
   static const String lightMode = 'Light Mode';
 
   static const String admin = 'Admin';
 
-  static const String footerText = '© 2022 F-Dash. Crafted with ❤️ by Sarvadhi';
+  static const String footerText = '© 2022 Admin. Crafted with ❤️ by Sarvadhi';
 
   // appbar
   static const String searchHint = 'Search...';
@@ -27,6 +27,7 @@ class Strings {
   // drawer menu heading
   static const String dashboard = 'Dashboard';
   static const String calendar = 'Calendar';
+  static const String map = 'Map';
   static const String uiElements = 'UI Elements';
   static const String forms = 'Forms';
   static const String charts = 'Charts';
@@ -102,12 +103,11 @@ class Strings {
   //top product sales
   static const String computer = 'Computer';
   static const String topProductSale = 'Top Product Sale';
-  static const String otherText = 'At solmen va esser necessi far uniform';
 
   //client review
   static const String clientReviews = 'Client Reviews';
   static const String clientReviewText =
-      '"Everyone realizes why a new common language would be desirable one could refuse to pay expensive translators it would be necessary."';
+      '"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s."';
 
   //status box
   static const String orderSuccessful = 'Order Successful';
@@ -119,7 +119,7 @@ class Strings {
 
   // Login
   static const String welcomeBack = 'Welcome Back !';
-  static const String loginHeaderText = 'Sign in to continue to F-Dash.';
+  static const String loginHeaderText = 'Sign in to continue to Admin.';
   static const String username = 'Username';
   static const String enterUsername = 'Enter username';
   static const String password = 'Password';
@@ -132,12 +132,12 @@ class Strings {
 
   // Register
   static const String freeRegister = 'Free Register';
-  static const String registerHeaderText = 'Get your free F-Dash account now.';
+  static const String registerHeaderText = 'Get your free Admin account now.';
   static const String emailText = 'Email';
   static const String enteremail = 'Enter email';
   static const String register = 'Register';
   static const String termsServiceText1 =
-      'By registering you agree to the F-Dash ';
+      'By registering you agree to the Admin ';
   static const String termsServiceText2 = 'Terms of Use';
   static const String alreayAccountExist = 'Already have an account ? ';
 
@@ -168,9 +168,9 @@ class Strings {
 
   // sales analystics
   static const String salesAnalytics = 'Sales Analytics';
-  static const String activated = 'Activated';
+  static const String activated = 'Active';
   static const String pending = 'Pending';
-  static const String deactivated = 'Deactivated';
+  static const String deactivated = 'Cancel';
   static const String lineChart = 'Line Chart';
   static const String areaChart = 'Area Chart';
   static const String donutChart = 'Donut Chart';

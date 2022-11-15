@@ -12,9 +12,11 @@ class ThemeClass {
       colorSchemeSeed: ColorConst.primary,
       appBarTheme: AppBarTheme(
         elevation: 0.0,
-        backgroundColor: isDarkTheme ? ColorConst.scaffoldDark : null,
+        backgroundColor:
+            isDarkTheme ? ColorConst.scaffoldDark : ColorConst.drawerBG,
       ),
-      scaffoldBackgroundColor: isDarkTheme ? ColorConst.scaffoldDark : null,
+      scaffoldBackgroundColor:
+          isDarkTheme ? ColorConst.scaffoldDark : ColorConst.drawerBG,
       cardTheme: CardTheme.of(context).copyWith(
         margin: EdgeInsets.zero,
         color: isDarkTheme ? ColorConst.cardDark : Colors.white,

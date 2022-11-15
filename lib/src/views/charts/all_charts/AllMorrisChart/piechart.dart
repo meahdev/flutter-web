@@ -1,6 +1,6 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
 
 class PieChartSample2 extends StatefulWidget {
   const PieChartSample2({Key? key}) : super(key: key);
@@ -19,8 +19,8 @@ class PieChart2State extends State {
         Expanded(
           child: PieChart(
             PieChartData(
-                pieTouchData: PieTouchData(touchCallback:
-                    (FlTouchEvent event, pieTouchResponse) {
+                pieTouchData: PieTouchData(
+                    touchCallback: (FlTouchEvent event, pieTouchResponse) {
                   setState(() {
                     if (!event.isInterestedForInteractions ||
                         pieTouchResponse == null ||
@@ -28,8 +28,8 @@ class PieChart2State extends State {
                       touchedIndex = -1;
                       return;
                     }
-                    touchedIndex = pieTouchResponse
-                        .touchedSection!.touchedSectionIndex;
+                    touchedIndex =
+                        pieTouchResponse.touchedSection!.touchedSectionIndex;
                   });
                 }),
                 borderData: FlBorderData(
@@ -40,7 +40,6 @@ class PieChart2State extends State {
                 sections: showingSections()),
           ),
         ),
-
       ],
     );
   }
@@ -48,8 +47,8 @@ class PieChart2State extends State {
   List<PieChartSectionData> showingSections() {
     return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
-      final fontSize = isTouched ? 25.0 : 16.0;
-      final radius = isTouched ? 60.0 : 50.0;
+      final fontSize = isTouched ? 26.0 : 17.0;
+      final radius = isTouched ? 61.0 : 51.0;
       switch (i) {
         case 0:
           return PieChartSectionData(
@@ -75,7 +74,7 @@ class PieChart2State extends State {
           );
         case 2:
           return PieChartSectionData(
-            color: const Color(0xff845bef),
+            color: ColorConst.primary,
             value: 25,
             title: '15%',
             radius: radius,

@@ -44,10 +44,10 @@ class _RadarChartSample1State extends State<RadarChartSample1> {
         radarBorderData: const BorderSide(color: Colors.transparent),
         titlePositionPercentageOffset: 0.2,
         titleTextStyle:
-        const TextStyle(color: titleColor, fontSize: 14),
+        const TextStyle(color: titleColor, fontSize: 15),
         tickCount: 1,
         ticksTextStyle:
-        const TextStyle(color: Colors.transparent, fontSize: 10),
+        const TextStyle(color: Colors.transparent, fontSize: 12),
         tickBorderData: const BorderSide(color: Colors.transparent),
         gridBorderData: const BorderSide(color: gridColor, width: 2),
       ),

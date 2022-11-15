@@ -18,7 +18,7 @@ class ConstantAuth {
           title: title,
           textColor:
               isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
-          fontSize: 14,
+          fontSize: 15,
           fontWeight: FontWeight.w700,
         ),
         GestureDetector(
@@ -31,7 +31,7 @@ class ConstantAuth {
           },
           child: CustomText(
             title: subTitle,
-            fontSize: 14,
+            fontSize: 15,
             textColor: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.w700,
           ),
@@ -43,7 +43,7 @@ class ConstantAuth {
   static Widget footerText() {
     return CustomText(
       title: Strings.footerText,
-      fontSize: 13.0,
+      fontSize: 14.0,
       fontWeight: FontWeight.w700,
       textColor: isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
     );
@@ -52,7 +52,7 @@ class ConstantAuth {
   static Widget labelView(String label) {
     return CustomText(
       title: label,
-      fontSize: 14,
+      fontSize: 15,
       fontWeight: FontWeight.w800,
       textColor: isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
     );
@@ -96,8 +96,8 @@ class ConstantAuth {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
-            Images.logosm,
-            height: 22,
+            Images.smLogo,
+            height: 25,
             width: 30.8,
           ),
         ],
@@ -125,14 +125,14 @@ class ConstantAuth {
           children: [
             CustomText(
               title: title,
-              fontSize: 18,
+              fontSize: 19,
               fontWeight: FontWeight.w700,
               textColor: Theme.of(context).colorScheme.onPrimary,
             ),
             FxBox.h6,
             CustomText(
               title: subTitle,
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.w700,
               textColor:
                   Theme.of(context).colorScheme.onPrimary.withOpacity(0.75),
@@ -156,7 +156,7 @@ class ConstantAuth {
           title: title,
           textColor:
               isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
-          fontSize: 14,
+          fontSize: 15,
           fontWeight: FontWeight.w700,
         ),
         GestureDetector(
@@ -169,7 +169,7 @@ class ConstantAuth {
           },
           child: CustomText(
             title: subTitle,
-            fontSize: 14,
+            fontSize: 15,
             textColor: Theme.of(context).colorScheme.primary,
             fontWeight: FontWeight.w700,
           ),
@@ -196,14 +196,14 @@ class ConstantAuth {
         SizedBox(
           width: 30,
           child: Image.asset(
-            Images.logosm,
+            Images.smLogo,
             fit: BoxFit.cover,
           ),
         ),
         FxBox.w4,
         CustomText(
           title: Strings.fdash,
-          fontSize: 24,
+          fontSize: 25,
           fontWeight: FontWeight.w600,
           textColor: color,
         ),

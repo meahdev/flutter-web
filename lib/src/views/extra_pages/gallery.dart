@@ -103,7 +103,7 @@ class _GalleryState extends State<Gallery> {
                                   style: const TextStyle(
                                     fontWeight: FontWeight.w600,
                                     color: ColorConst.white,
-                                    fontSize: 18,
+                                    fontSize: 19,
                                   ),
                                 ),
                               ),
@@ -122,7 +122,7 @@ class _GalleryState extends State<Gallery> {
                                       style: const TextStyle(
                                         color: ColorConst.white,
                                         fontWeight: FontWeight.w600,
-                                        fontSize: 15,
+                                        fontSize: 16,
                                       ),
                                     ),
                                   )

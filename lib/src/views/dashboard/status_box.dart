@@ -17,9 +17,11 @@ class _StatusBoxState extends State<StatusBox> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: ColorConst.primary.withOpacity(0.5),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(18.0),
       ),
+      elevation: 7,
       child: ConstrainedBox(
         constraints: BoxConstraints(
           minHeight: 250,
@@ -37,14 +39,14 @@ class _StatusBoxState extends State<StatusBox> {
               ),
               FxBox.h12,
               ConstText.lightText(
-                fontSize: 16,
+                fontSize: 17,
                 text: Strings.orderSuccessful,
                 color: ColorConst.primary,
                 fontWeight: FontWeight.bold,
               ),
               FxBox.h8,
               ConstText.lightText(
-                fontSize: 14,
+                fontSize: 15,
                 text: Strings.successText,
                 fontWeight: FontWeight.w500,
               ),

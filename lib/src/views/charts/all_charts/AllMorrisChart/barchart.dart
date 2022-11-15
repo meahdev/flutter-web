@@ -30,7 +30,6 @@ class BarChartSample2State extends State<BarChartSample2> {
     final barGroup5 = makeGroupData(4, 17, 6);
     final barGroup6 = makeGroupData(5, 19, 1.5);
     final barGroup7 = makeGroupData(6, 10, 1.5);
-    final barGroup8 = makeGroupData(7, 18, 17);
 
     final items = [
       barGroup1,
@@ -40,7 +39,6 @@ class BarChartSample2State extends State<BarChartSample2> {
       barGroup5,
       barGroup6,
       barGroup7,
-      barGroup8,
     ];
 
     rawBarGroups = items;
@@ -119,7 +117,7 @@ class BarChartSample2State extends State<BarChartSample2> {
     style = TextStyle(
       color: ColorConst.gridTextColor,
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 16,
     );
     String text;
     if (value == 0) {
@@ -143,13 +141,21 @@ class BarChartSample2State extends State<BarChartSample2> {
   }
 
   Widget bottomTitles(double value, TitleMeta meta) {
-    List<String> titles = ["", "2012", "", "2014", "", "2016", "", "2018"];
+    List<String> titles = [
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022"
+    ];
     Widget text = Text(
       titles[value.toInt()],
       style: TextStyle(
         color: ColorConst.gridTextColor,
         fontWeight: FontWeight.bold,
-        fontSize: 14,
+        fontSize: 15,
       ),
     );
 

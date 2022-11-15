@@ -47,7 +47,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
                 },
                 child: Container(
                   decoration: BoxDecoration(
-                    border: Border.all(),
+                    border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(4.0),
                   ),
                   padding: const EdgeInsets.all(20.0),
@@ -104,12 +104,14 @@ class _FileUploadFormState extends State<FileUploadForm> {
         const Icon(
           Icons.cloud_upload_sharp,
           size: 60,
+          color: Colors.grey,
         ),
         FxBox.h20,
         const Text(
           "Drop files here or click to upload.",
           textAlign: TextAlign.center,
-          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 21),
+          style: TextStyle(
+              fontWeight: FontWeight.w600, fontSize: 22, color: Colors.grey),
         ),
       ],
     );
@@ -217,7 +219,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
           child: Text(
             size,
             style: const TextStyle(
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w500,
               color: ColorConst.black,
             ),
@@ -236,7 +238,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
             name,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-              fontSize: 13,
+              fontSize: 14,
               color: ColorConst.black,
             ),
           ),

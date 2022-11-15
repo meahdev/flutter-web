@@ -31,7 +31,7 @@ class FxBadge extends StatelessWidget {
         text,
         style: textStyle ??
             TextStyle(
-              fontSize: 12,
+              fontSize: 13,
               color: isOutlined
                   ? color ?? Theme.of(context).colorScheme.primary
                   : Theme.of(context).colorScheme.onPrimary,

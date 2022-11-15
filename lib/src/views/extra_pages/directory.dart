@@ -114,7 +114,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                         maxLines: 2,
                         style: const TextStyle(
                           color: ColorConst.primary,
-                          fontSize: 18,
+                          fontSize: 19,
                           fontWeight: FontWeight.w800,
                         ),
                       ),
@@ -179,7 +179,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                     text: 'Read More',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Color(0XFF626ed4),
+                      color: ColorConst.primary,
                     ),
                     mouseCursor: SystemMouseCursors.click,
                   ),

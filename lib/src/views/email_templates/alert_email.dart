@@ -33,7 +33,7 @@ class AlertEmail extends StatelessWidget {
                     'Warning: You\'re approaching your limit. Please upgrade.',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16.0,
+                      fontSize: 17.0,
                       color: ColorConst.white,
                     ),
                   ),
@@ -62,7 +62,7 @@ class AlertEmail extends StatelessWidget {
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 13,
+                                  fontSize: 14,
                                 ),
                               ),
                             ),

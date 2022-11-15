@@ -4,10 +4,10 @@ class ColorConst {
   static const Color scaffoldDark = Color(0xff222736);
   static const Color cardDark = Color(0xff2a3142);
   static const Color drawerIcon = Color(0xFF8699AD);
-  static const Color primary = Color(0xFF626ed4);
+  static const Color primary = Color(0xFF1668C0);
   static const Color primaryDark = Color.fromARGB(255, 54, 64, 152);
   static const Color appbarLightBG = Color(0xFFE9E9EF);
-  static const Color drawerBG = Color(0xFF333547);
+  static const Color drawerBG = Color(0xFFE9F0F9);
   static const Color drawerTextColor = Color(0xFFA8C2D8);
   static const Color transparent = Color(0x00000000);
   static const Color black = Color(0xFF000000);
@@ -22,7 +22,7 @@ class ColorConst {
   static const Color backgroundColor = Color(0xFFccedeb);
   static const Color borderColor = Color(0xFFb3e4e0);
   static const Color textColor = Color(0XFF5B626B);
-  static const Color footerLight = Color(0xfff0edf9);
+  static const Color footerLight = Color(0xffE9EEF9);
   static const Color footerDark = Color(0xff2e3344);
 
   //form upload file
@@ -62,7 +62,7 @@ class ColorConst {
 
   //monthly earning
   static const Color chartBorderColor = Color(0xff6d6fb9);
-  static const Color chartForgoundColor = Color(0xffced2f1);
+  static const Color chartForgoundColor = Color(0xff8BB4DD);
 
   //chart Colors
   static Color get blueChartColor => const Color(0xff3c4bcf);

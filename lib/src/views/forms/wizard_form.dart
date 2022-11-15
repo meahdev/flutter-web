@@ -85,7 +85,7 @@ class _WizardFormState extends State<WizardForm> {
                 children: [
                   const Text(
                     "Jquery Steps Wizard",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
                   ),
                   FxBox.h24,
                   Responsive.isWeb(context)
@@ -245,7 +245,7 @@ class _WizardFormState extends State<WizardForm> {
               child: Text(
                 '$number.',
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: 17.0,
                   fontWeight: FontWeight.w500,
                   color: isSelected && !_isFinish
                       ? ColorConst.white

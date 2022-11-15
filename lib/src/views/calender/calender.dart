@@ -64,7 +64,7 @@ class _CalendarState extends State<Calendar> {
       {'eventName': 'Shoping', 'dropdownValue': 5}
     ],
     DateTime.parse('${creatRandomDate(currentmonth: true)} 00:00:00.000Z'): [
-      {'eventName': 'summit', 'dropdownValue': 1}
+      {'eventName': 'Leave', 'dropdownValue': 1}
     ],
     DateTime.parse('${creatRandomDate(currentmonth: true)} 00:00:00.000Z'): [
       {'eventName': 'lunch', 'dropdownValue': 3},
@@ -214,7 +214,7 @@ class _CalendarState extends State<Calendar> {
             FxBox.h24,
             const Text(
               'Drag and drop your event or click in the calendar',
-              style: TextStyle(fontSize: 14),
+              style: TextStyle(fontSize: 15),
             ),
             FxBox.h12,
             _addEventButtons(
@@ -237,7 +237,7 @@ class _CalendarState extends State<Calendar> {
             FxBox.h40,
             const Text(
               'Activity',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
             ),
             FxBox.h16,
             SizedBox(
@@ -264,24 +264,24 @@ class _CalendarState extends State<Calendar> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: const [
                           Text(
-                            'Andrei Coman magna sed porta finibus, risus posted a new article: Forget UX Rowland',
+                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.',
                             maxLines: 3,
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            'Zack Wetass, sed porta finibus, risus Chris Wallace Commented Developer Moreno',
+                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            'Zack Wetass, Chris combined Commented UX Murphy',
+                            'Lorem Ipsum is simply dummy text of the printing.',
                             style: TextStyle(
-                              fontSize: 14,
+                              fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -351,7 +351,7 @@ class _CalendarState extends State<Calendar> {
             label,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 14,
+              fontSize: 15,
             ),
           ),
         ),
@@ -380,7 +380,7 @@ class _CalendarState extends State<Calendar> {
                 label,
                 style: const TextStyle(
                   color: ColorConst.white,
-                  fontSize: 14,
+                  fontSize: 15,
                 ),
               )),
         ),
@@ -628,7 +628,7 @@ class _CalendarState extends State<Calendar> {
                                     .toUpperCase(),
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
+                                    fontSize: 17, fontWeight: FontWeight.w600),
                               ),
                             ),
                           ),
@@ -825,7 +825,7 @@ class _CalendarState extends State<Calendar> {
                         const Text(
                           'Event',
                           style: TextStyle(
-                            fontSize: 17,
+                            fontSize: 18,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -861,7 +861,7 @@ class _CalendarState extends State<Calendar> {
                               "Event Name",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                                fontSize: 15,
                               ),
                             ),
                             FxBox.h10,
@@ -883,7 +883,7 @@ class _CalendarState extends State<Calendar> {
                               },
                               decoration: InputDecoration(
                                   hintText: "Insert Event Name",
-                                  hintStyle: const TextStyle(fontSize: 15),
+                                  hintStyle: const TextStyle(fontSize: 16),
                                   isDense: true,
                                   contentPadding: const EdgeInsets.symmetric(
                                     horizontal: 15,
@@ -916,7 +916,7 @@ class _CalendarState extends State<Calendar> {
                               "Category",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 14,
+                                fontSize: 15,
                               ),
                             ),
                             FxBox.h10,

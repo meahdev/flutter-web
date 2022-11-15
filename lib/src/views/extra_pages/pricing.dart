@@ -101,7 +101,7 @@ class _PricingState extends State<Pricing> {
                               color: isDark
                                   ? ColorConst.darkFontColor
                                   : ColorConst.textColor,
-                              fontSize: 22,
+                              fontSize: 23,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -153,7 +153,7 @@ class _PricingState extends State<Pricing> {
                       return Text(
                         "$price/ ",
                         style: TextStyle(
-                          fontSize: 30,
+                          fontSize: 31,
                           color: isDark
                               ? ColorConst.darkFontColor
                               : ColorConst.textColor,
@@ -189,7 +189,7 @@ class _PricingState extends State<Pricing> {
     return ListTile(
       title: Text(
         "$text",
-        style: const TextStyle(fontSize: 15),
+        style: const TextStyle(fontSize: 16),
       ),
       minLeadingWidth: 0,
       contentPadding: EdgeInsets.zero,

@@ -39,7 +39,7 @@ class _DatatableState extends State<Datatable> {
                   const Text(
                     'Default Datatable',
                     style: TextStyle(
-                      fontSize: 17,
+                      fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -235,7 +235,7 @@ class _DatatableState extends State<Datatable> {
     return Text(
       '$text',
       softWrap: true,
-      style: TextStyle(fontSize: 16, fontWeight: fontwidget),
+      style: TextStyle(fontSize: 17, fontWeight: fontwidget),
     );
   }
 

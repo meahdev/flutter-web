@@ -10,14 +10,6 @@ class LineChartWithArea extends StatefulWidget {
 }
 
 class _LineChartWithAreaState extends State<LineChartWithArea> {
-  List<Color> gradientColors = [
-    const Color(0xff23b6e6),
-    const Color(0xff02d39a),
-    const Color(0xffaab1e6),
-  ];
-
-  bool showAvg = false;
-
   @override
   Widget build(BuildContext context) {
     return LineChart(
@@ -95,13 +87,14 @@ class _LineChartWithAreaState extends State<LineChartWithArea> {
             FlSpot(11, 4),
           ],
           isCurved: true,
-          color: const Color(0xff6d6fb9),
+          color: ColorConst.primary,
           barWidth: 2,
           isStrokeCapRound: true,
           dotData: FlDotData(
             show: true,
           ),
-          belowBarData: BarAreaData(show: true, color: const Color(0xffced2f1)),
+          belowBarData:
+              BarAreaData(show: true, color: ColorConst.chartForgoundColor),
         ),
       ],
     );
@@ -112,7 +105,7 @@ Widget leftTitles(double value, TitleMeta meta) {
   const style = TextStyle(
     color: Colors.grey,
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 15,
   );
   String text;
   if (value == 0) {

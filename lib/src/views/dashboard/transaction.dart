@@ -18,6 +18,11 @@ class _TransactionState extends State<Transaction> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: ColorConst.primary.withOpacity(0.5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      elevation: 7,
       child: Container(
         padding: const EdgeInsets.all(20),
         child: Column(
@@ -66,10 +71,10 @@ class _TransactionState extends State<Transaction> {
                       DataRow(
                         onSelectChanged: (value) {},
                         cells: [
-                          DataCell(_tableHeader('#14256')),
-                          DataCell(_tableRowImage('Philip Smead')),
-                          DataCell(_tableHeader('15/1/2018')),
-                          DataCell(_tableHeader('\$94')),
+                          DataCell(_tableHeader('#1')),
+                          DataCell(_tableRowImage('Jane Deo')),
+                          DataCell(_tableHeader('15/11/2022')),
+                          DataCell(_tableHeader('\$90')),
                           DataCell(_statusBox(ColorConst.success, 'Delivered')),
                           DataCell(_editButton()),
                         ],
@@ -77,10 +82,10 @@ class _TransactionState extends State<Transaction> {
                       DataRow(
                         onSelectChanged: (value) {},
                         cells: [
-                          DataCell(_tableHeader('#14257')),
-                          DataCell(_tableRowImage('Brent Shipley')),
-                          DataCell(_tableHeader('16/1/2019')),
-                          DataCell(_tableHeader('\$112')),
+                          DataCell(_tableHeader('#2')),
+                          DataCell(_tableRowImage('Joe Blow')),
+                          DataCell(_tableHeader('16/11/2022')),
+                          DataCell(_tableHeader('\$127')),
                           DataCell(
                               _statusBox(ColorConst.warningDark, 'Pending')),
                           DataCell(_editButton()),
@@ -89,10 +94,10 @@ class _TransactionState extends State<Transaction> {
                       DataRow(
                         onSelectChanged: (value) {},
                         cells: [
-                          DataCell(_tableHeader('#14258')),
-                          DataCell(_tableRowImage('Robert Sitton')),
-                          DataCell(_tableHeader('17/1/2019')),
-                          DataCell(_tableHeader('\$116')),
+                          DataCell(_tableHeader('#3')),
+                          DataCell(_tableRowImage('Jhon Wick')),
+                          DataCell(_tableHeader('3/11/2022')),
+                          DataCell(_tableHeader('\$107')),
                           DataCell(_statusBox(ColorConst.success, 'Delivered')),
                           DataCell(_editButton()),
                         ],
@@ -100,9 +105,9 @@ class _TransactionState extends State<Transaction> {
                       DataRow(
                         onSelectChanged: (value) {},
                         cells: [
-                          DataCell(_tableHeader('#14259')),
-                          DataCell(_tableRowImage('Alberto Jackson')),
-                          DataCell(_tableHeader('18/1/2019')),
+                          DataCell(_tableHeader('#4')),
+                          DataCell(_tableRowImage('Joe Wick')),
+                          DataCell(_tableHeader('18/11/2022')),
                           DataCell(_tableHeader('\$109')),
                           DataCell(_statusBox(ColorConst.error, 'Cancel')),
                           DataCell(_editButton()),
@@ -112,8 +117,8 @@ class _TransactionState extends State<Transaction> {
                         onSelectChanged: (value) {},
                         cells: [
                           DataCell(_tableHeader('#14260')),
-                          DataCell(_tableRowImage('David Sanchez')),
-                          DataCell(_tableHeader('19/1/2019')),
+                          DataCell(_tableRowImage('Jane Blow')),
+                          DataCell(_tableHeader('12/11/2022')),
                           DataCell(_tableHeader('\$120')),
                           DataCell(_statusBox(ColorConst.success, 'Delivered')),
                           DataCell(_editButton()),
@@ -150,7 +155,7 @@ class _TransactionState extends State<Transaction> {
           child: Text(
             text,
             style: const TextStyle(
-              fontSize: 12,
+              fontSize: 13,
               fontWeight: FontWeight.w700,
             ),
           ),

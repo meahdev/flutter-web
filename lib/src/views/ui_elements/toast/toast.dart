@@ -66,7 +66,7 @@ class _ToastState extends State<Toast> {
               Text(
                 background ? 'Light background toast' : 'Simple toast',
                 style: const TextStyle(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -138,7 +138,7 @@ class _ToastState extends State<Toast> {
               const Text(
                 'Icon toast',
                 style: TextStyle(
-                  fontSize: 16,
+                  fontSize: 17,
                   fontWeight: FontWeight.w600,
                 ),
               ),

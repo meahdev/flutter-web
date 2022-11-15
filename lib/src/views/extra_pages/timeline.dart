@@ -174,7 +174,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
             CustomText(
               title: title,
               textAlign: isLeftAlign ? TextAlign.left : TextAlign.right,
-              fontSize: 16,
+              fontSize: 17,
               fontWeight: FontWeight.w700,
               textColor:
                   isDark ? ColorConst.darkFontColor : ColorConst.lightFontColor,
@@ -183,7 +183,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
             CustomText(
               title: subtitle,
               textAlign: isLeftAlign ? TextAlign.left : TextAlign.right,
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.w600,
               textColor:
                   isDark ? ColorConst.darkFontColor : ColorConst.lightFontColor,

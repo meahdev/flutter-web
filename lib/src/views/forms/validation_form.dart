@@ -135,7 +135,7 @@ class _ValidationFormState extends State<ValidationForm> {
   Widget _formHeadingCommon(String text) {
     return Text(
       text,
-      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+      style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
     );
   }
 
@@ -144,7 +144,7 @@ class _ValidationFormState extends State<ValidationForm> {
       padding: const EdgeInsets.only(left: 24.0, top: 8.0),
       child: Text(
         'You must agree before submitting.',
-        style: TextStyle(fontSize: 12, color: ColorConst.error),
+        style: TextStyle(fontSize: 13, color: ColorConst.error),
       ),
     );
   }
@@ -267,7 +267,7 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      hintText: 'Mark',
+      hintText: 'Jone',
     );
   }
 
@@ -280,7 +280,7 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      hintText: 'Otto',
+      hintText: 'Doe',
     );
   }
 

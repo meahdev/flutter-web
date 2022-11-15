@@ -49,6 +49,11 @@ class _ChatscreenState extends State<Chatscreen> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: ColorConst.primary.withOpacity(0.5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      elevation: 7,
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 380),
         child: Container(
@@ -191,7 +196,7 @@ class _ChatscreenState extends State<Chatscreen> {
                 decoration: InputDecoration(
                   hintText: Strings.enterYourText,
                   hintStyle: const TextStyle(
-                    fontSize: 14,
+                    fontSize: 15,
                   ),
                   contentPadding:
                       const EdgeInsets.symmetric(horizontal: 15, vertical: 6),

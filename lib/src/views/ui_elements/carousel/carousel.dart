@@ -116,7 +116,7 @@ class _CarouselState extends State<Carousel> {
     return Text(
       title,
       style: const TextStyle(
-        fontSize: 16,
+        fontSize: 17,
         fontWeight: FontWeight.w600,
       ),
     );
@@ -273,7 +273,7 @@ class _CarouselState extends State<Carousel> {
                       _captionList[index],
                       style: const TextStyle(
                         color: ColorConst.white,
-                        fontSize: 18,
+                        fontSize: 19,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

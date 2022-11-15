@@ -19,6 +19,7 @@ import 'package:admin_dashboard/src/views/forms/mask_form.dart';
 import 'package:admin_dashboard/src/views/forms/repeater_form.dart';
 import 'package:admin_dashboard/src/views/forms/validation_form.dart';
 import 'package:admin_dashboard/src/views/forms/wizard_form.dart';
+import 'package:admin_dashboard/src/views/map/map.dart';
 import 'package:admin_dashboard/src/views/tables/basic_table.dart';
 import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
@@ -102,6 +103,8 @@ int getRouteIndex(String route) {
     return 32;
   } else if (route == Strings.videoPlayer) {
     return 33;
+  } else if (route == Strings.map) {
+    return 34;
   } else {
     return 0;
   }
@@ -174,6 +177,8 @@ Widget getRouteWidget(int index) {
     return const MaskForm();
   } else if (index == 33) {
     return const VideoScreen();
+  } else if (index == 34) {
+    return const GoogleMap();
   } else {
     return const Dashboard();
   }

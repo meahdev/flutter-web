@@ -17,7 +17,7 @@ class ResponsiveTable extends StatelessWidget {
             const Text(
               Strings.responsiveTable,
               style: TextStyle(
-                fontSize: 17,
+                fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -81,7 +81,7 @@ class ResponsiveTable extends StatelessWidget {
     return Text(
       '$text',
       softWrap: true,
-      style: TextStyle(fontSize: 16, fontWeight: fontwidget),
+      style: TextStyle(fontSize: 17, fontWeight: fontwidget),
     );
   }
 }

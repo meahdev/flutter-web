@@ -44,7 +44,7 @@ class ChartJsBarChart extends StatelessWidget {
     const style = TextStyle(
       color: Color(0xff7589a2),
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 15,
     );
     String text;
     switch (value.toInt()) {
@@ -112,7 +112,7 @@ class ChartJsBarChart extends StatelessWidget {
     const style = TextStyle(
       color: Color(0xff7589a2),
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 15,
     );
     String text;
     if (value == 0) {

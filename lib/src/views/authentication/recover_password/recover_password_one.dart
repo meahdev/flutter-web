@@ -20,32 +20,34 @@ class _RecoverPasswordOneState extends State<RecoverPasswordOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 40, right: 40),
-            child: Stack(
-              children: [
-                Column(
-                  children: [
-                    const SizedBox(height: 30),
-                    _headerView(Strings.resetPassword),
-                    _bottomView(),
-                  ],
-                ),
-                ConstantAuth.greenCircle(),
-                ConstantAuth.whiteCircle(),
-                ConstantAuth.logoView(),
-              ],
+      body: SelectionArea(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 40, right: 40),
+              child: Stack(
+                children: [
+                  Column(
+                    children: [
+                      const SizedBox(height: 30),
+                      _headerView(Strings.resetPassword),
+                      _bottomView(),
+                    ],
+                  ),
+                  ConstantAuth.greenCircle(),
+                  ConstantAuth.whiteCircle(),
+                  ConstantAuth.logoView(),
+                ],
+              ),
             ),
-          ),
-          FxBox.h48,
-          ConstantAuth.login(
-              context, false, Strings.rememberIt, Strings.signInHere),
-          FxBox.h16,
-          ConstantAuth.footerText(),
-        ],
+            FxBox.h48,
+            ConstantAuth.login(
+                context, false, Strings.rememberIt, Strings.signInHere),
+            FxBox.h16,
+            ConstantAuth.footerText(),
+          ],
+        ),
       ),
     );
   }
@@ -69,7 +71,7 @@ class _RecoverPasswordOneState extends State<RecoverPasswordOne> {
           children: [
             CustomText(
               title: title,
-              fontSize: 18,
+              fontSize: 19,
               fontWeight: FontWeight.w700,
               textColor: ColorConst.white,
             ),
@@ -134,7 +136,7 @@ class _RecoverPasswordOneState extends State<RecoverPasswordOne> {
       ),
       child: CustomText(
         title: Strings.emailInstructions,
-        fontSize: 14,
+        fontSize: 15,
         fontWeight: FontWeight.w700,
         textColor: ColorConst.darkGreen2,
       ),

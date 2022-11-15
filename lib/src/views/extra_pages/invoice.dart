@@ -29,15 +29,15 @@ class _InvoiceState extends State<Invoice> {
                 Row(
                   children: [
                     Image.asset(
-                      Images.logosm,
-                      height: 22,
+                      Images.smLogo,
+                      height: 25,
                       width: 30.8,
                     ),
                     const Spacer(),
                     const Text(
                       'Order # 12345',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 17,
                         fontWeight: FontWeight.w500,
                       ),
                     )
@@ -57,7 +57,7 @@ class _InvoiceState extends State<Invoice> {
                           "Billed To:",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            fontSize: 15,
+                            fontSize: 16,
                           ),
                         ),
                         const Text('John Smith'),
@@ -68,7 +68,7 @@ class _InvoiceState extends State<Invoice> {
                         const Text(
                           "Payment Method:",
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -86,7 +86,7 @@ class _InvoiceState extends State<Invoice> {
                             "Shipped To:",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 15,
+                              fontSize: 16,
                             ),
                           ),
                           const Text('Kenny Rigdon'),
@@ -97,7 +97,7 @@ class _InvoiceState extends State<Invoice> {
                           const Text(
                             "Order Date:",
                             style: TextStyle(
-                              fontSize: 15,
+                              fontSize: 16,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -111,7 +111,7 @@ class _InvoiceState extends State<Invoice> {
                 const Text(
                   'Order summary',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 17,
                     fontWeight: FontWeight.w800,
                   ),
                 ),
@@ -126,7 +126,7 @@ class _InvoiceState extends State<Invoice> {
                         horizontalMargin: 0,
                         columnSpacing: 8.0,
                         headingTextStyle: TextStyle(
-                          fontSize: 15,
+                          fontSize: 16,
                           color: isDark
                               ? ColorConst.darkFontColor
                               : ColorConst.textColor,

@@ -15,10 +15,8 @@ class _LineScatterChartState extends State {
   final maxX = 50.0;
   final maxY = 50.0;
   final radius = 4.0;
-  Color blueColor = ColorConst.chartColorBlue;
+  Color blueColor = ColorConst.primary;
   Color yellowColor = ColorConst.chartColorYellow;
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -76,18 +74,18 @@ class _LineScatterChartState extends State {
     const yellowColorCount = 57;
     const blackColorCount = 20;
     const greenColor = 35;
-    return List.generate(blueColorCount + yellowColorCount + blackColorCount + greenColor, (i) {
+    return List.generate(
+        blueColorCount + yellowColorCount + blackColorCount + greenColor, (i) {
       Color color;
       if (i < blueColorCount) {
         color = blueColor;
-      } else if(i < blueColorCount + blackColorCount)
-        {
-          color = Theme.of(context).colorScheme.brightness == Brightness.dark ? Colors.white : Colors.black;
-        }else if(i < blueColorCount + blackColorCount + greenColor)
-      {
+      } else if (i < blueColorCount + blackColorCount) {
+        color = Theme.of(context).colorScheme.brightness == Brightness.dark
+            ? Colors.white
+            : Colors.black;
+      } else if (i < blueColorCount + blackColorCount + greenColor) {
         color = ColorConst.chartColorGreen;
-      }
-      else {
+      } else {
         color = yellowColor;
       }
       return ScatterSpot(
@@ -104,7 +102,7 @@ Widget leftTitles(double value, TitleMeta meta) {
   const style = TextStyle(
     color: Color(0xff7589a2),
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 15,
   );
   String text;
   if (value == 0) {
@@ -134,7 +132,7 @@ Widget leftTitles(double value, TitleMeta meta) {
   }
   return SideTitleWidget(
     axisSide: meta.axisSide,
-    space: 10,
+    space: 0,
     child: Text(text, style: style),
   );
 }
@@ -143,7 +141,7 @@ Widget getTitles(double value, TitleMeta meta) {
   const style = TextStyle(
     color: Color(0xff7589a2),
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 15,
   );
   String text;
   switch (value.toString()) {

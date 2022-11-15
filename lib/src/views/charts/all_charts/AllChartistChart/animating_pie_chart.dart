@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
@@ -35,11 +36,12 @@ class PieChart2State extends State {
         case 0:
           return PieChartSectionData(
             showTitle: true,
-            color: const Color(0xff616fd4),
+            color: ColorConst.primary,
             value: 4,
             title: '40%',
             radius: radius,
-            titleStyle: const TextStyle(fontWeight: FontWeight.bold, color: Color(0xff616fd4)),
+            titleStyle: const TextStyle(
+                fontWeight: FontWeight.bold, color: ColorConst.primary),
           );
         case 1:
           return PieChartSectionData(

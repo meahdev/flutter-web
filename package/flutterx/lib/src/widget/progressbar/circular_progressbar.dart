@@ -73,7 +73,7 @@ class _FxCircularProgressState extends State<FxCircularProgress>
               text:
                   '${((widget.percentage - difference) + (difference * controller.value)).round()}%',
               style: widget.textStyle ??
-                  TextStyle(color: FxColor.dark, fontSize: 12),
+                  TextStyle(color: FxColor.dark, fontSize: 13),
             );
             return Stack(
               fit: StackFit.expand,

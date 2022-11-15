@@ -10,7 +10,7 @@ class OverlapBar extends StatefulWidget {
 }
 
 class OverlapBarState extends State<OverlapBar> {
-  final Color leftBarColor = const Color(0xff3b4cce);
+  final Color leftBarColor = ColorConst.primary;
   final Color rightBarColor = const Color(0xff3da397);
   final double width = 12;
 
@@ -119,7 +119,7 @@ class OverlapBarState extends State<OverlapBar> {
     const style = TextStyle(
       color: Color(0xff7589a2),
       fontWeight: FontWeight.bold,
-      fontSize: 14,
+      fontSize: 15,
     );
     String text;
     if (value == 0) {
@@ -168,7 +168,7 @@ class OverlapBarState extends State<OverlapBar> {
       style: const TextStyle(
         color: Color(0xff7589a2),
         fontWeight: FontWeight.bold,
-        fontSize: 14,
+        fontSize: 15,
       ),
     );
 

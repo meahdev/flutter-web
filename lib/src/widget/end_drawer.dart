@@ -33,7 +33,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
                 const Text(
                   Strings.settings,
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 18,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -52,7 +52,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
             child: Text(
               Strings.chooseLayouts,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 15,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -113,7 +113,7 @@ class _SettingDrawerState extends State<SettingDrawer> {
                     const Text(
                       Strings.darkMode,
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 15,
                         fontWeight: FontWeight.w500,
                       ),
                     )

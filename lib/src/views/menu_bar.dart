@@ -32,6 +32,7 @@ class _MenuBarState extends State<MenuBar> {
   Map<String, String> mainData = {
     Strings.dashboard: IconlyBroken.home,
     Strings.calendar: IconlyBroken.calendar,
+    Strings.map: IconlyBroken.calendar,
   };
 
   Map<String, String> componentData = {
@@ -163,7 +164,8 @@ class _MenuBarState extends State<MenuBar> {
     RepeaterForm(),
     WizardForm(),
     MaskForm(),
-    VideoScreen()
+    VideoScreen(),
+    GoogleMap()
   ];
 
   @override
@@ -179,66 +181,68 @@ class _MenuBarState extends State<MenuBar> {
             child: SettingDrawer(scaffoldKey: _scaffoldKey),
           ),
           appBar: _appBar(),
-          body: Scaffold(
-            key: _scaffoldDrawerKey,
-            drawerScrimColor: ColorConst.transparent,
-            drawer: _sidebar(tabsRouter),
-            body: Row(
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Responsive.isWeb(context)
-                    ? _sidebar(tabsRouter)
-                    : const SizedBox.shrink(),
-                Expanded(
-                  child: CustomScrollView(
-                    controller: _scrollController,
-                    slivers: [
-                      SliverList(
-                        delegate: SliverChildListDelegate(
-                          [
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 24.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  FxBox.h20,
-                                  Text(
-                                    upperCase(tabsRouter.currentPath),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodyLarge!
-                                        .copyWith(
-                                            fontWeight: FontWeight.bold),
-                                  ),
-                                  FxBox.h8,
-                                  _routesDeatils(tabsRouter),
-                                  FxBox.h20,
-                                  getRouteWidget(tabsRouter.activeIndex),
-                                  FxBox.h20,
-                                ],
+          body: SelectionArea(
+            child: Scaffold(
+              key: _scaffoldDrawerKey,
+              drawerScrimColor: ColorConst.transparent,
+              drawer: _sidebar(tabsRouter),
+              body: Row(
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Responsive.isWeb(context)
+                      ? _sidebar(tabsRouter)
+                      : const SizedBox.shrink(),
+                  Expanded(
+                    child: CustomScrollView(
+                      controller: _scrollController,
+                      slivers: [
+                        SliverList(
+                          delegate: SliverChildListDelegate(
+                            [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    FxBox.h20,
+                                    Text(
+                                      upperCase(tabsRouter.currentPath),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold),
+                                    ),
+                                    FxBox.h8,
+                                    _routesDeatils(tabsRouter),
+                                    FxBox.h20,
+                                    getRouteWidget(tabsRouter.activeIndex),
+                                    FxBox.h20,
+                                  ],
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                      SliverFillRemaining(
-                        hasScrollBody: false,
-                        fillOverscroll: true,
-                        child: Column(
-                          children: <Widget>[
-                            const Expanded(
-                              child: SizedBox.shrink(),
-                            ),
-                            _footer(),
-                          ],
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          fillOverscroll: true,
+                          child: Column(
+                            children: <Widget>[
+                              const Expanded(
+                                child: SizedBox.shrink(),
+                              ),
+                              _footer(),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
@@ -262,20 +266,19 @@ class _MenuBarState extends State<MenuBar> {
                     width: 240,
                     padding: const EdgeInsets.symmetric(horizontal: 61),
                     height: double.infinity,
-                    color: ColorConst.drawerBG,
-                    child:
-                        Image.asset(Images.logo, height: 18.0, width: 115.55),
+                    color:
+                        isDark ? ColorConst.transparent : ColorConst.drawerBG,
+                    child: Image.asset(
+                        isDark ? Images.lgDarkLogo : Images.lgLightLogo),
                   );
                 }
                 return Container(
                   width: 70,
-                  padding: const EdgeInsets.all(18),
                   height: double.infinity,
-                  color: ColorConst.drawerBG,
+                  color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
                   child: Image.asset(
-                    Images.logosm,
-                    height: 22,
-                    width: 30.8,
+                    Images.smLogo,
+                    fit: BoxFit.contain,
                   ),
                 );
               },
@@ -326,7 +329,7 @@ class _MenuBarState extends State<MenuBar> {
                       filled: true,
                       contentPadding: const EdgeInsets.fromLTRB(12, 10, 0, 4),
                       hintText: Strings.searchHint,
-                      hintStyle: const TextStyle(fontSize: 14),
+                      hintStyle: const TextStyle(fontSize: 15),
                       suffixIcon: const Padding(
                         padding: EdgeInsets.all(8),
                         child: SvgIcon(icon: IconlyBroken.search),
@@ -401,7 +404,7 @@ class _MenuBarState extends State<MenuBar> {
                       child: Text(
                         '${Strings.notifications} (258)',
                         style: TextStyle(
-                          fontSize: 16,
+                          fontSize: 17,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -447,7 +450,7 @@ class _MenuBarState extends State<MenuBar> {
                         child: Text(
                           Strings.viewAll,
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 17,
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).colorScheme.primary,
                           ),
@@ -488,7 +491,7 @@ class _MenuBarState extends State<MenuBar> {
             child: Text(
               e,
               style: const TextStyle(
-                fontSize: 14,
+                fontSize: 15,
                 fontWeight: FontWeight.bold,
               ),
               overflow: TextOverflow.ellipsis,
@@ -504,7 +507,7 @@ class _MenuBarState extends State<MenuBar> {
           child: Text(
             Strings.logout,
             style: TextStyle(
-              fontSize: 14,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
             overflow: TextOverflow.ellipsis,
@@ -533,7 +536,7 @@ class _MenuBarState extends State<MenuBar> {
   Widget _sidebar(TabsRouter tabsRouter) => Container(
         height: MediaQuery.of(context).size.height,
         width: 240,
-        color: ColorConst.drawerBG,
+        color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
         child: SingleChildScrollView(
           controller: ScrollController(),
           child: Column(
@@ -573,9 +576,9 @@ class _MenuBarState extends State<MenuBar> {
       alignment: Alignment.centerLeft,
       child: Text(
         title.toUpperCase(),
-        style: const TextStyle(
-          color: ColorConst.drawerTextColor,
-          fontSize: 10,
+        style: TextStyle(
+          color: isDark ? ColorConst.white : ColorConst.black,
+          fontSize: 11,
         ),
       ),
     );
@@ -594,8 +597,13 @@ class _MenuBarState extends State<MenuBar> {
       itemCount: items.length,
       itemBuilder: (context, index) => FxHover(
         builder: (isHover) {
-          Color color =
-              isHover ? ColorConst.drawerHover : ColorConst.drawerIcon;
+          Color color = isHover
+              ? isDark
+                  ? ColorConst.chartForgoundColor
+                  : ColorConst.primary
+              : isDark
+                  ? ColorConst.white
+                  : ColorConst.black;
           if (isExpanded) {
             return FxExpansionTile(
               leading: SvgIcon(
@@ -603,7 +611,9 @@ class _MenuBarState extends State<MenuBar> {
                 size: 16,
                 color:
                     children[index].contains(upperCase(tabsRouter.currentPath))
-                        ? ColorConst.drawerHover
+                        ? isDark
+                            ? ColorConst.chartForgoundColor
+                            : ColorConst.primary
                         : color,
               ),
               title: Text(
@@ -611,16 +621,20 @@ class _MenuBarState extends State<MenuBar> {
                 style: TextStyle(
                     color: children[index]
                             .contains(upperCase(tabsRouter.currentPath))
-                        ? ColorConst.drawerHover
+                        ? isDark
+                            ? ColorConst.chartForgoundColor
+                            : ColorConst.primary
                         : color,
-                    fontSize: 14.7),
+                    fontSize: 15.7),
               ),
               trailing: SvgIcon(
                 icon: IconlyBroken.arrowDown,
                 size: 16,
                 color:
                     children[index].contains(upperCase(tabsRouter.currentPath))
-                        ? ColorConst.drawerHover
+                        ? isDark
+                            ? ColorConst.chartForgoundColor
+                            : ColorConst.primary
                         : color,
               ),
               children: [_subMenuList(children[index], tabsRouter)],
@@ -632,7 +646,9 @@ class _MenuBarState extends State<MenuBar> {
                 size: 16,
                 color: items.keys.elementAt(index) ==
                         upperCase(tabsRouter.currentPath)
-                    ? ColorConst.drawerHover
+                    ? isDark
+                        ? ColorConst.chartForgoundColor
+                        : ColorConst.primary
                     : color,
               ),
               title: Text(
@@ -640,9 +656,11 @@ class _MenuBarState extends State<MenuBar> {
                 style: TextStyle(
                   color: items.keys.elementAt(index) ==
                           upperCase(tabsRouter.currentPath)
-                      ? ColorConst.drawerHover
+                      ? isDark
+                          ? ColorConst.chartForgoundColor
+                          : ColorConst.primary
                       : color,
-                  fontSize: 14.7,
+                  fontSize: 15.7,
                 ),
               ),
               mouseCursor: SystemMouseCursors.click,
@@ -668,10 +686,16 @@ class _MenuBarState extends State<MenuBar> {
       itemBuilder: (context, index) => FxHover(
         builder: (isHover) {
           Color color = isHover
-              ? ColorConst.drawerHover
+              ? isDark
+                  ? ColorConst.chartForgoundColor
+                  : ColorConst.primary
               : upperCase(tabsRouter.currentPath) == items[index]
-                  ? ColorConst.drawerHover
-                  : ColorConst.drawerIcon;
+                  ? isDark
+                      ? ColorConst.chartForgoundColor
+                      : ColorConst.primary
+                  : isDark
+                      ? ColorConst.white
+                      : ColorConst.black;
           return ListTile(
             dense: true,
             visualDensity: const VisualDensity(vertical: -3),
@@ -679,7 +703,7 @@ class _MenuBarState extends State<MenuBar> {
             contentPadding: const EdgeInsets.only(left: 52.0),
             title: Text(
               items[index],
-              style: TextStyle(color: color, fontSize: 14),
+              style: TextStyle(color: color, fontSize: 15),
             ),
             onTap: () {
               if (items[index] == 'Login 1') {

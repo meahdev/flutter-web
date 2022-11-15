@@ -33,7 +33,7 @@ class _ElementsFormState extends State<ElementsForm> {
     Strings.telephone,
   ];
   final List<String> _hintList = [
-    'Artisanal kale',
+    'Jone Doe',
     'How do I shoot web',
     'flutter@example.com',
     'https://flutter.com',
@@ -73,7 +73,7 @@ class _ElementsFormState extends State<ElementsForm> {
             children: [
               const Text(
                 'Textual inputs',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
               ),
               FxBox.h24,
               Column(

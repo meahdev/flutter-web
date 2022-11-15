@@ -162,7 +162,7 @@ class _LoadersState extends State<Loaders> {
                         ? ColorConst.darkFontColor
                         : ColorConst.lightFontColor,
                     fontWeight: FontWeight.w600,
-                    fontSize: 16,
+                    fontSize: 17,
                   ),
                 ),
                 FxBox.h32,

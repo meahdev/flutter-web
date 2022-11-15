@@ -16,43 +16,43 @@ class _ListitemState extends State<Listitem> {
   final List<Map<String, dynamic>> _listItem = [
     {
       'id': 0,
-      'producTitle': 'ORDERS',
-      'value': '1,243',
+      'producTitle': 'Total Inventory',
+      'value': '3,930',
       'boxIcon': Icons.note_add,
       'up_down_Icon': Icons.arrow_upward,
       'addTitle': 'Since last month',
       'ribbonColor': ColorConst.success,
-      'ribbonValue': '+12%',
+      'ribbonValue': '+38%',
     },
     {
       'id': 1,
-      'producTitle': 'REVENUE',
-      'value': '52,123',
+      'producTitle': 'Total Active',
+      'value': '1,268',
       'boxIcon': Icons.note_alt_sharp,
-      'up_down_Icon': Icons.arrow_downward,
-      'addTitle': 'Since last month',
-      'ribbonColor': ColorConst.error,
-      'ribbonValue': '-28%',
-    },
-    {
-      'id': 2,
-      'producTitle': 'AVERAGE PRICE',
-      'value': '15.6',
-      'boxIcon': Icons.pending_actions_outlined,
       'up_down_Icon': Icons.arrow_upward,
       'addTitle': 'Since last month',
       'ribbonColor': ColorConst.infoDark,
-      'ribbonValue': '00%',
+      'ribbonValue': '+9%',
+    },
+    {
+      'id': 2,
+      'producTitle': 'Total Cancel',
+      'value': '170',
+      'boxIcon': Icons.pending_actions_outlined,
+      'up_down_Icon': Icons.arrow_downward,
+      'addTitle': 'Since last month',
+      'ribbonColor': ColorConst.error,
+      'ribbonValue': '-10%',
     },
     {
       'id': 3,
-      'producTitle': 'PRODUCT SOLD',
-      'value': '2456',
+      'producTitle': 'Total Sales',
+      'value': '28,060',
       'boxIcon': Icons.shopping_bag_rounded,
       'up_down_Icon': Icons.arrow_upward,
       'addTitle': 'Since last month',
       'ribbonColor': ColorConst.warningDark,
-      'ribbonValue': '+84%',
+      'ribbonValue': '+79%',
     },
   ];
   @override
@@ -115,7 +115,14 @@ class _ListitemState extends State<Listitem> {
     return Container(
       decoration: BoxDecoration(
         color: ColorConst.primary,
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(18.0),
+        boxShadow: [
+          BoxShadow(
+            color: ColorConst.primary.withOpacity(0.5),
+            blurRadius: 5.0,
+            offset: const Offset(0.0, 5.0),
+          ),
+        ],
       ),
       padding: const EdgeInsets.only(top: 20.0, left: 20.0, bottom: 20.0),
       child: Column(

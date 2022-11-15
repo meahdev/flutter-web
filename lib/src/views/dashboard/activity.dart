@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/provider/stepper/bloc/stepper_bloc.dart';
@@ -19,8 +20,9 @@ class _ActivityState extends State<Activity> {
     Step(
       title: ConstText.lightText(text: 'JAN 22'),
       content: ConstText.lightText(text: ''),
-      subtitle:
-          ConstText.lightText(text: 'Responded to need “Volunteer Activities”'),
+      subtitle: ConstText.lightText(
+          text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
       isActive: true,
     ),
     Step(
@@ -28,23 +30,25 @@ class _ActivityState extends State<Activity> {
       content: ConstText.lightText(text: ''),
       subtitle: ConstText.lightText(
           text:
-              'At vero eos et accusamus et iusto odio dignissimos ducimus qui deleniti atque...'),
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
       isActive: true,
       state: StepState.complete,
     ),
     Step(
       title: ConstText.lightText(text: 'JAN 19'),
       content: ConstText.lightText(text: ''),
-      subtitle:
-          ConstText.lightText(text: 'Joined the group “Boardsmanship Forum”'),
+      subtitle: ConstText.lightText(
+          text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
       isActive: true,
       state: StepState.complete,
     ),
     Step(
       title: ConstText.lightText(text: 'JAN 17'),
       content: ConstText.lightText(text: ''),
-      subtitle:
-          ConstText.lightText(text: 'Responded to need “In-Kind Opportunity”'),
+      subtitle: ConstText.lightText(
+          text:
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
       isActive: true,
       state: StepState.complete,
     ),
@@ -61,6 +65,11 @@ class _ActivityState extends State<Activity> {
     return BlocProvider(
       create: (context) => _stepperBloc,
       child: Card(
+        shadowColor: ColorConst.primary.withOpacity(0.5),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(18.0),
+        ),
+        elevation: 7,
         child: ConstrainedBox(
           constraints: const BoxConstraints(minHeight: 465),
           child: Container(

@@ -13,7 +13,7 @@ class ConstText {
       softWrap: true,
       textAlign: textAlign,
       style: TextStyle(
-        fontSize: fontSize ?? 15,
+        fontSize: fontSize ?? 16,
         color: color,
         fontWeight: fontWeight,
       ),
@@ -32,7 +32,7 @@ class ConstText {
       textAlign: textAlign,
       softWrap: true,
       style: TextStyle(
-        fontSize: fontSize ?? 20,
+        fontSize: fontSize ?? 21,
         color: color,
         fontWeight: fontWeight,
       ),
@@ -50,7 +50,7 @@ class ConstText {
       text,
       textAlign: textAlign,
       style: TextStyle(
-        fontSize: fontSize ?? 30,
+        fontSize: fontSize ?? 31,
         color: color,
         fontWeight: fontWeight,
       ),

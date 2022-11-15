@@ -74,7 +74,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
             FlSpot(11, 4),
           ],
           isCurved: true,
-          color: ColorConst.chartBorderColor,
+          color: ColorConst.primary,
           barWidth: 2,
           isStrokeCapRound: true,
           belowBarData: BarAreaData(
@@ -89,6 +89,11 @@ class _MonthlyearningState extends State<Monthlyearning> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: ColorConst.primary.withOpacity(0.5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      elevation: 7,
       child: ConstrainedBox(
         constraints:
             BoxConstraints(maxHeight: Responsive.isMobile(context) ? 700 : 400),
@@ -113,18 +118,18 @@ class _MonthlyearningState extends State<Monthlyearning> {
                           Expanded(
                             child: _monthEarning(
                               durationText: 'This month',
-                              salesAmount: '\$34,252',
+                              salesAmount: '\$34,526',
                               descriptionText:
-                                  'It will be as simple as in fact it will be occidental',
+                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                             ),
                           ),
                           FxBox.h16,
                           Expanded(
                             child: _monthEarning(
                               durationText: 'Last month',
-                              salesAmount: '\$36,253',
+                              salesAmount: '\$32,293',
                               descriptionText:
-                                  'It will be as simple as in fact it will be occidental.',
+                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                             ),
                           ),
                         ],
@@ -141,18 +146,18 @@ class _MonthlyearningState extends State<Monthlyearning> {
                           Expanded(
                             child: _monthEarning(
                               durationText: 'This month',
-                              salesAmount: '\$34,252',
+                              salesAmount: '\$34,526',
                               descriptionText:
-                                  'It will be as simple as in fact it will be occidental',
+                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                             ),
                           ),
                           FxBox.w32,
                           Expanded(
                             child: _monthEarning(
                               durationText: 'Last month',
-                              salesAmount: '\$36,253',
+                              salesAmount: '\$32,293',
                               descriptionText:
-                                  'It will be as simple as in fact it will be occidental.',
+                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
                             ),
                           ),
                         ],
@@ -176,20 +181,20 @@ class _MonthlyearningState extends State<Monthlyearning> {
       children: [
         ConstText.lightText(
           text: durationText,
-          fontSize: 14,
+          fontSize: 15,
           fontWeight: FontWeight.w600,
         ),
         Responsive.isMobile(context) ? FxBox.h8 : FxBox.h28,
         ConstText.largeText(
           text: salesAmount,
-          fontSize: 25,
+          fontSize: 26,
           fontWeight: FontWeight.bold,
         ),
         Responsive.isMobile(context) ? FxBox.h8 : FxBox.h28,
         ConstText.lightText(
           textAlign: TextAlign.center,
           text: descriptionText,
-          fontSize: 14,
+          fontSize: 15,
           fontWeight: FontWeight.w600,
         ),
         Responsive.isMobile(context) ? FxBox.h16 : FxBox.h28,

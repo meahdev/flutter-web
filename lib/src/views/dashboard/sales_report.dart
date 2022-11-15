@@ -16,21 +16,21 @@ class _SalesReportState extends State<SalesReport> {
   final List<Map<String, dynamic>> _chartList = [
     {
       'bedgeTitle': 'Desk',
-      'badgeColor': ColorConst.chartColorBlue,
+      'badgeColor': ColorConst.primary,
       'title': Strings.desktop,
-      'percentage': '54.5%',
+      'percentage': '35.5%',
     },
     {
       'bedgeTitle': 'Mob',
       'badgeColor': ColorConst.chartColorGreen,
       'title': Strings.mobile,
-      'percentage': '28.0%',
+      'percentage': '30.0%',
     },
     {
       'bedgeTitle': 'Tab',
       'badgeColor': ColorConst.chartColorYellow,
       'title': Strings.tablets,
-      'percentage': '17.5%',
+      'percentage': '44.5%',
     },
   ];
   List<PieChartSectionData> showingSections() {
@@ -39,7 +39,7 @@ class _SalesReportState extends State<SalesReport> {
       switch (i) {
         case 0:
           return PieChartSectionData(
-            color: ColorConst.chartColorBlue,
+            color: ColorConst.primary,
             radius: radius,
           );
         case 1:
@@ -61,6 +61,11 @@ class _SalesReportState extends State<SalesReport> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: ColorConst.primary.withOpacity(0.5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      elevation: 7,
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 465),
         child: Container(
@@ -114,15 +119,15 @@ class _SalesReportState extends State<SalesReport> {
           'Jan 01 - Jan 31',
           softWrap: true,
           style: TextStyle(
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
         ),
         Text(
-          '\$${4230}',
+          '\$${2730}',
           softWrap: true,
           style: TextStyle(
-            fontSize: 15,
+            fontSize: 16,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -152,7 +157,7 @@ class _SalesReportState extends State<SalesReport> {
                 title,
                 softWrap: true,
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -160,7 +165,7 @@ class _SalesReportState extends State<SalesReport> {
                 percentage,
                 softWrap: true,
                 style: const TextStyle(
-                  fontSize: 14,
+                  fontSize: 15,
                   fontWeight: FontWeight.w600,
                 ),
               ),

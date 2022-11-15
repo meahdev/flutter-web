@@ -57,7 +57,7 @@ class _FAQsState extends State<FAQs> {
             Text(
               "Can't find what you are looking for?",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 21,
                 fontWeight: FontWeight.bold,
                 color: isDark ? ColorConst.darkFontColor : ColorConst.textColor,
               ),
@@ -67,7 +67,7 @@ class _FAQsState extends State<FAQs> {
               width: 550,
               child: Text(
                 "If several languages coalesce, the grammar of the resulting language is more simple and regular than that of the individual languages.",
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 15),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -120,7 +120,7 @@ class _FAQsState extends State<FAQs> {
             "General Questions",
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20,
+              fontSize: 21,
             ),
           ),
           leading: Icon(
@@ -142,7 +142,7 @@ class _FAQsState extends State<FAQs> {
             "Pricing & Plans",
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 20,
+              fontSize: 21,
             ),
           ),
           leading: Icon(

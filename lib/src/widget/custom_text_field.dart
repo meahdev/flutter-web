@@ -60,7 +60,7 @@ class CustomTextField extends StatelessWidget {
         keyboardType: keyBoardType,
         textCapitalization: textCapitalization!,
         cursorColor: ColorConst.lightFontColor,
-        style: const TextStyle(fontSize: 14),
+        style: const TextStyle(fontSize: 15),
         decoration: InputDecoration(
           suffixIconConstraints: const BoxConstraints(minWidth: 30),
           filled: true,
@@ -70,7 +70,7 @@ class CustomTextField extends StatelessWidget {
             color: isDark
                 ? ColorConst.darkFontColor.withOpacity(0.5)
                 : ColorConst.lightFontColor,
-            fontSize: 14,
+            fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
           isDense: true,
@@ -79,7 +79,7 @@ class CustomTextField extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           suffixIcon: suffixIcon,
           errorText: errorText,
-          errorStyle: const TextStyle(fontSize: 10, height: 0.7),
+          errorStyle: const TextStyle(fontSize: 11, height: 0.7),
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(
               color:

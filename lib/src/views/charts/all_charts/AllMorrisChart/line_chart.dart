@@ -75,9 +75,6 @@ class LineChart1 extends StatelessWidget {
               FlSpot(3, 0.55),
               FlSpot(4, 3.36),
               FlSpot(5, 0.92),
-              FlSpot(6, 5.00),
-              FlSpot(6, 5.00),
-              FlSpot(7, 2.83)
             ],
             isCurved: true,
             barWidth: 2,
@@ -91,8 +88,6 @@ class LineChart1 extends StatelessWidget {
               FlSpot(3, 2.70),
               FlSpot(4, 2.36),
               FlSpot(5, 2.04),
-              FlSpot(6, 1.08),
-              FlSpot(7, 2.21)
             ],
             isCurved: true,
             barWidth: 2,
@@ -106,8 +101,6 @@ class LineChart1 extends StatelessWidget {
               FlSpot(3, 1.84),
               FlSpot(4, 1.57),
               FlSpot(5, 3.54),
-              FlSpot(6, 1.13),
-              FlSpot(7, 5.32)
             ],
             isCurved: true,
             barWidth: 2,
@@ -124,7 +117,7 @@ Widget leftTitles(double value, TitleMeta meta) {
   style = TextStyle(
     color: ColorConst.gridTextColor,
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 15,
   );
   String text;
   if (value == 0) {
@@ -139,8 +132,6 @@ Widget leftTitles(double value, TitleMeta meta) {
     text = '300';
   } else if (value == 5) {
     text = '375';
-  } else if (value == 6) {
-    text = '450';
   } else {
     return Container();
   }
@@ -156,57 +147,45 @@ Widget getTitles(double value, TitleMeta meta) {
   style = TextStyle(
     color: ColorConst.gridTextColor,
     fontWeight: FontWeight.bold,
-    fontSize: 14,
+    fontSize: 15,
   );
   String text;
   switch (value.toString()) {
     case '0':
-      text = '2012';
+      text = '2016';
       break;
     case '0.5':
       text = '';
       break;
     case '1':
-      text = '2013';
+      text = '2017';
       break;
     case '1.5':
       text = '';
       break;
     case '2':
-      text = '2014';
+      text = '2018';
       break;
     case '2.5':
       text = '';
       break;
     case '3':
-      text = '2015';
+      text = '2019';
       break;
     case '3.5':
       text = '';
       break;
     case '4':
-      text = '2016';
+      text = '2020';
       break;
     case '4.5':
       text = '';
       break;
     case '5':
-      text = '2017';
-      break;
-    case '5.5':
-      text = '';
-      break;
-    case '6':
-      text = '2018';
-      break;
-    case '6.5':
-      text = '';
-      break;
-    case '7':
-      text = '2019';
+      text = '2021';
       break;
     default:
-      text = '2018';
+      text = '2022';
       break;
   }
   return SideTitleWidget(

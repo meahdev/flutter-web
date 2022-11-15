@@ -16,9 +16,11 @@ class _ClienresponseState extends State<Clienresponse> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: ColorConst.primary.withOpacity(0.5),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(18.0),
       ),
+      elevation: 7,
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 200),
         child: Container(
@@ -34,11 +36,11 @@ class _ClienresponseState extends State<Clienresponse> {
               ),
               ConstText.lightText(
                 text: Strings.clientReviewText,
-                fontSize: 14,
+                fontSize: 15,
                 //color: ColorConst.grey800,
                 fontWeight: FontWeight.w500,
               ),
-              _tableRowImage('James Athey'),
+              _tableRowImage('John Deo'),
             ],
           ),
         ),

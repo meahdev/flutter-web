@@ -111,6 +111,11 @@ class _SalesanalyticsState extends State<Salesanalytics> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shadowColor: ColorConst.primary.withOpacity(0.5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      elevation: 7,
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxHeight: 400),
         child: Container(
@@ -125,17 +130,17 @@ class _SalesanalyticsState extends State<Salesanalytics> {
               ),
               _statusAndvalueWithChart(
                 status: 'Online',
-                value: '1,542',
+                value: '1,942',
                 list: _onlineChart,
               ),
               _statusAndvalueWithChart(
                 status: 'Offline',
-                value: '6,451',
+                value: '8,451',
                 list: _offlineChart,
               ),
               _statusAndvalueWithChart(
                 status: 'Marketing',
-                value: '84,574',
+                value: '65,574',
                 list: _marketingChart,
               ),
               FxBox.shrink,
@@ -202,7 +207,7 @@ class _SalesanalyticsState extends State<Salesanalytics> {
         Responsive.isMobile(context) ? FxBox.h2 : FxBox.h20,
         ConstText.lightText(
           text: value,
-          fontSize: 16,
+          fontSize: 17,
           fontWeight: FontWeight.bold,
         ),
       ],
