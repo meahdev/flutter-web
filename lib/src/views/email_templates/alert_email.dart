@@ -20,7 +20,7 @@ class AlertEmail extends StatelessWidget {
                   : MediaQuery.of(context).size.width - 48,
             ),
             decoration: BoxDecoration(
-              // color: ColorConst.white,
+              color: ColorConst.white,
               border: Border.all(color: Colors.indigo, width: 1.0),
             ),
             child: Column(

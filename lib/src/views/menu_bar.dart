@@ -29,10 +29,12 @@ class _MenuBarState extends State<MenuBar> {
 
   final ScrollController _scrollController = ScrollController();
 
+  ValueNotifier<bool> isOpen = ValueNotifier(true);
+
   Map<String, String> mainData = {
     Strings.dashboard: IconlyBroken.home,
     Strings.calendar: IconlyBroken.calendar,
-    Strings.map: IconlyBroken.calendar,
+    Strings.map: IconlyBroken.map,
   };
 
   Map<String, String> componentData = {
@@ -165,7 +167,7 @@ class _MenuBarState extends State<MenuBar> {
     WizardForm(),
     MaskForm(),
     VideoScreen(),
-    GoogleMap()
+    GoogleMaps()
   ];
 
   @override
@@ -180,20 +182,25 @@ class _MenuBarState extends State<MenuBar> {
             width: 280,
             child: SettingDrawer(scaffoldKey: _scaffoldKey),
           ),
-          appBar: _appBar(),
-          body: SelectionArea(
-            child: Scaffold(
-              key: _scaffoldDrawerKey,
-              drawerScrimColor: ColorConst.transparent,
-              drawer: _sidebar(tabsRouter),
-              body: Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Responsive.isWeb(context)
-                      ? _sidebar(tabsRouter)
-                      : const SizedBox.shrink(),
-                  Expanded(
+          appBar: _appBar(tabsRouter),
+          body: Scaffold(
+            key: _scaffoldDrawerKey,
+            drawerScrimColor: ColorConst.transparent,
+            drawer: _sidebar(tabsRouter),
+            body: Row(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ValueListenableBuilder<bool>(
+                  valueListenable: isOpen,
+                  builder: (context, value, child) {
+                    return Responsive.isWeb(context)
+                        ? _sidebar(tabsRouter)
+                        : const SizedBox.shrink();
+                  },
+                ),
+                Expanded(
+                  child: SelectionArea(
                     child: CustomScrollView(
                       controller: _scrollController,
                       slivers: [
@@ -241,8 +248,8 @@ class _MenuBarState extends State<MenuBar> {
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         );
@@ -251,58 +258,72 @@ class _MenuBarState extends State<MenuBar> {
   }
 
   /// appbar
-  PreferredSizeWidget _appBar() => AppBar(
+  PreferredSizeWidget _appBar(TabsRouter tabsRouter) => AppBar(
+        toolbarHeight: 70,
         elevation: 0.0,
         shadowColor: ColorConst.transparent,
         leadingWidth: 392,
         leading: Row(
           children: [
-            StreamBuilder<bool>(
-              initialData: false,
-              builder: (context, AsyncSnapshot<bool> snapshots) {
-                if (Responsive.isWeb(context)) {
+            ValueListenableBuilder<bool>(
+              valueListenable: isOpen,
+              builder: (context, value, child) {
+                if (Responsive.isWeb(context) && value) {
                   _scaffoldDrawerKey.currentState!.closeDrawer();
-                  return Container(
-                    width: 240,
-                    padding: const EdgeInsets.symmetric(horizontal: 61),
+                  return InkWell(
+                    onTap: () {
+                      tabsRouter
+                          .setActiveIndex(getRouteIndex(Strings.dashboard));
+                      // _scaffoldDrawerKey.currentState?.closeDrawer();
+                    },
+                    child: Container(
+                      width: 240,
+                      padding: const EdgeInsets.symmetric(horizontal: 61),
+                      height: double.infinity,
+                      color:
+                          isDark ? ColorConst.transparent : ColorConst.drawerBG,
+                      child: Image.asset(
+                          isDark ? Images.lgDarkLogo : Images.lgLightLogo),
+                    ),
+                  );
+                }
+                return InkWell(
+                  onTap: () {
+                    tabsRouter.setActiveIndex(getRouteIndex(Strings.dashboard));
+                    _scaffoldDrawerKey.currentState?.closeDrawer();
+                  },
+                  child: Container(
+                    width: 70,
                     height: double.infinity,
                     color:
                         isDark ? ColorConst.transparent : ColorConst.drawerBG,
                     child: Image.asset(
-                        isDark ? Images.lgDarkLogo : Images.lgLightLogo),
-                  );
-                }
-                return Container(
-                  width: 70,
-                  height: double.infinity,
-                  color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
-                  child: Image.asset(
-                    Images.smLogo,
-                    fit: BoxFit.contain,
+                      Images.smLogo,
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 );
               },
             ),
-            Responsive.isWeb(context)
-                ? const SizedBox.shrink()
-                : MaterialButton(
-                    height: double.infinity,
-                    minWidth: 60,
-                    hoverColor: ColorConst.transparent,
-                    onPressed: () async {
-                      if (Responsive.isMobile(context) ||
-                          Responsive.isTablet(context)) {
-                        if (_scaffoldDrawerKey.currentState!.isDrawerOpen) {
-                          _scaffoldDrawerKey.currentState!.closeDrawer();
-                        } else {
-                          _scaffoldDrawerKey.currentState!.openDrawer();
-                        }
-                      } else if (Responsive.isWeb(context)) {
-                        _scaffoldDrawerKey.currentState!.closeDrawer();
-                      }
-                    },
-                    child: const SvgIcon(icon: IconlyBroken.drawer),
-                  )
+            MaterialButton(
+              height: double.infinity,
+              minWidth: 60,
+              hoverColor: ColorConst.transparent,
+              onPressed: () async {
+                if (Responsive.isMobile(context) ||
+                    Responsive.isTablet(context)) {
+                  if (_scaffoldDrawerKey.currentState!.isDrawerOpen) {
+                    _scaffoldDrawerKey.currentState!.closeDrawer();
+                  } else {
+                    _scaffoldDrawerKey.currentState!.openDrawer();
+                  }
+                } else if (Responsive.isWeb(context)) {
+                  _scaffoldDrawerKey.currentState!.closeDrawer();
+                  isOpen.value = !isOpen.value;
+                }
+              },
+              child: const SvgIcon(icon: IconlyBroken.drawer),
+            )
           ],
         ),
         actions: [
@@ -332,7 +353,7 @@ class _MenuBarState extends State<MenuBar> {
                       hintText: Strings.searchHint,
                       hintStyle: const TextStyle(fontSize: 15),
                       suffixIcon: const Padding(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.all(12.0),
                         child: SvgIcon(icon: IconlyBroken.search),
                       ),
                       // fillColor: ColorConst.textFieldBG,
@@ -534,39 +555,50 @@ class _MenuBarState extends State<MenuBar> {
   }
 
   /// drawer / sidebar
-  Widget _sidebar(TabsRouter tabsRouter) => Container(
-        height: MediaQuery.of(context).size.height,
-        width: 240,
-        color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
-        child: SingleChildScrollView(
-          controller: ScrollController(),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              FxBox.h8,
-              // main
-              _menuHeading(Strings.main),
-              _menuList(tabsRouter: tabsRouter, items: mainData),
-              // components
-              _menuHeading(Strings.components),
-              _menuList(
-                tabsRouter: tabsRouter,
-                items: componentData,
-                isExpanded: true,
-                children: componentsExpandList,
+  Widget _sidebar(TabsRouter tabsRouter) => ValueListenableBuilder<bool>(
+        valueListenable: isOpen,
+        builder: (context, value, child) {
+          return Container(
+            height: MediaQuery.of(context).size.height,
+            width: value ? 240 : 70,
+            color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
+            child: SingleChildScrollView(
+              controller: ScrollController(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  FxBox.h8,
+                  // main
+                  if (value) _menuHeading(Strings.main),
+                  _menuList(
+                    tabsRouter: tabsRouter,
+                    items: mainData,
+                    isopen: value,
+                  ),
+                  // components
+                  if (value) _menuHeading(Strings.components),
+                  _menuList(
+                    tabsRouter: tabsRouter,
+                    items: componentData,
+                    isExpanded: true,
+                    children: componentsExpandList,
+                    isopen: value,
+                  ),
+                  // extras
+                  if (value) _menuHeading(Strings.extras),
+                  _menuList(
+                    tabsRouter: tabsRouter,
+                    items: extrasData,
+                    isExpanded: true,
+                    children: extrasExpandList,
+                    isopen: value,
+                  ),
+                  FxBox.h20,
+                ],
               ),
-              // extras
-              _menuHeading(Strings.extras),
-              _menuList(
-                tabsRouter: tabsRouter,
-                items: extrasData,
-                isExpanded: true,
-                children: extrasExpandList,
-              ),
-              FxBox.h20,
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       );
 
   /// menu heading
@@ -591,6 +623,7 @@ class _MenuBarState extends State<MenuBar> {
     required Map<String, String> items,
     bool isExpanded = false,
     List<List<String>> children = const [],
+    required bool isopen,
   }) {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
@@ -606,45 +639,78 @@ class _MenuBarState extends State<MenuBar> {
                   ? ColorConst.white
                   : ColorConst.black;
           if (isExpanded) {
-            return FxExpansionTile(
-              leading: SvgIcon(
-                icon: items.values.elementAt(index),
-                size: 16,
-                color:
-                    children[index].contains(upperCase(tabsRouter.currentPath))
-                        ? isDark
-                            ? ColorConst.chartForgoundColor
-                            : ColorConst.primary
-                        : color,
-              ),
-              title: Text(
-                items.keys.elementAt(index),
-                style: TextStyle(
-                    color: children[index]
-                            .contains(upperCase(tabsRouter.currentPath))
-                        ? isDark
-                            ? ColorConst.chartForgoundColor
-                            : ColorConst.primary
-                        : color,
-                    fontSize: 15.7),
-              ),
-              trailing: SvgIcon(
-                icon: IconlyBroken.arrowDown,
-                size: 16,
-                color:
-                    children[index].contains(upperCase(tabsRouter.currentPath))
-                        ? isDark
-                            ? ColorConst.chartForgoundColor
-                            : ColorConst.primary
-                        : color,
-              ),
-              children: [_subMenuList(children[index], tabsRouter)],
-            );
+            return isopen
+                ? FxExpansionTile(
+                    leading: SvgIcon(
+                      icon: items.values.elementAt(index),
+                      size: 16,
+                      color: children[index]
+                              .contains(upperCase(tabsRouter.currentPath))
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                    ),
+                    title: Text(
+                      items.keys.elementAt(index),
+                      style: TextStyle(
+                          color: children[index]
+                                  .contains(upperCase(tabsRouter.currentPath))
+                              ? isDark
+                                  ? ColorConst.chartForgoundColor
+                                  : ColorConst.primary
+                              : color,
+                          fontSize: 15.7),
+                    ),
+                    trailing: SvgIcon(
+                      icon: IconlyBroken.arrowDown,
+                      size: 16,
+                      color: children[index]
+                              .contains(upperCase(tabsRouter.currentPath))
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                    ),
+                    children: [_subMenuList(children[index], tabsRouter)],
+                  )
+                : ListTile(
+                    leading: SvgIcon(
+                      icon: items.values.elementAt(index),
+                      size: isopen ? 16 : 18,
+                      color: items.keys.elementAt(index) ==
+                              upperCase(tabsRouter.currentPath)
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                    ),
+                    title: isopen
+                        ? Text(
+                            items.keys.elementAt(index),
+                            style: TextStyle(
+                              color: items.keys.elementAt(index) ==
+                                      upperCase(tabsRouter.currentPath)
+                                  ? isDark
+                                      ? ColorConst.chartForgoundColor
+                                      : ColorConst.primary
+                                  : color,
+                              fontSize: 15.7,
+                            ),
+                          )
+                        : null,
+                    mouseCursor: SystemMouseCursors.click,
+                    horizontalTitleGap: 0.0,
+                    onTap: () {
+                      isOpen.value = true;
+                      _scaffoldDrawerKey.currentState?.closeDrawer();
+                    },
+                  );
           } else {
             return ListTile(
               leading: SvgIcon(
                 icon: items.values.elementAt(index),
-                size: 16,
+                size: isopen ? 16 : 18,
                 color: items.keys.elementAt(index) ==
                         upperCase(tabsRouter.currentPath)
                     ? isDark
@@ -652,21 +718,24 @@ class _MenuBarState extends State<MenuBar> {
                         : ColorConst.primary
                     : color,
               ),
-              title: Text(
-                items.keys.elementAt(index),
-                style: TextStyle(
-                  color: items.keys.elementAt(index) ==
-                          upperCase(tabsRouter.currentPath)
-                      ? isDark
-                          ? ColorConst.chartForgoundColor
-                          : ColorConst.primary
-                      : color,
-                  fontSize: 15.7,
-                ),
-              ),
+              title: isopen
+                  ? Text(
+                      items.keys.elementAt(index),
+                      style: TextStyle(
+                        color: items.keys.elementAt(index) ==
+                                upperCase(tabsRouter.currentPath)
+                            ? isDark
+                                ? ColorConst.chartForgoundColor
+                                : ColorConst.primary
+                            : color,
+                        fontSize: 15.7,
+                      ),
+                    )
+                  : null,
               mouseCursor: SystemMouseCursors.click,
               horizontalTitleGap: 0.0,
               onTap: () {
+                isOpen.value = true;
                 tabsRouter
                     .setActiveIndex(getRouteIndex(items.keys.elementAt(index)));
                 _scaffoldDrawerKey.currentState?.closeDrawer();
@@ -762,7 +831,7 @@ class _MenuBarState extends State<MenuBar> {
       );
 
   Widget _footer() => Container(
-        color: isDark ? ColorConst.footerDark : ColorConst.footerLight,
+        color: isDark ? ColorConst.footerDark : ColorConst.drawerBG,
         height: 60,
         width: Responsive.isWeb(context)
             ? MediaQuery.of(context).size.width - 240

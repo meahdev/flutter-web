@@ -173,6 +173,7 @@ class _PricingState extends State<Pricing> {
               ),
               FxBox.h48,
               FxButton(
+                height: 48.0,
                 borderRadius: 4,
                 text: "Sign up Now",
                 onPressed: () {},

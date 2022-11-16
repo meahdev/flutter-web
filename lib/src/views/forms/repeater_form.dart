@@ -238,7 +238,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
         FxAlert.showAlert(
           barrierDismissible: false,
           context: context,
-          title: 'themesbrand.com says',
+          title: 'Delete',
           content: const Text(
             'Are you sure you want to delete this element?',
           ),

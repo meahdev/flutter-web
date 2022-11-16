@@ -178,7 +178,7 @@ Widget getRouteWidget(int index) {
   } else if (index == 33) {
     return const VideoScreen();
   } else if (index == 34) {
-    return const GoogleMap();
+    return const GoogleMaps();
   } else {
     return const Dashboard();
   }

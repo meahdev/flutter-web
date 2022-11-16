@@ -90,7 +90,7 @@ class _MaskFormState extends State<MaskForm> {
                           ),
                           FxBox.w24,
                           _maskTextFieldCommonView(
-                            _commonText('repeat'),
+                            _commonText('Repeat'),
                             _repeatTextField(),
                             'e.g "9999999999"',
                           ),

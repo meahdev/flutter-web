@@ -58,7 +58,7 @@ import 'package:auto_route/auto_route.dart';
         RedirectRoute(path: '', redirectTo: 'dashboard'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'calendar', page: Calendar),
-        AutoRoute(path: 'map', page: GoogleMap),
+        AutoRoute(path: 'map', page: GoogleMaps),
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'buttons', page: Button),
         AutoRoute(path: 'rating', page: Rating),

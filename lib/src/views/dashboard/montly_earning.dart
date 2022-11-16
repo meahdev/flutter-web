@@ -96,7 +96,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
       elevation: 7,
       child: ConstrainedBox(
         constraints:
-            BoxConstraints(maxHeight: Responsive.isMobile(context) ? 700 : 400),
+            BoxConstraints(maxHeight: Responsive.isMobile(context) ? 732 : 400),
         child: Container(
           padding: const EdgeInsets.all(20),
           child: Column(

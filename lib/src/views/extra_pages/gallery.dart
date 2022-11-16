@@ -38,7 +38,7 @@ class _GalleryState extends State<Gallery> {
     "Morning Duew",
     "Consol Activity",
     "Shake It",
-    "BackPpack Content",
+    "Backpack Content",
     "Sunset Bulb Glow",
     "Open Imagination",
     "Console Activity",
@@ -47,18 +47,18 @@ class _GalleryState extends State<Gallery> {
   ];
 
   final _nameList = [
-    "Abhi patel",
-    "Keval Gajera",
-    "Vishal Makwana",
-    "Parth Surani",
-    "Naman Rajodiya",
-    "Harsh Chodvadiya",
-    "Akash Rathod",
-    "Anup chopde",
-    "Makwana Parth",
-    "Vignesh patel",
-    "Mahesh Patel",
-    "Akshay Malaviya",
+    "Jane Deo",
+    "Joe Blow",
+    "Jhon Wick",
+    "Joe Wick",
+    "Jane Deo",
+    "Joe Blow",
+    "Jhon Wick",
+    "Joe Wick",
+    "Jane Deo",
+    "Joe Blow",
+    "Jhon Wick",
+    "Joe Wick",
   ];
 
   @override
@@ -90,51 +90,59 @@ class _GalleryState extends State<Gallery> {
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(5.0),
-                      color: isHover ? ColorConst.black.withOpacity(0.7) : null,
                     ),
-                    padding: isHover ? const EdgeInsets.all(20) : null,
-                    child: isHover
-                        ? Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                child: Text(
-                                  _headingList[index],
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: ColorConst.white,
-                                    fontSize: 19,
-                                  ),
-                                ),
-                              ),
-                              const Spacer(),
-                              Row(
-                                children: [
-                                  CircleAvatar(
-                                    backgroundImage: NetworkImage(
-                                      _imageList[index],
-                                    ),
-                                  ),
-                                  FxBox.w10,
-                                  Expanded(
-                                    child: Text(
-                                      _nameList[index],
-                                      style: const TextStyle(
-                                        color: ColorConst.white,
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 16,
+                    child: Stack(
+                      children: [
+                        Image.network(
+                          _imageList[index],
+                          alignment: Alignment.topCenter,
+                          fit: BoxFit.cover,
+                          width: double.infinity,
+                        ),
+                        isHover
+                            ? Container(
+                                padding: const EdgeInsets.all(20.0),
+                                color: ColorConst.primary.withOpacity(0.65),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        _headingList[index],
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: ColorConst.white,
+                                          fontSize: 19,
+                                        ),
                                       ),
                                     ),
-                                  )
-                                ],
+                                    const Spacer(),
+                                    Row(
+                                      children: [
+                                        CircleAvatar(
+                                          backgroundImage: NetworkImage(
+                                            _imageList[index],
+                                          ),
+                                        ),
+                                        FxBox.w10,
+                                        Expanded(
+                                          child: Text(
+                                            _nameList[index],
+                                            style: const TextStyle(
+                                              color: ColorConst.white,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
                               )
-                            ],
-                          )
-                        : Image.network(
-                            _imageList[index],
-                            alignment: Alignment.topCenter,
-                            fit: BoxFit.cover,
-                          ),
+                            : const SizedBox.shrink()
+                      ],
+                    ),
                   );
                 },
               ),

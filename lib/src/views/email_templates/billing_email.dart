@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
@@ -23,7 +24,7 @@ class BillingEmail extends StatelessWidget {
             ),
             padding: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
-              // color: ColorConst.white,
+              color: ColorConst.white,
               border: Border.all(width: 3.0),
             ),
             child: BlocBuilder<ThemeModeBloc, ThemeModeState>(

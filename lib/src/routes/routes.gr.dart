@@ -131,9 +131,9 @@ class AppRouter extends _i49.RootStackRouter {
       return _i49.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i15.Calendar());
     },
-    GoogleMap.name: (routeData) {
+    GoogleMaps.name: (routeData) {
       return _i49.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i16.GoogleMap());
+          routeData: routeData, child: const _i16.GoogleMaps());
     },
     Toast.name: (routeData) {
       return _i49.MaterialPageX<dynamic>(
@@ -277,7 +277,7 @@ class AppRouter extends _i49.RootStackRouter {
               path: 'dashboard', parent: MenuBar.name),
           _i49.RouteConfig(Calendar.name,
               path: 'calendar', parent: MenuBar.name),
-          _i49.RouteConfig(GoogleMap.name, path: 'map', parent: MenuBar.name),
+          _i49.RouteConfig(GoogleMaps.name, path: 'map', parent: MenuBar.name),
           _i49.RouteConfig(Toast.name, path: 'toast', parent: MenuBar.name),
           _i49.RouteConfig(Button.name, path: 'buttons', parent: MenuBar.name),
           _i49.RouteConfig(Rating.name, path: 'rating', parent: MenuBar.name),
@@ -473,11 +473,11 @@ class Calendar extends _i49.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i16.GoogleMap]
-class GoogleMap extends _i49.PageRouteInfo<void> {
-  const GoogleMap() : super(GoogleMap.name, path: 'map');
+/// [_i16.GoogleMaps]
+class GoogleMaps extends _i49.PageRouteInfo<void> {
+  const GoogleMaps() : super(GoogleMaps.name, path: 'map');
 
-  static const String name = 'GoogleMap';
+  static const String name = 'GoogleMaps';
 }
 
 /// generated route for
