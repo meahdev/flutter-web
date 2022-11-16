@@ -53,7 +53,7 @@ class _TopProductSaleState extends State<TopProductSale> {
               ),
               ConstText.lightText(
                 text:
-                    'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                    'Lorem Ipsum is simply dummy text of the printing.',
                 textAlign: TextAlign.center,
                 fontSize: 15,
                 color: ColorConst.white.withOpacity(0.5),

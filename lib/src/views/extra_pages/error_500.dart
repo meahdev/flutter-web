@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
 
 class Error500 extends StatefulWidget {
@@ -30,7 +31,8 @@ class _Error500State extends State<Error500> {
           ),
           alignment: Alignment.center,
           child: ScrollConfiguration(
-            behavior: ScrollConfiguration.of(context).copyWith(scrollbars: false),
+            behavior:
+                ScrollConfiguration.of(context).copyWith(scrollbars: false),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -48,7 +50,8 @@ class _Error500State extends State<Error500> {
                               children: [
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const Text(
                                         "500",
@@ -69,7 +72,7 @@ class _Error500State extends State<Error500> {
                                       ),
                                       FxBox.h24,
                                       const Text(
-                                        "It will be as simple as Occidental in fact, it will be Occidental to an English person",
+                                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                                       ),
                                       FxBox.h48,
                                       FxButton(
@@ -86,8 +89,11 @@ class _Error500State extends State<Error500> {
                                 FxBox.w(84),
                                 SizedBox(
                                   height: 260,
-                                  width: MediaQuery.of(context).size.width * .20,
-                                  child: Image.asset("assets/images/image.png"),
+                                  width:
+                                      MediaQuery.of(context).size.width * .20,
+                                  child: SvgPicture.asset(
+                                      'assets/images/error-500.svg'),
+                                  // child: Image.asset("assets/images/image.png"),
                                 ),
                               ],
                             ),
@@ -118,7 +124,7 @@ class _Error500State extends State<Error500> {
                                 ),
                                 FxBox.h24,
                                 const Text(
-                                  "It will be as simple as Occidental in fact, it will be Occidental to an English person",
+                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                                 ),
                                 FxBox.h48,
                                 FxButton(
@@ -132,8 +138,11 @@ class _Error500State extends State<Error500> {
                                 FxBox.h48,
                                 SizedBox(
                                   height: 260,
-                                  width: MediaQuery.of(context).size.width * .75,
-                                  child: Image.asset("assets/images/image.png"),
+                                  width:
+                                      MediaQuery.of(context).size.width * .75,
+                                  child: SvgPicture.asset(
+                                      'assets/images/error-500.svg'),
+                                  // child: Image.asset("assets/images/image.png"),
                                 ),
                               ],
                             ),

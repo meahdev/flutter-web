@@ -34,8 +34,8 @@ class ResponsiveTable extends StatelessWidget {
                   (index) => DataRow2(
                     cells: [
                       DataCell(sizedBox(text: '${index + 1}')),
-                      DataCell(sizedBox(text: "bhavesh")),
-                      DataCell(sizedBox(text: "vaghasiya")),
+                      DataCell(sizedBox(text: "Jane")),
+                      DataCell(sizedBox(text: "Deo")),
                       DataCell(sizedBox(text: "@flutter")),
                     ],
                   ),

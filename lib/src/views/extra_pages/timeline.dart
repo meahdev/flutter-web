@@ -57,27 +57,27 @@ class _TimelineScreenState extends State<TimelineScreen> {
     return <Steps>[
       const Steps(
         step: 1,
-        title: 'Decide What You Want',
+        title: 'What is Lorem Ipsum?',
         message:
-            'Step number one, decide exactly what it is you want in each part of your life. Become a "meaningful specific" rather than a "wandering generality."',
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
       ),
       const Steps(
         step: 2,
-        title: 'Write it Down',
+        title: 'Why do we use it?',
         message:
-            'Second, write it down, clearly and in detail. Always think on paper. A goal that is not in writing is not a goal at all. It is merely a wish and it has no energy behind it.',
+            'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
       ),
       const Steps(
         step: 3,
-        title: 'Set a Deadline',
+        title: 'Where does it come from?',
         message:
-            'Third, set a deadline for your goal. A deadline acts as a "forcing system” in your subconscious mind. It motivates you to do the things necessary to make your goal come true. If it is a big enough goal, set sub-deadlines as well. Don’t leave this to chance.',
+            'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.',
       ),
       const Steps(
         step: 4,
-        title: 'Make a List',
+        title: 'Where can I get some?',
         message:
-            'Fourth, make a list of everything that you can think of that you are going to have to do to achieve your goal. When you think of new tasks and activities, write them on your list until your list is complete.',
+            'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.',
       ),
     ];
   }
@@ -96,7 +96,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
             );
           }
           final int itemIndex = index ~/ 2;
-          final Steps step = steps![itemIndex];
+          final Steps step = steps[itemIndex];
           final bool isLeftAlign = itemIndex.isEven;
           final child = _timelineStepsChild(
               step.title, step.message, isLeftAlign, itemIndex);
@@ -206,8 +206,8 @@ class _TimelineScreenState extends State<TimelineScreen> {
                       borderRadius: borderRadius,
                       child: SizedBox.fromSize(
                         size: const Size.fromRadius(48), // Image radius
-                        child: Image.network(
-                          Images.lightTheme,
+                        child: Image.asset(
+                          isDark ? Images.dark : Images.light,
                           fit: BoxFit.cover,
                         ),
                       ),

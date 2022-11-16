@@ -155,26 +155,26 @@ class _InvoiceState extends State<Invoice> {
                         rows: <DataRow>[
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(_dataCell('BS-400')),
-                              DataCell(_dataCell('\$10.99')),
+                              DataCell(_dataCell('BS-100')),
+                              DataCell(_dataCell('\$9.99')),
                               DataCell(_dataCell('1')),
-                              DataCell(_dataCell('\$10.99')),
+                              DataCell(_dataCell('\$9.99')),
                             ],
                           ),
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(_dataCell('BS-400')),
-                              DataCell(_dataCell('\$20.00	')),
+                              DataCell(_dataCell('BS-500')),
+                              DataCell(_dataCell('\$15.00	')),
                               DataCell(_dataCell('3')),
-                              DataCell(_dataCell('\$60.00')),
+                              DataCell(_dataCell('\$45.00')),
                             ],
                           ),
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(_dataCell('BS-1000')),
-                              DataCell(_dataCell('\$600.00')),
+                              DataCell(_dataCell('BS-300')),
+                              DataCell(_dataCell('\$599.99')),
                               DataCell(_dataCell('1')),
-                              DataCell(_dataCell('\$600.00')),
+                              DataCell(_dataCell('\$599.99')),
                             ],
                           ),
                           DataRow2(
@@ -182,7 +182,7 @@ class _InvoiceState extends State<Invoice> {
                               const DataCell(Text("")),
                               const DataCell(Text("")),
                               DataCell(_dataCell('Subtotal')),
-                              DataCell(_dataCell('\$670.00')),
+                              DataCell(_dataCell('\$654.98')),
                             ],
                           ),
                           DataRow2(
@@ -190,7 +190,7 @@ class _InvoiceState extends State<Invoice> {
                               const DataCell(Text("")),
                               const DataCell(Text("")),
                               DataCell(_dataCell('Shipping')),
-                              DataCell(_dataCell('\$15')),
+                              DataCell(_dataCell('\$20')),
                             ],
                           ),
                           DataRow2(
@@ -198,7 +198,7 @@ class _InvoiceState extends State<Invoice> {
                               const DataCell(Text("")),
                               const DataCell(Text("")),
                               DataCell(_dataCell('Total')),
-                              DataCell(_dataCell('\$685.99')),
+                              DataCell(_dataCell('\$674.98')),
                             ],
                           ),
                         ],

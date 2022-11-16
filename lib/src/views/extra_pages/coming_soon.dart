@@ -103,14 +103,14 @@ class ComingSoonState extends State<ComingSoon> {
                           fontSize: 28,
                         ),
                       ),
-                      Text(
-                        "It will be as simple as Occidental in fact it will be Occidental.",
-                        style: TextStyle(
-                          color: isDark
-                              ? ColorConst.darkFontColor
-                              : ColorConst.textColor,
-                        ),
-                      ),
+                      // Text(
+                      //   "It will be as simple as Occidental in fact it will be Occidental.",
+                      //   style: TextStyle(
+                      //     color: isDark
+                      //         ? ColorConst.darkFontColor
+                      //         : ColorConst.textColor,
+                      //   ),
+                      // ),
                       FxBox.h52,
                       Responsive.isWeb(context)
                           ? Row(

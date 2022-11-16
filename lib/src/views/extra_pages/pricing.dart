@@ -28,7 +28,7 @@ class _PricingState extends State<Pricing> {
     'Enterprise',
     "Unlimited"
   ];
-  final List<String> priceList = ["19", "29", "39", "49"];
+  final List<String> priceList = ["9.99", "29.99", "49.99", "99.99"];
 
   @override
   Widget build(BuildContext context) {
@@ -105,15 +105,15 @@ class _PricingState extends State<Pricing> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          Text(
-                            "Sed ut neque unde",
-                            style: TextStyle(
-                              color: isDark
-                                  ? ColorConst.darkFontColor
-                                  : ColorConst.textColor,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          // Text(
+                          //   "Sed ut neque unde",
+                          //   style: TextStyle(
+                          //     color: isDark
+                          //         ? ColorConst.darkFontColor
+                          //         : ColorConst.textColor,
+                          //     fontWeight: FontWeight.bold,
+                          //   ),
+                          // ),
                         ],
                       );
                     },

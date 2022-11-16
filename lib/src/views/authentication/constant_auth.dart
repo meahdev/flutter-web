@@ -63,10 +63,10 @@ class ConstantAuth {
       top: 187,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+        children: const [
           CircleAvatar(
             radius: 35,
-            backgroundColor: ColorConst.darkGreen,
+            backgroundColor: ColorConst.primary,
           ),
         ],
       ),
@@ -91,14 +91,14 @@ class ConstantAuth {
 
   static Widget logoView() {
     return Positioned.fill(
-      top: 210,
+      top: 190,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Image.asset(
             Images.smLogo,
-            height: 25,
-            width: 30.8,
+            height: 60,
+            // width: 30.8,
           ),
         ],
       ),
@@ -194,7 +194,7 @@ class ConstantAuth {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          width: 30,
+          width: 60,
           child: Image.asset(
             Images.smLogo,
             fit: BoxFit.cover,

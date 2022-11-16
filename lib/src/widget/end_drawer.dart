@@ -72,8 +72,8 @@ class _SettingDrawerState extends State<SettingDrawer> {
                       width: 1,
                     ),
                   ),
-                  child: Image.network(
-                    Images.lightTheme,
+                  child: Image.asset(
+                    Images.light,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -88,8 +88,8 @@ class _SettingDrawerState extends State<SettingDrawer> {
                       width: 1,
                     ),
                   ),
-                  child: Image.network(
-                    Images.lightTheme,
+                  child: Image.asset(
+                    Images.dark,
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -21,16 +21,14 @@ class _ActivityState extends State<Activity> {
       title: ConstText.lightText(text: 'JAN 22'),
       content: ConstText.lightText(text: ''),
       subtitle: ConstText.lightText(
-          text:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+          text: 'Lorem Ipsum is simply dummy text of the printing.'),
       isActive: true,
     ),
     Step(
       title: ConstText.lightText(text: 'JAN 20'),
       content: ConstText.lightText(text: ''),
       subtitle: ConstText.lightText(
-          text:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+          text: 'Lorem Ipsum is simply dummy text of the printing.'),
       isActive: true,
       state: StepState.complete,
     ),
@@ -38,8 +36,7 @@ class _ActivityState extends State<Activity> {
       title: ConstText.lightText(text: 'JAN 19'),
       content: ConstText.lightText(text: ''),
       subtitle: ConstText.lightText(
-          text:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+          text: 'Lorem Ipsum is simply dummy text of the printing.'),
       isActive: true,
       state: StepState.complete,
     ),
@@ -47,8 +44,7 @@ class _ActivityState extends State<Activity> {
       title: ConstText.lightText(text: 'JAN 17'),
       content: ConstText.lightText(text: ''),
       subtitle: ConstText.lightText(
-          text:
-              'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'),
+          text: 'Lorem Ipsum is simply dummy text of the printing.'),
       isActive: true,
       state: StepState.complete,
     ),

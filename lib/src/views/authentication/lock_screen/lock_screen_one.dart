@@ -106,8 +106,8 @@ class _LockScreenOneState extends State<LockScreenOne> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: const DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage(Images.loginBg),
+                fit: BoxFit.cover,
+                image: NetworkImage(Images.profileImage),
               ),
               border: Border.all(
                 width: 5.0,
@@ -117,7 +117,7 @@ class _LockScreenOneState extends State<LockScreenOne> {
           ),
           FxBox.h16,
           CustomText(
-            title: 'Robert Smith',
+            title: 'Jane Deo',
             fontSize: 17,
             fontWeight: FontWeight.w800,
             textColor:

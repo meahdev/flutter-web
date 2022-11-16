@@ -148,7 +148,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                               durationText: 'This month',
                               salesAmount: '\$34,526',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                                  'Lorem Ipsum is simply dummy text of the printing.',
                             ),
                           ),
                           FxBox.w32,
@@ -157,7 +157,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                               durationText: 'Last month',
                               salesAmount: '\$32,293',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                                  'Lorem Ipsum is simply dummy text of the printing.',
                             ),
                           ),
                         ],

@@ -42,11 +42,11 @@ class _EditableTableState extends State<EditableTable> {
   final gender5 = TextEditingController();
 
   List<Map<String, dynamic>> ls = [
-    {"id": "1", "name": "bhavesh patel", "age": "22", "gender": "male"},
-    {"id": "2", "name": "parth surani", "age": "23", "gender": "male"},
-    {"id": "3", "name": "vishal makwana", "age": "25", "gender": "male"},
-    {"id": "4", "name": "keval gajera", "age": "25", "gender": "male"},
-    {"id": "5", "name": "abhishek patel", "age": "27", "gender": "male"},
+    {"id": "1", "name": "Jane Deo", "age": "22", "gender": "male"},
+    {"id": "2", "name": "Joe Blow", "age": "23", "gender": "male"},
+    {"id": "3", "name": "Jhon Wick", "age": "25", "gender": "male"},
+    {"id": "4", "name": "Joe Wick", "age": "25", "gender": "male"},
+    {"id": "5", "name": "Jane Blow", "age": "27", "gender": "male"},
   ];
 
   late List<Map<String, dynamic>> _controller;

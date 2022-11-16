@@ -148,16 +148,16 @@ class BasicTable extends StatelessWidget {
                 ),
                 cells: [
                   DataCell(sizedBox(text: "1")),
-                  DataCell(sizedBox(text: "bhavesh")),
-                  DataCell(sizedBox(text: "vaghasiya")),
+                  DataCell(sizedBox(text: "Jane")),
+                  DataCell(sizedBox(text: "Deo")),
                   DataCell(sizedBox(text: "@flutter")),
                 ],
               ),
               DataRow2(
                 cells: [
                   DataCell(sizedBox(text: "2")),
-                  DataCell(sizedBox(text: "vishal")),
-                  DataCell(sizedBox(text: "makwana")),
+                  DataCell(sizedBox(text: "Joe")),
+                  DataCell(sizedBox(text: "Blow")),
                   DataCell(sizedBox(text: "@android")),
                 ],
               ),
@@ -167,8 +167,8 @@ class BasicTable extends StatelessWidget {
                 ),
                 cells: [
                   DataCell(sizedBox(text: "3")),
-                  DataCell(sizedBox(text: "keval")),
-                  DataCell(sizedBox(text: "gajera")),
+                  DataCell(sizedBox(text: "Jhon")),
+                  DataCell(sizedBox(text: "Wick")),
                   DataCell(sizedBox(text: "@flutter")),
                 ],
               ),
@@ -222,8 +222,8 @@ class BasicTable extends StatelessWidget {
             onSelectChanged: (value) {},
             cells: [
               DataCell(sizedBox(text: "1")),
-              DataCell(sizedBox(text: "bhavesh")),
-              DataCell(sizedBox(text: "vaghasiya")),
+              DataCell(sizedBox(text: "Jane")),
+              DataCell(sizedBox(text: "Deo")),
               DataCell(sizedBox(text: "@flutter")),
             ],
           ),
@@ -231,8 +231,8 @@ class BasicTable extends StatelessWidget {
             onSelectChanged: (value) {},
             cells: [
               DataCell(sizedBox(text: "2")),
-              DataCell(sizedBox(text: "vishal")),
-              DataCell(sizedBox(text: "makwana")),
+              DataCell(sizedBox(text: "Joe")),
+              DataCell(sizedBox(text: "Blow")),
               DataCell(sizedBox(text: "@android")),
             ],
           ),
@@ -240,8 +240,8 @@ class BasicTable extends StatelessWidget {
             onSelectChanged: (value) {},
             cells: [
               DataCell(sizedBox(text: "3")),
-              DataCell(sizedBox(text: "keval")),
-              DataCell(sizedBox(text: "gajera")),
+              DataCell(sizedBox(text: "Jhon")),
+              DataCell(sizedBox(text: "Wick")),
               DataCell(sizedBox(text: "@flutter")),
             ],
           ),
@@ -263,32 +263,32 @@ class BasicTable extends StatelessWidget {
           DataRow2(
             cells: [
               DataCell(sizedBox(text: "1")),
-              DataCell(sizedBox(text: "bhavesh")),
-              DataCell(sizedBox(text: "vaghasiya")),
+              DataCell(sizedBox(text: "Jane")),
+              DataCell(sizedBox(text: "Deo")),
               DataCell(sizedBox(text: "@flutter")),
             ],
           ),
           DataRow2(
             cells: [
               DataCell(sizedBox(text: "2")),
-              DataCell(sizedBox(text: "vishal")),
-              DataCell(sizedBox(text: "makwana")),
+              DataCell(sizedBox(text: "Joe")),
+              DataCell(sizedBox(text: "Blow")),
               DataCell(sizedBox(text: "@android")),
             ],
           ),
           DataRow2(
             cells: [
               DataCell(sizedBox(text: "3")),
-              DataCell(sizedBox(text: "keval")),
-              DataCell(sizedBox(text: "gajera")),
+              DataCell(sizedBox(text: "Jhon")),
+              DataCell(sizedBox(text: "Wick")),
               DataCell(sizedBox(text: "@flutter")),
             ],
           ),
           DataRow2(
             cells: [
               DataCell(sizedBox(text: "4")),
-              DataCell(sizedBox(text: "parth")),
-              DataCell(sizedBox(text: "surani")),
+              DataCell(sizedBox(text: "Jane")),
+              DataCell(sizedBox(text: "Deo")),
               DataCell(sizedBox(text: "@web")),
             ],
           ),
@@ -312,8 +312,8 @@ class BasicTable extends StatelessWidget {
             ),
             cells: [
               DataCell(sizedBox(text: "1")),
-              DataCell(sizedBox(text: "bhavesh")),
-              DataCell(sizedBox(text: "vaghasiya")),
+              DataCell(sizedBox(text: "Jane")),
+              DataCell(sizedBox(text: "Deo")),
               DataCell(sizedBox(text: "@flutter")),
             ],
           ),
@@ -323,8 +323,8 @@ class BasicTable extends StatelessWidget {
             ),
             cells: [
               DataCell(sizedBox(text: "2")),
-              DataCell(sizedBox(text: "vishal")),
-              DataCell(sizedBox(text: "makwana")),
+              DataCell(sizedBox(text: "Joe")),
+              DataCell(sizedBox(text: "Blow")),
               DataCell(sizedBox(text: "@android")),
             ],
           ),
@@ -334,8 +334,8 @@ class BasicTable extends StatelessWidget {
             ),
             cells: [
               DataCell(sizedBox(text: "3")),
-              DataCell(sizedBox(text: "keval")),
-              DataCell(sizedBox(text: "gajera")),
+              DataCell(sizedBox(text: "Jhon")),
+              DataCell(sizedBox(text: "Wick")),
               DataCell(sizedBox(text: "@flutter")),
             ],
           ),
@@ -400,24 +400,24 @@ class BasicTable extends StatelessWidget {
       DataRow2(
         cells: [
           DataCell(sizedBox(text: "1")),
-          DataCell(sizedBox(text: "bhavesh")),
-          DataCell(sizedBox(text: "vaghasiya")),
+          DataCell(sizedBox(text: "Jane")),
+          DataCell(sizedBox(text: "Deo")),
           DataCell(sizedBox(text: "@flutter")),
         ],
       ),
       DataRow2(
         cells: [
           DataCell(sizedBox(text: "2")),
-          DataCell(sizedBox(text: "vishal")),
-          DataCell(sizedBox(text: "makwana")),
+          DataCell(sizedBox(text: "Joe")),
+          DataCell(sizedBox(text: "Blow")),
           DataCell(sizedBox(text: "@android")),
         ],
       ),
       DataRow2(
         cells: [
           DataCell(sizedBox(text: "3")),
-          DataCell(sizedBox(text: "keval")),
-          DataCell(sizedBox(text: "gajera")),
+          DataCell(sizedBox(text: "Jhon")),
+          DataCell(sizedBox(text: "Wick")),
           DataCell(sizedBox(text: "@flutter")),
         ],
       ),

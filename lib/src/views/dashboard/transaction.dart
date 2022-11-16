@@ -116,7 +116,7 @@ class _TransactionState extends State<Transaction> {
                       DataRow(
                         onSelectChanged: (value) {},
                         cells: [
-                          DataCell(_tableHeader('#14260')),
+                          DataCell(_tableHeader('#5')),
                           DataCell(_tableRowImage('Jane Blow')),
                           DataCell(_tableHeader('12/11/2022')),
                           DataCell(_tableHeader('\$120')),

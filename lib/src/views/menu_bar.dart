@@ -317,6 +317,7 @@ class _MenuBarState extends State<MenuBar> {
               : Container(
                   padding: const EdgeInsets.symmetric(vertical: 12),
                   width: 180,
+                  height: 48,
                   child: TextField(
                     cursorWidth: 1,
                     textAlignVertical: TextAlignVertical.center,

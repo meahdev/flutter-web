@@ -133,8 +133,8 @@ class _DatatableState extends State<Datatable> {
                             (e) => DataRow2(
                               cells: [
                                 DataCell(sizedBox(text: "$e")),
-                                DataCell(sizedBox(text: "bhavesh")),
-                                DataCell(sizedBox(text: "vaghasiya")),
+                                DataCell(sizedBox(text: "Jane")),
+                                DataCell(sizedBox(text: "Deo")),
                                 DataCell(sizedBox(text: "@flutter")),
                                 DataCell(sizedBox(text: "25")),
                                 DataCell(sizedBox(text: "22,500")),

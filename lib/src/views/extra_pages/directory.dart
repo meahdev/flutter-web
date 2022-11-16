@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -14,39 +15,9 @@ class DirectoryPage extends StatefulWidget {
 }
 
 class _DirectoryPageState extends State<DirectoryPage> {
-  final nameList = [
-    "Jerome A. Hebert",
-    "Adam V. Acker",
-    "Stanley M. Dyke",
-    "Ben J. Mathison",
-    "John V. Bailey",
-    "Antonio J. Thomas",
-    "Jerome A. Hebert",
-    "Adam V. Acker",
-    "Stanley M. Dyke"
-  ];
-  final photoList = [
-    "https://image.shutterstock.com/image-photo/young-beautiful-happy-businesswoman-sitting-260nw-165623561.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1my37SvAuEZ3wqzRRcSlmQvdZS3V5r9rvFw&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_dn2jhjbm1AvtfQUI1uE31guOtRV_M2zMzA&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSobvnMKSeJSKrg0DjnaSC4llKa-4wxRDDK4w&usqp=CAU",
-    "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmVzc2lvbmFsJTIwd29tYW58ZW58MHx8MHx8&w=1000&q=80",
-    "https://image.shutterstock.com/image-photo/young-beautiful-happy-businesswoman-sitting-260nw-165623561.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1my37SvAuEZ3wqzRRcSlmQvdZS3V5r9rvFw&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_dn2jhjbm1AvtfQUI1uE31guOtRV_M2zMzA&usqp=CAU",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSobvnMKSeJSKrg0DjnaSC4llKa-4wxRDDK4w&usqp=CAU",
-  ];
-  final emailList = [
-    "Jerome@fdash.com",
-    "Adam@fdash.com",
-    "Stanley@fdash.com",
-    "Ben@fdash.com",
-    "John@fdash.com",
-    "Antonio@fdash.com",
-    "Jerome@fdash.com",
-    "Adam@fdash.com",
-    "Stanley@fdash.com"
-  ];
+  final nameList = List.generate(9, (index) => 'Jane Deo');
+  final photoList = List.generate(9, (index) => Images.profileImage);
+  final emailList = List.generate(9, (index) => 'janedeo@admin.com');
 
   bool isHover = false;
 
@@ -172,7 +143,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
             RichText(
               text: TextSpan(
                 text:
-                    'Intro : At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis atque corrupti quos dolores et...  ',
+                    'Intro : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s...  ',
                 style: DefaultTextStyle.of(context).style,
                 children: const <TextSpan>[
                   TextSpan(

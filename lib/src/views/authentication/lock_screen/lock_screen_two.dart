@@ -108,8 +108,8 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               image: const DecorationImage(
-                fit: BoxFit.fill,
-                image: AssetImage(Images.loginBg),
+                fit: BoxFit.cover,
+                image: NetworkImage(Images.profileImage),
               ),
               border: Border.all(
                 width: 5.0,
@@ -119,7 +119,7 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
           ),
           FxBox.h16,
           CustomText(
-            title: 'Robert Smith',
+            title: 'Jane Doe',
             fontSize: 17,
             fontWeight: FontWeight.w800,
             textColor:

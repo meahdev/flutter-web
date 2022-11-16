@@ -155,7 +155,7 @@ class Strings {
   static const String notYouReturn = 'Not you ? return ';
   static const String signIn = 'Sign In';
   static const String lockedDescription =
-      'Hello Smith, enter your password to unlock the screen!';
+      'Hello Jane, enter your password to unlock the screen!';
 
   // sale report
   static const String salesReport = 'Sales Report';

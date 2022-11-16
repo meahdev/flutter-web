@@ -58,7 +58,7 @@ class BillingEmail extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     const Text("Invoice #6521"),
-                    const Text("August 01 2017"),
+                    const Text("November 01 2022"),
                     FxBox.h8,
                     const Divider(height: 8.0),
                     ListView.separated(
