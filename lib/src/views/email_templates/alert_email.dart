@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -20,7 +21,7 @@ class AlertEmail extends StatelessWidget {
                   : MediaQuery.of(context).size.width - 48,
             ),
             decoration: BoxDecoration(
-              color: ColorConst.white,
+              // color: isDark ? ColorConst.cardDark : ColorConst.white,
               border: Border.all(color: Colors.indigo, width: 1.0),
             ),
             child: Column(
@@ -74,7 +75,6 @@ class AlertEmail extends StatelessWidget {
                       FxBox.h20,
                       const Text(
                         "Add your credit card now to upgrade your account to a premium plan to ensure you don't miss out on any reports.",
-                        style: TextStyle(color: Color(0XFF212529)),
                       ),
                       FxBox.h20,
                       FxButton(

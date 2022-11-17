@@ -24,7 +24,7 @@ class BillingEmail extends StatelessWidget {
             ),
             padding: const EdgeInsets.all(20.0),
             decoration: BoxDecoration(
-              color: ColorConst.white,
+              // color: isDark ? ColorConst.cardDark : ColorConst.white,
               border: Border.all(width: 3.0),
             ),
             child: BlocBuilder<ThemeModeBloc, ThemeModeState>(

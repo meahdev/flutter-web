@@ -49,6 +49,7 @@ class _MyAppState extends State<MyApp> {
                     PointerDeviceKind.unknown
                   },
                 ),
+                title: 'Admin',
               );
             },
           );

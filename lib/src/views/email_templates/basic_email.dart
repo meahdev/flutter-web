@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -21,7 +22,7 @@ class BasicEmail extends StatelessWidget {
             ),
             padding: const EdgeInsets.all(32.0),
             decoration: BoxDecoration(
-              color: ColorConst.white,
+              // color: isDark ? ColorConst.cardDark : ColorConst.white,
               border: Border.all(color: Colors.indigo, width: 3.0),
             ),
             child: Column(
