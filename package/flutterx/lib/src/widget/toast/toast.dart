@@ -82,9 +82,11 @@ class FxToast {
           duration: duration,
           child: Material(
             color: Colors.transparent,
-            child: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 16),
-              child: toast.show(context, toastWidth),
+            child: SafeArea(
+              child: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                child: toast.show(context, toastWidth),
+              ),
             ),
           ),
         ),

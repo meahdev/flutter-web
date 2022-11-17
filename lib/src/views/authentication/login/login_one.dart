@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
+import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/widget/custom_text_field.dart';
@@ -33,7 +34,9 @@ class _LoginOneState extends State<LoginOne> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
+              padding: Responsive.isMobile(context)
+                  ? const EdgeInsets.only(left: 32, right: 32)
+                  : const EdgeInsets.only(left: 40, right: 40),
               child: Stack(
                 children: [
                   Column(
@@ -162,8 +165,9 @@ class _LoginOneState extends State<LoginOne> {
         ),
         CustomText(
           title: Strings.rememberMeLabel,
-          textColor:
-              isDark ? ColorConst.darkFontColor.withOpacity(0.75) : ColorConst.lightFontColor,
+          textColor: isDark
+              ? ColorConst.darkFontColor.withOpacity(0.75)
+              : ColorConst.lightFontColor,
           fontWeight: FontWeight.w700,
         ),
       ],

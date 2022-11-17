@@ -73,13 +73,15 @@ class FxModal {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              title,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                              style: const TextStyle(
-                                fontSize: 18.5,
-                                fontWeight: FontWeight.w600,
+                            SelectionArea(
+                              child: Text(
+                                title,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                                style: const TextStyle(
+                                  fontSize: 18.5,
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
                             ),
                             GestureDetector(

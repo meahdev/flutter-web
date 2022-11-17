@@ -121,19 +121,21 @@ class _CustomTabViewState extends State<CustomTabView>
               ),
             ],
           ),
-          SizedBox(
-            height: MediaQuery.of(context).size.height / 4.5,
-            child: IntrinsicHeight(
-              child: TabBarView(
-                controller: _tabController,
-                physics: const NeverScrollableScrollPhysics(),
-                dragStartBehavior: DragStartBehavior.down,
-                children: List.generate(
-                  widget.tabsElements.length,
-                  (index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      widget.tabsElements[index],
+          SelectionArea(
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height / 4.5,
+              child: IntrinsicHeight(
+                child: TabBarView(
+                  controller: _tabController,
+                  physics: const NeverScrollableScrollPhysics(),
+                  dragStartBehavior: DragStartBehavior.down,
+                  children: List.generate(
+                    widget.tabsElements.length,
+                    (index) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        widget.tabsElements[index],
+                      ),
                     ),
                   ),
                 ),

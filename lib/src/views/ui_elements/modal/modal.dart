@@ -139,7 +139,7 @@ class _ModalState extends State<Modal> {
               FxModal.showModel(
                 context: context,
                 title: title,
-                content: content,
+                content: SelectionArea(child: content),
                 trailingIcon: const SvgIcon(icon: IconlyBroken.closeSquare),
                 actions: actions,
                 modelType: modalType,
