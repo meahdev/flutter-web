@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_excel/excel.dart';
 import 'package:flutterx/flutterx.dart';
 
 class ResponsiveTable extends StatelessWidget {
@@ -14,12 +15,24 @@ class ResponsiveTable extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              Strings.responsiveTable,
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                const Text(
+                  Strings.responsiveTable,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const Spacer(),
+                FxButton(
+                  borderRadius: 4,
+                  onPressed: () {
+                    _exportExcel();
+                  },
+                  text: 'Send Files',
+                ),
+              ],
             ),
             FxBox.h20,
             SizedBox(
@@ -83,5 +96,23 @@ class ResponsiveTable extends StatelessWidget {
       softWrap: true,
       style: TextStyle(fontSize: 17, fontWeight: fontwidget),
     );
+  }
+
+  Future<void> _exportExcel() async {
+    List<String> titleList = [
+      '#',
+      'First Name',
+      'Last Name',
+      'User Name',
+    ];
+    var excel = Excel.createExcel();
+    excel.sheets['Sheet1']!.insertRowIterables(titleList, 0);
+
+    for (var i = 0; i < 50; i++) {
+      final List<String> list = ['${i + 1}', 'Jane', 'Deo', '@flutter'];
+      excel.sheets['Sheet1']!.insertRowIterables(list, i + 1);
+    }
+
+    excel.save(fileName: 'FlutterAdmin.xlsx');
   }
 }

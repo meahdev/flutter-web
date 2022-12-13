@@ -1,6 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
-import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
