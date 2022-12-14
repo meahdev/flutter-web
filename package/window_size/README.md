@@ -1,40 +1,39 @@
-# window_size
+<!--
+This README describes the package. If you publish this package to pub.dev,
+this README's contents appear on the landing page for your package.
 
-This plugin allows resizing and repositioning the window containing the Flutter
-content, as well as querying screen information.
+For information about how to write a good package README, see the guide for
+[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
 
-This is a prototype, and in the long term is expected to be replaced by
-[functionality within the Flutter
-framework](https://flutter.dev/go/desktop-multi-window-support).
+For general information about developing packages, see the Dart guide for
+[creating packages](https://dart.dev/guides/libraries/create-library-packages)
+and the Flutter guide for
+[developing packages and plugins](https://flutter.dev/developing-packages).
+-->
 
-## Scope
+TODO: Put a short description of the package here that helps potential users
+know whether this package might be useful for them.
 
-There are currently no plans to add new functionality, such as window
-minimization and maximization, to this plugin. The goals of this plugin were to:
-- unblock certain core use cases among very early adopters, and
-- validate plugin APIs in Flutter itself during early development of the desktop
-  plugin APIs.
+## Features
 
-Now that those goals have been met, and the plugin APIs have been stabilized
-such that anyone can create and publish desktop Flutter plugins, new functionality
-will likely only be added here if unblocks a [Flutter top-tier
-customer](https://github.com/flutter/flutter/wiki/Issue-hygiene#customers).
-The community is encouraged to create their own plugins for other window
-manipulation features.
+TODO: List what your package can do. Maybe include images, gifs, or videos.
 
-## Supported Platforms
+## Getting started
 
-- [x] macOS
-- [x] Windows
-- [x] Linux
+TODO: List prerequisites and provide or point to information on how to
+start using the package.
 
-Not all operations have been implemented on all platforms, but the core functionality
-of resizing and repositioning is available for all three.
+## Usage
 
-## Use
+TODO: Include short and useful examples for package users. Add longer examples
+to `/example` folder.
 
-See [the plugin README](../README.md) for general instructions on using FDE plugins.
+```dart
+const like = 'sample';
+```
 
-### Linux
+## Additional information
 
-Requires GTK 3.22 or later.
+TODO: Tell users more about the package: where to find more information, how to
+contribute to the package, how to file issues, what response they can expect
+from the package authors, and more.
