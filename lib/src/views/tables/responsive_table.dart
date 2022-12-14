@@ -30,7 +30,7 @@ class ResponsiveTable extends StatelessWidget {
                   onPressed: () {
                     _exportExcel();
                   },
-                  text: 'Send Files',
+                  text: 'Export',
                 ),
               ],
             ),

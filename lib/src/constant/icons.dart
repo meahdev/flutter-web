@@ -23,4 +23,5 @@ class IconlyBroken {
   static const String facebook = '${_assetPath}facebook.svg';
   static const String twitter = '${_assetPath}twitter.svg';
   static const String map = '${_assetPath}map.svg';
+  static const String pin = '${_assetPath}pin.svg';
 }

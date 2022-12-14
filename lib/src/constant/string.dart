@@ -35,6 +35,7 @@ class Strings {
   static const String authentication = 'Authentication';
   static const String extraPages = 'Extra Pages';
   static const String emailTemplates = 'Email Templates';
+  static const String userProfile = 'User Profile';
 
   // ui elements option
   static const String toast = 'Toast';
@@ -201,7 +202,6 @@ class Strings {
   static const String pickColor = 'Pick Color';
 
   // menubar
-
   static const String logout = 'Logout';
   static const String notifications = 'Notifications';
   static const String viewAll = 'View all';
@@ -209,7 +209,6 @@ class Strings {
   static const String lockScreen = 'Lock screen';
 
   // alert dialog
-
   static const String simpleAlert = 'Simple Alert';
   static const String ok = 'OK';
   static const String iconAlert = 'Icon Alert';
@@ -219,7 +218,6 @@ class Strings {
   static const String clickMe = 'Click Me';
 
   // badge
-
   static const String success = 'Success';
   static const String error = 'Error';
   static const String info = 'Info';
@@ -240,7 +238,6 @@ class Strings {
   static const String next = 'Next';
 
   // form
-
   static const String dropzone = 'Dropzone';
   static const String submit = 'Submit';
   static const String addNumber = 'Add Number';

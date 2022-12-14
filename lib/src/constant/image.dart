@@ -9,6 +9,18 @@ class Images {
   static const String light = '${_assetPath}light.png';
   static const String dark = '${_assetPath}dark.png';
 
-  static const String profileImage =
-      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmVzc2lvbmFsJTIwcHJvZmlsZXxlbnwwfHwwfHw%3D&w=1000&q=80';
+  static const String profileImage = '${_assetPath}profile.jpeg';
+
+  static const String c1 = '${_assetPath}c1.jpeg';
+  static const String c2 = '${_assetPath}c2.jpeg';
+  static const String c3 = '${_assetPath}c3.jpeg';
+  static const String g1 = '${_assetPath}g1.jpeg';
+  static const String g2 = '${_assetPath}g2.jpeg';
+  static const String g3 = '${_assetPath}g3.jpeg';
+  static const String g4 = '${_assetPath}g4.jpeg';
+  static const String g5 = '${_assetPath}g5.jpeg';
+  static const String g6 = '${_assetPath}g6.jpeg';
+  static const String g7 = '${_assetPath}g7.jpeg';
+  static const String g8 = '${_assetPath}g8.jpeg';
+  static const String g9 = '${_assetPath}g9.jpeg';
 }

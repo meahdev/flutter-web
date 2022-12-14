@@ -54,7 +54,7 @@ class _ClienresponseState extends State<Clienresponse> {
       children: [
         const CircleAvatar(
           maxRadius: 20,
-          backgroundImage: NetworkImage(Images.profileImage),
+          backgroundImage: AssetImage(Images.profileImage),
         ),
         FxBox.w10,
         Expanded(

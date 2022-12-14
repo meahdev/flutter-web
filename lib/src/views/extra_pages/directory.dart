@@ -68,7 +68,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                   radius: 44,
                   backgroundColor: Colors.grey.shade300,
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(
+                    backgroundImage: AssetImage(
                       photoList[index],
                     ),
                     radius: 40,

@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/provider/gallery/bloc/gallery_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -17,18 +18,18 @@ class Gallery extends StatefulWidget {
 
 class _GalleryState extends State<Gallery> {
   final _imageList = [
-    "https://images.pexels.com/photos/1433052/pexels-photo-1433052.jpeg",
-    "https://images.pexels.com/photos/9002006/pexels-photo-9002006.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/8476725/pexels-photo-8476725.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/4976387/pexels-photo-4976387.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/10570696/pexels-photo-10570696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/6442132/pexels-photo-6442132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/9292920/pexels-photo-9292920.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/11253327/pexels-photo-11253327.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/11262377/pexels-photo-11262377.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-    "https://images.pexels.com/photos/8932304/pexels-photo-8932304.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-    "https://images.pexels.com/photos/10069112/pexels-photo-10069112.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
-    "https://images.pexels.com/photos/11589110/pexels-photo-11589110.jpeg?auto=compress&cs=tinysrgb&w=600&lazy=load",
+    Images.c1,
+    Images.c2,
+    Images.c3,
+    Images.g1,
+    Images.g2,
+    Images.g3,
+    Images.g4,
+    Images.g5,
+    Images.g6,
+    Images.g9,
+    Images.g7,
+    Images.g8,
   ];
 
   final _headingList = [
@@ -79,6 +80,7 @@ class _GalleryState extends State<Gallery> {
             mainAxisSpacing: 24.0,
             childAspectRatio: 3 / 2,
           ),
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
@@ -93,7 +95,7 @@ class _GalleryState extends State<Gallery> {
                     ),
                     child: Stack(
                       children: [
-                        Image.network(
+                        Image.asset(
                           _imageList[index],
                           alignment: Alignment.topCenter,
                           fit: BoxFit.cover,
@@ -120,7 +122,7 @@ class _GalleryState extends State<Gallery> {
                                     Row(
                                       children: [
                                         CircleAvatar(
-                                          backgroundImage: NetworkImage(
+                                          backgroundImage: AssetImage(
                                             _imageList[index],
                                           ),
                                         ),
@@ -215,7 +217,7 @@ class _GalleryState extends State<Gallery> {
                             child: Stack(
                               clipBehavior: Clip.none,
                               children: [
-                                Image.network(
+                                Image.asset(
                                   _imageList[selectedIndex],
                                   fit: BoxFit.contain,
                                 ),

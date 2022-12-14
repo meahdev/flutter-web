@@ -110,7 +110,7 @@ class _ChatscreenState extends State<Chatscreen> {
       children: [
         CircleAvatar(
           maxRadius: MediaQuery.of(context).size.height * 0.02,
-          backgroundImage: const NetworkImage(Images.profileImage),
+          backgroundImage: const AssetImage(Images.profileImage),
         ),
         FxBox.h10,
         Text(

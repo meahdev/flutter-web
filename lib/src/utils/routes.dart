@@ -34,6 +34,7 @@ import 'package:admin_dashboard/src/views/ui_elements/rating/rating.dart';
 import 'package:admin_dashboard/src/views/ui_elements/tabbar/tabs_screen.dart';
 import 'package:admin_dashboard/src/views/ui_elements/toast/toast.dart';
 import 'package:admin_dashboard/src/views/ui_elements/videos/video_screen.dart';
+import 'package:admin_dashboard/src/views/user/user_profile.dart';
 import 'package:flutter/material.dart';
 
 int getRouteIndex(String route) {
@@ -105,6 +106,8 @@ int getRouteIndex(String route) {
     return 33;
   } else if (route == Strings.map) {
     return 34;
+  } else if (route == Strings.userProfile) {
+    return 35;
   } else {
     return 0;
   }
@@ -179,6 +182,8 @@ Widget getRouteWidget(int index) {
     return const VideoScreen();
   } else if (index == 34) {
     return const GoogleMaps();
+  } else if (index == 35) {
+    return const UserProfile();
   } else {
     return const Dashboard();
   }

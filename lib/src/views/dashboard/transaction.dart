@@ -148,7 +148,7 @@ class _TransactionState extends State<Transaction> {
       children: [
         const CircleAvatar(
           maxRadius: 15,
-          backgroundImage: NetworkImage(Images.profileImage),
+          backgroundImage: AssetImage(Images.profileImage),
         ),
         FxBox.w10,
         Expanded(

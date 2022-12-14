@@ -107,7 +107,7 @@ class _LockScreenOneState extends State<LockScreenOne> {
               shape: BoxShape.circle,
               image: const DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(Images.profileImage),
+                image: AssetImage(Images.profileImage),
               ),
               border: Border.all(
                 width: 5.0,

@@ -46,6 +46,7 @@ class _MyAppState extends State<MyApp> {
                     PointerDeviceKind.mouse,
                     PointerDeviceKind.touch,
                     PointerDeviceKind.stylus,
+                    PointerDeviceKind.trackpad,
                     PointerDeviceKind.unknown
                   },
                 ),

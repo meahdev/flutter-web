@@ -167,7 +167,8 @@ class _MenuBarState extends State<MenuBar> {
     WizardForm(),
     MaskForm(),
     VideoScreen(),
-    GoogleMaps()
+    GoogleMaps(),
+    UserProfile()
   ];
 
   @override
@@ -365,7 +366,7 @@ class _MenuBarState extends State<MenuBar> {
                   ),
                 ),
           _notification(),
-          _profile(),
+          _profile(tabsRouter),
           MaterialButton(
             height: double.infinity,
             minWidth: 60,
@@ -492,7 +493,7 @@ class _MenuBarState extends State<MenuBar> {
     );
   }
 
-  Widget _profile() {
+  Widget _profile(TabsRouter tabsRouter) {
     return FxDropdownButton(
       focusColor: Colors.transparent,
       underline: FxBox.shrink,
@@ -503,12 +504,18 @@ class _MenuBarState extends State<MenuBar> {
         onPressed: null,
         child: CircleAvatar(
           maxRadius: 16,
-          backgroundImage: NetworkImage(Images.profileImage),
+          backgroundImage: AssetImage(Images.profileImage),
         ),
       ),
       customItemsIndexes: const [3],
       customItemsHeight: 8,
-      onChanged: (value) {},
+      onChanged: (value) {
+        if (value == 'Profile') {
+          // context.router.push(const MenuBar());
+          tabsRouter.setActiveIndex(getRouteIndex(Strings.userProfile));
+          _scaffoldDrawerKey.currentState?.closeDrawer();
+        }
+      },
       items: [
         ..._items.map(
           (e) => DropdownMenuItem(

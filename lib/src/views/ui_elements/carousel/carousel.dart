@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/provider/carousel/bloc/carousel_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -21,11 +22,7 @@ class _CarouselState extends State<Carousel> {
   final CarouselController _withControlController = CarouselController();
   final CarouselController _withIndicatorController = CarouselController();
   final CarouselController _withCaptionsController = CarouselController();
-  final List<String> _imageList = [
-    "https://images.pexels.com/photos/1433052/pexels-photo-1433052.jpeg",
-    "https://images.pexels.com/photos/9002006/pexels-photo-9002006.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/8476725/pexels-photo-8476725.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  ];
+  final List<String> _imageList = [Images.c1, Images.c2, Images.c3];
 
   final List<String> _captionList = [
     'First slide label',
@@ -128,7 +125,7 @@ class _CarouselState extends State<Carousel> {
       CarouselSlider(
         items: _imageList
             .map(
-              (image) => Image.network(
+              (image) => Image.asset(
                 image,
                 fit: BoxFit.cover,
                 width: double.infinity,
@@ -162,7 +159,7 @@ class _CarouselState extends State<Carousel> {
           CarouselSlider(
             carouselController: _withControlController,
             items: _imageList
-                .map((image) => Image.network(
+                .map((image) => Image.asset(
                       image,
                       fit: BoxFit.cover,
                       width: double.infinity,
@@ -200,7 +197,7 @@ class _CarouselState extends State<Carousel> {
             carouselController: _withIndicatorController,
             items: _imageList
                 .map(
-                  (image) => Image.network(
+                  (image) => Image.asset(
                     image,
                     fit: BoxFit.cover,
                     width: double.infinity,
@@ -262,7 +259,7 @@ class _CarouselState extends State<Carousel> {
               return Stack(
                 alignment: Alignment.bottomCenter,
                 children: [
-                  Image.network(
+                  Image.asset(
                     _imageList[index],
                     fit: BoxFit.cover,
                     width: double.infinity,
