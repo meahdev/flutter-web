@@ -11,12 +11,21 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+import 'dart:ui';
 
-import FlutterMacOS
-import Foundation
+/// Represents a screen, containing information about its size, position, and
+/// properties.
+class Screen {
+  /// Create a new screen.
+  Screen(this.frame, this.visibleFrame, this.scaleFactor);
 
-public class WindowSizePlugin: NSObject, FlutterPlugin {
-  public static func register(with registrar: FlutterPluginRegistrar) {
-    FLEWindowSizePlugin.register(with: registrar)
-  }
+  /// The frame of the screen, in screen coordinates.
+  final Rect frame;
+
+  /// The portion of the screen's frame that is available for use by application
+  /// windows. E.g., on macOS, this excludes the menu bar.
+  final Rect visibleFrame;
+
+  /// The number of pixels per screen coordinate for this screen.
+  final double scaleFactor;
 }

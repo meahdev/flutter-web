@@ -1,4 +1,4 @@
-// Copyright 2018 Google LLC
+// Copyright 2019 Google LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -11,15 +11,22 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+import 'dart:ui';
 
-#import <Foundation/Foundation.h>
+import 'screen.dart';
 
-#import <FlutterMacOS/FlutterMacOS.h>
+/// Represents a window, containing information about its size, position, and
+/// properties.
+class PlatformWindow {
+  /// Create a new window.
+  PlatformWindow(this.frame, this.scaleFactor, this.screen);
 
-/**
- * A FlutterPlugin to manage macOS's shared NSColorPanel singleton.
- * Responsible for managing the panel's display state and sending selected color data to Flutter.
- */
-@interface FLEWindowSizePlugin : NSObject <FlutterPlugin, NSWindowDelegate>
+  /// The frame of the screen, in screen coordinates.
+  final Rect frame;
 
-@end
+  /// The number of pixels per screen coordinate for this screen.
+  final double scaleFactor;
+
+  /// The (or a) screen containing this window, if any.
+  final Screen? screen;
+}
