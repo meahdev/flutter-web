@@ -209,7 +209,7 @@ class _CalendarState extends State<Calendar> {
                   Icons.add_circle_outline,
                   size: 15,
                 ),
-                text: 'Create New Event',
+                text: 'Create Event',
                 borderRadius: 40,
               ),
             ),
@@ -221,7 +221,7 @@ class _CalendarState extends State<Calendar> {
             FxBox.h12,
             _addEventButtons(
                 color: ColorConst.calSuccess,
-                label: 'New Event Planning',
+                label: 'Event Planning',
                 colorIndex: 2),
             FxBox.h6,
             _addEventButtons(
@@ -229,12 +229,12 @@ class _CalendarState extends State<Calendar> {
             FxBox.h6,
             _addEventButtons(
                 color: ColorConst.warning,
-                label: 'Generating Reports',
+                label: 'Generate Reports',
                 colorIndex: 6),
             FxBox.h6,
             _addEventButtons(
                 color: ColorConst.error.withOpacity(0.8),
-                label: 'Create New theme',
+                label: 'Theme',
                 colorIndex: 1),
             FxBox.h40,
             const Text(

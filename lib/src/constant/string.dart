@@ -228,13 +228,14 @@ class Strings {
   static const String saveChange = 'Save changes';
 
   // table
-  static const String dartTable = 'Dark table';
-  static const String stripedRow = 'Striped rows';
-  static const String hoverableRow = 'Hoverable rows';
-  static const String borderedTable = 'Bordered table';
-  static const String borderLessTable = 'Borderless table';
-  static const String smallTable = 'Small table';
-  static const String contextualTable = 'Contextual table';
+  static const String dartTable = 'Dark';
+  static const String simpleTable = 'Simple';
+  static const String stripedRow = 'Striped';
+  static const String hoverableRow = 'Hoverable';
+  static const String borderedTable = 'Bordered';
+  static const String borderLessTable = 'Borderless';
+  static const String smallTable = 'Small';
+  static const String contextualTable = 'Contextual';
   static const String next = 'Next';
 
   // form

@@ -82,7 +82,7 @@ class _ValidationFormState extends State<ValidationForm> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _formHeadingCommon('Validation type'),
+                      _formHeadingCommon('Validation Form'),
                       FxBox.h24,
                       Form(
                         autovalidateMode: _firstValidateMode,
@@ -180,18 +180,18 @@ class _ValidationFormState extends State<ValidationForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             __validationWithIconCommon(
-              _commonText('First Name'),
+              _commonText('Full Name'),
               _firstNameTextField(),
-            ),
-            FxBox.w12,
-            __validationWithIconCommon(
-              _commonText('Last Name'),
-              _lastfirstNameTextField(),
             ),
             FxBox.w12,
             __validationWithIconCommon(
               _commonText('Username'),
               _userNameTextField(),
+            ),
+            FxBox.w12,
+            __validationWithIconCommon(
+              _commonText('Email ID'),
+              _lastfirstNameTextField(),
             ),
           ],
         ),
@@ -200,7 +200,7 @@ class _ValidationFormState extends State<ValidationForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             __validationWithIconCommon(
-              _commonText('City'),
+              _commonText('Moile No'),
               _cityTextField(),
             ),
             FxBox.w12,
@@ -223,13 +223,13 @@ class _ValidationFormState extends State<ValidationForm> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _commonText('First Name'),
+        _commonText('Full Name'),
         _firstNameTextField(),
-        _commonText('Last Name'),
-        _lastfirstNameTextField(),
         _commonText('Username'),
         _userNameTextField(),
-        _commonText('City'),
+        _commonText('Email ID'),
+        _lastfirstNameTextField(),
+        _commonText('Mobile No'),
         _cityTextField(),
         _commonText('State'),
         _stateTextField(),
@@ -280,7 +280,7 @@ class _ValidationFormState extends State<ValidationForm> {
         }
         return null;
       },
-      hintText: 'Doe',
+      hintText: 'jone@mail.com',
     );
   }
 
@@ -391,14 +391,10 @@ class _ValidationFormState extends State<ValidationForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _formHeadingCommon('Validation type'),
+                    _formHeadingCommon('Input Type Validation'),
                     FxBox.h24,
                     _commonText('Required'),
                     _requiredTextField(),
-                    _commonText('Equal To'),
-                    _passwordTextField(),
-                    FxBox.h8,
-                    _rePasswordTextField(),
                     _commonText('E-Mail'),
                     _emailTextField(),
                     _commonText('URL'),
@@ -409,8 +405,8 @@ class _ValidationFormState extends State<ValidationForm> {
                     _numberTextField(),
                     _commonText('Alphanumeric'),
                     _alphanumericTextField(),
-                    _commonText('Textarea'),
-                    _textAreaTextField(),
+                    // _commonText('Textarea'),
+                    // _textAreaTextField(),
                     FxBox.h24,
                     Row(
                       children: [
@@ -425,23 +421,23 @@ class _ValidationFormState extends State<ValidationForm> {
                           },
                           text: Strings.submit,
                         ),
-                        FxBox.w8,
-                        FxButton(
-                          buttonType: ButtonType.secondary,
-                          borderRadius: 4,
-                          onPressed: () {
-                            _requiredController.clear();
-                            _passwordController.clear();
-                            _rePasswordController.clear();
-                            _emailController.clear();
-                            _urlController.clear();
-                            _digitController.clear();
-                            _numberController.clear();
-                            _alphaNumericController.clear();
-                            _textAreaController.clear();
-                          },
-                          text: Strings.cancle,
-                        )
+                        // FxBox.w8,
+                        // FxButton(
+                        //   buttonType: ButtonType.secondary,
+                        //   borderRadius: 4,
+                        //   onPressed: () {
+                        //     _requiredController.clear();
+                        //     _passwordController.clear();
+                        //     _rePasswordController.clear();
+                        //     _emailController.clear();
+                        //     _urlController.clear();
+                        //     _digitController.clear();
+                        //     _numberController.clear();
+                        //     _alphaNumericController.clear();
+                        //     _textAreaController.clear();
+                        //   },
+                        //   text: Strings.cancle,
+                        // )
                       ],
                     ),
                   ],
@@ -459,57 +455,57 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _requiredController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return "This field is required.";
         }
         return null;
       },
-      hintText: 'Type something',
+      hintText: 'Message',
     );
   }
 
-  Widget _passwordTextField() {
-    return _textField(
-      obscureText: true,
-      controller: _passwordController,
-      validator: (value) {
-        if (value!.trim().isEmpty) {
-          return "This value is required.";
-        }
-        return null;
-      },
-      hintText: 'Password',
-    );
-  }
+  // Widget _passwordTextField() {
+  //   return _textField(
+  //     obscureText: true,
+  //     controller: _passwordController,
+  //     validator: (value) {
+  //       if (value!.trim().isEmpty) {
+  //         return "This field is required.";
+  //       }
+  //       return null;
+  //     },
+  //     hintText: 'Password',
+  //   );
+  // }
 
-  Widget _rePasswordTextField() {
-    return _textField(
-      obscureText: true,
-      controller: _rePasswordController,
-      validator: (value) {
-        if (value!.trim().isEmpty) {
-          return "This value is required.";
-        } else if (value != _passwordController.text) {
-          return "This value should be the same";
-        }
-        return null;
-      },
-      hintText: 'Re-Type Password',
-    );
-  }
+  // Widget _rePasswordTextField() {
+  //   return _textField(
+  //     obscureText: true,
+  //     controller: _rePasswordController,
+  //     validator: (value) {
+  //       if (value!.trim().isEmpty) {
+  //         return "This field is required.";
+  //       } else if (value != _passwordController.text) {
+  //         return "This value should be the same";
+  //       }
+  //       return null;
+  //     },
+  //     hintText: 'Re-Type Password',
+  //   );
+  // }
 
   Widget _emailTextField() {
     return _textField(
       controller: _emailController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return "This field is required.";
         } else if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
             .hasMatch(value)) {
           return "This value should be a valid email.";
         }
         return null;
       },
-      hintText: 'Enter a valid email',
+      hintText: 'Enter an email',
     );
   }
 
@@ -518,7 +514,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _urlController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return "This field is required.";
         } else if (!RegExp(
                 r'^((?:.|\n)*?)((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?)')
             .hasMatch(value)) {
@@ -535,13 +531,13 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _digitController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return "This field is required.";
         } else if (!RegExp(r'[0-9]+$').hasMatch(value)) {
           return "This value should be digits.";
         }
         return null;
       },
-      hintText: 'Enter only digits',
+      hintText: 'Enter digits',
     );
   }
 
@@ -551,14 +547,14 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _numberController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return "This field is required.";
         } else if (!RegExp(r'^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$')
             .hasMatch(value)) {
           return "This value should be a valid number.";
         }
         return null;
       },
-      hintText: 'Enter only numbers',
+      hintText: 'Enter numbers',
     );
   }
 
@@ -567,29 +563,29 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _alphaNumericController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This value is required.";
+          return "This field is required.";
         } else if (!RegExp("^[a-zA-Z0-9_]*\$").hasMatch(value)) {
           return "This value should be alphanumeric.";
         }
         return null;
       },
-      hintText: 'Enter alphanumeric numbers',
+      hintText: 'Enter alphanumeric',
     );
   }
 
-  Widget _textAreaTextField() {
-    return _textField(
-      maxLines: 5,
-      controller: _textAreaController,
-      validator: (value) {
-        if (value!.trim().isEmpty) {
-          return "This value is required.";
-        }
-        return null;
-      },
-      hintText: 'Type here',
-    );
-  }
+  // Widget _textAreaTextField() {
+  //   return _textField(
+  //     maxLines: 5,
+  //     controller: _textAreaController,
+  //     validator: (value) {
+  //       if (value!.trim().isEmpty) {
+  //         return "This field is required.";
+  //       }
+  //       return null;
+  //     },
+  //     hintText: 'Type here',
+  //   );
+  // }
 
   Widget _validationForm3() {
     return BlocProvider(
@@ -612,12 +608,12 @@ class _ValidationFormState extends State<ValidationForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _formHeadingCommon('Range validation'),
+                    _formHeadingCommon('Input Range Validation'),
                     FxBox.h24,
-                    _commonText('Min Length'),
-                    _minLengthTextField(),
-                    _commonText('Max Length'),
-                    _maxLengthTextField(),
+                    // _commonText('Min Length'),
+                    // _minLengthTextField(),
+                    // _commonText('Max Length'),
+                    // _maxLengthTextField(),
                     _commonText('Range Length'),
                     _rangeLengthTextField(),
                     _commonText('Min Value'),
@@ -641,21 +637,21 @@ class _ValidationFormState extends State<ValidationForm> {
                           },
                           text: Strings.submit,
                         ),
-                        FxBox.w8,
-                        FxButton(
-                          buttonType: ButtonType.secondary,
-                          borderRadius: 4,
-                          onPressed: () {
-                            _minLengthController.clear();
-                            _maxLengthController.clear();
-                            _rangeLengthController.clear();
-                            _minValueController.clear();
-                            _maxValueController.clear();
-                            _rangeValueController.clear();
-                            _regularExpController.clear();
-                          },
-                          text: Strings.cancle,
-                        )
+                        // FxBox.w8,
+                        // FxButton(
+                        //   buttonType: ButtonType.secondary,
+                        //   borderRadius: 4,
+                        //   onPressed: () {
+                        //     _minLengthController.clear();
+                        //     _maxLengthController.clear();
+                        //     _rangeLengthController.clear();
+                        //     _minValueController.clear();
+                        //     _maxValueController.clear();
+                        //     _rangeValueController.clear();
+                        //     _regularExpController.clear();
+                        //   },
+                        //   text: Strings.cancle,
+                        // )
                       ],
                     ),
                   ],
@@ -668,35 +664,35 @@ class _ValidationFormState extends State<ValidationForm> {
     );
   }
 
-  Widget _minLengthTextField() {
-    return _textField(
-      controller: _minLengthController,
-      validator: (value) {
-        if (value!.trim().isEmpty) {
-          return Strings.valueRequired;
-        } else if (value.length < 6) {
-          return "This value is too short. It should have 6 characters or more.";
-        }
-        return null;
-      },
-      hintText: 'Min 6 chars.',
-    );
-  }
+  // Widget _minLengthTextField() {
+  //   return _textField(
+  //     controller: _minLengthController,
+  //     validator: (value) {
+  //       if (value!.trim().isEmpty) {
+  //         return Strings.valueRequired;
+  //       } else if (value.length < 6) {
+  //         return "This value is too short. It should have 6 characters or more.";
+  //       }
+  //       return null;
+  //     },
+  //     hintText: 'Min 6 chars.',
+  //   );
+  // }
 
-  Widget _maxLengthTextField() {
-    return _textField(
-      controller: _maxLengthController,
-      validator: (value) {
-        if (value!.trim().isEmpty) {
-          return Strings.valueRequired;
-        } else if (value.length > 6) {
-          return "This value is too long. It should have 6 characters or fewer.";
-        }
-        return null;
-      },
-      hintText: 'Max 6 chars.',
-    );
-  }
+  // Widget _maxLengthTextField() {
+  //   return _textField(
+  //     controller: _maxLengthController,
+  //     validator: (value) {
+  //       if (value!.trim().isEmpty) {
+  //         return Strings.valueRequired;
+  //       } else if (value.length > 6) {
+  //         return "This value is too long. It should have 6 characters or fewer.";
+  //       }
+  //       return null;
+  //     },
+  //     hintText: 'Max 6 chars.',
+  //   );
+  // }
 
   Widget _rangeLengthTextField() {
     return _textField(

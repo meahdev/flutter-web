@@ -72,25 +72,115 @@ class _ElementsFormState extends State<ElementsForm> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Textual inputs',
+                'Input Elements',
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
               ),
               FxBox.h24,
-              Column(
-                children: [
-                  _textFieldNormal(_headingList, _hintList),
-                  FxBox.h8,
-                  _passwordTextField(),
-                  FxBox.h16,
-                  _numberTextField(),
-                  FxBox.h16,
-                  _dateNtimeTextField(),
-                  FxBox.h16,
-                  _colorTextField(),
-                  FxBox.h16,
-                  _selectTextField(),
-                ],
-              ),
+              if (Responsive.isWeb(context))
+                Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _commonText(_headingList[0]),
+                              FxBox.h4,
+                              _listBox(_hintList[0]),
+                            ],
+                          ),
+                        ),
+                        FxBox.w16,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _commonText(_headingList[1]),
+                              FxBox.h4,
+                              _listBox(_hintList[1]),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    FxBox.h16,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _commonText(_headingList[2]),
+                              FxBox.h4,
+                              _listBox(_hintList[2]),
+                            ],
+                          ),
+                        ),
+                        FxBox.w16,
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _commonText(_headingList[3]),
+                              FxBox.h4,
+                              _listBox(_hintList[3]),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    FxBox.h16,
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _commonText(_headingList[4]),
+                              FxBox.h4,
+                              _listBox(_hintList[4]),
+                            ],
+                          ),
+                        ),
+                        FxBox.w16,
+                        Expanded(child: _passwordTextField()),
+                      ],
+                    ),
+                    FxBox.h16,
+                    Row(
+                      children: [
+                        Expanded(child: _numberTextField()),
+                        FxBox.w16,
+                        Expanded(child: _dateNtimeTextField()),
+                      ],
+                    ),
+                    FxBox.h16,
+                    Row(
+                      children: [
+                        Expanded(child: _colorTextField()),
+                        FxBox.w16,
+                        Expanded(child: _selectTextField()),
+                      ],
+                    ),
+                  ],
+                ),
+              if (!Responsive.isWeb(context))
+                Column(
+                  children: [
+                    _textFieldNormal(_headingList, _hintList),
+                    FxBox.h8,
+                    _passwordTextField(),
+                    FxBox.h16,
+                    _numberTextField(),
+                    FxBox.h16,
+                    _dateNtimeTextField(),
+                    FxBox.h16,
+                    _colorTextField(),
+                    FxBox.h16,
+                    _selectTextField(),
+                  ],
+                )
             ],
           ),
         ),
@@ -99,23 +189,24 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _responsive(Widget childOne, Widget childTwo) {
-    return Responsive.isMobile(context)
-        ? Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [childOne, childTwo],
-          )
-        : Row(
-            children: [
-              Expanded(
-                flex: 2,
-                child: childOne,
-              ),
-              Expanded(
-                flex: 8,
-                child: childTwo,
-              ),
-            ],
-          );
+    // return Responsive.isMobile(context)
+    //     ?
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [childOne, FxBox.h4, childTwo],
+    );
+    // : Row(
+    //     children: [
+    //       Expanded(
+    //         flex: 2,
+    //         child: childOne,
+    //       ),
+    //       Expanded(
+    //         flex: 8,
+    //         child: childTwo,
+    //       ),
+    //     ],
+    //   );
   }
 
   Widget _textFieldNormal(List<String> headingList, List<String> hintList) {

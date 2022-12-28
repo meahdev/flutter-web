@@ -56,7 +56,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'basic-table'),
+        RedirectRoute(path: '', redirectTo: 'form-validation'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'calendar', page: Calendar),
         AutoRoute(path: 'map', page: GoogleMaps),
