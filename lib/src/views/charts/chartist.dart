@@ -51,25 +51,21 @@ class _ChartListChartState extends State<ChartListChart> {
                     child: _card(ChartType.simplePieChart, context,
                         Strings.simplePieChart),
                   ),
-                ],
-              ),
-              FxBox.h20,
-              Row(
-                children: [
+                  FxBox.w20,
                   Expanded(
                     child: _card(ChartType.advancedSmileChart, context,
                         Strings.advanceSmileAnimationChart),
                   ),
-                  FxBox.w20,
-                  Expanded(
-                    child: _card(ChartType.simpleLineChart, context,
-                        Strings.simpleLineChart),
-                  ),
                 ],
               ),
               FxBox.h20,
               Row(
                 children: [
+                  Expanded(
+                    child: _card(ChartType.simpleLineChart, context,
+                        Strings.simpleLineChart),
+                  ),
+                  FxBox.w20,
                   Expanded(
                     child: _card(ChartType.lineScatterChart, context,
                         Strings.lineScatterChart),
@@ -85,11 +81,17 @@ class _ChartListChartState extends State<ChartListChart> {
               Row(
                 children: [
                   Expanded(
+                    child: _card(ChartType.lineScatterChart, context,
+                        Strings.lineScatterChart),
+                  ),
+                  FxBox.w20,
+                  Expanded(
                     child: _card(ChartType.overlapBars, context,
                         Strings.overlappingChart),
                   ),
                 ],
               ),
+              FxBox.h20,
             ],
     );
   }
@@ -110,7 +112,7 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
             FxBox.h12,
-            getChartData(chartType, context),
+            // getChartData(chartType, context),
             FxBox.h12,
             SizedBox(
               width: double.infinity,

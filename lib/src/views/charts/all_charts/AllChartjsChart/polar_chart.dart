@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-
 class PolarChart extends StatefulWidget {
   const PolarChart({Key? key}) : super(key: key);
 
@@ -53,46 +52,32 @@ class PolarChartState extends State {
         Expanded(
           child: Stack(
             alignment: Alignment.center,
-           children: [
-             SizedBox(
-               height: 600,
-               width: 600,
-               child: CustomPaint(
-                 painter: OpenPainter(),
-               ),
-             ),
-             SizedBox(
-               height: 450,
-               width: 450,
-               child: CustomPaint(
-                 painter: OpenPainter(),
-               ),
-             ),
-             PieChart(
-               PieChartData(
-                   pieTouchData: PieTouchData(touchCallback:
-                       (FlTouchEvent event, pieTouchResponse) {
-                     setState(() {
-                       if (!event.isInterestedForInteractions ||
-                           pieTouchResponse == null ||
-                           pieTouchResponse.touchedSection == null) {
-                         touchedIndex = -1;
-                         return;
-                       }
-                       touchedIndex = pieTouchResponse
-                           .touchedSection!.touchedSectionIndex;
-                     });
-                   }),
-                   startDegreeOffset: 180,
-                   borderData: FlBorderData(
-                     show: true,
-                   ),
-                   sectionsSpace: 1,
-                   centerSpaceRadius: 0,
-                   sections: showingSections(),
-               ),
-             ),
-           ],
+            children: [
+              PieChart(
+                PieChartData(
+                  pieTouchData: PieTouchData(
+                      touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                    setState(() {
+                      if (!event.isInterestedForInteractions ||
+                          pieTouchResponse == null ||
+                          pieTouchResponse.touchedSection == null) {
+                        touchedIndex = -1;
+                        return;
+                      }
+                      touchedIndex =
+                          pieTouchResponse.touchedSection!.touchedSectionIndex;
+                    });
+                  }),
+                  startDegreeOffset: 180,
+                  borderData: FlBorderData(
+                    show: true,
+                  ),
+                  sectionsSpace: 1,
+                  centerSpaceRadius: 0,
+                  sections: showingSections(),
+                ),
+              ),
+            ],
           ),
         ),
       ],
@@ -100,9 +85,10 @@ class PolarChartState extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(4,
-          (i) {
-      switch (i) {
+    return List.generate(
+      4,
+      (i) {
+        switch (i) {
           case 0:
             return PieChartSectionData(
               color: const Color(0xff3c4bcf),
@@ -126,7 +112,6 @@ class PolarChartState extends State {
                   fontWeight: FontWeight.bold,
                   color: Color(0xff3ba4f8)),
               titlePositionPercentageOffset: 0.55,
-
             );
           case 2:
             return PieChartSectionData(
@@ -139,7 +124,6 @@ class PolarChartState extends State {
                   fontWeight: FontWeight.bold,
                   color: Color(0xff35a599)),
               titlePositionPercentageOffset: 0.6,
-
             );
           case 3:
             return PieChartSectionData(
@@ -215,13 +199,14 @@ extension ColorExtension on Color {
 class OpenPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height /2);
+    final center = Offset(size.width / 2, size.height / 2);
     var paint1 = Paint()
       ..color = Colors.grey.withOpacity(0.5)
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke;
-    canvas.drawCircle(center,size.width *1 /4,paint1);
+    canvas.drawCircle(center, size.width * 1 / 4, paint1);
   }
+
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
