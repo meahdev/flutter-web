@@ -80,10 +80,6 @@ class _ChartListChartState extends State<ChartListChart> {
               FxBox.h20,
               Row(
                 children: [
-                  Expanded(
-                    child: _card(ChartType.lineScatterChart, context,
-                        Strings.lineScatterChart),
-                  ),
                   FxBox.w20,
                   Expanded(
                     child: _card(ChartType.overlapBars, context,

@@ -15,40 +15,6 @@ class PolarChartState extends State {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Indicator(
-              color: const Color(0xff3c4bcf),
-              text: 'Series1',
-              isSquare: false,
-              size: touchedIndex == 0 ? 18 : 16,
-              textColor: touchedIndex == 0 ? Colors.black : Colors.grey,
-            ),
-            Indicator(
-              color: const Color(0xff3ba4f8),
-              text: 'Series2',
-              isSquare: false,
-              size: touchedIndex == 1 ? 18 : 16,
-              textColor: touchedIndex == 1 ? Colors.black : Colors.grey,
-            ),
-            Indicator(
-              color: const Color(0xff35a599),
-              text: 'Series3',
-              isSquare: false,
-              size: touchedIndex == 2 ? 18 : 16,
-              textColor: touchedIndex == 2 ? Colors.black : Colors.grey,
-            ),
-            Indicator(
-              color: const Color(0xffed4562),
-              text: 'Series4',
-              isSquare: false,
-              size: touchedIndex == 3 ? 18 : 16,
-              textColor: touchedIndex == 3 ? Colors.black : Colors.grey,
-            ),
-          ],
-        ),
         Expanded(
           child: Stack(
             alignment: Alignment.center,
@@ -94,7 +60,7 @@ class PolarChartState extends State {
               color: const Color(0xff3c4bcf),
               value: 25,
               title: '',
-              radius: 100,
+              radius: 50,
               titleStyle: const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
@@ -118,7 +84,7 @@ class PolarChartState extends State {
               color: const Color(0xff35a599),
               value: 25,
               title: '',
-              radius: 100,
+              radius: 50,
               titleStyle: const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
@@ -130,7 +96,7 @@ class PolarChartState extends State {
               color: const Color(0xffed4562),
               value: 25,
               title: '',
-              radius: 50,
+              radius: 100,
               titleStyle: const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,

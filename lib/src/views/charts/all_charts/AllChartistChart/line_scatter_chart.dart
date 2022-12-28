@@ -34,10 +34,14 @@ class _LineScatterChartState extends State {
             show: true,
             verticalInterval: 6,
             getDrawingHorizontalLine: (_) => FlLine(
-                  color: ColorConst.gridChartColor,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? ColorConst.gridChartColor
+                      : Colors.black.withOpacity(0.2),
                 ),
             getDrawingVerticalLine: (_) => FlLine(
-                  color: ColorConst.gridChartColor,
+                  color: Theme.of(context).brightness == Brightness.light
+                      ? ColorConst.gridChartColor
+                      : Colors.black.withOpacity(0.2),
                 )),
         titlesData: FlTitlesData(
           show: true,
