@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class ColorConst {
   static const Color scaffoldDark = Color(0xff222736);
   static const Color cardDark = Color(0xff2a3142);
+  static const Color cardLight = Color(0xFFf2f2f5);
   static const Color drawerIcon = Color(0xFF8699AD);
-  static const Color primary = Color(0xFF1668C0);
+  static const Color primary = Color(0xFF417afe);
   static const Color primaryDark = Color.fromARGB(255, 54, 64, 152);
   static const Color appbarLightBG = Color(0xFFE9E9EF);
   static const Color drawerBG = Color(0xFFE9F0F9);
