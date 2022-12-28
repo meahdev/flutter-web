@@ -56,7 +56,7 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: MenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'chartjs-chart'),
+        RedirectRoute(path: '', redirectTo: 'user-profile'),
         AutoRoute(path: 'dashboard', page: Dashboard),
         AutoRoute(path: 'calendar', page: Calendar),
         AutoRoute(path: 'map', page: GoogleMaps),
