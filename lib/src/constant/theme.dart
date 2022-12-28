@@ -15,8 +15,8 @@ class ThemeClass {
         backgroundColor:
             isDarkTheme ? ColorConst.scaffoldDark : ColorConst.drawerBG,
       ),
-      scaffoldBackgroundColor:
-          isDarkTheme ? ColorConst.scaffoldDark : ColorConst.drawerBG,
+      // scaffoldBackgroundColor:
+      //     isDarkTheme ? ColorConst.scaffoldDark : ColorConst.drawerBG,
       cardTheme: CardTheme.of(context).copyWith(
         margin: EdgeInsets.zero,
         color: isDarkTheme ? ColorConst.cardDark : Colors.white,

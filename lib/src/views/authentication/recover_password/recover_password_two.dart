@@ -1,10 +1,14 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutterx/flutterx.dart';
 
 class RecoverPasswordTwo extends StatefulWidget {
@@ -20,64 +24,162 @@ class _RecoverPasswordTwoState extends State<RecoverPasswordTwo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SelectionArea(
-        child: Stack(
-          children: [
-            ConstantAuth.homeBackground(context),
-            Container(
-              width: 420,
-              height: MediaQuery.of(context).size.height,
-              color: isDark ? ColorConst.darkContainer : ColorConst.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: Stack(
+        children: [
+          SelectionArea(
+            child: SingleChildScrollView(
+              child: Stack(
+                alignment: Alignment.center,
                 children: [
-                  _mainView(),
+                  Image.asset(
+                    Images.authBG,
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          // mainAxisSize: MainAxisSize.min,
+                          children: [
+                            FxBox.h20,
+                            Center(
+                              child: Container(
+                                constraints: const BoxConstraints(
+                                  maxWidth: 460,
+                                ),
+                                padding: Responsive.isMobile(context)
+                                    ? const EdgeInsets.all(32)
+                                    : const EdgeInsets.all(40),
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? ColorConst.black
+                                      : ColorConst.white,
+                                  border: Border.all(
+                                    color: isDark
+                                        ? ColorConst.black
+                                        : ColorConst.white,
+                                  ),
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                                child: Column(
+                                  children: [
+                                    _logoView(),
+                                    FxBox.h16,
+                                    CustomText(
+                                      title: Strings.resetPassword,
+                                      fontSize: 28,
+                                      fontWeight: FontWeight.w700,
+                                      textColor: isDark
+                                          ? ColorConst.white
+                                          : ColorConst.black,
+                                    ),
+                                    _bottomView(),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Responsive.isWeb(context)
+                          ? Expanded(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    constraints:
+                                        const BoxConstraints(maxHeight: 400),
+                                    child: SvgPicture.asset(
+                                      IconlyBroken.adminKitText,
+                                    ),
+                                  ),
+                                  FxBox.h16,
+                                  Center(
+                                    child: CustomText(
+                                      title: Strings.loginHeaderText,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                      textColor: isDark
+                                          ? ColorConst.darkFooterText
+                                          : ColorConst.lightFontColor,
+                                    ),
+                                  ),
+                                  FxBox.h12,
+                                  ConstantAuth.footerText(),
+                                ],
+                              ),
+                            )
+                          : Container(),
+                    ],
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _mainView() {
-    return Container(
-      margin: const EdgeInsets.only(top: 50),
-      padding: const EdgeInsets.symmetric(horizontal: 36.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ConstantAuth.logoWithAppName(
-            isDark ? ColorConst.white : ColorConst.black,
+  Widget _logoView() {
+    return SvgPicture.asset(IconlyBroken.adminKit);
+  }
+
+  Widget _bottomView() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        FxBox.h16,
+        _emailInstruction(),
+        FxBox.h16,
+        ConstantAuth.labelView(Strings.emailstr),
+        FxBox.h8,
+        _emailTextBoxWidget(),
+        FxBox.h16,
+        Align(
+          alignment: Alignment.centerRight,
+          child: _resetButton(),
+        ),
+        FxBox.h36,
+        _serviceText()
+      ],
+    );
+  }
+
+  Widget _serviceText() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Expanded(
+          child: CustomText(
+            title: Strings.privacy,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            textColor: isDark ? ColorConst.white : ColorConst.black,
           ),
-          FxBox.h32,
-          Center(
-            child: CustomText(
-              title: Strings.resetPassword,
-              fontSize: 19,
-              fontWeight: FontWeight.w800,
-              textColor:
-                  isDark ? ColorConst.darkFontColor : ColorConst.lightFontColor,
-            ),
+        ),
+        Expanded(
+          child: CustomText(
+            title: Strings.terms,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            textColor: isDark ? ColorConst.white : ColorConst.black,
           ),
-          FxBox.h6,
-          _emailInstruction(),
-          FxBox.h8,
-          ConstantAuth.labelView(Strings.emailText),
-          FxBox.h8,
-          _emailTextBoxWidget(),
-          FxBox.h12,
-          Align(alignment: Alignment.centerRight, child: _resetButton()),
-          FxBox.h60,
-          ConstantAuth.login(
-              context, true, Strings.rememberIt, Strings.signInHere),
-          FxBox.h16,
-          ConstantAuth.footerText(),
-        ],
-      ),
+        ),
+        Expanded(
+          child: CustomText(
+            title: Strings.sarvadhi2022,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            textColor: isDark ? ColorConst.white : ColorConst.black,
+          ),
+        ),
+      ],
     );
   }
 
@@ -106,7 +208,7 @@ class _RecoverPasswordTwoState extends State<RecoverPasswordTwo> {
 
   Widget _emailTextBoxWidget() {
     return CustomTextField(
-      hintText: Strings.enteremail,
+      hintText: Strings.enterEmail,
       onChanged: (String value) {},
       textCapitalization: TextCapitalization.none,
       textInputAction: TextInputAction.done,
@@ -118,9 +220,9 @@ class _RecoverPasswordTwoState extends State<RecoverPasswordTwo> {
     return FxButton(
       onPressed: () {},
       text: Strings.reset,
-      borderRadius: 4.0,
+      borderRadius: 8.0,
       height: 40,
-      minWidth: 110,
+      minWidth: MediaQuery.of(context).size.width,
       color: Theme.of(context).colorScheme.primary,
     );
   }

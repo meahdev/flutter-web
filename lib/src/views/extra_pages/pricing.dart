@@ -38,7 +38,6 @@ class _PricingState extends State<Pricing> {
             children: List.generate(
               4,
               (index) => _pricingCard(
-                iconList[index],
                 headingList[index],
                 priceList[index],
               ),
@@ -51,7 +50,6 @@ class _PricingState extends State<Pricing> {
                 children: List.generate(
                   4,
                   (index) => _pricingCard(
-                    iconList[index],
                     headingList[index],
                     priceList[index],
                   ),
@@ -63,7 +61,6 @@ class _PricingState extends State<Pricing> {
                 children: List.generate(
                   4,
                   (index) => _pricingCard(
-                    iconList[index],
                     headingList[index],
                     priceList[index],
                   ),
@@ -71,7 +68,7 @@ class _PricingState extends State<Pricing> {
               );
   }
 
-  Widget _pricingCard(IconData icon, String title, String price) {
+  Widget _pricingCard(String title, String price) {
     return SizedBox(
       width: Responsive.isMobile(context)
           ? MediaQuery.of(context).size.width
@@ -86,39 +83,17 @@ class _PricingState extends State<Pricing> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Icon(icon),
-                  const Spacer(),
-                  BlocBuilder<ThemeModeBloc, ThemeModeState>(
-                    builder: (context, state) {
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
-                        children: [
-                          Text(
-                            title,
-                            style: TextStyle(
-                              color: isDark
-                                  ? ColorConst.darkFontColor
-                                  : ColorConst.textColor,
-                              fontSize: 23,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          // Text(
-                          //   "Sed ut neque unde",
-                          //   style: TextStyle(
-                          //     color: isDark
-                          //         ? ColorConst.darkFontColor
-                          //         : ColorConst.textColor,
-                          //     fontWeight: FontWeight.bold,
-                          //   ),
-                          // ),
-                        ],
-                      );
-                    },
+              Center(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: isDark
+                        ? ColorConst.darkFontColor
+                        : ColorConst.textColor,
+                    fontSize: 23,
+                    fontWeight: FontWeight.bold,
                   ),
-                ],
+                ),
               ),
               FxBox.h48,
               listTile(
@@ -174,7 +149,7 @@ class _PricingState extends State<Pricing> {
               FxBox.h48,
               FxButton(
                 height: 48.0,
-                borderRadius: 4,
+                borderRadius: 18,
                 text: "Sign up Now",
                 onPressed: () {},
                 fullWidth: true,
@@ -188,13 +163,31 @@ class _PricingState extends State<Pricing> {
 
   Widget listTile({String? text, IconData? icons}) {
     return ListTile(
-      title: Text(
-        "$text",
-        style: const TextStyle(fontSize: 16),
+      title: Row(
+        children: [
+          const Icon(
+            Icons.circle,
+            size: 8,
+            color: ColorConst.black,
+          ),
+          FxBox.w16,
+          Text(
+            "$text",
+            style: const TextStyle(fontSize: 16),
+          ),
+        ],
       ),
       minLeadingWidth: 0,
-      contentPadding: EdgeInsets.zero,
-      leading: Icon(icons, size: 19, color: ColorConst.primary),
+      // leading: const Icon(
+      //   Icons.circle,
+      //   size: 8,
+      //   color: ColorConst.black,
+      // ),
+      trailing: Icon(
+        icons,
+        size: 19,
+        color: ColorConst.primary,
+      ),
     );
   }
 }

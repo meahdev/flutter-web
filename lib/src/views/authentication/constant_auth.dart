@@ -54,7 +54,7 @@ class ConstantAuth {
       title: label,
       fontSize: 15,
       fontWeight: FontWeight.w800,
-      textColor: isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
+      textColor: isDark ? ColorConst.white : ColorConst.lightFontColor,
     );
   }
 
@@ -107,39 +107,24 @@ class ConstantAuth {
 
   static Widget headerView(
       String title, String subTitle, BuildContext context) {
-    return Container(
-      width: 400,
-      margin: const EdgeInsets.only(top: 60),
-      padding: const EdgeInsets.only(left: 12.0, right: 12.0),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.primary,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(4.0),
-          topRight: Radius.circular(4.0),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CustomText(
+          title: title,
+          fontSize: 28,
+          fontWeight: FontWeight.w700,
+          textColor: isDark ? ColorConst.white : ColorConst.black,
         ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(40.0, 20.0, 40.0, 40.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            CustomText(
-              title: title,
-              fontSize: 19,
-              fontWeight: FontWeight.w700,
-              textColor: Theme.of(context).colorScheme.onPrimary,
-            ),
-            FxBox.h6,
-            CustomText(
-              title: subTitle,
-              fontSize: 15,
-              fontWeight: FontWeight.w700,
-              textColor:
-                  Theme.of(context).colorScheme.onPrimary.withOpacity(0.75),
-            )
-          ],
+        FxBox.h6,
+        CustomText(
+          title: subTitle,
+          fontSize: 16,
+          textAlign: TextAlign.center,
+          fontWeight: FontWeight.w400,
+          textColor: isDark ? ColorConst.white : ColorConst.black,
         ),
-      ),
+      ],
     );
   }
 

@@ -1,11 +1,14 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
 
 class LockScreenOne extends StatefulWidget {
@@ -21,78 +24,116 @@ class _LockScreenOneState extends State<LockScreenOne> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SelectionArea(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 40, right: 40),
+            SelectionArea(
               child: Stack(
+                alignment: Alignment.center,
                 children: [
+                  Image.asset(
+                    Images.authBG,
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                  ),
                   Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 30),
-                      ConstantAuth.headerView(
-                        Strings.locked,
-                        Strings.lockedDescription,
-                        context,
+                      FxBox.h20,
+                      Center(
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            maxWidth: 460,
+                          ),
+                          padding: Responsive.isMobile(context)
+                              ? const EdgeInsets.all(32)
+                              : const EdgeInsets.all(40),
+                          decoration: BoxDecoration(
+                            color: isDark ? ColorConst.black : ColorConst.white,
+                            border: Border.all(
+                              color:
+                                  isDark ? ColorConst.black : ColorConst.white,
+                            ),
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: Column(
+                            children: [
+                              _logoView(),
+                              FxBox.h16,
+                              ConstantAuth.headerView(Strings.locked,
+                                  Strings.lockedDescription, context),
+                              _bottomView(),
+                            ],
+                          ),
+                        ),
                       ),
-                      _bottomView(),
+                      FxBox.h20,
                     ],
                   ),
-                  ConstantAuth.greenCircle(),
-                  ConstantAuth.whiteCircle(),
-                  ConstantAuth.logoView(),
                 ],
               ),
             ),
-            FxBox.h48,
-            ConstantAuth.login(
-                context, false, Strings.notYouReturn, Strings.signIn),
-            FxBox.h16,
-            ConstantAuth.footerText(),
           ],
         ),
       ),
     );
   }
 
+  Widget _logoView() {
+    return SvgPicture.asset(IconlyBroken.adminKit);
+  }
+
   Widget _bottomView() {
-    return Container(
-      width: 400,
-      decoration: BoxDecoration(
-        color: isDark ? ColorConst.darkContainer : ColorConst.white,
-        borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(4.0),
-          bottomRight: Radius.circular(4.0),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        FxBox.h28,
+        _profileImageView(),
+        FxBox.h8,
+        ConstantAuth.labelView(Strings.password),
+        FxBox.h8,
+        _passwordTextBoxWidget(),
+        FxBox.h20,
+        _unLockButton(),
+        FxBox.h20,
+        _serviceText(),
+        FxBox.h4,
+      ],
+    );
+  }
+
+  Widget _serviceText() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Expanded(
+          child: CustomText(
+            title: Strings.privacy,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            textColor: isDark ? ColorConst.white : ColorConst.black,
+          ),
         ),
-        boxShadow: [
-          BoxShadow(
-            color: isDark ? Colors.transparent : ColorConst.appbarLightBG,
-            blurRadius: 0.2, // soften the shadow
-            spreadRadius: 0.2, //extend the shadow
-          )
-        ],
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 40.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            FxBox.h28,
-            _profileImageView(),
-            FxBox.h8,
-            ConstantAuth.labelView(Strings.password),
-            FxBox.h8,
-            _passwordTextBoxWidget(),
-            FxBox.h16,
-            Align(alignment: Alignment.topRight, child: _unLockButton()),
-            FxBox.h4,
-          ],
+        Expanded(
+          child: CustomText(
+            title: Strings.terms,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            textColor: isDark ? ColorConst.white : ColorConst.black,
+          ),
         ),
-      ),
+        Expanded(
+          child: CustomText(
+            title: Strings.sarvadhi2022,
+            fontSize: 14,
+            fontWeight: FontWeight.w600,
+            textColor: isDark ? ColorConst.white : ColorConst.black,
+          ),
+        ),
+      ],
     );
   }
 
@@ -120,8 +161,7 @@ class _LockScreenOneState extends State<LockScreenOne> {
             title: 'Jane Deo',
             fontSize: 17,
             fontWeight: FontWeight.w800,
-            textColor:
-                isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
+            textColor: isDark ? ColorConst.white : ColorConst.lightFontColor,
           )
         ],
       ),
@@ -143,9 +183,9 @@ class _LockScreenOneState extends State<LockScreenOne> {
     return FxButton(
       onPressed: () {},
       text: Strings.unLock,
-      borderRadius: 4.0,
+      borderRadius: 8.0,
       height: 40,
-      minWidth: 110,
+      minWidth: MediaQuery.of(context).size.width,
       color: Theme.of(context).colorScheme.primary,
     );
   }

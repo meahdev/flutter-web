@@ -1,9 +1,10 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/image.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutterx/flutterx.dart';
 import 'package:data_table_2/data_table_2.dart';
 
@@ -28,8 +29,8 @@ class _InvoiceState extends State<Invoice> {
               children: [
                 Row(
                   children: [
-                    Image.asset(
-                      Images.smLogo,
+                    SvgPicture.asset(
+                      IconlyBroken.adminKit,
                       height: 25,
                       width: 30.8,
                     ),
@@ -207,7 +208,7 @@ class _InvoiceState extends State<Invoice> {
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
@@ -217,7 +218,7 @@ class _InvoiceState extends State<Invoice> {
                         elevation: MaterialStateProperty.all(0),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                         ),
                       ),
@@ -232,7 +233,7 @@ class _InvoiceState extends State<Invoice> {
                     FxButton(
                       onPressed: () {},
                       text: "Send",
-                      borderRadius: 4,
+                      borderRadius: 15,
                       height: 40,
                     ),
                   ],

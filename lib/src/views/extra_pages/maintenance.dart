@@ -1,8 +1,11 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -27,48 +30,132 @@ class _MaintenanceState extends State<Maintenance> {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Text(
-                      Strings.fdash,
-                      style: TextStyle(
-                        fontSize: 26,
-                        color: isDark
-                            ? ColorConst.darkFontColor
-                            : ColorConst.textColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 236,
-                      width: 320,
-                      child: Image.asset("assets/images/image1.png"),
-                    ),
-                    Text(
-                      "Site is Under Maintenance",
-                      style: TextStyle(
-                        color: isDark
-                            ? ColorConst.darkFontColor
-                            : ColorConst.textColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 26,
-                      ),
-                    ),
-                    FxBox.h8,
-                    Text(
-                      "Please check back in sometime.",
-                      style: TextStyle(
-                        color: isDark
-                            ? ColorConst.darkFontColor
-                            : ColorConst.textColor,
-                      ),
-                    ),
-                    FxBox.h32,
+                    // SvgPicture.asset(
+                    //   IconlyBroken.adminKitText,
+                    // ),
+                    // FxBox.h28,
+                    // Text(
+                    //   "Site is Under Maintenance",
+                    //   style: TextStyle(
+                    //     color: isDark
+                    //         ? ColorConst.darkFontColor
+                    //         : ColorConst.textColor,
+                    //     fontWeight: FontWeight.bold,
+                    //     fontSize: 26,
+                    //   ),
+                    // ),
+                    // FxBox.h8,
+                    // Text(
+                    //   "Please check back in sometime.",
+                    //   style: TextStyle(
+                    //     color: isDark
+                    //         ? ColorConst.darkFontColor
+                    //         : ColorConst.textColor,
+                    //   ),
+                    // ),
+                    // FxBox.h32,
                     Responsive.isMobile(context)
-                        ? Column(children: _list())
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: _list(),
+                        ? Column(
+                            children: [
+                              SvgPicture.asset(
+                                IconlyBroken.adminKitText,
+                              ),
+                              FxBox.h28,
+                              Text(
+                                "Site is Under Maintenance",
+                                style: TextStyle(
+                                  color: isDark
+                                      ? ColorConst.darkFontColor
+                                      : ColorConst.textColor,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 26,
+                                ),
+                              ),
+                              FxBox.h8,
+                              Text(
+                                "Please check back in sometime.",
+                                style: TextStyle(
+                                  color: isDark
+                                      ? ColorConst.darkFontColor
+                                      : ColorConst.textColor,
+                                ),
+                              ),
+                              FxBox.h32,
+                              const CustomText(
+                                textAlign: TextAlign.center,
+                                title:
+                                    'Our website is under construction, we are working \nvery hard to give you the best experience with this one.',
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                              ),
+                              FxBox.h28,
+                              SizedBox(
+                                height: 300,
+                                width: 300,
+                                child: Image.asset(
+                                  Images.maintenance,
+                                  fit: BoxFit.cover,
+                                ),
+                              )
+                            ],
                           )
+                        //Column(children: _list())
+                        : Row(
+                            children: [
+                              Expanded(
+                                child: Column(
+                                  children: [
+                                    SvgPicture.asset(
+                                      IconlyBroken.adminKitText,
+                                    ),
+                                    FxBox.h28,
+                                    Text(
+                                      "Site is Under Maintenance",
+                                      style: TextStyle(
+                                        color: isDark
+                                            ? ColorConst.darkFontColor
+                                            : ColorConst.textColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 26,
+                                      ),
+                                    ),
+                                    FxBox.h8,
+                                    Text(
+                                      "Please check back in sometime.",
+                                      style: TextStyle(
+                                        color: isDark
+                                            ? ColorConst.darkFontColor
+                                            : ColorConst.textColor,
+                                      ),
+                                    ),
+                                    FxBox.h32,
+                                    const CustomText(
+                                      textAlign: TextAlign.center,
+                                      title:
+                                          'Our website is under construction, we are working \nvery hard to give you the best experience with this one.',
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.w400,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: SizedBox(
+                                  height: 500,
+                                  width: 500,
+                                  child: Image.asset(
+                                    Images.maintenance,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              )
+                            ],
+                          )
+                    // Row(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: _list(),
+                    //   )
                   ],
                 ),
               ),
