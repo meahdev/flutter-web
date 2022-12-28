@@ -33,7 +33,7 @@ class Badge extends StatelessWidget {
       width: Responsive.isMobile(context) ? double.infinity : null,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(16.0),
         ),
         child: Padding(
           padding: const EdgeInsets.all(20),

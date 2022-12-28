@@ -19,7 +19,7 @@ class ThemeClass {
           isDarkTheme ? ColorConst.scaffoldDark : ColorConst.drawerBG,
       cardTheme: CardTheme.of(context).copyWith(
         margin: EdgeInsets.zero,
-        color: isDarkTheme ? ColorConst.cardDark : ColorConst.cardLight,
+        color: isDarkTheme ? ColorConst.cardDark : Colors.white,
         surfaceTintColor: isDarkTheme ? ColorConst.cardDark : Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(4.0),

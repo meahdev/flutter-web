@@ -53,24 +53,29 @@ class _CarouselState extends State<Carousel> {
           return Column(
             children: [
               Responsive.isWeb(context)
-                  ? Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(child: _slidesOnly()),
-                            FxBox.w24,
-                            Expanded(child: _withControls())
-                          ],
-                        ),
-                        FxBox.h24,
-                        Row(
-                          children: [
-                            Expanded(child: _withIndicators()),
-                            FxBox.w24,
-                            Expanded(child: _withCaptions())
-                          ],
-                        ),
-                      ],
+                  ? Container(
+                      decoration: const BoxDecoration(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(16.0))),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(child: _slidesOnly()),
+                              FxBox.w24,
+                              Expanded(child: _withControls())
+                            ],
+                          ),
+                          FxBox.h24,
+                          Row(
+                            children: [
+                              Expanded(child: _withIndicators()),
+                              FxBox.w24,
+                              Expanded(child: _withCaptions())
+                            ],
+                          ),
+                        ],
+                      ),
                     )
                   : Column(
                       children: [
