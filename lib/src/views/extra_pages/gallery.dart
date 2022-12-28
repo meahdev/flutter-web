@@ -106,20 +106,10 @@ class _GalleryState extends State<Gallery> {
                                 padding: const EdgeInsets.all(20.0),
                                 color: ColorConst.primary.withOpacity(0.65),
                                 child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Expanded(
-                                      child: Text(
-                                        _headingList[index],
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          color: ColorConst.white,
-                                          fontSize: 19,
-                                        ),
-                                      ),
-                                    ),
-                                    const Spacer(),
                                     Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         CircleAvatar(
                                           backgroundImage: AssetImage(
@@ -127,14 +117,12 @@ class _GalleryState extends State<Gallery> {
                                           ),
                                         ),
                                         FxBox.w10,
-                                        Expanded(
-                                          child: Text(
-                                            _nameList[index],
-                                            style: const TextStyle(
-                                              color: ColorConst.white,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 16,
-                                            ),
+                                        Text(
+                                          _nameList[index],
+                                          style: const TextStyle(
+                                            color: ColorConst.white,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 16,
                                           ),
                                         )
                                       ],

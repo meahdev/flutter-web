@@ -1,10 +1,16 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
+import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
 
 class RegisterTwo extends StatefulWidget {
@@ -18,99 +24,226 @@ class _RegisterTwoState extends State<RegisterTwo> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final CheckboxBloc _checkboxBloc = CheckboxBloc();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SelectionArea(
-        child: Stack(
-          children: [
-            ConstantAuth.homeBackground(context),
-            Container(
-              width: 420,
-              height: MediaQuery.of(context).size.height,
-              color: isDark ? ColorConst.darkContainer : ColorConst.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+      body: Stack(
+        children: [
+          SelectionArea(
+            child: SingleChildScrollView(
+              child: Stack(
+                alignment: Alignment.center,
                 children: [
-                  _mainView(),
+                  Image.asset(
+                    Images.authBG,
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    fit: BoxFit.cover,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          // mainAxisSize: MainAxisSize.min,
+                          children: [
+                            FxBox.h20,
+                            Center(
+                              child: Container(
+                                constraints: const BoxConstraints(
+                                  maxWidth: 460,
+                                ),
+                                padding: Responsive.isMobile(context)
+                                    ? const EdgeInsets.all(32)
+                                    : const EdgeInsets.all(40),
+                                decoration: BoxDecoration(
+                                  color: isDark
+                                      ? ColorConst.black
+                                      : ColorConst.white,
+                                  border: Border.all(
+                                    color: isDark
+                                        ? ColorConst.black
+                                        : ColorConst.white,
+                                  ),
+                                  borderRadius: BorderRadius.circular(24),
+                                ),
+                                child: Column(
+                                  children: [
+                                    _logoView(),
+                                    FxBox.h16,
+                                    CustomText(
+                                      title: Strings.contactInfo,
+                                      fontSize: 28,
+                                      textAlign: TextAlign.start,
+                                      fontWeight: FontWeight.w700,
+                                      textColor: isDark
+                                          ? ColorConst.white
+                                          : ColorConst.black,
+                                    ),
+                                    FxBox.h6,
+                                    _bottomView(),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            FxBox.h20,
+                          ],
+                        ),
+                      ),
+                      Responsive.isWeb(context)
+                          ? Expanded(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    constraints:
+                                        const BoxConstraints(maxHeight: 400),
+                                    child: SvgPicture.asset(
+                                      IconlyBroken.adminKitText,
+                                    ),
+                                  ),
+                                  FxBox.h16,
+                                  Center(
+                                    child: CustomText(
+                                      title: Strings.loginHeaderText,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w700,
+                                      textColor: isDark
+                                          ? ColorConst.darkFooterText
+                                          : ColorConst.lightFontColor,
+                                    ),
+                                  ),
+                                  FxBox.h12,
+                                  ConstantAuth.footerText(),
+                                ],
+                              ),
+                            )
+                          : Container(),
+                    ],
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _mainView() {
-    return Container(
-      margin: const EdgeInsets.only(top: 50),
-      padding: const EdgeInsets.symmetric(horizontal: 36.0),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ConstantAuth.logoWithAppName(
-            isDark ? ColorConst.white : ColorConst.black,
           ),
-          FxBox.h28,
-          Center(
-            child: CustomText(
-              title: Strings.freeRegister,
-              fontSize: 19,
-              fontWeight: FontWeight.w800,
-              textColor: isDark
-                  ? ColorConst.darkFooterText
-                  : ColorConst.lightFontColor,
-            ),
-          ),
-          FxBox.h6,
-          Center(
-            child: CustomText(
-              title: Strings.registerHeaderText,
-              fontSize: 15,
-              fontWeight: FontWeight.w700,
-              textColor: isDark
-                  ? ColorConst.darkFooterText
-                  : ColorConst.lightFontColor,
-            ),
-          ),
-          FxBox.h28,
-          ConstantAuth.labelView(Strings.emailText),
-          FxBox.h8,
-          _emailTextBoxWidget(),
-          FxBox.h16,
-          ConstantAuth.labelView(Strings.username),
-          FxBox.h8,
-          _usernameTextBoxWidget(),
-          FxBox.h16,
-          ConstantAuth.labelView(Strings.password),
-          FxBox.h8,
-          _passwordTextBoxWidget(),
-          FxBox.h12,
-          Align(alignment: Alignment.centerRight, child: _registerButton()),
-          FxBox.h36,
-          _termsAndService(),
-          FxBox.h16,
-          FxBox.h52,
-          ConstantAuth.login(
-            context,
-            true,
-            Strings.alreayAccountExist,
-            Strings.login,
-          ),
-          FxBox.h16,
-          ConstantAuth.footerText(),
         ],
       ),
     );
   }
 
+  Widget _bottomView() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        FxBox.h28,
+        ConstantAuth.labelView(Strings.phonestr),
+        FxBox.h8,
+        _phoneTextBoxWidget(),
+        FxBox.h16,
+        ConstantAuth.labelView(Strings.emailstr),
+        FxBox.h8,
+        _emailTextBoxWidget(),
+        FxBox.h16,
+        ConstantAuth.labelView(Strings.userStr),
+        FxBox.h8,
+        _usernameTextBoxWidget(),
+        FxBox.h16,
+        ConstantAuth.labelView(Strings.password),
+        FxBox.h8,
+        _passwordTextBoxWidget(),
+        FxBox.h8,
+        _agreeterms(),
+        FxBox.h16,
+        _registerButton(),
+        FxBox.h20,
+        _serviceText(),
+      ],
+    );
+  }
+
+  Widget _serviceText() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        CustomText(
+          title: Strings.privacy,
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          textColor: isDark ? ColorConst.white : ColorConst.black,
+        ),
+        CustomText(
+          title: Strings.terms,
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          textColor: isDark ? ColorConst.white : ColorConst.black,
+        ),
+        CustomText(
+          title: Strings.sarvadhi2022,
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          textColor: isDark ? ColorConst.white : ColorConst.black,
+        ),
+      ],
+    );
+  }
+
+  Widget _agreeterms() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        BlocProvider(
+          create: (context) => _checkboxBloc,
+          child: BlocBuilder<CheckboxBloc, CheckboxState>(
+            builder: (context, state) {
+              return state.when(
+                success: (isChecked) {
+                  return Checkbox(
+                    value: isChecked,
+                    onChanged: (value) {
+                      _rememberMeAction(value!);
+                    },
+                    activeColor: ColorConst.primary,
+                    focusColor: ColorConst.primary,
+                  );
+                },
+              );
+            },
+          ),
+        ),
+        CustomText(
+          title: Strings.termsServiceText3,
+          textColor: isDark ? ColorConst.white : ColorConst.lightFontColor,
+          fontWeight: FontWeight.w700,
+        ),
+      ],
+    );
+  }
+
+  Future<void> _rememberMeAction(bool isChecked) async {
+    _checkboxBloc.add(CheckboxEvent.started(isChecked: isChecked));
+  }
+
+  Widget _logoView() {
+    return SvgPicture.asset(IconlyBroken.adminKit);
+  }
+
+  Widget _phoneTextBoxWidget() {
+    return CustomTextField(
+      hintText: Strings.enterPhone,
+      onChanged: (String value) {},
+      textCapitalization: TextCapitalization.none,
+      textInputAction: TextInputAction.done,
+      controller: _phoneController,
+    );
+  }
+
   Widget _emailTextBoxWidget() {
     return CustomTextField(
-      hintText: Strings.enteremail,
+      hintText: Strings.enterEmail,
       onChanged: (String value) {},
       textCapitalization: TextCapitalization.none,
       textInputAction: TextInputAction.done,
@@ -120,7 +253,7 @@ class _RegisterTwoState extends State<RegisterTwo> {
 
   Widget _usernameTextBoxWidget() {
     return CustomTextField(
-      hintText: Strings.enterUsername,
+      hintText: Strings.enterEmail,
       onChanged: (String value) {},
       textCapitalization: TextCapitalization.none,
       textInputAction: TextInputAction.done,
@@ -145,7 +278,7 @@ class _RegisterTwoState extends State<RegisterTwo> {
       text: Strings.register,
       borderRadius: 4.0,
       height: 40,
-      minWidth: 110,
+      minWidth: MediaQuery.of(context).size.width,
       color: Theme.of(context).colorScheme.primary,
     );
   }

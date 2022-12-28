@@ -77,75 +77,49 @@ class _MaskFormState extends State<MaskForm> {
               ),
             ),
             FxBox.h12,
-            Responsive.isWeb(context)
+            Responsive.isWeb(context) || Responsive.isTablet(context)
                 ? Column(
                     children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _maskTextFieldCommonView(
-                            _commonText('Date Style 1'),
-                            _dateStyle1TextField(),
-                            'e.g "dd/mm/yyyy"',
-                          ),
-                          FxBox.w24,
-                          _maskTextFieldCommonView(
-                            _commonText('Date Style 2'),
-                            _dateStyle2TextField(),
-                            'e.g "mm/dd/yyyy"',
-                          ),
-                        ],
+                      _maskTextFieldCommonView(
+                        _commonText('Date Style 1'),
+                        _dateStyle1TextField(),
+                        'e.g "dd/mm/yyyy"',
                       ),
                       FxBox.h12,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _maskTextFieldCommonView(
-                            _commonText('Repeat'),
-                            _repeatTextField(),
-                            'e.g "9999999999"',
-                          ),
-                          FxBox.w24,
-                          _maskTextFieldCommonView(
-                            _commonText('Mask'),
-                            _maskTextField(),
-                            'e.g "99-9999999"',
-                          ),
-                        ],
+                      _maskTextFieldCommonView(
+                        _commonText('Repeat'),
+                        _repeatTextField(),
+                        'e.g "9999999999"',
                       ),
                       FxBox.h12,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _maskTextFieldCommonView(
-                            _commonText('Date Time'),
-                            _dateTimeTextField(),
-                            'e.g "yyyy-mm-dd\'T\'HH:MM:ss"',
-                          ),
-                          FxBox.w24,
-                          _maskTextFieldCommonView(
-                            _commonText('IP address'),
-                            _ipAddressTextField(),
-                            'e.g "99.99.99.99"',
-                          ),
-                        ],
+                      _maskTextFieldCommonView(
+                        _commonText('Date Style 2'),
+                        _dateStyle2TextField(),
+                        'e.g "mm/dd/yyyy"',
                       ),
                       FxBox.h12,
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _maskTextFieldCommonView(
-                            _commonText('Currency:'),
-                            _currencyTextField(),
-                            'e.g "\$ 0.00"',
-                          ),
-                          FxBox.w24,
-                          _maskTextFieldCommonView(
-                            _commonText('Email address::'),
-                            _emailTextField(),
-                            '_@_._',
-                          ),
-                        ],
+                      _maskTextFieldCommonView(
+                        _commonText('Mask'),
+                        _maskTextField(),
+                        'e.g "99-9999999"',
+                      ),
+                      FxBox.h12,
+                      _maskTextFieldCommonView(
+                        _commonText('Date Time'),
+                        _dateTimeTextField(),
+                        'e.g "yyyy-mm-dd\'T\'HH:MM:ss"',
+                      ),
+                      FxBox.h12,
+                      _maskTextFieldCommonView(
+                        _commonText('IP address'),
+                        _ipAddressTextField(),
+                        'e.g "99.99.99.99"',
+                      ),
+                      FxBox.h12,
+                      _maskTextFieldCommonView(
+                        _commonText('Email address::'),
+                        _emailTextField(),
+                        '_@_._',
                       ),
                     ],
                   )
@@ -175,10 +149,6 @@ class _MaskFormState extends State<MaskForm> {
                       _commonText('IP address'),
                       _ipAddressTextField(),
                       const Text('e.g "99.99.99.99"'),
-                      FxBox.h12,
-                      _commonText('Currency:'),
-                      _currencyTextField(),
-                      const Text('e.g "\$ 0.00"'),
                       FxBox.h12,
                       _commonText('Email address::'),
                       _emailTextField(),
@@ -389,11 +359,20 @@ class _MaskFormState extends State<MaskForm> {
 
   Widget _maskTextFieldCommonView(
       Widget title, Widget textField, String egText) {
-    return Expanded(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [title, textField, Text(egText)],
-      ),
+    return Row(
+      children: [
+        Expanded(child: title),
+        Expanded(
+          flex: 8,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              textField,
+              Text(egText),
+            ],
+          ),
+        ),
+      ],
     );
   }
 

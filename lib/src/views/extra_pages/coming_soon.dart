@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/coming_soon/bloc/coming_soon_bloc_bloc.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
+import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutterx/flutterx.dart';
 
 class ComingSoon extends StatefulWidget {
@@ -82,19 +84,10 @@ class ComingSoonState extends State<ComingSoon> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       FxBox.h20,
-                      Text(
-                        Strings.fdash,
-                        style: TextStyle(
-                          fontSize: 26,
-                          color: isDark
-                              ? ColorConst.darkFontColor
-                              : ColorConst.textColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+                      SvgPicture.asset(IconlyBroken.adminKitText),
                       FxBox.h20,
                       Text(
-                        "Let's get started with Sarvadhi",
+                        "We are coming soon",
                         style: TextStyle(
                           color: isDark
                               ? ColorConst.darkFontColor
@@ -195,7 +188,13 @@ class ComingSoonState extends State<ComingSoon> {
                               ],
                             ),
                       FxBox.h44,
-                      _emailField(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          _emailField(),
+                          _subcribeButton(),
+                        ],
+                      ),
                       FxBox.h20,
                     ],
                   ),
@@ -204,6 +203,22 @@ class ComingSoonState extends State<ComingSoon> {
             ),
           );
         },
+      ),
+    );
+  }
+
+  Widget _subcribeButton() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: ColorConst.primary,
+      ),
+      onPressed: () {},
+      child: const Text(
+        "Subscribe",
+        style: TextStyle(
+          color: ColorConst.white,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
@@ -240,33 +255,14 @@ class ComingSoonState extends State<ComingSoon> {
 
   Widget _emailField() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-      constraints: const BoxConstraints(maxWidth: 550),
-      child: TextFormField(
-        decoration: InputDecoration(
-          hintText: "Enter email address",
+        padding: const EdgeInsets.symmetric(horizontal: 24.0),
+        constraints: const BoxConstraints(maxWidth: 550),
+        child: CustomTextField(
+          hintText: 'Enter email address',
           contentPadding: const EdgeInsets.only(left: 25),
-          suffixIcon: Padding(
-            padding: const EdgeInsets.only(right: 4),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: ColorConst.primary,
-              ),
-              onPressed: () {},
-              child: const Text(
-                "Subscribe",
-                style: TextStyle(
-                  color: ColorConst.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(40),
+            borderRadius: BorderRadius.circular(10),
           ),
-        ),
-      ),
-    );
+        ));
   }
 }

@@ -1,9 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -57,6 +55,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
 
   Widget _profileCard(int index) {
     return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -66,7 +65,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
               children: [
                 CircleAvatar(
                   radius: 44,
-                  backgroundColor: Colors.grey.shade300,
+                  backgroundColor: ColorConst.primary,
                   child: CircleAvatar(
                     backgroundImage: AssetImage(
                       photoList[index],
@@ -98,41 +97,19 @@ class _DirectoryPageState extends State<DirectoryPage> {
                         ),
                       ),
                       FxBox.h8,
-                      Text(
-                        emailList[index],
-                        style: TextStyle(
-                          color: isDark
-                              ? ColorConst.darkFontColor
-                              : ColorConst.lightFontColor,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const Icon(Icons.mail),
+                          FxBox.w10,
+                          const Icon(Icons.telegram),
+                          FxBox.w10,
+                          const Icon(Icons.whatsapp),
+                          FxBox.w10,
+                        ],
                       ),
                     ],
                   ),
-                ),
-                FxBox.w24,
-                Column(
-                  children: [
-                    const CircleAvatar(
-                      radius: 15,
-                      backgroundColor: ColorConst.primary,
-                      child: SvgIcon(
-                        icon: IconlyBroken.facebook,
-                        color: ColorConst.white,
-                        size: 14.0,
-                      ),
-                    ),
-                    FxBox.h10,
-                    const CircleAvatar(
-                      radius: 15,
-                      backgroundColor: ColorConst.blue,
-                      child: SvgIcon(
-                        icon: IconlyBroken.twitter,
-                        color: ColorConst.white,
-                        size: 14.0,
-                      ),
-                    ),
-                  ],
                 ),
               ],
             ),
