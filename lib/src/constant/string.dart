@@ -28,8 +28,8 @@ class Strings {
   static const String dashboard = 'Dashboard';
   static const String calendar = 'Calendar';
   static const String map = 'Map';
-  static const String uiElements = 'UI Elements';
-  static const String forms = 'Forms';
+  static const String uiElements = 'UI Component';
+  static const String forms = 'Form Elements';
   static const String charts = 'Charts';
   static const String tables = 'Tables';
   static const String authentication = 'Authentication';
@@ -39,24 +39,24 @@ class Strings {
 
   // ui elements option
   static const String toast = 'Toast';
-  static const String buttons = 'Buttons';
-  static const String rating = 'Rating';
+  static const String buttons = 'Button Element';
+  static const String rating = 'Rating Bar';
   static const String badge = 'Badge';
   static const String alertDialog = 'Alert Dialog';
   static const String modal = 'Modal';
   static const String loader = 'Loaders';
   static const String tabs = 'Tabs';
   static const String latestTransaction = 'Latest order';
-  static const String carousel = 'Carousel';
+  static const String carousel = 'Carousel Slider';
   static const String videoPlayer = 'Video Player';
 
   // forms option
-  static const String formElements = 'Form Elements';
-  static const String formValidation = 'Form Validation';
-  static const String formFileUpload = 'Form File Upload';
-  static const String formRepeater = 'Form Repeater';
-  static const String formWizard = 'Form Wizard';
-  static const String formMask = 'Form Mask';
+  static const String formElements = 'Elements';
+  static const String formValidation = 'Validation';
+  static const String formFileUpload = 'Dropzone';
+  static const String formRepeater = 'Repeater';
+  static const String formWizard = 'Wizard';
+  static const String formMask = 'Mask';
 
   // charts option
   static const String morrisChart = 'Morris Chart';
@@ -165,7 +165,7 @@ class Strings {
   static const String tablets = 'Tablets';
 
   // monthly earning
-  static const String monthlyEarning = 'Monthly Earning';
+  static const String monthlyEarning = 'Monthly Income';
 
   // sales analystics
   static const String salesAnalytics = 'Sales Analytics';

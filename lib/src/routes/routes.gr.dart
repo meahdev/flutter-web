@@ -378,7 +378,7 @@ class AppRouter extends _i50.RootStackRouter {
               '#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'form-validation',
+              redirectTo: 'dashboard',
               fullMatch: true,
             ),
             _i50.RouteConfig(
@@ -403,12 +403,12 @@ class AppRouter extends _i50.RootStackRouter {
             ),
             _i50.RouteConfig(
               Button.name,
-              path: 'buttons',
+              path: 'button-element',
               parent: MenuBar.name,
             ),
             _i50.RouteConfig(
               Rating.name,
-              path: 'rating',
+              path: 'rating-bar',
               parent: MenuBar.name,
             ),
             _i50.RouteConfig(
@@ -518,37 +518,37 @@ class AppRouter extends _i50.RootStackRouter {
             ),
             _i50.RouteConfig(
               Carousel.name,
-              path: 'carousel',
+              path: 'carousel-slider',
               parent: MenuBar.name,
             ),
             _i50.RouteConfig(
               ElementsForm.name,
-              path: 'form-elements',
+              path: 'elements',
               parent: MenuBar.name,
             ),
             _i50.RouteConfig(
               ValidationForm.name,
-              path: 'form-validation',
+              path: 'validation',
               parent: MenuBar.name,
             ),
             _i50.RouteConfig(
               FileUploadForm.name,
-              path: 'form-file-upload',
+              path: 'dropzone',
               parent: MenuBar.name,
             ),
             _i50.RouteConfig(
               RepeaterForm.name,
-              path: 'form-repeater',
+              path: 'repeater',
               parent: MenuBar.name,
             ),
             _i50.RouteConfig(
               MaskForm.name,
-              path: 'form-mask',
+              path: 'mask',
               parent: MenuBar.name,
             ),
             _i50.RouteConfig(
               WizardForm.name,
-              path: 'form-wizard',
+              path: 'wizard',
               parent: MenuBar.name,
             ),
             _i50.RouteConfig(
@@ -825,7 +825,7 @@ class Button extends _i50.PageRouteInfo<void> {
   const Button()
       : super(
           Button.name,
-          path: 'buttons',
+          path: 'button-element',
         );
 
   static const String name = 'Button';
@@ -837,7 +837,7 @@ class Rating extends _i50.PageRouteInfo<void> {
   const Rating()
       : super(
           Rating.name,
-          path: 'rating',
+          path: 'rating-bar',
         );
 
   static const String name = 'Rating';
@@ -1101,7 +1101,7 @@ class Carousel extends _i50.PageRouteInfo<void> {
   const Carousel()
       : super(
           Carousel.name,
-          path: 'carousel',
+          path: 'carousel-slider',
         );
 
   static const String name = 'Carousel';
@@ -1113,7 +1113,7 @@ class ElementsForm extends _i50.PageRouteInfo<void> {
   const ElementsForm()
       : super(
           ElementsForm.name,
-          path: 'form-elements',
+          path: 'elements',
         );
 
   static const String name = 'ElementsForm';
@@ -1125,7 +1125,7 @@ class ValidationForm extends _i50.PageRouteInfo<void> {
   const ValidationForm()
       : super(
           ValidationForm.name,
-          path: 'form-validation',
+          path: 'validation',
         );
 
   static const String name = 'ValidationForm';
@@ -1137,7 +1137,7 @@ class FileUploadForm extends _i50.PageRouteInfo<void> {
   const FileUploadForm()
       : super(
           FileUploadForm.name,
-          path: 'form-file-upload',
+          path: 'dropzone',
         );
 
   static const String name = 'FileUploadForm';
@@ -1149,7 +1149,7 @@ class RepeaterForm extends _i50.PageRouteInfo<void> {
   const RepeaterForm()
       : super(
           RepeaterForm.name,
-          path: 'form-repeater',
+          path: 'repeater',
         );
 
   static const String name = 'RepeaterForm';
@@ -1161,7 +1161,7 @@ class MaskForm extends _i50.PageRouteInfo<void> {
   const MaskForm()
       : super(
           MaskForm.name,
-          path: 'form-mask',
+          path: 'mask',
         );
 
   static const String name = 'MaskForm';
@@ -1173,7 +1173,7 @@ class WizardForm extends _i50.PageRouteInfo<void> {
   const WizardForm()
       : super(
           WizardForm.name,
-          path: 'form-wizard',
+          path: 'wizard',
         );
 
   static const String name = 'WizardForm';
