@@ -40,7 +40,7 @@ class FxButton extends StatelessWidget {
     this.icon,
     this.isOutlineButton = false,
     this.borderWidth = 1.0,
-    this.borderRadius = 52.0,
+    this.borderRadius = 12.0,
     required this.onPressed,
     this.onLongPress,
     this.onHighlightChanged,
@@ -102,9 +102,7 @@ class FxButton extends StatelessWidget {
                   : color ?? _getButtonColor(colorScheme, buttonType, true)!,
             ),
           ),
-          minWidth: fullWidth
-                  ? double.infinity
-                  : minWidth,
+          minWidth: fullWidth ? double.infinity : minWidth,
           height: height,
           textColor: isHover
               ? hoverTextColor ??

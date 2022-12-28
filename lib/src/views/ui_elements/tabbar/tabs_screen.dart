@@ -67,6 +67,11 @@ class _TabScreenState extends State<TabScreen> with TickerProviderStateMixin {
 
   Widget _defaultTabs(String title, TabType type) {
     return Card(
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(16.0),
+        ),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -99,9 +104,12 @@ class _TabScreenState extends State<TabScreen> with TickerProviderStateMixin {
           SizedBox(
             child: Row(children: [
               Expanded(
-                  child: _defaultTabs('Default Tabs', TabType.defaultTabs)),
+                child: _defaultTabs('Default Tabs', TabType.defaultTabs),
+              ),
               FxBox.w20,
-              Expanded(child: _defaultTabs('Justify Tabs', TabType.justifyTab)),
+              Expanded(
+                child: _defaultTabs('Justify Tabs', TabType.justifyTab),
+              ),
             ]),
           ),
           FxBox.h20,

@@ -11,7 +11,7 @@ class BarChartSample2 extends StatefulWidget {
 }
 
 class BarChartSample2State extends State<BarChartSample2> {
-  final Color leftBarColor = ColorConst.blueChartColor;
+  final Color leftBarColor = const Color(0xFF2161a2);
   final Color rightBarColor = ColorConst.chartColorGreen;
   final double width = 15;
 

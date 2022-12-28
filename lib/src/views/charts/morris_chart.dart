@@ -39,6 +39,11 @@ class _MorrisChartState extends State<MorrisChart> {
                   ),
                   FxBox.w20,
                   Expanded(
+                    child:
+                        _card(ChartType.piaChart, context, Strings.donutChart),
+                  ),
+                  FxBox.w20,
+                  Expanded(
                     child: _card(ChartType.barChart, context, Strings.barChart),
                   ),
                 ],
@@ -52,13 +57,11 @@ class _MorrisChartState extends State<MorrisChart> {
                   ),
                   FxBox.w20,
                   Expanded(
-                    child:
-                        _card(ChartType.piaChart, context, Strings.donutChart),
+                    child: _card(
+                        ChartType.colomnChart, context, Strings.columnChart),
                   ),
                 ],
               ),
-              FxBox.h20,
-              _card(ChartType.colomnChart, context, Strings.columnChart),
             ],
     );
   }
@@ -77,7 +80,7 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
             style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
           ),
           FxBox.h12,
-          getChartData(chartType, context),
+          // getChartData(chartType, context),
           FxBox.h12,
           SizedBox(
             width: double.infinity,

@@ -150,6 +150,11 @@ class _LoadersState extends State<Loaders> {
         height: 180,
         width: _getWidth(),
         child: Card(
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(16.0),
+            ),
+          ),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(

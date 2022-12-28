@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-
 class PolarChart extends StatefulWidget {
   const PolarChart({Key? key}) : super(key: key);
 
@@ -16,83 +15,35 @@ class PolarChartState extends State {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Indicator(
-              color: const Color(0xff3c4bcf),
-              text: 'Series1',
-              isSquare: false,
-              size: touchedIndex == 0 ? 18 : 16,
-              textColor: touchedIndex == 0 ? Colors.black : Colors.grey,
-            ),
-            Indicator(
-              color: const Color(0xff3ba4f8),
-              text: 'Series2',
-              isSquare: false,
-              size: touchedIndex == 1 ? 18 : 16,
-              textColor: touchedIndex == 1 ? Colors.black : Colors.grey,
-            ),
-            Indicator(
-              color: const Color(0xff35a599),
-              text: 'Series3',
-              isSquare: false,
-              size: touchedIndex == 2 ? 18 : 16,
-              textColor: touchedIndex == 2 ? Colors.black : Colors.grey,
-            ),
-            Indicator(
-              color: const Color(0xffed4562),
-              text: 'Series4',
-              isSquare: false,
-              size: touchedIndex == 3 ? 18 : 16,
-              textColor: touchedIndex == 3 ? Colors.black : Colors.grey,
-            ),
-          ],
-        ),
         Expanded(
           child: Stack(
             alignment: Alignment.center,
-           children: [
-             SizedBox(
-               height: 600,
-               width: 600,
-               child: CustomPaint(
-                 painter: OpenPainter(),
-               ),
-             ),
-             SizedBox(
-               height: 450,
-               width: 450,
-               child: CustomPaint(
-                 painter: OpenPainter(),
-               ),
-             ),
-             PieChart(
-               PieChartData(
-                   pieTouchData: PieTouchData(touchCallback:
-                       (FlTouchEvent event, pieTouchResponse) {
-                     setState(() {
-                       if (!event.isInterestedForInteractions ||
-                           pieTouchResponse == null ||
-                           pieTouchResponse.touchedSection == null) {
-                         touchedIndex = -1;
-                         return;
-                       }
-                       touchedIndex = pieTouchResponse
-                           .touchedSection!.touchedSectionIndex;
-                     });
-                   }),
-                   startDegreeOffset: 180,
-                   borderData: FlBorderData(
-                     show: true,
-                   ),
-                   sectionsSpace: 1,
-                   centerSpaceRadius: 0,
-                   sections: showingSections(),
-               ),
-             ),
-           ],
+            children: [
+              PieChart(
+                PieChartData(
+                  pieTouchData: PieTouchData(
+                      touchCallback: (FlTouchEvent event, pieTouchResponse) {
+                    setState(() {
+                      if (!event.isInterestedForInteractions ||
+                          pieTouchResponse == null ||
+                          pieTouchResponse.touchedSection == null) {
+                        touchedIndex = -1;
+                        return;
+                      }
+                      touchedIndex =
+                          pieTouchResponse.touchedSection!.touchedSectionIndex;
+                    });
+                  }),
+                  startDegreeOffset: 180,
+                  borderData: FlBorderData(
+                    show: true,
+                  ),
+                  sectionsSpace: 1,
+                  centerSpaceRadius: 0,
+                  sections: showingSections(),
+                ),
+              ),
+            ],
           ),
         ),
       ],
@@ -100,15 +51,16 @@ class PolarChartState extends State {
   }
 
   List<PieChartSectionData> showingSections() {
-    return List.generate(4,
-          (i) {
-      switch (i) {
+    return List.generate(
+      4,
+      (i) {
+        switch (i) {
           case 0:
             return PieChartSectionData(
               color: const Color(0xff3c4bcf),
               value: 25,
               title: '',
-              radius: 100,
+              radius: 50,
               titleStyle: const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
@@ -126,27 +78,25 @@ class PolarChartState extends State {
                   fontWeight: FontWeight.bold,
                   color: Color(0xff3ba4f8)),
               titlePositionPercentageOffset: 0.55,
-
             );
           case 2:
             return PieChartSectionData(
               color: const Color(0xff35a599),
               value: 25,
               title: '',
-              radius: 100,
+              radius: 50,
               titleStyle: const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff35a599)),
               titlePositionPercentageOffset: 0.6,
-
             );
           case 3:
             return PieChartSectionData(
               color: const Color(0xffed4562),
               value: 25,
               title: '',
-              radius: 50,
+              radius: 100,
               titleStyle: const TextStyle(
                   fontSize: 19,
                   fontWeight: FontWeight.bold,
@@ -215,13 +165,14 @@ extension ColorExtension on Color {
 class OpenPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    final center = Offset(size.width / 2, size.height /2);
+    final center = Offset(size.width / 2, size.height / 2);
     var paint1 = Paint()
       ..color = Colors.grey.withOpacity(0.5)
       ..strokeWidth = 1
       ..style = PaintingStyle.stroke;
-    canvas.drawCircle(center,size.width *1 /4,paint1);
+    canvas.drawCircle(center, size.width * 1 / 4, paint1);
   }
+
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

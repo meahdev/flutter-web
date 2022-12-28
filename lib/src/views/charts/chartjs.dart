@@ -26,8 +26,6 @@ class _ChartJsChartState extends State<ChartJsChart> {
               FxBox.h20,
               _card(ChartType.polarChart, context, Strings.polarChart),
               FxBox.h20,
-              _card(ChartType.radarChart, context, Strings.radarChart),
-              FxBox.h20,
             ]
           : [
               Row(
@@ -41,22 +39,27 @@ class _ChartJsChartState extends State<ChartJsChart> {
                     child: _card(ChartType.multipleStaticChart, context,
                         Strings.multipleStaticsChart),
                   ),
-                ],
-              ),
-              FxBox.h20,
-              Row(
-                children: [
+                  FxBox.w20,
                   Expanded(
                     child: _card(
                         ChartType.polarChart, context, Strings.polarChart),
                   ),
-                  FxBox.w20,
-                  Expanded(
-                    child: _card(
-                        ChartType.radarChart, context, Strings.radarChart),
-                  ),
                 ],
               ),
+              FxBox.h20,
+              // Row(
+              //   children: [
+              //     Expanded(
+              //       child: _card(
+              //           ChartType.polarChart, context, Strings.polarChart),
+              //     ),
+              //     FxBox.w20,
+              //     Expanded(
+              //       child: _card(
+              //           ChartType.radarChart, context, Strings.radarChart),
+              //     ),
+              //   ],
+              // ),
             ],
     );
   }
@@ -79,7 +82,7 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
               style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
             ),
             FxBox.h12,
-            getChartData(chartType, context),
+            // getChartData(chartType, context),
             FxBox.h12,
             SizedBox(
               width: double.infinity,
