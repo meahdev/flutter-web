@@ -46,7 +46,7 @@ class Strings {
   static const String modal = 'Modal';
   static const String loader = 'Loaders';
   static const String tabs = 'Tabs';
-  static const String latestTransaction = 'Latest Transaction';
+  static const String latestTransaction = 'Latest order';
   static const String carousel = 'Carousel';
   static const String videoPlayer = 'Video Player';
 
@@ -113,7 +113,7 @@ class Strings {
   //status box
   static const String orderSuccessful = 'Order Successful';
   static const String successText = 'Thanks you so much for your order.';
-  static const String checkStatus = 'Check Status';
+  static const String checkStatus = 'View Order';
 
   //activity
   static const String activity = 'Activity';

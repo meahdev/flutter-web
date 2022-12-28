@@ -37,55 +37,19 @@ class _DatatableState extends State<Datatable> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   const Text(
-                    'Default Datatable',
+                    'Data Table',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Row(
-                    children: [
-                      const Text("Show   "),
-                      DropdownButtonHideUnderline(
-                        child: DropdownButton<int>(
-                          focusColor: Colors.transparent,
-                          items: <int>[10, 20, 50, 100].map((int value) {
-                            return DropdownMenuItem<int>(
-                              value: value,
-                              child: Text(value.toString()),
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            if (value != null) {
-                              _dropValue = value;
-                              _start = 0;
-                              _end = value < ls.length ? value : ls.length;
-                              _page = 0;
-                              _dataTableBloc
-                                  .add(const DataTableEvent.rebuild());
-                            }
-                          },
-                          value: _dropValue,
-                        ),
-                      ),
-                      const Text(" entries"),
-                      const Spacer(),
-                      SizedBox(
-                        width: 185,
-                        height: 30,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.only(bottom: 8, left: 8),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            icon: const Text("Search"),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  _listCounter(),
+                  if (Responsive.isMobile(context))
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16.0),
+                      child: Text(
+                          "Showing ${_start + 1} to $_end of ${ls.length} entries"),
+                    ),
                   FxBox.h20,
                   SizedBox(
                     height: ls.length < _dropValue
@@ -161,10 +125,41 @@ class _DatatableState extends State<Datatable> {
     );
   }
 
+  Widget _listCounter() {
+    return Row(
+      children: [
+        const Text("Show   "),
+        DropdownButtonHideUnderline(
+          child: DropdownButton<int>(
+            focusColor: Colors.transparent,
+            items: <int>[10, 20, 50, 100].map((int value) {
+              return DropdownMenuItem<int>(
+                value: value,
+                child: Text(value.toString()),
+              );
+            }).toList(),
+            onChanged: (value) {
+              if (value != null) {
+                _dropValue = value;
+                _start = 0;
+                _end = value < ls.length ? value : ls.length;
+                _page = 0;
+                _dataTableBloc.add(const DataTableEvent.rebuild());
+              }
+            },
+            value: _dropValue,
+          ),
+        ),
+        const Text(" entries"),
+        if (!Responsive.isMobile(context)) const Spacer(),
+        if (!Responsive.isMobile(context))
+          Text("Showing ${_start + 1} to $_end of ${ls.length} entries"),
+      ],
+    );
+  }
+
   List<Widget> _paggination() {
     return [
-      Text("Showing ${_start + 1} to $_end of ${ls.length} entries"),
-      Responsive.isMobile(context) ? FxBox.h16 : const Spacer(),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

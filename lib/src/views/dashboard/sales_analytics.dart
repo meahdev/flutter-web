@@ -117,7 +117,7 @@ class _SalesanalyticsState extends State<Salesanalytics> {
       ),
       elevation: 7,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 400),
+        constraints: const BoxConstraints(maxHeight: 500),
         child: Container(
           padding: const EdgeInsets.all(20),
           child: Column(

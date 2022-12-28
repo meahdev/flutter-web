@@ -24,7 +24,7 @@ class _ElementsFormState extends State<ElementsForm> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
   final TextEditingController _dateNtimeController = TextEditingController();
-  Color _pickerColor = const Color(0xff02a499);
+  Color _pickerColor = ColorConst.primary;
   final List<String> _headingList = [
     Strings.text,
     Strings.search,
@@ -34,10 +34,10 @@ class _ElementsFormState extends State<ElementsForm> {
   ];
   final List<String> _hintList = [
     'Jone Doe',
-    'How do I shoot web',
+    'Search...',
     'flutter@example.com',
     'https://flutter.com',
-    '1-(555)-555-5555',
+    '+91 9999999999',
   ];
   final List<String> _dropDownList = [
     'One',
@@ -49,7 +49,7 @@ class _ElementsFormState extends State<ElementsForm> {
   @override
   void initState() {
     _passwordController.text = '1234567';
-    _numberController.text = '42';
+    _numberController.text = '30';
     super.initState();
   }
 

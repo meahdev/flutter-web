@@ -1,7 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/widget/ribbon_shape.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -19,40 +18,32 @@ class _ListitemState extends State<Listitem> {
       'producTitle': 'Total Inventory',
       'value': '3,930',
       'boxIcon': Icons.note_add,
-      'up_down_Icon': Icons.arrow_upward,
-      'addTitle': 'Since last month',
-      'ribbonColor': ColorConst.success,
-      'ribbonValue': '+38%',
+      'boxColor': '05A660',
+      // 'boxColor': 'FFE6FF',
     },
     {
       'id': 1,
       'producTitle': 'Total Active',
       'value': '1,268',
-      'boxIcon': Icons.note_alt_sharp,
-      'up_down_Icon': Icons.arrow_upward,
-      'addTitle': 'Since last month',
-      'ribbonColor': ColorConst.infoDark,
-      'ribbonValue': '+9%',
+      'boxIcon': Icons.note_alt_rounded,
+      'boxColor': '9B5B1E',
+      // 'boxColor': 'FFF8E6',
     },
     {
       'id': 2,
       'producTitle': 'Total Cancel',
       'value': '170',
       'boxIcon': Icons.pending_actions_outlined,
-      'up_down_Icon': Icons.arrow_downward,
-      'addTitle': 'Since last month',
-      'ribbonColor': ColorConst.error,
-      'ribbonValue': '-10%',
+      'boxColor': '18818D',
+      // 'boxColor': 'E6FFFF',
     },
     {
       'id': 3,
       'producTitle': 'Total Sales',
       'value': '28,060',
       'boxIcon': Icons.shopping_bag_rounded,
-      'up_down_Icon': Icons.arrow_upward,
-      'addTitle': 'Since last month',
-      'ribbonColor': ColorConst.warningDark,
-      'ribbonValue': '+79%',
+      'boxColor': '004FC4',
+      // 'boxColor': 'E5F0FF',
     },
   ];
   @override
@@ -65,21 +56,21 @@ class _ListitemState extends State<Listitem> {
                 crossAxisCount: 1,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
-                mainAxisExtent: 160,
+                mainAxisExtent: 105,
               )
             : MediaQuery.of(context).size.width < 1500
                 ? const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20,
-                    mainAxisExtent: 160,
+                    mainAxisExtent: 105,
                   )
                 : SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent:
                         MediaQuery.of(context).size.width * 0.24,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20,
-                    mainAxisExtent: 160,
+                    mainAxisExtent: 105,
                   ),
         itemCount: _listItem.length,
         shrinkWrap: true,
@@ -89,13 +80,7 @@ class _ListitemState extends State<Listitem> {
             boxIcon: _listItem[index]['boxIcon'],
             productTitle: _listItem[index]['producTitle'],
             value: _listItem[index]['value'],
-            icon: _listItem[index]['up_down_Icon'],
-            title: _listItem[index]['addTitle'],
-            color: _listItem[index]['producTitle'] == 'REVENUE'
-                ? ColorConst.error
-                : ColorConst.success,
-            ribbonColor: _listItem[index]['ribbonColor'],
-            ribbonValue: _listItem[index]['ribbonValue'],
+            color: Color(int.parse('0xff${_listItem[index]['boxColor']}')),
           );
         },
       ),
@@ -106,23 +91,19 @@ class _ListitemState extends State<Listitem> {
     required IconData boxIcon,
     required String productTitle,
     required String value,
-    required IconData icon,
-    required String title,
     required Color color,
-    required Color ribbonColor,
-    required String ribbonValue,
   }) {
     return Container(
       decoration: BoxDecoration(
-        color: ColorConst.primary,
+        color: color.withOpacity(0.25),
         borderRadius: BorderRadius.circular(18.0),
-        boxShadow: [
-          BoxShadow(
-            color: ColorConst.primary.withOpacity(0.5),
-            blurRadius: 5.0,
-            offset: const Offset(0.0, 5.0),
-          ),
-        ],
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: color.withOpacity(0.5),
+        //     blurRadius: 5.0,
+        //     offset: const Offset(0.0, 5.0),
+        //   ),
+        // ],
       ),
       padding: const EdgeInsets.only(top: 20.0, left: 20.0, bottom: 20.0),
       child: Column(
@@ -131,62 +112,31 @@ class _ListitemState extends State<Listitem> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _iconBox(boxIcon: boxIcon),
+              _iconBox(boxIcon: boxIcon, color: color),
               FxBox.w20,
               _listIconItem(
-                icon: icon,
                 productTitle: productTitle,
                 value: value,
                 color: color,
               ),
-              const Spacer(),
-              ClipPath(
-                clipper: ArcClipper(),
-                child: Container(
-                  color: ribbonColor,
-                  padding: const EdgeInsets.fromLTRB(20.0, 4.0, 8.0, 4.0),
-                  child: Text(
-                    ribbonValue,
-                    style: const TextStyle(
-                      color: ColorConst.white,
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
-          const Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _textBox(title: title),
-              Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Icon(
-                  Icons.arrow_forward,
-                  color: ColorConst.white.withOpacity(0.5),
-                ),
-              ),
-            ],
-          )
         ],
       ),
     );
   }
 
-  Widget _iconBox({
-    required IconData boxIcon,
-  }) {
+  Widget _iconBox({required IconData boxIcon, required Color color}) {
     return Container(
       height: 58,
       width: 58,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: ColorConst.white.withOpacity(0.2),
+        color: ColorConst.white.withOpacity(0.05),
+        shape: BoxShape.circle,
       ),
       child: Icon(
         boxIcon,
-        color: ColorConst.white,
+        color: color,
         size: 32,
       ),
     );
@@ -195,7 +145,6 @@ class _ListitemState extends State<Listitem> {
   Widget _listIconItem({
     required String productTitle,
     required String value,
-    required IconData icon,
     required Color color,
   }) {
     return Column(
@@ -204,34 +153,23 @@ class _ListitemState extends State<Listitem> {
       children: [
         ConstText.lightText(
           text: productTitle,
-          color: ColorConst.white.withOpacity(0.5),
           fontWeight: FontWeight.bold,
         ),
         FxBox.h12,
-        Row(
-          children: [
-            ConstText.mediumText(
-              text: value,
-              color: ColorConst.white,
-              fontWeight: FontWeight.bold,
-            ),
-            FxBox.w20,
-            Icon(
-              icon,
-              color: color,
-              size: 20,
-            ),
-          ],
+        ConstText.mediumText(
+          text: value,
+          color: color,
+          fontWeight: FontWeight.bold,
         ),
       ],
     );
   }
 
-  Widget _textBox({required String title}) {
-    return ConstText.lightText(
-      text: title,
-      color: ColorConst.white.withOpacity(0.5),
-      fontWeight: FontWeight.w500,
-    );
-  }
+  // Widget _textBox({required String title}) {
+  //   return ConstText.lightText(
+  //     text: title,
+  //     color: ColorConst.white.withOpacity(0.5),
+  //     fontWeight: FontWeight.w500,
+  //   );
+  // }
 }

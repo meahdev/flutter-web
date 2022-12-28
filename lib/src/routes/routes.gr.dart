@@ -276,7 +276,7 @@ class AppRouter extends _i50.RootStackRouter {
           _i50.RouteConfig('#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'user-profile',
+              redirectTo: 'basic-table',
               fullMatch: true),
           _i50.RouteConfig(Dashboard.name,
               path: 'dashboard', parent: MenuBar.name),

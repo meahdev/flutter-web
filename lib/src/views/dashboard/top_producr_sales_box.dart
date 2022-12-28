@@ -27,7 +27,7 @@ class _TopProductSaleState extends State<TopProductSale> {
         child: Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: ColorConst.primary,
+            // color: ColorConst.primary,
             borderRadius: BorderRadius.circular(18.0),
           ),
           child: Column(
@@ -35,28 +35,27 @@ class _TopProductSaleState extends State<TopProductSale> {
             children: [
               ConstText.lightText(
                 text: Strings.topProductSale,
-                color: ColorConst.white.withOpacity(0.5),
+                // color: ColorConst.white.withOpacity(0.5),
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
               ),
               ConstText.largeText(
                 text: '1452',
                 fontSize: 33,
-                color: ColorConst.white,
+                color: ColorConst.primary,
                 fontWeight: FontWeight.bold,
               ),
               ConstText.lightText(
                 text: Strings.computer,
-                color: ColorConst.white,
+                color: ColorConst.primary,
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
               ),
               ConstText.lightText(
-                text:
-                    'Lorem Ipsum is simply dummy text of the printing.',
+                text: 'Lorem Ipsum is simply dummy text of the printing.',
                 textAlign: TextAlign.center,
                 fontSize: 15,
-                color: ColorConst.white.withOpacity(0.5),
+                // color: ColorConst.white.withOpacity(0.5),
                 fontWeight: FontWeight.w500,
               ),
             ],

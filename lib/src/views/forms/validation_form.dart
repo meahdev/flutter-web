@@ -106,7 +106,7 @@ class _ValidationFormState extends State<ValidationForm> {
                                 .add(const FormValidationEvent.submit());
                           }
                         },
-                        text: 'Submit form',
+                        text: 'Submit',
                       ),
                     ],
                   ),

@@ -284,8 +284,7 @@ class _MenuBarState extends State<MenuBar> {
                       width: 240,
                       padding: const EdgeInsets.symmetric(horizontal: 61),
                       height: double.infinity,
-                      color:
-                          isDark ? ColorConst.transparent : ColorConst.drawerBG,
+                      color: ColorConst.transparent,
                       child: Image.asset(
                           isDark ? Images.lgDarkLogo : Images.lgLightLogo),
                     ),
@@ -830,12 +829,13 @@ class _MenuBarState extends State<MenuBar> {
                   mouseCursor: SystemMouseCursors.click,
                   child: Text(Strings.admin),
                 ),
-                const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
-                const InkWell(
-                  mouseCursor: SystemMouseCursors.click,
-                  child: Text(Strings.uiElements),
-                ),
-                const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
+                // const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
+                // const InkWell(
+                //   mouseCursor: SystemMouseCursors.click,
+                //   child: Text(Strings.uiElements),
+                // ),
+                // const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
+                const Text('  /  '),
                 Text(upperCase(tabsRouter.currentPath)),
               ],
       );

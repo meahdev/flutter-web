@@ -70,7 +70,7 @@ class _MaskFormState extends State<MaskForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Example',
+              'Form Mask',
               style: TextStyle(
                 fontSize: 17.0,
                 fontWeight: FontWeight.w600,
@@ -90,9 +90,9 @@ class _MaskFormState extends State<MaskForm> {
                           ),
                           FxBox.w24,
                           _maskTextFieldCommonView(
-                            _commonText('Repeat'),
-                            _repeatTextField(),
-                            'e.g "9999999999"',
+                            _commonText('Date Style 2'),
+                            _dateStyle2TextField(),
+                            'e.g "mm/dd/yyyy"',
                           ),
                         ],
                       ),
@@ -101,9 +101,9 @@ class _MaskFormState extends State<MaskForm> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           _maskTextFieldCommonView(
-                            _commonText('Date Style 2'),
-                            _dateStyle2TextField(),
-                            'e.g "mm/dd/yyyy"',
+                            _commonText('Repeat'),
+                            _repeatTextField(),
+                            'e.g "9999999999"',
                           ),
                           FxBox.w24,
                           _maskTextFieldCommonView(

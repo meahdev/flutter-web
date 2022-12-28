@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/provider/table/editabletable/bloc/editable_table_bloc.dart';
-import 'package:data_table_2/data_table_2.dart';
+import 'package:admin_dashboard/src/widget/datatable.dart';
+// import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
@@ -42,11 +43,11 @@ class _EditableTableState extends State<EditableTable> {
   final gender5 = TextEditingController();
 
   List<Map<String, dynamic>> ls = [
-    {"id": "1", "name": "Jane Deo", "age": "22", "gender": "male"},
-    {"id": "2", "name": "Joe Blow", "age": "23", "gender": "male"},
-    {"id": "3", "name": "Jhon Wick", "age": "25", "gender": "male"},
-    {"id": "4", "name": "Joe Wick", "age": "25", "gender": "male"},
-    {"id": "5", "name": "Jane Blow", "age": "27", "gender": "male"},
+    {"id": "1", "name": "jane_deo", "dob": "22/01/1998", "gender": "Female"},
+    {"id": "2", "name": "joe_blow", "dob": "02/04/2000", "gender": "Male"},
+    {"id": "3", "name": "jhon_wick", "dob": "15/10/1995", "gender": "Male"},
+    {"id": "4", "name": "joe_wick", "dob": "11/10/1999", "gender": "Male"},
+    {"id": "5", "name": "jane_blow", "dob": "31/07/1996", "gender": "Female"},
   ];
 
   late List<Map<String, dynamic>> _controller;
@@ -55,11 +56,11 @@ class _EditableTableState extends State<EditableTable> {
   void initState() {
     super.initState();
     _controller = [
-      {"id": id1, "name": name1, "age": age1, "gender": gender1},
-      {"id": id2, "name": name2, "age": age2, "gender": gender2},
-      {"id": id3, "name": name3, "age": age3, "gender": gender3},
-      {"id": id4, "name": name4, "age": age4, "gender": gender4},
-      {"id": id5, "name": name5, "age": age5, "gender": gender5},
+      {"name": name1, "dob": age1, "gender": gender1},
+      {"name": name2, "dob": age2, "gender": gender2},
+      {"name": name3, "dob": age3, "gender": gender3},
+      {"name": name4, "dob": age4, "gender": gender4},
+      {"name": name5, "dob": age5, "gender": gender5},
     ];
   }
 
@@ -74,7 +75,7 @@ class _EditableTableState extends State<EditableTable> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Table Edits',
+                'Editable Table',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -85,7 +86,7 @@ class _EditableTableState extends State<EditableTable> {
                 height: 296,
                 child: BlocBuilder<EditableTableBloc, EditableTableState>(
                   builder: (context, state) {
-                    return DataTable2(
+                    return DataTable3(
                       minWidth: 700,
                       columns: [
                         DataColumn2(
@@ -95,18 +96,18 @@ class _EditableTableState extends State<EditableTable> {
                         ),
                         DataColumn2(
                           label: sizedBox(
-                              text: "Name", fontwidget: FontWeight.bold),
+                              text: "Username", fontwidget: FontWeight.bold),
                           size: ColumnSize.L,
                         ),
                         DataColumn2(
                           label: sizedBox(
-                              text: "Age", fontwidget: FontWeight.bold),
-                          size: ColumnSize.S,
+                              text: "Birth Date", fontwidget: FontWeight.bold),
+                          size: ColumnSize.L,
                         ),
                         DataColumn2(
                           label: sizedBox(
                               text: "Gender", fontwidget: FontWeight.bold),
-                          size: ColumnSize.S,
+                          size: ColumnSize.M,
                         ),
                         DataColumn2(
                           label: sizedBox(
@@ -133,10 +134,7 @@ class _EditableTableState extends State<EditableTable> {
                           },
                           cells: [
                             DataCell(
-                              _selectedIndex != index
-                                  ? sizedBox(text: ls[index]["id"].toString())
-                                  : container(
-                                      controller: _controller[index]["id"]),
+                              sizedBox(text: ls[index]["id"].toString()),
                             ),
                             DataCell(
                               _selectedIndex != index
@@ -146,9 +144,9 @@ class _EditableTableState extends State<EditableTable> {
                             ),
                             DataCell(
                               _selectedIndex != index
-                                  ? sizedBox(text: ls[index]["age"].toString())
+                                  ? sizedBox(text: ls[index]["dob"].toString())
                                   : container(
-                                      controller: _controller[index]["age"]),
+                                      controller: _controller[index]["dob"]),
                             ),
                             DataCell(
                               _selectedIndex != index
@@ -158,7 +156,7 @@ class _EditableTableState extends State<EditableTable> {
                             ),
                             DataCell(
                               IconButton(
-                                splashRadius: 20.0,
+                                // splashRadius: 20.0,
                                 icon: Icon(
                                   _selectedIndex != index
                                       ? Icons.edit

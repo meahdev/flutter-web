@@ -84,7 +84,7 @@ class _WizardFormState extends State<WizardForm> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "Jquery Steps Wizard",
+                    "Steps Wizard",
                     style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
                   ),
                   FxBox.h24,
