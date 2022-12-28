@@ -84,7 +84,7 @@ class _WizardFormState extends State<WizardForm> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "Jquery Steps Wizard",
+                    "Wizard Form",
                     style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
                   ),
                   FxBox.h24,
@@ -172,7 +172,7 @@ class _WizardFormState extends State<WizardForm> {
                                   FormWizardEvent.previousClick(_index - 1),
                                 );
                               },
-                        text: Strings.previous,
+                        text: _index == 0 ? '' : Strings.previous,
                       ),
                       FxBox.w16,
                       FxButton(
@@ -735,7 +735,7 @@ class _WizardFormState extends State<WizardForm> {
               FxBox.w8,
               const Expanded(
                 child: Text(
-                  'I agree with the Terms and Conditions.',
+                  'By proceeding, you agree to Terms and privacy',
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
               )
