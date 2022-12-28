@@ -378,7 +378,7 @@ class AppRouter extends _i50.RootStackRouter {
               '#redirect',
               path: '',
               parent: MenuBar.name,
-              redirectTo: 'faqs',
+              redirectTo: 'form-wizard',
               fullMatch: true,
             ),
             _i50.RouteConfig(

@@ -65,7 +65,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Example',
+              'Nested Form',
               style: TextStyle(
                 fontSize: 17.0,
                 fontWeight: FontWeight.w600,
@@ -112,7 +112,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
             FxButton(
               height: 45,
               buttonType: ButtonType.success,
-              borderRadius: 4.0,
+              borderRadius: 15.0,
               text: 'Add',
               onPressed: () {
                 _formRepeaterBloc.add(FormRepeaterEvent.add(
@@ -232,8 +232,8 @@ class _RepeaterFormState extends State<RepeaterForm> {
     return FxButton(
       height: 45,
       fullWidth: fullWidth,
-      borderRadius: 4.0,
-      text: 'Delete',
+      borderRadius: 15.0,
+      text: 'Remove',
       onPressed: () {
         FxAlert.showAlert(
           barrierDismissible: false,
@@ -349,7 +349,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Nested',
+              'Nested Field form',
               style: TextStyle(
                 fontSize: 17.0,
                 fontWeight: FontWeight.w600,
@@ -391,9 +391,12 @@ class _RepeaterFormState extends State<RepeaterForm> {
                               ),
                               FxBox.w24,
                               Expanded(
-                                flex: 2,
-                                child: _nestedDeleteButton(false, index),
+                                child: _addRemoveButton(index),
                               )
+                              // Expanded(
+                              //   flex: 2,
+                              //   child: _nestedDeleteButton(false, index),
+                              // )
                             ],
                           ),
                           _phoneControllerList.length > 1
@@ -407,7 +410,8 @@ class _RepeaterFormState extends State<RepeaterForm> {
                           _commonTextField('Enter your phone no...',
                               _phoneControllerList[index]),
                           FxBox.h12,
-                          _nestedDeleteButton(true, index),
+                          _addRemoveButton(index),
+                          //_nestedDeleteButton(true, index),
                           FxBox.h12,
                         ],
                       );
@@ -416,8 +420,8 @@ class _RepeaterFormState extends State<RepeaterForm> {
                 );
               },
             ),
-            FxBox.h16,
-            _addPhoneButton(),
+            //FxBox.h16,
+            //_addPhoneButton(),
             FxBox.h24,
             _commonText('Gender :'),
             _radioButton(),
@@ -435,6 +439,60 @@ class _RepeaterFormState extends State<RepeaterForm> {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _addRemoveButton(int index) {
+    return Row(
+      children: [
+        Row(
+          children: [
+            InkWell(
+              onTap: () {
+                _formRepeaterBloc.add(
+                  FormRepeaterEvent.addPhone(
+                    TextEditingController(),
+                  ),
+                );
+              },
+              child: Container(
+                height: 40,
+                width: 40,
+                decoration: BoxDecoration(
+                  color: ColorConst.primary,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Icon(
+                  Icons.add,
+                  color: ColorConst.white,
+                ),
+              ),
+            ),
+            FxBox.w20,
+            if (_phoneControllerList.length >= 2) ...{
+              InkWell(
+                onTap: () {
+                  _formRepeaterBloc.add(
+                    FormRepeaterEvent.deletePhone(index),
+                  );
+                },
+                child: Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    color: ColorConst.primary,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Icon(
+                    Icons.remove,
+                    color: ColorConst.white,
+                  ),
+                ),
+              ),
+            }
+          ],
+        ),
+      ],
     );
   }
 
@@ -476,8 +534,8 @@ class _RepeaterFormState extends State<RepeaterForm> {
     return FxButton(
       height: 45,
       fullWidth: fullWidth,
-      borderRadius: 4.0,
-      text: Strings.delete,
+      borderRadius: 16.0,
+      text: 'Remove',
       onPressed: () {
         _formRepeaterBloc.add(FormRepeaterEvent.deletePhone(index));
       },
@@ -488,7 +546,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
     return FxButton(
       height: 45,
       buttonType: ButtonType.success,
-      borderRadius: 4.0,
+      borderRadius: 15.0,
       text: Strings.addNumber,
       onPressed: () {
         _formRepeaterBloc

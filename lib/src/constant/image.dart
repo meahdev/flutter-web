@@ -11,7 +11,7 @@ class Images {
 
   static const String profileImage = '${_assetPath}profile.jpeg';
   static const String authBG = '${_assetPath}Auth-BG.png';
-  static const String maintenance = '${_assetPath}maintenance.webp';
+  static const String maintenance = '${_assetPath}maintenance.png';
 
   static const String c1 = '${_assetPath}c1.jpeg';
   static const String c2 = '${_assetPath}c2.jpeg';
