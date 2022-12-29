@@ -319,7 +319,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                           Expanded(
                             child: _monthEarning(
                               durationText: 'This month',
-                              salesAmount: '\$34,526',
+                              salesAmount: '\u{20B9}25,234',
                               descriptionText:
                                   'Lorem Ipsum is simply dummy text.',
                             ),
@@ -328,7 +328,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                           Expanded(
                             child: _monthEarning(
                               durationText: 'Last month',
-                              salesAmount: '\$32,293',
+                              salesAmount: '\u{20B9}76,321',
                               descriptionText:
                                   'Lorem Ipsum is simply dummy text.',
                             ),
@@ -348,7 +348,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                           Expanded(
                             child: _monthEarning(
                               durationText: 'This month',
-                              salesAmount: '\$34,526',
+                              salesAmount: '\u{20B9}25,234',
                               descriptionText:
                                   'Lorem Ipsum is simply dummy text.',
                             ),
@@ -357,7 +357,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                           Expanded(
                             child: _monthEarning(
                               durationText: 'Last month',
-                              salesAmount: '\$32,293',
+                              salesAmount: '\u{20B9}76,321',
                               descriptionText:
                                   'Lorem Ipsum is simply dummy text.',
                             ),

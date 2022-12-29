@@ -59,7 +59,7 @@ class _TransactionState extends State<Transaction> {
                 ),
                 columns: [
                   DataColumn2(
-                    label: _tableHeader('Id'),
+                    label: _tableHeader('ID'),
                     size: ColumnSize.S,
                   ),
                   DataColumn2(
@@ -67,7 +67,11 @@ class _TransactionState extends State<Transaction> {
                     size: ColumnSize.L,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Date'),
+                    label: _tableHeader('Product'),
+                    size: ColumnSize.M,
+                  ),
+                  DataColumn2(
+                    label: _tableHeader('Order Date'),
                     size: ColumnSize.L,
                   ),
                   DataColumn2(
@@ -75,8 +79,8 @@ class _TransactionState extends State<Transaction> {
                     size: ColumnSize.M,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Status'),
-                    size: ColumnSize.M,
+                    label: _tableHeader('Delivery Status'),
+                    size: ColumnSize.L,
                   ),
                   DataColumn2(
                     label: _tableHeader(''),
@@ -89,6 +93,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('1')),
                       DataCell(_tableRowImage('Jane Deo')),
+                      DataCell(_tableHeader('Website')),
                       DataCell(_tableHeader('November 15, 2022')),
                       DataCell(_tableHeader('\$90')),
                       DataCell(_statusBox(ColorConst.successDark, 'Delivered')),
@@ -100,6 +105,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('2')),
                       DataCell(_tableRowImage('Joe Blow')),
+                      DataCell(_tableHeader('Mobile App')),
                       DataCell(_tableHeader('November 17, 2022')),
                       DataCell(_tableHeader('\$127')),
                       DataCell(_statusBox(ColorConst.warningDark, 'Pending')),
@@ -111,6 +117,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('3')),
                       DataCell(_tableRowImage('Jhon Wick')),
+                      DataCell(_tableHeader('Website')),
                       DataCell(_tableHeader('November 3, 2022')),
                       DataCell(_tableHeader('\$107')),
                       DataCell(_statusBox(ColorConst.successDark, 'Delivered')),
@@ -122,6 +129,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('4')),
                       DataCell(_tableRowImage('Joe Wick')),
+                      DataCell(_tableHeader('Desktop App')),
                       DataCell(_tableHeader('November 18, 2022')),
                       DataCell(_tableHeader('\$109')),
                       DataCell(_statusBox(ColorConst.errorDark, 'Cancel')),
@@ -133,6 +141,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('5')),
                       DataCell(_tableRowImage('Jane Blow')),
+                      DataCell(_tableHeader('Desktop App')),
                       DataCell(_tableHeader('November 12, 2022')),
                       DataCell(_tableHeader('\$120')),
                       DataCell(_statusBox(ColorConst.successDark, 'Delivered')),

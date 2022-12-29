@@ -5,8 +5,7 @@ import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
-import 'package:admin_dashboard/src/utils/hive/hive_keys.dart';
-import 'package:admin_dashboard/src/utils/hive/hive_utils.dart';
+import 'package:admin_dashboard/src/utils/hive/hive.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
@@ -15,7 +14,6 @@ import 'package:admin_dashboard/src/widget/end_drawer.dart';
 import 'package:admin_dashboard/src/widget/expantion_tile.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
@@ -366,37 +364,30 @@ class _MenuBarState extends State<MenuBar> {
                   ),
                 ),
           _notification(),
-          _profile(tabsRouter),
-
           BlocBuilder<ThemeModeBloc, ThemeModeState>(
             builder: (context, state) {
               return Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    CupertinoSwitch(
-                      activeColor: ColorConst.primary,
-                      value: HiveUtils.isContainKey(HiveKeys.themeMode)
-                          ? HiveUtils.get(HiveKeys.themeMode)
-                          : false,
-                      onChanged: (value) {
-                        HiveUtils.set(HiveKeys.themeMode, value);
-                        themeModeBloc.add(ThemeModeEvent.changeTheme(value));
+                    IconButton(
+                      onPressed: () {
+                        HiveUtils.set(HiveKeys.themeMode, !isDark);
+                        themeModeBloc.add(ThemeModeEvent.changeTheme(!isDark));
                       },
-                    ),
-                    FxBox.w12,
-                    Text(
-                      isDark ? Strings.lightMode : Strings.darkMode,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
+                      icon: Icon(
+                        isDark
+                            ? Icons.light_mode_outlined
+                            : Icons.dark_mode_outlined,
                       ),
-                    )
+                    ),
                   ],
                 ),
               );
             },
           ),
+          _profile(tabsRouter),
+
           // MaterialButton(
           //   height: double.infinity,
           //   minWidth: 60,
