@@ -4,7 +4,7 @@ class Strings {
   static const String view = 'View';
   static const String edit = 'Edit';
   static const String delete = 'Delete';
-  static const String fdash = 'Admin';
+  static const String fdash = 'AdminKit';
   static const String lightMode = 'Light Mode';
 
   static const String admin = 'Admin';

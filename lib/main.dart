@@ -7,7 +7,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   if (TargetPlatform.windows == defaultTargetPlatform ||
       TargetPlatform.macOS == defaultTargetPlatform) {
-    setWindowTitle('Admin');
+    setWindowTitle('AdminKit');
     setWindowMinSize(const Size(480, 360));
     setWindowMaxSize(Size.infinite);
   }
