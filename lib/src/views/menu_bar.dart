@@ -747,23 +747,24 @@ class _MenuBarState extends State<MenuBar> {
           } else {
             return Row(
               children: [
-                Container(
-                  width: 6.0,
-                  height: 48.0,
-                  decoration: BoxDecoration(
-                    color: items.keys.elementAt(index) ==
-                            upperCase(tabsRouter.currentPath)
-                        ? isDark
-                            ? ColorConst.chartForgoundColor
-                            : ColorConst.primary
-                        : ColorConst.transparent,
-                    borderRadius: const BorderRadius.only(
-                      topRight: Radius.circular(6.0),
-                      bottomRight: Radius.circular(6.0),
+                if (isopen)
+                  Container(
+                    width: 6.0,
+                    height: 48.0,
+                    decoration: BoxDecoration(
+                      color: items.keys.elementAt(index) ==
+                              upperCase(tabsRouter.currentPath)
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : ColorConst.transparent,
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(6.0),
+                        bottomRight: Radius.circular(6.0),
+                      ),
                     ),
                   ),
-                ),
-                FxBox.w16,
+                if (isopen) FxBox.w16,
                 Expanded(
                   child: ListTile(
                     leading: SvgIcon(
