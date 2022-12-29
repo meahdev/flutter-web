@@ -80,7 +80,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'editable-table', page: EditableTable),
         AutoRoute(path: 'timeline', page: TimelineScreen),
         AutoRoute(path: 'pricing', page: Pricing),
-        AutoRoute(path: 'directory', page: DirectoryPage),
+        AutoRoute(path: 'card', page: DirectoryPage),
         AutoRoute(path: 'faqs', page: FAQs),
         AutoRoute(path: 'invoice', page: Invoice),
         AutoRoute(path: 'gallery', page: Gallery),

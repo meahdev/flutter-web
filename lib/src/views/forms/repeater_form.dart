@@ -530,28 +530,28 @@ class _RepeaterFormState extends State<RepeaterForm> {
     );
   }
 
-  Widget _nestedDeleteButton(bool fullWidth, int index) {
-    return FxButton(
-      height: 45,
-      fullWidth: fullWidth,
-      borderRadius: 16.0,
-      text: 'Remove',
-      onPressed: () {
-        _formRepeaterBloc.add(FormRepeaterEvent.deletePhone(index));
-      },
-    );
-  }
+  // Widget _nestedDeleteButton(bool fullWidth, int index) {
+  //   return FxButton(
+  //     height: 45,
+  //     fullWidth: fullWidth,
+  //     borderRadius: 16.0,
+  //     text: 'Remove',
+  //     onPressed: () {
+  //       _formRepeaterBloc.add(FormRepeaterEvent.deletePhone(index));
+  //     },
+  //   );
+  // }
 
-  Widget _addPhoneButton() {
-    return FxButton(
-      height: 45,
-      buttonType: ButtonType.success,
-      borderRadius: 15.0,
-      text: Strings.addNumber,
-      onPressed: () {
-        _formRepeaterBloc
-            .add(FormRepeaterEvent.addPhone(TextEditingController()));
-      },
-    );
-  }
+  // Widget _addPhoneButton() {
+  //   return FxButton(
+  //     height: 45,
+  //     buttonType: ButtonType.success,
+  //     borderRadius: 15.0,
+  //     text: Strings.addNumber,
+  //     onPressed: () {
+  //       _formRepeaterBloc
+  //           .add(FormRepeaterEvent.addPhone(TextEditingController()));
+  //     },
+  //   );
+  // }
 }

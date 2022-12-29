@@ -283,33 +283,33 @@ class _RegisterTwoState extends State<RegisterTwo> {
     );
   }
 
-  Widget _termsAndService() {
-    return Center(
-      child: RichText(
-        textAlign: TextAlign.left,
-        text: TextSpan(
-          style: TextStyle(
-              height: 1.5,
-              color: isDark
-                  ? ColorConst.darkFooterText
-                  : ColorConst.lightFontColor,
-              fontFamily: 'Nunito',
-              fontWeight: FontWeight.w700),
-          children: [
-            const TextSpan(
-              text: Strings.termsServiceText1,
-            ),
-            TextSpan(
-              text: Strings.termsServiceText2,
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.primary,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Widget _termsAndService() {
+  //   return Center(
+  //     child: RichText(
+  //       textAlign: TextAlign.left,
+  //       text: TextSpan(
+  //         style: TextStyle(
+  //             height: 1.5,
+  //             color: isDark
+  //                 ? ColorConst.darkFooterText
+  //                 : ColorConst.lightFontColor,
+  //             fontFamily: 'Nunito',
+  //             fontWeight: FontWeight.w700),
+  //         children: [
+  //           const TextSpan(
+  //             text: Strings.termsServiceText1,
+  //           ),
+  //           TextSpan(
+  //             text: Strings.termsServiceText2,
+  //             style: TextStyle(
+  //               color: Theme.of(context).colorScheme.primary,
+  //               fontFamily: 'Nunito',
+  //               fontWeight: FontWeight.w700,
+  //             ),
+  //           ),
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
 }

@@ -87,7 +87,17 @@ class ComingSoonState extends State<ComingSoon> {
                       SvgPicture.asset(IconlyBroken.adminKitText),
                       FxBox.h20,
                       Text(
-                        "We are coming soon",
+                        "We have great adminkit",
+                        style: TextStyle(
+                          color: isDark
+                              ? ColorConst.darkFontColor
+                              : ColorConst.textColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                        ),
+                      ),
+                      Text(
+                        "Let's Get it",
                         style: TextStyle(
                           color: isDark
                               ? ColorConst.darkFontColor
@@ -225,6 +235,8 @@ class ComingSoonState extends State<ComingSoon> {
 
   Widget _timerBox(String title, String value) {
     return Card(
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(100))),
       child: SizedBox(
         height: 130,
         width: 130,
@@ -261,7 +273,7 @@ class ComingSoonState extends State<ComingSoon> {
           hintText: 'Enter email address',
           contentPadding: const EdgeInsets.only(left: 25),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(100),
           ),
         ));
   }

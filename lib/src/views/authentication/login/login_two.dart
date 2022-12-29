@@ -2,7 +2,6 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
-import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
@@ -12,7 +11,6 @@ import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -27,7 +25,7 @@ class _LoginTwoState extends State<LoginTwo> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  final CheckboxBloc _checkboxBloc = CheckboxBloc();
+  // final CheckboxBloc _checkboxBloc = CheckboxBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -288,42 +286,42 @@ class _LoginTwoState extends State<LoginTwo> {
     );
   }
 
-  Widget _rememberMeCheckBox() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        BlocProvider(
-          create: (context) => _checkboxBloc,
-          child: BlocBuilder<CheckboxBloc, CheckboxState>(
-            builder: (context, state) {
-              return state.when(
-                success: (isChecked) {
-                  return Checkbox(
-                    value: isChecked,
-                    onChanged: (value) {
-                      _rememberMeAction(value!);
-                    },
-                    activeColor: ColorConst.primary,
-                    focusColor: ColorConst.primary,
-                  );
-                },
-              );
-            },
-          ),
-        ),
-        CustomText(
-          title: Strings.rememberMeLabel,
-          textColor:
-              isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
-          fontWeight: FontWeight.w700,
-        ),
-      ],
-    );
-  }
+  // Widget _rememberMeCheckBox() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.start,
+  //     children: [
+  //       BlocProvider(
+  //         create: (context) => _checkboxBloc,
+  //         child: BlocBuilder<CheckboxBloc, CheckboxState>(
+  //           builder: (context, state) {
+  //             return state.when(
+  //               success: (isChecked) {
+  //                 return Checkbox(
+  //                   value: isChecked,
+  //                   onChanged: (value) {
+  //                     _rememberMeAction(value!);
+  //                   },
+  //                   activeColor: ColorConst.primary,
+  //                   focusColor: ColorConst.primary,
+  //                 );
+  //               },
+  //             );
+  //           },
+  //         ),
+  //       ),
+  //       CustomText(
+  //         title: Strings.rememberMeLabel,
+  //         textColor:
+  //             isDark ? ColorConst.darkFooterText : ColorConst.lightFontColor,
+  //         fontWeight: FontWeight.w700,
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  Future<void> _rememberMeAction(bool isChecked) async {
-    _checkboxBloc.add(CheckboxEvent.started(isChecked: isChecked));
-  }
+  // Future<void> _rememberMeAction(bool isChecked) async {
+  //   _checkboxBloc.add(CheckboxEvent.started(isChecked: isChecked));
+  // }
 
   Widget _loginButton() {
     return FxButton(

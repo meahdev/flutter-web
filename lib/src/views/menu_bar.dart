@@ -609,14 +609,14 @@ class _MenuBarState extends State<MenuBar> {
                 children: [
                   FxBox.h8,
                   // main
-                  if (value) _menuHeading(Strings.main),
+                  // if (value) _menuHeading(Strings.main),
                   _menuList(
                     tabsRouter: tabsRouter,
                     items: mainData,
                     isopen: value,
                   ),
                   // components
-                  if (value) _menuHeading(Strings.components),
+                  // if (value) _menuHeading(Strings.components),
                   _menuList(
                     tabsRouter: tabsRouter,
                     items: componentData,
@@ -625,7 +625,7 @@ class _MenuBarState extends State<MenuBar> {
                     isopen: value,
                   ),
                   // extras
-                  if (value) _menuHeading(Strings.extras),
+                  // if (value) _menuHeading(Strings.extras),
                   _menuList(
                     tabsRouter: tabsRouter,
                     items: extrasData,
@@ -642,20 +642,20 @@ class _MenuBarState extends State<MenuBar> {
       );
 
   /// menu heading
-  Widget _menuHeading(String title) {
-    return Container(
-      padding: const EdgeInsets.only(left: 18),
-      height: 40,
-      alignment: Alignment.centerLeft,
-      child: Text(
-        title.toUpperCase(),
-        style: TextStyle(
-          color: isDark ? ColorConst.white : ColorConst.black,
-          fontSize: 11,
-        ),
-      ),
-    );
-  }
+  // Widget _menuHeading(String title) {
+  //   return Container(
+  //     padding: const EdgeInsets.only(left: 18),
+  //     height: 40,
+  //     alignment: Alignment.centerLeft,
+  //     child: Text(
+  //       title.toUpperCase(),
+  //       style: TextStyle(
+  //         color: isDark ? ColorConst.white : ColorConst.black,
+  //         fontSize: 11,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   /// menu list
   Widget _menuList({
@@ -681,15 +681,22 @@ class _MenuBarState extends State<MenuBar> {
           if (isExpanded) {
             return isopen
                 ? FxExpansionTile(
-                    leading: SvgIcon(
-                      icon: items.values.elementAt(index),
-                      size: 16,
-                      color: children[index]
-                              .contains(upperCase(tabsRouter.currentPath))
-                          ? isDark
-                              ? ColorConst.chartForgoundColor
-                              : ColorConst.primary
-                          : color,
+                    leading: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        FxBox.w(22.0),
+                        SvgIcon(
+                          icon: items.values.elementAt(index),
+                          size: 16,
+                          color: children[index]
+                                  .contains(upperCase(tabsRouter.currentPath))
+                              ? isDark
+                                  ? ColorConst.chartForgoundColor
+                                  : ColorConst.primary
+                              : color,
+                        ),
+                        FxBox.w(24.0),
+                      ],
                     ),
                     title: Text(
                       items.keys.elementAt(index),
@@ -747,39 +754,62 @@ class _MenuBarState extends State<MenuBar> {
                     },
                   );
           } else {
-            return ListTile(
-              leading: SvgIcon(
-                icon: items.values.elementAt(index),
-                size: isopen ? 16 : 18,
-                color: items.keys.elementAt(index) ==
-                        upperCase(tabsRouter.currentPath)
-                    ? isDark
-                        ? ColorConst.chartForgoundColor
-                        : ColorConst.primary
-                    : color,
-              ),
-              title: isopen
-                  ? Text(
-                      items.keys.elementAt(index),
-                      style: TextStyle(
-                        color: items.keys.elementAt(index) ==
-                                upperCase(tabsRouter.currentPath)
-                            ? isDark
-                                ? ColorConst.chartForgoundColor
-                                : ColorConst.primary
-                            : color,
-                        fontSize: 15.7,
-                      ),
-                    )
-                  : null,
-              mouseCursor: SystemMouseCursors.click,
-              horizontalTitleGap: 0.0,
-              onTap: () {
-                isOpen.value = true;
-                tabsRouter
-                    .setActiveIndex(getRouteIndex(items.keys.elementAt(index)));
-                _scaffoldDrawerKey.currentState?.closeDrawer();
-              },
+            return Row(
+              children: [
+                Container(
+                  width: 6.0,
+                  height: 48.0,
+                  decoration: BoxDecoration(
+                    color: items.keys.elementAt(index) ==
+                            upperCase(tabsRouter.currentPath)
+                        ? isDark
+                            ? ColorConst.chartForgoundColor
+                            : ColorConst.primary
+                        : ColorConst.transparent,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(6.0),
+                      bottomRight: Radius.circular(6.0),
+                    ),
+                  ),
+                ),
+                FxBox.w16,
+                Expanded(
+                  child: ListTile(
+                    leading: SvgIcon(
+                      icon: items.values.elementAt(index),
+                      size: isopen ? 16 : 18,
+                      color: items.keys.elementAt(index) ==
+                              upperCase(tabsRouter.currentPath)
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                    ),
+                    title: isopen
+                        ? Text(
+                            items.keys.elementAt(index),
+                            style: TextStyle(
+                              color: items.keys.elementAt(index) ==
+                                      upperCase(tabsRouter.currentPath)
+                                  ? isDark
+                                      ? ColorConst.chartForgoundColor
+                                      : ColorConst.primary
+                                  : color,
+                              fontSize: 15.7,
+                            ),
+                          )
+                        : null,
+                    mouseCursor: SystemMouseCursors.click,
+                    horizontalTitleGap: 0.0,
+                    onTap: () {
+                      isOpen.value = true;
+                      tabsRouter.setActiveIndex(
+                          getRouteIndex(items.keys.elementAt(index)));
+                      _scaffoldDrawerKey.currentState?.closeDrawer();
+                    },
+                  ),
+                ),
+              ],
             );
           }
         },
@@ -806,45 +836,66 @@ class _MenuBarState extends State<MenuBar> {
                   : isDark
                       ? ColorConst.white
                       : ColorConst.black;
-          return ListTile(
-            dense: true,
-            visualDensity: const VisualDensity(vertical: -3),
-            mouseCursor: SystemMouseCursors.click,
-            contentPadding: const EdgeInsets.only(left: 52.0),
-            title: Text(
-              items[index],
-              style: TextStyle(color: color, fontSize: 15),
-            ),
-            onTap: () {
-              if (items[index] == 'Login 1') {
-                context.router.push(const LoginOne());
-              } else if (items[index] == 'Login 2') {
-                context.router.push(const LoginTwo());
-              } else if (items[index] == 'Register 1') {
-                context.router.push(const RegisterOne());
-              } else if (items[index] == 'Register 2') {
-                context.router.push(const RegisterTwo());
-              } else if (items[index] == 'Recover Password 1') {
-                context.router.push(const RecoverPasswordOne());
-              } else if (items[index] == 'Recover Password 2') {
-                context.router.push(const RecoverPasswordTwo());
-              } else if (items[index] == 'Lock Screen 1') {
-                context.router.push(const LockScreenOne());
-              } else if (items[index] == 'Lock Screen 2') {
-                context.router.push(const LockScreenTwo());
-              } else if (items[index] == 'Error 404') {
-                context.router.push(const Error404());
-              } else if (items[index] == 'Error 500') {
-                context.router.push(const Error500());
-              } else if (items[index] == 'Maintenence') {
-                context.router.push(const Maintenance());
-              } else if (items[index] == 'Coming Soon') {
-                context.router.push(const ComingSoon());
-              } else {
-                tabsRouter.setActiveIndex(getRouteIndex(items[index]));
-              }
-              _scaffoldDrawerKey.currentState?.closeDrawer();
-            },
+          return Row(
+            children: [
+              Container(
+                width: 6.0,
+                height: 48.0,
+                decoration: BoxDecoration(
+                  color: upperCase(tabsRouter.currentPath) == items[index]
+                      ? isDark
+                          ? ColorConst.chartForgoundColor
+                          : ColorConst.primary
+                      : ColorConst.transparent,
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(6.0),
+                    bottomRight: Radius.circular(6.0),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: ListTile(
+                  dense: true,
+                  visualDensity: const VisualDensity(vertical: -3),
+                  mouseCursor: SystemMouseCursors.click,
+                  contentPadding: const EdgeInsets.only(left: 52.0),
+                  title: Text(
+                    items[index],
+                    style: TextStyle(color: color, fontSize: 15),
+                  ),
+                  onTap: () {
+                    if (items[index] == 'Login 1') {
+                      context.router.push(const LoginOne());
+                    } else if (items[index] == 'Login 2') {
+                      context.router.push(const LoginTwo());
+                    } else if (items[index] == 'Register 1') {
+                      context.router.push(const RegisterOne());
+                    } else if (items[index] == 'Register 2') {
+                      context.router.push(const RegisterTwo());
+                    } else if (items[index] == 'Recover Password 1') {
+                      context.router.push(const RecoverPasswordOne());
+                    } else if (items[index] == 'Recover Password 2') {
+                      context.router.push(const RecoverPasswordTwo());
+                    } else if (items[index] == 'Lock Screen 1') {
+                      context.router.push(const LockScreenOne());
+                    } else if (items[index] == 'Lock Screen 2') {
+                      context.router.push(const LockScreenTwo());
+                    } else if (items[index] == 'Error 404') {
+                      context.router.push(const Error404());
+                    } else if (items[index] == 'Error 500') {
+                      context.router.push(const Error500());
+                    } else if (items[index] == 'Maintenence') {
+                      context.router.push(const Maintenance());
+                    } else if (items[index] == 'Coming Soon') {
+                      context.router.push(const ComingSoon());
+                    } else {
+                      tabsRouter.setActiveIndex(getRouteIndex(items[index]));
+                    }
+                    _scaffoldDrawerKey.currentState?.closeDrawer();
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),

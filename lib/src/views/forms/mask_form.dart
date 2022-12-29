@@ -42,12 +42,12 @@ class _MaskFormState extends State<MaskForm> {
     },
     type: MaskAutoCompletionType.eager,
   );
-  final MaskTextInputFormatter _currencyFormatter = MaskTextInputFormatter(
-    mask: '\$ #',
-    filter: {
-      '#': RegExp(r'[0-9]'),
-    },
-  );
+  // final MaskTextInputFormatter _currencyFormatter = MaskTextInputFormatter(
+  //   mask: '\$ #',
+  //   filter: {
+  //     '#': RegExp(r'[0-9]'),
+  //   },
+  // );
 
   final TextEditingController _dateStyle1Controller = TextEditingController();
   final TextEditingController _repeatController = TextEditingController();
@@ -55,7 +55,7 @@ class _MaskFormState extends State<MaskForm> {
   final TextEditingController _maskController = TextEditingController();
   final TextEditingController _dateTimeController = TextEditingController();
   final TextEditingController _ipAddressController = TextEditingController();
-  final TextEditingController _currencyController = TextEditingController();
+  // final TextEditingController _currencyController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   String hash = '#';
   @override
@@ -308,32 +308,32 @@ class _MaskFormState extends State<MaskForm> {
     );
   }
 
-  Widget _currencyTextField() {
-    return FxHover(
-      builder: (isHover) {
-        return _textField(
-          inputFormatters: [
-            _currencyFormatter,
-          ],
-          onChanged: (value) {
-            if (value.length >= 2) {
-              if ((value.length - 2) == hash.length) {
-                hash += '#';
-              } else {
-                hash = hash.substring(0, hash.length - 1);
-              }
+  // Widget _currencyTextField() {
+  //   return FxHover(
+  //     builder: (isHover) {
+  //       return _textField(
+  //         inputFormatters: [
+  //           _currencyFormatter,
+  //         ],
+  //         onChanged: (value) {
+  //           if (value.length >= 2) {
+  //             if ((value.length - 2) == hash.length) {
+  //               hash += '#';
+  //             } else {
+  //               hash = hash.substring(0, hash.length - 1);
+  //             }
 
-              _currencyController.value = _currencyFormatter.updateMask(
-                mask: '\$ $hash',
-              );
-            }
-          },
-          controller: _currencyController,
-          hintText: isHover ? '\$ 0.00' : '',
-        );
-      },
-    );
-  }
+  //             _currencyController.value = _currencyFormatter.updateMask(
+  //               mask: '\$ $hash',
+  //             );
+  //           }
+  //         },
+  //         controller: _currencyController,
+  //         hintText: isHover ? '\$ 0.00' : '',
+  //       );
+  //     },
+  //   );
+  // }
 
   Widget _emailTextField() {
     return FxHover(

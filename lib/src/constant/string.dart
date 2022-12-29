@@ -20,15 +20,15 @@ class Strings {
   static const String chooseLayouts = 'Choose Layouts';
 
   // drawer menu title
-  static const String main = 'Main';
-  static const String components = 'Components';
-  static const String extras = 'Extras';
+  // static const String main = 'Main';
+  // static const String components = 'Components';
+  // static const String extras = 'Extras';
 
   // drawer menu heading
   static const String dashboard = 'Dashboard';
   static const String calendar = 'Calendar';
   static const String map = 'Map';
-  static const String uiElements = 'UI Component';
+  static const String uiElements = 'Widgets';
   static const String forms = 'Form Elements';
   static const String charts = 'Charts';
   static const String tables = 'Tables';
@@ -82,7 +82,7 @@ class Strings {
   // extra pages option
   static const String timeline = 'Timeline';
   static const String invoice = 'Invoice';
-  static const String directory = 'Directory';
+  static const String directory = 'Card';
   static const String error404 = 'Error 404';
   static const String error500 = 'Error 500';
   static const String pricing = 'Pricing';
@@ -170,7 +170,7 @@ class Strings {
       'Hello Jane, enter your password to unlock the screen!';
 
   // sale report
-  static const String salesReport = 'Sales Report';
+  static const String salesReport = 'Monthly Report';
   static const String desktop = 'Desktop';
   static const String mobile = 'Mobile';
   static const String tablets = 'Tablets';
@@ -179,7 +179,7 @@ class Strings {
   static const String monthlyEarning = 'Monthly Income';
 
   // sales analystics
-  static const String salesAnalytics = 'Sales Analytics';
+  static const String salesAnalytics = 'Monthly Sales Report';
   static const String activated = 'Active';
   static const String pending = 'Pending';
   static const String deactivated = 'Cancel';

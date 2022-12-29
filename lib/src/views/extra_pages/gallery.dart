@@ -32,20 +32,20 @@ class _GalleryState extends State<Gallery> {
     Images.g8,
   ];
 
-  final _headingList = [
-    "Open Imagination",
-    "Locked Steel Gate",
-    "Mack SunnGlass",
-    "Morning Duew",
-    "Consol Activity",
-    "Shake It",
-    "Backpack Content",
-    "Sunset Bulb Glow",
-    "Open Imagination",
-    "Console Activity",
-    "Share It",
-    "Open Imagination",
-  ];
+  // final _headingList = [
+  //   "Open Imagination",
+  //   "Locked Steel Gate",
+  //   "Mack SunnGlass",
+  //   "Morning Duew",
+  //   "Consol Activity",
+  //   "Shake It",
+  //   "Backpack Content",
+  //   "Sunset Bulb Glow",
+  //   "Open Imagination",
+  //   "Console Activity",
+  //   "Share It",
+  //   "Open Imagination",
+  // ];
 
   final _nameList = [
     "Jane Deo",

@@ -36,7 +36,7 @@ class _InvoiceState extends State<Invoice> {
                     ),
                     const Spacer(),
                     const Text(
-                      'Order # 12345',
+                      'Invoice No : 00001',
                       style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w500,
@@ -61,10 +61,10 @@ class _InvoiceState extends State<Invoice> {
                             fontSize: 16,
                           ),
                         ),
-                        const Text('John Smith'),
-                        const Text('20th Avenue'),
-                        const Text('Elkton,sd'),
-                        const Text('United States'),
+                        const Text('123 Your street'),
+                        const Text('Your area'),
+                        const Text('Address'),
+                        const Text('Your contry'),
                         FxBox.h32,
                         const Text(
                           "Payment Method:",
@@ -74,7 +74,7 @@ class _InvoiceState extends State<Invoice> {
                           ),
                         ),
                         const Text("Visa ending ****4242"),
-                        const Text("jsmith@gmail.com"),
+                        const Text("Your@gmail.com"),
                       ],
                     ),
                     const Spacer(),
@@ -90,10 +90,10 @@ class _InvoiceState extends State<Invoice> {
                               fontSize: 16,
                             ),
                           ),
-                          const Text('Kenny Rigdon'),
-                          const Text('20th Avenue'),
-                          const Text('Elkton,sd'),
-                          const Text('United States'),
+                          const Text('Purcheser'),
+                          const Text('Home'),
+                          const Text('Address'),
+                          const Text('His Contry Name'),
                           FxBox.h32,
                           const Text(
                             "Order Date:",
@@ -102,7 +102,7 @@ class _InvoiceState extends State<Invoice> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const Text("January 16,2019"),
+                          const Text("Shiping@date"),
                         ],
                       ),
                     )
@@ -156,7 +156,7 @@ class _InvoiceState extends State<Invoice> {
                         rows: <DataRow>[
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(_dataCell('BS-100')),
+                              DataCell(_dataCell('Your Item1')),
                               DataCell(_dataCell('\$9.99')),
                               DataCell(_dataCell('1')),
                               DataCell(_dataCell('\$9.99')),
@@ -164,7 +164,7 @@ class _InvoiceState extends State<Invoice> {
                           ),
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(_dataCell('BS-500')),
+                              DataCell(_dataCell('Your Item2')),
                               DataCell(_dataCell('\$15.00	')),
                               DataCell(_dataCell('3')),
                               DataCell(_dataCell('\$45.00')),
@@ -172,7 +172,7 @@ class _InvoiceState extends State<Invoice> {
                           ),
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(_dataCell('BS-300')),
+                              DataCell(_dataCell('Your Item3')),
                               DataCell(_dataCell('\$599.99')),
                               DataCell(_dataCell('1')),
                               DataCell(_dataCell('\$599.99')),

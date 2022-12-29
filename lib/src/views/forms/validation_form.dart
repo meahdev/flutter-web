@@ -37,20 +37,20 @@ class _ValidationFormState extends State<ValidationForm> {
   final FormValidationBloc formValidationBloc2 = FormValidationBloc();
   AutovalidateMode _secondValidateMode = AutovalidateMode.disabled;
   final TextEditingController _requiredController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _rePasswordController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
+  // final TextEditingController _rePasswordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _urlController = TextEditingController();
   final TextEditingController _digitController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
   final TextEditingController _alphaNumericController = TextEditingController();
-  final TextEditingController _textAreaController = TextEditingController();
+  // final TextEditingController _textAreaController = TextEditingController();
 
   //Third form
   final FormValidationBloc formValidationBloc3 = FormValidationBloc();
   AutovalidateMode _thirdValidateMode = AutovalidateMode.disabled;
-  final TextEditingController _minLengthController = TextEditingController();
-  final TextEditingController _maxLengthController = TextEditingController();
+  // final TextEditingController _minLengthController = TextEditingController();
+  // final TextEditingController _maxLengthController = TextEditingController();
   final TextEditingController _rangeLengthController = TextEditingController();
   final TextEditingController _minValueController = TextEditingController();
   final TextEditingController _maxValueController = TextEditingController();
