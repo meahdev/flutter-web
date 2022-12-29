@@ -296,7 +296,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
       elevation: 7,
       child: ConstrainedBox(
         constraints:
-            BoxConstraints(maxHeight: Responsive.isMobile(context) ? 978 : 425),
+            BoxConstraints(maxHeight: Responsive.isMobile(context) ? 978 : 455),
         child: Container(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -321,7 +321,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                               durationText: 'This month',
                               salesAmount: '\$34,526',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                                  'Lorem Ipsum is simply dummy text.',
                             ),
                           ),
                           FxBox.h16,
@@ -330,7 +330,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                               durationText: 'Last month',
                               salesAmount: '\$32,293',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
+                                  'Lorem Ipsum is simply dummy text.',
                             ),
                           ),
                         ],
@@ -350,7 +350,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                               durationText: 'This month',
                               salesAmount: '\$34,526',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text of the printing.',
+                                  'Lorem Ipsum is simply dummy text.',
                             ),
                           ),
                           FxBox.w32,
@@ -359,7 +359,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
                               durationText: 'Last month',
                               salesAmount: '\$32,293',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text of the printing.',
+                                  'Lorem Ipsum is simply dummy text.',
                             ),
                           ),
                         ],
