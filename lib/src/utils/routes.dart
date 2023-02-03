@@ -25,7 +25,7 @@ import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
 import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
-import 'package:admin_dashboard/src/views/ui_elements/badge/badge.dart';
+import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
 import 'package:admin_dashboard/src/views/ui_elements/carousel/carousel.dart';
 import 'package:admin_dashboard/src/views/ui_elements/loader/loader.dart';
@@ -119,7 +119,7 @@ Widget getRouteWidget(int index) {
   } else if (index == 2) {
     return const Rating();
   } else if (index == 3) {
-    return const Badge();
+    return const CustomBadge();
   } else if (index == 4) {
     return const Toast();
   } else if (index == 5) {

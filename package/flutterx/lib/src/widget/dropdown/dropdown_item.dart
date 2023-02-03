@@ -52,8 +52,8 @@ class MenuLimits {
   final double scrollOffset;
 }
 
-class DropdownMenu<T> extends StatefulWidget {
-  const DropdownMenu({
+class FDropdownMenu<T> extends StatefulWidget {
+  const FDropdownMenu({
     super.key,
     this.padding,
     required this.route,
@@ -91,10 +91,10 @@ class DropdownMenu<T> extends StatefulWidget {
   final Widget? searchInnerWidget;
 
   @override
-  State<DropdownMenu<T>> createState() => _DropdownMenuState<T>();
+  State<FDropdownMenu<T>> createState() => _DropdownMenuState<T>();
 }
 
-class _DropdownMenuState<T> extends State<DropdownMenu<T>> {
+class _DropdownMenuState<T> extends State<FDropdownMenu<T>> {
   late CurvedAnimation _fadeOpacity;
   late CurvedAnimation _resize;
   late List<Widget> _children;

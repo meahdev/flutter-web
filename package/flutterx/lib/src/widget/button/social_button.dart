@@ -33,7 +33,7 @@ class SocialButton extends StatelessWidget {
   const SocialButton.whatsApp({
     Key? key,
     this.fullWidth = false,
-    this.icon = const Icon(Icons.whatsapp_rounded),
+    this.icon = const Icon(Icons.whatshot),
     this.isOutlineButton = false,
     this.borderWidth = 1.0,
     this.borderRadius = 4.0,

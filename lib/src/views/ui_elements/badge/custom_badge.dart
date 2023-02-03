@@ -4,8 +4,8 @@ import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class Badge extends StatelessWidget {
-  const Badge({Key? key}) : super(key: key);
+class CustomBadge extends StatelessWidget {
+  const CustomBadge({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

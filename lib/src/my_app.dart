@@ -38,7 +38,7 @@ class _MyAppState extends State<MyApp> {
               return MaterialApp.router(
                 routerDelegate: _appRouter.delegate(
                   initialRoutes: [
-                    const MenuBar(),
+                    const FMenuBar(),
                   ],
                 ),
                 routeInformationParser: _appRouter.defaultRouteParser(),

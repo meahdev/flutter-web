@@ -37,7 +37,7 @@ import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
 import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
-import 'package:admin_dashboard/src/views/ui_elements/badge/badge.dart';
+import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
 import 'package:admin_dashboard/src/views/ui_elements/carousel/carousel.dart';
 import 'package:admin_dashboard/src/views/ui_elements/loader/loader.dart';
@@ -54,7 +54,7 @@ import 'package:auto_route/auto_route.dart';
   routes: <AutoRoute>[
     AutoRoute(
       path: '/',
-      page: MenuBar,
+      page: FMenuBar,
       children: [
         RedirectRoute(path: '', redirectTo: 'dashboard'),
         AutoRoute(path: 'dashboard', page: Dashboard),
@@ -63,7 +63,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'button-element', page: Button),
         AutoRoute(path: 'rating-bar', page: Rating),
-        AutoRoute(path: 'badge', page: Badge),
+        AutoRoute(path: 'badge', page: CustomBadge),
         AutoRoute(path: 'alert-dialog', page: AlertDialogBox),
         AutoRoute(path: 'modal', page: Modal),
         AutoRoute(path: 'loaders', page: Loaders),

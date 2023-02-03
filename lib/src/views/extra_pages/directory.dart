@@ -104,7 +104,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                           FxBox.w10,
                           const Icon(Icons.telegram),
                           FxBox.w10,
-                          const Icon(Icons.whatsapp),
+                          const Icon(Icons.whatshot),
                           FxBox.w10,
                         ],
                       ),
