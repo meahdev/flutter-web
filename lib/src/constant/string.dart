@@ -36,6 +36,7 @@ class Strings {
   static const String extraPages = 'Extra Pages';
   static const String emailTemplates = 'Email Templates';
   static const String userProfile = 'User Profile';
+  static const String selectedmenuIndex = 'selectedindex';
 
   // ui elements option
   static const String toast = 'Toast';

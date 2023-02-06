@@ -56,8 +56,8 @@ import 'package:auto_route/auto_route.dart';
       path: '/',
       page: FMenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'dashboard'),
-        AutoRoute(path: 'dashboard', page: Dashboard),
+        // RedirectRoute(path: '', redirectTo: 'dashboard'),
+        AutoRoute(path: 'dashboard', page: Dashboard,initial: true),
         AutoRoute(path: 'calendar', page: Calendar),
         AutoRoute(path: 'map', page: GoogleMaps),
         AutoRoute(path: 'toast', page: Toast),

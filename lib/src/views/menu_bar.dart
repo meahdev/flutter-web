@@ -176,6 +176,11 @@ class _MenuBarState extends State<FMenuBar> {
       routes: _routes,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
+
+        if (HiveUtils.isContainKey(Strings.selectedmenuIndex)) {
+          tabsRouter.setActiveIndex(HiveUtils.get(Strings.selectedmenuIndex));
+        }
+
         return Scaffold(
           key: _scaffoldKey,
           endDrawer: Drawer(
@@ -387,16 +392,6 @@ class _MenuBarState extends State<FMenuBar> {
             },
           ),
           _profile(tabsRouter),
-
-          // MaterialButton(
-          //   height: double.infinity,
-          //   minWidth: 60,
-          //   hoverColor: ColorConst.transparent,
-          //   onPressed: () {
-          //     _scaffoldKey.currentState!.openEndDrawer();
-          //   },
-          //   child: const SvgIcon(icon: IconlyBroken.setting),
-          // ),
         ],
       );
 
@@ -742,6 +737,11 @@ class _MenuBarState extends State<FMenuBar> {
                     onTap: () {
                       isOpen.value = true;
                       _scaffoldDrawerKey.currentState?.closeDrawer();
+                      // setState(() {
+                      //   index = getRouteIndex(items.keys.elementAt(index));
+                      // });
+                      HiveUtils.set(Strings.selectedmenuIndex,
+                          getRouteIndex(items.keys.elementAt(index)));
                     },
                   );
           } else {
@@ -796,6 +796,9 @@ class _MenuBarState extends State<FMenuBar> {
                     onTap: () {
                       isOpen.value = true;
                       tabsRouter.setActiveIndex(
+                          getRouteIndex(items.keys.elementAt(index)));
+
+                      HiveUtils.set(Strings.selectedmenuIndex,
                           getRouteIndex(items.keys.elementAt(index)));
                       _scaffoldDrawerKey.currentState?.closeDrawer();
                     },
@@ -882,6 +885,8 @@ class _MenuBarState extends State<FMenuBar> {
                       context.router.push(const ComingSoon());
                     } else {
                       tabsRouter.setActiveIndex(getRouteIndex(items[index]));
+                      HiveUtils.set(Strings.selectedmenuIndex,
+                          getRouteIndex(items[index]));
                     }
                     _scaffoldDrawerKey.currentState?.closeDrawer();
                   },
