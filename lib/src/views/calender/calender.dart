@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:math';
-
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/calendar/calendar_dialog/bloc/calendar_dialog_bloc.dart';
@@ -185,7 +184,7 @@ class _CalendarState extends State<Calendar> {
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
               width: MediaQuery.of(context).size.width,
@@ -324,48 +323,24 @@ class _CalendarState extends State<Calendar> {
 
   Widget _addEventButtons(
       {required String label, required Color color, required int colorIndex}) {
-    return Draggable(
-      data: {'eventName': label, 'dropdownValue': colorIndex},
-      onDragStarted: () {
-        _calendarDragBloc
-            .add(const CalendarDragEvent.started(dragStarted: true));
-      },
-      onDragEnd: (details) => _calendarDragBloc
-          .add(const CalendarDragEvent.started(dragStarted: false)),
-      feedback: Padding(
-        padding: const EdgeInsets.only(right: 8),
-        child: ElevatedButton.icon(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            enabledMouseCursor: SystemMouseCursors.allScroll,
-            backgroundColor: color,
-            alignment: Alignment.centerLeft,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
-            ),
-          ),
-          icon: const Icon(
-            Icons.fiber_manual_record,
-            color: Colors.white,
-            size: 12,
-          ),
-          label: Text(
-            label,
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-            ),
-          ),
-        ),
-      ),
-      child: SizedBox(
-        width: double.infinity,
-        height: 34,
-        child: Padding(
-          padding: const EdgeInsets.only(right: 8),
-          child: ElevatedButton.icon(
+    Size size = MediaQuery.of(context).size;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // print(constraints.)
+        return Draggable(
+          data: {'eventName': label, 'dropdownValue': colorIndex},
+          onDragStarted: () {
+            _calendarDragBloc
+                .add(const CalendarDragEvent.started(dragStarted: true));
+          },
+          onDragEnd: (details) => _calendarDragBloc
+              .add(const CalendarDragEvent.started(dragStarted: false)),
+          feedback: Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: ElevatedButton.icon(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
+                minimumSize: Size(constraints.maxWidth, 44),
                 enabledMouseCursor: SystemMouseCursors.allScroll,
                 backgroundColor: color,
                 alignment: Alignment.centerLeft,
@@ -375,18 +350,49 @@ class _CalendarState extends State<Calendar> {
               ),
               icon: const Icon(
                 Icons.fiber_manual_record,
-                color: ColorConst.white,
+                color: Colors.white,
                 size: 12,
               ),
               label: Text(
                 label,
                 style: const TextStyle(
-                  color: ColorConst.white,
+                  color: Colors.white,
                   fontSize: 15,
                 ),
-              )),
-        ),
-      ),
+              ),
+            ),
+          ),
+          child: SizedBox(
+            width: double.infinity,
+            height: 34,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8),
+              child: ElevatedButton.icon(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    enabledMouseCursor: SystemMouseCursors.allScroll,
+                    backgroundColor: color,
+                    alignment: Alignment.centerLeft,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40.0),
+                    ),
+                  ),
+                  icon: const Icon(
+                    Icons.fiber_manual_record,
+                    color: ColorConst.white,
+                    size: 12,
+                  ),
+                  label: Text(
+                    label,
+                    style: const TextStyle(
+                      color: ColorConst.white,
+                      fontSize: 15,
+                    ),
+                  )),
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -397,6 +403,7 @@ class _CalendarState extends State<Calendar> {
       left: 0,
       right: 0,
       child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
         itemCount: list.length,
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
@@ -532,8 +539,7 @@ class _CalendarState extends State<Calendar> {
                                 : ColorConst.callighBorder,
                             width: 0.5),
                       ),
-                      cellMargin: const EdgeInsets.all(0.0),
-                      canMarkersOverflow: true,
+                      canMarkersOverflow: false,
                       tableBorder: TableBorder.all(
                         color: themeMode
                             ? ColorConst.calDarkBorder

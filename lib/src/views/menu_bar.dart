@@ -5,6 +5,7 @@ import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
+import 'package:admin_dashboard/src/utils/extainsions/string_extainsions.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -890,24 +891,45 @@ class _MenuBarState extends State<FMenuBar> {
   }
 
   /// routes
-  Widget _routesDeatils(TabsRouter tabsRouter) => Row(
-        children: tabsRouter.currentPath == '/dashboard'
-            ? []
-            : [
-                const InkWell(
-                  mouseCursor: SystemMouseCursors.click,
-                  child: Text(Strings.admin),
-                ),
-                // const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
-                // const InkWell(
-                //   mouseCursor: SystemMouseCursors.click,
-                //   child: Text(Strings.uiElements),
-                // ),
-                // const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
-                const Text('  /  '),
-                Text(upperCase(tabsRouter.currentPath)),
+  Widget _routesDeatils(TabsRouter tabsRouter) {
+    int routeIndex = getRouteIndex(tabsRouter.currentPath
+        .substring(1, tabsRouter.currentPath.length)
+        .replaceAll('-', ' ')
+        .capitalize());
+
+    return Row(
+      children: tabsRouter.currentPath == '/dashboard'
+          ? []
+          : [
+              const InkWell(
+                mouseCursor: SystemMouseCursors.click,
+                child: Text(Strings.admin),
+              ),
+              if (routeIndex.isBetween(1, 6) ||
+                  routeIndex == 10 ||
+                  routeIndex == 24 ||
+                  routeIndex == 25 ||
+                  routeIndex == 33) ...[
+                const Text(' / ${Strings.uiElements} '),
+              ] else if (routeIndex.isBetween(27, 32)) ...[
+                const Text(' / ${Strings.forms} '),
+              ] else if (routeIndex.isBetween(11, 13)) ...[
+                const Text(' / ${Strings.charts} '),
+              ] else if (routeIndex.isBetween(14, 17)) ...[
+                const Text(' / ${Strings.tables} '),
+              ] else if (routeIndex.isBetween(7, 9)) ...[
+                const Text(' / ${Strings.emailTemplates} '),
+              ] else if (tabsRouter.currentPath == '/calendar' ||
+                  tabsRouter.currentPath == '/map') ...[
+                const SizedBox.shrink()
+              ] else ...[
+                const Text(' / Extra Pages '),
               ],
-      );
+              const Text(' / '),
+              Text(upperCase(tabsRouter.currentPath)),
+            ],
+    );
+  }
 
   Widget _footer() => Container(
         color: isDark ? ColorConst.footerDark : ColorConst.drawerBG,
