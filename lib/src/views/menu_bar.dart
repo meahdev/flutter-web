@@ -176,16 +176,13 @@ class _MenuBarState extends State<FMenuBar> {
       routes: _routes,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
-
-        if (HiveUtils.isContainKey(Strings.selectedmenuIndex)) {
-          tabsRouter.setActiveIndex(HiveUtils.get(Strings.selectedmenuIndex));
-        }
-
         return Scaffold(
           key: _scaffoldKey,
           endDrawer: Drawer(
             width: 280,
-            child: SafeArea(child: SettingDrawer(scaffoldKey: _scaffoldKey)),
+            child: SafeArea(
+              child: SettingDrawer(scaffoldKey: _scaffoldKey),
+            ),
           ),
           appBar: _appBar(tabsRouter),
           body: SafeArea(
@@ -737,11 +734,6 @@ class _MenuBarState extends State<FMenuBar> {
                     onTap: () {
                       isOpen.value = true;
                       _scaffoldDrawerKey.currentState?.closeDrawer();
-                      // setState(() {
-                      //   index = getRouteIndex(items.keys.elementAt(index));
-                      // });
-                      HiveUtils.set(Strings.selectedmenuIndex,
-                          getRouteIndex(items.keys.elementAt(index)));
                     },
                   );
           } else {
@@ -885,8 +877,6 @@ class _MenuBarState extends State<FMenuBar> {
                       context.router.push(const ComingSoon());
                     } else {
                       tabsRouter.setActiveIndex(getRouteIndex(items[index]));
-                      HiveUtils.set(Strings.selectedmenuIndex,
-                          getRouteIndex(items[index]));
                     }
                     _scaffoldDrawerKey.currentState?.closeDrawer();
                   },
