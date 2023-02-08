@@ -5,7 +5,7 @@ import 'package:window_size/window_size.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   if (TargetPlatform.windows == defaultTargetPlatform ||
       TargetPlatform.macOS == defaultTargetPlatform) {
     setWindowTitle('AdminKit');
@@ -15,6 +15,3 @@ void main() {
   usePathUrlStrategy();
   runApp(const MyApp());
 }
-
-
-

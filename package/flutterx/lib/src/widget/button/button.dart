@@ -119,9 +119,10 @@ class FxButton extends StatelessWidget {
               text != null
                   ? Flexible(
                       child: Text(
-                      text!,
-                      style: TextStyle(fontWeight: textWeight),
-                    ))
+                        text!,
+                        style: TextStyle(fontWeight: textWeight),
+                      ),
+                    )
                   : FxBox.shrink,
             ],
           ),
