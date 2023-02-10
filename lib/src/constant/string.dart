@@ -50,6 +50,8 @@ class Strings {
   static const String latestTransaction = 'Latest order';
   static const String carousel = 'Carousel Slider';
   static const String videoPlayer = 'Video Player';
+   static const String dragDrop = 'Drag Drop';
+   static const String datePicker = 'Date Picker';
 
   // forms option
   static const String formElements = 'Elements';

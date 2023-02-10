@@ -66,6 +66,8 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.tabs,
       Strings.carousel,
       Strings.videoPlayer,
+      Strings.dragDrop,
+      Strings.datePicker,
     ],
     [
       Strings.formElements,
@@ -168,7 +170,9 @@ class _MenuBarState extends State<FMenuBar> {
     MaskForm(),
     VideoScreen(),
     GoogleMaps(),
-    UserProfile()
+    UserProfile(),
+    DragAndDrop(),
+    DatePicker()
   ];
 
   @override
@@ -909,7 +913,9 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 10 ||
                   routeIndex == 24 ||
                   routeIndex == 25 ||
-                  routeIndex == 33) ...[
+                  routeIndex == 33 ||
+                  routeIndex == 36 ||
+                  routeIndex == 37) ...[
                 const Text(' / ${Strings.uiElements} '),
               ] else if (routeIndex.isBetween(27, 32)) ...[
                 const Text(' / ${Strings.forms} '),

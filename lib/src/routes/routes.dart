@@ -40,6 +40,8 @@ import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
 import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
 import 'package:admin_dashboard/src/views/ui_elements/carousel/carousel.dart';
+import 'package:admin_dashboard/src/views/ui_elements/date_picker/date_picker.dart';
+import 'package:admin_dashboard/src/views/ui_elements/draganddrop/drag_and_drop_element.dart';
 import 'package:admin_dashboard/src/views/ui_elements/loader/loader.dart';
 import 'package:admin_dashboard/src/views/ui_elements/modal/modal.dart';
 import 'package:admin_dashboard/src/views/ui_elements/rating/rating.dart';
@@ -93,6 +95,8 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'wizard', page: WizardForm),
         AutoRoute(path: 'video-player', page: VideoScreen),
         AutoRoute(path: 'user-profile', page: UserProfile),
+        AutoRoute(path: 'drag-drop', page: DragAndDrop),
+        AutoRoute(path: 'date-picker', page: DatePicker),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),
