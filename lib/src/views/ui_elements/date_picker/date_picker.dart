@@ -19,6 +19,7 @@ class _DatePickerState extends State<DatePicker> {
   final TextEditingController monthController = TextEditingController();
   final TextEditingController ddmmyyyy = TextEditingController();
   final TextEditingController MMMMddyyyy = TextEditingController();
+  final TextEditingController mmDDyyyy = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -77,7 +78,10 @@ class _DatePickerState extends State<DatePicker> {
                         FxBox.h16,
                         _textField('eg .01/01/2015', 'ddmmyyyy', ddmmyyyy),
                         FxBox.h32,
-                        _textField('eg .January,02,2015', 'MMMMddyyyy', MMMMddyyyy),
+                        _textField(
+                            'eg .January,02,2015', 'MMMMddyyyy', MMMMddyyyy),
+                        FxBox.h32,
+                        _textField('eg .01,Monday,2015', 'mmDDyyyy', mmDDyyyy),
                       ],
                     ),
                   ),
@@ -119,7 +123,9 @@ class _DatePickerState extends State<DatePicker> {
                           ? 'ddmmyyyy'
                           : type == 'MMMMddyyyy'
                               ? 'MMMMddyyyy'
-                              : '');
+                              : type == 'mmDDyyyy'
+                                  ? 'mmDDyyyy'
+                                  : '');
         },
         keyboardType: TextInputType.phone,
         border: const OutlineInputBorder(),
@@ -152,8 +158,11 @@ class _DatePickerState extends State<DatePicker> {
                   : type == 'ddmmyyyy'
                       ? ddmmyyyy.text =
                           DateFormat('dd/MM/yyyy').format(selecteTime)
-                      : MMMMddyyyy.text =
-                          DateFormat('MMMM,dd,yyyy').format(selecteTime);
+                      : type == 'MMMMddyyyy'
+                          ? MMMMddyyyy.text =
+                              DateFormat('MMMM,dd,yyyy').format(selecteTime)
+                          : mmDDyyyy.text =
+                              DateFormat('MM,EEEE,yyyy').format(selecteTime);
       return selecteTime;
     }
   }
