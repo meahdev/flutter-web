@@ -208,54 +208,52 @@ class _MenuBarState extends State<FMenuBar> {
                     },
                   ),
                   Expanded(
-                    child: SelectionArea(
-                      child: CustomScrollView(
-                        controller: _scrollController,
-                        slivers: [
-                          SliverList(
-                            delegate: SliverChildListDelegate(
-                              [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 24.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      FxBox.h20,
-                                      Text(
-                                        upperCase(tabsRouter.currentPath),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge!
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold),
-                                      ),
-                                      FxBox.h8,
-                                      _routesDeatils(tabsRouter),
-                                      FxBox.h20,
-                                      getRouteWidget(tabsRouter.activeIndex),
-                                      FxBox.h20,
-                                    ],
-                                  ),
+                    child: CustomScrollView(
+                      controller: _scrollController,
+                      slivers: [
+                        SliverList(
+                          delegate: SliverChildListDelegate(
+                            [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    FxBox.h20,
+                                    Text(
+                                      upperCase(tabsRouter.currentPath),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold),
+                                    ),
+                                    FxBox.h8,
+                                    _routesDeatils(tabsRouter),
+                                    FxBox.h20,
+                                    getRouteWidget(tabsRouter.activeIndex),
+                                    FxBox.h20,
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          SliverFillRemaining(
-                            hasScrollBody: false,
-                            fillOverscroll: true,
-                            child: Column(
-                              children: <Widget>[
-                                const Expanded(
-                                  child: SizedBox.shrink(),
-                                ),
-                                _footer(),
-                              ],
-                            ),
+                        ),
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          fillOverscroll: true,
+                          child: Column(
+                            children: <Widget>[
+                              const Expanded(
+                                child: SizedBox.shrink(),
+                              ),
+                              _footer(),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
