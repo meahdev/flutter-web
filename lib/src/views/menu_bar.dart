@@ -46,6 +46,7 @@ class _MenuBarState extends State<FMenuBar> {
     Strings.forms: IconlyBroken.forms,
     Strings.charts: IconlyBroken.charts,
     Strings.tables: IconlyBroken.tables,
+    Strings.eCommerce: IconlyBroken.eCommerce,
   };
 
   Map<String, String> extrasData = {
@@ -83,6 +84,9 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.dataTable,
       Strings.responsiveTable,
       Strings.editableTable,
+    ],
+    [
+      Strings.products,
     ],
   ];
 
@@ -172,7 +176,8 @@ class _MenuBarState extends State<FMenuBar> {
     GoogleMaps(),
     UserProfile(),
     DragAndDrop(),
-    DatePicker()
+    DatePicker(),
+    ProductsScreen(),
   ];
 
   @override
@@ -610,6 +615,13 @@ class _MenuBarState extends State<FMenuBar> {
                     children: componentsExpandList,
                     isopen: value,
                   ),
+                  _menuList(
+                    tabsRouter: tabsRouter,
+                    items: extrasData,
+                    isExpanded: true,
+                    children: extrasExpandList,
+                    isopen: value,
+                  ),
                   // extras
                   // if (value) _menuHeading(Strings.extras),
                   _menuList(
@@ -923,6 +935,8 @@ class _MenuBarState extends State<FMenuBar> {
                 const Text(' / ${Strings.tables} '),
               ] else if (routeIndex.isBetween(7, 9)) ...[
                 const Text(' / ${Strings.emailTemplates} '),
+              ] else if (routeIndex == 38) ...[
+                const Text(' / ${Strings.eCommerce} '),
               ] else if (tabsRouter.currentPath == '/calendar' ||
                   tabsRouter.currentPath == '/map') ...[
                 const SizedBox.shrink()
