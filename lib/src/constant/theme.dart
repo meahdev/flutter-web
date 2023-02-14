@@ -37,6 +37,13 @@ class ThemeClass {
         ),
         materialTapTargetSize: MaterialTapTargetSize.padded,
       ),
+      // dropdownMenuTheme: const DropdownMenuThemeData(
+      //   inputDecorationTheme: InputDecorationTheme(
+      //     enabledBorder: OutlineInputBorder(
+      //       borderSide: BorderSide(color: Colors.red)
+      //     )
+      //   )
+      // )
     );
   }
 }

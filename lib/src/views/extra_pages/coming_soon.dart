@@ -267,14 +267,15 @@ class ComingSoonState extends State<ComingSoon> {
 
   Widget _emailField() {
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24.0),
-        constraints: const BoxConstraints(maxWidth: 550),
-        child: CustomTextField(
-          hintText: 'Enter email address',
-          contentPadding: const EdgeInsets.only(left: 25),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(100),
-          ),
-        ));
+      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      constraints: const BoxConstraints(maxWidth: 550),
+      child: CustomTextField(
+        hintText: 'Enter email address',
+        contentPadding: const EdgeInsets.only(left: 25),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(100),
+        ),
+      ),
+    );
   }
 }

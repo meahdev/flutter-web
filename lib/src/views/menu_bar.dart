@@ -11,6 +11,7 @@ import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/utils/text_utils.dart';
+
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
 import 'package:admin_dashboard/src/widget/expantion_tile.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -87,6 +88,7 @@ class _MenuBarState extends State<FMenuBar> {
     ],
     [
       Strings.products,
+      Strings.productAdd,
     ],
   ];
 
@@ -178,6 +180,7 @@ class _MenuBarState extends State<FMenuBar> {
     DragAndDrop(),
     DatePicker(),
     ProductsScreen(),
+    ProductAdd(),
   ];
 
   @override
@@ -223,8 +226,7 @@ class _MenuBarState extends State<FMenuBar> {
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 24.0),
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     FxBox.h20,
                                     Text(
@@ -802,11 +804,8 @@ class _MenuBarState extends State<FMenuBar> {
                     horizontalTitleGap: 0.0,
                     onTap: () {
                       isOpen.value = true;
-                      tabsRouter.setActiveIndex(
-                          getRouteIndex(items.keys.elementAt(index)));
-
-                      HiveUtils.set(Strings.selectedmenuIndex,
-                          getRouteIndex(items.keys.elementAt(index)));
+                      tabsRouter.setActiveIndex(getRouteIndex(items.keys.elementAt(index)));
+                      HiveUtils.set(Strings.selectedmenuIndex,getRouteIndex(items.keys.elementAt(index)));
                       _scaffoldDrawerKey.currentState?.closeDrawer();
                     },
                   ),

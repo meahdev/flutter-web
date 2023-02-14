@@ -1,3 +1,5 @@
+import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -72,8 +74,18 @@ class CustomTextField extends StatelessWidget {
       decoration: InputDecoration(
         prefixText: prefixText,
         errorBorder: errorBorder,
-        enabledBorder: enabledBorder,
-        focusedBorder: focusedBorder,
+        enabledBorder: enabledBorder?.copyWith(
+          borderSide: BorderSide(
+            color:
+                !isDark ? ColorConst.dark : ColorConst.white.withOpacity(0.5),
+          ),
+        ),
+        focusedBorder: focusedBorder?.copyWith(
+          borderSide: BorderSide(
+            color:
+                !isDark ? ColorConst.dark : ColorConst.white.withOpacity(0.5),
+          ),
+        ),
         disabledBorder: disabledBorder,
         prefixIcon: prefixIcon,
         isDense: isDense,

@@ -323,7 +323,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
-        color: ColorConst.white,
+        color: Theme.of(context).cardColor,
         borderRadius: BorderRadius.circular(12.0),
         boxShadow: [
           BoxShadow(
@@ -337,13 +337,14 @@ class _ProductsScreenState extends State<ProductsScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.network(
-            _filterList.isNotEmpty
-                ? _filterList[index]['image']
-                : productList[index]['image'],
-            fit: BoxFit.contain,
-            height: 250.0,
-            width: double.infinity,
+          Expanded(
+            child: Image.network(
+              _filterList.isNotEmpty
+                  ? _filterList[index]['image']
+                  : productList[index]['image'],
+              height: 250.0,
+              width: double.infinity,
+            ),
           ),
           const SizedBox(height: 16.0),
           Padding(

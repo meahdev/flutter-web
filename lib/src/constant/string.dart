@@ -273,4 +273,5 @@ class Strings {
 
   static const String products = 'Products';
   static const String filter = 'Filter';
+  static const String productAdd = 'Product Add';
 }
