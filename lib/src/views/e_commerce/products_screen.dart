@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
@@ -320,96 +321,101 @@ class _ProductsScreenState extends State<ProductsScreen> {
   }
 
   Widget _cardUI(int index) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        color: ColorConst.white,
-        borderRadius: BorderRadius.circular(12.0),
-        boxShadow: [
-          BoxShadow(
-            color: ColorConst.primary.withOpacity(0.1),
-            blurRadius: 5.0,
-            offset: const Offset(0.0, 5.0),
-          ),
-        ],
-      ),
-      clipBehavior: Clip.hardEdge,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(
-            _filterList.isNotEmpty
-                ? _filterList[index]['image']
-                : productList[index]['image'],
-            fit: BoxFit.contain,
-            height: 250.0,
-            width: double.infinity,
-          ),
-          const SizedBox(height: 16.0),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: CustomText(
+    return GestureDetector(
+      onTap: () {
+        autoTabRouter!.setActiveIndex(39);
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: ColorConst.white,
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: ColorConst.primary.withOpacity(0.1),
+              blurRadius: 5.0,
+              offset: const Offset(0.0, 5.0),
+            ),
+          ],
+        ),
+        clipBehavior: Clip.hardEdge,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.network(
+              _filterList.isNotEmpty
+                  ? _filterList[index]['image']
+                  : productList[index]['image'],
+              fit: BoxFit.contain,
+              height: 250.0,
+              width: double.infinity,
+            ),
+            const SizedBox(height: 16.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: CustomText(
+                      title: _filterList.isNotEmpty
+                          ? _filterList[index]['title']
+                          : productList[index]['title'],
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const Spacer(),
+                  CustomText(
                     title: _filterList.isNotEmpty
-                        ? _filterList[index]['title']
-                        : productList[index]['title'],
+                        ? _filterList[index]['rating']
+                        : productList[index]['rating'],
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,
                   ),
-                ),
-                const Spacer(),
-                CustomText(
-                  title: _filterList.isNotEmpty
-                      ? _filterList[index]['rating']
-                      : productList[index]['rating'],
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
-                const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-              ],
+                  const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                    size: 15,
+                  ),
+                ],
+              ),
             ),
-          ),
-          FxBox.h12,
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              children: [
-                CustomText(
-                  title:
-                      '${_filterList.isNotEmpty ? _filterList[index]['price'] : productList[index]['price']} \$',
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
-                const Spacer(),
-                _iconBox(
-                  icon: Icons.add_shopping_cart_outlined,
-                  onPressed: () {},
-                ),
-                FxBox.w10,
-                _iconBox(
-                  color: ColorConst.errorDark,
-                  icon: _iconChoose(index),
-                  onPressed: () {
-                    if (_filterList.isNotEmpty) {
-                      _filterList[index]['isFavourite'] =
-                          !_filterList[index]['isFavourite'];
-                    } else {
-                      productList[index]['isFavourite'] =
-                          !productList[index]['isFavourite'];
-                    }
-                    setState(() {});
-                  },
-                )
-              ],
+            FxBox.h12,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  CustomText(
+                    title:
+                        '${_filterList.isNotEmpty ? _filterList[index]['price'] : productList[index]['price']} \$',
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  const Spacer(),
+                  _iconBox(
+                    icon: Icons.add_shopping_cart_outlined,
+                    onPressed: () {},
+                  ),
+                  FxBox.w10,
+                  _iconBox(
+                    color: ColorConst.errorDark,
+                    icon: _iconChoose(index),
+                    onPressed: () {
+                      if (_filterList.isNotEmpty) {
+                        _filterList[index]['isFavourite'] =
+                            !_filterList[index]['isFavourite'];
+                      } else {
+                        productList[index]['isFavourite'] =
+                            !productList[index]['isFavourite'];
+                      }
+                      setState(() {});
+                    },
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -447,9 +453,5 @@ class _ProductsScreenState extends State<ProductsScreen> {
     );
   }
 
-  bool islg(context) =>
-      MediaQuery.of(context).size.width >= 992 &&
-      MediaQuery.of(context).size.width < 1300;
 
-  bool isxl(context) => MediaQuery.of(context).size.width >= 1300;
 }

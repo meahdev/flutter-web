@@ -1,9 +1,11 @@
+import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/calender/calender.dart';
 import 'package:admin_dashboard/src/views/charts/chartist.dart';
 import 'package:admin_dashboard/src/views/charts/chartjs.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
+import 'package:admin_dashboard/src/views/e_commerce/product_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products_screen.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
@@ -117,6 +119,8 @@ int getRouteIndex(String route) {
     return 37;
   } else if (route == Strings.products) {
     return 38;
+  } else if (route == 'Products Detail') {
+    return 39;
   } else {
     return 0;
   }
@@ -199,6 +203,8 @@ Widget getRouteWidget(int index) {
     return const DatePicker();
   } else if (index == 38) {
     return const ProductsScreen();
+  } else if (index == 39) {
+    return const ProductDetailScreen();
   } else {
     return const Dashboard();
   }

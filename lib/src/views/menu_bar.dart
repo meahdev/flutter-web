@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
@@ -178,6 +179,7 @@ class _MenuBarState extends State<FMenuBar> {
     DragAndDrop(),
     DatePicker(),
     ProductsScreen(),
+    ProductDetailScreen(),
   ];
 
   @override
@@ -186,6 +188,9 @@ class _MenuBarState extends State<FMenuBar> {
       routes: _routes,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
+        autoTabRouter = tabsRouter;
+        routesLength = _routes.length;
+
         return Scaffold(
           key: _scaffoldKey,
           endDrawer: Drawer(
@@ -938,6 +943,8 @@ class _MenuBarState extends State<FMenuBar> {
               ] else if (routeIndex.isBetween(7, 9)) ...[
                 const Text(' / ${Strings.emailTemplates} '),
               ] else if (routeIndex == 38) ...[
+                const Text(' / ${Strings.eCommerce} '),
+              ] else if (routeIndex.isBetween(38, 39)) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (tabsRouter.currentPath == '/calendar' ||
                   tabsRouter.currentPath == '/map') ...[

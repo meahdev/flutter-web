@@ -26,4 +26,8 @@ class Images {
   static const String g8 = '${_assetPath}g8.jpeg';
   static const String g9 = '${_assetPath}g9.jpeg';
   static const String filter = '${_assetPath}filter.png';
+  static const String tv = '${_assetPath}tv.jpeg';
+  static const String tv1 = '${_assetPath}tv1.jpeg';
+  static const String tv2 = '${_assetPath}tv2.jpeg';
+  static const String tv3 = '${_assetPath}tv3.jpeg';
 }
