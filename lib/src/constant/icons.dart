@@ -16,6 +16,7 @@ class IconlyBroken {
   static const String charts = '${_assetPath}chart-pie.svg';
   static const String emailTemplate = '${_assetPath}sms.svg';
   static const String extraPages = '${_assetPath}add-square.svg';
+  static const String eCommerce = '${_assetPath}shop.svg';
   static const String tables = '${_assetPath}grid-2.svg';
   static const String arrowLeftRound = '${_assetPath}arrow-left.svg';
   static const String arrowRightRound = '${_assetPath}arrow-right-2.svg';
@@ -28,5 +29,4 @@ class IconlyBroken {
   static const String adminKit = '${_assetPath}Admin_Kit.svg';
   static const String adminKitText = '${_assetPath}Admin_Kit_Text.svg';
   static const String maintenance = '${_assetPath}maintenance.svg';
-
 }

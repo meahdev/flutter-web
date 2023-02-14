@@ -6,7 +6,7 @@ import FlutterMacOS
 import Foundation
 
 import desktop_drop
-import path_provider_foundation
+import path_provider_macos
 import url_launcher_macos
 import wakelock_macos
 import window_size

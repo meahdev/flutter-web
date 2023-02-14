@@ -7,6 +7,8 @@ import 'package:admin_dashboard/src/views/authentication/recover_password/recove
 import 'package:admin_dashboard/src/views/authentication/register/register_one.dart';
 import 'package:admin_dashboard/src/views/authentication/register/register_two.dart';
 import 'package:admin_dashboard/src/views/calender/calender.dart';
+import 'package:admin_dashboard/src/views/e_commerce/product_detail_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products_screen.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
@@ -59,7 +61,7 @@ import 'package:auto_route/auto_route.dart';
       page: FMenuBar,
       children: [
         // RedirectRoute(path: '', redirectTo: 'dashboard'),
-        AutoRoute(path: 'dashboard', page: Dashboard,initial: true),
+        AutoRoute(path: 'dashboard', page: Dashboard, initial: true),
         AutoRoute(path: 'calendar', page: Calendar),
         AutoRoute(path: 'map', page: GoogleMaps),
         AutoRoute(path: 'toast', page: Toast),
@@ -97,6 +99,8 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'user-profile', page: UserProfile),
         AutoRoute(path: 'drag-drop', page: DragAndDrop),
         AutoRoute(path: 'date-picker', page: DatePicker),
+        AutoRoute(path: 'products', page: ProductsScreen),
+        AutoRoute(path: 'products-detail', page: ProductDetailScreen),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),
