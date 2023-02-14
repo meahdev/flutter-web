@@ -4,8 +4,8 @@ import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class Badge extends StatelessWidget {
-  const Badge({Key? key}) : super(key: key);
+class CustomBadge extends StatelessWidget {
+  const CustomBadge({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class Badge extends StatelessWidget {
       width: Responsive.isMobile(context) ? double.infinity : null,
       child: Card(
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(16.0),
         ),
         child: Padding(
           padding: const EdgeInsets.all(20),

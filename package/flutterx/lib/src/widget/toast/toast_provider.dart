@@ -23,7 +23,7 @@ class ToastWithColor extends ToastProvider {
     this.maxLines = 2,
     this.backgroundColor,
     this.borderColor,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
     this.isLightBackground = false,
   }) : super();
@@ -36,7 +36,7 @@ class ToastWithColor extends ToastProvider {
     this.maxLines = 2,
     this.backgroundColor = Colors.green,
     this.borderColor,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
     this.isLightBackground = false,
   }) : super();
@@ -49,7 +49,7 @@ class ToastWithColor extends ToastProvider {
     this.maxLines = 2,
     this.backgroundColor = Colors.red,
     this.borderColor,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
     this.isLightBackground = false,
   }) : super();
@@ -62,7 +62,7 @@ class ToastWithColor extends ToastProvider {
     this.maxLines = 2,
     this.backgroundColor = Colors.amber,
     this.borderColor,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
     this.isLightBackground = false,
   }) : super();
@@ -75,7 +75,7 @@ class ToastWithColor extends ToastProvider {
     this.maxLines = 2,
     this.backgroundColor = Colors.blue,
     this.borderColor,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
     this.isLightBackground = false,
   }) : super();
@@ -134,6 +134,7 @@ class ToastWithColor extends ToastProvider {
                     ),
               ),
             ),
+
             // trailing ?? const SizedBox.shrink(),
             // trailing != null
             //     ? const SizedBox(width: 12.0)
@@ -162,7 +163,7 @@ class ToastWithoutColor extends ToastProvider {
     this.textStyle,
     this.maxLines = 2,
     this.iconColor,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
   }) : super();
 
@@ -174,7 +175,7 @@ class ToastWithoutColor extends ToastProvider {
     this.textStyle,
     this.maxLines = 2,
     this.iconColor = Colors.green,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
   }) : super();
 
@@ -186,7 +187,7 @@ class ToastWithoutColor extends ToastProvider {
     this.textStyle,
     this.maxLines = 2,
     this.iconColor = Colors.red,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
   }) : super();
 
@@ -198,7 +199,7 @@ class ToastWithoutColor extends ToastProvider {
     this.textStyle,
     this.maxLines = 2,
     this.iconColor = Colors.amber,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
   }) : super();
 
@@ -210,7 +211,7 @@ class ToastWithoutColor extends ToastProvider {
     this.textStyle,
     this.maxLines = 2,
     this.iconColor = Colors.blue,
-    this.radius = 8,
+    this.radius = 12,
     this.height,
   }) : super();
 
@@ -241,7 +242,7 @@ class ToastWithoutColor extends ToastProvider {
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               color: iconColor?.withOpacity(0.25) ??
                   Theme.of(context).colorScheme.primary.withOpacity(0.25),

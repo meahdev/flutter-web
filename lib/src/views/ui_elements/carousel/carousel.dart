@@ -19,7 +19,7 @@ class Carousel extends StatefulWidget {
 
 class _CarouselState extends State<Carousel> {
   final CarouselBloc _carouselBloc = CarouselBloc();
-  final CarouselController _withControlController = CarouselController();
+  // final CarouselController _withControlController = CarouselController();
   final CarouselController _withIndicatorController = CarouselController();
   final CarouselController _withCaptionsController = CarouselController();
   final List<String> _imageList = [Images.c1, Images.c2, Images.c3];
@@ -55,16 +55,18 @@ class _CarouselState extends State<Carousel> {
               Responsive.isWeb(context)
                   ? Column(
                       children: [
+                        // Row(
+                        //   children: [
+                        //     Expanded(child: _slidesOnly()),
+                        //     FxBox.w24,
+                        //     Expanded(child: _withControls())
+                        //   ],
+                        // ),
+                        // FxBox.h24,
                         Row(
                           children: [
                             Expanded(child: _slidesOnly()),
                             FxBox.w24,
-                            Expanded(child: _withControls())
-                          ],
-                        ),
-                        FxBox.h24,
-                        Row(
-                          children: [
                             Expanded(child: _withIndicators()),
                             FxBox.w24,
                             Expanded(child: _withCaptions())
@@ -76,8 +78,8 @@ class _CarouselState extends State<Carousel> {
                       children: [
                         _slidesOnly(),
                         FxBox.h24,
-                        _withControls(),
-                        FxBox.h24,
+                        // _withControls(),
+                        // FxBox.h24,
                         _withIndicators(),
                         FxBox.h24,
                         _withCaptions(),
@@ -121,7 +123,7 @@ class _CarouselState extends State<Carousel> {
 
   Widget _slidesOnly() {
     return _commonView(
-      'Slides only',
+      'Carousel Slider',
       CarouselSlider(
         items: _imageList
             .map(
@@ -150,46 +152,46 @@ class _CarouselState extends State<Carousel> {
     );
   }
 
-  Widget _withControls() {
-    return _commonView(
-      'With Controls',
-      Stack(
-        alignment: Alignment.center,
-        children: [
-          CarouselSlider(
-            carouselController: _withControlController,
-            items: _imageList
-                .map((image) => Image.asset(
-                      image,
-                      fit: BoxFit.cover,
-                      width: double.infinity,
-                    ))
-                .toList(),
-            options: CarouselOptions(
-              viewportFraction: 1.0,
-              initialPage: _controlsIndex,
-              onPageChanged: (index, reason) {
-                _carouselBloc.add(
-                  CarouselEvent.pageChange(
-                    _slideOnlyindex,
-                    index,
-                    _indicatorIndex,
-                    _captionIndex,
-                  ),
-                );
-              },
-            ),
-          ),
-          _commonArrow(IconlyBroken.arrowRightRound, _withControlController),
-          _commonArrow(IconlyBroken.arrowLeftRound, _withControlController),
-        ],
-      ),
-    );
-  }
+  // Widget _withControls() {
+  //   return _commonView(
+  //     'With Controls',
+  //     Stack(
+  //       alignment: Alignment.center,
+  //       children: [
+  //         CarouselSlider(
+  //           carouselController: _withControlController,
+  //           items: _imageList
+  //               .map((image) => Image.asset(
+  //                     image,
+  //                     fit: BoxFit.cover,
+  //                     width: double.infinity,
+  //                   ))
+  //               .toList(),
+  //           options: CarouselOptions(
+  //             viewportFraction: 1.0,
+  //             initialPage: _controlsIndex,
+  //             onPageChanged: (index, reason) {
+  //               _carouselBloc.add(
+  //                 CarouselEvent.pageChange(
+  //                   _slideOnlyindex,
+  //                   index,
+  //                   _indicatorIndex,
+  //                   _captionIndex,
+  //                 ),
+  //               );
+  //             },
+  //           ),
+  //         ),
+  //         _commonArrow(IconlyBroken.arrowRightRound, _withControlController),
+  //         _commonArrow(IconlyBroken.arrowLeftRound, _withControlController),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   Widget _withIndicators() {
     return _commonView(
-      'With indicators',
+      'Carousel With Indicators',
       Stack(
         alignment: Alignment.center,
         children: [
@@ -248,7 +250,7 @@ class _CarouselState extends State<Carousel> {
 
   Widget _withCaptions() {
     return _commonView(
-      'With captions',
+      'Carousel With Captions',
       Stack(
         alignment: Alignment.center,
         children: [

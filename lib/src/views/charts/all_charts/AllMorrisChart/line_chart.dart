@@ -32,14 +32,17 @@ class LineChart1 extends StatelessWidget {
           ),
         ),
         gridData: FlGridData(
-          show: false,
+          drawVerticalLine: false,
+          show: true,
           verticalInterval: 1,
           getDrawingHorizontalLine: (_) => FlLine(
-            color: ColorConst.gridChartColor,
+            color: Theme.of(context).brightness == Brightness.light
+                ? ColorConst.gridChartColor
+                : Colors.black.withOpacity(0.2),
           ),
-          getDrawingVerticalLine: (_) => FlLine(
-            color: ColorConst.gridChartColor,
-          ),
+          // getDrawingVerticalLine: (_) => FlLine(
+          //   color: ColorConst.white,
+          // ),
         ),
         borderData: FlBorderData(show: false),
         titlesData: FlTitlesData(
@@ -78,34 +81,8 @@ class LineChart1 extends StatelessWidget {
             ],
             isCurved: true,
             barWidth: 2,
-            color: ColorConst.chartColorGreen,
+            color: const Color(0xFF385c89),
           ),
-          LineChartBarData(
-            spots: const [
-              FlSpot(0, 0),
-              FlSpot(1, 0.88),
-              FlSpot(2, 0.13),
-              FlSpot(3, 2.70),
-              FlSpot(4, 2.36),
-              FlSpot(5, 2.04),
-            ],
-            isCurved: true,
-            barWidth: 2,
-            color: ColorConst.blueChartColor,
-          ),
-          LineChartBarData(
-            spots: const [
-              FlSpot(0, 0),
-              FlSpot(1, 0.60),
-              FlSpot(2, 0.88),
-              FlSpot(3, 1.84),
-              FlSpot(4, 1.57),
-              FlSpot(5, 3.54),
-            ],
-            isCurved: true,
-            barWidth: 2,
-            color: ColorConst.greyChartColor,
-          )
         ],
       ),
     );
@@ -123,15 +100,15 @@ Widget leftTitles(double value, TitleMeta meta) {
   if (value == 0) {
     text = '0';
   } else if (value == 1) {
-    text = '75';
+    text = '5';
   } else if (value == 2) {
-    text = '150';
+    text = '10';
   } else if (value == 3) {
-    text = '225';
+    text = '15';
   } else if (value == 4) {
-    text = '300';
+    text = '20';
   } else if (value == 5) {
-    text = '375';
+    text = '25';
   } else {
     return Container();
   }

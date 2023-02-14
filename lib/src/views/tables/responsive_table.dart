@@ -1,5 +1,5 @@
 import 'package:admin_dashboard/src/constant/string.dart';
-import 'package:data_table_2/data_table_2.dart';
+import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_excel/excel.dart';
 import 'package:flutterx/flutterx.dart';
@@ -37,7 +37,7 @@ class ResponsiveTable extends StatelessWidget {
             FxBox.h20,
             SizedBox(
               height: MediaQuery.of(context).size.height - 240,
-              child: DataTable2(
+              child: DataTable3(
                 minWidth: 600,
                 dividerThickness: 1,
                 showBottomBorder: true,
@@ -49,7 +49,8 @@ class ResponsiveTable extends StatelessWidget {
                       DataCell(sizedBox(text: '${index + 1}')),
                       DataCell(sizedBox(text: "Jane")),
                       DataCell(sizedBox(text: "Deo")),
-                      DataCell(sizedBox(text: "@flutter")),
+                      DataCell(sizedBox(text: "@jane_deo")),
+                      DataCell(sizedBox(text: "flutter")),
                     ],
                   ),
                 ),
@@ -64,26 +65,37 @@ class ResponsiveTable extends StatelessWidget {
   List<DataColumn2> _dataColumn() {
     return [
       DataColumn2(
+        size: ColumnSize.S,
         label: sizedBox(
           text: "#",
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
+        size: ColumnSize.L,
         label: sizedBox(
           text: "Fist Name",
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
+        size: ColumnSize.L,
         label: sizedBox(
           text: "Last Name",
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
+        size: ColumnSize.L,
         label: sizedBox(
           text: "User Name",
+          fontwidget: FontWeight.bold,
+        ),
+      ),
+      DataColumn2(
+        size: ColumnSize.L,
+        label: sizedBox(
+          text: "Department",
           fontwidget: FontWeight.bold,
         ),
       ),

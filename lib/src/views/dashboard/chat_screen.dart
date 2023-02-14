@@ -112,16 +112,6 @@ class _ChatscreenState extends State<Chatscreen> {
           maxRadius: MediaQuery.of(context).size.height * 0.02,
           backgroundImage: const AssetImage(Images.profileImage),
         ),
-        FxBox.h10,
-        Text(
-          '10.00',
-          style: TextStyle(
-            fontSize: MediaQuery.of(context).size.height * 0.012,
-            color:
-                isDark ? ColorConst.darkFontColor : ColorConst.lightFontColor,
-            fontWeight: FontWeight.w700,
-          ),
-        )
       ],
     );
   }
@@ -160,15 +150,31 @@ class _ChatscreenState extends State<Chatscreen> {
                       !isMe ? CrossAxisAlignment.start : CrossAxisAlignment.end,
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    ConstText.lightText(
-                      text: userName,
-                      textAlign: isMe ? TextAlign.right : TextAlign.left,
-                      color: ColorConst.primary,
-                      fontWeight: FontWeight.w700,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        ConstText.lightText(
+                          text: userName,
+                          textAlign: isMe ? TextAlign.right : TextAlign.left,
+                          color: ColorConst.primary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        Text(
+                          '10:00',
+                          style: TextStyle(
+                            fontSize:
+                                MediaQuery.of(context).size.height * 0.012,
+                            color: isDark
+                                ? ColorConst.darkFontColor
+                                : ColorConst.lightFontColor,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
                     ),
                     ConstText.lightText(
                       text: userMsg ?? '',
-                      textAlign: isMe ? TextAlign.right : TextAlign.left,
+                      textAlign: TextAlign.left,
                       color: usermsgColor,
                       fontWeight: FontWeight.w500,
                     ),
@@ -205,19 +211,17 @@ class _ChatscreenState extends State<Chatscreen> {
                   ),
                   enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(4),
-                      borderSide:
-                          const BorderSide(color: ColorConst.lightGrey)),
+                      borderSide: const BorderSide(color: ColorConst.primary)),
                 ),
               ),
             ),
           ),
-          FxBox.w28,
+          FxBox.w16,
           FxButton(
             onPressed: () {
               _msgController.clear();
             },
-            buttonType: ButtonType.success,
-            borderRadius: 4,
+            borderRadius: 40,
             height: 40,
             text: Strings.send,
             minWidth: 80,

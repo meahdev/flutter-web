@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
@@ -42,117 +43,105 @@ class _FAQsState extends State<FAQs> {
 
   @override
   Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        left: 72,
+        right: 72,
+        top: 60,
+        bottom: 20,
+      ),
+      child: Column(
+        children: [
+          Text(
+            "Can't find what you are looking for?",
+            style: TextStyle(
+              fontSize: 21,
+              fontWeight: FontWeight.bold,
+              color: isDark ? ColorConst.darkFontColor : ColorConst.textColor,
+            ),
+          ),
+          FxBox.h64,
+          Responsive.isWeb(context)
+              ? Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: _listOne()),
+                    FxBox.w(100.0),
+                    Expanded(child: _listTwo())
+                  ],
+                )
+              : Column(
+                  children: [
+                    _listOne(),
+                    FxBox.h44,
+                    _listTwo(),
+                  ],
+                ),
+          FxBox.h32,
+          TextButton(
+            onPressed: () {},
+            child: const CustomText(
+              title: 'Contact Us',
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _listOne() {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.only(
-          left: 72,
-          right: 72,
-          top: 60,
-          bottom: 20,
-        ),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const Icon(Icons.message_outlined, color: ColorConst.primary),
-            FxBox.h20,
-            Text(
-              "Can't find what you are looking for?",
-              style: TextStyle(
-                fontSize: 21,
-                fontWeight: FontWeight.bold,
-                color: isDark ? ColorConst.darkFontColor : ColorConst.textColor,
+            const ListTile(
+              title: Text(
+                "General Questions",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 21,
+                ),
+              ),
+              leading: Icon(
+                Icons.book_online_rounded,
+                color: ColorConst.primary,
               ),
             ),
-            FxBox.h12,
-            const SizedBox(
-              width: 550,
-              child: Text(
-                "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
-                style: TextStyle(fontSize: 15),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            FxBox.h20,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FxButton(
-                  borderRadius: 4,
-                  onPressed: () {},
-                  text: "Email Us",
-                ),
-                FxBox.w8,
-                FxButton(
-                  borderRadius: 4,
-                  onPressed: () {},
-                  text: "Send us a tweet",
-                  buttonType: ButtonType.success,
-                ),
-              ],
-            ),
-            FxBox.h64,
-            Responsive.isWeb(context)
-                ? Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(child: _listOne()),
-                      FxBox.w(100.0),
-                      Expanded(child: _listTwo())
-                    ],
-                  )
-                : Column(
-                    children: [
-                      _listOne(),
-                      FxBox.h44,
-                      _listTwo(),
-                    ],
-                  ),
+            FxBox.h16,
+            _expansionList(_dataGeneralList, _generalList),
           ],
         ),
       ),
     );
   }
 
-  Widget _listOne() {
-    return Column(
-      children: [
-        const ListTile(
-          title: Text(
-            "General Questions",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 21,
-            ),
-          ),
-          leading: Icon(
-            Icons.book_online_rounded,
-            color: ColorConst.primary,
-          ),
-        ),
-        FxBox.h16,
-        _expansionList(_dataGeneralList, _generalList),
-      ],
-    );
-  }
-
   Widget _listTwo() {
-    return Column(
-      children: [
-        const ListTile(
-          title: Text(
-            "Pricing & Plans",
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 21,
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            const ListTile(
+              title: Text(
+                "Pricing & Plans",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 21,
+                ),
+              ),
+              leading: Icon(
+                Icons.book_online_rounded,
+                color: ColorConst.primary,
+              ),
             ),
-          ),
-          leading: Icon(
-            Icons.book_online_rounded,
-            color: ColorConst.primary,
-          ),
+            FxBox.h16,
+            _expansionList(_dataPricingNplanList, _pricingNplanList),
+          ],
         ),
-        FxBox.h16,
-        _expansionList(_dataPricingNplanList, _pricingNplanList),
-      ],
+      ),
     );
   }
 

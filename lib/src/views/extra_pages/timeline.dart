@@ -41,7 +41,9 @@ class _TimelineScreenState extends State<TimelineScreen> {
                   return CustomScrollView(
                     shrinkWrap: true,
                     physics: const ScrollPhysics(),
-                    slivers: <Widget>[_timelineSteps(steps: _steps)],
+                    slivers: <Widget>[
+                      _timelineSteps(steps: _steps),
+                    ],
                   );
                 },
               ),
@@ -102,25 +104,25 @@ class _TimelineScreenState extends State<TimelineScreen> {
               step.title, step.message, isLeftAlign, itemIndex);
           final isFirst = itemIndex == 0;
           final isLast = itemIndex == steps.length - 1;
-          double indicatorY;
-          if (isFirst) {
-            indicatorY = 0.2;
-          } else if (isLast) {
-            indicatorY = 0.8;
-          } else {
-            indicatorY = 0.5;
-          }
+          // double indicatorY;
+          // if (isFirst) {
+          //   indicatorY = 0.2;
+          // } else if (isLast) {
+          //   indicatorY = 0.8;
+          // } else {
+          //   indicatorY = 0.5;
+          // }
           return TimelineTile(
             alignment: TimelineAlign.manual,
-            endChild: isLeftAlign ? child : null,
-            startChild: isLeftAlign ? null : child,
-            lineXY: isLeftAlign ? 0.1 : 0.9,
+            endChild: child,
+            // startChild: isLeftAlign ? null : child,
+            lineXY: 0.1,
             isFirst: isFirst,
             isLast: isLast,
             indicatorStyle: IndicatorStyle(
-              width: 70,
-              height: 100,
-              indicatorXY: indicatorY,
+              width: 50,
+              height: 60,
+              indicatorXY: 0.5,
               indicator: _timelineStepIndicator(step.step.toInt()),
             ),
             beforeLineStyle: LineStyle(
@@ -141,7 +143,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
       decoration: const BoxDecoration(
         shape: BoxShape.rectangle,
         color: ColorConst.primary,
-        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+        borderRadius: BorderRadius.all(Radius.circular(8.0)),
       ),
       child: Center(
         child: CustomText(
@@ -164,7 +166,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
             const EdgeInsets.only(left: 20, top: 25, right: 20, bottom: 25),
         decoration: BoxDecoration(
           color: isDark ? ColorConst.darkContainer : ColorConst.darkFontColor,
-          borderRadius: const BorderRadius.all(Radius.circular(4.0)),
+          borderRadius: const BorderRadius.all(Radius.circular(8.0)),
         ),
         child: Column(
           crossAxisAlignment:

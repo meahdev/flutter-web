@@ -37,9 +37,11 @@ import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
 import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
-import 'package:admin_dashboard/src/views/ui_elements/badge/badge.dart';
+import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
 import 'package:admin_dashboard/src/views/ui_elements/carousel/carousel.dart';
+import 'package:admin_dashboard/src/views/ui_elements/date_picker/date_picker.dart';
+import 'package:admin_dashboard/src/views/ui_elements/draganddrop/drag_and_drop_element.dart';
 import 'package:admin_dashboard/src/views/ui_elements/loader/loader.dart';
 import 'package:admin_dashboard/src/views/ui_elements/modal/modal.dart';
 import 'package:admin_dashboard/src/views/ui_elements/rating/rating.dart';
@@ -54,16 +56,16 @@ import 'package:auto_route/auto_route.dart';
   routes: <AutoRoute>[
     AutoRoute(
       path: '/',
-      page: MenuBar,
+      page: FMenuBar,
       children: [
-        RedirectRoute(path: '', redirectTo: 'user-profile'),
-        AutoRoute(path: 'dashboard', page: Dashboard),
+        // RedirectRoute(path: '', redirectTo: 'dashboard'),
+        AutoRoute(path: 'dashboard', page: Dashboard,initial: true),
         AutoRoute(path: 'calendar', page: Calendar),
         AutoRoute(path: 'map', page: GoogleMaps),
         AutoRoute(path: 'toast', page: Toast),
-        AutoRoute(path: 'buttons', page: Button),
-        AutoRoute(path: 'rating', page: Rating),
-        AutoRoute(path: 'badge', page: Badge),
+        AutoRoute(path: 'button-element', page: Button),
+        AutoRoute(path: 'rating-bar', page: Rating),
+        AutoRoute(path: 'badge', page: CustomBadge),
         AutoRoute(path: 'alert-dialog', page: AlertDialogBox),
         AutoRoute(path: 'modal', page: Modal),
         AutoRoute(path: 'loaders', page: Loaders),
@@ -80,19 +82,21 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'editable-table', page: EditableTable),
         AutoRoute(path: 'timeline', page: TimelineScreen),
         AutoRoute(path: 'pricing', page: Pricing),
-        AutoRoute(path: 'directory', page: DirectoryPage),
+        AutoRoute(path: 'card', page: DirectoryPage),
         AutoRoute(path: 'faqs', page: FAQs),
         AutoRoute(path: 'invoice', page: Invoice),
         AutoRoute(path: 'gallery', page: Gallery),
-        AutoRoute(path: 'carousel', page: Carousel),
-        AutoRoute(path: 'form-elements', page: ElementsForm),
-        AutoRoute(path: 'form-validation', page: ValidationForm),
-        AutoRoute(path: 'form-file-upload', page: FileUploadForm),
-        AutoRoute(path: 'form-repeater', page: RepeaterForm),
-        AutoRoute(path: 'form-mask', page: MaskForm),
-        AutoRoute(path: 'form-wizard', page: WizardForm),
+        AutoRoute(path: 'carousel-slider', page: Carousel),
+        AutoRoute(path: 'elements', page: ElementsForm),
+        AutoRoute(path: 'validation', page: ValidationForm),
+        AutoRoute(path: 'dropzone', page: FileUploadForm),
+        AutoRoute(path: 'repeater', page: RepeaterForm),
+        AutoRoute(path: 'mask', page: MaskForm),
+        AutoRoute(path: 'wizard', page: WizardForm),
         AutoRoute(path: 'video-player', page: VideoScreen),
         AutoRoute(path: 'user-profile', page: UserProfile),
+        AutoRoute(path: 'drag-drop', page: DragAndDrop),
+        AutoRoute(path: 'date-picker', page: DatePicker),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

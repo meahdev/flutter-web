@@ -49,6 +49,7 @@ class _StatusBoxState extends State<StatusBox> {
                 fontSize: 15,
                 text: Strings.successText,
                 fontWeight: FontWeight.w500,
+                textAlign: TextAlign.center,
               ),
               FxBox.h16,
               FxButton(

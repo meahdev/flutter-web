@@ -65,10 +65,12 @@ class CustomTextField extends StatelessWidget {
           suffixIconConstraints: const BoxConstraints(minWidth: 30),
           filled: true,
           hintText: hintText,
-          fillColor: isDark ? ColorConst.darkContainer : ColorConst.white,
+          // fillColor: isDark ? ColorConst.darkContainer : ColorConst.white,
+          fillColor: ColorConst.white,
+
           hintStyle: TextStyle(
             color: isDark
-                ? ColorConst.darkFontColor.withOpacity(0.5)
+                ? ColorConst.black.withOpacity(0.5)
                 : ColorConst.lightFontColor,
             fontSize: 15,
             fontWeight: FontWeight.w600,
