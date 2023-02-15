@@ -5,7 +5,7 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/views/e_commerce/product.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -93,7 +93,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                               : 1,
                               crossAxisSpacing: 20,
                               mainAxisSpacing: 20,
-                              mainAxisExtent: 426,
+                              mainAxisExtent:
+                                  Responsive.isWeb(context) ? 385 : 426,
                             ),
                             itemBuilder: (context, index) {
                               return _cardUI(index);
@@ -356,6 +357,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
               child: Row(
                 children: [
                   Expanded(
+                    flex: 2,
                     child: CustomText(
                       title: _filterList.isNotEmpty
                           ? _filterList[index]['title']
@@ -452,6 +454,4 @@ class _ProductsScreenState extends State<ProductsScreen> {
       ),
     );
   }
-
-
 }

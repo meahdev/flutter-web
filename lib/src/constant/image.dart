@@ -25,9 +25,22 @@ class Images {
   static const String g7 = '${_assetPath}g7.jpeg';
   static const String g8 = '${_assetPath}g8.jpeg';
   static const String g9 = '${_assetPath}g9.jpeg';
+
+// e - commerce
+
   static const String filter = '${_assetPath}filter.png';
   static const String tv = '${_assetPath}tv.jpeg';
   static const String tv1 = '${_assetPath}tv1.jpeg';
   static const String tv2 = '${_assetPath}tv2.jpeg';
   static const String tv3 = '${_assetPath}tv3.jpeg';
+
+  static const String men = '${_assetPath}men.png';
+  static const String women = '${_assetPath}women.png';
+  static const String homeAndKitchen = '${_assetPath}kitchen.png';
+  static const String entertainment = '${_assetPath}entertainment.png';
+  static const String electronic = '${_assetPath}electronic.png';
+
+  static const String cloth = '${_assetPath}cloth.png';
+  static const String cap = '${_assetPath}cap.png';
+  static const String shoe = '${_assetPath}shoe.png';
 }

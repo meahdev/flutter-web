@@ -1,12 +1,19 @@
-import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/calender/calender.dart';
 import 'package:admin_dashboard/src/views/charts/chartist.dart';
 import 'package:admin_dashboard/src/views/charts/chartjs.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
-import 'package:admin_dashboard/src/views/e_commerce/product_detail_screen.dart';
-import 'package:admin_dashboard/src/views/e_commerce/products_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
+import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_order/order_invoice.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
@@ -121,6 +128,22 @@ int getRouteIndex(String route) {
     return 38;
   } else if (route == 'Products Detail') {
     return 39;
+  } else if (route == Strings.category) {
+    return 40;
+  } else if (route == Strings.subCategory) {
+    return 41;
+  } else if (route == Strings.vender) {
+    return 42;
+  } else if (route == Strings.venderDetail) {
+    return 43;
+  } else if (route == Strings.customer) {
+    return 44;
+  } else if (route == Strings.payment) {
+    return 45;
+  } else if (route == Strings.returnOrder) {
+    return 46;
+  } else if (route == 'Return Order Invoice') {
+    return 47;
   } else {
     return 0;
   }
@@ -205,6 +228,22 @@ Widget getRouteWidget(int index) {
     return const ProductsScreen();
   } else if (index == 39) {
     return const ProductDetailScreen();
+  } else if (index == 40) {
+    return const CategoryScreen();
+  } else if (index == 41) {
+    return const SubCategoryScreen();
+  } else if (index == 42) {
+    return const VenderScreen();
+  } else if (index == 43) {
+    return const VenderDetailScreen();
+  } else if (index == 44) {
+    return const CustomerScreen();
+  } else if (index == 45) {
+    return const PaymentScreen();
+  } else if (index == 46) {
+    return const ReturnOrderScreen();
+  } else if (index == 47) {
+    return const OrderInvoice();
   } else {
     return const Dashboard();
   }

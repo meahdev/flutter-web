@@ -273,4 +273,12 @@ class Strings {
 
   static const String products = 'Products';
   static const String filter = 'Filter';
+  static const String category = 'Category';
+  static const String subCategory = 'Sub Category';
+  static const String vender = 'Vender';
+  static const String customer = 'Customer';
+  static const String payment = 'Payment';
+  static const String returnOrder = 'Return Order';
+  static const String venderDetail = 'Vender Detail';
+  static const String monthlyOrder = 'Monthly Order';
 }

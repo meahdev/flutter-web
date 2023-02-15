@@ -88,6 +88,11 @@ class _MenuBarState extends State<FMenuBar> {
     ],
     [
       Strings.products,
+      Strings.category,
+      Strings.vender,
+      Strings.customer,
+      Strings.payment,
+      Strings.returnOrder,
     ],
   ];
 
@@ -180,6 +185,14 @@ class _MenuBarState extends State<FMenuBar> {
     DatePicker(),
     ProductsScreen(),
     ProductDetailScreen(),
+    CategoryScreen(),
+    SubCategoryScreen(),
+    VenderScreen(),
+    VenderDetailScreen(),
+    CustomerScreen(),
+    PaymentScreen(),
+    ReturnOrderScreen(),
+    OrderInvoice(),
   ];
 
   @override
@@ -189,7 +202,6 @@ class _MenuBarState extends State<FMenuBar> {
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
         autoTabRouter = tabsRouter;
-        routesLength = _routes.length;
 
         return Scaffold(
           key: _scaffoldKey,
@@ -944,8 +956,21 @@ class _MenuBarState extends State<FMenuBar> {
                 const Text(' / ${Strings.emailTemplates} '),
               ] else if (routeIndex == 38) ...[
                 const Text(' / ${Strings.eCommerce} '),
-              ] else if (routeIndex.isBetween(38, 39)) ...[
+              ] else if (routeIndex == 40) ...[
                 const Text(' / ${Strings.eCommerce} '),
+              ] else if (routeIndex == 47) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.returnOrder} '),
+              ] else if (routeIndex == 41) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.category} '),
+              ] else if (routeIndex == 43) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.vender} '),
+              ] else if (routeIndex == 42 ||
+                  routeIndex == 44 ||
+                  routeIndex == 45 ||
+                  routeIndex == 46) ...[
+                const Text(' / ${Strings.eCommerce} '),
+              ] else if (routeIndex == 39) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.products}'),
               ] else if (tabsRouter.currentPath == '/calendar' ||
                   tabsRouter.currentPath == '/map') ...[
                 const SizedBox.shrink()
