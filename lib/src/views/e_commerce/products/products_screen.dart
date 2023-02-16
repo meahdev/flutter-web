@@ -55,8 +55,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
   RangeValues rangeValue = const RangeValues(0, 500);
   @override
   Widget build(BuildContext context) {
+    print(MediaQuery.of(context).size.width);
     return Column(
       children: [
+        !Responsive.isMobile(context) ? const SizedBox.shrink() : _filterUi(),
+        FxBox.h16,
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -87,10 +90,17 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                   : Responsive.isTablet(context)
                                       ? 2
                                       : islg(context)
-                                          ? 3
-                                          : isxl(context)
-                                              ? 4
-                                              : 1,
+                                          ? 2
+                                          : MediaQuery.of(context).size.width ==
+                                                      1303 ||
+                                                  MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      1310
+                                              ? 3
+                                              : isxl(context)
+                                                  ? 4
+                                                  : 1,
                               crossAxisSpacing: 20,
                               mainAxisSpacing: 20,
                               mainAxisExtent:
@@ -113,10 +123,17 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               : Responsive.isTablet(context)
                                   ? 2
                                   : islg(context)
-                                      ? 3
-                                      : isxl(context)
-                                          ? 4
-                                          : 1,
+                                      ? 2
+                                      : MediaQuery.of(context).size.width ==
+                                                  1303 ||
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  1310
+                                          ? 3
+                                          : isxl(context)
+                                              ? 4
+                                              : 1,
                           crossAxisSpacing: 20,
                           mainAxisSpacing: 20,
                           mainAxisExtent: Responsive.isWeb(context) ? 385 : 426,
@@ -131,8 +148,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 : _filterUi(),
           ],
         ),
-        FxBox.h16,
-        !Responsive.isMobile(context) ? const SizedBox.shrink() : _filterUi(),
       ],
     );
   }
@@ -140,7 +155,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget _filterUi() {
     return Container(
       constraints:
-          BoxConstraints(maxWidth: Responsive.isMobile(context) ? 400 : 200),
+          BoxConstraints(maxWidth: Responsive.isMobile(context) ? 400 : 250),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
       decoration: BoxDecoration(
         color: ColorConst.white,
@@ -363,6 +378,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
                           ? _filterList[index]['title']
                           : productList[index]['title'],
                       fontSize: 16.0,
+                      maxLine: 2,
+                      overflow: TextOverflow.ellipsis,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

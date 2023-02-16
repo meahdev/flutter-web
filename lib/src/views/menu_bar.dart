@@ -92,7 +92,10 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.vender,
       Strings.customer,
       Strings.payment,
+      Strings.order,
       Strings.returnOrder,
+      Strings.subscriber,
+      Strings.coupons,
     ],
   ];
 
@@ -192,6 +195,10 @@ class _MenuBarState extends State<FMenuBar> {
     CustomerScreen(),
     PaymentScreen(),
     ReturnOrderScreen(),
+    ReturnOrderInvoice(),
+    SubScriptionScreen(),
+    CouponsScreen(),
+    OrderScreen(),
     OrderInvoice(),
   ];
 
@@ -960,6 +967,8 @@ class _MenuBarState extends State<FMenuBar> {
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 47) ...[
                 const Text(' / ${Strings.eCommerce} / ${Strings.returnOrder} '),
+              ] else if (routeIndex == 51) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.order} '),
               ] else if (routeIndex == 41) ...[
                 const Text(' / ${Strings.eCommerce} / ${Strings.category} '),
               ] else if (routeIndex == 43) ...[
@@ -967,7 +976,10 @@ class _MenuBarState extends State<FMenuBar> {
               ] else if (routeIndex == 42 ||
                   routeIndex == 44 ||
                   routeIndex == 45 ||
-                  routeIndex == 46) ...[
+                  routeIndex == 46 ||
+                  routeIndex == 48 ||
+                  routeIndex == 49 ||
+                  routeIndex == 50) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 39) ...[
                 const Text(' / ${Strings.eCommerce} / ${Strings.products}'),

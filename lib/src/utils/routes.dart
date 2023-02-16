@@ -6,12 +6,16 @@ import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
+import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.dart';
-import 'package:admin_dashboard/src/views/e_commerce/return_order/order_invoice.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
@@ -144,6 +148,14 @@ int getRouteIndex(String route) {
     return 46;
   } else if (route == 'Return Order Invoice') {
     return 47;
+  } else if (route == Strings.subscriber) {
+    return 48;
+  } else if (route == Strings.coupons) {
+    return 49;
+  } else if (route == Strings.order) {
+    return 50;
+  } else if (route == 'Order Invoice') {
+    return 51;
   } else {
     return 0;
   }
@@ -243,6 +255,14 @@ Widget getRouteWidget(int index) {
   } else if (index == 46) {
     return const ReturnOrderScreen();
   } else if (index == 47) {
+    return const ReturnOrderInvoice();
+  } else if (index == 48) {
+    return const SubScriptionScreen();
+  } else if (index == 49) {
+    return const CouponsScreen();
+  } else if (index == 50) {
+    return const OrderScreen();
+  } else if (index == 51) {
     return const OrderInvoice();
   } else {
     return const Dashboard();

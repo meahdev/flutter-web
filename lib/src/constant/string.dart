@@ -279,6 +279,9 @@ class Strings {
   static const String customer = 'Customer';
   static const String payment = 'Payment';
   static const String returnOrder = 'Return Order';
+  static const String order = 'Order';
   static const String venderDetail = 'Vender Detail';
   static const String monthlyOrder = 'Monthly Order';
+  static const String subscriber = 'Subscribers';
+  static const String coupons = 'Coupons';
 }

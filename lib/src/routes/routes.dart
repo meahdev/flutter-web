@@ -9,12 +9,16 @@ import 'package:admin_dashboard/src/views/authentication/register/register_two.d
 import 'package:admin_dashboard/src/views/calender/calender.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
+import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.dart';
-import 'package:admin_dashboard/src/views/e_commerce/return_order/order_invoice.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
@@ -116,7 +120,11 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'customer', page: CustomerScreen),
         AutoRoute(path: 'payment', page: PaymentScreen),
         AutoRoute(path: 'return-order', page: ReturnOrderScreen),
-        AutoRoute(path: 'return-order-invoice', page: OrderInvoice),
+        AutoRoute(path: 'order', page: OrderScreen),
+        AutoRoute(path: 'return-order-invoice', page: ReturnOrderInvoice),
+        AutoRoute(path: 'order-invoice', page: OrderInvoice),
+        AutoRoute(path: 'subscribers', page: SubScriptionScreen),
+        AutoRoute(path: 'coupons', page: CouponsScreen),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),
