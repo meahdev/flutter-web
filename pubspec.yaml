@@ -33,7 +33,7 @@ dependencies:
   flutter_svg: ^1.1.1+1
   intl: ^0.17.0
   flutter_colorpicker: ^1.0.3
-  file_picker: ^5.0.1
+  file_picker: ^5.2.5
   mask_text_input_formatter: ^2.4.0
   hive_flutter: ^1.1.0
   flutter_chat_bubble: ^2.0.0
