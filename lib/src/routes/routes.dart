@@ -11,6 +11,7 @@ import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.da
 import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
@@ -127,6 +128,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'subscribers', page: SubScriptionScreen),
         AutoRoute(path: 'coupons', page: CouponsScreen),
         AutoRoute(path: 'return-condition', page: ReturnConditionScreen),
+        AutoRoute(path: 'e-commerce-dashboard', page: EcommerceDashboard),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

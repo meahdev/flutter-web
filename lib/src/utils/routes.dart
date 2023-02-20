@@ -8,6 +8,7 @@ import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.da
 import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
@@ -159,6 +160,8 @@ int getRouteIndex(String route) {
     return 51;
   } else if (route == Strings.returnCondition) {
     return 52;
+  } else if (route == Strings.eCommerceDashboard) {
+    return 53;
   } else {
     return 0;
   }
@@ -269,6 +272,8 @@ Widget getRouteWidget(int index) {
     return const OrderInvoice();
   } else if (index == 52) {
     return const ReturnConditionScreen();
+  } else if (index == 53) {
+    return const EcommerceDashboard();
   } else {
     return const Dashboard();
   }

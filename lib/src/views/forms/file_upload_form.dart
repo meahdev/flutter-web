@@ -31,7 +31,7 @@ class FileUploadForm extends StatefulWidget {
 class _FileUploadFormState extends State<FileUploadForm> {
   final FormUploadFileBloc _formUploadFileBloc = FormUploadFileBloc();
   // late DropzoneViewController _controller;
-  List<XFile> _filesList = [];
+  List<dynamic> _filesList = [];
   bool isExcelFile = false;
   Uint8List bytes = Uint8List(0);
 
@@ -57,8 +57,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
                       FilePickerResult? file = await FilePicker.platform
                           .pickFiles(allowMultiple: false);
                       if (file != null) {
-                        XFile files = XFile(file.files.first.path!);
-                        _dropFile(files);
+                        _pickFile(file.files.first);
                       }
                       // List<dynamic> files =
                       //     await _controller.pickFiles(multiple: false);
@@ -84,14 +83,11 @@ class _FileUploadFormState extends State<FileUploadForm> {
                             clipBehavior: Clip.antiAlias,
                             children: [
                               DropTarget(
-                                // operation: DragOperation.copy,
-                                // onCreated: (controller) =>
-                                //     _controller = controller,
-                                // onLoaded: () {},
-                                // onHover: () {},
-                                // onLeave: () {},
-                                // onDropMultiple: (value) async {
-                                //   _dropFile(value!);
+                                // onDragEntered: (details) {
+                                //   print('---- $details');
+                                // },
+                                // onDragUpdated: (details) {
+                                //   print('------- $details');
                                 // },
                                 child: SingleChildScrollView(
                                   controller: ScrollController(),
@@ -278,7 +274,7 @@ class _FileUploadFormState extends State<FileUploadForm> {
                         highlightColor: Colors.transparent,
                         onTap: () {
                           isExcelFile = false;
-                          List<XFile> tempList = _filesList.toList();
+                          List<dynamic> tempList = _filesList.toList();
                           tempList.removeAt(fileData.indexOf(e));
                           _filesList = tempList;
                           _formUploadFileBloc
@@ -359,25 +355,43 @@ class _FileUploadFormState extends State<FileUploadForm> {
   Future<void> _dropFile(XFile files) async {
     isExcelFile = false;
     _filesList.clear();
-
-    await _fileData(files);
     _filesList.add(files);
 
     bytes = await files.readAsBytes();
-    if (files.path.split('.').last == 'xlsx') {
+    if (files.name.split('.').last == 'xlsx') {
       isExcelFile = true;
-
-      _formUploadFileBloc.add(FormUploadFileEvent.addFile(_filesList));
     }
+    _formUploadFileBloc.add(FormUploadFileEvent.addFile(_filesList));
   }
 
-  Future<Map<String, dynamic>> _fileData(XFile file) async {
-    return {
-      'name': file.path.split('/').last,
-      'size': await _getFileSize(file),
-      'mime': lookupMimeType(file.path),
-      'bytes': await file.readAsBytes(),
-    };
+  Future<void> _pickFile(PlatformFile files) async {
+    isExcelFile = false;
+    _filesList.clear();
+    _filesList.add(files);
+
+    bytes = files.bytes!;
+    if (files.name.split('.').last == 'xlsx') {
+      isExcelFile = true;
+    }
+    _formUploadFileBloc.add(FormUploadFileEvent.addFile(_filesList));
+  }
+
+  Future<Map<String, dynamic>> _fileData(dynamic file) async {
+    if (file.runtimeType == PlatformFile) {
+      return {
+        'name': file.name.split('/').last,
+        'size': _getPickFileSize(file.size),
+        'mime': lookupMimeType(file.name),
+        'bytes': file.bytes,
+      };
+    } else {
+      return {
+        'name': file.name.split('/').last,
+        'size': await _getFileSize(file),
+        'mime': lookupMimeType(file.name),
+        'bytes': await file.readAsBytes(),
+      };
+    }
   }
 
   Future<String> _getFileSize(XFile file) async {
@@ -385,6 +399,14 @@ class _FileUploadFormState extends State<FileUploadForm> {
       return '${(await file.length() / 1024).toStringAsFixed(2)} KB';
     } else {
       return '${((await file.length() / 1024) / 1024).toStringAsFixed(2)} MB';
+    }
+  }
+
+  String _getPickFileSize(int size) {
+    if (size / 1024 <= 1000) {
+      return '${(size / 1024).toStringAsFixed(2)} KB';
+    } else {
+      return '${((size / 1024) / 1024).toStringAsFixed(2)} MB';
     }
   }
 }

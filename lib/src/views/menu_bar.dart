@@ -87,6 +87,7 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.editableTable,
     ],
     [
+      Strings.eCommerceDashboard,
       Strings.products,
       Strings.category,
       Strings.vender,
@@ -202,6 +203,7 @@ class _MenuBarState extends State<FMenuBar> {
     OrderScreen(),
     OrderInvoice(),
     ReturnConditionScreen(),
+    EcommerceDashboard(),
   ];
 
   @override
@@ -982,7 +984,8 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 48 ||
                   routeIndex == 49 ||
                   routeIndex == 50 ||
-                  routeIndex == 52) ...[
+                  routeIndex == 52 ||
+                  routeIndex == 53) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 39) ...[
                 const Text(' / ${Strings.eCommerce} / ${Strings.products}'),

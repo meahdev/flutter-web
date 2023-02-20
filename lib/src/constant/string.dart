@@ -285,4 +285,6 @@ class Strings {
   static const String monthlyOrder = 'Monthly Order';
   static const String subscriber = 'Subscribers';
   static const String coupons = 'Coupons';
+  static const String eCommerceDashboard = 'E Commerce Dashboard';
+  static const String globalSaleText = 'Global Sales by Tops Locations';
 }

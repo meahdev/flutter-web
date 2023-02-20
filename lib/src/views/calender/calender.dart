@@ -323,7 +323,7 @@ class _CalendarState extends State<Calendar> {
 
   Widget _addEventButtons(
       {required String label, required Color color, required int colorIndex}) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return LayoutBuilder(
       builder: (context, constraints) {
         // print(constraints.)
@@ -399,46 +399,54 @@ class _CalendarState extends State<Calendar> {
   Widget _eventButton(
       {required List<Map<String, dynamic>> list, required DateTime date}) {
     return Positioned(
-      top: 24,
-      left: 0,
-      right: 0,
+      top: 24.0,
+      left: 0.0,
+      right: 0.0,
+      bottom: 0.0,
       child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
         itemCount: list.length,
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
-            child: MaterialButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(40.0),
-              ),
-              minWidth: 10,
-              onPressed: () {
-                eventController.text = list[index]["eventName"];
-                dropdownValue =
-                    dropDownList.elementAt(list[index]["dropdownValue"] ?? 0);
-                _displayTextInputDialog(
-                  context: context,
-                  savePressed: () {
-                    _handleSaveTap(date: date, doPopup: true, index: index);
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                MaterialButton(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(40.0),
+                  ),
+                  minWidth: 10,
+                  onPressed: () {
+                    eventController.text = list[index]["eventName"];
+                    dropdownValue = dropDownList
+                        .elementAt(list[index]["dropdownValue"] ?? 0);
+                    _displayTextInputDialog(
+                      context: context,
+                      savePressed: () {
+                        _handleSaveTap(date: date, doPopup: true, index: index);
+                      },
+                      deletePressed: () {
+                        list.removeAt(index);
+                        eventMap[date] = list;
+                        eventController.clear();
+                        dropdownValue = '--Select--';
+                        _calendarFormatBloc.add(CalendarFormatEvent.loading(
+                            calendarFormat: _calendarFormat,
+                            eventsList: eventMap));
+                        Navigator.pop(context);
+                      },
+                    );
                   },
-                  deletePressed: () {
-                    list.removeAt(index);
-                    eventMap[date] = list;
-                    eventController.clear();
-                    dropdownValue = '--Select--';
-                    _calendarFormatBloc.add(CalendarFormatEvent.loading(
-                        calendarFormat: _calendarFormat, eventsList: eventMap));
-                    Navigator.pop(context);
-                  },
-                );
-              },
-              color: coloredList.elementAt(list[index]["dropdownValue"] ?? 0),
-              child: Text(list[index]["eventName"],
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: const TextStyle(color: ColorConst.white)),
+                  color:
+                      coloredList.elementAt(list[index]["dropdownValue"] ?? 0),
+                  child: Text(list[index]["eventName"],
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: const TextStyle(color: ColorConst.white)),
+                ),
+                if (index == list.length - 1) const SizedBox(height: 4.0),
+              ],
             ),
           );
         },
