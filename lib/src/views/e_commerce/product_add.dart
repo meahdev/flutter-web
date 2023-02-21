@@ -1,11 +1,14 @@
+import 'dart:math';
 import 'dart:ui';
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/form/form_upload_file/bloc/form_upload_file_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/e_commerce/product.dart';
+import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:desktop_drop/desktop_drop.dart';
@@ -30,46 +33,202 @@ class _ProductAddState extends State<ProductAdd> {
   List<XFile> _filesList = [];
   bool isExcelFile = false;
   Uint8List bytes = Uint8List(0);
+
+  final TextEditingController _productName = TextEditingController();
+  final TextEditingController _expriryDate = TextEditingController();
+  final TextEditingController _unitStock = TextEditingController();
+  final ValueNotifier<String> _categorySelected = ValueNotifier('');
+
+  final List<ProductModel> _productItem = [
+    ProductModel(
+        id: 1,
+        product: 'i phone 14',
+        category: 'mobile',
+        expiryDate: '02/10/2024',
+        unit: 2),
+    ProductModel(
+        id: 2,
+        product: 'samsung galaxy',
+        category: 'mobile',
+        expiryDate: '02/10/2024',
+        unit: 10),
+  ];
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return BlocProvider(
-      create: (context) => _formUploadFileBloc,
+
+    return SizedBox(
+      height: size.height * 0.40,
+      width: double.infinity,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(
-              vertical: 32.0,
-              horizontal: 24.0,
-            ),
-            decoration: BoxDecoration(
-              // color: !isDark ? ColorConst.white : ColorConst.black,
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.black
-                  : Colors.white,
-              borderRadius: BorderRadius.circular(8.0),
-            ),
-            child: Responsive.isWeb(context)
-                ? Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(child: _productForm()),
-                      Expanded(child: _pickDropContainer(size)),
-                    ],
-                  )
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      _pickDropContainer(size),
-                      FxBox.h16,
-                      _productForm()
-                    ],
+          FxButton(
+            onPressed: () {
+              FxModal.showModel(
+                context: context,
+                title: 'Product Add',
+                content: _productForm(),
+                trailingIcon: const SvgIcon(icon: IconlyBroken.closeSquare),
+                actions: [
+                  FxButton(
+                    onPressed: () => Navigator.pop(context),
+                    text: Strings.close,
+                    buttonType: ButtonType.secondary,
                   ),
+                  ValueListenableBuilder<String>(
+                    valueListenable: _categorySelected,
+                    builder: (context, value, child) {
+                      return FxButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+
+                          setState(
+                            () {
+                              _productItem.add(
+                                ProductModel(
+                                  id: 3,
+                                  product: _productName.text,
+                                  category: value,
+                                  expiryDate: _expriryDate.text,
+                                  unit: int.parse(_unitStock.text),
+                                ),
+                              );
+
+                              _productName.clear();
+                              _unitStock.clear();
+                            },
+                          );
+                        },
+                        text: Strings.saveChange,
+                      );
+                    },
+                  ),
+                ],
+                modelType: ModalType.normal,
+              );
+            },
+            icon: const Icon(Icons.add),
+            text: 'Add New Product',
+            borderRadius: 4.0,
+          ),
+          FxBox.h10,
+          Card(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(8.0),
+              ),
+            ),
+            child: DataTable3(
+              columns: _productColum(),
+              rows: _productRow(),
+            ),
           ),
         ],
       ),
     );
+
+    //   return BlocProvider(
+    //     create: (context) => _formUploadFileBloc,
+    //     child: Column(
+    //       crossAxisAlignment: CrossAxisAlignment.start,
+    //       children: [
+    //         Container(
+    //           padding: const EdgeInsets.symmetric(
+    //             vertical: 32.0,
+    //             horizontal: 24.0,
+    //           ),
+    //           decoration: BoxDecoration(
+    //             // color: !isDark ? ColorConst.white : ColorConst.black,
+    //             color: Theme.of(context).brightness == Brightness.dark
+    //                 ? Colors.black
+    //                 : Colors.white,
+    //             borderRadius: BorderRadius.circular(8.0),
+    //           ),
+    //           child: Responsive.isWeb(context)
+    //               ? Row(
+    //                   crossAxisAlignment: CrossAxisAlignment.start,
+    //                   children: [
+    //                     Expanded(child: _productForm()),
+    //                     Expanded(child: _pickDropContainer(size)),
+    //                   ],
+    //                 )
+    //               : Column(
+    //                   crossAxisAlignment: CrossAxisAlignment.start,
+    //                   children: [
+    //                     _pickDropContainer(size),
+    //                     FxBox.h16,
+    //                     _productForm()
+    //                   ],
+    //                 ),
+    //         ),
+    //       ],
+    //     ),
+    //   );
+    // }
+  }
+
+  List<DataColumn> _productColum() {
+    List<String> column = [
+      'Id',
+      'Product Name',
+      'Category',
+      'Expiry Date',
+      'Unit',
+      ''
+    ];
+    return [
+      for (int i = 0; i < column.length; i++) ...[
+        DataColumn(
+          label: Text(
+            column[i],
+            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+          ),
+        ),
+      ]
+    ];
+  }
+
+  List<DataRow2> _productRow() {
+    return [
+      for (int i = 0; i < _productItem.length; i++) ...[
+        DataRow2(
+          cells: [
+            DataCell(Text(_productItem[i].id.toString())),
+            DataCell(Text(_productItem[i].product)),
+            DataCell(Text(_productItem[i].category)),
+            DataCell(Text(_productItem[i].expiryDate)),
+            DataCell(
+              Text(
+                _productItem[i].unit.toString(),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            DataCell(Row(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.edit),
+                ),
+                IconButton(
+                  onPressed: () {
+                    setState(() {
+                      _productItem.removeWhere(
+                          (element) => element.id == _productItem[i].id);
+                    });
+                  },
+                  icon: const Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
+                )
+              ],
+            ))
+          ],
+        )
+      ]
+    ];
   }
 
   Widget _emptyView() {
@@ -100,6 +259,7 @@ class _ProductAddState extends State<ProductAdd> {
         _formTitle('Product Name'),
         FxBox.h6,
         CustomTextField(
+          controller: _productName,
           contentPadding: const EdgeInsets.all(12.0),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
@@ -127,14 +287,6 @@ class _ProductAddState extends State<ProductAdd> {
         _categoryDropDown(),
         FxBox.h16,
         _expiryRow(),
-        FxBox.h16,
-        FxButton(
-          height: 60,
-          fullWidth: true,
-          borderRadius: 4.0,
-          text: 'ADD PRODUCT KNOW',
-          onPressed: () {},
-        )
       ],
     );
   }
@@ -366,6 +518,100 @@ class _ProductAddState extends State<ProductAdd> {
       return '${((await file.length() / 1024) / 1024).toStringAsFixed(2)} MB';
     }
   }
+
+  Widget _categoryDropDown() {
+    return DropdownButtonFormField(
+      hint: const Text(
+        'Select Category',
+        style: TextStyle(
+          color: ColorConst.black,
+        ),
+      ),
+      decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(12.0),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: BorderSide(
+            color: !isDark
+                ? ColorConst.black
+                : ColorConst.white.withOpacity(
+                    0.5,
+                  ),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8.0),
+          borderSide: BorderSide(
+            color:
+                !isDark ? ColorConst.black : ColorConst.white.withOpacity(0.5),
+          ),
+        ),
+      ),
+      onChanged: (value) {
+        _categorySelected.value = value['category'];
+        _categorySelected.notifyListeners();
+      },
+      items: productList.map<DropdownMenuItem>(
+        (e) {
+          return DropdownMenuItem(
+            value: e,
+            child: Text(e['category'].toString()),
+          );
+        },
+      ).toList(),
+    );
+  }
+
+  Widget _expiryRow() {
+    return Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _formTitle('Expire Date'),
+              FxBox.h6,
+              CustomTextField(
+                controller: _expriryDate,
+                keyboardType: TextInputType.datetime,
+                contentPadding: const EdgeInsets.all(12.0),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                inputFormatters: [
+                  LengthLimitingTextInputFormatter(10),
+                  CustomDateTextFormatter(),
+                ],
+              ),
+            ],
+          ),
+        ),
+        FxBox.w12,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _formTitle('Units in Stock'),
+              FxBox.h6,
+              CustomTextField(
+                controller: _unitStock,
+                contentPadding: const EdgeInsets.all(12.0),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+              ),
+            ],
+          ),
+        )
+      ],
+    );
+  }
 }
 
 _formTitle(String text) {
@@ -375,87 +621,216 @@ _formTitle(String text) {
   );
 }
 
-Widget _categoryDropDown() {
-  return DropdownButtonFormField(
-    hint: const Text(
-      'Select Category',
-      style: TextStyle(
-        color: ColorConst.black,
-      ),
-    ),
-    decoration: InputDecoration(
-      contentPadding: const EdgeInsets.all(12.0),
-      enabledBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.0),
-        borderSide: BorderSide(
-          color: !isDark
-              ? ColorConst.black
-              : ColorConst.white.withOpacity(
-                  0.5,
-                ),
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8.0),
-        borderSide: BorderSide(
-          color: !isDark ? ColorConst.black : ColorConst.white.withOpacity(0.5),
-        ),
-      ),
-    ),
-    onChanged: (value) {
-      print(value['title']);
-    },
-    items: productList.map<DropdownMenuItem>(
-      (e) {
-        return DropdownMenuItem(
-          value: e,
-          child: Text(e['category'].toString()),
-        );
-      },
-    ).toList(),
-  );
+//
+
+class ProductModel {
+  int id;
+  String product;
+  String category;
+  String expiryDate;
+  int unit;
+
+  ProductModel(
+      {required this.id,
+      required this.product,
+      required this.category,
+      required this.expiryDate,
+      required this.unit});
 }
 
-Widget _expiryRow() {
-  return Row(
-    children: [
-      Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _formTitle('Expire Date'),
-            FxBox.h6,
-            CustomTextField(
-              contentPadding: const EdgeInsets.all(12.0),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-            ),
-          ],
-        ),
-      ),
-      FxBox.w12,
-      Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _formTitle('Units in Stock'),
-            FxBox.h6,
-            CustomTextField(
-              contentPadding: const EdgeInsets.all(12.0),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-            ),
-          ],
-        ),
-      )
-    ],
+class CustomDateTextFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    var text = _format(newValue.text, '/', oldValue);
+    return newValue.copyWith(
+        text: text, selection: _updateCursorPosition(text, oldValue));
+  }
+}
+
+String _format(String value, String seperator, TextEditingValue old) {
+  var finalString = '';
+  var dd = '';
+  var mm = '';
+  var yyy = '';
+  var oldVal = old.text;
+
+  var tempOldval = oldVal;
+  var tempValue = value;
+  if (!oldVal.contains(seperator) ||
+      oldVal.isEmpty ||
+      seperator.allMatches(oldVal).length < 2) {
+    oldVal += '///';
+  }
+  if (!value.contains(seperator) || _backSlashCount(value) < 2) {
+    value += '///';
+  }
+  var splitArrOLD = oldVal.split(seperator);
+  var splitArrNEW = value.split(seperator);
+
+  for (var i = 0; i < 3; i++) {
+    splitArrOLD[i] = splitArrOLD[i].toString().trim();
+    splitArrNEW[i] = splitArrNEW[i].toString().trim();
+  }
+  // block erasing
+  if ((splitArrOLD[0].isNotEmpty &&
+          splitArrOLD[2].isNotEmpty &&
+          splitArrOLD[1].isEmpty &&
+          tempValue.length < tempOldval.length &&
+          splitArrOLD[0] == splitArrNEW[0] &&
+          splitArrOLD[2].toString().trim() ==
+              splitArrNEW[1].toString().trim()) ||
+      (_backSlashCount(tempOldval) > _backSlashCount(tempValue) &&
+          splitArrNEW[1].length > 2) ||
+      (splitArrNEW[0].length > 2 && _backSlashCount(tempOldval) == 1) ||
+      (_backSlashCount(tempOldval) == 2 &&
+          _backSlashCount(tempValue) == 1 &&
+          splitArrNEW[0].length > splitArrOLD[0].length)) {
+    finalString = tempOldval; // making the old date as it is
+  } else {
+    if (splitArrNEW[0].length > splitArrOLD[0].length) {
+      if (splitArrNEW[0].length < 3) {
+        dd = splitArrNEW[0];
+      } else {
+        for (var i = 0; i < 2; i++) {
+          dd += splitArrNEW[0][i];
+        }
+      }
+      if (dd.length == 2 && !dd.contains(seperator)) {
+        dd += seperator;
+      }
+    } else if (splitArrNEW[0].length == splitArrOLD[0].length) {
+      if (oldVal.length > value.length && splitArrNEW[1].isEmpty) {
+        dd = splitArrNEW[0];
+      } else {
+        dd = splitArrNEW[0] + seperator;
+      }
+    } else if (splitArrNEW[0].length < splitArrOLD[0].length) {
+      if (oldVal.length > value.length &&
+          splitArrNEW[1].isEmpty &&
+          splitArrNEW[0].isNotEmpty) {
+        dd = splitArrNEW[0];
+      } else if (tempOldval.length > tempValue.length &&
+          splitArrNEW[0].isEmpty &&
+          _backSlashCount(tempValue) == 2) {
+        dd += seperator;
+      } else {
+        if (splitArrNEW[0].isNotEmpty) {
+          dd = splitArrNEW[0] + seperator;
+        }
+      }
+    }
+
+    if (dd.isNotEmpty) {
+      finalString = dd;
+      if (dd.length == 2 &&
+          !dd.contains(seperator) &&
+          oldVal.length < value.length &&
+          splitArrNEW[1].isNotEmpty) {
+        if (seperator.allMatches(dd).isEmpty) {
+          finalString += seperator;
+        }
+      } else if (splitArrNEW[2].isNotEmpty &&
+          splitArrNEW[1].isEmpty &&
+          tempOldval.length > tempValue.length) {
+        if (seperator.allMatches(dd).isEmpty) {
+          finalString += seperator;
+        }
+      } else if (oldVal.length < value.length &&
+          (splitArrNEW[1].isNotEmpty || splitArrNEW[2].isNotEmpty)) {
+        if (seperator.allMatches(dd).isEmpty) {
+          finalString += seperator;
+        }
+      }
+    } else if (_backSlashCount(tempOldval) == 2 && splitArrNEW[1].isNotEmpty) {
+      dd += seperator;
+    }
+
+    if (splitArrNEW[0].length == 3 && splitArrOLD[1].isEmpty) {
+      mm = splitArrNEW[0][2];
+    }
+
+    if (splitArrNEW[1].length > splitArrOLD[1].length) {
+      if (splitArrNEW[1].length < 3) {
+        mm = splitArrNEW[1];
+      } else {
+        for (var i = 0; i < 2; i++) {
+          mm += splitArrNEW[1][i];
+        }
+      }
+      if (mm.length == 2 && !mm.contains(seperator)) {
+        mm += seperator;
+      }
+    } else if (splitArrNEW[1].length == splitArrOLD[1].length) {
+      if (splitArrNEW[1].isNotEmpty) {
+        mm = splitArrNEW[1];
+      }
+    } else if (splitArrNEW[1].length < splitArrOLD[1].length) {
+      if (splitArrNEW[1].isNotEmpty) {
+        mm = splitArrNEW[1] + seperator;
+      }
+    }
+
+    if (mm.isNotEmpty) {
+      finalString += mm;
+      if (mm.length == 2 && !mm.contains(seperator)) {
+        if (tempOldval.length < tempValue.length) {
+          finalString += seperator;
+        }
+      }
+    }
+
+    if (splitArrNEW[1].length == 3 && splitArrOLD[2].isEmpty) {
+      yyy = splitArrNEW[1][2];
+    }
+
+    if (splitArrNEW[2].length > splitArrOLD[2].length) {
+      if (splitArrNEW[2].length < 5) {
+        yyy = splitArrNEW[2];
+      } else {
+        for (var i = 0; i < 4; i++) {
+          yyy += splitArrNEW[2][i];
+        }
+      }
+    } else if (splitArrNEW[2].length == splitArrOLD[2].length) {
+      if (splitArrNEW[2].isNotEmpty) {
+        yyy = splitArrNEW[2];
+      }
+    } else if (splitArrNEW[2].length < splitArrOLD[2].length) {
+      yyy = splitArrNEW[2];
+    }
+
+    if (yyy.isNotEmpty) {
+      if (_backSlashCount(finalString) < 2) {
+        if (splitArrNEW[0].isEmpty && splitArrNEW[1].isEmpty) {
+          finalString = seperator + seperator + yyy;
+        } else {
+          finalString = finalString + seperator + yyy;
+        }
+      } else {
+        finalString += yyy;
+      }
+    } else {
+      if (_backSlashCount(finalString) > 1 && oldVal.length > value.length) {
+        var valueUpdate = finalString.split(seperator);
+        finalString = valueUpdate[0] + seperator + valueUpdate[1];
+      }
+    }
+  }
+
+  return finalString;
+}
+
+TextSelection _updateCursorPosition(String text, TextEditingValue oldValue) {
+  var endOffset = max(
+    oldValue.text.length - oldValue.selection.end,
+    0,
   );
+  var selectionEnd = text.length - endOffset;
+  print('My log ---> $selectionEnd');
+  return TextSelection.fromPosition(TextPosition(offset: selectionEnd));
+}
+
+int _backSlashCount(String value) {
+  return '/'.allMatches(value).length;
 }
