@@ -2,6 +2,8 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order/invoice_ui.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -222,7 +224,15 @@ class _ReturnOrderInvoiceState extends State<ReturnOrderInvoice> {
                           ),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        try {
+                          await GenerateInvoice().printInvoice();
+                        } catch (e) {
+                          if (kDebugMode) {
+                            print(e);
+                          }
+                        }
+                      },
                       child: const Icon(
                         Icons.print,
                         color: Colors.white,
