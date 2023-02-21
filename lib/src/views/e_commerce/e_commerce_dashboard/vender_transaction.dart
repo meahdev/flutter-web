@@ -7,14 +7,56 @@ import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class Transaction extends StatefulWidget {
-  const Transaction({Key? key}) : super(key: key);
+class VenderTransaction extends StatefulWidget {
+  const VenderTransaction({Key? key}) : super(key: key);
 
   @override
-  State<Transaction> createState() => _TransactionState();
+  State<VenderTransaction> createState() => _VenderTransactionState();
 }
 
-class _TransactionState extends State<Transaction> {
+class _VenderTransactionState extends State<VenderTransaction> {
+  final List<Map<String, dynamic>> _transactionData = [
+    {
+      'id': 1,
+      'name': 'Jane Deo',
+      'product': 'Dell Laptop',
+      'date': 'November 15, 2022',
+      'amount': '\$1200',
+      'status': 'Delivered',
+    },
+    {
+      'id': 2,
+      'name': 'Marious Den',
+      'product': 'Mac',
+      'date': 'October 20, 2022',
+      'amount': '\$1400',
+      'status': 'Pending',
+    },
+    {
+      'id': 3,
+      'name': 'Nikolas Jem',
+      'product': 'Clothes',
+      'date': 'December 29, 2022',
+      'amount': '\$1400',
+      'status': 'Pending',
+    },
+    {
+      'id': 4,
+      'name': 'Morry Hang',
+      'product': 'Play Game',
+      'date': 'January 21, 2023',
+      'amount': '\$500',
+      'status': 'Cancle',
+    },
+    {
+      'id': 5,
+      'name': 'Jon Show',
+      'product': 'Shoe',
+      'date': 'February 12, 2023',
+      'amount': '\$300',
+      'status': 'Delivered',
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -30,7 +72,7 @@ class _TransactionState extends State<Transaction> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ConstText.lightText(
-              text: Strings.latestOrder,
+              text: Strings.latestTransaction,
               fontWeight: FontWeight.bold,
             ),
             FxBox.h10,
@@ -87,74 +129,37 @@ class _TransactionState extends State<Transaction> {
                     size: ColumnSize.S,
                   ),
                 ],
-                rows: [
-                  DataRow(
+                rows: _transactionData.map((e) {
+                  return DataRow(
                     onSelectChanged: (value) {},
                     cells: [
-                      DataCell(_tableHeader('1')),
-                      DataCell(_tableRowImage('Jane Deo')),
-                      DataCell(_tableHeader('Website')),
-                      DataCell(_tableHeader('November 15, 2022')),
-                      DataCell(_tableHeader('\$90')),
-                      DataCell(_statusBox(ColorConst.successDark, 'Delivered')),
+                      DataCell(_tableHeader(e['id'].toString())),
+                      DataCell(_tableRowImage(e['name'])),
+                      DataCell(_tableHeader(e['product'])),
+                      DataCell(_tableHeader(e['date'])),
+                      DataCell(_tableHeader(e['amount'])),
+                      DataCell(
+                          _statusBox(defineColor(e['status']), e['status'])),
                       DataCell(_editButton()),
                     ],
-                  ),
-                  DataRow(
-                    onSelectChanged: (value) {},
-                    cells: [
-                      DataCell(_tableHeader('2')),
-                      DataCell(_tableRowImage('Joe Blow')),
-                      DataCell(_tableHeader('Mobile App')),
-                      DataCell(_tableHeader('November 17, 2022')),
-                      DataCell(_tableHeader('\$127')),
-                      DataCell(_statusBox(ColorConst.warningDark, 'Pending')),
-                      DataCell(_editButton()),
-                    ],
-                  ),
-                  DataRow(
-                    onSelectChanged: (value) {},
-                    cells: [
-                      DataCell(_tableHeader('3')),
-                      DataCell(_tableRowImage('Jhon Wick')),
-                      DataCell(_tableHeader('Website')),
-                      DataCell(_tableHeader('November 3, 2022')),
-                      DataCell(_tableHeader('\$107')),
-                      DataCell(_statusBox(ColorConst.successDark, 'Delivered')),
-                      DataCell(_editButton()),
-                    ],
-                  ),
-                  DataRow(
-                    onSelectChanged: (value) {},
-                    cells: [
-                      DataCell(_tableHeader('4')),
-                      DataCell(_tableRowImage('Joe Wick')),
-                      DataCell(_tableHeader('Desktop App')),
-                      DataCell(_tableHeader('November 18, 2022')),
-                      DataCell(_tableHeader('\$109')),
-                      DataCell(_statusBox(ColorConst.errorDark, 'Cancel')),
-                      DataCell(_editButton()),
-                    ],
-                  ),
-                  DataRow(
-                    onSelectChanged: (value) {},
-                    cells: [
-                      DataCell(_tableHeader('5')),
-                      DataCell(_tableRowImage('Jane Blow')),
-                      DataCell(_tableHeader('Desktop App')),
-                      DataCell(_tableHeader('November 12, 2022')),
-                      DataCell(_tableHeader('\$120')),
-                      DataCell(_statusBox(ColorConst.successDark, 'Delivered')),
-                      DataCell(_editButton()),
-                    ],
-                  ),
-                ],
+                  );
+                }).toList(),
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  Color defineColor(String header) {
+    if (header == 'Delivered') {
+      return ColorConst.successDark;
+    } else if (header == 'Cancle') {
+      return ColorConst.errorDark;
+    } else {
+      return ColorConst.warningDark;
+    }
   }
 
   Widget _tableHeader(String text) {

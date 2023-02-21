@@ -1,5 +1,6 @@
 class Images {
   static const String _assetPath = 'assets/images/';
+  static const String _assetPathCountry = 'assets/country/';
 
   static const String smLogo = '${_assetPath}logo-sm.png';
   static const String lgLightLogo = '${_assetPath}logo-light-lg.png';
@@ -43,4 +44,11 @@ class Images {
   static const String cloth = '${_assetPath}cloth.png';
   static const String cap = '${_assetPath}cap.png';
   static const String shoe = '${_assetPath}shoe.png';
+
+  // country
+  static const String usa = '${_assetPathCountry}usa.png';
+  static const String aus = '${_assetPathCountry}Australia.png';
+  static const String germany = '${_assetPathCountry}Germany.png';
+  static const String switzerland = '${_assetPathCountry}Switzerland.png';
+  static const String canada = '${_assetPathCountry}Canada.png';
 }

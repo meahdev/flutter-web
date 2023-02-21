@@ -48,7 +48,7 @@ class Strings {
   static const String modal = 'Modal';
   static const String loader = 'Loaders';
   static const String tabs = 'Tabs';
-  static const String latestTransaction = 'Latest order';
+  static const String latestOrder = 'Latest order';
   static const String carousel = 'Carousel Slider';
   static const String videoPlayer = 'Video Player';
   static const String dragDrop = 'Drag Drop';
@@ -175,6 +175,7 @@ class Strings {
 
   // sale report
   static const String salesReport = 'Monthly Report';
+  static const String salesOverview = 'Sales Overview';
   static const String desktop = 'Desktop';
   static const String mobile = 'Mobile';
   static const String tablets = 'Tablets';
@@ -287,4 +288,5 @@ class Strings {
   static const String coupons = 'Coupons';
   static const String eCommerceDashboard = 'E Commerce Dashboard';
   static const String globalSaleText = 'Global Sales by Tops Locations';
+  static const String latestTransaction = 'Latest Transaction';
 }

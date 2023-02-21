@@ -104,7 +104,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               crossAxisSpacing: 20,
                               mainAxisSpacing: 20,
                               mainAxisExtent:
-                                  Responsive.isWeb(context) ? 385 : 426,
+                                  Responsive.isWeb(context) ? 390 : 426,
                             ),
                             itemBuilder: (context, index) {
                               return _cardUI(index);
@@ -136,7 +136,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                               : 1,
                           crossAxisSpacing: 20,
                           mainAxisSpacing: 20,
-                          mainAxisExtent: Responsive.isWeb(context) ? 385 : 426,
+                          mainAxisExtent: Responsive.isWeb(context) ? 390 : 426,
                         ),
                         itemBuilder: (context, index) {
                           return _cardUI(index);

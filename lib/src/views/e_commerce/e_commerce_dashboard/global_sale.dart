@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
+import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
@@ -19,28 +20,33 @@ class _GlobalSaleState extends State<GlobalSale> {
   final List<Map<String, dynamic>> _venderList = [
     {
       'id': 1,
-      'r_condition': 'Wrong Product',
-      'date': '12 Jan 2022',
+      'imagePath': Images.usa,
+      'coutry_name': 'USA',
+      'total_order': '1200',
     },
     {
       'id': 2,
-      'r_condition': 'Defective Product',
-      'date': '2 Feb 2022',
+      'imagePath': Images.aus,
+      'coutry_name': 'Australia',
+      'total_order': '1000',
     },
     {
       'id': 3,
-      'r_condition': 'Size Issue',
-      'date': '28 Feb 2022',
+      'imagePath': Images.canada,
+      'coutry_name': 'Canada',
+      'total_order': '1590',
     },
     {
       'id': 4,
-      'r_condition': 'Physical Damage Product',
-      'date': '03 Nov 2022',
+      'imagePath': Images.switzerland,
+      'coutry_name': 'Switzerland',
+      'total_order': '1700',
     },
     {
       'id': 5,
-      'r_condition': 'Not Define',
-      'date': '30 Oct 2022',
+      'imagePath': Images.germany,
+      'coutry_name': 'Germany',
+      'total_order': '700',
     },
   ];
 
@@ -102,12 +108,16 @@ class _GlobalSaleState extends State<GlobalSale> {
                           size: ColumnSize.S,
                         ),
                         DataColumn2(
-                          label: _tableHeader('Return Condition'),
-                          size: ColumnSize.L,
+                          label: _tableHeader('Country logo'),
+                          size: ColumnSize.S,
                         ),
                         DataColumn2(
-                          label: _tableHeader('Date'),
+                          label: _tableHeader('Country Name'),
                           size: ColumnSize.M,
+                        ),
+                        DataColumn2(
+                          label: _tableHeader('Total Sales'),
+                          size: ColumnSize.S,
                         ),
                       ],
                       rows: _venderList.map((e) {
@@ -117,8 +127,9 @@ class _GlobalSaleState extends State<GlobalSale> {
                           },
                           cells: [
                             DataCell(_tableHeader(e['id'].toString())),
-                            DataCell(_tableHeader(e['r_condition'])),
-                            DataCell(_tableHeader(e['date'])),
+                            DataCell(_tableImage(e['imagePath'])),
+                            DataCell(_tableHeader(e['coutry_name'])),
+                            DataCell(_tableHeader(e['total_order'])),
                           ],
                         );
                       }).toList()),
@@ -135,6 +146,16 @@ class _GlobalSaleState extends State<GlobalSale> {
     return ConstText.lightText(
       text: text,
       fontWeight: FontWeight.w700,
+    );
+  }
+
+  Widget _tableImage(String path) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Image.asset(
+        path,
+        width: 60,
+      ),
     );
   }
 }

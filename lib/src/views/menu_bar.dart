@@ -654,13 +654,13 @@ class _MenuBarState extends State<FMenuBar> {
                   ),
                   // extras
                   // if (value) _menuHeading(Strings.extras),
-                  _menuList(
-                    tabsRouter: tabsRouter,
-                    items: extrasData,
-                    isExpanded: true,
-                    children: extrasExpandList,
-                    isopen: value,
-                  ),
+                  // _menuList(
+                  //   tabsRouter: tabsRouter,
+                  //   items: extrasData,
+                  //   isExpanded: true,
+                  //   children: extrasExpandList,
+                  //   isopen: value,
+                  // ),
                   FxBox.h20,
                 ],
               ),
