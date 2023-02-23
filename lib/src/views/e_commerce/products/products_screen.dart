@@ -55,7 +55,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
   RangeValues rangeValue = const RangeValues(0, 500);
   @override
   Widget build(BuildContext context) {
-    print(MediaQuery.of(context).size.width);
     return Column(
       children: [
         !Responsive.isMobile(context) ? const SizedBox.shrink() : _filterUi(),
@@ -358,7 +357,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
+            Image.asset(
               _filterList.isNotEmpty
                   ? _filterList[index]['image']
                   : productList[index]['image'],

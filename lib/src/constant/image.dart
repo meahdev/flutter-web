@@ -44,6 +44,7 @@ class Images {
   static const String cloth = '${_assetPath}cloth.png';
   static const String cap = '${_assetPath}cap.png';
   static const String shoe = '${_assetPath}shoe.png';
+  static const String chair = '${_assetPath}chair.jpeg';
 
   // country
   static const String usa = '${_assetPathCountry}usa.png';

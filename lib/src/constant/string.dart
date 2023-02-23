@@ -281,11 +281,13 @@ class Strings {
   static const String payment = 'Payment';
   static const String returnOrder = 'Return Order';
   static const String order = 'Order';
+  static const String priceDetails = 'Price Details';
   static const String returnCondition = 'Return Condition';
   static const String venderDetail = 'Vender Detail';
   static const String monthlyOrder = 'Monthly Order';
   static const String subscriber = 'Subscribers';
   static const String coupons = 'Coupons';
+  static const String cart = 'Cart';
   static const String eCommerceDashboard = 'E Commerce Dashboard';
   static const String globalSaleText = 'Global Sales by Tops Locations';
   static const String latestTransaction = 'Latest Transaction';

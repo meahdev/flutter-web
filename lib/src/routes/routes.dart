@@ -7,6 +7,7 @@ import 'package:admin_dashboard/src/views/authentication/recover_password/recove
 import 'package:admin_dashboard/src/views/authentication/register/register_one.dart';
 import 'package:admin_dashboard/src/views/authentication/register/register_two.dart';
 import 'package:admin_dashboard/src/views/calender/calender.dart';
+import 'package:admin_dashboard/src/views/e_commerce/cart/cart_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
@@ -99,7 +100,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'timeline', page: TimelineScreen),
         AutoRoute(path: 'pricing', page: Pricing),
         AutoRoute(path: 'card', page: DirectoryPage),
-        AutoRoute(path: 'faqs', page: FAQs),
+        AutoRoute(path: 'FAQs', page: FAQs),
         AutoRoute(path: 'invoice', page: Invoice),
         AutoRoute(path: 'gallery', page: Gallery),
         AutoRoute(path: 'carousel-slider', page: Carousel),
@@ -129,6 +130,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'coupons', page: CouponsScreen),
         AutoRoute(path: 'return-condition', page: ReturnConditionScreen),
         AutoRoute(path: 'e-commerce-dashboard', page: EcommerceDashboard),
+        AutoRoute(path: 'cart', page: CartScreen),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

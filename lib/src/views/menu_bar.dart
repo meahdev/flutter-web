@@ -92,6 +92,7 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.category,
       Strings.vender,
       Strings.customer,
+      Strings.cart,
       Strings.payment,
       Strings.order,
       Strings.returnOrder,
@@ -204,6 +205,7 @@ class _MenuBarState extends State<FMenuBar> {
     OrderInvoice(),
     ReturnConditionScreen(),
     EcommerceDashboard(),
+    CartScreen(),
   ];
 
   @override
@@ -985,7 +987,8 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 49 ||
                   routeIndex == 50 ||
                   routeIndex == 52 ||
-                  routeIndex == 53) ...[
+                  routeIndex == 53 ||
+                  routeIndex == 54) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 39) ...[
                 const Text(' / ${Strings.eCommerce} / ${Strings.products}'),

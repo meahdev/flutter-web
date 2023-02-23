@@ -1,8 +1,11 @@
 String upperCase(String text) {
-  if (text.contains('-')) {
+  if (text == '/FAQs') {
+    return text.replaceAll('/', '');
+  } else if (text.contains('-')) {
     String tempText = '';
     for (String element in text.replaceAll('/', '').split('-')) {
-      tempText = '$tempText ${element.substring(0, 1).toUpperCase()}${element.substring(1).toLowerCase()}';
+      tempText =
+          '$tempText ${element.substring(0, 1).toUpperCase()}${element.substring(1).toLowerCase()}';
     }
     return tempText.trim();
   } else {

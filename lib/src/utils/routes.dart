@@ -4,6 +4,7 @@ import 'package:admin_dashboard/src/views/charts/chartist.dart';
 import 'package:admin_dashboard/src/views/charts/chartjs.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
+import 'package:admin_dashboard/src/views/e_commerce/cart/cart_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
@@ -162,6 +163,8 @@ int getRouteIndex(String route) {
     return 52;
   } else if (route == Strings.eCommerceDashboard) {
     return 53;
+  } else if (route == Strings.cart) {
+    return 54;
   } else {
     return 0;
   }
@@ -274,6 +277,8 @@ Widget getRouteWidget(int index) {
     return const ReturnConditionScreen();
   } else if (index == 53) {
     return const EcommerceDashboard();
+  } else if (index == 54) {
+    return const CartScreen();
   } else {
     return const Dashboard();
   }
