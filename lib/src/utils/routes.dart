@@ -21,6 +21,7 @@ import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_s
 import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/product_add.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
@@ -165,6 +166,8 @@ int getRouteIndex(String route) {
     return 53;
   } else if (route == Strings.cart) {
     return 54;
+  } else if (route == Strings.productAdd) {
+    return 55;
   } else {
     return 0;
   }
@@ -279,6 +282,8 @@ Widget getRouteWidget(int index) {
     return const EcommerceDashboard();
   } else if (index == 54) {
     return const CartScreen();
+  } else if (index == 55) {
+    return const ProductAdd();
   } else {
     return const Dashboard();
   }

@@ -12,6 +12,7 @@ import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/utils/text_utils.dart';
+
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
 import 'package:admin_dashboard/src/widget/expantion_tile.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -89,6 +90,7 @@ class _MenuBarState extends State<FMenuBar> {
     [
       Strings.eCommerceDashboard,
       Strings.products,
+      Strings.productAdd,
       Strings.category,
       Strings.vender,
       Strings.customer,
@@ -206,6 +208,7 @@ class _MenuBarState extends State<FMenuBar> {
     ReturnConditionScreen(),
     EcommerceDashboard(),
     CartScreen(),
+    ProductAdd(),
   ];
 
   @override
@@ -243,54 +246,51 @@ class _MenuBarState extends State<FMenuBar> {
                     },
                   ),
                   Expanded(
-                    child: SelectionArea(
-                      child: CustomScrollView(
-                        controller: _scrollController,
-                        slivers: [
-                          SliverList(
-                            delegate: SliverChildListDelegate(
-                              [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 24.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      FxBox.h20,
-                                      Text(
-                                        upperCase(tabsRouter.currentPath),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge!
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold),
-                                      ),
-                                      FxBox.h8,
-                                      _routesDeatils(tabsRouter),
-                                      FxBox.h20,
-                                      getRouteWidget(tabsRouter.activeIndex),
-                                      FxBox.h20,
-                                    ],
-                                  ),
+                    child: CustomScrollView(
+                      controller: _scrollController,
+                      slivers: [
+                        SliverList(
+                          delegate: SliverChildListDelegate(
+                            [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    FxBox.h20,
+                                    Text(
+                                      upperCase(tabsRouter.currentPath),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold),
+                                    ),
+                                    FxBox.h8,
+                                    _routesDeatils(tabsRouter),
+                                    FxBox.h20,
+                                    getRouteWidget(tabsRouter.activeIndex),
+                                    FxBox.h20,
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          SliverFillRemaining(
-                            hasScrollBody: false,
-                            fillOverscroll: true,
-                            child: Column(
-                              children: <Widget>[
-                                const Expanded(
-                                  child: SizedBox.shrink(),
-                                ),
-                                _footer(),
-                              ],
-                            ),
+                        ),
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          fillOverscroll: true,
+                          child: Column(
+                            children: <Widget>[
+                              const Expanded(
+                                child: SizedBox.shrink(),
+                              ),
+                              _footer(),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -836,7 +836,6 @@ class _MenuBarState extends State<FMenuBar> {
                       isOpen.value = true;
                       tabsRouter.setActiveIndex(
                           getRouteIndex(items.keys.elementAt(index)));
-
                       HiveUtils.set(Strings.selectedmenuIndex,
                           getRouteIndex(items.keys.elementAt(index)));
                       _scaffoldDrawerKey.currentState?.closeDrawer();
@@ -1014,6 +1013,8 @@ class _MenuBarState extends State<FMenuBar> {
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 39) ...[
                 const Text(' / ${Strings.eCommerce} / ${Strings.products}'),
+              ] else if (routeIndex == 55) ...[
+                const Text(' / ${Strings.eCommerce} '),
               ] else if (tabsRouter.currentPath == '/calendar' ||
                   tabsRouter.currentPath == '/map') ...[
                 const SizedBox.shrink()
