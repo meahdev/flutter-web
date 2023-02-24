@@ -121,6 +121,7 @@ class _ProductAddState extends State<ProductAdd> {
               ),
             ),
             child: DataTable3(
+              minWidth: 1100,
               columns: _productColum(),
               rows: _productRow(),
             ),
