@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -7,6 +8,7 @@ import 'package:admin_dashboard/src/views/dashboard/sales_report.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/dash_list_item.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/global_sale.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/sales_overview.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/vender_sales.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/vender_transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -30,23 +32,24 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Expanded(
-                    child: SalesReport(),
+                    child: VenderSalesReport(),
                   ),
                   FxBox.w24,
                   Expanded(
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(child: newUserBox()),
-                            FxBox.w24,
-                            Expanded(child: newsubcriptionBox()),
-                          ],
-                        ),
-                        FxBox.h24,
-                        totalsubcriptionBox(),
-                      ],
-                    ),
+                    child: _reachdetails(),
+                    //  Column(
+                    //   children: [
+                    //     Row(
+                    //       children: [
+                    //         Expanded(child: newUserBox()),
+                    //         FxBox.w24,
+                    //         Expanded(child: newsubcriptionBox()),
+                    //       ],
+                    //     ),
+                    //     FxBox.h24,
+                    //     totalsubcriptionBox(),
+                    //   ],
+                    // ),
                   ),
                   FxBox.w24,
                   const Expanded(
@@ -57,17 +60,19 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
               )
             : Column(
                 children: [
-                  const SalesReport(),
+                  const VenderSalesReport(),
                   FxBox.h24,
-                  Row(
-                    children: [
-                      Expanded(child: newUserBox()),
-                      FxBox.w24,
-                      Expanded(child: newsubcriptionBox()),
-                    ],
-                  ),
-                  FxBox.h24,
-                  totalsubcriptionBox(),
+                  // Row(
+                  //   children: [
+                  //     Expanded(child: newUserBox()),
+                  //     FxBox.w24,
+                  //     Expanded(child: newsubcriptionBox()),
+                  //   ],
+                  // ),
+
+                  // FxBox.h24,
+                  // totalsubcriptionBox(),
+                  _reachdetails(),
                   FxBox.h24,
                   const Salesanalytics(),
                 ],
@@ -91,6 +96,143 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
         FxBox.h24,
         const VenderTransaction(),
       ],
+    );
+  }
+
+  Widget _reachdetails() {
+    return Card(
+      shadowColor: ColorConst.primary.withOpacity(0.5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      elevation: 7,
+      child: Container(
+        height: 465,
+        padding: const EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            ConstText.lightText(
+              text: 'Monthly report of user'.toUpperCase(),
+              fontWeight: FontWeight.bold,
+            ),
+            FxBox.h10,
+            Expanded(
+              child: Stack(
+                children: [
+                  Positioned(
+                    bottom: 100,
+                    right: 300,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 70,
+                      height: 70,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(191, 159, 129, 1),
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: const CustomText(
+                        title: '10%',
+                        textColor: ColorConst.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 120,
+                    right: 150,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 170,
+                      height: 170,
+                      decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 54, 64, 152),
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: const CustomText(
+                        title: '52%',
+                        textColor: ColorConst.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 90,
+                    right: 80,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 120,
+                      height: 120,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(170, 191, 156, 1),
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: const CustomText(
+                        title: '34%',
+                        textColor: ColorConst.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 70,
+                    right: 90,
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: 100,
+                      height: 100,
+                      decoration: BoxDecoration(
+                        color: const Color.fromRGBO(219, 211, 206, 1),
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: const CustomText(
+                        title: '22%',
+                        textColor: ColorConst.white,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            FxBox.h12,
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _descriptionHeadre(
+                  boxColor: const Color.fromRGBO(170, 191, 156, 1),
+                  headerText: 'User',
+                ),
+                FxBox.w10,
+                _descriptionHeadre(
+                  boxColor: const Color.fromRGBO(219, 211, 206, 1),
+                  headerText: 'Vender',
+                ),
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _descriptionHeadre(
+                  boxColor: const Color.fromRGBO(191, 159, 129, 1),
+                  headerText: 'Subscription',
+                ),
+                FxBox.w10,
+                _descriptionHeadre(
+                  boxColor: const Color.fromARGB(255, 54, 64, 152),
+                  headerText: 'Total',
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 
