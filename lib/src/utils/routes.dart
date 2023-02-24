@@ -119,7 +119,7 @@ int getRouteIndex(String route) {
   } else if (route == Strings.products) {
     return 38;
   } else if (route == Strings.productAdd) {
-    return 39;
+    return 55;
   } else {
     return 0;
   }
@@ -202,7 +202,7 @@ Widget getRouteWidget(int index) {
     return const DatePicker();
   } else if (index == 38) {
     return const ProductsScreen();
-  } else if (index == 39) {
+  } else if (index == 55) {
     return const ProductAdd();
   } else {
     return const Dashboard();

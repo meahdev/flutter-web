@@ -804,8 +804,10 @@ class _MenuBarState extends State<FMenuBar> {
                     horizontalTitleGap: 0.0,
                     onTap: () {
                       isOpen.value = true;
-                      tabsRouter.setActiveIndex(getRouteIndex(items.keys.elementAt(index)));
-                      HiveUtils.set(Strings.selectedmenuIndex,getRouteIndex(items.keys.elementAt(index)));
+                      tabsRouter.setActiveIndex(
+                          getRouteIndex(items.keys.elementAt(index)));
+                      HiveUtils.set(Strings.selectedmenuIndex,
+                          getRouteIndex(items.keys.elementAt(index)));
                       _scaffoldDrawerKey.currentState?.closeDrawer();
                     },
                   ),
@@ -935,6 +937,8 @@ class _MenuBarState extends State<FMenuBar> {
               ] else if (routeIndex.isBetween(7, 9)) ...[
                 const Text(' / ${Strings.emailTemplates} '),
               ] else if (routeIndex == 38) ...[
+                const Text(' / ${Strings.eCommerce} '),
+              ] else if (routeIndex == 55) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (tabsRouter.currentPath == '/calendar' ||
                   tabsRouter.currentPath == '/map') ...[
