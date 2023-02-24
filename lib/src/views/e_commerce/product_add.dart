@@ -56,10 +56,10 @@ class _ProductAddState extends State<ProductAdd> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+
 
     return SizedBox(
-      height: size.height * 0.40,
+      height: MediaQuery.of(context).size.height * 0.40,
       width: double.infinity,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
