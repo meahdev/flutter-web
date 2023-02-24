@@ -18,7 +18,7 @@ class _VenderListItemState extends State<VenderListItem> {
       'producTitle': 'Total Earning',
       'value': '3,930 \$',
       'boxIcon': Icons.bar_chart_rounded,
-      'boxColor': ['FEBE99', 'F66F94'],
+      'boxColor': ['000C40', 'F0F2F0'],
       'percentage': 60,
     },
     {
@@ -26,16 +26,16 @@ class _VenderListItemState extends State<VenderListItem> {
       'producTitle': 'Total Orders',
       'value': '1200',
       'boxIcon': Icons.note_alt_rounded,
-      'boxColor': ['43D5E7', '7DB1F0'],
+      'boxColor': ['E8CBC0', '636FA4'],
       'percentage': 10,
     },
     {
       'id': 2,
       'producTitle': 'Total Cancelled Orders',
       'value': '120',
-      'boxIcon': Icons.note_alt_rounded,
+      'boxIcon': Icons.cancel_outlined,
       // 'boxColor': '9B5B1E',
-      'boxColor': ['43D5E7', '7DB1F0'],
+      'boxColor': ['de6161', '2657eb'],
       'percentage': 10,
     },
     {
@@ -43,7 +43,7 @@ class _VenderListItemState extends State<VenderListItem> {
       'producTitle': 'Total Return Order',
       'value': '170',
       'boxIcon': Icons.pending_actions_outlined,
-      'boxColor': ['FEBE99', 'F66F94'],
+      'boxColor': ['3a6186', '89253e'],
       'percentage': -5,
     },
     {
@@ -51,7 +51,7 @@ class _VenderListItemState extends State<VenderListItem> {
       'producTitle': 'Total Pending Ordres',
       'value': '200',
       'boxIcon': Icons.shopping_bag_rounded,
-      'boxColor': ['FEBE99', 'F66F94'],
+      'boxColor': ['4ecdc4', '556270'],
       'percentage': 15,
     },
     {
@@ -59,7 +59,7 @@ class _VenderListItemState extends State<VenderListItem> {
       'producTitle': 'Pending Settlement',
       'value': '400 \$',
       'boxIcon': Icons.shopping_bag_rounded,
-      'boxColor': ['43D5E7', '7DB1F0'],
+      'boxColor': ['ffd89b', '19547b'],
       'percentage': -1,
     },
   ];
@@ -68,6 +68,7 @@ class _VenderListItemState extends State<VenderListItem> {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: GridView.builder(
+      
         gridDelegate: Responsive.isMobile(context)
             ? const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
@@ -87,7 +88,7 @@ class _VenderListItemState extends State<VenderListItem> {
                         MediaQuery.of(context).size.width * 0.24,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20,
-                    mainAxisExtent: 205,
+                    mainAxisExtent: 225,
                   ),
         itemCount: _listItem.length,
         shrinkWrap: true,

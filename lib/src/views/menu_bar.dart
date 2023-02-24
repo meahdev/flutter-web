@@ -863,15 +863,37 @@ class _MenuBarState extends State<FMenuBar> {
               ? isDark
                   ? ColorConst.chartForgoundColor
                   : ColorConst.primary
-              : upperCase(tabsRouter.currentPath) == items[index]
+              : _checkSubRoute(tabsRouter.currentPath) == items[index]
                   ? isDark
                       ? ColorConst.chartForgoundColor
                       : ColorConst.primary
-                  : isDark
-                      ? ColorConst.white
-                      : ColorConst.black;
+                  : upperCase(tabsRouter.currentPath) == items[index]
+                      ? isDark
+                          ? ColorConst.chartForgoundColor
+                          : ColorConst.primary
+                      : isDark
+                          ? ColorConst.white
+                          : ColorConst.black;
           return Row(
             children: [
+              if (_checkSubRoute(tabsRouter.currentPath) == items[index]) ...[
+                Container(
+                  width: 6.0,
+                  height: 48.0,
+                  decoration: BoxDecoration(
+                    color:
+                        _checkSubRoute(tabsRouter.currentPath) == items[index]
+                            ? isDark
+                                ? ColorConst.chartForgoundColor
+                                : ColorConst.primary
+                            : ColorConst.transparent,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(6.0),
+                      bottomRight: Radius.circular(6.0),
+                    ),
+                  ),
+                ),
+              ],
               Container(
                 width: 6.0,
                 height: 48.0,
@@ -1013,4 +1035,20 @@ class _MenuBarState extends State<FMenuBar> {
         alignment: Alignment.center,
         child: const Text(Strings.footerText),
       );
+
+  String _checkSubRoute(String path) {
+    if (upperCase(path) == 'Products Detail') {
+      return 'Products';
+    } else if (upperCase(path) == 'Sub Category') {
+      return 'Category';
+    } else if (upperCase(path) == 'Vender Detail') {
+      return 'Vender';
+    } else if (upperCase(path) == 'Return Order Invoice') {
+      return 'Return Order';
+    } else if (upperCase(path) == 'Order Invoice') {
+      return 'Order';
+    } else {
+      return '';
+    }
+  }
 }

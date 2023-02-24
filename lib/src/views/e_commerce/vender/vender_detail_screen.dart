@@ -22,6 +22,7 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         MediaQuery.of(context).size.width >= 1500
             ? Row(
@@ -39,6 +40,7 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
               )
             : MediaQuery.of(context).size.width < 1300
                 ? Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
@@ -52,6 +54,7 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
                     ],
                   )
                 : Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Column(
@@ -76,7 +79,8 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
     return Container(
       constraints: BoxConstraints(
           maxWidth: isxl(context)
-              ? (56.0 * 10) + 72.0
+              // ? (56.0 * 10) + 72.0
+              ? 650
               : MediaQuery.of(context).size.width),
       padding: const EdgeInsets.all(20),
       child: const VenderListItem(),

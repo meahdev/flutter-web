@@ -121,7 +121,7 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
                 fontWeight: FontWeight.w600,
               ),
               ConstText.largeText(
-                text: '24.800',
+                text: '24,800',
                 fontSize: 33,
                 color: ColorConst.primary,
                 fontWeight: FontWeight.bold,

@@ -713,7 +713,7 @@ class AppRouter extends _i69.RootStackRouter {
             ),
             _i69.RouteConfig(
               ProductDetailScreen.name,
-              path: 'products-detail',
+              path: 'products/products-detail',
               parent: FMenuBar.name,
             ),
             _i69.RouteConfig(
@@ -723,7 +723,7 @@ class AppRouter extends _i69.RootStackRouter {
             ),
             _i69.RouteConfig(
               SubCategoryScreen.name,
-              path: 'sub-category',
+              path: 'category/sub-category',
               parent: FMenuBar.name,
             ),
             _i69.RouteConfig(
@@ -733,7 +733,7 @@ class AppRouter extends _i69.RootStackRouter {
             ),
             _i69.RouteConfig(
               VenderDetailScreen.name,
-              path: 'vender-detail',
+              path: 'vender/vender-detail',
               parent: FMenuBar.name,
             ),
             _i69.RouteConfig(
@@ -758,12 +758,12 @@ class AppRouter extends _i69.RootStackRouter {
             ),
             _i69.RouteConfig(
               ReturnOrderInvoice.name,
-              path: 'return-order-invoice',
+              path: 'return-order/return-order-invoice',
               parent: FMenuBar.name,
             ),
             _i69.RouteConfig(
               OrderInvoice.name,
-              path: 'order-invoice',
+              path: 'order/order-invoice',
               parent: FMenuBar.name,
             ),
             _i69.RouteConfig(
@@ -1475,7 +1475,7 @@ class ProductDetailScreen extends _i69.PageRouteInfo<void> {
   const ProductDetailScreen()
       : super(
           ProductDetailScreen.name,
-          path: 'products-detail',
+          path: 'products/products-detail',
         );
 
   static const String name = 'ProductDetailScreen';
@@ -1499,7 +1499,7 @@ class SubCategoryScreen extends _i69.PageRouteInfo<void> {
   const SubCategoryScreen()
       : super(
           SubCategoryScreen.name,
-          path: 'sub-category',
+          path: 'category/sub-category',
         );
 
   static const String name = 'SubCategoryScreen';
@@ -1523,7 +1523,7 @@ class VenderDetailScreen extends _i69.PageRouteInfo<void> {
   const VenderDetailScreen()
       : super(
           VenderDetailScreen.name,
-          path: 'vender-detail',
+          path: 'vender/vender-detail',
         );
 
   static const String name = 'VenderDetailScreen';
@@ -1583,7 +1583,7 @@ class ReturnOrderInvoice extends _i69.PageRouteInfo<void> {
   const ReturnOrderInvoice()
       : super(
           ReturnOrderInvoice.name,
-          path: 'return-order-invoice',
+          path: 'return-order/return-order-invoice',
         );
 
   static const String name = 'ReturnOrderInvoice';
@@ -1595,7 +1595,7 @@ class OrderInvoice extends _i69.PageRouteInfo<void> {
   const OrderInvoice()
       : super(
           OrderInvoice.name,
-          path: 'order-invoice',
+          path: 'order/order-invoice',
         );
 
   static const String name = 'OrderInvoice';

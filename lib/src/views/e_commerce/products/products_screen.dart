@@ -20,6 +20,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   int tempCategoryIndex = 0;
 
   List<bool> isColor = [];
+  List<bool> iscategory = [];
   final List<String> _categoryList = [
     'All',
     'Electronics',
@@ -46,8 +47,18 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
   @override
   void initState() {
+    isColor.clear();
+    iscategory.clear();
     for (var data in _productColor) {
       isColor.add(false);
+    }
+
+    for (int i = 0; i < _productColor.length; i++) {
+      if (i == 0) {
+        iscategory.add(true);
+      } else {
+        iscategory.add(false);
+      }
     }
     super.initState();
   }
@@ -192,10 +203,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
           shrinkWrap: true,
           itemCount: _productColor.length,
           itemBuilder: (context, index) {
-            //isColor.clear();
-            for (var data in _productColor) {
-              isColor.add(false);
-            }
             return Row(
               children: [
                 Checkbox(
@@ -238,35 +245,47 @@ class _ProductsScreenState extends State<ProductsScreen> {
           shrinkWrap: true,
           itemCount: _categoryList.length,
           itemBuilder: (context, index) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            return Row(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    tempCategoryIndex = index;
-                    if (_categoryList[index] == 'All') {
-                      _filterList = productList;
-                    } else {
-                      _filterList = productList.where(
-                        (element) {
-                          return element['category'] == _categoryList[index];
-                        },
-                      ).toList();
-                    }
+                Checkbox(
+                  activeColor: ColorConst.primary,
+                  checkColor: ColorConst.white,
+                  value: iscategory[index],
+                  onChanged: (value) {
+                    // List<String> _tempList = [];
+                    // for (int i = 0; i < _categoryList.length; i++) {
+                    //   if (i == index) {
+                    //     _tempList.add(_categoryList[i]);
+                    //     setState(() {});
+                    //   }
+                    // }
 
-                    isFilter = true;
+                    if (value == true) {
+                      iscategory[index] = true;
+                      tempCategoryIndex = index;
+                      if (_categoryList[index] == 'All') {
+                        _filterList = productList;
+                      } else {
+                        _filterList = productList.where(
+                          (element) {
+                            return element['category']
+                                .toString()
+                                .contains(_categoryList[index]);
+                          },
+                        ).toList();
+                      }
+
+                      isFilter = true;
+                    } else {
+                      iscategory[index] = false;
+                      _filterList = productList;
+                    }
                     setState(() {});
                   },
-                  child: CustomText(
-                    title: _categoryList[index],
-                    textColor: tempCategoryIndex == index
-                        ? ColorConst.primary
-                        : isDark
-                            ? ColorConst.white
-                            : ColorConst.black,
-                  ),
                 ),
-                FxBox.h10,
+                CustomText(
+                  title: _categoryList[index],
+                ),
               ],
             );
           },

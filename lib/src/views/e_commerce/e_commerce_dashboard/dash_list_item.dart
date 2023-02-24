@@ -33,7 +33,7 @@ class _DashListItemState extends State<DashListItem> {
       'id': 2,
       'producTitle': 'Total Cancelled Orders',
       'value': '1100',
-      'boxIcon': Icons.note_alt_rounded,
+      'boxIcon': Icons.cancel_outlined,
       // 'boxColor': '9B5B1E',
       'boxColor': ['000C40', 'F0F2F0'],
       'percentage': 10,
@@ -134,6 +134,7 @@ class _DashListItemState extends State<DashListItem> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(18.0),
       child: Stack(
+        
         children: [
           Container(
             decoration: BoxDecoration(

@@ -133,15 +133,15 @@ int getRouteIndex(String route) {
     return 37;
   } else if (route == Strings.products) {
     return 38;
-  } else if (route == 'Products Detail') {
+  } else if (route == '${Strings.products}/products Detail') {
     return 39;
   } else if (route == Strings.category) {
     return 40;
-  } else if (route == Strings.subCategory) {
+  } else if (route == '${Strings.category}/${Strings.subCategory}') {
     return 41;
   } else if (route == Strings.vender) {
     return 42;
-  } else if (route == Strings.venderDetail) {
+  } else if (route == '${Strings.vender}/vender Detail') {
     return 43;
   } else if (route == Strings.customer) {
     return 44;
@@ -149,7 +149,7 @@ int getRouteIndex(String route) {
     return 45;
   } else if (route == Strings.returnOrder) {
     return 46;
-  } else if (route == 'Return Order Invoice') {
+  } else if (route == '${Strings.returnOrder}/return Order Invoice') {
     return 47;
   } else if (route == Strings.subscriber) {
     return 48;
@@ -157,7 +157,7 @@ int getRouteIndex(String route) {
     return 49;
   } else if (route == Strings.order) {
     return 50;
-  } else if (route == 'Order Invoice') {
+  } else if (route == '${Strings.order}/order Invoice') {
     return 51;
   } else if (route == Strings.returnCondition) {
     return 52;

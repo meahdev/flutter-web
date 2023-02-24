@@ -6,6 +6,7 @@ import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
+import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -40,20 +41,115 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Row(
+        islg(context) || isxl(context)
+            ? Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: _cartDetails(),
+                  ),
+                  FxBox.w20,
+                  Expanded(
+                    child: Column(
+                      children: [
+                        _priceBox(),
+                        FxBox.h16,
+                        _couponBox(),
+                      ],
+                    ),
+                  ),
+                ],
+              )
+            : Responsive.isTablet(context)
+                ? Column(
+                    children: [
+                      _cartDetails(),
+                      FxBox.h20,
+                      Row(
+                        children: [
+                          Expanded(child: _priceBox()),
+                          FxBox.w16,
+                          Expanded(child: _couponBox()),
+                        ],
+                      ),
+                    ],
+                  )
+                : Column(
+                    children: [
+                      _cartDetails(),
+                      FxBox.h20,
+                      _priceBox(),
+                      FxBox.h20,
+                      _couponBox(),
+                    ],
+                  ),
+      ],
+    );
+  }
+
+  Widget _couponBox() {
+    return Card(
+      shadowColor: ColorConst.primary.withOpacity(0.5),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(18.0),
+      ),
+      elevation: 7,
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Expanded(
-              flex: 2,
-              child: _cartDetails(),
+            ConstText.lightText(
+              text: Strings.couponInfo.toUpperCase(),
+              fontWeight: FontWeight.bold,
             ),
-            FxBox.w20,
-            Expanded(
-              child: _priceBox(),
+            FxBox.h12,
+            SizedBox(
+              height: 50,
+              child: CustomTextField(
+                hintText: 'Enter Coupon Code',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                suffixIcon: FxButton(
+                  onPressed: () {},
+                  height: 65,
+                  color: ColorConst.primaryDark.withOpacity(0.8),
+                  text: Strings.apply,
+                ),
+              ),
+            ),
+            FxBox.h12,
+            ConstText.lightText(
+              text: Strings.orderDes.toUpperCase(),
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+            FxBox.h12,
+            CustomTextField(
+              hintText: 'Order Note',
+              maxLines: 3,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+            FxBox.h12,
+            Align(
+              alignment: Alignment.bottomRight,
+              child: FxButton(
+                onPressed: () {},
+                height: 50,
+                color: ColorConst.calSuccess,
+                text: Strings.checkOut,
+              ),
             ),
           ],
         ),
-      ],
+      ),
     );
   }
 
@@ -75,10 +171,33 @@ class _CartScreenState extends State<CartScreen> {
               fontWeight: FontWeight.bold,
             ),
             FxBox.h12,
-            _headerAndValue(header: 'SubTotal:', value: '\$500'),
-            _headerAndValue(header: 'Shipping:', value: 'Free'),
-            _headerAndValue(header: 'Tax:', value: '\$30'),
-            _headerAndValue(header: 'Total:', value: '\$530'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    _headerAndValue(
+                      text: 'SubTotal:',
+                      text1: 'Shipping:',
+                      text2: 'Tax:',
+                      total: 'Total:',
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    _headerAndValue(
+                      text: '\$500',
+                      text1: 'Free',
+                      text2: '\$30',
+                      total: '\$530',
+                    ),
+                  ],
+                ),
+                const SizedBox.shrink(),
+              ],
+            ),
           ],
         ),
       ),
@@ -86,26 +205,37 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   Widget _headerAndValue({
-    required String header,
-    required String value,
+    required String text,
+    required String text1,
+    required String text2,
+    required String total,
   }) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          ConstText.lightText(
-            text: header,
-            fontWeight: FontWeight.w500,
-          ),
-          ConstText.lightText(
-            text: value,
-            fontWeight: FontWeight.w500,
-          ),
-          const SizedBox.shrink(),
-          const SizedBox.shrink(),
-        ],
-      ),
+    return Column(
+      children: [
+        ConstText.lightText(
+          text: text,
+          textAlign: TextAlign.right,
+          fontWeight: FontWeight.w500,
+        ),
+        FxBox.h12,
+        ConstText.lightText(
+          text: text1,
+          textAlign: TextAlign.right,
+          fontWeight: FontWeight.w500,
+        ),
+        FxBox.h12,
+        ConstText.lightText(
+          text: text2,
+          textAlign: TextAlign.right,
+          fontWeight: FontWeight.w500,
+        ),
+        FxBox.h12,
+        ConstText.lightText(
+          text: total,
+          textAlign: TextAlign.right,
+          fontWeight: FontWeight.w800,
+        ),
+      ],
     );
   }
 
@@ -123,7 +253,7 @@ class _CartScreenState extends State<CartScreen> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ConstText.lightText(
-              text: Strings.returnCondition.toUpperCase(),
+              text: Strings.cartInfo.toUpperCase(),
               fontWeight: FontWeight.bold,
             ),
             FxBox.h12,
