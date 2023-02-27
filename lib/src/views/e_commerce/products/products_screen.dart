@@ -3,7 +3,7 @@ import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
-import 'package:admin_dashboard/src/constant/theme.dart';
+
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product.dart';
 import 'package:flutter/material.dart';
@@ -55,11 +55,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
     }
 
     for (int i = 0; i < _productColor.length; i++) {
-      // if (i == 0) {
-      //   iscategory.add(true);
-      // } else {
-      iscategory.add(false);
-      // }
+      if (i == 0) {
+        iscategory.add(true);
+      } else {
+        iscategory.add(false);
+      }
     }
     super.initState();
   }

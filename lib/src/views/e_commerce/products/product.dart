@@ -10,7 +10,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'Dining / Arm chair',
-    'image': 'assets/product/dining_chair.jpeg',
+    'image': 'assets/product/arm_chair.jpeg',
     'isFavourite': true,
     'price': 100,
     'rating': '4.0',
