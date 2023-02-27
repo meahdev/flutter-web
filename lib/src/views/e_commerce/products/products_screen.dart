@@ -20,6 +20,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   int tempCategoryIndex = 0;
 
   List<bool> isColor = [];
+  List<String> tempFilterList = [];
   List<bool> iscategory = [];
   final List<String> _categoryList = [
     'All',
@@ -252,6 +253,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   checkColor: ColorConst.white,
                   value: iscategory[index],
                   onChanged: (value) {
+                    _filterList.clear();
                     // List<String> _tempList = [];
                     // for (int i = 0; i < _categoryList.length; i++) {
                     //   if (i == index) {
@@ -260,27 +262,65 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     //   }
                     // }
 
+                    List<Map<String, dynamic>> tempList = [];
+                    List<Map<String, dynamic>> tempList1 = [];
+
                     if (value == true) {
+                      tempFilterList.add(_categoryList[index]);
                       iscategory[index] = true;
                       tempCategoryIndex = index;
-                      if (_categoryList[index] == 'All') {
-                        _filterList = productList;
-                      } else {
-                        _filterList = productList.where(
+                      // if (_categoryList[index] == 'All') {
+
+                      //   _filterList = productList;
+                      // } else {
+                      tempList1.clear();
+                      _filterList.clear();
+                      setState(() {});
+                      for (int i = 0; i < tempFilterList.length; i++) {
+                        tempList = productList.where(
                           (element) {
                             return element['category']
                                 .toString()
-                                .contains(_categoryList[index]);
+                                .contains(tempFilterList[i]);
                           },
                         ).toList();
+                        tempList1.addAll(tempList);
+
+                        _filterList = tempList1;
+                        setState(() {});
                       }
+                      // }
 
                       isFilter = true;
                     } else {
+                      tempFilterList.remove(_categoryList[index]);
                       iscategory[index] = false;
-                      _filterList = productList;
+
+                      if (tempFilterList.isEmpty) {
+                        setState(() {
+                          print(_filterList);
+                          _filterList = productList;
+                        });
+                      } else {
+                        //_filterList = productList;
+                        tempList1.clear();
+                        _filterList.clear();
+                        setState(() {});
+                        for (int i = 0; i < tempFilterList.length; i++) {
+                          tempList = productList.where(
+                            (element) {
+                              return element['category']
+                                  .toString()
+                                  .contains(tempFilterList[i]);
+                            },
+                          ).toList();
+                          tempList1.addAll(tempList);
+
+                          _filterList = tempList1;
+                          setState(() {});
+                        }
+                      }
                     }
-                    setState(() {});
                   },
                 ),
                 CustomText(

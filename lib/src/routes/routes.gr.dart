@@ -39,7 +39,7 @@ import '../views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dar
 import '../views/e_commerce/order/order_invoice.dart' as _i63;
 import '../views/e_commerce/order/order_screen.dart' as _i61;
 import '../views/e_commerce/payment/payment_screen.dart' as _i59;
-import '../views/e_commerce/product_add.dart' as _i69;
+import '../views/e_commerce/products/product_add.dart' as _i69;
 import '../views/e_commerce/products/product_detail_screen.dart' as _i53;
 import '../views/e_commerce/products/products_screen.dart' as _i52;
 import '../views/e_commerce/return_condition/return_condition_screen.dart'

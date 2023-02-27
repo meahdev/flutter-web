@@ -24,7 +24,7 @@ import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_s
 import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
-import 'package:admin_dashboard/src/views/e_commerce/product_add.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/product_add.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
