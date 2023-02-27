@@ -1,4 +1,4 @@
-List<Map<String, dynamic>> productList = [
+final List<Map<String, dynamic>> productList = [
   {
     'title': 'Zara Bag',
     'image': 'assets/product/fancy_bag.jpeg',

@@ -55,11 +55,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
     }
 
     for (int i = 0; i < _productColor.length; i++) {
-      if (i == 0) {
-        iscategory.add(true);
-      } else {
-        iscategory.add(false);
-      }
+      // if (i == 0) {
+      //   iscategory.add(true);
+      // } else {
+      iscategory.add(false);
+      // }
     }
     super.initState();
   }
@@ -254,57 +254,55 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   value: iscategory[index],
                   onChanged: (value) {
                     _filterList.clear();
-                    // List<String> _tempList = [];
-                    // for (int i = 0; i < _categoryList.length; i++) {
-                    //   if (i == index) {
-                    //     _tempList.add(_categoryList[i]);
-                    //     setState(() {});
-                    //   }
-                    // }
 
                     List<Map<String, dynamic>> tempList = [];
                     List<Map<String, dynamic>> tempList1 = [];
 
                     if (value == true) {
-                      tempFilterList.add(_categoryList[index]);
-                      iscategory[index] = true;
-                      tempCategoryIndex = index;
-                      // if (_categoryList[index] == 'All') {
+                      if (_categoryList[index] == 'All') {
+                        iscategory[index] = true;
+                        setState(() {
+                          _filterList =
+                              List<Map<String, dynamic>>.from(productList);
+                        });
+                      } else {
+                        iscategory[0] = false;
 
-                      //   _filterList = productList;
-                      // } else {
-                      tempList1.clear();
-                      _filterList.clear();
-                      setState(() {});
-                      for (int i = 0; i < tempFilterList.length; i++) {
-                        tempList = productList.where(
-                          (element) {
-                            return element['category']
-                                .toString()
-                                .contains(tempFilterList[i]);
-                          },
-                        ).toList();
-                        tempList1.addAll(tempList);
+                        tempFilterList.add(_categoryList[index]);
+                        iscategory[index] = true;
+                        tempCategoryIndex = index;
 
-                        _filterList = tempList1;
+                        tempList1.clear();
+                        _filterList.clear();
                         setState(() {});
-                      }
-                      // }
+                        for (int i = 0; i < tempFilterList.length; i++) {
+                          tempList = productList.where(
+                            (e) {
+                              return e['category'] == tempFilterList[i];
+                            },
+                          ).toList();
+                          tempList1.addAll(tempList);
 
-                      isFilter = true;
+                          _filterList = tempList1;
+                          setState(() {});
+                        }
+
+                        isFilter = true;
+                      }
                     } else {
                       tempFilterList.remove(_categoryList[index]);
                       iscategory[index] = false;
 
                       if (tempFilterList.isEmpty) {
+                        iscategory[0] = true;
+                        _filterList.clear();
                         setState(() {
-                          print(_filterList);
-                          _filterList = productList;
+                          _filterList =
+                              List<Map<String, dynamic>>.from(productList);
                         });
                       } else {
-                        //_filterList = productList;
-                        tempList1.clear();
-                        _filterList.clear();
+                        tempList1 = [];
+                        _filterList = [];
                         setState(() {});
                         for (int i = 0; i < tempFilterList.length; i++) {
                           tempList = productList.where(
@@ -321,6 +319,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
                         }
                       }
                     }
+                    setState(() {});
                   },
                 ),
                 CustomText(
