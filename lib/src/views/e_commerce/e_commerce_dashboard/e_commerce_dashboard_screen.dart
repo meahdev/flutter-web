@@ -4,7 +4,6 @@ import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/dashboard/sales_analytics.dart';
-import 'package:admin_dashboard/src/views/dashboard/sales_report.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/dash_list_item.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/global_sale.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/sales_overview.dart';
@@ -107,6 +106,7 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
       ),
       elevation: 7,
       child: Container(
+        // alignment: Alignment.center,
         height: 465,
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(

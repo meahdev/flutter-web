@@ -134,12 +134,13 @@ class _DashListItemState extends State<DashListItem> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(18.0),
       child: Stack(
-        
         children: [
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18.0),
-              gradient: LinearGradient(colors: color),
+              gradient: LinearGradient(
+                colors: color,
+              ),
             ),
             padding: const EdgeInsets.all(40.0),
             child: Column(
@@ -149,10 +150,12 @@ class _DashListItemState extends State<DashListItem> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ConstText.lightText(
-                      text: productTitle,
-                      color: ColorConst.white,
-                      fontWeight: FontWeight.bold,
+                    Expanded(
+                      child: ConstText.lightText(
+                        text: productTitle,
+                        color: ColorConst.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                     Icon(boxIcon, color: ColorConst.white),
                   ],

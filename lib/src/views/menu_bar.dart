@@ -407,7 +407,9 @@ class _MenuBarState extends State<FMenuBar> {
                         borderSide: BorderSide.none,
                       ),
                       filled: true,
-                      contentPadding: const EdgeInsets.fromLTRB(12, 10, 0, 4),
+                      contentPadding: _switchlayout.value == false
+                          ? const EdgeInsets.fromLTRB(12, 10, 0, 4)
+                          : const EdgeInsets.fromLTRB(0, 10, 12, 4),
                       hintText: Strings.searchHint,
                       hintStyle: const TextStyle(fontSize: 15),
                       suffixIcon: const Padding(
@@ -466,7 +468,7 @@ class _MenuBarState extends State<FMenuBar> {
           ValueListenableBuilder<bool>(
             valueListenable: _switchlayout,
             builder: (context, value, _) {
-              return Text('Layout  ${value == true ? 'RTL' : 'LTR'}');
+              return Text(value == true ? 'RTL' : 'LTR');
             },
           ),
           ValueListenableBuilder<bool>(

@@ -11,12 +11,14 @@ class ConstText {
     return Text(
       text,
       softWrap: true,
+      maxLines: 1,
       textAlign: textAlign,
       style: TextStyle(
         fontSize: fontSize ?? 16,
         color: color,
         fontWeight: fontWeight,
       ),
+      overflow: TextOverflow.ellipsis,
     );
   }
 
