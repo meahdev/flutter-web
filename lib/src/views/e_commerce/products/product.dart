@@ -1,7 +1,7 @@
 final List<Map<String, dynamic>> productList = [
   {
     'title': 'Zara Bag',
-    'image': 'assets/product/fancy_bag.jpeg',
+    'image': 'assets/assets/product/fancy_bag.jpeg',
     'price': 200,
     'isFavourite': false,
     'rating': '4.2',
@@ -10,7 +10,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'Dining / Arm chair',
-    'image': 'assets/product/arm_chair.jpeg',
+    'image': 'assets/assets/product/arm_chair.jpeg',
     'isFavourite': true,
     'price': 100,
     'rating': '4.0',
@@ -19,7 +19,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'Amazing murgs',
-    'image': 'assets/product/murgs.jpeg',
+    'image': 'assets/assets/product/murgs.jpeg',
     'price': 100,
     'isFavourite': false,
     'rating': '4.8',
@@ -28,7 +28,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'Galaxy S22 Ultra',
-    'image': 'assets/product/galaxy22.jpeg',
+    'image': 'assets/assets/product/galaxy22.jpeg',
     'price': 300,
     'isFavourite': true,
     'rating': '4.8',
@@ -37,7 +37,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'Bag',
-    'image': 'assets/product/bag.jpeg',
+    'image': 'assets/assets/product/bag.jpeg',
     'price': 130,
     'isFavourite': false,
     'rating': '4.5',
@@ -46,7 +46,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'Dining chair',
-    'image': 'assets/product/dining_chair.jpeg',
+    'image': 'assets/assets/product/dining_chair.jpeg',
     'isFavourite': false,
     'price': 120,
     'rating': '4.9',
@@ -55,7 +55,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'Beautifull cups',
-    'image': 'assets/product/b_cup.jpeg',
+    'image': 'assets/assets/product/b_cup.jpeg',
     'price': 120,
     'isFavourite': false,
     'rating': '4.0',
@@ -64,7 +64,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'IPhone 14 Pro ',
-    'image': 'assets/product/iphone.jpeg',
+    'image': 'assets/assets/product/iphone.jpeg',
     'price': 300,
     'isFavourite': true,
     'rating': '4.8',
@@ -73,7 +73,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'Sumsung Smart TV',
-    'image': 'assets/product/samsung_tv.jpeg',
+    'image': 'assets/assets/product/samsung_tv.jpeg',
     'price': 400,
     'isFavourite': false,
     'rating': '4.2',
@@ -82,7 +82,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'OnePlus Smart TV',
-    'image': 'assets/product/one_plus_tv.jpeg',
+    'image': 'assets/assets/product/one_plus_tv.jpeg',
     'price': 400,
     'isFavourite': false,
     'rating': '4.1',
@@ -91,7 +91,7 @@ final List<Map<String, dynamic>> productList = [
   },
   {
     'title': 'Smart phone play game',
-    'image': 'assets/product/play_game.jpeg',
+    'image': 'assets/assets/product/play_game.jpeg',
     'price': 89,
     'isFavourite': false,
     'rating': '4.0',
