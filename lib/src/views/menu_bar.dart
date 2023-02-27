@@ -12,7 +12,6 @@ import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/utils/text_utils.dart';
-
 import 'package:admin_dashboard/src/widget/end_drawer.dart';
 import 'package:admin_dashboard/src/widget/expantion_tile.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -211,6 +210,12 @@ class _MenuBarState extends State<FMenuBar> {
     ProductAdd(),
   ];
 
+  // TextDirection _layout = TextDirection.ltr;
+
+  final ValueNotifier<TextDirection> _layout =
+      ValueNotifier<TextDirection>(TextDirection.ltr);
+  final ValueNotifier<bool> _switchlayout = ValueNotifier<bool>(false);
+
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter(
@@ -218,86 +223,95 @@ class _MenuBarState extends State<FMenuBar> {
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
         autoTabRouter = tabsRouter;
-
-        return Scaffold(
-          key: _scaffoldKey,
-          endDrawer: Drawer(
-            width: 280,
-            child: SafeArea(
-              child: SettingDrawer(scaffoldKey: _scaffoldKey),
-            ),
-          ),
-          appBar: _appBar(tabsRouter),
-          body: SafeArea(
-            child: Scaffold(
-              key: _scaffoldDrawerKey,
-              drawerScrimColor: ColorConst.transparent,
-              drawer: _sidebar(tabsRouter),
-              body: Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ValueListenableBuilder<bool>(
-                    valueListenable: isOpen,
-                    builder: (context, value, child) {
-                      return Responsive.isWeb(context)
-                          ? _sidebar(tabsRouter)
-                          : const SizedBox.shrink();
-                    },
-                  ),
-                  Expanded(
-                    child: CustomScrollView(
-                      controller: _scrollController,
-                      slivers: [
-                        SliverList(
-                          delegate: SliverChildListDelegate(
-                            [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 24.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    FxBox.h20,
-                                    Text(
-                                      upperCase(tabsRouter.currentPath),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge!
-                                          .copyWith(
-                                              fontWeight: FontWeight.bold),
-                                    ),
-                                    FxBox.h8,
-                                    _routesDeatils(tabsRouter),
-                                    FxBox.h20,
-                                    getRouteWidget(tabsRouter.activeIndex),
-                                    FxBox.h20,
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SliverFillRemaining(
-                          hasScrollBody: false,
-                          fillOverscroll: true,
-                          child: Column(
-                            children: <Widget>[
-                              const Expanded(
-                                child: SizedBox.shrink(),
-                              ),
-                              _footer(),
-                            ],
-                          ),
-                        ),
-                      ],
+        return ValueListenableBuilder<TextDirection>(
+            valueListenable: _layout,
+            builder: (context, value, _) {
+              return Directionality(
+                textDirection: value,
+                child: Scaffold(
+                  key: _scaffoldKey,
+                  endDrawer: Drawer(
+                    width: 280,
+                    child: SafeArea(
+                      child: SettingDrawer(scaffoldKey: _scaffoldKey),
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-        );
+                  appBar: _appBar(tabsRouter),
+                  body: SafeArea(
+                    child: Scaffold(
+                      key: _scaffoldDrawerKey,
+                      drawerScrimColor: ColorConst.transparent,
+                      drawer: _sidebar(tabsRouter),
+                      body: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ValueListenableBuilder<bool>(
+                            valueListenable: isOpen,
+                            builder: (context, value, child) {
+                              return Responsive.isWeb(context)
+                                  ? _sidebar(tabsRouter)
+                                  : const SizedBox.shrink();
+                            },
+                          ),
+                          Expanded(
+                            child: CustomScrollView(
+                              controller: _scrollController,
+                              slivers: [
+                                SliverList(
+                                  delegate: SliverChildListDelegate(
+                                    [
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 24.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            FxBox.h20,
+                                            Text(
+                                              upperCase(tabsRouter.currentPath),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                            ),
+                                            FxBox.h8,
+                                            _routesDeatils(tabsRouter),
+                                            FxBox.h20,
+                                            getRouteWidget(
+                                                tabsRouter.activeIndex),
+                                            FxBox.h20,
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SliverFillRemaining(
+                                  hasScrollBody: false,
+                                  fillOverscroll: true,
+                                  child: Column(
+                                    children: <Widget>[
+                                      const Expanded(
+                                        child: SizedBox.shrink(),
+                                      ),
+                                      _footer(),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            });
       },
     );
   }
@@ -405,6 +419,72 @@ class _MenuBarState extends State<FMenuBar> {
                     ),
                   ),
                 ),
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: const Icon(Icons.more_vert),
+          // ),
+          // PopupMenuButton<int>(
+          //   icon: const Icon(Icons.more_vert),
+          //   itemBuilder: (context) => [
+          //     // popupmenu item 1
+          //     PopupMenuItem(
+          //       value: 1,
+          //       // row has two child icon and text.
+          //       child: const Text('RTL'),
+          //       onTap: () {
+          //         _layout.value = TextDirection.rtl;
+          //         _layout.notifyListeners();
+          //       },
+          //     ),
+          //     // popupmenu item 2
+          //     PopupMenuItem(
+          //       value: 2,
+          //       // row has two child icon and text
+          //       child: const Text("LTR"),
+          //       onTap: () {
+          //         _layout.value = TextDirection.ltr;
+          //         _layout.notifyListeners();
+          //       },
+          //     ),
+          //   ],
+          //   offset: const Offset(0, 50),
+          //   elevation: 2,
+          // ),
+          // SizedBox(
+          //   width: 150,
+          //   child: SwitchListTile(
+          //     dense: false,
+          //     contentPadding: EdgeInsets.zero,
+          //     title: const Text('Layout'),
+          //     value: true,
+          //     onChanged: (value) {},
+          //   ),
+          // ),
+          const SizedBox(
+            width: 10,
+          ),
+          ValueListenableBuilder<bool>(
+            valueListenable: _switchlayout,
+            builder: (context, value, _) {
+              return Text('Layout  ${value == true ? 'RTL' : 'LTR'}');
+            },
+          ),
+          ValueListenableBuilder<bool>(
+              valueListenable: _switchlayout,
+              builder: (context, value, _) {
+                return Transform.scale(
+                  scale: 0.7,
+                  child: Switch(
+                    value: value,
+                    onChanged: (value) {
+                      _switchlayout.value = value;
+                      value == true
+                          ? _layout.value = TextDirection.rtl
+                          : _layout.value = TextDirection.ltr;
+                    },
+                  ),
+                );
+              }),
           _notification(),
           BlocBuilder<ThemeModeBloc, ThemeModeState>(
             builder: (context, state) {
@@ -431,6 +511,18 @@ class _MenuBarState extends State<FMenuBar> {
           _profile(tabsRouter),
         ],
       );
+
+  // TextDirection _layout(String layout)
+  // {
+  //     if(layout == 'RTL')
+  //     {
+  //       return TextDirection.rtl;
+  //     }
+  //     else
+  //     {
+  //       return TextDirection.ltr;
+  //     }
+  // }
 
   Widget _notification() {
     return FxDropdownButton(
@@ -913,7 +1005,9 @@ class _MenuBarState extends State<FMenuBar> {
                   dense: true,
                   visualDensity: const VisualDensity(vertical: -3),
                   mouseCursor: SystemMouseCursors.click,
-                  contentPadding: const EdgeInsets.only(left: 52.0),
+                  contentPadding: _switchlayout.value == false
+                      ? const EdgeInsets.only(left: 52.0)
+                      : const EdgeInsets.only(right: 52.0),
                   title: Text(
                     items[index],
                     style: TextStyle(color: color, fontSize: 15),
