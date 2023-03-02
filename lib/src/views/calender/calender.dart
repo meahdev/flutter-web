@@ -147,22 +147,25 @@ class _CalendarState extends State<Calendar> {
         ),
       ],
       child: Responsive.isWeb(context)
-          ? Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(flex: 2, child: _mobileView()),
-                FxBox.w20,
-                Expanded(
-                  flex: 6,
-                  child: Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: _tableCalendar(context: context),
+          ? SizedBox(
+              height: MediaQuery.of(context).size.height * 0.8,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(flex: 2, child: _mobileView()),
+                  FxBox.w20,
+                  Expanded(
+                    flex: 6,
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: _tableCalendar(context: context),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             )
           : Column(
               children: [
@@ -186,6 +189,7 @@ class _CalendarState extends State<Calendar> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            FxBox.h(14),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 34,
@@ -217,20 +221,20 @@ class _CalendarState extends State<Calendar> {
               'Drag and drop your event or click in the calendar',
               style: TextStyle(fontSize: 15),
             ),
-            FxBox.h12,
+            FxBox.h16,
             _addEventButtons(
                 color: ColorConst.calSuccess,
                 label: 'Event Planning',
                 colorIndex: 2),
-            FxBox.h6,
+            FxBox.h10,
             _addEventButtons(
                 color: ColorConst.info, label: 'Meeting', colorIndex: 4),
-            FxBox.h6,
+            FxBox.h10,
             _addEventButtons(
                 color: ColorConst.warning,
                 label: 'Generate Reports',
                 colorIndex: 6),
-            FxBox.h6,
+            FxBox.h10,
             _addEventButtons(
                 color: ColorConst.error.withOpacity(0.8),
                 label: 'Theme',
@@ -412,12 +416,8 @@ class _CalendarState extends State<Calendar> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                MaterialButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(40.0),
-                  ),
-                  minWidth: 10,
-                  onPressed: () {
+                GestureDetector(
+                  onTap: () {
                     eventController.text = list[index]["eventName"];
                     dropdownValue = dropDownList
                         .elementAt(list[index]["dropdownValue"] ?? 0);
@@ -438,13 +438,75 @@ class _CalendarState extends State<Calendar> {
                       },
                     );
                   },
-                  color:
-                      coloredList.elementAt(list[index]["dropdownValue"] ?? 0),
-                  child: Text(list[index]["eventName"],
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: const TextStyle(color: ColorConst.white)),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 18,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: const Color.fromRGBO(209, 235, 253, 1),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: CircleAvatar(
+                            radius: 5,
+                            backgroundColor: coloredList
+                                .elementAt(list[index]["dropdownValue"] ?? 0),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Tooltip(
+                            message: '${list[index]["eventName"]}',
+                            child: Text(
+                              list[index]["eventName"],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: const TextStyle(
+                                  color: ColorConst.black, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
+                // MaterialButton(
+                //   height: 16,
+                //   // shape: RoundedRectangleBorder(
+                //   //   borderRadius: BorderRadius.circular(40.0),
+                //   // ),
+                //   minWidth: 10,
+                //   onPressed: () {
+                //     eventController.text = list[index]["eventName"];
+                //     dropdownValue = dropDownList
+                //         .elementAt(list[index]["dropdownValue"] ?? 0);
+                //     _displayTextInputDialog(
+                //       context: context,
+                //       savePressed: () {
+                //         _handleSaveTap(
+                //             date: date, doPopup: true, index: index);
+                //       },
+                //       deletePressed: () {
+                //         list.removeAt(index);
+                //         eventMap[date] = list;
+                //         eventController.clear();
+                //         dropdownValue = '--Select--';
+                //         _calendarFormatBloc.add(CalendarFormatEvent.loading(
+                //             calendarFormat: _calendarFormat,
+                //             eventsList: eventMap));
+                //         Navigator.pop(context);
+                //       },
+                //     );
+                //   },
+                //   color: ColorConst.primaryDark.withOpacity(0.8),
+                //   // color:
+                //   //     coloredList.elementAt(list[index]["dropdownValue"] ?? 0),
+                //   child: Text(list[index]["eventName"],
+                //       overflow: TextOverflow.ellipsis,
+                //       maxLines: 1,
+                //       style: const TextStyle(color: ColorConst.white)),
+                // ),
                 if (index == list.length - 1) const SizedBox(height: 4.0),
               ],
             ),
@@ -520,7 +582,7 @@ class _CalendarState extends State<Calendar> {
                           : null;
                     },
                     currentDay: DateTime.now(),
-                    rowHeight: 100,
+                    rowHeight: 130,
                     availableGestures: AvailableGestures.none,
                     daysOfWeekHeight: 40,
                     startingDayOfWeek: StartingDayOfWeek.monday,
