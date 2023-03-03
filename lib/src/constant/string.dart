@@ -38,8 +38,8 @@ class Strings {
   static const String userProfile = 'User Profile';
   static const String selectedmenuIndex = 'selectedindex';
   static const String eCommerce = 'E-Commerce';
-  static const String eCommerceAdmin = 'E-Commerce Admin';
-  static const String eCommerceSite = 'E-Commerce Site';
+  static const String eCommerceAdmin = 'Admin';
+  static const String eCommerceSite = 'Web Site';
 
   // ui elements option
   static const String toast = 'Toast';
