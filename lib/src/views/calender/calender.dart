@@ -147,25 +147,22 @@ class _CalendarState extends State<Calendar> {
         ),
       ],
       child: Responsive.isWeb(context)
-          ? SizedBox(
-              height: MediaQuery.of(context).size.height * 0.8,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(flex: 2, child: _mobileView()),
-                  FxBox.w20,
-                  Expanded(
-                    flex: 6,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: _tableCalendar(context: context),
-                      ),
+          ? Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Expanded(flex: 2, child: _mobileView()),
+                FxBox.w20,
+                Expanded(
+                  flex: 6,
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: _tableCalendar(context: context),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             )
           : Column(
               children: [
@@ -189,7 +186,7 @@ class _CalendarState extends State<Calendar> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            FxBox.h(14),
+            FxBox.h(18),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 34,
@@ -247,7 +244,7 @@ class _CalendarState extends State<Calendar> {
             FxBox.h16,
             SizedBox(
               width: double.infinity,
-              height: 250,
+              height: 320,
               child: Stack(
                 fit: StackFit.loose,
                 children: [
@@ -263,7 +260,7 @@ class _CalendarState extends State<Calendar> {
                     left: 25,
                     right: 1,
                     child: SizedBox(
-                      height: 250,
+                      height: 320,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -315,7 +312,8 @@ class _CalendarState extends State<Calendar> {
                       ),
                     ],
                   ),
-                  FxBox.h20
+                  FxBox.h20,
+                  FxBox.h20,
                 ],
               ),
             ),
@@ -440,7 +438,7 @@ class _CalendarState extends State<Calendar> {
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 18,
+                    height: list.length > 4 ? 13 : 20,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
                       color: const Color.fromRGBO(209, 235, 253, 1),
@@ -449,7 +447,7 @@ class _CalendarState extends State<Calendar> {
                       children: [
                         Expanded(
                           child: CircleAvatar(
-                            radius: 5,
+                            radius: 3,
                             backgroundColor: coloredList
                                 .elementAt(list[index]["dropdownValue"] ?? 0),
                           ),
@@ -463,7 +461,7 @@ class _CalendarState extends State<Calendar> {
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                               style: const TextStyle(
-                                  color: ColorConst.black, fontSize: 12),
+                                  color: ColorConst.black, fontSize: 10),
                             ),
                           ),
                         ),
@@ -582,7 +580,7 @@ class _CalendarState extends State<Calendar> {
                           : null;
                     },
                     currentDay: DateTime.now(),
-                    rowHeight: 130,
+                    rowHeight: 122,
                     availableGestures: AvailableGestures.none,
                     daysOfWeekHeight: 40,
                     startingDayOfWeek: StartingDayOfWeek.monday,

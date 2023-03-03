@@ -1,10 +1,12 @@
 import 'package:admin_dashboard/src/my_app.dart';
+import 'package:admin_dashboard/src/utils/multi_language.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:scoped_model/scoped_model.dart';
 import 'package:window_size/window_size.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
-void main() {
+Future<void> main() async {
   // js.context.callMethod('history.pushState', [null, null, '/newpage']);
 
   // // replace the current history entry when navigating within the same page
@@ -24,8 +26,11 @@ void main() {
     setWindowMaxSize(Size.infinite);
   }
   usePathUrlStrategy();
-
+  await languageModel.load();
   runApp(
-    const MyApp(),
+    ScopedModel<LanguageModel>(
+      model: languageModel,
+      child: const MyApp(),
+    ),
   );
 }

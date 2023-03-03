@@ -35,6 +35,7 @@ class _MenuBarState extends State<FMenuBar> {
   final ScrollController _scrollController = ScrollController();
 
   ValueNotifier<bool> isOpen = ValueNotifier(true);
+  ValueNotifier<bool> isSubListOpen = ValueNotifier(false);
 
   Map<String, String> mainData = {
     Strings.dashboard: IconlyBroken.home,
@@ -47,7 +48,7 @@ class _MenuBarState extends State<FMenuBar> {
     Strings.forms: IconlyBroken.forms,
     Strings.charts: IconlyBroken.charts,
     Strings.tables: IconlyBroken.tables,
-    Strings.eCommerce: IconlyBroken.eCommerce,
+    //Strings.eCommerce: IconlyBroken.eCommerce,
   };
 
   Map<String, String> extrasData = {
@@ -713,57 +714,75 @@ class _MenuBarState extends State<FMenuBar> {
 
   /// drawer / sidebar
   Widget _sidebar(TabsRouter tabsRouter) => ValueListenableBuilder<bool>(
-        valueListenable: isOpen,
-        builder: (context, value, child) {
-          return Container(
-            height: MediaQuery.of(context).size.height,
-            width: value ? 240 : 70,
-            color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
-            child: SingleChildScrollView(
-              controller: ScrollController(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FxBox.h8,
-                  // main
-                  // if (value) _menuHeading(Strings.main),
-                  _menuList(
-                    tabsRouter: tabsRouter,
-                    items: mainData,
-                    isopen: value,
-                  ),
-                  // components
-                  // if (value) _menuHeading(Strings.components),
-                  _menuList(
-                    tabsRouter: tabsRouter,
-                    items: componentData,
-                    isExpanded: true,
-                    children: componentsExpandList,
-                    isopen: value,
-                  ),
-                  _menuList(
-                    tabsRouter: tabsRouter,
-                    items: extrasData,
-                    isExpanded: true,
-                    children: extrasExpandList,
-                    isopen: value,
-                  ),
-                  // extras
-                  // if (value) _menuHeading(Strings.extras),
-                  // _menuList(
-                  //   tabsRouter: tabsRouter,
-                  //   items: extrasData,
-                  //   isExpanded: true,
-                  //   children: extrasExpandList,
-                  //   isopen: value,
-                  // ),
-                  FxBox.h20,
-                ],
+      valueListenable: isSubListOpen,
+      builder: (context, value1, child) {
+        return ValueListenableBuilder<bool>(
+          valueListenable: isOpen,
+          builder: (context, value, child) {
+            return Container(
+              height: MediaQuery.of(context).size.height,
+              width: value || value1 ? 240 : 70,
+              color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
+              child: SingleChildScrollView(
+                controller: ScrollController(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FxBox.h8,
+                    // main
+                    // if (value) _menuHeading(Strings.main),
+                    _menuList(
+                      tabsRouter: tabsRouter,
+                      items: mainData,
+                      isopen: value,
+                    ),
+                    // components
+                    // if (value) _menuHeading(Strings.components),
+                    _menuList(
+                      tabsRouter: tabsRouter,
+                      items: componentData,
+                      isExpanded: true,
+                      children: componentsExpandList,
+                      isopen: value,
+                    ),
+                    _menuList(
+                      tabsRouter: tabsRouter,
+                      items: extrasData,
+                      isExpanded: true,
+                      children: extrasExpandList,
+                      isopen: value,
+                    ),
+                    _menuList1(
+                      tabsRouter: tabsRouter,
+                      items: {
+                        Strings.eCommerce: IconlyBroken.eCommerce,
+                      },
+                      items1: [
+                        Strings.eCommerceAdmin,
+                        Strings.eCommerceSite,
+                      ],
+                      isExpanded: true,
+                      children: [extrasExpandList, extrasExpandList],
+                      isopen: value,
+                      isSubListopen: value1,
+                    ),
+                    // extras
+                    // if (value) _menuHeading(Strings.extras),
+                    // _menuList(
+                    //   tabsRouter: tabsRouter,
+                    //   items: extrasData,
+                    //   isExpanded: true,
+                    //   children: extrasExpandList,
+                    //   isopen: value,
+                    // ),
+                    FxBox.h20,
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-      );
+            );
+          },
+        );
+      });
 
   /// menu heading
   // Widget _menuHeading(String title) {
@@ -941,6 +960,235 @@ class _MenuBarState extends State<FMenuBar> {
           }
         },
       ),
+    );
+  }
+
+  Widget _tempMenuList({
+    required TabsRouter tabsRouter,
+    required List<String> items1,
+    bool isExpanded = false,
+    List<List<String>> children = const [],
+    required bool isopen,
+    required bool isSubListopen,
+  }) {
+    return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: items1.length,
+      itemBuilder: (context, index) => FxHover(
+        builder: (isHover) {
+          Color color = isHover
+              ? isDark
+                  ? ColorConst.chartForgoundColor
+                  : ColorConst.primary
+              : isDark
+                  ? ColorConst.white
+                  : ColorConst.black;
+          if (isExpanded) {
+            return isopen
+                ? FxExpansionTile(
+                    leading: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        FxBox.w(22.0),
+                        FxBox.w(24.0),
+                      ],
+                    ),
+                    title: Text(
+                      items1[index],
+                      style: TextStyle(
+                          color: children[index]
+                                  .contains(upperCase(tabsRouter.currentPath))
+                              ? isDark
+                                  ? ColorConst.chartForgoundColor
+                                  : ColorConst.primary
+                              : color,
+                          fontSize: 15.7),
+                    ),
+                    trailing: SvgIcon(
+                      icon: IconlyBroken.arrowDown,
+                      size: 16,
+                      color: children[index]
+                              .contains(upperCase(tabsRouter.currentPath))
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                    ),
+                    children: [_subMenuList(children[index], tabsRouter)],
+                  )
+                : ListTile(
+                    // leading: SvgIcon(
+                    //   icon: items.values.elementAt(index),
+                    //   size: isopen ? 16 : 18,
+                    //   color: items.keys.elementAt(index) ==
+                    //           upperCase(tabsRouter.currentPath)
+                    //       ? isDark
+                    //           ? ColorConst.chartForgoundColor
+                    //           : ColorConst.primary
+                    //       : color,
+                    // ),
+                    title: isopen
+                        ? Text(
+                            items1[index],
+                            style: TextStyle(
+                              color: items1[index] ==
+                                      upperCase(tabsRouter.currentPath)
+                                  ? isDark
+                                      ? ColorConst.chartForgoundColor
+                                      : ColorConst.primary
+                                  : color,
+                              fontSize: 15.7,
+                            ),
+                          )
+                        : null,
+                    mouseCursor: SystemMouseCursors.click,
+                    horizontalTitleGap: 0.0,
+                    onTap: () {
+                      isOpen.value = true;
+                      _scaffoldDrawerKey.currentState?.closeDrawer();
+                    },
+                  );
+          } else {
+            return Row(
+              children: [
+                if (isopen)
+                  Container(
+                    width: 6.0,
+                    height: 48.0,
+                    decoration: BoxDecoration(
+                      color: items1[index] == upperCase(tabsRouter.currentPath)
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : ColorConst.transparent,
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(6.0),
+                        bottomRight: Radius.circular(6.0),
+                      ),
+                    ),
+                  ),
+                if (isopen) FxBox.w16,
+                Expanded(
+                  child: ListTile(
+                    // leading: SvgIcon(
+                    //   icon: items.values.elementAt(index),
+                    //   size: isopen ? 16 : 18,
+                    //   color: items.keys.elementAt(index) ==
+                    //           upperCase(tabsRouter.currentPath)
+                    //       ? isDark
+                    //           ? ColorConst.chartForgoundColor
+                    //           : ColorConst.primary
+                    //       : color,
+                    // ),
+                    title: isopen
+                        ? Text(
+                            items1[index],
+                            style: TextStyle(
+                              color: items1[index] ==
+                                      upperCase(tabsRouter.currentPath)
+                                  ? isDark
+                                      ? ColorConst.chartForgoundColor
+                                      : ColorConst.primary
+                                  : color,
+                              fontSize: 15.7,
+                            ),
+                          )
+                        : null,
+                    mouseCursor: SystemMouseCursors.click,
+                    horizontalTitleGap: 0.0,
+                    onTap: () {
+                      isOpen.value = true;
+                      tabsRouter.setActiveIndex(getRouteIndex(items1[index]));
+                      HiveUtils.set(Strings.selectedmenuIndex,
+                          getRouteIndex(items1[index]));
+                      _scaffoldDrawerKey.currentState?.closeDrawer();
+                    },
+                  ),
+                ),
+              ],
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _menuList1({
+    required TabsRouter tabsRouter,
+    required Map<String, String> items,
+    required List<String> items1,
+    bool isExpanded = false,
+    List<List<List<String>>> children = const [],
+    required bool isopen,
+    required bool isSubListopen,
+  }) {
+    return FxHover(
+      builder: (isHover) {
+        Color color = isHover
+            ? isDark
+                ? ColorConst.chartForgoundColor
+                : ColorConst.primary
+            : isDark
+                ? ColorConst.white
+                : ColorConst.black;
+        return FxExpansionTile(
+          leading: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FxBox.w(22.0),
+              SvgIcon(
+                icon: items.values.elementAt(0),
+                size: 16,
+                color:
+                    children[0][0].contains(upperCase(tabsRouter.currentPath))
+                        ? isDark
+                            ? ColorConst.chartForgoundColor
+                            : ColorConst.primary
+                        : color,
+              ),
+              FxBox.w(24.0),
+            ],
+          ),
+          title: Text(
+            items.keys.elementAt(0),
+            style: TextStyle(
+                color:
+                    children[0][0].contains(upperCase(tabsRouter.currentPath))
+                        ? isDark
+                            ? ColorConst.chartForgoundColor
+                            : ColorConst.primary
+                        : color,
+                fontSize: 15.7),
+          ),
+          trailing: SvgIcon(
+            icon: IconlyBroken.arrowDown,
+            size: 16,
+            color: children[0][0].contains(upperCase(tabsRouter.currentPath))
+                ? isDark
+                    ? ColorConst.chartForgoundColor
+                    : ColorConst.primary
+                : color,
+          ),
+          children: [
+            _tempMenuList(
+              items1: items1,
+              tabsRouter: tabsRouter,
+              isExpanded: true,
+              children: children[0],
+              isopen: isopen,
+              isSubListopen: isSubListopen,
+            ),
+            _tempMenuList(
+                items1: items1,
+                tabsRouter: tabsRouter,
+                isExpanded: true,
+                children: children[1],
+                isopen: isopen,
+                isSubListopen: isSubListopen),
+          ],
+        );
+      },
     );
   }
 
