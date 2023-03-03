@@ -57,6 +57,36 @@ class _MenuBarState extends State<FMenuBar> {
     Strings.extraPages: IconlyBroken.extraPages,
   };
 
+  // e-commerce section
+  Map<String, String> eCommerceHeader = {
+    Strings.eCommerce: IconlyBroken.eCommerce,
+  };
+
+  List<String> eCommerceSection = [
+    Strings.eCommerceAdmin,
+    Strings.eCommerceSite
+  ];
+
+  List<List<String>> eCommerceExpandList = [
+    [
+      Strings.eCommerceDashboard,
+      Strings.productAdd,
+      Strings.category,
+      Strings.vender,
+      Strings.customer,
+      Strings.order,
+      Strings.returnOrder,
+      Strings.subscriber,
+      Strings.coupons,
+      Strings.returnCondition,
+    ],
+    [
+      Strings.products,
+      Strings.cart,
+      Strings.payment,
+    ],
+  ];
+
   List<List<String>> componentsExpandList = [
     [
       Strings.toast,
@@ -86,21 +116,6 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.dataTable,
       Strings.responsiveTable,
       Strings.editableTable,
-    ],
-    [
-      Strings.eCommerceDashboard,
-      Strings.products,
-      Strings.productAdd,
-      Strings.category,
-      Strings.vender,
-      Strings.customer,
-      Strings.cart,
-      Strings.payment,
-      Strings.order,
-      Strings.returnOrder,
-      Strings.subscriber,
-      Strings.coupons,
-      Strings.returnCondition,
     ],
   ];
 
@@ -754,15 +769,10 @@ class _MenuBarState extends State<FMenuBar> {
                     ),
                     _menuList1(
                       tabsRouter: tabsRouter,
-                      items: {
-                        Strings.eCommerce: IconlyBroken.eCommerce,
-                      },
-                      items1: [
-                        Strings.eCommerceAdmin,
-                        Strings.eCommerceSite,
-                      ],
+                      items: eCommerceHeader,
+                      items1: eCommerceSection,
                       isExpanded: true,
-                      children: [extrasExpandList, extrasExpandList],
+                      children: eCommerceExpandList,
                       isopen: value,
                       isSubListopen: value1,
                     ),
@@ -1119,7 +1129,7 @@ class _MenuBarState extends State<FMenuBar> {
     required Map<String, String> items,
     required List<String> items1,
     bool isExpanded = false,
-    List<List<List<String>>> children = const [],
+    List<List<String>> children = const [],
     required bool isopen,
     required bool isSubListopen,
   }) {
@@ -1140,12 +1150,11 @@ class _MenuBarState extends State<FMenuBar> {
               SvgIcon(
                 icon: items.values.elementAt(0),
                 size: 16,
-                color:
-                    children[0][0].contains(upperCase(tabsRouter.currentPath))
-                        ? isDark
-                            ? ColorConst.chartForgoundColor
-                            : ColorConst.primary
-                        : color,
+                color: children[0].contains(upperCase(tabsRouter.currentPath))
+                    ? isDark
+                        ? ColorConst.chartForgoundColor
+                        : ColorConst.primary
+                    : color,
               ),
               FxBox.w(24.0),
             ],
@@ -1153,18 +1162,17 @@ class _MenuBarState extends State<FMenuBar> {
           title: Text(
             items.keys.elementAt(0),
             style: TextStyle(
-                color:
-                    children[0][0].contains(upperCase(tabsRouter.currentPath))
-                        ? isDark
-                            ? ColorConst.chartForgoundColor
-                            : ColorConst.primary
-                        : color,
+                color: children[0].contains(upperCase(tabsRouter.currentPath))
+                    ? isDark
+                        ? ColorConst.chartForgoundColor
+                        : ColorConst.primary
+                    : color,
                 fontSize: 15.7),
           ),
           trailing: SvgIcon(
             icon: IconlyBroken.arrowDown,
             size: 16,
-            color: children[0][0].contains(upperCase(tabsRouter.currentPath))
+            color: children[0].contains(upperCase(tabsRouter.currentPath))
                 ? isDark
                     ? ColorConst.chartForgoundColor
                     : ColorConst.primary
@@ -1175,17 +1183,10 @@ class _MenuBarState extends State<FMenuBar> {
               items1: items1,
               tabsRouter: tabsRouter,
               isExpanded: true,
-              children: children[0],
+              children: children,
               isopen: isopen,
               isSubListopen: isSubListopen,
             ),
-            _tempMenuList(
-                items1: items1,
-                tabsRouter: tabsRouter,
-                isExpanded: true,
-                children: children[1],
-                isopen: isopen,
-                isSubListopen: isSubListopen),
           ],
         );
       },
