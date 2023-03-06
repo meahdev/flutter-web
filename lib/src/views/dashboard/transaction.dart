@@ -1,8 +1,8 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -30,7 +30,7 @@ class _TransactionState extends State<Transaction> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ConstText.lightText(
-              text: Strings.latestOrder,
+              text: languageModel.dashboard.latestOrder,
               fontWeight: FontWeight.bold,
             ),
             FxBox.h10,
@@ -59,27 +59,27 @@ class _TransactionState extends State<Transaction> {
                 ),
                 columns: [
                   DataColumn2(
-                    label: _tableHeader('ID'),
+                    label: _tableHeader(languageModel.dashboard.id),
                     size: ColumnSize.S,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Name'),
+                    label: _tableHeader(languageModel.dashboard.name),
                     size: ColumnSize.L,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Product'),
+                    label: _tableHeader(languageModel.dashboard.product),
                     size: ColumnSize.M,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Order Date'),
+                    label: _tableHeader(languageModel.dashboard.orderDate),
                     size: ColumnSize.L,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Amount'),
+                    label: _tableHeader(languageModel.dashboard.amount),
                     size: ColumnSize.M,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Delivery Status'),
+                    label: _tableHeader(languageModel.dashboard.deliveryStatus),
                     size: ColumnSize.L,
                   ),
                   DataColumn2(
@@ -93,7 +93,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('1')),
                       DataCell(_tableRowImage('Jane Deo')),
-                      DataCell(_tableHeader('Website')),
+                      DataCell(_tableHeader(languageModel.dashboard.website)),
                       DataCell(_tableHeader('November 15, 2022')),
                       DataCell(_tableHeader('\$90')),
                       DataCell(_statusBox(ColorConst.successDark, 'Delivered')),
@@ -105,7 +105,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('2')),
                       DataCell(_tableRowImage('Joe Blow')),
-                      DataCell(_tableHeader('Mobile App')),
+                      DataCell(_tableHeader(languageModel.dashboard.mobileApp)),
                       DataCell(_tableHeader('November 17, 2022')),
                       DataCell(_tableHeader('\$127')),
                       DataCell(_statusBox(ColorConst.warningDark, 'Pending')),
@@ -117,7 +117,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('3')),
                       DataCell(_tableRowImage('Jhon Wick')),
-                      DataCell(_tableHeader('Website')),
+                      DataCell(_tableHeader(languageModel.dashboard.website)),
                       DataCell(_tableHeader('November 3, 2022')),
                       DataCell(_tableHeader('\$107')),
                       DataCell(_statusBox(ColorConst.successDark, 'Delivered')),
@@ -129,7 +129,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('4')),
                       DataCell(_tableRowImage('Joe Wick')),
-                      DataCell(_tableHeader('Desktop App')),
+                      DataCell(_tableHeader(languageModel.dashboard.desktopApp)),
                       DataCell(_tableHeader('November 18, 2022')),
                       DataCell(_tableHeader('\$109')),
                       DataCell(_statusBox(ColorConst.errorDark, 'Cancel')),
@@ -141,7 +141,7 @@ class _TransactionState extends State<Transaction> {
                     cells: [
                       DataCell(_tableHeader('5')),
                       DataCell(_tableRowImage('Jane Blow')),
-                      DataCell(_tableHeader('Desktop App')),
+                      DataCell(_tableHeader(languageModel.dashboard.desktopApp)),
                       DataCell(_tableHeader('November 12, 2022')),
                       DataCell(_tableHeader('\$120')),
                       DataCell(_statusBox(ColorConst.successDark, 'Delivered')),

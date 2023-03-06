@@ -313,7 +313,7 @@ class DataTable3 extends DataTable {
 
     final TextStyle effectiveHeadingTextStyle = headingTextStyle ??
         themeData.dataTableTheme.headingTextStyle ??
-        themeData.textTheme.subtitle2!;
+        themeData.textTheme.titleSmall!;
 
     label = Container(
       padding: padding,
@@ -375,7 +375,7 @@ class DataTable3 extends DataTable {
 
     final TextStyle effectiveDataTextStyle = dataTextStyle ??
         themeData.dataTableTheme.dataTextStyle ??
-        themeData.textTheme.bodyText2!;
+        themeData.textTheme.bodyMedium!;
     final double effectiveDataRowHeight =
         specificRowHeight ?? defaultDataRowHeight;
 

@@ -9,6 +9,7 @@ import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/extainsions/string_extainsions.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/utils/text_utils.dart';
@@ -271,7 +272,12 @@ class _MenuBarState extends State<FMenuBar> {
                                           children: [
                                             FxBox.h20,
                                             Text(
-                                              upperCase(tabsRouter.currentPath),
+                                              languageModel
+                                                  .translate(upperCase(
+                                                          tabsRouter
+                                                              .currentPath)
+                                                      .camelCase())
+                                                  .trim(),
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodyLarge!
@@ -411,7 +417,7 @@ class _MenuBarState extends State<FMenuBar> {
                       contentPadding: _switchlayout.value == false
                           ? const EdgeInsets.fromLTRB(12, 10, 0, 4)
                           : const EdgeInsets.fromLTRB(0, 10, 12, 4),
-                      hintText: Strings.searchHint,
+                      hintText: languageModel.translate('search'),
                       hintStyle: const TextStyle(fontSize: 15),
                       suffixIcon: const Padding(
                         padding: EdgeInsets.all(12.0),
@@ -480,10 +486,11 @@ class _MenuBarState extends State<FMenuBar> {
                   child: Switch(
                     value: value,
                     onChanged: (value) {
+                      languageModel.changeLanguage();
                       _switchlayout.value = value;
-                      value == true
-                          ? _layout.value = TextDirection.rtl
-                          : _layout.value = TextDirection.ltr;
+                      // value == true
+                      //     ? _layout.value = TextDirection.rtl
+                      //     : _layout.value = TextDirection.ltr;
                     },
                   ),
                 );
@@ -842,7 +849,8 @@ class _MenuBarState extends State<FMenuBar> {
                       ],
                     ),
                     title: Text(
-                      items.keys.elementAt(index),
+                      languageModel
+                          .translate(items.keys.elementAt(index).camelCase()),
                       style: TextStyle(
                           color: children[index]
                                   .contains(upperCase(tabsRouter.currentPath))
@@ -877,7 +885,8 @@ class _MenuBarState extends State<FMenuBar> {
                     ),
                     title: isopen
                         ? Text(
-                            items.keys.elementAt(index),
+                            languageModel.translate(
+                                items.keys.elementAt(index).camelCase()),
                             style: TextStyle(
                               color: items.keys.elementAt(index) ==
                                       upperCase(tabsRouter.currentPath)
@@ -931,7 +940,8 @@ class _MenuBarState extends State<FMenuBar> {
                     ),
                     title: isopen
                         ? Text(
-                            items.keys.elementAt(index),
+                            languageModel.translate(
+                                items.keys.elementAt(index).camelCase()),
                             style: TextStyle(
                               color: items.keys.elementAt(index) ==
                                       upperCase(tabsRouter.currentPath)
@@ -1259,7 +1269,8 @@ class _MenuBarState extends State<FMenuBar> {
                       ? const EdgeInsets.only(left: 52.0)
                       : const EdgeInsets.only(right: 52.0),
                   title: Text(
-                    items[index],
+                    // items[index],
+                    languageModel.translate(items[index].camelCase()),
                     style: TextStyle(color: color, fontSize: 15),
                   ),
                   onTap: () {
@@ -1312,9 +1323,10 @@ class _MenuBarState extends State<FMenuBar> {
       children: tabsRouter.currentPath == '/dashboard'
           ? []
           : [
-              const InkWell(
+              InkWell(
                 mouseCursor: SystemMouseCursors.click,
-                child: Text(Strings.admin),
+                // child: Text(Strings.admin),
+                child: Text(languageModel.translate('admin')),
               ),
               if (routeIndex.isBetween(1, 6) ||
                   routeIndex == 10 ||
@@ -1323,15 +1335,20 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 33 ||
                   routeIndex == 36 ||
                   routeIndex == 37) ...[
-                const Text(' / ${Strings.uiElements} '),
+                // const Text(' / ${Strings.uiElements} '),
+                Text(' / ${languageModel.translate('widgets')} '),
               ] else if (routeIndex.isBetween(27, 32)) ...[
-                const Text(' / ${Strings.forms} '),
+                // const Text(' / ${Strings.forms} '),
+                Text(' / ${languageModel.translate('formElements')} '),
               ] else if (routeIndex.isBetween(11, 13)) ...[
-                const Text(' / ${Strings.charts} '),
+                // const Text(' / ${Strings.charts} '),
+                Text(' / ${languageModel.translate('charts')} '),
               ] else if (routeIndex.isBetween(14, 17)) ...[
-                const Text(' / ${Strings.tables} '),
+                // const Text(' / ${Strings.tables} '),
+                Text(' / ${languageModel.translate('tables')} '),
               ] else if (routeIndex.isBetween(7, 9)) ...[
-                const Text(' / ${Strings.emailTemplates} '),
+                // const Text(' / ${Strings.emailTemplates} '),
+                Text(' / ${languageModel.translate('emailTemplates')} '),
               ] else if (routeIndex == 38) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 40) ...[
@@ -1363,10 +1380,14 @@ class _MenuBarState extends State<FMenuBar> {
                   tabsRouter.currentPath == '/map') ...[
                 const SizedBox.shrink()
               ] else ...[
-                const Text(' / Extra Pages '),
+                // const Text(' / Extra Pages '),
+                Text(' / ${languageModel.translate('extraPages')} '),
               ],
               const Text(' / '),
-              Text(upperCase(tabsRouter.currentPath)),
+              // Text(upperCase(tabsRouter.currentPath)),
+              Text(languageModel
+                  .translate(upperCase(tabsRouter.currentPath).camelCase())
+                  .trim()),
             ],
     );
   }

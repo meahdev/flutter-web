@@ -61,7 +61,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   
-  
   flutterx:
     path: package/flutterx
   window_size:

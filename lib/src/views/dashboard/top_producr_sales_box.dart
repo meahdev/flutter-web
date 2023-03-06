@@ -1,6 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/material.dart';
 
 class TopProductSale extends StatefulWidget {
@@ -34,7 +34,7 @@ class _TopProductSaleState extends State<TopProductSale> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               ConstText.lightText(
-                text: Strings.topProductSale,
+                text: languageModel.dashboard.topProductSale,
                 // color: ColorConst.white.withOpacity(0.5),
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
@@ -46,13 +46,13 @@ class _TopProductSaleState extends State<TopProductSale> {
                 fontWeight: FontWeight.bold,
               ),
               ConstText.lightText(
-                text: Strings.computer,
+                text: languageModel.dashboard.computer,
                 color: ColorConst.primary,
                 fontSize: 15,
                 fontWeight: FontWeight.w500,
               ),
               ConstText.lightText(
-                text: 'Lorem Ipsum is simply dummy text of the printing.',
+                text: languageModel.dashboard.lorem1,
                 textAlign: TextAlign.center,
                 fontSize: 15,
                 // color: ColorConst.white.withOpacity(0.5),

@@ -1,55 +1,13 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class Listitem extends StatefulWidget {
-  const Listitem({Key? key}) : super(key: key);
+class Listitem extends StatelessWidget {
+  const Listitem({super.key});
 
-  @override
-  State<Listitem> createState() => _ListitemState();
-}
-
-class _ListitemState extends State<Listitem> {
-  final List<Map<String, dynamic>> _listItem = [
-    {
-      'id': 0,
-      'producTitle': 'Total Inventory',
-      'value': '3,930',
-      'boxIcon': Icons.note_add,
-      // 'boxColor': '05A660',
-      'boxColor': ['FEBE99', 'F66F94'],
-      'percentage': 60,
-    },
-    {
-      'id': 1,
-      'producTitle': 'Total Active',
-      'value': '1,268',
-      'boxIcon': Icons.note_alt_rounded,
-      // 'boxColor': '9B5B1E',
-      'boxColor': ['43D5E7', '7DB1F0'],
-      'percentage': 10,
-    },
-    {
-      'id': 2,
-      'producTitle': 'Total Cancel',
-      'value': '170',
-      'boxIcon': Icons.pending_actions_outlined,
-      // 'boxColor': '18818D',
-      'boxColor': ['8DDAD3', '3CC2AE'],
-      'percentage': -5,
-    },
-    {
-      'id': 3,
-      'producTitle': 'Total Sales',
-      'value': '28,060',
-      'boxIcon': Icons.shopping_bag_rounded,
-      // 'boxColor': '004FC4',
-      'boxColor': ['A100DA', '400370'],
-      'percentage': 15,
-    },
-  ];
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -135,7 +93,8 @@ class _ListitemState extends State<Listitem> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ConstText.lightText(
-                      text: productTitle,
+                      text:
+                          '${languageModel.translate('total')} ${languageModel.translate(productTitle)}',
                       color: ColorConst.white,
                       fontWeight: FontWeight.bold,
                     ),
@@ -151,8 +110,8 @@ class _ListitemState extends State<Listitem> {
                 const Spacer(),
                 ConstText.lightText(
                   text: percentage > 0
-                      ? 'Increased by ${percentage.abs()}%'
-                      : 'Decreased by ${percentage.abs()}%',
+                      ? '${languageModel.translate('increasedBy')} ${percentage.abs()}%'
+                      : '${languageModel.translate('decreasedBy')} ${percentage.abs()}%',
                   color: ColorConst.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -187,51 +146,43 @@ class _ListitemState extends State<Listitem> {
       ),
     );
   }
-
-  // Widget _iconBox({required IconData boxIcon, required Color color}) {
-  //   return Container(
-  //     height: 58,
-  //     width: 58,
-  //     decoration: BoxDecoration(
-  //       color: ColorConst.white.withOpacity(0.05),
-  //       shape: BoxShape.circle,
-  //     ),
-  //     child: Icon(
-  //       boxIcon,
-  //       color: color,
-  //       size: 32,
-  //     ),
-  //   );
-  // }
-
-  // Widget _listIconItem({
-  //   required String productTitle,
-  //   required String value,
-  //   required Color color,
-  // }) {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     mainAxisSize: MainAxisSize.min,
-  //     children: [
-  //       ConstText.lightText(
-  //         text: productTitle,
-  //         fontWeight: FontWeight.bold,
-  //       ),
-  //       FxBox.h12,
-  //       ConstText.mediumText(
-  //         text: value,
-  //         color: color,
-  //         fontWeight: FontWeight.bold,
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  // Widget _textBox({required String title}) {
-  //   return ConstText.lightText(
-  //     text: title,
-  //     color: ColorConst.white.withOpacity(0.5),
-  //     fontWeight: FontWeight.w500,
-  //   );
-  // }
 }
+
+final List<Map<String, dynamic>> _listItem = [
+  {
+    'id': 0,
+    'producTitle': 'inventory',
+    'value': '3,930',
+    'boxIcon': Icons.note_add,
+    // 'boxColor': '05A660',
+    'boxColor': ['FEBE99', 'F66F94'],
+    'percentage': 60,
+  },
+  {
+    'id': 1,
+    'producTitle': 'active',
+    'value': '1,268',
+    'boxIcon': Icons.note_alt_rounded,
+    // 'boxColor': '9B5B1E',
+    'boxColor': ['43D5E7', '7DB1F0'],
+    'percentage': 10,
+  },
+  {
+    'id': 2,
+    'producTitle': 'cancel',
+    'value': '170',
+    'boxIcon': Icons.pending_actions_outlined,
+    // 'boxColor': '18818D',
+    'boxColor': ['8DDAD3', '3CC2AE'],
+    'percentage': -5,
+  },
+  {
+    'id': 3,
+    'producTitle': 'sales',
+    'value': '28,060',
+    'boxIcon': Icons.shopping_bag_rounded,
+    // 'boxColor': '004FC4',
+    'boxColor': ['A100DA', '400370'],
+    'percentage': 15,
+  },
+];

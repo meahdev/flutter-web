@@ -1,6 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -127,21 +127,21 @@ class _SalesanalyticsState extends State<Salesanalytics> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ConstText.lightText(
-                text: Strings.salesAnalytics,
+                text: languageModel.dashboard.monthlySalesReport,
                 fontWeight: FontWeight.bold,
               ),
               _statusAndvalueWithChart(
-                status: 'Website',
+                status: languageModel.dashboard.website,
                 value: '10,942',
                 list: _onlineChart,
               ),
               _statusAndvalueWithChart(
-                status: 'Desktop',
+                status: languageModel.dashboard.desktop,
                 value: '8,451',
                 list: _offlineChart,
               ),
               _statusAndvalueWithChart(
-                status: 'Mobile',
+                status: languageModel.dashboard.mobile,
                 value: '1,574',
                 list: _marketingChart,
               ),

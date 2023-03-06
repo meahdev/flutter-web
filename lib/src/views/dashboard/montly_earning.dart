@@ -1,6 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/half_chart.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -303,7 +303,7 @@ class _MonthlyearningState extends State<Monthlyearning> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ConstText.lightText(
-                text: Strings.monthlyEarning,
+                text: languageModel.dashboard.monthlyIncome,
                 fontWeight: FontWeight.bold,
               ),
               FxBox.h24,
@@ -318,19 +318,17 @@ class _MonthlyearningState extends State<Monthlyearning> {
                           FxBox.h16,
                           Expanded(
                             child: _monthEarning(
-                              durationText: 'This month',
+                              durationText: languageModel.dashboard.thisMonth,
                               salesAmount: '\u{20B9}25,234',
-                              descriptionText:
-                                  'Lorem Ipsum is simply dummy text.',
+                              descriptionText: languageModel.dashboard.chartLorem,
                             ),
                           ),
                           FxBox.h16,
                           Expanded(
                             child: _monthEarning(
-                              durationText: 'Last month',
+                              durationText: languageModel.dashboard.lastMonth,
                               salesAmount: '\u{20B9}76,321',
-                              descriptionText:
-                                  'Lorem Ipsum is simply dummy text.',
+                              descriptionText: languageModel.dashboard.chartLorem,
                             ),
                           ),
                         ],
@@ -347,19 +345,17 @@ class _MonthlyearningState extends State<Monthlyearning> {
                           FxBox.w32,
                           Expanded(
                             child: _monthEarning(
-                              durationText: 'This month',
+                              durationText: languageModel.dashboard.thisMonth,
                               salesAmount: '\u{20B9}25,234',
-                              descriptionText:
-                                  'Lorem Ipsum is simply dummy text.',
+                              descriptionText: languageModel.dashboard.chartLorem,
                             ),
                           ),
                           FxBox.w32,
                           Expanded(
                             child: _monthEarning(
-                              durationText: 'Last month',
+                              durationText: languageModel.dashboard.lastMonth,
                               salesAmount: '\u{20B9}76,321',
-                              descriptionText:
-                                  'Lorem Ipsum is simply dummy text.',
+                              descriptionText: languageModel.dashboard.chartLorem,
                             ),
                           ),
                         ],
