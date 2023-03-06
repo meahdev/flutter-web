@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -42,7 +43,7 @@ class CustomBadge extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                isOutline ? 'Outline badge' : 'Simple badge',
+                isOutline ? languageModel.widget.outlineBadge : languageModel.widget.simpleBadge,
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -55,22 +56,22 @@ class CustomBadge extends StatelessWidget {
                 children: [
                   FxBadge(text: Strings.primary, isOutlined: isOutline),
                   FxBadge(
-                    text: Strings.success,
+                    text: languageModel.widget.success,
                     color: ColorConst.success,
                     isOutlined: isOutline,
                   ),
                   FxBadge(
-                    text: Strings.error,
+                    text: languageModel.widget.error,
                     color: ColorConst.error,
                     isOutlined: isOutline,
                   ),
                   FxBadge(
-                    text: Strings.info,
+                    text: languageModel.widget.info,
                     color: ColorConst.infoDark,
                     isOutlined: isOutline,
                   ),
                   FxBadge(
-                    text: Strings.badge,
+                    text: languageModel.translate('badge'),
                     color: Theme.of(context).colorScheme.tertiary,
                     isOutlined: isOutline,
                   ),

@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -64,7 +65,9 @@ class _ToastState extends State<Toast> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                background ? 'Light background toast' : 'Simple toast',
+                background
+                    ? languageModel.widget.lightBackgroundToast
+                    : languageModel.widget.simpleToast,
                 style: const TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
@@ -74,7 +77,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithColor(
-                  message: 'Primary',
+                  message: languageModel.widget.primary,
                   isLightBackground: background,
                 ),
                 ToastPosition.top,
@@ -83,7 +86,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithColor.success(
-                  message: 'Success',
+                  message: languageModel.widget.success,
                   isLightBackground: background,
                 ),
                 ToastPosition.top,
@@ -92,7 +95,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithColor.error(
-                  message: 'Error',
+                  message: languageModel.widget.error,
                   isLightBackground: background,
                 ),
                 ToastPosition.top,
@@ -101,7 +104,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithColor.warning(
-                  message: 'Warning',
+                  message: languageModel.widget.warning,
                   isLightBackground: background,
                 ),
                 ToastPosition.topLeft,
@@ -110,7 +113,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithColor.info(
-                  message: 'Info',
+                  message: languageModel.widget.info,
                   isLightBackground: background,
                 ),
                 ToastPosition.topRight,
@@ -135,9 +138,9 @@ class _ToastState extends State<Toast> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Icon toast',
-                style: TextStyle(
+              Text(
+                languageModel.widget.iconToast,
+                style: const TextStyle(
                   fontSize: 17,
                   fontWeight: FontWeight.w600,
                 ),
@@ -146,7 +149,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithoutColor(
-                  message: 'Primary',
+                  message: languageModel.widget.primary,
                   icon: _iconList[0],
                 ),
                 ToastPosition.topRight,
@@ -155,7 +158,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithoutColor.success(
-                  message: 'Success',
+                  message: languageModel.widget.success,
                   icon: _iconList[1],
                 ),
                 ToastPosition.topRight,
@@ -164,7 +167,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithoutColor.error(
-                  message: 'Error',
+                  message: languageModel.widget.error,
                   icon: _iconList[2],
                 ),
                 ToastPosition.topRight,
@@ -173,7 +176,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithoutColor.warning(
-                  message: 'Warning',
+                  message: languageModel.widget.warning,
                   icon: _iconList[3],
                 ),
                 ToastPosition.topRight,
@@ -182,7 +185,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithoutColor.info(
-                  message: 'Info',
+                  message: languageModel.widget.info,
                   icon: _iconList[4],
                 ),
                 ToastPosition.topRight,

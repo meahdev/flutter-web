@@ -52,7 +52,7 @@ class _TopProductSaleState extends State<TopProductSale> {
                 fontWeight: FontWeight.w500,
               ),
               ConstText.lightText(
-                text: languageModel.dashboard.lorem1,
+                text: languageModel.lorem1,
                 textAlign: TextAlign.center,
                 fontSize: 15,
                 // color: ColorConst.white.withOpacity(0.5),

@@ -3,6 +3,7 @@ import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/provider/carousel/bloc/carousel_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -25,9 +26,9 @@ class _CarouselState extends State<Carousel> {
   final List<String> _imageList = [Images.c1, Images.c2, Images.c3];
 
   final List<String> _captionList = [
-    'First slide label',
-    'Second slide label',
-    'Third slide label',
+    languageModel.widget.firstSlideLabel,
+    languageModel.widget.secondSlideLabel,
+    languageModel.widget.thirdSlideLabel,
   ];
 
   int _slideOnlyindex = 0;
@@ -123,7 +124,7 @@ class _CarouselState extends State<Carousel> {
 
   Widget _slidesOnly() {
     return _commonView(
-      'Carousel Slider',
+      languageModel.translate('carouselSlider'),
       CarouselSlider(
         items: _imageList
             .map(
@@ -191,7 +192,7 @@ class _CarouselState extends State<Carousel> {
 
   Widget _withIndicators() {
     return _commonView(
-      'Carousel With Indicators',
+      languageModel.widget.carouselWithIndicators,
       Stack(
         alignment: Alignment.center,
         children: [
@@ -250,7 +251,7 @@ class _CarouselState extends State<Carousel> {
 
   Widget _withCaptions() {
     return _commonView(
-      'Carousel With Captions',
+      languageModel.widget.carouselWithCaptions,
       Stack(
         alignment: Alignment.center,
         children: [

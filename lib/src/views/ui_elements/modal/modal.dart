@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
@@ -32,17 +33,13 @@ class _ModalState extends State<Modal> {
       runSpacing: 56,
       children: [
         _modelButton(
-          title: 'Simple modal',
-          content: const Text(
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-          ),
+          title: languageModel.widget.simpleModal,
+          content: Text(languageModel.widget.modalLorem),
         ),
         FxBox.w16,
         _modelButton(
-          title: 'Modal with button',
-          content: const Text(
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-          ),
+          title: languageModel.widget.modalWithButton,
+          content: Text(languageModel.widget.modalLorem),
           actions: [
             FxButton(
               onPressed: () => Navigator.pop(context),
@@ -57,11 +54,9 @@ class _ModalState extends State<Modal> {
         ),
         FxBox.w16,
         _modelButton(
-          title: 'Large modal',
+          title: languageModel.widget.largeModal,
           modalType: ModalType.large,
-          content: const Text(
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-          ),
+          content: Text(languageModel.widget.modalLorem),
           actions: [
             FxButton(
               onPressed: () => Navigator.pop(context),
@@ -76,11 +71,9 @@ class _ModalState extends State<Modal> {
         ),
         FxBox.w16,
         _modelButton(
-          title: 'Extra Large modal',
+          title: languageModel.widget.extraLargeModal,
           modalType: ModalType.extraLarge,
-          content: const Text(
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
-          ),
+          content: Text(languageModel.widget.modalLorem),
           actions: [
             FxButton(
               onPressed: () => Navigator.pop(context),
@@ -95,9 +88,9 @@ class _ModalState extends State<Modal> {
         ),
         FxBox.w16,
         _modelButton(
-          title: 'Scrollable modal',
-          content: const Text(
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.\n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.\n\nLorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\n\nIt has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.',
+          title: languageModel.widget.scrollableModal,
+          content: Text(
+            '${languageModel.widget.modalLorem}\n\n${languageModel.widget.modalLorem}\n\n${languageModel.widget.modalLorem}\n\n${languageModel.widget.modalLorem}',
           ),
           actions: [
             FxButton(

@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -24,7 +25,7 @@ class _DragAndDropState extends State<DragAndDrop> {
       'I Task',
       'J Task'
     ];
-    Size size = MediaQuery.of(context).size;
+
     return Card(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(16.0),
@@ -34,9 +35,10 @@ class _DragAndDropState extends State<DragAndDrop> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Drag & Drop',
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 24.0),
+            Text(
+              languageModel.widget.dragAndDrop,
+              style:
+                  const TextStyle(fontWeight: FontWeight.w500, fontSize: 24.0),
             ),
             const Divider(),
             Responsive.isMobile(context)

@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -11,12 +12,12 @@ class Button extends StatefulWidget {
 
 class _ButtonState extends State<Button> {
   final List<String> _buttonText = [
-    'Primary',
-    'Secondary',
-    'Success',
-    'Info',
-    'Warning',
-    'Error'
+    languageModel.widget.primary,
+    languageModel.widget.secondary,
+    languageModel.widget.success,
+    languageModel.widget.info,
+    languageModel.widget.warning,
+    languageModel.widget.error,
   ];
 
   final Map<IconData, dynamic> _simpleButtonData = {
@@ -201,9 +202,9 @@ class _ButtonState extends State<Button> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Simple buttons',
-          style: TextStyle(
+        Text(
+          languageModel.widget.simpleButtons,
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
@@ -228,9 +229,9 @@ class _ButtonState extends State<Button> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Outline buttons',
-          style: TextStyle(
+        Text(
+          languageModel.widget.outlineButtons,
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
@@ -256,9 +257,9 @@ class _ButtonState extends State<Button> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Simple with icon buttons',
-          style: TextStyle(
+        Text(
+          languageModel.widget.simpleWithIconButtons,
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
@@ -284,9 +285,9 @@ class _ButtonState extends State<Button> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Outline with icon buttons',
-          style: TextStyle(
+        Text(
+          languageModel.widget.outlineWithIconButtons,
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
@@ -313,9 +314,9 @@ class _ButtonState extends State<Button> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Simple icon buttons',
-          style: TextStyle(
+        Text(
+          languageModel.widget.simpleIconButtons,
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
@@ -340,9 +341,9 @@ class _ButtonState extends State<Button> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Outline icon buttons',
-          style: TextStyle(
+        Text(
+          languageModel.widget.outlineIconButtons,
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
@@ -368,9 +369,9 @@ class _ButtonState extends State<Button> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Social buttons',
-          style: TextStyle(
+        Text(
+          languageModel.widget.socialButtons,
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),
@@ -399,9 +400,9 @@ class _ButtonState extends State<Button> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Outlined social buttons',
-          style: TextStyle(
+        Text(
+          languageModel.widget.outlinedSocialButtons,
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.w600,
           ),

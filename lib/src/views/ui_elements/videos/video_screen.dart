@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -50,7 +51,7 @@ class _VideoScreenState extends State<VideoScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Single Video', style: textStyle),
+                  Text(languageModel.widget.singleVideo, style: textStyle),
                   FxBox.h20,
                   IntrinsicHeight(
                     child: FxVideoPlayer(
@@ -72,7 +73,7 @@ class _VideoScreenState extends State<VideoScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Multiple Video', style: textStyle),
+                  Text(languageModel.widget.multipleVideo, style: textStyle),
                   FxBox.h20,
                   IntrinsicHeight(
                     child: FxVideoPlayer(

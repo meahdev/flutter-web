@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -31,8 +32,8 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
       runSpacing: 56,
       children: [
         _alertButton(
-          title: Strings.simpleAlert,
-          text: Strings.simpleAlert,
+          title: languageModel.widget.simpleAlert,
+          text: languageModel.widget.simpleAlert,
           buttons: [
             FxButton(
               onPressed: () => Navigator.pop(context),
@@ -42,8 +43,8 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
         ),
         FxBox.w16,
         _alertButton(
-          title: Strings.iconAlert,
-          text: Strings.iconAlert,
+          title: languageModel.widget.iconAlert,
+          text: languageModel.widget.simpleAlert,
           icon: const Icon(Icons.error_rounded, size: 30.0),
           buttons: [
             FxButton(
@@ -54,8 +55,8 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
         ),
         FxBox.w16,
         _alertButton(
-          title: Strings.alertWithTwoButton,
-          text: Strings.alertWithTwoButton,
+          title: languageModel.widget.alertWithTwoButton,
+          text: languageModel.widget.alertWithTwoButton,
           buttons: [
             FxButton(
               onPressed: () => Navigator.pop(context),
@@ -70,8 +71,8 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
         ),
         FxBox.w16,
         _alertButton(
-          title: 'Icon Alert With Two Button',
-          text: 'Alert With Two Button',
+          title: languageModel.widget.iconAlertWithTwoButton,
+          text: languageModel.widget.iconAlertWithTwoButton,
           icon: Icon(
             Icons.check_circle_outline_rounded,
             size: 30.0,
@@ -92,8 +93,8 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
         ),
         FxBox.w16,
         _alertButton(
-          title: 'Gif Alert',
-          text: 'Git alert',
+          title: languageModel.widget.gifAlert,
+          text: languageModel.widget.gifAlert,
           icon: Image.asset('assets/rocket.gif', height: 40, width: 40),
           buttons: [
             FxButton(
@@ -104,8 +105,8 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
         ),
         FxBox.w16,
         _alertButton(
-          title: 'Alert With Textfield',
-          text: 'alert with textfield',
+          title: languageModel.widget.alertWithTextfield,
+          text: languageModel.widget.alertWithTextfield,
           content: const SizedBox(
             width: 300,
             height: 40,
@@ -161,7 +162,8 @@ class _AlertDialogBoxState extends State<AlertDialogBox> {
                   context: context,
                   title: text,
                   content: content ??
-                      Text('This is ${title.toLowerCase()} dialog box.'),
+                      Text(
+                          '${languageModel.widget.thisIs} ${title.toLowerCase()} ${languageModel.widget.dialogBox}'),
                   actions: buttons!,
                 );
               },
