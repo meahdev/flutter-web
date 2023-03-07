@@ -13,6 +13,7 @@ import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_comm
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/payment/success_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_condition/return_condition_screen.dart';
@@ -168,6 +169,8 @@ int getRouteIndex(String route) {
     return 54;
   } else if (route == Strings.productAdd) {
     return 55;
+  } else if (route == '${Strings.payment}/success') {
+    return 56;
   } else {
     return 0;
   }
@@ -284,6 +287,8 @@ Widget getRouteWidget(int index) {
     return const CartScreen();
   } else if (index == 55) {
     return const ProductAdd();
+  } else if (index == 56) {
+    return const SuccessScreen();
   } else {
     return const Dashboard();
   }

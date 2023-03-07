@@ -224,6 +224,7 @@ class _MenuBarState extends State<FMenuBar> {
     EcommerceDashboard(),
     CartScreen(),
     ProductAdd(),
+    SuccessScreen(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
@@ -1354,7 +1355,8 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 50 ||
                   routeIndex == 52 ||
                   routeIndex == 53 ||
-                  routeIndex == 54) ...[
+                  routeIndex == 54 ||
+                  routeIndex == 56) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 39) ...[
                 const Text(' / ${Strings.eCommerce} / ${Strings.products}'),

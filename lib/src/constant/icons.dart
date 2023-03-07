@@ -31,4 +31,5 @@ class IconlyBroken {
   static const String maintenance = '${_assetPath}maintenance.svg';
   static const String camera = '${_assetPath}camera.svg';
   static const String clourComputing = '${_assetPath}cloudcomputing.svg';
+  static const String verify = '${_assetPath}verify.svg';
 }

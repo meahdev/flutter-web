@@ -1,9 +1,11 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
+import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -475,12 +477,15 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       child: Row(
         children: [
           FxButton(
-            text: 'BUY',
+            text: 'BUY NOW',
             height: 50,
+            icon: const Icon(Icons.shopping_cart_rounded),
             minWidth: 150,
             borderRadius: 4,
             color: ColorConst.primary,
-            onPressed: () {},
+            onPressed: () {
+              autoTabRouter!.setActiveIndex(54);
+            },
           ),
           FxBox.w16,
           FxButton(
@@ -490,7 +495,104 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             minWidth: 150,
             borderRadius: 4,
             color: ColorConst.calSuccess,
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return Dialog(
+                      child: Container(
+                        padding: const EdgeInsets.all(22.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            // Align(
+                            //   alignment: Alignment.bottomRight,
+                            //   child: InkWell(
+                            //     onTap: () {
+                            //       Navigator.pop(context);
+                            //     },
+                            //     child: const SvgIcon(
+                            //       icon: IconlyBroken.closeSquare,
+                            //       color: ColorConst.primaryDark,
+                            //       size: 28,
+                            //     ),
+                            //   ),
+                            // ),
+                            SvgIcon(
+                              icon: IconlyBroken.verify,
+                              color: ColorConst.successDark,
+                              size: 28,
+                            ),
+                            FxBox.h16,
+                            const CustomText(
+                              title: 'Item added to your cart!',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w500,
+                            ),
+                            FxBox.h24,
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: SizedBox(
+                                    width: 80,
+                                    height: 80,
+                                    child: Image.asset(
+                                      Images.tv3,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                FxBox.w24,
+                                Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const CustomText(
+                                      title: 'OnePlus Smart TV',
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                    FxBox.h8,
+                                    const CustomText(
+                                      title: '\$ 400',
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            FxBox.h24,
+                            Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: [
+                                FxButton(
+                                  height: 35,
+                                  text: 'Back to shopping',
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                FxBox.w12,
+                                FxButton(
+                                  height: 35,
+                                  text: 'Proceed to Checkout',
+                                  onPressed: () {
+                                    autoTabRouter!.setActiveIndex(54);
+                                    Navigator.pop(context);
+                                  },
+                                  color: ColorConst.successDark,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  });
+            },
           ),
         ],
       ),

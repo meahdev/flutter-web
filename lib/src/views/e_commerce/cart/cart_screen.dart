@@ -141,7 +141,9 @@ class _CartScreenState extends State<CartScreen> {
             Align(
               alignment: Alignment.bottomRight,
               child: FxButton(
-                onPressed: () {},
+                onPressed: () {
+                  autoTabRouter!.setActiveIndex(45);
+                },
                 height: 50,
                 color: ColorConst.calSuccess,
                 text: Strings.checkOut,

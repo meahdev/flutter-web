@@ -15,6 +15,13 @@ String upperCase(String text) {
           '$tempText ${element.substring(0, 1).toUpperCase()}${element.substring(1).toLowerCase()}';
     }
     return tempText.trim();
+  } else if (text == '/payment/success') {
+    String tempText = '';
+    for (String element in text.split('/')[2].split('-')) {
+      tempText =
+          '$tempText ${element.substring(0, 1).toUpperCase()}${element.substring(1).toLowerCase()}';
+    }
+    return tempText.trim();
   } else if (text == '/vender/vender-detail') {
     String tempText = '';
     for (String element in text.split('/')[2].split('-')) {

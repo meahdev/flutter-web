@@ -16,6 +16,7 @@ import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_comm
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/payment/success_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_condition/return_condition_screen.dart';
@@ -123,6 +124,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'vender/vender-detail', page: VenderDetailScreen),
         AutoRoute(path: 'customer', page: CustomerScreen),
         AutoRoute(path: 'payment', page: PaymentScreen),
+        AutoRoute(path: 'payment/success', page: SuccessScreen),
         AutoRoute(path: 'return-order', page: ReturnOrderScreen),
         AutoRoute(path: 'order', page: OrderScreen),
         AutoRoute(

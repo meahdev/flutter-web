@@ -376,7 +376,9 @@ class _PaymentScreenState extends State<PaymentScreen>
                   const SizedBox(height: 16.0),
                   FxButton(
                     borderRadius: 4,
-                    onPressed: () {},
+                    onPressed: () {
+                      autoTabRouter!.setActiveIndex(56);
+                    },
                     text: 'Pay now',
                   )
                 ],

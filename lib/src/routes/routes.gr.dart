@@ -11,8 +11,8 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i70;
-import 'package:flutter/material.dart' as _i71;
+import 'package:auto_route/auto_route.dart' as _i71;
+import 'package:flutter/material.dart' as _i72;
 
 import '../views/authentication/lock_screen/lock_screen_one.dart' as _i8;
 import '../views/authentication/lock_screen/lock_screen_two.dart' as _i9;
@@ -29,24 +29,25 @@ import '../views/charts/chartist.dart' as _i29;
 import '../views/charts/chartjs.dart' as _i30;
 import '../views/charts/morris_chart.dart' as _i28;
 import '../views/dashboard/dashboard.dart' as _i14;
-import '../views/e_commerce/cart/cart_screen.dart' as _i68;
+import '../views/e_commerce/cart/cart_screen.dart' as _i69;
 import '../views/e_commerce/category/category_screen.dart' as _i54;
 import '../views/e_commerce/category/sub_category.dart' as _i55;
-import '../views/e_commerce/coupon/coupons_screen.dart' as _i65;
+import '../views/e_commerce/coupon/coupons_screen.dart' as _i66;
 import '../views/e_commerce/customer/customer_screen.dart' as _i58;
 import '../views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart'
-    as _i67;
-import '../views/e_commerce/order/order_invoice.dart' as _i63;
-import '../views/e_commerce/order/order_screen.dart' as _i61;
+    as _i68;
+import '../views/e_commerce/order/order_invoice.dart' as _i64;
+import '../views/e_commerce/order/order_screen.dart' as _i62;
 import '../views/e_commerce/payment/payment_screen.dart' as _i59;
-import '../views/e_commerce/products/product_add.dart' as _i69;
+import '../views/e_commerce/payment/success_screen.dart' as _i60;
+import '../views/e_commerce/products/product_add.dart' as _i70;
 import '../views/e_commerce/products/product_detail_screen.dart' as _i53;
 import '../views/e_commerce/products/products_screen.dart' as _i52;
 import '../views/e_commerce/return_condition/return_condition_screen.dart'
-    as _i66;
-import '../views/e_commerce/return_order/return_order_invoice.dart' as _i62;
-import '../views/e_commerce/return_order/return_order_screen.dart' as _i60;
-import '../views/e_commerce/subscription/subscription_screen.dart' as _i64;
+    as _i67;
+import '../views/e_commerce/return_order/return_order_invoice.dart' as _i63;
+import '../views/e_commerce/return_order/return_order_screen.dart' as _i61;
+import '../views/e_commerce/subscription/subscription_screen.dart' as _i65;
 import '../views/e_commerce/vender/vender_detail_screen.dart' as _i57;
 import '../views/e_commerce/vender/vender_screen.dart' as _i56;
 import '../views/email_templates/alert_email.dart' as _i26;
@@ -88,768 +89,779 @@ import '../views/ui_elements/toast/toast.dart' as _i17;
 import '../views/ui_elements/videos/video_screen.dart' as _i48;
 import '../views/user/user_profile.dart' as _i49;
 
-class AppRouter extends _i70.RootStackRouter {
-  AppRouter([_i71.GlobalKey<_i71.NavigatorState>? navigatorKey])
+class AppRouter extends _i71.RootStackRouter {
+  AppRouter([_i72.GlobalKey<_i72.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i70.PageFactory> pagesMap = {
+  final Map<String, _i71.PageFactory> pagesMap = {
     FMenuBar.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i1.FMenuBar(),
       );
     },
     LoginOne.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i2.LoginOne(),
       );
     },
     LoginTwo.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i3.LoginTwo(),
       );
     },
     RegisterOne.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i4.RegisterOne(),
       );
     },
     RegisterTwo.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i5.RegisterTwo(),
       );
     },
     RecoverPasswordOne.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i6.RecoverPasswordOne(),
       );
     },
     RecoverPasswordTwo.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i7.RecoverPasswordTwo(),
       );
     },
     LockScreenOne.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i8.LockScreenOne(),
       );
     },
     LockScreenTwo.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i9.LockScreenTwo(),
       );
     },
     Error404.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i10.Error404(),
       );
     },
     Error500.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i11.Error500(),
       );
     },
     ComingSoon.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i12.ComingSoon(),
       );
     },
     Maintenance.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i13.Maintenance(),
       );
     },
     Dashboard.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i14.Dashboard(),
       );
     },
     Calendar.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i15.Calendar(),
       );
     },
     GoogleMaps.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i16.GoogleMaps(),
       );
     },
     Toast.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i17.Toast(),
       );
     },
     Button.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i18.Button(),
       );
     },
     Rating.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i19.Rating(),
       );
     },
     CustomBadge.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i20.CustomBadge(),
       );
     },
     AlertDialogBox.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i21.AlertDialogBox(),
       );
     },
     Modal.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i22.Modal(),
       );
     },
     Loaders.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i23.Loaders(),
       );
     },
     TabScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i24.TabScreen(),
       );
     },
     BasicEmail.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i25.BasicEmail(),
       );
     },
     AlertEmail.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i26.AlertEmail(),
       );
     },
     BillingEmail.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i27.BillingEmail(),
       );
     },
     MorrisChart.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i28.MorrisChart(),
       );
     },
     ChartListChart.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i29.ChartListChart(),
       );
     },
     ChartJsChart.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i30.ChartJsChart(),
       );
     },
     BasicTable.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i31.BasicTable(),
       );
     },
     Datatable.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i32.Datatable(),
       );
     },
     ResponsiveTable.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i33.ResponsiveTable(),
       );
     },
     EditableTable.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i34.EditableTable(),
       );
     },
     TimelineScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i35.TimelineScreen(),
       );
     },
     Pricing.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i36.Pricing(),
       );
     },
     DirectoryRoute.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i37.DirectoryPage(),
       );
     },
     FAQs.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i38.FAQs(),
       );
     },
     Invoice.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i39.Invoice(),
       );
     },
     Gallery.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i40.Gallery(),
       );
     },
     Carousel.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i41.Carousel(),
       );
     },
     ElementsForm.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i42.ElementsForm(),
       );
     },
     ValidationForm.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i43.ValidationForm(),
       );
     },
     FileUploadForm.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i44.FileUploadForm(),
       );
     },
     RepeaterForm.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i45.RepeaterForm(),
       );
     },
     MaskForm.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i46.MaskForm(),
       );
     },
     WizardForm.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i47.WizardForm(),
       );
     },
     VideoScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i48.VideoScreen(),
       );
     },
     UserProfile.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i49.UserProfile(),
       );
     },
     DragAndDrop.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i50.DragAndDrop(),
       );
     },
     DatePicker.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i51.DatePicker(),
       );
     },
     ProductsScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i52.ProductsScreen(),
       );
     },
     ProductDetailScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i53.ProductDetailScreen(),
       );
     },
     CategoryScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i54.CategoryScreen(),
       );
     },
     SubCategoryScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i55.SubCategoryScreen(),
       );
     },
     VenderScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i56.VenderScreen(),
       );
     },
     VenderDetailScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i57.VenderDetailScreen(),
       );
     },
     CustomerScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i58.CustomerScreen(),
       );
     },
     PaymentScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
         child: const _i59.PaymentScreen(),
       );
     },
-    ReturnOrderScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+    SuccessScreen.name: (routeData) {
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i60.ReturnOrderScreen(),
+        child: const _i60.SuccessScreen(),
+      );
+    },
+    ReturnOrderScreen.name: (routeData) {
+      return _i71.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i61.ReturnOrderScreen(),
       );
     },
     OrderScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i61.OrderScreen(),
+        child: const _i62.OrderScreen(),
       );
     },
     ReturnOrderInvoice.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i62.ReturnOrderInvoice(),
+        child: const _i63.ReturnOrderInvoice(),
       );
     },
     OrderInvoice.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i63.OrderInvoice(),
+        child: const _i64.OrderInvoice(),
       );
     },
     SubScriptionScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i64.SubScriptionScreen(),
+        child: const _i65.SubScriptionScreen(),
       );
     },
     CouponsScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i65.CouponsScreen(),
+        child: const _i66.CouponsScreen(),
       );
     },
     ReturnConditionScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i66.ReturnConditionScreen(),
+        child: const _i67.ReturnConditionScreen(),
       );
     },
     EcommerceDashboard.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i67.EcommerceDashboard(),
+        child: const _i68.EcommerceDashboard(),
       );
     },
     CartScreen.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i68.CartScreen(),
+        child: const _i69.CartScreen(),
       );
     },
     ProductAdd.name: (routeData) {
-      return _i70.MaterialPageX<dynamic>(
+      return _i71.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i69.ProductAdd(),
+        child: const _i70.ProductAdd(),
       );
     },
   };
 
   @override
-  List<_i70.RouteConfig> get routes => [
-        _i70.RouteConfig(
+  List<_i71.RouteConfig> get routes => [
+        _i71.RouteConfig(
           FMenuBar.name,
           path: '/',
           children: [
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               '#redirect',
               path: '',
               parent: FMenuBar.name,
               redirectTo: 'dashboard',
               fullMatch: true,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Dashboard.name,
               path: 'dashboard',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Calendar.name,
               path: 'calendar',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               GoogleMaps.name,
               path: 'map',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Toast.name,
               path: 'toast',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Button.name,
               path: 'button-element',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Rating.name,
               path: 'rating-bar',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               CustomBadge.name,
               path: 'badge',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               AlertDialogBox.name,
               path: 'alert-dialog',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Modal.name,
               path: 'modal',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Loaders.name,
               path: 'loaders',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               TabScreen.name,
               path: 'tabs',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               BasicEmail.name,
               path: 'basic-action-email',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               AlertEmail.name,
               path: 'alert-email',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               BillingEmail.name,
               path: 'billing-email',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               MorrisChart.name,
               path: 'morris-chart',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ChartListChart.name,
               path: 'chartist-chart',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ChartJsChart.name,
               path: 'chartjs-chart',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               BasicTable.name,
               path: 'basic-table',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Datatable.name,
               path: 'data-table',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ResponsiveTable.name,
               path: 'responsive-table',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               EditableTable.name,
               path: 'editable-table',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               TimelineScreen.name,
               path: 'timeline',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Pricing.name,
               path: 'pricing',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               DirectoryRoute.name,
               path: 'card',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               FAQs.name,
               path: 'FAQs',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Invoice.name,
               path: 'invoice',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Gallery.name,
               path: 'gallery',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               Carousel.name,
               path: 'carousel-slider',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ElementsForm.name,
               path: 'elements',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ValidationForm.name,
               path: 'validation',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               FileUploadForm.name,
               path: 'dropzone',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               RepeaterForm.name,
               path: 'repeater',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               MaskForm.name,
               path: 'mask',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               WizardForm.name,
               path: 'wizard',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               VideoScreen.name,
               path: 'video-player',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               UserProfile.name,
               path: 'user-profile',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               DragAndDrop.name,
               path: 'drag-drop',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               DatePicker.name,
               path: 'date-picker',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ProductsScreen.name,
               path: 'products',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ProductDetailScreen.name,
               path: 'products/products-detail',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               CategoryScreen.name,
               path: 'category',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               SubCategoryScreen.name,
               path: 'category/sub-category',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               VenderScreen.name,
               path: 'vender',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               VenderDetailScreen.name,
               path: 'vender/vender-detail',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               CustomerScreen.name,
               path: 'customer',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               PaymentScreen.name,
               path: 'payment',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
+              SuccessScreen.name,
+              path: 'payment/success',
+              parent: FMenuBar.name,
+            ),
+            _i71.RouteConfig(
               ReturnOrderScreen.name,
               path: 'return-order',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               OrderScreen.name,
               path: 'order',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ReturnOrderInvoice.name,
               path: 'return-order/return-order-invoice',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               OrderInvoice.name,
               path: 'order/order-invoice',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               SubScriptionScreen.name,
               path: 'subscribers',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               CouponsScreen.name,
               path: 'coupons',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ReturnConditionScreen.name,
               path: 'return-condition',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               EcommerceDashboard.name,
               path: 'e-commerce-dashboard',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               CartScreen.name,
               path: 'cart',
               parent: FMenuBar.name,
             ),
-            _i70.RouteConfig(
+            _i71.RouteConfig(
               ProductAdd.name,
               path: 'product-add',
               parent: FMenuBar.name,
             ),
           ],
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           LoginOne.name,
           path: '/login-one',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           LoginTwo.name,
           path: '/login-two',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           RegisterOne.name,
           path: '/register-one',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           RegisterTwo.name,
           path: '/register-two',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           RecoverPasswordOne.name,
           path: '/recover-password-one',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           RecoverPasswordTwo.name,
           path: '/recover-password-two',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           LockScreenOne.name,
           path: '/lock-screen-one',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           LockScreenTwo.name,
           path: '/lock-screen-two',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           Error404.name,
           path: '/error-404',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           Error500.name,
           path: '/error-500',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           ComingSoon.name,
           path: '/coming-soon',
         ),
-        _i70.RouteConfig(
+        _i71.RouteConfig(
           Maintenance.name,
           path: '/maintenance',
         ),
@@ -858,8 +870,8 @@ class AppRouter extends _i70.RootStackRouter {
 
 /// generated route for
 /// [_i1.FMenuBar]
-class FMenuBar extends _i70.PageRouteInfo<void> {
-  const FMenuBar({List<_i70.PageRouteInfo>? children})
+class FMenuBar extends _i71.PageRouteInfo<void> {
+  const FMenuBar({List<_i71.PageRouteInfo>? children})
       : super(
           FMenuBar.name,
           path: '/',
@@ -871,7 +883,7 @@ class FMenuBar extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i2.LoginOne]
-class LoginOne extends _i70.PageRouteInfo<void> {
+class LoginOne extends _i71.PageRouteInfo<void> {
   const LoginOne()
       : super(
           LoginOne.name,
@@ -883,7 +895,7 @@ class LoginOne extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.LoginTwo]
-class LoginTwo extends _i70.PageRouteInfo<void> {
+class LoginTwo extends _i71.PageRouteInfo<void> {
   const LoginTwo()
       : super(
           LoginTwo.name,
@@ -895,7 +907,7 @@ class LoginTwo extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i4.RegisterOne]
-class RegisterOne extends _i70.PageRouteInfo<void> {
+class RegisterOne extends _i71.PageRouteInfo<void> {
   const RegisterOne()
       : super(
           RegisterOne.name,
@@ -907,7 +919,7 @@ class RegisterOne extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i5.RegisterTwo]
-class RegisterTwo extends _i70.PageRouteInfo<void> {
+class RegisterTwo extends _i71.PageRouteInfo<void> {
   const RegisterTwo()
       : super(
           RegisterTwo.name,
@@ -919,7 +931,7 @@ class RegisterTwo extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.RecoverPasswordOne]
-class RecoverPasswordOne extends _i70.PageRouteInfo<void> {
+class RecoverPasswordOne extends _i71.PageRouteInfo<void> {
   const RecoverPasswordOne()
       : super(
           RecoverPasswordOne.name,
@@ -931,7 +943,7 @@ class RecoverPasswordOne extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i7.RecoverPasswordTwo]
-class RecoverPasswordTwo extends _i70.PageRouteInfo<void> {
+class RecoverPasswordTwo extends _i71.PageRouteInfo<void> {
   const RecoverPasswordTwo()
       : super(
           RecoverPasswordTwo.name,
@@ -943,7 +955,7 @@ class RecoverPasswordTwo extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.LockScreenOne]
-class LockScreenOne extends _i70.PageRouteInfo<void> {
+class LockScreenOne extends _i71.PageRouteInfo<void> {
   const LockScreenOne()
       : super(
           LockScreenOne.name,
@@ -955,7 +967,7 @@ class LockScreenOne extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i9.LockScreenTwo]
-class LockScreenTwo extends _i70.PageRouteInfo<void> {
+class LockScreenTwo extends _i71.PageRouteInfo<void> {
   const LockScreenTwo()
       : super(
           LockScreenTwo.name,
@@ -967,7 +979,7 @@ class LockScreenTwo extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i10.Error404]
-class Error404 extends _i70.PageRouteInfo<void> {
+class Error404 extends _i71.PageRouteInfo<void> {
   const Error404()
       : super(
           Error404.name,
@@ -979,7 +991,7 @@ class Error404 extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i11.Error500]
-class Error500 extends _i70.PageRouteInfo<void> {
+class Error500 extends _i71.PageRouteInfo<void> {
   const Error500()
       : super(
           Error500.name,
@@ -991,7 +1003,7 @@ class Error500 extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.ComingSoon]
-class ComingSoon extends _i70.PageRouteInfo<void> {
+class ComingSoon extends _i71.PageRouteInfo<void> {
   const ComingSoon()
       : super(
           ComingSoon.name,
@@ -1003,7 +1015,7 @@ class ComingSoon extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i13.Maintenance]
-class Maintenance extends _i70.PageRouteInfo<void> {
+class Maintenance extends _i71.PageRouteInfo<void> {
   const Maintenance()
       : super(
           Maintenance.name,
@@ -1015,7 +1027,7 @@ class Maintenance extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i14.Dashboard]
-class Dashboard extends _i70.PageRouteInfo<void> {
+class Dashboard extends _i71.PageRouteInfo<void> {
   const Dashboard()
       : super(
           Dashboard.name,
@@ -1027,7 +1039,7 @@ class Dashboard extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i15.Calendar]
-class Calendar extends _i70.PageRouteInfo<void> {
+class Calendar extends _i71.PageRouteInfo<void> {
   const Calendar()
       : super(
           Calendar.name,
@@ -1039,7 +1051,7 @@ class Calendar extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i16.GoogleMaps]
-class GoogleMaps extends _i70.PageRouteInfo<void> {
+class GoogleMaps extends _i71.PageRouteInfo<void> {
   const GoogleMaps()
       : super(
           GoogleMaps.name,
@@ -1051,7 +1063,7 @@ class GoogleMaps extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i17.Toast]
-class Toast extends _i70.PageRouteInfo<void> {
+class Toast extends _i71.PageRouteInfo<void> {
   const Toast()
       : super(
           Toast.name,
@@ -1063,7 +1075,7 @@ class Toast extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i18.Button]
-class Button extends _i70.PageRouteInfo<void> {
+class Button extends _i71.PageRouteInfo<void> {
   const Button()
       : super(
           Button.name,
@@ -1075,7 +1087,7 @@ class Button extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i19.Rating]
-class Rating extends _i70.PageRouteInfo<void> {
+class Rating extends _i71.PageRouteInfo<void> {
   const Rating()
       : super(
           Rating.name,
@@ -1087,7 +1099,7 @@ class Rating extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i20.CustomBadge]
-class CustomBadge extends _i70.PageRouteInfo<void> {
+class CustomBadge extends _i71.PageRouteInfo<void> {
   const CustomBadge()
       : super(
           CustomBadge.name,
@@ -1099,7 +1111,7 @@ class CustomBadge extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i21.AlertDialogBox]
-class AlertDialogBox extends _i70.PageRouteInfo<void> {
+class AlertDialogBox extends _i71.PageRouteInfo<void> {
   const AlertDialogBox()
       : super(
           AlertDialogBox.name,
@@ -1111,7 +1123,7 @@ class AlertDialogBox extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i22.Modal]
-class Modal extends _i70.PageRouteInfo<void> {
+class Modal extends _i71.PageRouteInfo<void> {
   const Modal()
       : super(
           Modal.name,
@@ -1123,7 +1135,7 @@ class Modal extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i23.Loaders]
-class Loaders extends _i70.PageRouteInfo<void> {
+class Loaders extends _i71.PageRouteInfo<void> {
   const Loaders()
       : super(
           Loaders.name,
@@ -1135,7 +1147,7 @@ class Loaders extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i24.TabScreen]
-class TabScreen extends _i70.PageRouteInfo<void> {
+class TabScreen extends _i71.PageRouteInfo<void> {
   const TabScreen()
       : super(
           TabScreen.name,
@@ -1147,7 +1159,7 @@ class TabScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i25.BasicEmail]
-class BasicEmail extends _i70.PageRouteInfo<void> {
+class BasicEmail extends _i71.PageRouteInfo<void> {
   const BasicEmail()
       : super(
           BasicEmail.name,
@@ -1159,7 +1171,7 @@ class BasicEmail extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i26.AlertEmail]
-class AlertEmail extends _i70.PageRouteInfo<void> {
+class AlertEmail extends _i71.PageRouteInfo<void> {
   const AlertEmail()
       : super(
           AlertEmail.name,
@@ -1171,7 +1183,7 @@ class AlertEmail extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i27.BillingEmail]
-class BillingEmail extends _i70.PageRouteInfo<void> {
+class BillingEmail extends _i71.PageRouteInfo<void> {
   const BillingEmail()
       : super(
           BillingEmail.name,
@@ -1183,7 +1195,7 @@ class BillingEmail extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i28.MorrisChart]
-class MorrisChart extends _i70.PageRouteInfo<void> {
+class MorrisChart extends _i71.PageRouteInfo<void> {
   const MorrisChart()
       : super(
           MorrisChart.name,
@@ -1195,7 +1207,7 @@ class MorrisChart extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i29.ChartListChart]
-class ChartListChart extends _i70.PageRouteInfo<void> {
+class ChartListChart extends _i71.PageRouteInfo<void> {
   const ChartListChart()
       : super(
           ChartListChart.name,
@@ -1207,7 +1219,7 @@ class ChartListChart extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i30.ChartJsChart]
-class ChartJsChart extends _i70.PageRouteInfo<void> {
+class ChartJsChart extends _i71.PageRouteInfo<void> {
   const ChartJsChart()
       : super(
           ChartJsChart.name,
@@ -1219,7 +1231,7 @@ class ChartJsChart extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i31.BasicTable]
-class BasicTable extends _i70.PageRouteInfo<void> {
+class BasicTable extends _i71.PageRouteInfo<void> {
   const BasicTable()
       : super(
           BasicTable.name,
@@ -1231,7 +1243,7 @@ class BasicTable extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i32.Datatable]
-class Datatable extends _i70.PageRouteInfo<void> {
+class Datatable extends _i71.PageRouteInfo<void> {
   const Datatable()
       : super(
           Datatable.name,
@@ -1243,7 +1255,7 @@ class Datatable extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i33.ResponsiveTable]
-class ResponsiveTable extends _i70.PageRouteInfo<void> {
+class ResponsiveTable extends _i71.PageRouteInfo<void> {
   const ResponsiveTable()
       : super(
           ResponsiveTable.name,
@@ -1255,7 +1267,7 @@ class ResponsiveTable extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i34.EditableTable]
-class EditableTable extends _i70.PageRouteInfo<void> {
+class EditableTable extends _i71.PageRouteInfo<void> {
   const EditableTable()
       : super(
           EditableTable.name,
@@ -1267,7 +1279,7 @@ class EditableTable extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i35.TimelineScreen]
-class TimelineScreen extends _i70.PageRouteInfo<void> {
+class TimelineScreen extends _i71.PageRouteInfo<void> {
   const TimelineScreen()
       : super(
           TimelineScreen.name,
@@ -1279,7 +1291,7 @@ class TimelineScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i36.Pricing]
-class Pricing extends _i70.PageRouteInfo<void> {
+class Pricing extends _i71.PageRouteInfo<void> {
   const Pricing()
       : super(
           Pricing.name,
@@ -1291,7 +1303,7 @@ class Pricing extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i37.DirectoryPage]
-class DirectoryRoute extends _i70.PageRouteInfo<void> {
+class DirectoryRoute extends _i71.PageRouteInfo<void> {
   const DirectoryRoute()
       : super(
           DirectoryRoute.name,
@@ -1303,7 +1315,7 @@ class DirectoryRoute extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i38.FAQs]
-class FAQs extends _i70.PageRouteInfo<void> {
+class FAQs extends _i71.PageRouteInfo<void> {
   const FAQs()
       : super(
           FAQs.name,
@@ -1315,7 +1327,7 @@ class FAQs extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i39.Invoice]
-class Invoice extends _i70.PageRouteInfo<void> {
+class Invoice extends _i71.PageRouteInfo<void> {
   const Invoice()
       : super(
           Invoice.name,
@@ -1327,7 +1339,7 @@ class Invoice extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i40.Gallery]
-class Gallery extends _i70.PageRouteInfo<void> {
+class Gallery extends _i71.PageRouteInfo<void> {
   const Gallery()
       : super(
           Gallery.name,
@@ -1339,7 +1351,7 @@ class Gallery extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i41.Carousel]
-class Carousel extends _i70.PageRouteInfo<void> {
+class Carousel extends _i71.PageRouteInfo<void> {
   const Carousel()
       : super(
           Carousel.name,
@@ -1351,7 +1363,7 @@ class Carousel extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i42.ElementsForm]
-class ElementsForm extends _i70.PageRouteInfo<void> {
+class ElementsForm extends _i71.PageRouteInfo<void> {
   const ElementsForm()
       : super(
           ElementsForm.name,
@@ -1363,7 +1375,7 @@ class ElementsForm extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i43.ValidationForm]
-class ValidationForm extends _i70.PageRouteInfo<void> {
+class ValidationForm extends _i71.PageRouteInfo<void> {
   const ValidationForm()
       : super(
           ValidationForm.name,
@@ -1375,7 +1387,7 @@ class ValidationForm extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i44.FileUploadForm]
-class FileUploadForm extends _i70.PageRouteInfo<void> {
+class FileUploadForm extends _i71.PageRouteInfo<void> {
   const FileUploadForm()
       : super(
           FileUploadForm.name,
@@ -1387,7 +1399,7 @@ class FileUploadForm extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i45.RepeaterForm]
-class RepeaterForm extends _i70.PageRouteInfo<void> {
+class RepeaterForm extends _i71.PageRouteInfo<void> {
   const RepeaterForm()
       : super(
           RepeaterForm.name,
@@ -1399,7 +1411,7 @@ class RepeaterForm extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i46.MaskForm]
-class MaskForm extends _i70.PageRouteInfo<void> {
+class MaskForm extends _i71.PageRouteInfo<void> {
   const MaskForm()
       : super(
           MaskForm.name,
@@ -1411,7 +1423,7 @@ class MaskForm extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i47.WizardForm]
-class WizardForm extends _i70.PageRouteInfo<void> {
+class WizardForm extends _i71.PageRouteInfo<void> {
   const WizardForm()
       : super(
           WizardForm.name,
@@ -1423,7 +1435,7 @@ class WizardForm extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i48.VideoScreen]
-class VideoScreen extends _i70.PageRouteInfo<void> {
+class VideoScreen extends _i71.PageRouteInfo<void> {
   const VideoScreen()
       : super(
           VideoScreen.name,
@@ -1435,7 +1447,7 @@ class VideoScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i49.UserProfile]
-class UserProfile extends _i70.PageRouteInfo<void> {
+class UserProfile extends _i71.PageRouteInfo<void> {
   const UserProfile()
       : super(
           UserProfile.name,
@@ -1447,7 +1459,7 @@ class UserProfile extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i50.DragAndDrop]
-class DragAndDrop extends _i70.PageRouteInfo<void> {
+class DragAndDrop extends _i71.PageRouteInfo<void> {
   const DragAndDrop()
       : super(
           DragAndDrop.name,
@@ -1459,7 +1471,7 @@ class DragAndDrop extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i51.DatePicker]
-class DatePicker extends _i70.PageRouteInfo<void> {
+class DatePicker extends _i71.PageRouteInfo<void> {
   const DatePicker()
       : super(
           DatePicker.name,
@@ -1471,7 +1483,7 @@ class DatePicker extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i52.ProductsScreen]
-class ProductsScreen extends _i70.PageRouteInfo<void> {
+class ProductsScreen extends _i71.PageRouteInfo<void> {
   const ProductsScreen()
       : super(
           ProductsScreen.name,
@@ -1483,7 +1495,7 @@ class ProductsScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i53.ProductDetailScreen]
-class ProductDetailScreen extends _i70.PageRouteInfo<void> {
+class ProductDetailScreen extends _i71.PageRouteInfo<void> {
   const ProductDetailScreen()
       : super(
           ProductDetailScreen.name,
@@ -1495,7 +1507,7 @@ class ProductDetailScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i54.CategoryScreen]
-class CategoryScreen extends _i70.PageRouteInfo<void> {
+class CategoryScreen extends _i71.PageRouteInfo<void> {
   const CategoryScreen()
       : super(
           CategoryScreen.name,
@@ -1507,7 +1519,7 @@ class CategoryScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i55.SubCategoryScreen]
-class SubCategoryScreen extends _i70.PageRouteInfo<void> {
+class SubCategoryScreen extends _i71.PageRouteInfo<void> {
   const SubCategoryScreen()
       : super(
           SubCategoryScreen.name,
@@ -1519,7 +1531,7 @@ class SubCategoryScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i56.VenderScreen]
-class VenderScreen extends _i70.PageRouteInfo<void> {
+class VenderScreen extends _i71.PageRouteInfo<void> {
   const VenderScreen()
       : super(
           VenderScreen.name,
@@ -1531,7 +1543,7 @@ class VenderScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i57.VenderDetailScreen]
-class VenderDetailScreen extends _i70.PageRouteInfo<void> {
+class VenderDetailScreen extends _i71.PageRouteInfo<void> {
   const VenderDetailScreen()
       : super(
           VenderDetailScreen.name,
@@ -1543,7 +1555,7 @@ class VenderDetailScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i58.CustomerScreen]
-class CustomerScreen extends _i70.PageRouteInfo<void> {
+class CustomerScreen extends _i71.PageRouteInfo<void> {
   const CustomerScreen()
       : super(
           CustomerScreen.name,
@@ -1555,7 +1567,7 @@ class CustomerScreen extends _i70.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i59.PaymentScreen]
-class PaymentScreen extends _i70.PageRouteInfo<void> {
+class PaymentScreen extends _i71.PageRouteInfo<void> {
   const PaymentScreen()
       : super(
           PaymentScreen.name,
@@ -1566,8 +1578,20 @@ class PaymentScreen extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i60.ReturnOrderScreen]
-class ReturnOrderScreen extends _i70.PageRouteInfo<void> {
+/// [_i60.SuccessScreen]
+class SuccessScreen extends _i71.PageRouteInfo<void> {
+  const SuccessScreen()
+      : super(
+          SuccessScreen.name,
+          path: 'payment/success',
+        );
+
+  static const String name = 'SuccessScreen';
+}
+
+/// generated route for
+/// [_i61.ReturnOrderScreen]
+class ReturnOrderScreen extends _i71.PageRouteInfo<void> {
   const ReturnOrderScreen()
       : super(
           ReturnOrderScreen.name,
@@ -1578,8 +1602,8 @@ class ReturnOrderScreen extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i61.OrderScreen]
-class OrderScreen extends _i70.PageRouteInfo<void> {
+/// [_i62.OrderScreen]
+class OrderScreen extends _i71.PageRouteInfo<void> {
   const OrderScreen()
       : super(
           OrderScreen.name,
@@ -1590,8 +1614,8 @@ class OrderScreen extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i62.ReturnOrderInvoice]
-class ReturnOrderInvoice extends _i70.PageRouteInfo<void> {
+/// [_i63.ReturnOrderInvoice]
+class ReturnOrderInvoice extends _i71.PageRouteInfo<void> {
   const ReturnOrderInvoice()
       : super(
           ReturnOrderInvoice.name,
@@ -1602,8 +1626,8 @@ class ReturnOrderInvoice extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i63.OrderInvoice]
-class OrderInvoice extends _i70.PageRouteInfo<void> {
+/// [_i64.OrderInvoice]
+class OrderInvoice extends _i71.PageRouteInfo<void> {
   const OrderInvoice()
       : super(
           OrderInvoice.name,
@@ -1614,8 +1638,8 @@ class OrderInvoice extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i64.SubScriptionScreen]
-class SubScriptionScreen extends _i70.PageRouteInfo<void> {
+/// [_i65.SubScriptionScreen]
+class SubScriptionScreen extends _i71.PageRouteInfo<void> {
   const SubScriptionScreen()
       : super(
           SubScriptionScreen.name,
@@ -1626,8 +1650,8 @@ class SubScriptionScreen extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i65.CouponsScreen]
-class CouponsScreen extends _i70.PageRouteInfo<void> {
+/// [_i66.CouponsScreen]
+class CouponsScreen extends _i71.PageRouteInfo<void> {
   const CouponsScreen()
       : super(
           CouponsScreen.name,
@@ -1638,8 +1662,8 @@ class CouponsScreen extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i66.ReturnConditionScreen]
-class ReturnConditionScreen extends _i70.PageRouteInfo<void> {
+/// [_i67.ReturnConditionScreen]
+class ReturnConditionScreen extends _i71.PageRouteInfo<void> {
   const ReturnConditionScreen()
       : super(
           ReturnConditionScreen.name,
@@ -1650,8 +1674,8 @@ class ReturnConditionScreen extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i67.EcommerceDashboard]
-class EcommerceDashboard extends _i70.PageRouteInfo<void> {
+/// [_i68.EcommerceDashboard]
+class EcommerceDashboard extends _i71.PageRouteInfo<void> {
   const EcommerceDashboard()
       : super(
           EcommerceDashboard.name,
@@ -1662,8 +1686,8 @@ class EcommerceDashboard extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i68.CartScreen]
-class CartScreen extends _i70.PageRouteInfo<void> {
+/// [_i69.CartScreen]
+class CartScreen extends _i71.PageRouteInfo<void> {
   const CartScreen()
       : super(
           CartScreen.name,
@@ -1674,8 +1698,8 @@ class CartScreen extends _i70.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i69.ProductAdd]
-class ProductAdd extends _i70.PageRouteInfo<void> {
+/// [_i70.ProductAdd]
+class ProductAdd extends _i71.PageRouteInfo<void> {
   const ProductAdd()
       : super(
           ProductAdd.name,
