@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form/form_validation/bloc/form_validation_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -8,9 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 
 class ValidationForm extends StatefulWidget {
-  const ValidationForm({
-    Key? key,
-  }) : super(key: key);
+  const ValidationForm({Key? key}) : super(key: key);
 
   @override
   State<ValidationForm> createState() => _ValidationFormState();
@@ -82,7 +81,7 @@ class _ValidationFormState extends State<ValidationForm> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _formHeadingCommon('Validation Form'),
+                      _formHeadingCommon(languageModel.form.validationForm),
                       FxBox.h24,
                       Form(
                         autovalidateMode: _firstValidateMode,
@@ -180,17 +179,17 @@ class _ValidationFormState extends State<ValidationForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             __validationWithIconCommon(
-              _commonText('Full Name'),
+              _commonText(languageModel.form.fullName),
               _firstNameTextField(),
             ),
             FxBox.w12,
             __validationWithIconCommon(
-              _commonText('Username'),
+              _commonText(languageModel.form.username),
               _userNameTextField(),
             ),
             FxBox.w12,
             __validationWithIconCommon(
-              _commonText('Email ID'),
+              _commonText(languageModel.form.emailID),
               _lastfirstNameTextField(),
             ),
           ],
@@ -200,17 +199,17 @@ class _ValidationFormState extends State<ValidationForm> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             __validationWithIconCommon(
-              _commonText('Moile No'),
+              _commonText(languageModel.form.moileNo),
               _cityTextField(),
             ),
             FxBox.w12,
             __validationWithIconCommon(
-              _commonText('State'),
+              _commonText(languageModel.form.state),
               _stateTextField(),
             ),
             FxBox.w12,
             __validationWithIconCommon(
-              _commonText('Zip'),
+              _commonText(languageModel.form.zip),
               _zipTextField(),
             ),
           ],
@@ -223,17 +222,17 @@ class _ValidationFormState extends State<ValidationForm> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _commonText('Full Name'),
+        _commonText(languageModel.form.fullName),
         _firstNameTextField(),
-        _commonText('Username'),
+        _commonText(languageModel.form.username),
         _userNameTextField(),
-        _commonText('Email ID'),
+        _commonText(languageModel.form.emailID),
         _lastfirstNameTextField(),
-        _commonText('Mobile No'),
+        _commonText(languageModel.form.moileNo),
         _cityTextField(),
-        _commonText('State'),
+        _commonText(languageModel.form.state),
         _stateTextField(),
-        _commonText('Zip'),
+        _commonText(languageModel.form.zip),
         _zipTextField(),
       ],
     );
@@ -263,7 +262,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _firstNameController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.validName;
+          return languageModel.form.nameError;
         }
         return null;
       },
@@ -276,7 +275,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _lastNameController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.validName;
+          return languageModel.form.nameError;
         }
         return null;
       },
@@ -290,7 +289,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _userNameController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.chooseUser;
+          return languageModel.form.userNameError;
         }
         return null;
       },
@@ -302,7 +301,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _cityController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.validCity;
+          return languageModel.form.cityError;
         }
         return null;
       },
@@ -348,7 +347,7 @@ class _ValidationFormState extends State<ValidationForm> {
           controller: _stateController,
           validator: (value) {
             if (value!.trim().isEmpty) {
-              return Strings.chooseState;
+              return languageModel.form.stateError;
             }
             return null;
           },
@@ -363,7 +362,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _zipController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.validZip;
+          return languageModel.form.zipError;
         }
         return null;
       },
@@ -391,19 +390,19 @@ class _ValidationFormState extends State<ValidationForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _formHeadingCommon('Input Type Validation'),
+                    _formHeadingCommon(languageModel.form.inputTypeValidation),
                     FxBox.h24,
-                    _commonText('Required'),
+                    _commonText(languageModel.form.required),
                     _requiredTextField(),
-                    _commonText('E-Mail'),
+                    _commonText(languageModel.form.email),
                     _emailTextField(),
-                    _commonText('URL'),
+                    _commonText(languageModel.form.url),
                     _urlTextField(),
-                    _commonText('Digits'),
+                    _commonText(languageModel.form.digits),
                     _digitsTextField(),
-                    _commonText('Number'),
+                    _commonText(languageModel.form.number),
                     _numberTextField(),
-                    _commonText('Alphanumeric'),
+                    _commonText(languageModel.form.alphanumeric),
                     _alphanumericTextField(),
                     // _commonText('Textarea'),
                     // _textAreaTextField(),
@@ -455,7 +454,7 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _requiredController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This field is required.";
+          return languageModel.form.requiredError;
         }
         return null;
       },
@@ -498,10 +497,10 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _emailController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This field is required.";
+          return languageModel.form.requiredError;
         } else if (!RegExp(r'^.+@[a-zA-Z]+\.{1}[a-zA-Z]+(\.{0,1}[a-zA-Z]+)$')
             .hasMatch(value)) {
-          return "This value should be a valid email.";
+          return languageModel.form.emailError;
         }
         return null;
       },
@@ -514,11 +513,11 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _urlController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This field is required.";
+          return languageModel.form.requiredError;
         } else if (!RegExp(
                 r'^((?:.|\n)*?)((http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)([-A-Z0-9.]+)(/[-A-Z0-9+&@#/%=~_|!:,.;]*)?(\?[A-Z0-9+&@#/%=~_|!:‌​,.;]*)?)')
             .hasMatch(value)) {
-          return "This value should be a valid url.";
+          return languageModel.form.urlError;
         }
         return null;
       },
@@ -531,9 +530,9 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _digitController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This field is required.";
+          return languageModel.form.requiredError;
         } else if (!RegExp(r'[0-9]+$').hasMatch(value)) {
-          return "This value should be digits.";
+          return languageModel.form.digitError;
         }
         return null;
       },
@@ -547,10 +546,10 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _numberController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This field is required.";
+          return languageModel.form.requiredError;
         } else if (!RegExp(r'^[+-]?([0-9]+([.][0-9]*)?|[.][0-9]+)$')
             .hasMatch(value)) {
-          return "This value should be a valid number.";
+          return languageModel.form.numberError;
         }
         return null;
       },
@@ -563,9 +562,9 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _alphaNumericController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return "This field is required.";
+          return languageModel.form.requiredError;
         } else if (!RegExp("^[a-zA-Z0-9_]*\$").hasMatch(value)) {
-          return "This value should be alphanumeric.";
+          return languageModel.form.alphanumericError;
         }
         return null;
       },
@@ -608,21 +607,21 @@ class _ValidationFormState extends State<ValidationForm> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    _formHeadingCommon('Input Range Validation'),
+                    _formHeadingCommon(languageModel.form.inputRangeValidation),
                     FxBox.h24,
                     // _commonText('Min Length'),
                     // _minLengthTextField(),
                     // _commonText('Max Length'),
                     // _maxLengthTextField(),
-                    _commonText('Range Length'),
+                    _commonText(languageModel.form.rangeLength),
                     _rangeLengthTextField(),
-                    _commonText('Min Value'),
+                    _commonText(languageModel.form.minValue),
                     _minValueTextField(),
-                    _commonText('Max Value'),
+                    _commonText(languageModel.form.maxValue),
                     _maxValueTextField(),
-                    _commonText('Range Value'),
+                    _commonText(languageModel.form.rangeValue),
                     _rangeValueTextField(),
-                    _commonText('Regular Exp'),
+                    _commonText(languageModel.form.regularExp),
                     _regularExpTextField(),
                     FxBox.h24,
                     Row(
@@ -699,9 +698,9 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _rangeLengthController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.valueRequired;
+          return languageModel.form.requiredError;
         } else if (value.length < 5 || value.length > 10) {
-          return "This value length is invalid. It should be between 5 and 10 characters long.";
+          return languageModel.form.rangeLengthError;
         }
         return null;
       },
@@ -714,10 +713,10 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _minValueController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.valueRequired;
+          return languageModel.form.requiredError;
         } else if (double.tryParse(value) == null ||
             double.tryParse(value)! < 6) {
-          return "This value should be greater than or equal to 6.";
+          return languageModel.form.minValueError;
         }
         return null;
       },
@@ -730,10 +729,10 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _maxValueController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.valueRequired;
+          return languageModel.form.requiredError;
         } else if (double.tryParse(value) == null ||
             double.tryParse(value)! > 6) {
-          return "This value should be lower than or equal to 6.";
+          return languageModel.form.maxValueError;
         }
         return null;
       },
@@ -746,11 +745,11 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _rangeValueController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.valueRequired;
+          return languageModel.form.requiredError;
         } else if (double.tryParse(value) == null ||
             double.tryParse(value)! < 6 ||
             double.tryParse(value)! > 100) {
-          return "This value should be between 6 and 100.";
+          return languageModel.form.rangeValueError;
         }
         return null;
       },
@@ -763,10 +762,10 @@ class _ValidationFormState extends State<ValidationForm> {
       controller: _regularExpController,
       validator: (value) {
         if (value!.trim().isEmpty) {
-          return Strings.valueRequired;
+          return languageModel.form.requiredError;
         } else if (!RegExp("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})\$")
             .hasMatch(value)) {
-          return "This value seems to be invalid.";
+          return languageModel.form.regularExpError;
         }
         return null;
       },

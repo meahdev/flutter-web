@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -69,9 +70,9 @@ class _MaskFormState extends State<MaskForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Form Mask',
-              style: TextStyle(
+            Text(
+              languageModel.form.formMask,
+              style: const TextStyle(
                 fontSize: 17.0,
                 fontWeight: FontWeight.w600,
               ),
@@ -81,43 +82,43 @@ class _MaskFormState extends State<MaskForm> {
                 ? Column(
                     children: [
                       _maskTextFieldCommonView(
-                        _commonText('Date Style 1'),
+                        _commonText('${languageModel.form.dateStyle} 1'),
                         _dateStyle1TextField(),
                         'e.g "dd/mm/yyyy"',
                       ),
                       FxBox.h12,
                       _maskTextFieldCommonView(
-                        _commonText('Repeat'),
+                        _commonText(languageModel.form.repeat),
                         _repeatTextField(),
                         'e.g "9999999999"',
                       ),
                       FxBox.h12,
                       _maskTextFieldCommonView(
-                        _commonText('Date Style 2'),
+                        _commonText('${languageModel.form.dateStyle} 2'),
                         _dateStyle2TextField(),
                         'e.g "mm/dd/yyyy"',
                       ),
                       FxBox.h12,
                       _maskTextFieldCommonView(
-                        _commonText('Mask'),
+                        _commonText(languageModel.translate('mask')),
                         _maskTextField(),
                         'e.g "99-9999999"',
                       ),
                       FxBox.h12,
                       _maskTextFieldCommonView(
-                        _commonText('Date Time'),
+                        _commonText(languageModel.form.dateTime),
                         _dateTimeTextField(),
                         'e.g "yyyy-mm-dd\'T\'HH:MM:ss"',
                       ),
                       FxBox.h12,
                       _maskTextFieldCommonView(
-                        _commonText('IP address'),
+                        _commonText(languageModel.form.ipAddress),
                         _ipAddressTextField(),
                         'e.g "99.99.99.99"',
                       ),
                       FxBox.h12,
                       _maskTextFieldCommonView(
-                        _commonText('Email address::'),
+                        _commonText(languageModel.form.emailAddress),
                         _emailTextField(),
                         '_@_._',
                       ),
@@ -126,31 +127,31 @@ class _MaskFormState extends State<MaskForm> {
                 : Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _commonText('Date Style 1'),
+                      _commonText('${languageModel.form.dateStyle} 1'),
                       _dateStyle1TextField(),
                       const Text('e.g "dd/mm/yyyy"'),
                       FxBox.h12,
-                      _commonText('repeat'),
+                      _commonText(languageModel.form.repeat),
                       _repeatTextField(),
                       const Text('e.g "9999999999"'),
                       FxBox.h12,
-                      _commonText('Date Style 2'),
+                      _commonText('${languageModel.form.dateStyle} 2'),
                       _dateStyle2TextField(),
                       const Text('e.g "mm/dd/yyyy"'),
                       FxBox.h12,
-                      _commonText('Mask'),
+                      _commonText(languageModel.translate('mask')),
                       _maskTextField(),
                       const Text('e.g "99-9999999"'),
                       FxBox.h12,
-                      _commonText('Date Time'),
+                      _commonText(languageModel.form.dateTime),
                       _dateTimeTextField(),
                       const Text('e.g "yyyy-mm-dd\'T\'HH:MM:ss"'),
                       FxBox.h12,
-                      _commonText('IP address'),
+                      _commonText(languageModel.form.ipAddress),
                       _ipAddressTextField(),
                       const Text('e.g "99.99.99.99"'),
                       FxBox.h12,
-                      _commonText('Email address::'),
+                      _commonText(languageModel.form.emailAddress),
                       _emailTextField(),
                       const Text('_@_._'),
                     ],

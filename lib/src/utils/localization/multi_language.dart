@@ -57,6 +57,7 @@ class LanguageModel extends Model {
   final _Dashboard dashboard = _Dashboard();
   final _Calendar calendar = _Calendar();
   final _Widget widget = _Widget();
+  final _Form form = _Form();
 }
 
 class MultiLanguage {
@@ -172,12 +173,16 @@ class _Widget {
   String get info => languageModel.translate('info');
   String get simpleButtons => languageModel.translate('simpleButtons');
   String get outlineButtons => languageModel.translate('outlineButtons');
-  String get simpleWithIconButtons => languageModel.translate('simpleWithIconButtons');
-  String get outlineWithIconButtons => languageModel.translate('outlineWithIconButtons');
+  String get simpleWithIconButtons =>
+      languageModel.translate('simpleWithIconButtons');
+  String get outlineWithIconButtons =>
+      languageModel.translate('outlineWithIconButtons');
   String get simpleIconButtons => languageModel.translate('simpleIconButtons');
-  String get outlineIconButtons => languageModel.translate('outlineIconButtons');
+  String get outlineIconButtons =>
+      languageModel.translate('outlineIconButtons');
   String get socialButtons => languageModel.translate('socialButtons');
-  String get outlinedSocialButtons => languageModel.translate('outlinedSocialButtons');
+  String get outlinedSocialButtons =>
+      languageModel.translate('outlinedSocialButtons');
   String get defaultRating => languageModel.translate('defaultRating');
   String get halfRating => languageModel.translate('halfRating');
   String get disableRating => languageModel.translate('disableRating');
@@ -186,10 +191,13 @@ class _Widget {
   String get outlineBadge => languageModel.translate('outlineBadge');
   String get simpleAlert => languageModel.translate('simpleAlert');
   String get iconAlert => languageModel.translate('iconAlert');
-  String get alertWithTwoButton => languageModel.translate('alertWithTwoButton');
-  String get iconAlertWithTwoButton => languageModel.translate('iconAlertWithTwoButton');
+  String get alertWithTwoButton =>
+      languageModel.translate('alertWithTwoButton');
+  String get iconAlertWithTwoButton =>
+      languageModel.translate('iconAlertWithTwoButton');
   String get gifAlert => languageModel.translate('gifAlert');
-  String get alertWithTextfield => languageModel.translate('alertWithTextfield');
+  String get alertWithTextfield =>
+      languageModel.translate('alertWithTextfield');
   String get thisIs => languageModel.translate('thisIs');
   String get dialogBox => languageModel.translate('dialogBox');
   String get simpleModal => languageModel.translate('simpleModal');
@@ -204,8 +212,10 @@ class _Widget {
   String get settings => languageModel.translate('settings');
   String get extra => languageModel.translate('extra');
   String get tabLorem => languageModel.translate('tabLorem');
-  String get carouselWithIndicators => languageModel.translate('carouselWithIndicators');
-  String get carouselWithCaptions => languageModel.translate('carouselWithCaptions');
+  String get carouselWithIndicators =>
+      languageModel.translate('carouselWithIndicators');
+  String get carouselWithCaptions =>
+      languageModel.translate('carouselWithCaptions');
   String get firstSlideLabel => languageModel.translate('firstSlideLabel');
   String get secondSlideLabel => languageModel.translate('secondSlideLabel');
   String get thirdSlideLabel => languageModel.translate('thirdSlideLabel');
@@ -216,4 +226,93 @@ class _Widget {
   String get dateFormat => languageModel.translate('dateFormat');
   String get dateRange => languageModel.translate('dateRange');
   String get datePickerText => languageModel.translate('datePickerText');
+}
+
+class _Form {
+  String get inputElements => languageModel.translate('inputElements');
+  String get text => languageModel.translate('text');
+  String get formSearch => languageModel.translate('formSearch');
+  String get email => languageModel.translate('email');
+  String get url => languageModel.translate('url');
+  String get telephone => languageModel.translate('telephone');
+  String get password => languageModel.translate('password');
+  String get number => languageModel.translate('number');
+  String get date => languageModel.translate('date');
+  String get color => languageModel.translate('color');
+  String get pickColor => languageModel.translate('pickColor');
+  String get select => languageModel.translate('select');
+  String get validationForm => languageModel.translate('validationForm');
+  String get fullName => languageModel.translate('fullName');
+  String get username => languageModel.translate('username');
+  String get emailID => languageModel.translate('emailID');
+  String get moileNo => languageModel.translate('moileNo');
+  String get state => languageModel.translate('state');
+  String get zip => languageModel.translate('zip');
+  String get inputTypeValidation =>
+      languageModel.translate('inputTypeValidation');
+  String get required => languageModel.translate('required');
+  String get digits => languageModel.translate('digits');
+  String get alphanumeric => languageModel.translate('alphanumeric');
+  String get inputRangeValidation =>
+      languageModel.translate('inputRangeValidation');
+  String get rangeLength => languageModel.translate('rangeLength');
+  String get minValue => languageModel.translate('minValue');
+  String get maxValue => languageModel.translate('maxValue');
+  String get rangeValue => languageModel.translate('rangeValue');
+  String get regularExp => languageModel.translate('regularExp');
+  String get nameError => languageModel.translate('nameError');
+  String get userNameError => languageModel.translate('userNameError');
+  String get cityError => languageModel.translate('cityError');
+  String get stateError => languageModel.translate('stateError');
+  String get zipError => languageModel.translate('zipError');
+  String get requiredError => languageModel.translate('requiredError');
+  String get emailError => languageModel.translate('emailError');
+  String get urlError => languageModel.translate('urlError');
+  String get digitError => languageModel.translate('digitError');
+  String get numberError => languageModel.translate('numberError');
+  String get alphanumericError => languageModel.translate('alphanumericError');
+  String get rangeLengthError => languageModel.translate('rangeLengthError');
+  String get minValueError => languageModel.translate('minValueError');
+  String get maxValueError => languageModel.translate('maxValueError');
+  String get rangeValueError => languageModel.translate('rangeValueError');
+  String get regularExpError => languageModel.translate('regularExpError');
+  String get dropzoneText => languageModel.translate('dropzoneText');
+  String get nestedForm => languageModel.translate('nestedForm');
+  String get subject => languageModel.translate('subject');
+  String get resume => languageModel.translate('resume');
+  String get message => languageModel.translate('message');
+  String get nestedFieldForm => languageModel.translate('nestedFieldForm');
+  String get phoneNo => languageModel.translate('phoneNo');
+  String get gender => languageModel.translate('gender');
+  String get wizardForm => languageModel.translate('wizardForm');
+  String get sellerDetails => languageModel.translate('sellerDetails');
+  String get companyDocument => languageModel.translate('companyDocument');
+  String get bankDetails => languageModel.translate('bankDetails');
+  String get confirmDetails => languageModel.translate('confirmDetails');
+  String get sellerName => languageModel.translate('sellerName');
+  String get mobileNo => languageModel.translate('mobileNo');
+  String get address => languageModel.translate('address');
+  String get companyName => languageModel.translate('companyName');
+  String get liveMarketAccount => languageModel.translate('liveMarketAccount');
+  String get productCategory => languageModel.translate('productCategory');
+  String get productSubCategory => languageModel.translate('productSubCategory');
+  String get contactPerson => languageModel.translate('contactPerson');
+  String get panCard => languageModel.translate('panCard');
+  String get vatTinNo => languageModel.translate('vatTinNo');
+  String get cstNo => languageModel.translate('cstNo');
+  String get serviceTaxNo => languageModel.translate('serviceTaxNo');
+  String get companyUIN => languageModel.translate('companyUIN');
+  String get declaration => languageModel.translate('declaration');
+  String get nameOnCard => languageModel.translate('nameOnCard');
+  String get creditCardType => languageModel.translate('creditCardType');
+  String get creditCardNumber => languageModel.translate('creditCardNumber');
+  String get cardVerificationNumber => languageModel.translate('cardVerificationNumber');
+  String get expirationDate => languageModel.translate('expirationDate');
+  String get confirmText => languageModel.translate('confirmText');
+  String get formMask => languageModel.translate('formMask');
+  String get dateStyle => languageModel.translate('dateStyle');
+  String get repeat => languageModel.translate('repeat');
+  String get dateTime => languageModel.translate('dateTime');
+  String get ipAddress => languageModel.translate('ipAddress');
+  String get emailAddress => languageModel.translate('emailAddress');
 }
