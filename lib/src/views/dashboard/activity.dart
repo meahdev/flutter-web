@@ -102,7 +102,7 @@ class _ActivityState extends State<Activity> {
                                         StepperEvent.changeIndex(index - 1));
                                   }
                                 },
-                                child: const Text('Cancle'),
+                                child: const Text('Cancel'),
                               ),
                             ],
                           );
