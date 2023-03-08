@@ -299,4 +299,8 @@ class Strings {
   static const String globalSaleText = 'Global Sales by Tops Locations';
   static const String latestTransaction = 'Latest Transaction';
   static const String productAdd = 'Product Add';
+
+  // Landing page
+
+  static const String landingPage = 'Landing Page';
 }

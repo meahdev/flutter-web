@@ -81,6 +81,7 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.returnCondition,
     ],
     [
+      Strings.landingPage,
       Strings.products,
       Strings.cart,
       Strings.payment,
@@ -225,6 +226,7 @@ class _MenuBarState extends State<FMenuBar> {
     CartScreen(),
     ProductAdd(),
     SuccessScreen(),
+    LandingRoute(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
@@ -286,18 +288,23 @@ class _MenuBarState extends State<FMenuBar> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             FxBox.h20,
-                                            Text(
-                                              upperCase(tabsRouter.currentPath),
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge!
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                            ),
-                                            FxBox.h8,
-                                            _routesDeatils(tabsRouter),
-                                            FxBox.h20,
+                                            if (upperCase(
+                                                    tabsRouter.currentPath) !=
+                                                'Landing Page') ...[
+                                              Text(
+                                                upperCase(
+                                                    tabsRouter.currentPath),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge!
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                              ),
+                                              FxBox.h8,
+                                              _routesDeatils(tabsRouter),
+                                              FxBox.h20,
+                                            ],
                                             getRouteWidget(
                                                 tabsRouter.activeIndex),
                                             FxBox.h20,
@@ -1029,16 +1036,6 @@ class _MenuBarState extends State<FMenuBar> {
                     children: [_subMenuList(children[index], tabsRouter)],
                   )
                 : ListTile(
-                    // leading: SvgIcon(
-                    //   icon: items.values.elementAt(index),
-                    //   size: isopen ? 16 : 18,
-                    //   color: items.keys.elementAt(index) ==
-                    //           upperCase(tabsRouter.currentPath)
-                    //       ? isDark
-                    //           ? ColorConst.chartForgoundColor
-                    //           : ColorConst.primary
-                    //       : color,
-                    // ),
                     title: isopen
                         ? Text(
                             items1[index],
@@ -1082,16 +1079,6 @@ class _MenuBarState extends State<FMenuBar> {
                 if (isopen) FxBox.w16,
                 Expanded(
                   child: ListTile(
-                    // leading: SvgIcon(
-                    //   icon: items.values.elementAt(index),
-                    //   size: isopen ? 16 : 18,
-                    //   color: items.keys.elementAt(index) ==
-                    //           upperCase(tabsRouter.currentPath)
-                    //       ? isDark
-                    //           ? ColorConst.chartForgoundColor
-                    //           : ColorConst.primary
-                    //       : color,
-                    // ),
                     title: isopen
                         ? Text(
                             items1[index],
@@ -1110,6 +1097,7 @@ class _MenuBarState extends State<FMenuBar> {
                     horizontalTitleGap: 0.0,
                     onTap: () {
                       isOpen.value = true;
+
                       tabsRouter.setActiveIndex(getRouteIndex(items1[index]));
                       HiveUtils.set(Strings.selectedmenuIndex,
                           getRouteIndex(items1[index]));
@@ -1143,53 +1131,74 @@ class _MenuBarState extends State<FMenuBar> {
             : isDark
                 ? ColorConst.white
                 : ColorConst.black;
-        return FxExpansionTile(
-          leading: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              FxBox.w(22.0),
-              SvgIcon(
-                icon: items.values.elementAt(0),
-                size: 16,
-                color: children[0].contains(upperCase(tabsRouter.currentPath))
-                    ? isDark
-                        ? ColorConst.chartForgoundColor
-                        : ColorConst.primary
-                    : color,
-              ),
-              FxBox.w(24.0),
-            ],
-          ),
-          title: Text(
-            items.keys.elementAt(0),
-            style: TextStyle(
-                color: children[0].contains(upperCase(tabsRouter.currentPath))
-                    ? isDark
-                        ? ColorConst.chartForgoundColor
-                        : ColorConst.primary
-                    : color,
-                fontSize: 15.7),
-          ),
-          trailing: SvgIcon(
-            icon: IconlyBroken.arrowDown,
-            size: 16,
-            color: children[0].contains(upperCase(tabsRouter.currentPath))
-                ? isDark
-                    ? ColorConst.chartForgoundColor
-                    : ColorConst.primary
-                : color,
-          ),
-          children: [
-            _tempMenuList(
-              items1: items1,
-              tabsRouter: tabsRouter,
-              isExpanded: true,
-              children: children,
-              isopen: isopen,
-              isSubListopen: isSubListopen,
-            ),
-          ],
-        );
+        return isopen
+            ? FxExpansionTile(
+                leading: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    FxBox.w(22.0),
+                    SvgIcon(
+                      icon: items.values.elementAt(0),
+                      size: 16,
+                      color: children[0]
+                              .contains(upperCase(tabsRouter.currentPath))
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                    ),
+                    FxBox.w(24.0),
+                  ],
+                ),
+                title: Text(
+                  items.keys.elementAt(0),
+                  style: TextStyle(
+                      color: children[0]
+                              .contains(upperCase(tabsRouter.currentPath))
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                      fontSize: 15.7),
+                ),
+                trailing: SvgIcon(
+                  icon: IconlyBroken.arrowDown,
+                  size: 16,
+                  color: children[0].contains(upperCase(tabsRouter.currentPath))
+                      ? isDark
+                          ? ColorConst.chartForgoundColor
+                          : ColorConst.primary
+                      : color,
+                ),
+                children: [
+                  _tempMenuList(
+                    items1: items1,
+                    tabsRouter: tabsRouter,
+                    isExpanded: true,
+                    children: children,
+                    isopen: isopen,
+                    isSubListopen: isSubListopen,
+                  ),
+                ],
+              )
+            : ListTile(
+                leading: SvgIcon(
+                  icon: items.values.elementAt(0),
+                  size: isopen ? 16 : 18,
+                  color: items.keys.elementAt(0) ==
+                          upperCase(tabsRouter.currentPath)
+                      ? isDark
+                          ? ColorConst.chartForgoundColor
+                          : ColorConst.primary
+                      : color,
+                ),
+                mouseCursor: SystemMouseCursors.click,
+                horizontalTitleGap: 0.0,
+                onTap: () {
+                  isOpen.value = true;
+                  _scaffoldDrawerKey.currentState?.closeDrawer();
+                },
+              );
       },
     );
   }
@@ -1290,6 +1299,10 @@ class _MenuBarState extends State<FMenuBar> {
                     } else if (items[index] == 'Coming Soon') {
                       context.router.push(const ComingSoon());
                     } else {
+                      if (items[index] == 'Landing Page') {
+                        isOpen.value = false;
+                      }
+
                       tabsRouter.setActiveIndex(getRouteIndex(items[index]));
                     }
                     _scaffoldDrawerKey.currentState?.closeDrawer();
@@ -1356,7 +1369,8 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 52 ||
                   routeIndex == 53 ||
                   routeIndex == 54 ||
-                  routeIndex == 56) ...[
+                  routeIndex == 56 ||
+                  routeIndex == 57) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 39) ...[
                 const Text(' / ${Strings.eCommerce} / ${Strings.products}'),

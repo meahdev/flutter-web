@@ -6,6 +6,8 @@ class Images {
   static const String lgLightLogo = '${_assetPath}logo-light-lg.png';
   static const String lgDarkLogo = '${_assetPath}logo-dark-lg.png';
 
+  static const String oldlgLightLogo = '${_assetPath}logo-light-lg-old.png';
+  static const String oldlgDarkLogo = '${_assetPath}logo-dark-lg-old.png';
   static const String loginBg = '${_assetPath}login-bg.jpg';
   static const String light = '${_assetPath}light.png';
   static const String dark = '${_assetPath}dark.png';
