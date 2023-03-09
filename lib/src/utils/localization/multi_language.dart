@@ -58,6 +58,8 @@ class LanguageModel extends Model {
   final _Calendar calendar = _Calendar();
   final _Widget widget = _Widget();
   final _Form form = _Form();
+  final _Chart chart = _Chart();
+  final _Table table = _Table();
 }
 
 class MultiLanguage {
@@ -295,7 +297,8 @@ class _Form {
   String get companyName => languageModel.translate('companyName');
   String get liveMarketAccount => languageModel.translate('liveMarketAccount');
   String get productCategory => languageModel.translate('productCategory');
-  String get productSubCategory => languageModel.translate('productSubCategory');
+  String get productSubCategory =>
+      languageModel.translate('productSubCategory');
   String get contactPerson => languageModel.translate('contactPerson');
   String get panCard => languageModel.translate('panCard');
   String get vatTinNo => languageModel.translate('vatTinNo');
@@ -306,7 +309,8 @@ class _Form {
   String get nameOnCard => languageModel.translate('nameOnCard');
   String get creditCardType => languageModel.translate('creditCardType');
   String get creditCardNumber => languageModel.translate('creditCardNumber');
-  String get cardVerificationNumber => languageModel.translate('cardVerificationNumber');
+  String get cardVerificationNumber =>
+      languageModel.translate('cardVerificationNumber');
   String get expirationDate => languageModel.translate('expirationDate');
   String get confirmText => languageModel.translate('confirmText');
   String get formMask => languageModel.translate('formMask');
@@ -315,4 +319,40 @@ class _Form {
   String get dateTime => languageModel.translate('dateTime');
   String get ipAddress => languageModel.translate('ipAddress');
   String get emailAddress => languageModel.translate('emailAddress');
+}
+
+class _Chart {
+  String get lineChart => languageModel.translate('lineChart');
+  String get barChart => languageModel.translate('barChart');
+  String get areaChart => languageModel.translate('areaChart');
+  String get donutChart => languageModel.translate('donutChart');
+  String get columnChart => languageModel.translate('columnChart');
+  String get animatingDonutWithSvg =>
+      languageModel.translate('animatingDonutWithSvg');
+  String get simplePieChart => languageModel.translate('simplePieChart');
+  String get advancedSmileAnimation =>
+      languageModel.translate('advancedSmileAnimation');
+  String get simpleLineChart => languageModel.translate('simpleLineChart');
+  String get lineScatterDiagram =>
+      languageModel.translate('lineScatterDiagram');
+  String get lineChartWithArea => languageModel.translate('lineChartWithArea');
+  String get overlappingChart => languageModel.translate('overlappingChart');
+  String get multipleStatisticsChart =>
+      languageModel.translate('multipleStatisticsChart');
+  String get polarChart => languageModel.translate('polarChart');
+}
+
+class _Table {
+  String get simple => languageModel.translate('simple');
+  String get striped => languageModel.translate('striped');
+  String get hoverable => languageModel.translate('hoverable');
+  String get contextual => languageModel.translate('contextual');
+  String get bordered => languageModel.translate('bordered');
+  String get borderless => languageModel.translate('borderless');
+  String get small => languageModel.translate('small');
+  String get dark => languageModel.translate('dark');
+  String get id => languageModel.translate('id');
+  String get customerName => languageModel.translate('customerName');
+  String get mobileNo => languageModel.translate('mobileNo').replaceFirst('.', '');
+  String get amount => languageModel.translate('amount');
 }

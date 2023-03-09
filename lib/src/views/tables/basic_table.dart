@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -76,21 +76,21 @@ class BasicTable extends StatelessWidget {
           //       ]
           //     :
           [
-        _tableCard(title: Strings.simpleTable, child: _basicTable()),
+        _tableCard(title: languageModel.table.simple, child: _basicTable()),
         FxBox.h20,
-        _tableCard(title: Strings.stripedRow, child: _stripedTable()),
+        _tableCard(title: languageModel.table.striped, child: _stripedTable()),
         FxBox.h20,
-        _tableCard(title: Strings.hoverableRow, child: _hoverableTable()),
+        _tableCard(title: languageModel.table.hoverable, child: _hoverableTable()),
         FxBox.h20,
-        _tableCard(title: Strings.contextualTable, child: _contextualTable()),
+        _tableCard(title: languageModel.table.contextual, child: _contextualTable()),
         FxBox.h20,
-        _tableCard(title: Strings.borderedTable, child: _borderedTable()),
+        _tableCard(title: languageModel.table.bordered, child: _borderedTable()),
         FxBox.h20,
-        _tableCard(title: Strings.borderLessTable, child: _borderlessTable()),
+        _tableCard(title: languageModel.table.borderless, child: _borderlessTable()),
         FxBox.h20,
-        _tableCard(title: Strings.smallTable, child: _smallTable()),
+        _tableCard(title: languageModel.table.small, child: _smallTable()),
         FxBox.h20,
-        _tableCard(title: Strings.dartTable, child: _darkTable()),
+        _tableCard(title: languageModel.table.dark, child: _darkTable()),
       ],
     );
   }
@@ -405,25 +405,25 @@ class BasicTable extends StatelessWidget {
     return [
       DataColumn2(
         label: sizedBox(
-          text: "ID",
+          text: languageModel.table.id,
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
         label: sizedBox(
-          text: "Customer Name",
+          text: languageModel.table.customerName,
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
         label: sizedBox(
-          text: "Mobile No",
+          text: languageModel.table.mobileNo,
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
         label: sizedBox(
-          text: "Amount",
+          text: languageModel.table.amount,
           fontwidget: FontWeight.bold,
         ),
       ),
