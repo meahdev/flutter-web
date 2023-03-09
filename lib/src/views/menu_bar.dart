@@ -81,7 +81,6 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.returnCondition,
     ],
     [
-      Strings.landingPage,
       Strings.products,
       Strings.cart,
       Strings.payment,
@@ -226,7 +225,6 @@ class _MenuBarState extends State<FMenuBar> {
     CartScreen(),
     ProductAdd(),
     SuccessScreen(),
-    LandingRoute(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
@@ -1369,8 +1367,7 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 52 ||
                   routeIndex == 53 ||
                   routeIndex == 54 ||
-                  routeIndex == 56 ||
-                  routeIndex == 57) ...[
+                  routeIndex == 56) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 39) ...[
                 const Text(' / ${Strings.eCommerce} / ${Strings.products}'),

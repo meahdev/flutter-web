@@ -300,7 +300,5 @@ class Strings {
   static const String latestTransaction = 'Latest Transaction';
   static const String productAdd = 'Product Add';
 
-  // Landing page
 
-  static const String landingPage = 'Landing Page';
 }
