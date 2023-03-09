@@ -37,7 +37,7 @@ class _MyAppState extends State<MyApp> {
             success: (themeMode) {
               return MaterialApp.router(
                 routerDelegate:
-                    _appRouter.delegate(initialRoutes: [const MenuBar()]),
+                    _appRouter.delegate(initialRoutes: [const FMenuBar()]),
                 routeInformationParser: _appRouter.defaultRouteParser(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeClass.themeData(themeMode, context),

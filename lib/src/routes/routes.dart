@@ -54,7 +54,7 @@ import 'package:auto_route/auto_route.dart';
   routes: <AutoRoute>[
     AutoRoute(
       path: '/',
-      page: MenuBar,
+      page: FMenuBar,
       children: [
         RedirectRoute(path: '', redirectTo: 'user-profile'),
         AutoRoute(path: 'dashboard', page: Dashboard),
@@ -63,7 +63,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'toast', page: Toast),
         AutoRoute(path: 'buttons', page: Button),
         AutoRoute(path: 'rating', page: Rating),
-        AutoRoute(path: 'badge', page: Badge),
+        AutoRoute(path: 'badge', page: FBadge),
         AutoRoute(path: 'alert-dialog', page: AlertDialogBox),
         AutoRoute(path: 'modal', page: Modal),
         AutoRoute(path: 'loaders', page: Loaders),

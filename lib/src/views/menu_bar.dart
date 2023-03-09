@@ -15,14 +15,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
-class MenuBar extends StatefulWidget {
-  const MenuBar({Key? key}) : super(key: key);
+class FMenuBar extends StatefulWidget {
+  const FMenuBar({Key? key}) : super(key: key);
 
   @override
-  State<MenuBar> createState() => _MenuBarState();
+  State<FMenuBar> createState() => _FMenuBarState();
 }
 
-class _MenuBarState extends State<MenuBar> {
+class _FMenuBarState extends State<FMenuBar> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _scaffoldDrawerKey =
       GlobalKey<ScaffoldState>();
@@ -136,7 +136,7 @@ class _MenuBarState extends State<MenuBar> {
     Dashboard(),
     Button(),
     Rating(),
-    Badge(),
+    FBadge(),
     Toast(),
     AlertDialogBox(),
     Modal(),
