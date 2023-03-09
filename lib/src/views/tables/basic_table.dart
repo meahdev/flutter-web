@@ -2,8 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
-import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:data_table_2/data_table_2.dart';
+import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
@@ -14,92 +13,92 @@ class BasicTable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: Responsive.isWeb(context)
-          ? [
-              Row(
-                children: [
-                  Expanded(
-                    child: _tableCard(
-                        title: Strings.basicTable, child: _basicTable()),
-                  ),
-                  FxBox.w20,
-                  Expanded(
-                    child: _tableCard(
-                        title: Strings.dartTable, child: _darkTable()),
-                  ),
-                ],
-              ),
-              FxBox.h20,
-              Row(
-                children: [
-                  Expanded(
-                    child: _tableCard(
-                        title: Strings.stripedRow, child: _stripedTable()),
-                  ),
-                  FxBox.w20,
-                  Expanded(
-                    child: _tableCard(
-                        title: Strings.hoverableRow, child: _hoverableTable()),
-                  ),
-                ],
-              ),
-              FxBox.h20,
-              Row(
-                children: [
-                  Expanded(
-                    child: _tableCard(
-                        title: Strings.borderedTable, child: _borderedTable()),
-                  ),
-                  FxBox.w20,
-                  Expanded(
-                    child: _tableCard(
-                        title: Strings.borderLessTable,
-                        child: _borderlessTable()),
-                  ),
-                ],
-              ),
-              FxBox.h20,
-              Row(
-                children: [
-                  Expanded(
-                    child: _tableCard(
-                        title: Strings.smallTable, child: _smallTable()),
-                  ),
-                  FxBox.w20,
-                  Expanded(
-                    child: _tableCard(
-                        title: Strings.contextualTable,
-                        child: _contextualTable()),
-                  ),
-                ],
-              ),
-            ]
-          : [
-              _tableCard(title: Strings.basicTable, child: _basicTable()),
-              FxBox.h20,
-              _tableCard(title: Strings.dartTable, child: _darkTable()),
-              FxBox.h20,
-              _tableCard(title: Strings.stripedRow, child: _stripedTable()),
-              FxBox.h20,
-              _tableCard(title: Strings.hoverableRow, child: _hoverableTable()),
-              FxBox.h20,
-              _tableCard(title: Strings.borderedTable, child: _borderedTable()),
-              FxBox.h20,
-              _tableCard(
-                  title: Strings.borderLessTable, child: _borderlessTable()),
-              FxBox.h20,
-              _tableCard(title: Strings.smallTable, child: _smallTable()),
-              FxBox.h20,
-              _tableCard(
-                  title: Strings.contextualTable, child: _contextualTable()),
-            ],
+      children:
+          // Responsive.isWeb(context)
+          //     ? [
+          //         Row(
+          //           children: [
+          //             Expanded(
+          //               child: _tableCard(
+          //                   title: Strings.basicTable, child: _basicTable()),
+          //             ),
+          //             FxBox.w20,
+          //             Expanded(
+          //               child: _tableCard(
+          //                   title: Strings.stripedRow, child: _stripedTable()),
+          //             ),
+          //           ],
+          //         ),
+          //         FxBox.h20,
+          //         Row(
+          //           children: [
+          //             Expanded(
+          //               child: _tableCard(
+          //                   title: Strings.hoverableRow, child: _hoverableTable()),
+          //             ),
+          //             FxBox.w20,
+          //             Expanded(
+          //               child: _tableCard(
+          //                   title: Strings.contextualTable,
+          //                   child: _contextualTable()),
+          //             ),
+          //           ],
+          //         ),
+          //         FxBox.h20,
+          //         Row(
+          //           children: [
+          //             Expanded(
+          //               child: _tableCard(
+          //                   title: Strings.borderedTable, child: _borderedTable()),
+          //             ),
+          //             FxBox.w20,
+          //             Expanded(
+          //               child: _tableCard(
+          //                   title: Strings.borderLessTable,
+          //                   child: _borderlessTable()),
+          //             ),
+          //           ],
+          //         ),
+          //         FxBox.h20,
+          //         Row(
+          //           children: [
+          //             Expanded(
+          //               child: _tableCard(
+          //                   title: Strings.smallTable, child: _smallTable()),
+          //             ),
+          //             FxBox.w20,
+          //             Expanded(
+          //               child: _tableCard(
+          //                   title: Strings.dartTable, child: _darkTable()),
+          //             ),
+          //           ],
+          //         ),
+          //       ]
+          //     :
+          [
+        _tableCard(title: Strings.simpleTable, child: _basicTable()),
+        FxBox.h20,
+        _tableCard(title: Strings.stripedRow, child: _stripedTable()),
+        FxBox.h20,
+        _tableCard(title: Strings.hoverableRow, child: _hoverableTable()),
+        FxBox.h20,
+        _tableCard(title: Strings.contextualTable, child: _contextualTable()),
+        FxBox.h20,
+        _tableCard(title: Strings.borderedTable, child: _borderedTable()),
+        FxBox.h20,
+        _tableCard(title: Strings.borderLessTable, child: _borderlessTable()),
+        FxBox.h20,
+        _tableCard(title: Strings.smallTable, child: _smallTable()),
+        FxBox.h20,
+        _tableCard(title: Strings.dartTable, child: _darkTable()),
+      ],
     );
   }
 
   Widget _basicTable() {
     return SizedBox(
-      height: 200,
-      child: DataTable2(
+      height: 248,
+      child: DataTable3(
         minWidth: 600,
         dividerThickness: 1,
         showBottomBorder: true,
@@ -111,8 +110,8 @@ class BasicTable extends StatelessWidget {
 
   Widget _darkTable() {
     return SizedBox(
-      height: 200,
-      child: DataTable2(
+      height: 248,
+      child: DataTable3(
         minWidth: 600,
         showBottomBorder: true,
         headingRowColor: MaterialStateProperty.all(
@@ -135,30 +134,19 @@ class BasicTable extends StatelessWidget {
     return BlocBuilder<ThemeModeBloc, ThemeModeState>(
       builder: (context, state) {
         return SizedBox(
-          height: 200,
-          child: DataTable2(
+          height: 248,
+          child: DataTable3(
             minWidth: 600,
             showBottomBorder: true,
             dividerThickness: 1,
             columns: _dataColumn(),
             rows: [
               DataRow2(
-                color: MaterialStateProperty.all(
-                  isDark ? ColorConst.darkContainer : Colors.grey.shade200,
-                ),
                 cells: [
                   DataCell(sizedBox(text: "1")),
-                  DataCell(sizedBox(text: "Jane")),
-                  DataCell(sizedBox(text: "Deo")),
-                  DataCell(sizedBox(text: "@flutter")),
-                ],
-              ),
-              DataRow2(
-                cells: [
-                  DataCell(sizedBox(text: "2")),
-                  DataCell(sizedBox(text: "Joe")),
-                  DataCell(sizedBox(text: "Blow")),
-                  DataCell(sizedBox(text: "@android")),
+                  DataCell(sizedBox(text: "Jane Deo")),
+                  DataCell(sizedBox(text: "1212121212")),
+                  DataCell(sizedBox(text: "999")),
                 ],
               ),
               DataRow2(
@@ -166,10 +154,29 @@ class BasicTable extends StatelessWidget {
                   isDark ? ColorConst.darkContainer : Colors.grey.shade200,
                 ),
                 cells: [
+                  DataCell(sizedBox(text: "2")),
+                  DataCell(sizedBox(text: "Joe Blow")),
+                  DataCell(sizedBox(text: "4646464646")),
+                  DataCell(sizedBox(text: "449")),
+                ],
+              ),
+              DataRow2(
+                cells: [
                   DataCell(sizedBox(text: "3")),
-                  DataCell(sizedBox(text: "Jhon")),
-                  DataCell(sizedBox(text: "Wick")),
-                  DataCell(sizedBox(text: "@flutter")),
+                  DataCell(sizedBox(text: "Jhon Wick")),
+                  DataCell(sizedBox(text: "1234567890")),
+                  DataCell(sizedBox(text: "149")),
+                ],
+              ),
+              DataRow2(
+                color: MaterialStateProperty.all(
+                  isDark ? ColorConst.darkContainer : Colors.grey.shade200,
+                ),
+                cells: [
+                  DataCell(sizedBox(text: "4")),
+                  DataCell(sizedBox(text: "Jane Blow")),
+                  DataCell(sizedBox(text: "9292929292")),
+                  DataCell(sizedBox(text: "799")),
                 ],
               ),
             ],
@@ -181,8 +188,8 @@ class BasicTable extends StatelessWidget {
 
   Widget _borderedTable() {
     return SizedBox(
-      height: 200,
-      child: DataTable2(
+      height: 248,
+      child: DataTable3(
         minWidth: 600,
         border: TableBorder.all(
           color: isDark
@@ -198,8 +205,8 @@ class BasicTable extends StatelessWidget {
 
   Widget _borderlessTable() {
     return SizedBox(
-      height: 200,
-      child: DataTable2(
+      height: 248,
+      child: DataTable3(
         minWidth: 600,
         dividerThickness: 0,
         columns: _dataColumn(),
@@ -210,8 +217,8 @@ class BasicTable extends StatelessWidget {
 
   Widget _hoverableTable() {
     return SizedBox(
-      height: 200,
-      child: DataTable2(
+      height: 248,
+      child: DataTable3(
         minWidth: 600,
         dividerThickness: 1,
         showCheckboxColumn: false,
@@ -222,27 +229,36 @@ class BasicTable extends StatelessWidget {
             onSelectChanged: (value) {},
             cells: [
               DataCell(sizedBox(text: "1")),
-              DataCell(sizedBox(text: "Jane")),
-              DataCell(sizedBox(text: "Deo")),
-              DataCell(sizedBox(text: "@flutter")),
+              DataCell(sizedBox(text: "Jane Deo")),
+              DataCell(sizedBox(text: "1212121212")),
+              DataCell(sizedBox(text: "999")),
             ],
           ),
           DataRow2(
             onSelectChanged: (value) {},
             cells: [
               DataCell(sizedBox(text: "2")),
-              DataCell(sizedBox(text: "Joe")),
-              DataCell(sizedBox(text: "Blow")),
-              DataCell(sizedBox(text: "@android")),
+              DataCell(sizedBox(text: "Joe Blow")),
+              DataCell(sizedBox(text: "4646464646")),
+              DataCell(sizedBox(text: "449")),
             ],
           ),
           DataRow2(
             onSelectChanged: (value) {},
             cells: [
               DataCell(sizedBox(text: "3")),
-              DataCell(sizedBox(text: "Jhon")),
-              DataCell(sizedBox(text: "Wick")),
-              DataCell(sizedBox(text: "@flutter")),
+              DataCell(sizedBox(text: "Jhon Wick")),
+              DataCell(sizedBox(text: "1234567890")),
+              DataCell(sizedBox(text: "149")),
+            ],
+          ),
+          DataRow2(
+            onSelectChanged: (value) {},
+            cells: [
+              DataCell(sizedBox(text: "4")),
+              DataCell(sizedBox(text: "Jane Blow")),
+              DataCell(sizedBox(text: "9292929292")),
+              DataCell(sizedBox(text: "799")),
             ],
           ),
         ],
@@ -252,8 +268,8 @@ class BasicTable extends StatelessWidget {
 
   Widget _smallTable() {
     return SizedBox(
-      height: 200,
-      child: DataTable2(
+      height: 248,
+      child: DataTable3(
         minWidth: 600,
         dividerThickness: 1,
         showBottomBorder: true,
@@ -263,33 +279,41 @@ class BasicTable extends StatelessWidget {
           DataRow2(
             cells: [
               DataCell(sizedBox(text: "1")),
-              DataCell(sizedBox(text: "Jane")),
-              DataCell(sizedBox(text: "Deo")),
-              DataCell(sizedBox(text: "@flutter")),
+              DataCell(sizedBox(text: "Jane Deo")),
+              DataCell(sizedBox(text: "1212121212")),
+              DataCell(sizedBox(text: "999")),
             ],
           ),
           DataRow2(
             cells: [
               DataCell(sizedBox(text: "2")),
-              DataCell(sizedBox(text: "Joe")),
-              DataCell(sizedBox(text: "Blow")),
-              DataCell(sizedBox(text: "@android")),
+              DataCell(sizedBox(text: "Joe Blow")),
+              DataCell(sizedBox(text: "4646464646")),
+              DataCell(sizedBox(text: "449")),
             ],
           ),
           DataRow2(
             cells: [
               DataCell(sizedBox(text: "3")),
-              DataCell(sizedBox(text: "Jhon")),
-              DataCell(sizedBox(text: "Wick")),
-              DataCell(sizedBox(text: "@flutter")),
+              DataCell(sizedBox(text: "Jhon Wick")),
+              DataCell(sizedBox(text: "1234567890")),
+              DataCell(sizedBox(text: "149")),
             ],
           ),
           DataRow2(
             cells: [
               DataCell(sizedBox(text: "4")),
-              DataCell(sizedBox(text: "Jane")),
-              DataCell(sizedBox(text: "Deo")),
-              DataCell(sizedBox(text: "@web")),
+              DataCell(sizedBox(text: "Jane Blow")),
+              DataCell(sizedBox(text: "9292929292")),
+              DataCell(sizedBox(text: "799")),
+            ],
+          ),
+          DataRow2(
+            cells: [
+              DataCell(sizedBox(text: "5")),
+              DataCell(sizedBox(text: "Jhon Deo")),
+              DataCell(sizedBox(text: "9876543210")),
+              DataCell(sizedBox(text: "349")),
             ],
           ),
         ],
@@ -299,8 +323,8 @@ class BasicTable extends StatelessWidget {
 
   Widget _contextualTable() {
     return SizedBox(
-      height: 200,
-      child: DataTable2(
+      height: 248,
+      child: DataTable3(
         minWidth: 600,
         showBottomBorder: true,
         dividerThickness: 1,
@@ -312,9 +336,9 @@ class BasicTable extends StatelessWidget {
             ),
             cells: [
               DataCell(sizedBox(text: "1")),
-              DataCell(sizedBox(text: "Jane")),
-              DataCell(sizedBox(text: "Deo")),
-              DataCell(sizedBox(text: "@flutter")),
+              DataCell(sizedBox(text: "Jane Deo")),
+              DataCell(sizedBox(text: "1212121212")),
+              DataCell(sizedBox(text: "999")),
             ],
           ),
           DataRow2(
@@ -323,9 +347,9 @@ class BasicTable extends StatelessWidget {
             ),
             cells: [
               DataCell(sizedBox(text: "2")),
-              DataCell(sizedBox(text: "Joe")),
-              DataCell(sizedBox(text: "Blow")),
-              DataCell(sizedBox(text: "@android")),
+              DataCell(sizedBox(text: "Joe Blow")),
+              DataCell(sizedBox(text: "4646464646")),
+              DataCell(sizedBox(text: "449")),
             ],
           ),
           DataRow2(
@@ -334,9 +358,20 @@ class BasicTable extends StatelessWidget {
             ),
             cells: [
               DataCell(sizedBox(text: "3")),
-              DataCell(sizedBox(text: "Jhon")),
-              DataCell(sizedBox(text: "Wick")),
-              DataCell(sizedBox(text: "@flutter")),
+              DataCell(sizedBox(text: "Jhon Wick")),
+              DataCell(sizedBox(text: "1234567890")),
+              DataCell(sizedBox(text: "149")),
+            ],
+          ),
+          DataRow2(
+            color: MaterialStateProperty.all(
+              ColorConst.info.withOpacity(0.25),
+            ),
+            cells: [
+              DataCell(sizedBox(text: "4")),
+              DataCell(sizedBox(text: "Jane Blow")),
+              DataCell(sizedBox(text: "9292929292")),
+              DataCell(sizedBox(text: "799")),
             ],
           ),
         ],
@@ -370,25 +405,25 @@ class BasicTable extends StatelessWidget {
     return [
       DataColumn2(
         label: sizedBox(
-          text: "#",
+          text: "ID",
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
         label: sizedBox(
-          text: "Fist Name",
+          text: "Customer Name",
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
         label: sizedBox(
-          text: "Last Name",
+          text: "Mobile No",
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
         label: sizedBox(
-          text: "User Name",
+          text: "Amount",
           fontwidget: FontWeight.bold,
         ),
       ),
@@ -400,25 +435,33 @@ class BasicTable extends StatelessWidget {
       DataRow2(
         cells: [
           DataCell(sizedBox(text: "1")),
-          DataCell(sizedBox(text: "Jane")),
-          DataCell(sizedBox(text: "Deo")),
-          DataCell(sizedBox(text: "@flutter")),
+          DataCell(sizedBox(text: "Jane Deo")),
+          DataCell(sizedBox(text: "1212121212")),
+          DataCell(sizedBox(text: "999")),
         ],
       ),
       DataRow2(
         cells: [
           DataCell(sizedBox(text: "2")),
-          DataCell(sizedBox(text: "Joe")),
-          DataCell(sizedBox(text: "Blow")),
-          DataCell(sizedBox(text: "@android")),
+          DataCell(sizedBox(text: "Joe Blow")),
+          DataCell(sizedBox(text: "4646464646")),
+          DataCell(sizedBox(text: "449")),
         ],
       ),
       DataRow2(
         cells: [
           DataCell(sizedBox(text: "3")),
-          DataCell(sizedBox(text: "Jhon")),
-          DataCell(sizedBox(text: "Wick")),
-          DataCell(sizedBox(text: "@flutter")),
+          DataCell(sizedBox(text: "Jhon Wick")),
+          DataCell(sizedBox(text: "1234567890")),
+          DataCell(sizedBox(text: "149")),
+        ],
+      ),
+      DataRow2(
+        cells: [
+          DataCell(sizedBox(text: "4")),
+          DataCell(sizedBox(text: "Jane Blow")),
+          DataCell(sizedBox(text: "9292929292")),
+          DataCell(sizedBox(text: "799")),
         ],
       ),
     ];

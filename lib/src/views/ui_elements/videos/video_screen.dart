@@ -50,7 +50,7 @@ class _VideoScreenState extends State<VideoScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Aspect Ratio 21:9', style: textStyle),
+                  Text('Single Video', style: textStyle),
                   FxBox.h20,
                   IntrinsicHeight(
                     child: FxVideoPlayer(
@@ -72,7 +72,7 @@ class _VideoScreenState extends State<VideoScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Aspect Ratio 1:1', style: textStyle),
+                  Text('Multiple Video', style: textStyle),
                   FxBox.h20,
                   IntrinsicHeight(
                     child: FxVideoPlayer(

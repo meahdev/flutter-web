@@ -4,6 +4,7 @@ import 'package:admin_dashboard/src/views/charts/chartist.dart';
 import 'package:admin_dashboard/src/views/charts/chartjs.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products_screen.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
@@ -25,9 +26,11 @@ import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
 import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
-import 'package:admin_dashboard/src/views/ui_elements/badge/badge.dart';
+import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
 import 'package:admin_dashboard/src/views/ui_elements/carousel/carousel.dart';
+import 'package:admin_dashboard/src/views/ui_elements/date_picker/date_picker.dart';
+import 'package:admin_dashboard/src/views/ui_elements/draganddrop/drag_and_drop_element.dart';
 import 'package:admin_dashboard/src/views/ui_elements/loader/loader.dart';
 import 'package:admin_dashboard/src/views/ui_elements/modal/modal.dart';
 import 'package:admin_dashboard/src/views/ui_elements/rating/rating.dart';
@@ -108,6 +111,12 @@ int getRouteIndex(String route) {
     return 34;
   } else if (route == Strings.userProfile) {
     return 35;
+  } else if (route == Strings.dragDrop) {
+    return 36;
+  } else if (route == Strings.datePicker) {
+    return 37;
+  } else if (route == Strings.products) {
+    return 38;
   } else {
     return 0;
   }
@@ -119,7 +128,7 @@ Widget getRouteWidget(int index) {
   } else if (index == 2) {
     return const Rating();
   } else if (index == 3) {
-    return const Badge();
+    return const CustomBadge();
   } else if (index == 4) {
     return const Toast();
   } else if (index == 5) {
@@ -184,6 +193,12 @@ Widget getRouteWidget(int index) {
     return const GoogleMaps();
   } else if (index == 35) {
     return const UserProfile();
+  } else if (index == 36) {
+    return const DragAndDrop();
+  } else if (index == 37) {
+    return const DatePicker();
+  } else if (index == 38) {
+    return const ProductsScreen();
   } else {
     return const Dashboard();
   }

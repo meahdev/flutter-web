@@ -1,7 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/widget/ribbon_shape.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -19,40 +18,36 @@ class _ListitemState extends State<Listitem> {
       'producTitle': 'Total Inventory',
       'value': '3,930',
       'boxIcon': Icons.note_add,
-      'up_down_Icon': Icons.arrow_upward,
-      'addTitle': 'Since last month',
-      'ribbonColor': ColorConst.success,
-      'ribbonValue': '+38%',
+      // 'boxColor': '05A660',
+      'boxColor': ['FEBE99', 'F66F94'],
+      'percentage': 60,
     },
     {
       'id': 1,
       'producTitle': 'Total Active',
       'value': '1,268',
-      'boxIcon': Icons.note_alt_sharp,
-      'up_down_Icon': Icons.arrow_upward,
-      'addTitle': 'Since last month',
-      'ribbonColor': ColorConst.infoDark,
-      'ribbonValue': '+9%',
+      'boxIcon': Icons.note_alt_rounded,
+      // 'boxColor': '9B5B1E',
+      'boxColor': ['43D5E7', '7DB1F0'],
+      'percentage': 10,
     },
     {
       'id': 2,
       'producTitle': 'Total Cancel',
       'value': '170',
       'boxIcon': Icons.pending_actions_outlined,
-      'up_down_Icon': Icons.arrow_downward,
-      'addTitle': 'Since last month',
-      'ribbonColor': ColorConst.error,
-      'ribbonValue': '-10%',
+      // 'boxColor': '18818D',
+      'boxColor': ['8DDAD3', '3CC2AE'],
+      'percentage': -5,
     },
     {
       'id': 3,
       'producTitle': 'Total Sales',
       'value': '28,060',
       'boxIcon': Icons.shopping_bag_rounded,
-      'up_down_Icon': Icons.arrow_upward,
-      'addTitle': 'Since last month',
-      'ribbonColor': ColorConst.warningDark,
-      'ribbonValue': '+79%',
+      // 'boxColor': '004FC4',
+      'boxColor': ['A100DA', '400370'],
+      'percentage': 15,
     },
   ];
   @override
@@ -65,21 +60,21 @@ class _ListitemState extends State<Listitem> {
                 crossAxisCount: 1,
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
-                mainAxisExtent: 160,
+                mainAxisExtent: 205,
               )
             : MediaQuery.of(context).size.width < 1500
                 ? const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20,
-                    mainAxisExtent: 160,
+                    mainAxisExtent: 205,
                   )
                 : SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent:
                         MediaQuery.of(context).size.width * 0.24,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20,
-                    mainAxisExtent: 160,
+                    mainAxisExtent: 205,
                   ),
         itemCount: _listItem.length,
         shrinkWrap: true,
@@ -89,13 +84,18 @@ class _ListitemState extends State<Listitem> {
             boxIcon: _listItem[index]['boxIcon'],
             productTitle: _listItem[index]['producTitle'],
             value: _listItem[index]['value'],
-            icon: _listItem[index]['up_down_Icon'],
-            title: _listItem[index]['addTitle'],
-            color: _listItem[index]['producTitle'] == 'REVENUE'
-                ? ColorConst.error
-                : ColorConst.success,
-            ribbonColor: _listItem[index]['ribbonColor'],
-            ribbonValue: _listItem[index]['ribbonValue'],
+            percentage: _listItem[index]['percentage'],
+            color: index == 3
+                ? [
+                    Color(int.parse('0xff${_listItem[index]['boxColor'][0]}'))
+                        .withOpacity(0.75),
+                    Color(int.parse('0xff${_listItem[index]['boxColor'][1]}'))
+                        .withOpacity(0.75)
+                  ]
+                : [
+                    Color(int.parse('0xff${_listItem[index]['boxColor'][0]}')),
+                    Color(int.parse('0xff${_listItem[index]['boxColor'][1]}'))
+                  ],
           );
         },
       ),
@@ -106,132 +106,132 @@ class _ListitemState extends State<Listitem> {
     required IconData boxIcon,
     required String productTitle,
     required String value,
-    required IconData icon,
-    required String title,
-    required Color color,
-    required Color ribbonColor,
-    required String ribbonValue,
+    required List<Color> color,
+    required int percentage,
   }) {
-    return Container(
-      decoration: BoxDecoration(
-        color: ColorConst.primary,
-        borderRadius: BorderRadius.circular(18.0),
-        boxShadow: [
-          BoxShadow(
-            color: ColorConst.primary.withOpacity(0.5),
-            blurRadius: 5.0,
-            offset: const Offset(0.0, 5.0),
-          ),
-        ],
-      ),
-      padding: const EdgeInsets.only(top: 20.0, left: 20.0, bottom: 20.0),
-      child: Column(
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(18.0),
+      child: Stack(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _iconBox(boxIcon: boxIcon),
-              FxBox.w20,
-              _listIconItem(
-                icon: icon,
-                productTitle: productTitle,
-                value: value,
-                color: color,
-              ),
-              const Spacer(),
-              ClipPath(
-                clipper: ArcClipper(),
-                child: Container(
-                  color: ribbonColor,
-                  padding: const EdgeInsets.fromLTRB(20.0, 4.0, 8.0, 4.0),
-                  child: Text(
-                    ribbonValue,
-                    style: const TextStyle(
+          Container(
+            decoration: BoxDecoration(
+              // color: color.withOpacity(0.25),
+              borderRadius: BorderRadius.circular(18.0),
+              gradient: LinearGradient(colors: color),
+              // boxShadow: [
+              //   BoxShadow(
+              //     color: color.withOpacity(0.5),
+              //     blurRadius: 5.0,
+              //     offset: const Offset(0.0, 5.0),
+              //   ),
+              // ],
+            ),
+            padding: const EdgeInsets.all(40.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ConstText.lightText(
+                      text: productTitle,
                       color: ColorConst.white,
+                      fontWeight: FontWeight.bold,
                     ),
-                  ),
+                    Icon(boxIcon, color: ColorConst.white),
+                  ],
                 ),
-              ),
-            ],
+                FxBox.h12,
+                ConstText.mediumText(
+                  text: value,
+                  color: ColorConst.white,
+                  fontWeight: FontWeight.bold,
+                ),
+                const Spacer(),
+                ConstText.lightText(
+                  text: percentage > 0
+                      ? 'Increased by ${percentage.abs()}%'
+                      : 'Decreased by ${percentage.abs()}%',
+                  color: ColorConst.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
+            ),
           ),
-          const Spacer(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _textBox(title: title),
-              Padding(
-                padding: const EdgeInsets.only(right: 20),
-                child: Icon(
-                  Icons.arrow_forward,
-                  color: ColorConst.white.withOpacity(0.5),
-                ),
+          Positioned(
+            right: -75.0,
+            top: -25.0,
+            child: Container(
+              height: 175,
+              width: 175,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: ColorConst.white.withOpacity(0.15),
               ),
-            ],
-          )
+            ),
+          ),
+          Positioned(
+            bottom: -87.5,
+            right: -37.5,
+            child: Container(
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: ColorConst.white.withOpacity(0.15),
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 
-  Widget _iconBox({
-    required IconData boxIcon,
-  }) {
-    return Container(
-      height: 58,
-      width: 58,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        color: ColorConst.white.withOpacity(0.2),
-      ),
-      child: Icon(
-        boxIcon,
-        color: ColorConst.white,
-        size: 32,
-      ),
-    );
-  }
+  // Widget _iconBox({required IconData boxIcon, required Color color}) {
+  //   return Container(
+  //     height: 58,
+  //     width: 58,
+  //     decoration: BoxDecoration(
+  //       color: ColorConst.white.withOpacity(0.05),
+  //       shape: BoxShape.circle,
+  //     ),
+  //     child: Icon(
+  //       boxIcon,
+  //       color: color,
+  //       size: 32,
+  //     ),
+  //   );
+  // }
 
-  Widget _listIconItem({
-    required String productTitle,
-    required String value,
-    required IconData icon,
-    required Color color,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ConstText.lightText(
-          text: productTitle,
-          color: ColorConst.white.withOpacity(0.5),
-          fontWeight: FontWeight.bold,
-        ),
-        FxBox.h12,
-        Row(
-          children: [
-            ConstText.mediumText(
-              text: value,
-              color: ColorConst.white,
-              fontWeight: FontWeight.bold,
-            ),
-            FxBox.w20,
-            Icon(
-              icon,
-              color: color,
-              size: 20,
-            ),
-          ],
-        ),
-      ],
-    );
-  }
+  // Widget _listIconItem({
+  //   required String productTitle,
+  //   required String value,
+  //   required Color color,
+  // }) {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     mainAxisSize: MainAxisSize.min,
+  //     children: [
+  //       ConstText.lightText(
+  //         text: productTitle,
+  //         fontWeight: FontWeight.bold,
+  //       ),
+  //       FxBox.h12,
+  //       ConstText.mediumText(
+  //         text: value,
+  //         color: color,
+  //         fontWeight: FontWeight.bold,
+  //       ),
+  //     ],
+  //   );
+  // }
 
-  Widget _textBox({required String title}) {
-    return ConstText.lightText(
-      text: title,
-      color: ColorConst.white.withOpacity(0.5),
-      fontWeight: FontWeight.w500,
-    );
-  }
+  // Widget _textBox({required String title}) {
+  //   return ConstText.lightText(
+  //     text: title,
+  //     color: ColorConst.white.withOpacity(0.5),
+  //     fontWeight: FontWeight.w500,
+  //   );
+  // }
 }

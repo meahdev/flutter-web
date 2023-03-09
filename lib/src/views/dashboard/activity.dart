@@ -18,22 +18,14 @@ class _ActivityState extends State<Activity> {
 
   List<Step> steps = [
     Step(
-      title: ConstText.lightText(text: 'JAN 22'),
+      title: ConstText.lightText(text: 'Step 1'),
       content: ConstText.lightText(text: ''),
       subtitle: ConstText.lightText(
           text: 'Lorem Ipsum is simply dummy text of the printing.'),
       isActive: true,
     ),
     Step(
-      title: ConstText.lightText(text: 'JAN 20'),
-      content: ConstText.lightText(text: ''),
-      subtitle: ConstText.lightText(
-          text: 'Lorem Ipsum is simply dummy text of the printing.'),
-      isActive: true,
-      state: StepState.complete,
-    ),
-    Step(
-      title: ConstText.lightText(text: 'JAN 19'),
+      title: ConstText.lightText(text: 'Step 2'),
       content: ConstText.lightText(text: ''),
       subtitle: ConstText.lightText(
           text: 'Lorem Ipsum is simply dummy text of the printing.'),
@@ -41,7 +33,15 @@ class _ActivityState extends State<Activity> {
       state: StepState.complete,
     ),
     Step(
-      title: ConstText.lightText(text: 'JAN 17'),
+      title: ConstText.lightText(text: 'Step 3'),
+      content: ConstText.lightText(text: ''),
+      subtitle: ConstText.lightText(
+          text: 'Lorem Ipsum is simply dummy text of the printing.'),
+      isActive: true,
+      state: StepState.complete,
+    ),
+    Step(
+      title: ConstText.lightText(text: 'Step 4'),
       content: ConstText.lightText(text: ''),
       subtitle: ConstText.lightText(
           text: 'Lorem Ipsum is simply dummy text of the printing.'),

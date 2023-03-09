@@ -29,10 +29,27 @@ class _ClienresponseState extends State<Clienresponse> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ConstText.lightText(
-                text: Strings.clientReviews,
-                // color: ColorConst.grey800,
-                fontWeight: FontWeight.bold,
+              // ConstText.lightText(
+              //   text: Strings.clientReviews,
+              //   // color: ColorConst.grey800,
+              //   fontWeight: FontWeight.bold,
+              // ),
+              Row(
+                children: [
+                  const CircleAvatar(
+                    maxRadius: 20,
+                    backgroundImage: AssetImage(Images.profileImage),
+                  ),
+                  FxBox.w10,
+                  const Expanded(
+                    child: Text(
+                      'John Deo',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               ConstText.lightText(
                 text: Strings.clientReviewText,
@@ -50,25 +67,33 @@ class _ClienresponseState extends State<Clienresponse> {
 
   Widget _tableRowImage(String text) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const CircleAvatar(
-          maxRadius: 20,
-          backgroundImage: AssetImage(Images.profileImage),
+        // const CircleAvatar(
+        //   maxRadius: 20,
+        //   backgroundImage: AssetImage(Images.profileImage),
+        // ),
+        // FxBox.w10,
+        // Expanded(
+        //   child: Text(
+        //     text,
+        //     style: const TextStyle(
+        //       fontWeight: FontWeight.w700,
+        //     ),
+        //   ),
+        // ),
+        ConstText.lightText(
+          text: Strings.clientReviews,
+          // color: ColorConst.grey800,
+          fontWeight: FontWeight.bold,
         ),
-        FxBox.w10,
-        Expanded(
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontWeight: FontWeight.w700,
-            ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.arrow_forward,
+            size: 16,
+            // color: ColorConst.primary,
           ),
-        ),
-        const Icon(
-          Icons.arrow_forward,
-          size: 16,
-          color: ColorConst.primary,
         ),
       ],
     );

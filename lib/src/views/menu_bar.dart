@@ -3,7 +3,10 @@ import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
+import 'package:admin_dashboard/src/utils/extainsions/string_extainsions.dart';
+import 'package:admin_dashboard/src/utils/hive/hive.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
@@ -13,16 +16,17 @@ import 'package:admin_dashboard/src/widget/expantion_tile.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
 
 class FMenuBar extends StatefulWidget {
   const FMenuBar({Key? key}) : super(key: key);
 
   @override
-  State<FMenuBar> createState() => _FMenuBarState();
+  State<FMenuBar> createState() => _MenuBarState();
 }
 
-class _FMenuBarState extends State<FMenuBar> {
+class _MenuBarState extends State<FMenuBar> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final GlobalKey<ScaffoldState> _scaffoldDrawerKey =
       GlobalKey<ScaffoldState>();
@@ -42,6 +46,7 @@ class _FMenuBarState extends State<FMenuBar> {
     Strings.forms: IconlyBroken.forms,
     Strings.charts: IconlyBroken.charts,
     Strings.tables: IconlyBroken.tables,
+    Strings.eCommerce: IconlyBroken.eCommerce,
   };
 
   Map<String, String> extrasData = {
@@ -62,6 +67,8 @@ class _FMenuBarState extends State<FMenuBar> {
       Strings.tabs,
       Strings.carousel,
       Strings.videoPlayer,
+      Strings.dragDrop,
+      Strings.datePicker,
     ],
     [
       Strings.formElements,
@@ -77,6 +84,9 @@ class _FMenuBarState extends State<FMenuBar> {
       Strings.dataTable,
       Strings.responsiveTable,
       Strings.editableTable,
+    ],
+    [
+      Strings.products,
     ],
   ];
 
@@ -117,26 +127,22 @@ class _FMenuBarState extends State<FMenuBar> {
   ];
 
   final List<String> _notificationTitle = [
-    'Your order is placed',
-    'New message received',
-    'Your item is shipped',
-    'Your order is placed',
-    // 'New message received',
+    'Your order is shipped',
+    'your accound have verified',
+    'New Notification arrived',
   ];
 
   final List<String> _notificationSubtitle = [
-    'Dummy text of the printing and typesetting industry.',
-    'You have 87 unread messages',
-    'It is a long established fact that a reader will',
-    'Dummy text of the printing and typesetting industry.',
-    // 'You have 87 unread messages',
+    'Please share your experience with us',
+    'Congratulation  👏🏻',
+    'Hey!, How are you?',
   ];
 
   final List<PageRouteInfo<dynamic>> _routes = const [
     Dashboard(),
     Button(),
     Rating(),
-    FBadge(),
+    CustomBadge(),
     Toast(),
     AlertDialogBox(),
     Modal(),
@@ -168,7 +174,10 @@ class _FMenuBarState extends State<FMenuBar> {
     MaskForm(),
     VideoScreen(),
     GoogleMaps(),
-    UserProfile()
+    UserProfile(),
+    DragAndDrop(),
+    DatePicker(),
+    ProductsScreen(),
   ];
 
   @override
@@ -181,7 +190,9 @@ class _FMenuBarState extends State<FMenuBar> {
           key: _scaffoldKey,
           endDrawer: Drawer(
             width: 280,
-            child: SafeArea(child: SettingDrawer(scaffoldKey: _scaffoldKey)),
+            child: SafeArea(
+              child: SettingDrawer(scaffoldKey: _scaffoldKey),
+            ),
           ),
           appBar: _appBar(tabsRouter),
           body: SafeArea(
@@ -202,54 +213,52 @@ class _FMenuBarState extends State<FMenuBar> {
                     },
                   ),
                   Expanded(
-                    child: SelectionArea(
-                      child: CustomScrollView(
-                        controller: _scrollController,
-                        slivers: [
-                          SliverList(
-                            delegate: SliverChildListDelegate(
-                              [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 24.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      FxBox.h20,
-                                      Text(
-                                        upperCase(tabsRouter.currentPath),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyLarge!
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold),
-                                      ),
-                                      FxBox.h8,
-                                      _routesDeatils(tabsRouter),
-                                      FxBox.h20,
-                                      getRouteWidget(tabsRouter.activeIndex),
-                                      FxBox.h20,
-                                    ],
-                                  ),
+                    child: CustomScrollView(
+                      controller: _scrollController,
+                      slivers: [
+                        SliverList(
+                          delegate: SliverChildListDelegate(
+                            [
+                              Container(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24.0),
+                                child: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                  children: [
+                                    FxBox.h20,
+                                    Text(
+                                      upperCase(tabsRouter.currentPath),
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                              fontWeight: FontWeight.bold),
+                                    ),
+                                    FxBox.h8,
+                                    _routesDeatils(tabsRouter),
+                                    FxBox.h20,
+                                    getRouteWidget(tabsRouter.activeIndex),
+                                    FxBox.h20,
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          SliverFillRemaining(
-                            hasScrollBody: false,
-                            fillOverscroll: true,
-                            child: Column(
-                              children: <Widget>[
-                                const Expanded(
-                                  child: SizedBox.shrink(),
-                                ),
-                                _footer(),
-                              ],
-                            ),
+                        ),
+                        SliverFillRemaining(
+                          hasScrollBody: false,
+                          fillOverscroll: true,
+                          child: Column(
+                            children: <Widget>[
+                              const Expanded(
+                                child: SizedBox.shrink(),
+                              ),
+                              _footer(),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -284,8 +293,7 @@ class _FMenuBarState extends State<FMenuBar> {
                       width: 240,
                       padding: const EdgeInsets.symmetric(horizontal: 61),
                       height: double.infinity,
-                      color:
-                          isDark ? ColorConst.transparent : ColorConst.drawerBG,
+                      color: ColorConst.transparent,
                       child: Image.asset(
                           isDark ? Images.lgDarkLogo : Images.lgLightLogo),
                     ),
@@ -366,16 +374,29 @@ class _FMenuBarState extends State<FMenuBar> {
                   ),
                 ),
           _notification(),
-          _profile(tabsRouter),
-          MaterialButton(
-            height: double.infinity,
-            minWidth: 60,
-            hoverColor: ColorConst.transparent,
-            onPressed: () {
-              _scaffoldKey.currentState!.openEndDrawer();
+          BlocBuilder<ThemeModeBloc, ThemeModeState>(
+            builder: (context, state) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        HiveUtils.set(HiveKeys.themeMode, !isDark);
+                        themeModeBloc.add(ThemeModeEvent.changeTheme(!isDark));
+                      },
+                      icon: Icon(
+                        isDark
+                            ? Icons.light_mode_outlined
+                            : Icons.dark_mode_outlined,
+                      ),
+                    ),
+                  ],
+                ),
+              );
             },
-            child: const SvgIcon(icon: IconlyBroken.setting),
           ),
+          _profile(tabsRouter),
         ],
       );
 
@@ -437,7 +458,7 @@ class _FMenuBarState extends State<FMenuBar> {
                     ),
                     FxBox.h8,
                     SizedBox(
-                      height: 260,
+                      height: 200,
                       child: ListView.builder(
                         shrinkWrap: true,
                         itemCount: _notificationTitle.length,
@@ -579,14 +600,14 @@ class _FMenuBarState extends State<FMenuBar> {
                 children: [
                   FxBox.h8,
                   // main
-                  if (value) _menuHeading(Strings.main),
+                  // if (value) _menuHeading(Strings.main),
                   _menuList(
                     tabsRouter: tabsRouter,
                     items: mainData,
                     isopen: value,
                   ),
                   // components
-                  if (value) _menuHeading(Strings.components),
+                  // if (value) _menuHeading(Strings.components),
                   _menuList(
                     tabsRouter: tabsRouter,
                     items: componentData,
@@ -594,8 +615,15 @@ class _FMenuBarState extends State<FMenuBar> {
                     children: componentsExpandList,
                     isopen: value,
                   ),
+                  _menuList(
+                    tabsRouter: tabsRouter,
+                    items: extrasData,
+                    isExpanded: true,
+                    children: extrasExpandList,
+                    isopen: value,
+                  ),
                   // extras
-                  if (value) _menuHeading(Strings.extras),
+                  // if (value) _menuHeading(Strings.extras),
                   _menuList(
                     tabsRouter: tabsRouter,
                     items: extrasData,
@@ -612,20 +640,20 @@ class _FMenuBarState extends State<FMenuBar> {
       );
 
   /// menu heading
-  Widget _menuHeading(String title) {
-    return Container(
-      padding: const EdgeInsets.only(left: 18),
-      height: 40,
-      alignment: Alignment.centerLeft,
-      child: Text(
-        title.toUpperCase(),
-        style: TextStyle(
-          color: isDark ? ColorConst.white : ColorConst.black,
-          fontSize: 11,
-        ),
-      ),
-    );
-  }
+  // Widget _menuHeading(String title) {
+  //   return Container(
+  //     padding: const EdgeInsets.only(left: 18),
+  //     height: 40,
+  //     alignment: Alignment.centerLeft,
+  //     child: Text(
+  //       title.toUpperCase(),
+  //       style: TextStyle(
+  //         color: isDark ? ColorConst.white : ColorConst.black,
+  //         fontSize: 11,
+  //       ),
+  //     ),
+  //   );
+  // }
 
   /// menu list
   Widget _menuList({
@@ -651,15 +679,22 @@ class _FMenuBarState extends State<FMenuBar> {
           if (isExpanded) {
             return isopen
                 ? FxExpansionTile(
-                    leading: SvgIcon(
-                      icon: items.values.elementAt(index),
-                      size: 16,
-                      color: children[index]
-                              .contains(upperCase(tabsRouter.currentPath))
-                          ? isDark
-                              ? ColorConst.chartForgoundColor
-                              : ColorConst.primary
-                          : color,
+                    leading: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        FxBox.w(22.0),
+                        SvgIcon(
+                          icon: items.values.elementAt(index),
+                          size: 16,
+                          color: children[index]
+                                  .contains(upperCase(tabsRouter.currentPath))
+                              ? isDark
+                                  ? ColorConst.chartForgoundColor
+                                  : ColorConst.primary
+                              : color,
+                        ),
+                        FxBox.w(24.0),
+                      ],
                     ),
                     title: Text(
                       items.keys.elementAt(index),
@@ -717,39 +752,66 @@ class _FMenuBarState extends State<FMenuBar> {
                     },
                   );
           } else {
-            return ListTile(
-              leading: SvgIcon(
-                icon: items.values.elementAt(index),
-                size: isopen ? 16 : 18,
-                color: items.keys.elementAt(index) ==
-                        upperCase(tabsRouter.currentPath)
-                    ? isDark
-                        ? ColorConst.chartForgoundColor
-                        : ColorConst.primary
-                    : color,
-              ),
-              title: isopen
-                  ? Text(
-                      items.keys.elementAt(index),
-                      style: TextStyle(
-                        color: items.keys.elementAt(index) ==
-                                upperCase(tabsRouter.currentPath)
-                            ? isDark
-                                ? ColorConst.chartForgoundColor
-                                : ColorConst.primary
-                            : color,
-                        fontSize: 15.7,
+            return Row(
+              children: [
+                if (isopen)
+                  Container(
+                    width: 6.0,
+                    height: 48.0,
+                    decoration: BoxDecoration(
+                      color: items.keys.elementAt(index) ==
+                              upperCase(tabsRouter.currentPath)
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : ColorConst.transparent,
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(6.0),
+                        bottomRight: Radius.circular(6.0),
                       ),
-                    )
-                  : null,
-              mouseCursor: SystemMouseCursors.click,
-              horizontalTitleGap: 0.0,
-              onTap: () {
-                isOpen.value = true;
-                tabsRouter
-                    .setActiveIndex(getRouteIndex(items.keys.elementAt(index)));
-                _scaffoldDrawerKey.currentState?.closeDrawer();
-              },
+                    ),
+                  ),
+                if (isopen) FxBox.w16,
+                Expanded(
+                  child: ListTile(
+                    leading: SvgIcon(
+                      icon: items.values.elementAt(index),
+                      size: isopen ? 16 : 18,
+                      color: items.keys.elementAt(index) ==
+                              upperCase(tabsRouter.currentPath)
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                    ),
+                    title: isopen
+                        ? Text(
+                            items.keys.elementAt(index),
+                            style: TextStyle(
+                              color: items.keys.elementAt(index) ==
+                                      upperCase(tabsRouter.currentPath)
+                                  ? isDark
+                                      ? ColorConst.chartForgoundColor
+                                      : ColorConst.primary
+                                  : color,
+                              fontSize: 15.7,
+                            ),
+                          )
+                        : null,
+                    mouseCursor: SystemMouseCursors.click,
+                    horizontalTitleGap: 0.0,
+                    onTap: () {
+                      isOpen.value = true;
+                      tabsRouter.setActiveIndex(
+                          getRouteIndex(items.keys.elementAt(index)));
+
+                      HiveUtils.set(Strings.selectedmenuIndex,
+                          getRouteIndex(items.keys.elementAt(index)));
+                      _scaffoldDrawerKey.currentState?.closeDrawer();
+                    },
+                  ),
+                ),
+              ],
             );
           }
         },
@@ -776,45 +838,66 @@ class _FMenuBarState extends State<FMenuBar> {
                   : isDark
                       ? ColorConst.white
                       : ColorConst.black;
-          return ListTile(
-            dense: true,
-            visualDensity: const VisualDensity(vertical: -3),
-            mouseCursor: SystemMouseCursors.click,
-            contentPadding: const EdgeInsets.only(left: 52.0),
-            title: Text(
-              items[index],
-              style: TextStyle(color: color, fontSize: 15),
-            ),
-            onTap: () {
-              if (items[index] == 'Login 1') {
-                context.router.push(const LoginOne());
-              } else if (items[index] == 'Login 2') {
-                context.router.push(const LoginTwo());
-              } else if (items[index] == 'Register 1') {
-                context.router.push(const RegisterOne());
-              } else if (items[index] == 'Register 2') {
-                context.router.push(const RegisterTwo());
-              } else if (items[index] == 'Recover Password 1') {
-                context.router.push(const RecoverPasswordOne());
-              } else if (items[index] == 'Recover Password 2') {
-                context.router.push(const RecoverPasswordTwo());
-              } else if (items[index] == 'Lock Screen 1') {
-                context.router.push(const LockScreenOne());
-              } else if (items[index] == 'Lock Screen 2') {
-                context.router.push(const LockScreenTwo());
-              } else if (items[index] == 'Error 404') {
-                context.router.push(const Error404());
-              } else if (items[index] == 'Error 500') {
-                context.router.push(const Error500());
-              } else if (items[index] == 'Maintenence') {
-                context.router.push(const Maintenance());
-              } else if (items[index] == 'Coming Soon') {
-                context.router.push(const ComingSoon());
-              } else {
-                tabsRouter.setActiveIndex(getRouteIndex(items[index]));
-              }
-              _scaffoldDrawerKey.currentState?.closeDrawer();
-            },
+          return Row(
+            children: [
+              Container(
+                width: 6.0,
+                height: 48.0,
+                decoration: BoxDecoration(
+                  color: upperCase(tabsRouter.currentPath) == items[index]
+                      ? isDark
+                          ? ColorConst.chartForgoundColor
+                          : ColorConst.primary
+                      : ColorConst.transparent,
+                  borderRadius: const BorderRadius.only(
+                    topRight: Radius.circular(6.0),
+                    bottomRight: Radius.circular(6.0),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: ListTile(
+                  dense: true,
+                  visualDensity: const VisualDensity(vertical: -3),
+                  mouseCursor: SystemMouseCursors.click,
+                  contentPadding: const EdgeInsets.only(left: 52.0),
+                  title: Text(
+                    items[index],
+                    style: TextStyle(color: color, fontSize: 15),
+                  ),
+                  onTap: () {
+                    if (items[index] == 'Login 1') {
+                      context.router.push(const LoginOne());
+                    } else if (items[index] == 'Login 2') {
+                      context.router.push(const LoginTwo());
+                    } else if (items[index] == 'Register 1') {
+                      context.router.push(const RegisterOne());
+                    } else if (items[index] == 'Register 2') {
+                      context.router.push(const RegisterTwo());
+                    } else if (items[index] == 'Recover Password 1') {
+                      context.router.push(const RecoverPasswordOne());
+                    } else if (items[index] == 'Recover Password 2') {
+                      context.router.push(const RecoverPasswordTwo());
+                    } else if (items[index] == 'Lock Screen 1') {
+                      context.router.push(const LockScreenOne());
+                    } else if (items[index] == 'Lock Screen 2') {
+                      context.router.push(const LockScreenTwo());
+                    } else if (items[index] == 'Error 404') {
+                      context.router.push(const Error404());
+                    } else if (items[index] == 'Error 500') {
+                      context.router.push(const Error500());
+                    } else if (items[index] == 'Maintenence') {
+                      context.router.push(const Maintenance());
+                    } else if (items[index] == 'Coming Soon') {
+                      context.router.push(const ComingSoon());
+                    } else {
+                      tabsRouter.setActiveIndex(getRouteIndex(items[index]));
+                    }
+                    _scaffoldDrawerKey.currentState?.closeDrawer();
+                  },
+                ),
+              ),
+            ],
           );
         },
       ),
@@ -822,23 +905,49 @@ class _FMenuBarState extends State<FMenuBar> {
   }
 
   /// routes
-  Widget _routesDeatils(TabsRouter tabsRouter) => Row(
-        children: tabsRouter.currentPath == '/dashboard'
-            ? []
-            : [
-                const InkWell(
-                  mouseCursor: SystemMouseCursors.click,
-                  child: Text(Strings.admin),
-                ),
-                const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
-                const InkWell(
-                  mouseCursor: SystemMouseCursors.click,
-                  child: Text(Strings.uiElements),
-                ),
-                const SvgIcon(icon: IconlyBroken.arrowRight3, size: 16),
-                Text(upperCase(tabsRouter.currentPath)),
+  Widget _routesDeatils(TabsRouter tabsRouter) {
+    int routeIndex = getRouteIndex(tabsRouter.currentPath
+        .substring(1, tabsRouter.currentPath.length)
+        .replaceAll('-', ' ')
+        .capitalize());
+
+    return Row(
+      children: tabsRouter.currentPath == '/dashboard'
+          ? []
+          : [
+              const InkWell(
+                mouseCursor: SystemMouseCursors.click,
+                child: Text(Strings.admin),
+              ),
+              if (routeIndex.isBetween(1, 6) ||
+                  routeIndex == 10 ||
+                  routeIndex == 24 ||
+                  routeIndex == 25 ||
+                  routeIndex == 33 ||
+                  routeIndex == 36 ||
+                  routeIndex == 37) ...[
+                const Text(' / ${Strings.uiElements} '),
+              ] else if (routeIndex.isBetween(27, 32)) ...[
+                const Text(' / ${Strings.forms} '),
+              ] else if (routeIndex.isBetween(11, 13)) ...[
+                const Text(' / ${Strings.charts} '),
+              ] else if (routeIndex.isBetween(14, 17)) ...[
+                const Text(' / ${Strings.tables} '),
+              ] else if (routeIndex.isBetween(7, 9)) ...[
+                const Text(' / ${Strings.emailTemplates} '),
+              ] else if (routeIndex == 38) ...[
+                const Text(' / ${Strings.eCommerce} '),
+              ] else if (tabsRouter.currentPath == '/calendar' ||
+                  tabsRouter.currentPath == '/map') ...[
+                const SizedBox.shrink()
+              ] else ...[
+                const Text(' / Extra Pages '),
               ],
-      );
+              const Text(' / '),
+              Text(upperCase(tabsRouter.currentPath)),
+            ],
+    );
+  }
 
   Widget _footer() => Container(
         color: isDark ? ColorConst.footerDark : ColorConst.drawerBG,

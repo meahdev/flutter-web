@@ -1,9 +1,10 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/image.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutterx/flutterx.dart';
 import 'package:data_table_2/data_table_2.dart';
 
@@ -28,14 +29,14 @@ class _InvoiceState extends State<Invoice> {
               children: [
                 Row(
                   children: [
-                    Image.asset(
-                      Images.smLogo,
+                    SvgPicture.asset(
+                      IconlyBroken.adminKit,
                       height: 25,
                       width: 30.8,
                     ),
                     const Spacer(),
                     const Text(
-                      'Order # 12345',
+                      'Invoice No : 00001',
                       style: TextStyle(
                         fontSize: 17,
                         fontWeight: FontWeight.w500,
@@ -60,10 +61,10 @@ class _InvoiceState extends State<Invoice> {
                             fontSize: 16,
                           ),
                         ),
-                        const Text('John Smith'),
-                        const Text('20th Avenue'),
-                        const Text('Elkton,sd'),
-                        const Text('United States'),
+                        const Text('123 Your street'),
+                        const Text('Your area'),
+                        const Text('Address'),
+                        const Text('Your contry'),
                         FxBox.h32,
                         const Text(
                           "Payment Method:",
@@ -73,7 +74,7 @@ class _InvoiceState extends State<Invoice> {
                           ),
                         ),
                         const Text("Visa ending ****4242"),
-                        const Text("jsmith@gmail.com"),
+                        const Text("Your@gmail.com"),
                       ],
                     ),
                     const Spacer(),
@@ -89,10 +90,10 @@ class _InvoiceState extends State<Invoice> {
                               fontSize: 16,
                             ),
                           ),
-                          const Text('Kenny Rigdon'),
-                          const Text('20th Avenue'),
-                          const Text('Elkton,sd'),
-                          const Text('United States'),
+                          const Text('Purcheser'),
+                          const Text('Home'),
+                          const Text('Address'),
+                          const Text('His Contry Name'),
                           FxBox.h32,
                           const Text(
                             "Order Date:",
@@ -101,7 +102,7 @@ class _InvoiceState extends State<Invoice> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const Text("January 16,2019"),
+                          const Text("Shiping@date"),
                         ],
                       ),
                     )
@@ -155,7 +156,7 @@ class _InvoiceState extends State<Invoice> {
                         rows: <DataRow>[
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(_dataCell('BS-100')),
+                              DataCell(_dataCell('Your Item1')),
                               DataCell(_dataCell('\$9.99')),
                               DataCell(_dataCell('1')),
                               DataCell(_dataCell('\$9.99')),
@@ -163,7 +164,7 @@ class _InvoiceState extends State<Invoice> {
                           ),
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(_dataCell('BS-500')),
+                              DataCell(_dataCell('Your Item2')),
                               DataCell(_dataCell('\$15.00	')),
                               DataCell(_dataCell('3')),
                               DataCell(_dataCell('\$45.00')),
@@ -171,7 +172,7 @@ class _InvoiceState extends State<Invoice> {
                           ),
                           DataRow2(
                             cells: <DataCell>[
-                              DataCell(_dataCell('BS-300')),
+                              DataCell(_dataCell('Your Item3')),
                               DataCell(_dataCell('\$599.99')),
                               DataCell(_dataCell('1')),
                               DataCell(_dataCell('\$599.99')),
@@ -207,7 +208,7 @@ class _InvoiceState extends State<Invoice> {
                   ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
@@ -217,7 +218,7 @@ class _InvoiceState extends State<Invoice> {
                         elevation: MaterialStateProperty.all(0),
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
+                            borderRadius: BorderRadius.circular(15),
                           ),
                         ),
                       ),
@@ -232,7 +233,7 @@ class _InvoiceState extends State<Invoice> {
                     FxButton(
                       onPressed: () {},
                       text: "Send",
-                      borderRadius: 4,
+                      borderRadius: 15,
                       height: 40,
                     ),
                   ],

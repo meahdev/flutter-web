@@ -347,14 +347,12 @@ class _FileUploadFormState extends State<FileUploadForm> {
   }
 
   Widget _sendFileButton() {
-    return Center(
-      child: FxButton(
-        borderRadius: 4,
-        onPressed: () {
-          _formUploadFileBloc.add(const FormUploadFileEvent.clear());
-        },
-        text: 'Send Files',
-      ),
+    return FxButton(
+      borderRadius: 4,
+      onPressed: () {
+        _formUploadFileBloc.add(const FormUploadFileEvent.clear());
+      },
+      text: 'Send Files',
     );
   }
 

@@ -41,116 +41,109 @@ class _Error404State extends State<Error404> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Responsive.isWeb(context)
-                      ? Card(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 104.0,
-                              vertical: 68.0,
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        "404!",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 80,
-                                        ),
-                                      ),
-                                      Text(
-                                        "Sorry, page not found",
-                                        style: TextStyle(
-                                          color: isDark
-                                              ? ColorConst.darkFontColor
-                                              : ColorConst.textColor,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 21,
-                                        ),
-                                      ),
-                                      FxBox.h24,
-                                      const Text(
-                                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
-                                      FxBox.h48,
-                                      FxButton(
-                                        borderRadius: 4,
-                                        text: "Back to Dashboard",
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        icon: const Icon(
-                                          Icons.home,
-                                          size: 15,
-                                        ),
-                                      )
-                                    ],
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const Text(
+                                    "404!",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 80,
+                                    ),
                                   ),
-                                ),
-                                FxBox.w(84),
-                                SizedBox(
-                                  height: 260,
-                                  width:
-                                      MediaQuery.of(context).size.width * .20,
-                                  child: SvgPicture.asset(
-                                      'assets/images/error-404.svg'),
-                                  // child: Image.asset("assets/images/image.png"),
-                                ),
-                              ],
+                                  Text(
+                                    "Sorry, page not found",
+                                    style: TextStyle(
+                                      color: isDark
+                                          ? ColorConst.darkFontColor
+                                          : ColorConst.textColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 21,
+                                    ),
+                                  ),
+                                  FxBox.h24,
+                                  const Text(
+                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+                                  FxBox.h48,
+                                  FxButton(
+                                    borderRadius: 15,
+                                    text: "Back to Dashboard",
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    icon: const Icon(
+                                      Icons.home,
+                                      size: 15,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
-                          ),
+                            //FxBox.w(84),
+                            Expanded(
+                              child: SizedBox(
+                                height: 500,
+                                width: 600,
+                                child: SvgPicture.asset(
+                                  'assets/images/error-404.svg',
+                                  fit: BoxFit.cover,
+                                ),
+                                // child: Image.asset("assets/images/image.png"),
+                              ),
+                            ),
+                          ],
                         )
-                      : Card(
-                          child: Padding(
-                            padding: const EdgeInsets.all(30.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text(
-                                  "404!",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 80,
-                                  ),
-                                ),
-                                Text(
-                                  "Sorry, page not found",
-                                  style: TextStyle(
-                                    color: isDark
-                                        ? ColorConst.darkFontColor
-                                        : ColorConst.textColor,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 21,
-                                  ),
-                                ),
-                                FxBox.h24,
-                                const Text(
-                                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                                ),
-                                FxBox.h48,
-                                FxButton(
-                                  borderRadius: 4,
-                                  text: "Back to Dashboard",
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                  icon: const Icon(Icons.home, size: 15),
-                                ),
-                                FxBox.h48,
-                                SizedBox(
-                                  height: 260,
-                                  width:
-                                      MediaQuery.of(context).size.width * .75,
-                                  child: SvgPicture.asset(
-                                      'assets/images/error-404.svg'),
-                                  // child: Image.asset("assets/images/image.png"),
-                                ),
-                              ],
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "404!",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 80,
+                              ),
                             ),
-                          ),
+                            Text(
+                              "Sorry, page not found",
+                              style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.darkFontColor
+                                    : ColorConst.textColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 21,
+                              ),
+                            ),
+                            FxBox.h24,
+                            const Text(
+                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                            ),
+                            FxBox.h48,
+                            FxButton(
+                              borderRadius: 15,
+                              text: "Back to Dashboard",
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: const Icon(
+                                Icons.home,
+                                size: 15,
+                              ),
+                            ),
+                            FxBox.h48,
+                            SizedBox(
+                              height: 300,
+                              width: 400,
+                              child: SvgPicture.asset(
+                                'assets/images/error-404.svg',
+                                fit: BoxFit.cover,
+                              ),
+                              // child: Image.asset("assets/images/image.png"),
+                            ),
+                          ],
                         )
                 ],
               ),

@@ -84,7 +84,7 @@ class _WizardFormState extends State<WizardForm> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "Jquery Steps Wizard",
+                    "Wizard Form",
                     style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
                   ),
                   FxBox.h24,
@@ -92,7 +92,7 @@ class _WizardFormState extends State<WizardForm> {
                       ? Row(
                           children: [
                             Expanded(
-                              child: _stepperTitle(1, 'Seller Deatils'),
+                              child: _stepperTitle(1, 'Seller Details'),
                             ),
                             FxBox.w8,
                             Expanded(
@@ -100,11 +100,11 @@ class _WizardFormState extends State<WizardForm> {
                             ),
                             FxBox.w8,
                             Expanded(
-                              child: _stepperTitle(3, 'Bank Deatils'),
+                              child: _stepperTitle(3, 'Bank Details'),
                             ),
                             FxBox.w8,
                             Expanded(
-                              child: _stepperTitle(4, 'Confirm Deatil'),
+                              child: _stepperTitle(4, 'Confirm Details'),
                             ),
                           ],
                         )
@@ -114,7 +114,7 @@ class _WizardFormState extends State<WizardForm> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: _stepperTitle(1, 'Seller Deatils'),
+                                      child: _stepperTitle(1, 'Seller Details'),
                                     ),
                                     FxBox.w8,
                                     Expanded(
@@ -127,11 +127,12 @@ class _WizardFormState extends State<WizardForm> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: _stepperTitle(3, 'Bank Deatils'),
+                                      child: _stepperTitle(3, 'Bank Details'),
                                     ),
                                     FxBox.w8,
                                     Expanded(
-                                      child: _stepperTitle(4, 'Confirm Deatil'),
+                                      child:
+                                          _stepperTitle(4, 'Confirm Details'),
                                     ),
                                   ],
                                 )
@@ -139,13 +140,13 @@ class _WizardFormState extends State<WizardForm> {
                             )
                           : Column(
                               children: [
-                                _stepperTitle(1, 'Seller Deatils'),
+                                _stepperTitle(1, 'Seller Details'),
                                 FxBox.h8,
                                 _stepperTitle(2, 'Company Document'),
                                 FxBox.h8,
-                                _stepperTitle(3, 'Bank Deatils'),
+                                _stepperTitle(3, 'Bank Details'),
                                 FxBox.h8,
-                                _stepperTitle(4, 'Confirm Deatil'),
+                                _stepperTitle(4, 'Confirm Details'),
                               ],
                             ),
                   FxBox.h24,
@@ -158,7 +159,7 @@ class _WizardFormState extends State<WizardForm> {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       FxButton(
-                        borderRadius: 4.0,
+                        borderRadius: 15.0,
                         onPressed: _index == 0
                             ? null
                             : () {
@@ -171,11 +172,11 @@ class _WizardFormState extends State<WizardForm> {
                                   FormWizardEvent.previousClick(_index - 1),
                                 );
                               },
-                        text: Strings.previous,
+                        text: _index == 0 ? '' : Strings.previous,
                       ),
                       FxBox.w16,
                       FxButton(
-                        borderRadius: 4.0,
+                        borderRadius: 15.0,
                         onPressed: () {
                           if (_index < 3) {
                             _formWizardBloc.add(
@@ -221,7 +222,7 @@ class _WizardFormState extends State<WizardForm> {
       },
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5.0),
+          borderRadius: BorderRadius.circular(10.0),
           color: isSelected && !_isFinish
               ? ColorConst.primary
               : ColorConst.stepperBackGround,
@@ -229,30 +230,30 @@ class _WizardFormState extends State<WizardForm> {
         padding: const EdgeInsets.all(15.0),
         child: Row(
           children: [
-            Container(
-              alignment: Alignment.center,
-              height: 38,
-              width: 38,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(
-                  width: 2.0,
-                  color: isSelected && !_isFinish
-                      ? ColorConst.white
-                      : ColorConst.primary,
-                ),
-              ),
-              child: Text(
-                '$number.',
-                style: TextStyle(
-                  fontSize: 17.0,
-                  fontWeight: FontWeight.w500,
-                  color: isSelected && !_isFinish
-                      ? ColorConst.white
-                      : ColorConst.primary,
-                ),
-              ),
-            ),
+            // Container(
+            //   alignment: Alignment.center,
+            //   height: 38,
+            //   width: 38,
+            //   decoration: BoxDecoration(
+            //     shape: BoxShape.circle,
+            //     border: Border.all(
+            //       width: 2.0,
+            //       color: isSelected && !_isFinish
+            //           ? ColorConst.white
+            //           : ColorConst.primary,
+            //     ),
+            //   ),
+            //   child: Text(
+            //     '$number.',
+            //     style: TextStyle(
+            //       fontSize: 17.0,
+            //       fontWeight: FontWeight.w500,
+            //       color: isSelected && !_isFinish
+            //           ? ColorConst.white
+            //           : ColorConst.primary,
+            //     ),
+            //   ),
+            // ),
             FxBox.w10,
             Expanded(
               child: Text(
@@ -298,7 +299,7 @@ class _WizardFormState extends State<WizardForm> {
         ? Column(
             children: [
               _dataViewWebCommon(
-                'Contact Person',
+                'Seller Name',
                 'Enter your name',
                 'Mobile No.',
                 'Enter your number',
@@ -308,27 +309,17 @@ class _WizardFormState extends State<WizardForm> {
               ),
               FxBox.h24,
               _dataViewWebCommon(
-                'Landline No.',
-                'Enter your number',
-                'Email Address',
-                'Enter your email',
-                null,
-                _controllerList[2],
-                _controllerList[3],
-              ),
-              FxBox.h24,
-              _dataViewWebCommon(
                 'Address 1',
-                'Enter your first address',
-                'Warehouse Address',
-                'Enter your second address',
+                'Enter Your address',
+                'Address 2',
+                'Enter Work address',
                 3,
                 _controllerList[4],
                 _controllerList[5],
               ),
               FxBox.h24,
               _dataViewWebCommon(
-                'Company Type',
+                'Company Name',
                 'Enter your company name',
                 'Live Market A/C',
                 'Enter A/C number',
@@ -362,27 +353,17 @@ class _WizardFormState extends State<WizardForm> {
                   ),
                   FxBox.h24,
                   _dataViewTabCommon(
-                    'Landline No.',
-                    'Enter your number',
-                    'Email Address',
-                    'Enter your email',
-                    null,
-                    _controllerList[2],
-                    _controllerList[3],
-                  ),
-                  FxBox.h24,
-                  _dataViewTabCommon(
                     'Address 1',
-                    'Enter your first address',
-                    'Warehouse Address',
-                    'Enter your second address',
+                    'Enter your address',
+                    'Address 2',
+                    'Enter work address',
                     3,
                     _controllerList[4],
                     _controllerList[5],
                   ),
                   FxBox.h24,
                   _dataViewTabCommon(
-                    'Company Type',
+                    'Company Name',
                     'Enter your company name',
                     'Live Market A/C',
                     'Enter A/C number',
@@ -405,7 +386,7 @@ class _WizardFormState extends State<WizardForm> {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _commonTitle('Contact Person'),
+                  _commonTitle('Seller Name'),
                   FxBox.h8,
                   _commonTextField('Enter your name', _controllerList[0]),
                   FxBox.h24,
@@ -413,31 +394,27 @@ class _WizardFormState extends State<WizardForm> {
                   FxBox.h8,
                   _commonTextField('Enter your number', _controllerList[1]),
                   FxBox.h24,
-                  _commonTitle('Landline No.'),
-                  FxBox.h8,
-                  _commonTextField('Enter your number', _controllerList[2]),
-                  FxBox.h24,
-                  _commonTitle('Email Address'),
+                  _commonTitle('Email Id'),
                   FxBox.h8,
                   _commonTextField('Enter your email', _controllerList[3]),
                   FxBox.h24,
                   _commonTitle('Address 1'),
                   FxBox.h8,
                   _commonTextField(
-                    'Enter your first address',
+                    'Enter your address',
                     _controllerList[4],
                     maxLines: 3,
                   ),
                   FxBox.h24,
-                  _commonTitle('Warehouse Address'),
+                  _commonTitle('Address 2'),
                   FxBox.h8,
                   _commonTextField(
-                    'Enter your second address',
+                    'Enter work address',
                     _controllerList[5],
                     maxLines: 3,
                   ),
                   FxBox.h24,
-                  _commonTitle('Company Type'),
+                  _commonTitle('Company Name'),
                   FxBox.h8,
                   _commonTextField(
                     'Enter your company name',
@@ -477,7 +454,7 @@ class _WizardFormState extends State<WizardForm> {
                 'CST No.',
                 'Enter cst number',
                 'Service Tax No.',
-                'Service tix number',
+                'Service tax number',
                 null,
                 _controllerList[12],
                 _controllerList[13],
@@ -511,7 +488,7 @@ class _WizardFormState extends State<WizardForm> {
                     'CST No.',
                     'Enter cst number',
                     'Service Tax No.',
-                    'Service tix number',
+                    'Service tax number',
                     null,
                     _controllerList[12],
                     _controllerList[13],
@@ -545,7 +522,7 @@ class _WizardFormState extends State<WizardForm> {
                   FxBox.h24,
                   _commonTitle('Service Tax No.'),
                   FxBox.h8,
-                  _commonTextField('Service tix number', _controllerList[13]),
+                  _commonTextField('Service tax number', _controllerList[13]),
                   FxBox.h24,
                   _commonTitle('Company UIN'),
                   FxBox.h8,
@@ -758,7 +735,7 @@ class _WizardFormState extends State<WizardForm> {
               FxBox.w8,
               const Expanded(
                 child: Text(
-                  'I agree with the Terms and Conditions.',
+                  'By proceeding, you agree to Terms and privacy',
                   style: TextStyle(fontWeight: FontWeight.w600),
                 ),
               )

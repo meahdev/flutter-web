@@ -1,5 +1,5 @@
 import 'package:admin_dashboard/src/provider/table/editabletable/bloc/editable_table_bloc.dart';
-import 'package:data_table_2/data_table_2.dart';
+import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
@@ -20,33 +20,68 @@ class _EditableTableState extends State<EditableTable> {
   final age1 = TextEditingController();
   final id1 = TextEditingController();
   final gender1 = TextEditingController();
+  final mobile1 = TextEditingController();
 
   final name2 = TextEditingController();
   final age2 = TextEditingController();
   final id2 = TextEditingController();
   final gender2 = TextEditingController();
+  final mobile2 = TextEditingController();
 
   final name3 = TextEditingController();
   final age3 = TextEditingController();
   final id3 = TextEditingController();
   final gender3 = TextEditingController();
+  final mobile3 = TextEditingController();
 
   final name4 = TextEditingController();
   final age4 = TextEditingController();
   final id4 = TextEditingController();
   final gender4 = TextEditingController();
+  final mobile4 = TextEditingController();
 
   final name5 = TextEditingController();
   final age5 = TextEditingController();
   final id5 = TextEditingController();
   final gender5 = TextEditingController();
+  final mobile5 = TextEditingController();
 
   List<Map<String, dynamic>> ls = [
-    {"id": "1", "name": "Jane Deo", "age": "22", "gender": "male"},
-    {"id": "2", "name": "Joe Blow", "age": "23", "gender": "male"},
-    {"id": "3", "name": "Jhon Wick", "age": "25", "gender": "male"},
-    {"id": "4", "name": "Joe Wick", "age": "25", "gender": "male"},
-    {"id": "5", "name": "Jane Blow", "age": "27", "gender": "male"},
+    {
+      "id": "1",
+      "name": "jane_deo",
+      "mobile": "12121212",
+      "dob": "22/01/1998",
+      "gender": "Female"
+    },
+    {
+      "id": "2",
+      "name": "joe_blow",
+      "mobile": "65656565",
+      "dob": "02/04/2000",
+      "gender": "Male"
+    },
+    {
+      "id": "3",
+      "name": "jhon_wick",
+      "mobile": "9988776655",
+      "dob": "15/10/1995",
+      "gender": "Male"
+    },
+    {
+      "id": "4",
+      "name": "joe_wick",
+      "mobile": "1234567890",
+      "dob": "11/10/1999",
+      "gender": "Male"
+    },
+    {
+      "id": "5",
+      "name": "jane_blow",
+      "mobile": "9876543210",
+      "dob": "31/07/1996",
+      "gender": "Female"
+    },
   ];
 
   late List<Map<String, dynamic>> _controller;
@@ -55,11 +90,11 @@ class _EditableTableState extends State<EditableTable> {
   void initState() {
     super.initState();
     _controller = [
-      {"id": id1, "name": name1, "age": age1, "gender": gender1},
-      {"id": id2, "name": name2, "age": age2, "gender": gender2},
-      {"id": id3, "name": name3, "age": age3, "gender": gender3},
-      {"id": id4, "name": name4, "age": age4, "gender": gender4},
-      {"id": id5, "name": name5, "age": age5, "gender": gender5},
+      {"name": name1, "dob": age1, "gender": gender1, "mobile": mobile1},
+      {"name": name2, "dob": age2, "gender": gender2, "mobile": mobile2},
+      {"name": name3, "dob": age3, "gender": gender3, "mobile": mobile3},
+      {"name": name4, "dob": age4, "gender": gender4, "mobile": mobile4},
+      {"name": name5, "dob": age5, "gender": gender5, "mobile": mobile5},
     ];
   }
 
@@ -74,7 +109,7 @@ class _EditableTableState extends State<EditableTable> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Table Edits',
+                'Editable Table',
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -85,7 +120,7 @@ class _EditableTableState extends State<EditableTable> {
                 height: 296,
                 child: BlocBuilder<EditableTableBloc, EditableTableState>(
                   builder: (context, state) {
-                    return DataTable2(
+                    return DataTable3(
                       minWidth: 700,
                       columns: [
                         DataColumn2(
@@ -95,18 +130,23 @@ class _EditableTableState extends State<EditableTable> {
                         ),
                         DataColumn2(
                           label: sizedBox(
-                              text: "Name", fontwidget: FontWeight.bold),
+                              text: "Username", fontwidget: FontWeight.bold),
                           size: ColumnSize.L,
                         ),
                         DataColumn2(
                           label: sizedBox(
-                              text: "Age", fontwidget: FontWeight.bold),
-                          size: ColumnSize.S,
+                              text: "Mobile No", fontwidget: FontWeight.bold),
+                          size: ColumnSize.L,
+                        ),
+                        DataColumn2(
+                          label: sizedBox(
+                              text: "Birth Date", fontwidget: FontWeight.bold),
+                          size: ColumnSize.L,
                         ),
                         DataColumn2(
                           label: sizedBox(
                               text: "Gender", fontwidget: FontWeight.bold),
-                          size: ColumnSize.S,
+                          size: ColumnSize.M,
                         ),
                         DataColumn2(
                           label: sizedBox(
@@ -133,10 +173,7 @@ class _EditableTableState extends State<EditableTable> {
                           },
                           cells: [
                             DataCell(
-                              _selectedIndex != index
-                                  ? sizedBox(text: ls[index]["id"].toString())
-                                  : container(
-                                      controller: _controller[index]["id"]),
+                              sizedBox(text: ls[index]["id"].toString()),
                             ),
                             DataCell(
                               _selectedIndex != index
@@ -146,9 +183,15 @@ class _EditableTableState extends State<EditableTable> {
                             ),
                             DataCell(
                               _selectedIndex != index
-                                  ? sizedBox(text: ls[index]["age"].toString())
+                                  ? sizedBox(text: ls[index]["mobile"])
                                   : container(
-                                      controller: _controller[index]["age"]),
+                                      controller: _controller[index]["mobile"]),
+                            ),
+                            DataCell(
+                              _selectedIndex != index
+                                  ? sizedBox(text: ls[index]["dob"].toString())
+                                  : container(
+                                      controller: _controller[index]["dob"]),
                             ),
                             DataCell(
                               _selectedIndex != index
@@ -158,11 +201,12 @@ class _EditableTableState extends State<EditableTable> {
                             ),
                             DataCell(
                               IconButton(
-                                splashRadius: 20.0,
+                                // splashRadius: 20.0,
                                 icon: Icon(
                                   _selectedIndex != index
                                       ? Icons.edit
                                       : Icons.save,
+                                  color: Theme.of(context).colorScheme.primary,
                                 ),
                                 onPressed: () {
                                   if (_selectedIndex != index) {
@@ -221,15 +265,6 @@ class _EditableTableState extends State<EditableTable> {
   }
 
   void updateListValue(int i) {
-    ls[i]["id"] = i == 0
-        ? id1.text
-        : i == 1
-            ? id2.text
-            : i == 2
-                ? id3.text
-                : i == 3
-                    ? id4.text
-                    : id5.text;
     ls[i]["name"] = i == 0
         ? name1.text
         : i == 1
@@ -239,7 +274,7 @@ class _EditableTableState extends State<EditableTable> {
                 : i == 3
                     ? name4.text
                     : name5.text;
-    ls[i]["age"] = i == 0
+    ls[i]["dob"] = i == 0
         ? age1.text
         : i == 1
             ? age2.text
@@ -257,39 +292,54 @@ class _EditableTableState extends State<EditableTable> {
                 : i == 3
                     ? gender4.text
                     : gender5.text;
+    ls[i]["mobile"] = i == 0
+        ? mobile1.text
+        : i == 1
+            ? mobile2.text
+            : i == 2
+                ? mobile3.text
+                : i == 3
+                    ? mobile4.text
+                    : mobile5.text;
   }
 
   void updateContollerValue(int i) {
     var id = ls[i]["id"].toString();
     var name = ls[i]["name"];
-    var age = ls[i]["age"].toString();
+    var age = ls[i]["dob"].toString();
     var gender = ls[i]["gender"];
+    var mobile = ls[i]["mobile"];
 
     if (i == 0) {
       id1.text = id;
       name1.text = name;
       age1.text = age;
       gender1.text = gender;
+      mobile1.text = mobile;
     } else if (i == 1) {
       id2.text = id;
       name2.text = name;
       age2.text = age;
       gender2.text = gender;
+      mobile2.text = mobile;
     } else if (i == 2) {
       id3.text = id;
       name3.text = name;
       age3.text = age;
       gender3.text = gender;
+      mobile3.text = mobile;
     } else if (i == 3) {
       id4.text = id;
       name4.text = name;
       age4.text = age;
       gender4.text = gender;
+      mobile4.text = mobile;
     } else {
       id5.text = id;
       name5.text = name;
       age5.text = age;
       gender5.text = gender;
+      mobile5.text = mobile;
     }
   }
 }

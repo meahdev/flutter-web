@@ -23,7 +23,9 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> init() async {
     await HiveUtils.init();
-    themeModeBloc.add(const ThemeModeEvent.changeTheme(null));
+    themeModeBloc.add(
+      const ThemeModeEvent.changeTheme(null),
+    );
   }
 
   @override
@@ -36,8 +38,7 @@ class _MyAppState extends State<MyApp> {
             initial: () => const SizedBox.shrink(),
             success: (themeMode) {
               return MaterialApp.router(
-                routerDelegate:
-                    _appRouter.delegate(initialRoutes: [const FMenuBar()]),
+                routerDelegate: _appRouter.delegate(),
                 routeInformationParser: _appRouter.defaultRouteParser(),
                 debugShowCheckedModeBanner: false,
                 theme: ThemeClass.themeData(themeMode, context),
@@ -50,7 +51,7 @@ class _MyAppState extends State<MyApp> {
                     PointerDeviceKind.unknown
                   },
                 ),
-                title: 'Admin',
+                title: 'AdminKit',
               );
             },
           );

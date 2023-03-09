@@ -44,6 +44,7 @@ class _SalesanalyticsState extends State<Salesanalytics> {
   LineChartData mainData(List<FlSpot> list) {
     return LineChartData(
       lineTouchData: LineTouchData(
+        enabled: true,
         touchTooltipData: LineTouchTooltipData(
           getTooltipItems: (touchedSpots) {
             double value = 0.0;
@@ -94,14 +95,15 @@ class _SalesanalyticsState extends State<Salesanalytics> {
       maxY: 4,
       lineBarsData: [
         LineChartBarData(
-          dotData: FlDotData(show: false),
+          dotData: FlDotData(show: true),
           spots: list,
-          color: ColorConst.success,
+          color: ColorConst.primary,
           barWidth: 2,
           isStrokeCapRound: true,
+          isCurved: true,
           belowBarData: BarAreaData(
             show: true,
-            color: ColorConst.success.withOpacity(0.6),
+            color: ColorConst.primary.withOpacity(0.6),
           ),
         ),
       ],
@@ -117,7 +119,7 @@ class _SalesanalyticsState extends State<Salesanalytics> {
       ),
       elevation: 7,
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxHeight: 400),
+        constraints: const BoxConstraints(maxHeight: 465),
         child: Container(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -129,18 +131,18 @@ class _SalesanalyticsState extends State<Salesanalytics> {
                 fontWeight: FontWeight.bold,
               ),
               _statusAndvalueWithChart(
-                status: 'Online',
-                value: '1,942',
+                status: 'Website',
+                value: '10,942',
                 list: _onlineChart,
               ),
               _statusAndvalueWithChart(
-                status: 'Offline',
+                status: 'Desktop',
                 value: '8,451',
                 list: _offlineChart,
               ),
               _statusAndvalueWithChart(
-                status: 'Marketing',
-                value: '65,574',
+                status: 'Mobile',
+                value: '1,574',
                 list: _marketingChart,
               ),
               FxBox.shrink,
@@ -176,11 +178,12 @@ class _SalesanalyticsState extends State<Salesanalytics> {
         : Row(
             children: [
               Expanded(
-                  flex: 1,
-                  child: _statusAndvalue(
-                    status: status,
-                    value: value,
-                  )),
+                flex: 1,
+                child: _statusAndvalue(
+                  status: status,
+                  value: value,
+                ),
+              ),
               Expanded(
                 flex: 2,
                 child: SizedBox(
