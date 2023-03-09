@@ -102,6 +102,7 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.videoPlayer,
       Strings.dragDrop,
       Strings.datePicker,
+      Strings.dropDown,
     ],
     [
       Strings.formElements,
@@ -226,6 +227,7 @@ class _MenuBarState extends State<FMenuBar> {
     CartScreen(),
     ProductAdd(),
     SuccessScreen(),
+    DropDownScreen(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
@@ -1016,9 +1018,10 @@ class _MenuBarState extends State<FMenuBar> {
                       ],
                     ),
                     title: Text(
-                      items1[index],
+                      languageModel.translate(items1[index].camelCase()),
                       style: TextStyle(
-                          color: children[index]
+                          color: languageModel
+                                  .translate(children[index].first.camelCase())
                                   .contains(upperCase(tabsRouter.currentPath))
                               ? isDark
                                   ? ColorConst.chartForgoundColor
@@ -1029,7 +1032,8 @@ class _MenuBarState extends State<FMenuBar> {
                     trailing: SvgIcon(
                       icon: IconlyBroken.arrowDown,
                       size: 16,
-                      color: children[index]
+                      color: languageModel
+                              .translate(children[index].first.camelCase())
                               .contains(upperCase(tabsRouter.currentPath))
                           ? isDark
                               ? ColorConst.chartForgoundColor
@@ -1043,8 +1047,10 @@ class _MenuBarState extends State<FMenuBar> {
                         ? Text(
                             items1[index],
                             style: TextStyle(
-                              color: items1[index] ==
-                                      upperCase(tabsRouter.currentPath)
+                              color: languageModel
+                                      .translate(items1[index].camelCase())
+                                      .contains(
+                                          upperCase(tabsRouter.currentPath))
                                   ? isDark
                                       ? ColorConst.chartForgoundColor
                                       : ColorConst.primary
@@ -1068,7 +1074,9 @@ class _MenuBarState extends State<FMenuBar> {
                     width: 6.0,
                     height: 48.0,
                     decoration: BoxDecoration(
-                      color: items1[index] == upperCase(tabsRouter.currentPath)
+                      color: languageModel
+                              .translate(items1[index].camelCase())
+                              .contains(upperCase(tabsRouter.currentPath))
                           ? isDark
                               ? ColorConst.chartForgoundColor
                               : ColorConst.primary
@@ -1084,10 +1092,12 @@ class _MenuBarState extends State<FMenuBar> {
                   child: ListTile(
                     title: isopen
                         ? Text(
-                            items1[index],
+                            languageModel.translate(items1[index].camelCase()),
                             style: TextStyle(
-                              color: items1[index] ==
-                                      upperCase(tabsRouter.currentPath)
+                              color: languageModel
+                                      .translate(items1[index].camelCase())
+                                      .contains(
+                                          upperCase(tabsRouter.currentPath))
                                   ? isDark
                                       ? ColorConst.chartForgoundColor
                                       : ColorConst.primary
@@ -1154,7 +1164,7 @@ class _MenuBarState extends State<FMenuBar> {
                   ],
                 ),
                 title: Text(
-                  items.keys.elementAt(0),
+                  languageModel.translate('eCommerce'),
                   style: TextStyle(
                       color: children[0]
                               .contains(upperCase(tabsRouter.currentPath))
@@ -1342,7 +1352,8 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 25 ||
                   routeIndex == 33 ||
                   routeIndex == 36 ||
-                  routeIndex == 37) ...[
+                  routeIndex == 37 ||
+                  routeIndex == 57) ...[
                 // const Text(' / ${Strings.uiElements} '),
                 Text(' / ${languageModel.translate('widgets')} '),
               ] else if (routeIndex.isBetween(27, 32)) ...[

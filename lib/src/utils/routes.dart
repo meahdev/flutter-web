@@ -50,6 +50,7 @@ import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
 import 'package:admin_dashboard/src/views/ui_elements/carousel/carousel.dart';
 import 'package:admin_dashboard/src/views/ui_elements/date_picker/date_picker.dart';
 import 'package:admin_dashboard/src/views/ui_elements/draganddrop/drag_and_drop_element.dart';
+import 'package:admin_dashboard/src/views/ui_elements/dropdown/dropdown_screen.dart';
 import 'package:admin_dashboard/src/views/ui_elements/loader/loader.dart';
 import 'package:admin_dashboard/src/views/ui_elements/modal/modal.dart';
 import 'package:admin_dashboard/src/views/ui_elements/rating/rating.dart';
@@ -172,6 +173,8 @@ int getRouteIndex(String route) {
     return 55;
   } else if (route == '${Strings.payment}/success') {
     return 56;
+  } else if (route == Strings.dropDown) {
+    return 57;
   } else {
     return 0;
   }
@@ -290,6 +293,8 @@ Widget getRouteWidget(int index) {
     return const ProductAdd();
   } else if (index == 56) {
     return const SuccessScreen();
+  } else if (index == 57) {
+    return const DropDownScreen();
   } else {
     return const Dashboard();
   }

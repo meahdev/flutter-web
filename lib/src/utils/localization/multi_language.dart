@@ -228,6 +228,10 @@ class _Widget {
   String get dateFormat => languageModel.translate('dateFormat');
   String get dateRange => languageModel.translate('dateRange');
   String get datePickerText => languageModel.translate('datePickerText');
+  String get simpleDropdown => languageModel.translate('simpleDropdown');
+  String get searchDropDown => languageModel.translate('searchDropdown');
+  String get city => languageModel.translate('city');
+  String get country => languageModel.translate('country');
 }
 
 class _Form {
@@ -353,6 +357,7 @@ class _Table {
   String get dark => languageModel.translate('dark');
   String get id => languageModel.translate('id');
   String get customerName => languageModel.translate('customerName');
-  String get mobileNo => languageModel.translate('mobileNo').replaceFirst('.', '');
+  String get mobileNo =>
+      languageModel.translate('mobileNo').replaceFirst('.', '');
   String get amount => languageModel.translate('amount');
 }

@@ -70,6 +70,8 @@ import 'package:admin_dashboard/src/views/ui_elements/videos/video_screen.dart';
 import 'package:admin_dashboard/src/views/user/user_profile.dart';
 import 'package:auto_route/auto_route.dart';
 
+import '../views/ui_elements/dropdown/dropdown_screen.dart';
+
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
   routes: <AutoRoute>[
@@ -137,6 +139,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'e-commerce-dashboard', page: EcommerceDashboard),
         AutoRoute(path: 'cart', page: CartScreen),
         AutoRoute(path: 'product-add', page: ProductAdd),
+        AutoRoute(path: 'dropdown', page: DropDownScreen),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

@@ -54,7 +54,10 @@ class Strings {
   static const String carousel = 'Carousel Slider';
   static const String videoPlayer = 'Video Player';
   static const String dragDrop = 'Drag Drop';
+  static const String dropDown = 'Dropdown';
   static const String datePicker = 'Date Picker';
+  static const String simpleDropdown = 'Simple DropDown';
+  static const String searchDropDown = 'Search DropDown';
 
   // forms option
   static const String formElements = 'Elements';
@@ -300,5 +303,7 @@ class Strings {
   static const String latestTransaction = 'Latest Transaction';
   static const String productAdd = 'Product Add';
 
-
+  static const String city = 'City';
+  static const String state = 'State';
+  static const String country = 'Country';
 }
