@@ -38,6 +38,8 @@ class Strings {
   static const String userProfile = 'User Profile';
   static const String selectedmenuIndex = 'selectedindex';
   static const String eCommerce = 'E-Commerce';
+  static const String eCommerceAdmin = 'Admin';
+  static const String eCommerceSite = 'Web Site';
 
   // ui elements option
   static const String toast = 'Toast';
@@ -48,7 +50,7 @@ class Strings {
   static const String modal = 'Modal';
   static const String loader = 'Loaders';
   static const String tabs = 'Tabs';
-  static const String latestTransaction = 'Latest order';
+  static const String latestOrder = 'Latest order';
   static const String carousel = 'Carousel Slider';
   static const String videoPlayer = 'Video Player';
   static const String dragDrop = 'Drag Drop';
@@ -175,6 +177,7 @@ class Strings {
 
   // sale report
   static const String salesReport = 'Monthly Report';
+  static const String salesOverview = 'Sales Overview';
   static const String desktop = 'Desktop';
   static const String mobile = 'Mobile';
   static const String tablets = 'Tablets';
@@ -273,4 +276,29 @@ class Strings {
 
   static const String products = 'Products';
   static const String filter = 'Filter';
+  static const String category = 'Category';
+  static const String subCategory = 'sub Category';
+  static const String vender = 'Vender';
+  static const String customer = 'Customer';
+  static const String payment = 'Payment';
+  static const String returnOrder = 'Return Order';
+  static const String order = 'Order';
+  static const String priceDetails = 'Price Details';
+  static const String couponInfo = 'Coupon Info';
+  static const String orderDes = 'Order Description';
+  static const String apply = 'Apply';
+  static const String returnCondition = 'Return Condition';
+  static const String cartInfo = 'Cart Info';
+  static const String checkOut = 'CheckOut';
+  static const String venderDetail = 'Vender Detail';
+  static const String monthlyOrder = 'Monthly Order';
+  static const String subscriber = 'Subscribers';
+  static const String coupons = 'Coupons';
+  static const String cart = 'Cart';
+  static const String eCommerceDashboard = 'E Commerce Dashboard';
+  static const String globalSaleText = 'Global Sales by Tops Locations';
+  static const String latestTransaction = 'Latest Transaction';
+  static const String productAdd = 'Product Add';
+
+
 }

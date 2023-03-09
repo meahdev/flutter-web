@@ -1,13 +1,10 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_chat_bubble/bubble_type.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
-import 'package:flutter_chat_bubble/clippers/chat_bubble_clipper_1.dart';
 import 'package:flutterx/flutterx.dart';
 
 class Chatscreen extends StatefulWidget {
@@ -22,27 +19,27 @@ class _ChatscreenState extends State<Chatscreen> {
   final List<Map<String, dynamic>> _chatList = [
     {
       'userName': 'John Deo',
-      'userMsg': 'Hello',
+      'userMsg': languageModel.dashboard.msg1,
       'isCurrentUser': false,
     },
     {
       'userName': 'Smith',
-      'userMsg': 'Hi, How are you? What about our next meeting?',
+      'userMsg': languageModel.dashboard.msg2,
       'isCurrentUser': true,
     },
     {
       'userName': 'John Deo',
-      'userMsg': 'Yeah everything is fine',
+      'userMsg': languageModel.dashboard.msg3,
       'isCurrentUser': false,
     },
     {
       'userName': 'Smith',
-      'userMsg': 'Wow that\'s great',
+      'userMsg': languageModel.dashboard.msg4,
       'isCurrentUser': true,
     },
     {
       'userName': 'John Deo',
-      'userMsg': 'yah!',
+      'userMsg': languageModel.dashboard.msg5,
       'isCurrentUser': false,
     },
   ];
@@ -63,7 +60,7 @@ class _ChatscreenState extends State<Chatscreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ConstText.lightText(
-                text: Strings.chat,
+                text: languageModel.dashboard.chat,
                 fontWeight: FontWeight.bold,
               ),
               FxBox.h10,
@@ -200,7 +197,7 @@ class _ChatscreenState extends State<Chatscreen> {
               child: TextField(
                 controller: _msgController,
                 decoration: InputDecoration(
-                  hintText: Strings.enterYourText,
+                  hintText: languageModel.dashboard.enterYourText,
                   hintStyle: const TextStyle(
                     fontSize: 15,
                   ),
@@ -223,7 +220,7 @@ class _ChatscreenState extends State<Chatscreen> {
             },
             borderRadius: 40,
             height: 40,
-            text: Strings.send,
+            text: languageModel.dashboard.send,
             minWidth: 80,
           ),
         ],

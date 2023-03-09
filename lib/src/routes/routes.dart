@@ -7,8 +7,25 @@ import 'package:admin_dashboard/src/views/authentication/recover_password/recove
 import 'package:admin_dashboard/src/views/authentication/register/register_one.dart';
 import 'package:admin_dashboard/src/views/authentication/register/register_two.dart';
 import 'package:admin_dashboard/src/views/calender/calender.dart';
-import 'package:admin_dashboard/src/views/e_commerce/product_detail_screen.dart';
-import 'package:admin_dashboard/src/views/e_commerce/products_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/cart/cart_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
+import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/payment/success_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_condition/return_condition_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_invoice.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/product_add.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
@@ -85,7 +102,7 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'timeline', page: TimelineScreen),
         AutoRoute(path: 'pricing', page: Pricing),
         AutoRoute(path: 'card', page: DirectoryPage),
-        AutoRoute(path: 'faqs', page: FAQs),
+        AutoRoute(path: 'FAQs', page: FAQs),
         AutoRoute(path: 'invoice', page: Invoice),
         AutoRoute(path: 'gallery', page: Gallery),
         AutoRoute(path: 'carousel-slider', page: Carousel),
@@ -100,7 +117,26 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'drag-drop', page: DragAndDrop),
         AutoRoute(path: 'date-picker', page: DatePicker),
         AutoRoute(path: 'products', page: ProductsScreen),
-        AutoRoute(path: 'products-detail', page: ProductDetailScreen),
+        AutoRoute(path: 'products/products-detail', page: ProductDetailScreen),
+        AutoRoute(path: 'category', page: CategoryScreen),
+        AutoRoute(path: 'category/sub-category', page: SubCategoryScreen),
+        AutoRoute(path: 'vender', page: VenderScreen),
+        AutoRoute(path: 'vender/vender-detail', page: VenderDetailScreen),
+        AutoRoute(path: 'customer', page: CustomerScreen),
+        AutoRoute(path: 'payment', page: PaymentScreen),
+        AutoRoute(path: 'payment/success', page: SuccessScreen),
+        AutoRoute(path: 'return-order', page: ReturnOrderScreen),
+        AutoRoute(path: 'order', page: OrderScreen),
+        AutoRoute(
+            path: 'return-order/return-order-invoice',
+            page: ReturnOrderInvoice),
+        AutoRoute(path: 'order/order-invoice', page: OrderInvoice),
+        AutoRoute(path: 'subscribers', page: SubScriptionScreen),
+        AutoRoute(path: 'coupons', page: CouponsScreen),
+        AutoRoute(path: 'return-condition', page: ReturnConditionScreen),
+        AutoRoute(path: 'e-commerce-dashboard', page: EcommerceDashboard),
+        AutoRoute(path: 'cart', page: CartScreen),
+        AutoRoute(path: 'product-add', page: ProductAdd),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

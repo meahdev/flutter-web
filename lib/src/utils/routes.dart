@@ -4,7 +4,26 @@ import 'package:admin_dashboard/src/views/charts/chartist.dart';
 import 'package:admin_dashboard/src/views/charts/chartjs.dart';
 import 'package:admin_dashboard/src/views/charts/morris_chart.dart';
 import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
-import 'package:admin_dashboard/src/views/e_commerce/products_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/cart/cart_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
+import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
+
+import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/payment/success_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_condition/return_condition_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_invoice.dart';
+import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/product_add.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
@@ -117,6 +136,42 @@ int getRouteIndex(String route) {
     return 37;
   } else if (route == Strings.products) {
     return 38;
+  } else if (route == '${Strings.products}/products Detail') {
+    return 39;
+  } else if (route == Strings.category) {
+    return 40;
+  } else if (route == '${Strings.category}/${Strings.subCategory}') {
+    return 41;
+  } else if (route == Strings.vender) {
+    return 42;
+  } else if (route == '${Strings.vender}/vender Detail') {
+    return 43;
+  } else if (route == Strings.customer) {
+    return 44;
+  } else if (route == Strings.payment) {
+    return 45;
+  } else if (route == Strings.returnOrder) {
+    return 46;
+  } else if (route == '${Strings.returnOrder}/return Order Invoice') {
+    return 47;
+  } else if (route == Strings.subscriber) {
+    return 48;
+  } else if (route == Strings.coupons) {
+    return 49;
+  } else if (route == Strings.order) {
+    return 50;
+  } else if (route == '${Strings.order}/order Invoice') {
+    return 51;
+  } else if (route == Strings.returnCondition) {
+    return 52;
+  } else if (route == Strings.eCommerceDashboard) {
+    return 53;
+  } else if (route == Strings.cart) {
+    return 54;
+  } else if (route == Strings.productAdd) {
+    return 55;
+  } else if (route == '${Strings.payment}/success') {
+    return 56;
   } else {
     return 0;
   }
@@ -199,6 +254,42 @@ Widget getRouteWidget(int index) {
     return const DatePicker();
   } else if (index == 38) {
     return const ProductsScreen();
+  } else if (index == 39) {
+    return const ProductDetailScreen();
+  } else if (index == 40) {
+    return const CategoryScreen();
+  } else if (index == 41) {
+    return const SubCategoryScreen();
+  } else if (index == 42) {
+    return const VenderScreen();
+  } else if (index == 43) {
+    return const VenderDetailScreen();
+  } else if (index == 44) {
+    return const CustomerScreen();
+  } else if (index == 45) {
+    return const PaymentScreen();
+  } else if (index == 46) {
+    return const ReturnOrderScreen();
+  } else if (index == 47) {
+    return const ReturnOrderInvoice();
+  } else if (index == 48) {
+    return const SubScriptionScreen();
+  } else if (index == 49) {
+    return const CouponsScreen();
+  } else if (index == 50) {
+    return const OrderScreen();
+  } else if (index == 51) {
+    return const OrderInvoice();
+  } else if (index == 52) {
+    return const ReturnConditionScreen();
+  } else if (index == 53) {
+    return const EcommerceDashboard();
+  } else if (index == 54) {
+    return const CartScreen();
+  } else if (index == 55) {
+    return const ProductAdd();
+  } else if (index == 56) {
+    return const SuccessScreen();
   } else {
     return const Dashboard();
   }

@@ -29,6 +29,7 @@ class CustomText extends StatelessWidget {
       textAlign: textAlign,
       maxLines: maxLine,
       overflow: overflow,
+      softWrap: true,
       style: TextStyle(
           fontSize: fontSize,
           color: textColor,

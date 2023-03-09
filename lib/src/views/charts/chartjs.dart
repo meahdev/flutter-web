@@ -1,8 +1,7 @@
 import 'package:admin_dashboard/src/constant/enum.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/charts/chartsutils.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/utils/text_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -19,30 +18,32 @@ class _ChartJsChartState extends State<ChartJsChart> {
     return Column(
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-              _card(ChartType.chartJsBarChart, context, Strings.barChart),
+              _card(ChartType.chartJsBarChart, context,
+                  languageModel.chart.barChart),
               FxBox.h20,
               _card(ChartType.multipleStaticChart, context,
-                  Strings.multipleStaticsChart),
+                  languageModel.chart.multipleStatisticsChart),
               FxBox.h20,
-              _card(ChartType.polarChart, context, Strings.polarChart),
+              _card(ChartType.polarChart, context,
+                  languageModel.chart.polarChart),
               FxBox.h20,
             ]
           : [
               Row(
                 children: [
                   Expanded(
-                    child: _card(
-                        ChartType.chartJsBarChart, context, Strings.barChart),
+                    child: _card(ChartType.chartJsBarChart, context,
+                        languageModel.chart.barChart),
                   ),
                   FxBox.w20,
                   Expanded(
                     child: _card(ChartType.multipleStaticChart, context,
-                        Strings.multipleStaticsChart),
+                        languageModel.chart.multipleStatisticsChart),
                   ),
                   FxBox.w20,
                   Expanded(
-                    child: _card(
-                        ChartType.polarChart, context, Strings.polarChart),
+                    child: _card(ChartType.polarChart, context,
+                        languageModel.chart.polarChart),
                   ),
                 ],
               ),
@@ -92,127 +93,6 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
           ],
         ),
       ),
-    ),
-  );
-}
-
-getChartData(ChartType chartType, BuildContext context) {
-  if (Responsive.isMobile(context)) {
-    if (chartType == ChartType.chartJsBarChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText(Strings.activated, 3591, context),
-            FxBox.h12,
-            _richText(Strings.pending, 83875, context),
-            FxBox.h12,
-            _richText(Strings.deactivated, 13303, context),
-          ],
-        ),
-      );
-    } else if (chartType == ChartType.multipleStaticChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText(Strings.activated, 334619, context),
-            FxBox.h12,
-            _richText(Strings.pending, 8369, context),
-            FxBox.h12,
-            _richText(Strings.deactivated, 935422, context),
-          ],
-        ),
-      );
-    } else if (chartType == ChartType.radarChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText(Strings.activated, 604, context),
-            FxBox.h12,
-            _richText(Strings.pending, 59240, context),
-            FxBox.h12,
-            _richText(Strings.deactivated, 439448, context),
-          ],
-        ),
-      );
-    } else if (chartType == ChartType.polarChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText(Strings.activated, 4342, context),
-            FxBox.h12,
-            _richText(Strings.pending, 3354, context),
-            FxBox.h12,
-            _richText(Strings.deactivated, 74611, context),
-          ],
-        ),
-      );
-    }
-  } else {
-    if (chartType == ChartType.chartJsBarChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText(Strings.activated, 3591, context),
-          _richText(Strings.pending, 83875, context),
-          _richText(Strings.deactivated, 13303, context),
-        ],
-      );
-    } else if (chartType == ChartType.multipleStaticChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText(Strings.activated, 334619, context),
-          _richText(Strings.pending, 8369, context),
-          _richText(Strings.deactivated, 935422, context),
-        ],
-      );
-    } else if (chartType == ChartType.radarChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText(Strings.activated, 604, context),
-          _richText(Strings.pending, 59240, context),
-          _richText(Strings.deactivated, 439448, context),
-        ],
-      );
-    } else if (chartType == ChartType.polarChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText(Strings.activated, 4342, context),
-          _richText(Strings.pending, 3354, context),
-          _richText(Strings.deactivated, 74611, context),
-        ],
-      );
-    }
-  }
-}
-
-Widget _richText(String type, int count, BuildContext context) {
-  return RichText(
-    textAlign: TextAlign.center,
-    text: TextSpan(
-      style: DefaultTextStyle.of(context).style,
-      children: <TextSpan>[
-        TextSpan(
-          text: upperCase('$count\n'),
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-          ),
-        ),
-        TextSpan(
-          text: upperCase(type),
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
-        ),
-      ],
     ),
   );
 }

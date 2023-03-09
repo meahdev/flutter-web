@@ -7,6 +7,7 @@ import 'package:admin_dashboard/src/provider/calendar/calendar_drag/bloc/calenda
 import 'package:admin_dashboard/src/provider/calendar/calendar_format/calendar_format_bloc.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -186,6 +187,7 @@ class _CalendarState extends State<Calendar> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            FxBox.h(18),
             SizedBox(
               width: MediaQuery.of(context).size.width,
               height: 34,
@@ -204,46 +206,43 @@ class _CalendarState extends State<Calendar> {
                     deletePressed: () {},
                   );
                 },
-                icon: const Icon(
-                  Icons.add_circle_outline,
-                  size: 15,
-                ),
-                text: 'Create Event',
+                icon: const Icon(Icons.add_circle_outline, size: 15),
+                text: languageModel.calendar.createEvent,
                 borderRadius: 40,
               ),
             ),
             FxBox.h24,
-            const Text(
-              'Drag and drop your event or click in the calendar',
-              style: TextStyle(fontSize: 15),
+            Text(
+              languageModel.calendar.calendarTitle,
+              style: const TextStyle(fontSize: 15),
             ),
-            FxBox.h12,
+            FxBox.h16,
             _addEventButtons(
                 color: ColorConst.calSuccess,
                 label: 'Event Planning',
                 colorIndex: 2),
-            FxBox.h6,
+            FxBox.h10,
             _addEventButtons(
                 color: ColorConst.info, label: 'Meeting', colorIndex: 4),
-            FxBox.h6,
+            FxBox.h10,
             _addEventButtons(
                 color: ColorConst.warning,
                 label: 'Generate Reports',
                 colorIndex: 6),
-            FxBox.h6,
+            FxBox.h10,
             _addEventButtons(
                 color: ColorConst.error.withOpacity(0.8),
                 label: 'Theme',
                 colorIndex: 1),
             FxBox.h40,
-            const Text(
-              'Activity',
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+            Text(
+              languageModel.dashboard.activity,
+              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
             ),
             FxBox.h16,
             SizedBox(
               width: double.infinity,
-              height: 250,
+              height: 320,
               child: Stack(
                 fit: StackFit.loose,
                 children: [
@@ -259,29 +258,29 @@ class _CalendarState extends State<Calendar> {
                     left: 25,
                     right: 1,
                     child: SizedBox(
-                      height: 250,
+                      height: 320,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.',
+                            languageModel.lorem3,
                             maxLines: 3,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                            style: TextStyle(
+                            languageModel.lorem2,
+                            style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            'Lorem Ipsum is simply dummy text of the printing.',
-                            style: TextStyle(
+                            languageModel.lorem1,
+                            style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
@@ -311,7 +310,8 @@ class _CalendarState extends State<Calendar> {
                       ),
                     ],
                   ),
-                  FxBox.h20
+                  FxBox.h20,
+                  FxBox.h20,
                 ],
               ),
             ),
@@ -323,7 +323,7 @@ class _CalendarState extends State<Calendar> {
 
   Widget _addEventButtons(
       {required String label, required Color color, required int colorIndex}) {
-    Size size = MediaQuery.of(context).size;
+    // Size size = MediaQuery.of(context).size;
     return LayoutBuilder(
       builder: (context, constraints) {
         // print(constraints.)
@@ -399,46 +399,112 @@ class _CalendarState extends State<Calendar> {
   Widget _eventButton(
       {required List<Map<String, dynamic>> list, required DateTime date}) {
     return Positioned(
-      top: 24,
-      left: 0,
-      right: 0,
+      top: 24.0,
+      left: 0.0,
+      right: 0.0,
+      bottom: 0.0,
       child: ListView.builder(
-        physics: const BouncingScrollPhysics(),
         itemCount: list.length,
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 2.0),
-            child: MaterialButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(40.0),
-              ),
-              minWidth: 10,
-              onPressed: () {
-                eventController.text = list[index]["eventName"];
-                dropdownValue =
-                    dropDownList.elementAt(list[index]["dropdownValue"] ?? 0);
-                _displayTextInputDialog(
-                  context: context,
-                  savePressed: () {
-                    _handleSaveTap(date: date, doPopup: true, index: index);
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    eventController.text = list[index]["eventName"];
+                    dropdownValue = dropDownList
+                        .elementAt(list[index]["dropdownValue"] ?? 0);
+                    _displayTextInputDialog(
+                      context: context,
+                      savePressed: () {
+                        _handleSaveTap(date: date, doPopup: true, index: index);
+                      },
+                      deletePressed: () {
+                        list.removeAt(index);
+                        eventMap[date] = list;
+                        eventController.clear();
+                        dropdownValue = '--Select--';
+                        _calendarFormatBloc.add(CalendarFormatEvent.loading(
+                            calendarFormat: _calendarFormat,
+                            eventsList: eventMap));
+                        Navigator.pop(context);
+                      },
+                    );
                   },
-                  deletePressed: () {
-                    list.removeAt(index);
-                    eventMap[date] = list;
-                    eventController.clear();
-                    dropdownValue = '--Select--';
-                    _calendarFormatBloc.add(CalendarFormatEvent.loading(
-                        calendarFormat: _calendarFormat, eventsList: eventMap));
-                    Navigator.pop(context);
-                  },
-                );
-              },
-              color: coloredList.elementAt(list[index]["dropdownValue"] ?? 0),
-              child: Text(list[index]["eventName"],
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: const TextStyle(color: ColorConst.white)),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: list.length > 4 ? 13 : 20,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: const Color.fromRGBO(209, 235, 253, 1),
+                    ),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: CircleAvatar(
+                            radius: 3,
+                            backgroundColor: coloredList
+                                .elementAt(list[index]["dropdownValue"] ?? 0),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Tooltip(
+                            message: '${list[index]["eventName"]}',
+                            child: Text(
+                              list[index]["eventName"],
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: const TextStyle(
+                                  color: ColorConst.black, fontSize: 10),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                // MaterialButton(
+                //   height: 16,
+                //   // shape: RoundedRectangleBorder(
+                //   //   borderRadius: BorderRadius.circular(40.0),
+                //   // ),
+                //   minWidth: 10,
+                //   onPressed: () {
+                //     eventController.text = list[index]["eventName"];
+                //     dropdownValue = dropDownList
+                //         .elementAt(list[index]["dropdownValue"] ?? 0);
+                //     _displayTextInputDialog(
+                //       context: context,
+                //       savePressed: () {
+                //         _handleSaveTap(
+                //             date: date, doPopup: true, index: index);
+                //       },
+                //       deletePressed: () {
+                //         list.removeAt(index);
+                //         eventMap[date] = list;
+                //         eventController.clear();
+                //         dropdownValue = '--Select--';
+                //         _calendarFormatBloc.add(CalendarFormatEvent.loading(
+                //             calendarFormat: _calendarFormat,
+                //             eventsList: eventMap));
+                //         Navigator.pop(context);
+                //       },
+                //     );
+                //   },
+                //   color: ColorConst.primaryDark.withOpacity(0.8),
+                //   // color:
+                //   //     coloredList.elementAt(list[index]["dropdownValue"] ?? 0),
+                //   child: Text(list[index]["eventName"],
+                //       overflow: TextOverflow.ellipsis,
+                //       maxLines: 1,
+                //       style: const TextStyle(color: ColorConst.white)),
+                // ),
+                if (index == list.length - 1) const SizedBox(height: 4.0),
+              ],
             ),
           );
         },
@@ -512,7 +578,7 @@ class _CalendarState extends State<Calendar> {
                           : null;
                     },
                     currentDay: DateTime.now(),
-                    rowHeight: 100,
+                    rowHeight: 122,
                     availableGestures: AvailableGestures.none,
                     daysOfWeekHeight: 40,
                     startingDayOfWeek: StartingDayOfWeek.monday,

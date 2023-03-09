@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form/form_elements/bloc/form_elements_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -12,9 +12,7 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:flutterx/flutterx.dart';
 
 class ElementsForm extends StatefulWidget {
-  const ElementsForm({
-    Key? key,
-  }) : super(key: key);
+  const ElementsForm({Key? key}) : super(key: key);
   @override
   State<ElementsForm> createState() => _ElementsFormState();
 }
@@ -26,11 +24,11 @@ class _ElementsFormState extends State<ElementsForm> {
   final TextEditingController _dateNtimeController = TextEditingController();
   Color _pickerColor = ColorConst.primary;
   final List<String> _headingList = [
-    Strings.text,
-    Strings.search,
-    Strings.email,
-    Strings.url,
-    Strings.telephone,
+    languageModel.form.text,
+    languageModel.form.formSearch,
+    languageModel.form.email,
+    languageModel.form.url,
+    languageModel.form.telephone,
   ];
   final List<String> _hintList = [
     'Jone Doe',
@@ -71,9 +69,10 @@ class _ElementsFormState extends State<ElementsForm> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Input Elements',
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+              Text(
+                languageModel.form.inputElements,
+                style:
+                    const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
               ),
               FxBox.h24,
               if (Responsive.isWeb(context))
@@ -245,7 +244,8 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _passwordTextField() {
-    return _responsive(_commonText(Strings.password), _passWordBox());
+    return _responsive(
+        _commonText(languageModel.form.password), _passWordBox());
   }
 
   Widget _passWordBox() {
@@ -265,12 +265,12 @@ class _ElementsFormState extends State<ElementsForm> {
 
   Widget _numberTextField() {
     return _responsive(
-        _commonText(Strings.number), _numberIncrementDecrement());
+        _commonText(languageModel.form.number), _numberIncrementDecrement());
   }
 
   Widget _dateNtimeTextField() {
     return _responsive(
-        _commonText(Strings.dateAndtime), _dateAndTimePickerBox());
+        _commonText(languageModel.form.date), _dateAndTimePickerBox());
   }
 
   Widget _dateAndTimePickerBox() {
@@ -408,7 +408,7 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _colorTextField() {
-    return _responsive(_commonText(Strings.color), _colorpicker());
+    return _responsive(_commonText(languageModel.form.color), _colorpicker());
   }
 
   Widget _colorpicker() {
@@ -416,7 +416,7 @@ class _ElementsFormState extends State<ElementsForm> {
       onTap: () {
         FxAlert.showAlert(
           context: context,
-          title: Strings.pickColor,
+          title: languageModel.form.pickColor,
           content: SizedBox(
             width: 300,
             child: ColorPicker(
@@ -458,7 +458,7 @@ class _ElementsFormState extends State<ElementsForm> {
   }
 
   Widget _selectTextField() {
-    return _responsive(_commonText(Strings.select), _dropDown());
+    return _responsive(_commonText(languageModel.form.select), _dropDown());
   }
 
   Widget _commonText(String text) {

@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
@@ -8,6 +9,7 @@ import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/extainsions/string_extainsions.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/utils/text_utils.dart';
@@ -34,6 +36,7 @@ class _MenuBarState extends State<FMenuBar> {
   final ScrollController _scrollController = ScrollController();
 
   ValueNotifier<bool> isOpen = ValueNotifier(true);
+  ValueNotifier<bool> isSubListOpen = ValueNotifier(false);
 
   Map<String, String> mainData = {
     Strings.dashboard: IconlyBroken.home,
@@ -46,7 +49,7 @@ class _MenuBarState extends State<FMenuBar> {
     Strings.forms: IconlyBroken.forms,
     Strings.charts: IconlyBroken.charts,
     Strings.tables: IconlyBroken.tables,
-    Strings.eCommerce: IconlyBroken.eCommerce,
+    //Strings.eCommerce: IconlyBroken.eCommerce,
   };
 
   Map<String, String> extrasData = {
@@ -54,6 +57,36 @@ class _MenuBarState extends State<FMenuBar> {
     Strings.emailTemplates: IconlyBroken.emailTemplate,
     Strings.extraPages: IconlyBroken.extraPages,
   };
+
+  // e-commerce section
+  Map<String, String> eCommerceHeader = {
+    Strings.eCommerce: IconlyBroken.eCommerce,
+  };
+
+  List<String> eCommerceSection = [
+    Strings.eCommerceAdmin,
+    Strings.eCommerceSite
+  ];
+
+  List<List<String>> eCommerceExpandList = [
+    [
+      Strings.eCommerceDashboard,
+      Strings.productAdd,
+      Strings.category,
+      Strings.vender,
+      Strings.customer,
+      Strings.order,
+      Strings.returnOrder,
+      Strings.subscriber,
+      Strings.coupons,
+      Strings.returnCondition,
+    ],
+    [
+      Strings.products,
+      Strings.cart,
+      Strings.payment,
+    ],
+  ];
 
   List<List<String>> componentsExpandList = [
     [
@@ -84,9 +117,6 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.dataTable,
       Strings.responsiveTable,
       Strings.editableTable,
-    ],
-    [
-      Strings.products,
     ],
   ];
 
@@ -178,7 +208,31 @@ class _MenuBarState extends State<FMenuBar> {
     DragAndDrop(),
     DatePicker(),
     ProductsScreen(),
+    ProductDetailScreen(),
+    CategoryScreen(),
+    SubCategoryScreen(),
+    VenderScreen(),
+    VenderDetailScreen(),
+    CustomerScreen(),
+    PaymentScreen(),
+    ReturnOrderScreen(),
+    ReturnOrderInvoice(),
+    SubScriptionScreen(),
+    CouponsScreen(),
+    OrderScreen(),
+    OrderInvoice(),
+    ReturnConditionScreen(),
+    EcommerceDashboard(),
+    CartScreen(),
+    ProductAdd(),
+    SuccessScreen(),
   ];
+
+  // TextDirection _layout = TextDirection.ltr;
+
+  final ValueNotifier<TextDirection> _layout =
+      ValueNotifier<TextDirection>(TextDirection.ltr);
+  final ValueNotifier<bool> _switchlayout = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
@@ -186,86 +240,101 @@ class _MenuBarState extends State<FMenuBar> {
       routes: _routes,
       builder: (context, child, animation) {
         final tabsRouter = AutoTabsRouter.of(context);
-        return Scaffold(
-          key: _scaffoldKey,
-          endDrawer: Drawer(
-            width: 280,
-            child: SafeArea(
-              child: SettingDrawer(scaffoldKey: _scaffoldKey),
-            ),
-          ),
-          appBar: _appBar(tabsRouter),
-          body: SafeArea(
-            child: Scaffold(
-              key: _scaffoldDrawerKey,
-              drawerScrimColor: ColorConst.transparent,
-              drawer: _sidebar(tabsRouter),
-              body: Row(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ValueListenableBuilder<bool>(
-                    valueListenable: isOpen,
-                    builder: (context, value, child) {
-                      return Responsive.isWeb(context)
-                          ? _sidebar(tabsRouter)
-                          : const SizedBox.shrink();
-                    },
-                  ),
-                  Expanded(
-                    child: CustomScrollView(
-                      controller: _scrollController,
-                      slivers: [
-                        SliverList(
-                          delegate: SliverChildListDelegate(
-                            [
-                              Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 24.0),
-                                child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                  children: [
-                                    FxBox.h20,
-                                    Text(
-                                      upperCase(tabsRouter.currentPath),
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyLarge!
-                                          .copyWith(
-                                              fontWeight: FontWeight.bold),
-                                    ),
-                                    FxBox.h8,
-                                    _routesDeatils(tabsRouter),
-                                    FxBox.h20,
-                                    getRouteWidget(tabsRouter.activeIndex),
-                                    FxBox.h20,
-                                  ],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        SliverFillRemaining(
-                          hasScrollBody: false,
-                          fillOverscroll: true,
-                          child: Column(
-                            children: <Widget>[
-                              const Expanded(
-                                child: SizedBox.shrink(),
-                              ),
-                              _footer(),
-                            ],
-                          ),
-                        ),
-                      ],
+        autoTabRouter = tabsRouter;
+        return ValueListenableBuilder<TextDirection>(
+            valueListenable: _layout,
+            builder: (context, value, _) {
+              return Directionality(
+                textDirection: value,
+                child: Scaffold(
+                  key: _scaffoldKey,
+                  endDrawer: Drawer(
+                    width: 280,
+                    child: SafeArea(
+                      child: SettingDrawer(scaffoldKey: _scaffoldKey),
                     ),
                   ),
-                ],
-              ),
-            ),
-          ),
-        );
+                  appBar: _appBar(tabsRouter),
+                  body: SafeArea(
+                    child: Scaffold(
+                      key: _scaffoldDrawerKey,
+                      drawerScrimColor: ColorConst.transparent,
+                      drawer: _sidebar(tabsRouter),
+                      body: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ValueListenableBuilder<bool>(
+                            valueListenable: isOpen,
+                            builder: (context, value, child) {
+                              return Responsive.isWeb(context)
+                                  ? _sidebar(tabsRouter)
+                                  : const SizedBox.shrink();
+                            },
+                          ),
+                          Expanded(
+                            child: CustomScrollView(
+                              controller: _scrollController,
+                              slivers: [
+                                SliverList(
+                                  delegate: SliverChildListDelegate(
+                                    [
+                                      Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 24.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            FxBox.h20,
+                                            Text(
+                                              languageModel
+                                                  .translate(upperCase(
+                                                          tabsRouter
+                                                              .currentPath)
+                                                      .camelCase())
+                                                  .trim(),
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .bodyLarge!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                            ),
+                                            FxBox.h8,
+                                            _routesDeatils(tabsRouter),
+                                            FxBox.h20,
+                                            getRouteWidget(
+                                                tabsRouter.activeIndex),
+                                            FxBox.h20,
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SliverFillRemaining(
+                                  hasScrollBody: false,
+                                  fillOverscroll: true,
+                                  child: Column(
+                                    children: <Widget>[
+                                      const Expanded(
+                                        child: SizedBox.shrink(),
+                                      ),
+                                      _footer(),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            });
       },
     );
   }
@@ -361,8 +430,10 @@ class _MenuBarState extends State<FMenuBar> {
                         borderSide: BorderSide.none,
                       ),
                       filled: true,
-                      contentPadding: const EdgeInsets.fromLTRB(12, 10, 0, 4),
-                      hintText: Strings.searchHint,
+                      contentPadding: _switchlayout.value == false
+                          ? const EdgeInsets.fromLTRB(12, 10, 0, 4)
+                          : const EdgeInsets.fromLTRB(0, 10, 12, 4),
+                      hintText: languageModel.translate('search'),
                       hintStyle: const TextStyle(fontSize: 15),
                       suffixIcon: const Padding(
                         padding: EdgeInsets.all(12.0),
@@ -373,6 +444,73 @@ class _MenuBarState extends State<FMenuBar> {
                     ),
                   ),
                 ),
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: const Icon(Icons.more_vert),
+          // ),
+          // PopupMenuButton<int>(
+          //   icon: const Icon(Icons.more_vert),
+          //   itemBuilder: (context) => [
+          //     // popupmenu item 1
+          //     PopupMenuItem(
+          //       value: 1,
+          //       // row has two child icon and text.
+          //       child: const Text('RTL'),
+          //       onTap: () {
+          //         _layout.value = TextDirection.rtl;
+          //         _layout.notifyListeners();
+          //       },
+          //     ),
+          //     // popupmenu item 2
+          //     PopupMenuItem(
+          //       value: 2,
+          //       // row has two child icon and text
+          //       child: const Text("LTR"),
+          //       onTap: () {
+          //         _layout.value = TextDirection.ltr;
+          //         _layout.notifyListeners();
+          //       },
+          //     ),
+          //   ],
+          //   offset: const Offset(0, 50),
+          //   elevation: 2,
+          // ),
+          // SizedBox(
+          //   width: 150,
+          //   child: SwitchListTile(
+          //     dense: false,
+          //     contentPadding: EdgeInsets.zero,
+          //     title: const Text('Layout'),
+          //     value: true,
+          //     onChanged: (value) {},
+          //   ),
+          // ),
+          const SizedBox(
+            width: 10,
+          ),
+          ValueListenableBuilder<bool>(
+            valueListenable: _switchlayout,
+            builder: (context, value, _) {
+              return Text(value == true ? 'RTL' : 'LTR');
+            },
+          ),
+          ValueListenableBuilder<bool>(
+              valueListenable: _switchlayout,
+              builder: (context, value, _) {
+                return Transform.scale(
+                  scale: 0.7,
+                  child: Switch(
+                    value: value,
+                    onChanged: (value) {
+                      languageModel.changeLanguage();
+                      _switchlayout.value = value;
+                      // value == true
+                      //     ? _layout.value = TextDirection.rtl
+                      //     : _layout.value = TextDirection.ltr;
+                    },
+                  ),
+                );
+              }),
           _notification(),
           BlocBuilder<ThemeModeBloc, ThemeModeState>(
             builder: (context, state) {
@@ -399,6 +537,18 @@ class _MenuBarState extends State<FMenuBar> {
           _profile(tabsRouter),
         ],
       );
+
+  // TextDirection _layout(String layout)
+  // {
+  //     if(layout == 'RTL')
+  //     {
+  //       return TextDirection.rtl;
+  //     }
+  //     else
+  //     {
+  //       return TextDirection.ltr;
+  //     }
+  // }
 
   Widget _notification() {
     return FxDropdownButton(
@@ -587,57 +737,70 @@ class _MenuBarState extends State<FMenuBar> {
 
   /// drawer / sidebar
   Widget _sidebar(TabsRouter tabsRouter) => ValueListenableBuilder<bool>(
-        valueListenable: isOpen,
-        builder: (context, value, child) {
-          return Container(
-            height: MediaQuery.of(context).size.height,
-            width: value ? 240 : 70,
-            color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
-            child: SingleChildScrollView(
-              controller: ScrollController(),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FxBox.h8,
-                  // main
-                  // if (value) _menuHeading(Strings.main),
-                  _menuList(
-                    tabsRouter: tabsRouter,
-                    items: mainData,
-                    isopen: value,
-                  ),
-                  // components
-                  // if (value) _menuHeading(Strings.components),
-                  _menuList(
-                    tabsRouter: tabsRouter,
-                    items: componentData,
-                    isExpanded: true,
-                    children: componentsExpandList,
-                    isopen: value,
-                  ),
-                  _menuList(
-                    tabsRouter: tabsRouter,
-                    items: extrasData,
-                    isExpanded: true,
-                    children: extrasExpandList,
-                    isopen: value,
-                  ),
-                  // extras
-                  // if (value) _menuHeading(Strings.extras),
-                  _menuList(
-                    tabsRouter: tabsRouter,
-                    items: extrasData,
-                    isExpanded: true,
-                    children: extrasExpandList,
-                    isopen: value,
-                  ),
-                  FxBox.h20,
-                ],
+      valueListenable: isSubListOpen,
+      builder: (context, value1, child) {
+        return ValueListenableBuilder<bool>(
+          valueListenable: isOpen,
+          builder: (context, value, child) {
+            return Container(
+              height: MediaQuery.of(context).size.height,
+              width: value || value1 ? 240 : 70,
+              color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
+              child: SingleChildScrollView(
+                controller: ScrollController(),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FxBox.h8,
+                    // main
+                    // if (value) _menuHeading(Strings.main),
+                    _menuList(
+                      tabsRouter: tabsRouter,
+                      items: mainData,
+                      isopen: value,
+                    ),
+                    // components
+                    // if (value) _menuHeading(Strings.components),
+                    _menuList(
+                      tabsRouter: tabsRouter,
+                      items: componentData,
+                      isExpanded: true,
+                      children: componentsExpandList,
+                      isopen: value,
+                    ),
+                    _menuList(
+                      tabsRouter: tabsRouter,
+                      items: extrasData,
+                      isExpanded: true,
+                      children: extrasExpandList,
+                      isopen: value,
+                    ),
+                    _menuList1(
+                      tabsRouter: tabsRouter,
+                      items: eCommerceHeader,
+                      items1: eCommerceSection,
+                      isExpanded: true,
+                      children: eCommerceExpandList,
+                      isopen: value,
+                      isSubListopen: value1,
+                    ),
+                    // extras
+                    // if (value) _menuHeading(Strings.extras),
+                    // _menuList(
+                    //   tabsRouter: tabsRouter,
+                    //   items: extrasData,
+                    //   isExpanded: true,
+                    //   children: extrasExpandList,
+                    //   isopen: value,
+                    // ),
+                    FxBox.h20,
+                  ],
+                ),
               ),
-            ),
-          );
-        },
-      );
+            );
+          },
+        );
+      });
 
   /// menu heading
   // Widget _menuHeading(String title) {
@@ -697,7 +860,8 @@ class _MenuBarState extends State<FMenuBar> {
                       ],
                     ),
                     title: Text(
-                      items.keys.elementAt(index),
+                      languageModel
+                          .translate(items.keys.elementAt(index).camelCase()),
                       style: TextStyle(
                           color: children[index]
                                   .contains(upperCase(tabsRouter.currentPath))
@@ -732,7 +896,8 @@ class _MenuBarState extends State<FMenuBar> {
                     ),
                     title: isopen
                         ? Text(
-                            items.keys.elementAt(index),
+                            languageModel.translate(
+                                items.keys.elementAt(index).camelCase()),
                             style: TextStyle(
                               color: items.keys.elementAt(index) ==
                                       upperCase(tabsRouter.currentPath)
@@ -786,7 +951,8 @@ class _MenuBarState extends State<FMenuBar> {
                     ),
                     title: isopen
                         ? Text(
-                            items.keys.elementAt(index),
+                            languageModel.translate(
+                                items.keys.elementAt(index).camelCase()),
                             style: TextStyle(
                               color: items.keys.elementAt(index) ==
                                       upperCase(tabsRouter.currentPath)
@@ -804,7 +970,6 @@ class _MenuBarState extends State<FMenuBar> {
                       isOpen.value = true;
                       tabsRouter.setActiveIndex(
                           getRouteIndex(items.keys.elementAt(index)));
-
                       HiveUtils.set(Strings.selectedmenuIndex,
                           getRouteIndex(items.keys.elementAt(index)));
                       _scaffoldDrawerKey.currentState?.closeDrawer();
@@ -816,6 +981,228 @@ class _MenuBarState extends State<FMenuBar> {
           }
         },
       ),
+    );
+  }
+
+  Widget _tempMenuList({
+    required TabsRouter tabsRouter,
+    required List<String> items1,
+    bool isExpanded = false,
+    List<List<String>> children = const [],
+    required bool isopen,
+    required bool isSubListopen,
+  }) {
+    return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: items1.length,
+      itemBuilder: (context, index) => FxHover(
+        builder: (isHover) {
+          Color color = isHover
+              ? isDark
+                  ? ColorConst.chartForgoundColor
+                  : ColorConst.primary
+              : isDark
+                  ? ColorConst.white
+                  : ColorConst.black;
+          if (isExpanded) {
+            return isopen
+                ? FxExpansionTile(
+                    leading: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        FxBox.w(22.0),
+                        FxBox.w(24.0),
+                      ],
+                    ),
+                    title: Text(
+                      items1[index],
+                      style: TextStyle(
+                          color: children[index]
+                                  .contains(upperCase(tabsRouter.currentPath))
+                              ? isDark
+                                  ? ColorConst.chartForgoundColor
+                                  : ColorConst.primary
+                              : color,
+                          fontSize: 15.7),
+                    ),
+                    trailing: SvgIcon(
+                      icon: IconlyBroken.arrowDown,
+                      size: 16,
+                      color: children[index]
+                              .contains(upperCase(tabsRouter.currentPath))
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                    ),
+                    children: [_subMenuList(children[index], tabsRouter)],
+                  )
+                : ListTile(
+                    title: isopen
+                        ? Text(
+                            items1[index],
+                            style: TextStyle(
+                              color: items1[index] ==
+                                      upperCase(tabsRouter.currentPath)
+                                  ? isDark
+                                      ? ColorConst.chartForgoundColor
+                                      : ColorConst.primary
+                                  : color,
+                              fontSize: 15.7,
+                            ),
+                          )
+                        : null,
+                    mouseCursor: SystemMouseCursors.click,
+                    horizontalTitleGap: 0.0,
+                    onTap: () {
+                      isOpen.value = true;
+                      _scaffoldDrawerKey.currentState?.closeDrawer();
+                    },
+                  );
+          } else {
+            return Row(
+              children: [
+                if (isopen)
+                  Container(
+                    width: 6.0,
+                    height: 48.0,
+                    decoration: BoxDecoration(
+                      color: items1[index] == upperCase(tabsRouter.currentPath)
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : ColorConst.transparent,
+                      borderRadius: const BorderRadius.only(
+                        topRight: Radius.circular(6.0),
+                        bottomRight: Radius.circular(6.0),
+                      ),
+                    ),
+                  ),
+                if (isopen) FxBox.w16,
+                Expanded(
+                  child: ListTile(
+                    title: isopen
+                        ? Text(
+                            items1[index],
+                            style: TextStyle(
+                              color: items1[index] ==
+                                      upperCase(tabsRouter.currentPath)
+                                  ? isDark
+                                      ? ColorConst.chartForgoundColor
+                                      : ColorConst.primary
+                                  : color,
+                              fontSize: 15.7,
+                            ),
+                          )
+                        : null,
+                    mouseCursor: SystemMouseCursors.click,
+                    horizontalTitleGap: 0.0,
+                    onTap: () {
+                      isOpen.value = true;
+
+                      tabsRouter.setActiveIndex(getRouteIndex(items1[index]));
+                      HiveUtils.set(Strings.selectedmenuIndex,
+                          getRouteIndex(items1[index]));
+                      _scaffoldDrawerKey.currentState?.closeDrawer();
+                    },
+                  ),
+                ),
+              ],
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _menuList1({
+    required TabsRouter tabsRouter,
+    required Map<String, String> items,
+    required List<String> items1,
+    bool isExpanded = false,
+    List<List<String>> children = const [],
+    required bool isopen,
+    required bool isSubListopen,
+  }) {
+    return FxHover(
+      builder: (isHover) {
+        Color color = isHover
+            ? isDark
+                ? ColorConst.chartForgoundColor
+                : ColorConst.primary
+            : isDark
+                ? ColorConst.white
+                : ColorConst.black;
+        return isopen
+            ? FxExpansionTile(
+                leading: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    FxBox.w(22.0),
+                    SvgIcon(
+                      icon: items.values.elementAt(0),
+                      size: 16,
+                      color: children[0]
+                              .contains(upperCase(tabsRouter.currentPath))
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                    ),
+                    FxBox.w(24.0),
+                  ],
+                ),
+                title: Text(
+                  items.keys.elementAt(0),
+                  style: TextStyle(
+                      color: children[0]
+                              .contains(upperCase(tabsRouter.currentPath))
+                          ? isDark
+                              ? ColorConst.chartForgoundColor
+                              : ColorConst.primary
+                          : color,
+                      fontSize: 15.7),
+                ),
+                trailing: SvgIcon(
+                  icon: IconlyBroken.arrowDown,
+                  size: 16,
+                  color: children[0].contains(upperCase(tabsRouter.currentPath))
+                      ? isDark
+                          ? ColorConst.chartForgoundColor
+                          : ColorConst.primary
+                      : color,
+                ),
+                children: [
+                  _tempMenuList(
+                    items1: items1,
+                    tabsRouter: tabsRouter,
+                    isExpanded: true,
+                    children: children,
+                    isopen: isopen,
+                    isSubListopen: isSubListopen,
+                  ),
+                ],
+              )
+            : ListTile(
+                leading: SvgIcon(
+                  icon: items.values.elementAt(0),
+                  size: isopen ? 16 : 18,
+                  color: items.keys.elementAt(0) ==
+                          upperCase(tabsRouter.currentPath)
+                      ? isDark
+                          ? ColorConst.chartForgoundColor
+                          : ColorConst.primary
+                      : color,
+                ),
+                mouseCursor: SystemMouseCursors.click,
+                horizontalTitleGap: 0.0,
+                onTap: () {
+                  isOpen.value = true;
+                  _scaffoldDrawerKey.currentState?.closeDrawer();
+                },
+              );
+      },
     );
   }
 
@@ -831,15 +1218,37 @@ class _MenuBarState extends State<FMenuBar> {
               ? isDark
                   ? ColorConst.chartForgoundColor
                   : ColorConst.primary
-              : upperCase(tabsRouter.currentPath) == items[index]
+              : _checkSubRoute(tabsRouter.currentPath) == items[index]
                   ? isDark
                       ? ColorConst.chartForgoundColor
                       : ColorConst.primary
-                  : isDark
-                      ? ColorConst.white
-                      : ColorConst.black;
+                  : upperCase(tabsRouter.currentPath) == items[index]
+                      ? isDark
+                          ? ColorConst.chartForgoundColor
+                          : ColorConst.primary
+                      : isDark
+                          ? ColorConst.white
+                          : ColorConst.black;
           return Row(
             children: [
+              if (_checkSubRoute(tabsRouter.currentPath) == items[index]) ...[
+                Container(
+                  width: 6.0,
+                  height: 48.0,
+                  decoration: BoxDecoration(
+                    color:
+                        _checkSubRoute(tabsRouter.currentPath) == items[index]
+                            ? isDark
+                                ? ColorConst.chartForgoundColor
+                                : ColorConst.primary
+                            : ColorConst.transparent,
+                    borderRadius: const BorderRadius.only(
+                      topRight: Radius.circular(6.0),
+                      bottomRight: Radius.circular(6.0),
+                    ),
+                  ),
+                ),
+              ],
               Container(
                 width: 6.0,
                 height: 48.0,
@@ -860,9 +1269,12 @@ class _MenuBarState extends State<FMenuBar> {
                   dense: true,
                   visualDensity: const VisualDensity(vertical: -3),
                   mouseCursor: SystemMouseCursors.click,
-                  contentPadding: const EdgeInsets.only(left: 52.0),
+                  contentPadding: _switchlayout.value == false
+                      ? const EdgeInsets.only(left: 52.0)
+                      : const EdgeInsets.only(right: 52.0),
                   title: Text(
-                    items[index],
+                    // items[index],
+                    languageModel.translate(items[index].camelCase()),
                     style: TextStyle(color: color, fontSize: 15),
                   ),
                   onTap: () {
@@ -891,6 +1303,10 @@ class _MenuBarState extends State<FMenuBar> {
                     } else if (items[index] == 'Coming Soon') {
                       context.router.push(const ComingSoon());
                     } else {
+                      if (items[index] == 'Landing Page') {
+                        isOpen.value = false;
+                      }
+
                       tabsRouter.setActiveIndex(getRouteIndex(items[index]));
                     }
                     _scaffoldDrawerKey.currentState?.closeDrawer();
@@ -915,9 +1331,10 @@ class _MenuBarState extends State<FMenuBar> {
       children: tabsRouter.currentPath == '/dashboard'
           ? []
           : [
-              const InkWell(
+              InkWell(
                 mouseCursor: SystemMouseCursors.click,
-                child: Text(Strings.admin),
+                // child: Text(Strings.admin),
+                child: Text(languageModel.translate('admin')),
               ),
               if (routeIndex.isBetween(1, 6) ||
                   routeIndex == 10 ||
@@ -926,25 +1343,60 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 33 ||
                   routeIndex == 36 ||
                   routeIndex == 37) ...[
-                const Text(' / ${Strings.uiElements} '),
+                // const Text(' / ${Strings.uiElements} '),
+                Text(' / ${languageModel.translate('widgets')} '),
               ] else if (routeIndex.isBetween(27, 32)) ...[
-                const Text(' / ${Strings.forms} '),
+                // const Text(' / ${Strings.forms} '),
+                Text(' / ${languageModel.translate('formElements')} '),
               ] else if (routeIndex.isBetween(11, 13)) ...[
-                const Text(' / ${Strings.charts} '),
+                // const Text(' / ${Strings.charts} '),
+                Text(' / ${languageModel.translate('charts')} '),
               ] else if (routeIndex.isBetween(14, 17)) ...[
-                const Text(' / ${Strings.tables} '),
+                // const Text(' / ${Strings.tables} '),
+                Text(' / ${languageModel.translate('tables')} '),
               ] else if (routeIndex.isBetween(7, 9)) ...[
-                const Text(' / ${Strings.emailTemplates} '),
+                // const Text(' / ${Strings.emailTemplates} '),
+                Text(' / ${languageModel.translate('emailTemplates')} '),
               ] else if (routeIndex == 38) ...[
+                const Text(' / ${Strings.eCommerce} '),
+              ] else if (routeIndex == 40) ...[
+                const Text(' / ${Strings.eCommerce} '),
+              ] else if (routeIndex == 47) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.returnOrder} '),
+              ] else if (routeIndex == 51) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.order} '),
+              ] else if (routeIndex == 41) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.category} '),
+              ] else if (routeIndex == 43) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.vender} '),
+              ] else if (routeIndex == 42 ||
+                  routeIndex == 44 ||
+                  routeIndex == 45 ||
+                  routeIndex == 46 ||
+                  routeIndex == 48 ||
+                  routeIndex == 49 ||
+                  routeIndex == 50 ||
+                  routeIndex == 52 ||
+                  routeIndex == 53 ||
+                  routeIndex == 54 ||
+                  routeIndex == 56) ...[
+                const Text(' / ${Strings.eCommerce} '),
+              ] else if (routeIndex == 39) ...[
+                const Text(' / ${Strings.eCommerce} / ${Strings.products}'),
+              ] else if (routeIndex == 55) ...[
                 const Text(' / ${Strings.eCommerce} '),
               ] else if (tabsRouter.currentPath == '/calendar' ||
                   tabsRouter.currentPath == '/map') ...[
                 const SizedBox.shrink()
               ] else ...[
-                const Text(' / Extra Pages '),
+                // const Text(' / Extra Pages '),
+                Text(' / ${languageModel.translate('extraPages')} '),
               ],
               const Text(' / '),
-              Text(upperCase(tabsRouter.currentPath)),
+              // Text(upperCase(tabsRouter.currentPath)),
+              Text(languageModel
+                  .translate(upperCase(tabsRouter.currentPath).camelCase())
+                  .trim()),
             ],
     );
   }
@@ -958,4 +1410,20 @@ class _MenuBarState extends State<FMenuBar> {
         alignment: Alignment.center,
         child: const Text(Strings.footerText),
       );
+
+  String _checkSubRoute(String path) {
+    if (upperCase(path) == 'Products Detail') {
+      return 'Products';
+    } else if (upperCase(path) == 'Sub Category') {
+      return 'Category';
+    } else if (upperCase(path) == 'Vender Detail') {
+      return 'Vender';
+    } else if (upperCase(path) == 'Return Order Invoice') {
+      return 'Return Order';
+    } else if (upperCase(path) == 'Order Invoice') {
+      return 'Order';
+    } else {
+      return '';
+    }
+  }
 }

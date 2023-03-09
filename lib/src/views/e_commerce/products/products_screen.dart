@@ -1,10 +1,11 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
-import 'package:admin_dashboard/src/constant/theme.dart';
+
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/views/e_commerce/product.dart';
+import 'package:admin_dashboard/src/views/e_commerce/products/product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -19,6 +20,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
   int tempCategoryIndex = 0;
 
   List<bool> isColor = [];
+  List<String> tempFilterList = [];
+  List<bool> iscategory = [];
   final List<String> _categoryList = [
     'All',
     'Electronics',
@@ -45,8 +48,18 @@ class _ProductsScreenState extends State<ProductsScreen> {
 
   @override
   void initState() {
+    isColor.clear();
+    iscategory.clear();
     for (var data in _productColor) {
       isColor.add(false);
+    }
+
+    for (int i = 0; i < _productColor.length; i++) {
+      if (i == 0) {
+        iscategory.add(true);
+      } else {
+        iscategory.add(false);
+      }
     }
     super.initState();
   }
@@ -56,6 +69,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        !Responsive.isMobile(context) ? const SizedBox.shrink() : _filterUi(),
+        FxBox.h16,
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -86,13 +101,21 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                   : Responsive.isTablet(context)
                                       ? 2
                                       : islg(context)
-                                          ? 3
-                                          : isxl(context)
-                                              ? 4
-                                              : 1,
+                                          ? 2
+                                          : MediaQuery.of(context).size.width ==
+                                                      1303 ||
+                                                  MediaQuery.of(context)
+                                                          .size
+                                                          .width <
+                                                      1310
+                                              ? 3
+                                              : isxl(context)
+                                                  ? 4
+                                                  : 1,
                               crossAxisSpacing: 20,
                               mainAxisSpacing: 20,
-                              mainAxisExtent: 426,
+                              mainAxisExtent:
+                                  Responsive.isWeb(context) ? 390 : 426,
                             ),
                             itemBuilder: (context, index) {
                               return _cardUI(index);
@@ -111,13 +134,20 @@ class _ProductsScreenState extends State<ProductsScreen> {
                               : Responsive.isTablet(context)
                                   ? 2
                                   : islg(context)
-                                      ? 3
-                                      : isxl(context)
-                                          ? 4
-                                          : 1,
+                                      ? 2
+                                      : MediaQuery.of(context).size.width ==
+                                                  1303 ||
+                                              MediaQuery.of(context)
+                                                      .size
+                                                      .width <
+                                                  1310
+                                          ? 3
+                                          : isxl(context)
+                                              ? 4
+                                              : 1,
                           crossAxisSpacing: 20,
                           mainAxisSpacing: 20,
-                          mainAxisExtent: Responsive.isWeb(context) ? 385 : 426,
+                          mainAxisExtent: Responsive.isWeb(context) ? 390 : 426,
                         ),
                         itemBuilder: (context, index) {
                           return _cardUI(index);
@@ -129,8 +159,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
                 : _filterUi(),
           ],
         ),
-        FxBox.h16,
-        !Responsive.isMobile(context) ? const SizedBox.shrink() : _filterUi(),
       ],
     );
   }
@@ -138,7 +166,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget _filterUi() {
     return Container(
       constraints:
-          BoxConstraints(maxWidth: Responsive.isMobile(context) ? 400 : 200),
+          BoxConstraints(maxWidth: Responsive.isMobile(context) ? 400 : 250),
       padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
       decoration: BoxDecoration(
         color: ColorConst.white,
@@ -176,10 +204,6 @@ class _ProductsScreenState extends State<ProductsScreen> {
           shrinkWrap: true,
           itemCount: _productColor.length,
           itemBuilder: (context, index) {
-            //isColor.clear();
-            for (var data in _productColor) {
-              isColor.add(false);
-            }
             return Row(
               children: [
                 Checkbox(
@@ -222,35 +246,85 @@ class _ProductsScreenState extends State<ProductsScreen> {
           shrinkWrap: true,
           itemCount: _categoryList.length,
           itemBuilder: (context, index) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            return Row(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    tempCategoryIndex = index;
-                    if (_categoryList[index] == 'All') {
-                      _filterList = productList;
-                    } else {
-                      _filterList = productList.where(
-                        (element) {
-                          return element['category'] == _categoryList[index];
-                        },
-                      ).toList();
-                    }
+                Checkbox(
+                  activeColor: ColorConst.primary,
+                  checkColor: ColorConst.white,
+                  value: iscategory[index],
+                  onChanged: (value) {
+                    _filterList.clear();
 
-                    isFilter = true;
+                    List<Map<String, dynamic>> tempList = [];
+                    List<Map<String, dynamic>> tempList1 = [];
+
+                    if (value == true) {
+                      if (_categoryList[index] == 'All') {
+                        iscategory[index] = true;
+                        setState(() {
+                          _filterList =
+                              List<Map<String, dynamic>>.from(productList);
+                        });
+                      } else {
+                        iscategory[0] = false;
+
+                        tempFilterList.add(_categoryList[index]);
+                        iscategory[index] = true;
+                        tempCategoryIndex = index;
+
+                        tempList1.clear();
+                        _filterList.clear();
+                        setState(() {});
+                        for (int i = 0; i < tempFilterList.length; i++) {
+                          tempList = productList.where(
+                            (e) {
+                              return e['category'] == tempFilterList[i];
+                            },
+                          ).toList();
+                          tempList1.addAll(tempList);
+
+                          _filterList = tempList1;
+                          setState(() {});
+                        }
+
+                        isFilter = true;
+                      }
+                    } else {
+                      tempFilterList.remove(_categoryList[index]);
+                      iscategory[index] = false;
+
+                      if (tempFilterList.isEmpty) {
+                        iscategory[0] = true;
+                        _filterList.clear();
+                        setState(() {
+                          _filterList =
+                              List<Map<String, dynamic>>.from(productList);
+                        });
+                      } else {
+                        tempList1 = [];
+                        _filterList = [];
+                        setState(() {});
+                        for (int i = 0; i < tempFilterList.length; i++) {
+                          tempList = productList.where(
+                            (element) {
+                              return element['category']
+                                  .toString()
+                                  .contains(tempFilterList[i]);
+                            },
+                          ).toList();
+                          tempList1.addAll(tempList);
+
+                          _filterList = tempList1;
+                          setState(() {});
+                        }
+                      }
+                    }
                     setState(() {});
                   },
-                  child: CustomText(
-                    title: _categoryList[index],
-                    textColor: tempCategoryIndex == index
-                        ? ColorConst.primary
-                        : isDark
-                            ? ColorConst.white
-                            : ColorConst.black,
-                  ),
                 ),
-                FxBox.h10,
+                CustomText(
+                  title: _categoryList[index],
+                ),
               ],
             );
           },
@@ -320,96 +394,104 @@ class _ProductsScreenState extends State<ProductsScreen> {
   }
 
   Widget _cardUI(int index) {
-    return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        color: ColorConst.white,
-        borderRadius: BorderRadius.circular(12.0),
-        boxShadow: [
-          BoxShadow(
-            color: ColorConst.primary.withOpacity(0.1),
-            blurRadius: 5.0,
-            offset: const Offset(0.0, 5.0),
-          ),
-        ],
-      ),
-      clipBehavior: Clip.hardEdge,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(
-            _filterList.isNotEmpty
-                ? _filterList[index]['image']
-                : productList[index]['image'],
-            fit: BoxFit.contain,
-            height: 250.0,
-            width: double.infinity,
-          ),
-          const SizedBox(height: 16.0),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: CustomText(
+    return GestureDetector(
+      onTap: () {
+        autoTabRouter!.setActiveIndex(39);
+      },
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          color: ColorConst.white,
+          borderRadius: BorderRadius.circular(12.0),
+          boxShadow: [
+            BoxShadow(
+              color: ColorConst.primary.withOpacity(0.1),
+              blurRadius: 5.0,
+              offset: const Offset(0.0, 5.0),
+            ),
+          ],
+        ),
+        clipBehavior: Clip.hardEdge,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(
+              _filterList.isNotEmpty
+                  ? _filterList[index]['image']
+                  : productList[index]['image'],
+              fit: BoxFit.contain,
+              height: 250.0,
+              width: double.infinity,
+            ),
+            const SizedBox(height: 16.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: CustomText(
+                      title: _filterList.isNotEmpty
+                          ? _filterList[index]['title']
+                          : productList[index]['title'],
+                      fontSize: 16.0,
+                      maxLine: 2,
+                      overflow: TextOverflow.ellipsis,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const Spacer(),
+                  CustomText(
                     title: _filterList.isNotEmpty
-                        ? _filterList[index]['title']
-                        : productList[index]['title'],
+                        ? _filterList[index]['rating']
+                        : productList[index]['rating'],
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,
                   ),
-                ),
-                const Spacer(),
-                CustomText(
-                  title: _filterList.isNotEmpty
-                      ? _filterList[index]['rating']
-                      : productList[index]['rating'],
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
-                const Icon(
-                  Icons.star,
-                  color: Colors.amber,
-                  size: 15,
-                ),
-              ],
+                  const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                    size: 15,
+                  ),
+                ],
+              ),
             ),
-          ),
-          FxBox.h12,
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              children: [
-                CustomText(
-                  title:
-                      '${_filterList.isNotEmpty ? _filterList[index]['price'] : productList[index]['price']} \$',
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
-                const Spacer(),
-                _iconBox(
-                  icon: Icons.add_shopping_cart_outlined,
-                  onPressed: () {},
-                ),
-                FxBox.w10,
-                _iconBox(
-                  color: ColorConst.errorDark,
-                  icon: _iconChoose(index),
-                  onPressed: () {
-                    if (_filterList.isNotEmpty) {
-                      _filterList[index]['isFavourite'] =
-                          !_filterList[index]['isFavourite'];
-                    } else {
-                      productList[index]['isFavourite'] =
-                          !productList[index]['isFavourite'];
-                    }
-                    setState(() {});
-                  },
-                )
-              ],
+            FxBox.h12,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  CustomText(
+                    title:
+                        '${_filterList.isNotEmpty ? _filterList[index]['price'] : productList[index]['price']} \$',
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                  ),
+                  const Spacer(),
+                  _iconBox(
+                    icon: Icons.add_shopping_cart_outlined,
+                    onPressed: () {},
+                  ),
+                  FxBox.w10,
+                  _iconBox(
+                    color: ColorConst.errorDark,
+                    icon: _iconChoose(index),
+                    onPressed: () {
+                      if (_filterList.isNotEmpty) {
+                        _filterList[index]['isFavourite'] =
+                            !_filterList[index]['isFavourite'];
+                      } else {
+                        productList[index]['isFavourite'] =
+                            !productList[index]['isFavourite'];
+                      }
+                      setState(() {});
+                    },
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -446,10 +528,4 @@ class _ProductsScreenState extends State<ProductsScreen> {
       ),
     );
   }
-
-  bool islg(context) =>
-      MediaQuery.of(context).size.width >= 992 &&
-      MediaQuery.of(context).size.width < 1300;
-
-  bool isxl(context) => MediaQuery.of(context).size.width >= 1300;
 }

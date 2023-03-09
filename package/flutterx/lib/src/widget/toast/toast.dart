@@ -25,7 +25,7 @@ class FxToast {
     }
     _overlayEntry = _createOverlayEntry(
         context, toast, position!, animationDuration, toastWidth);
-    Overlay.of(context)!.insert(_overlayEntry!);
+    Overlay.of(context).insert(_overlayEntry!);
     _timer = Timer(
       displayDuration ?? const Duration(seconds: 2),
       () {

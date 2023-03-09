@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form/form_repeater/bloc/form_repeater_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:file_picker/file_picker.dart';
@@ -64,9 +65,9 @@ class _RepeaterFormState extends State<RepeaterForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Nested Form',
-              style: TextStyle(
+            Text(
+              languageModel.form.nestedForm,
+              style: const TextStyle(
                 fontSize: 17.0,
                 fontWeight: FontWeight.w600,
               ),
@@ -134,22 +135,22 @@ class _RepeaterFormState extends State<RepeaterForm> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _exampleCommonView(
-          _commonText('Name'),
+          _commonText(languageModel.dashboard.name),
           _commonTextField('Enter your name', _nameControllerList[index]),
         ),
         FxBox.w24,
         _exampleCommonView(
-          _commonText('Email'),
+          _commonText(languageModel.form.email),
           _commonTextField('Enter your email', _emailControllerList[index]),
         ),
         FxBox.w24,
         _exampleCommonView(
-          _commonText('Subject'),
+          _commonText(languageModel.form.subject),
           _commonTextField('Enter your subject', _subjectControllerList[index]),
         ),
         FxBox.w24,
         _exampleCommonView(
-          _commonText('Resume'),
+          _commonText(languageModel.form.resume),
           MouseRegion(
             cursor: SystemMouseCursors.click,
             child: GestureDetector(
@@ -162,7 +163,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
         ),
         FxBox.w24,
         _exampleCommonView(
-          _commonText('Message'),
+          _commonText(languageModel.form.message),
           _commonTextField('Type here...', _messageControllerList[index],
               maxLines: 2),
         ),
@@ -181,13 +182,13 @@ class _RepeaterFormState extends State<RepeaterForm> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _commonText('Name'),
+        _commonText(languageModel.dashboard.name),
         _commonTextField('Enter your name', _nameControllerList[index]),
-        _commonText('Email'),
+        _commonText(languageModel.form.email),
         _commonTextField('Enter your email', _emailControllerList[index]),
-        _commonText('Subject'),
+        _commonText(languageModel.form.subject),
         _commonTextField('Enter your subject', _subjectControllerList[index]),
-        _commonText('Resume'),
+        _commonText(languageModel.form.resume),
         MouseRegion(
           cursor: SystemMouseCursors.click,
           child: GestureDetector(
@@ -197,7 +198,7 @@ class _RepeaterFormState extends State<RepeaterForm> {
             child: _resumeTextField(_fileNameList[index]),
           ),
         ),
-        _commonText('Message'),
+        _commonText(languageModel.form.message),
         Responsive.isTablet(mainContext)
             ? Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -348,18 +349,18 @@ class _RepeaterFormState extends State<RepeaterForm> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Nested Field form',
-              style: TextStyle(
+            Text(
+              languageModel.form.nestedFieldForm,
+              style: const TextStyle(
                 fontSize: 17.0,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            _commonText('Name'),
+            _commonText(languageModel.dashboard.name),
             _commonTextField('Enter your Name...', TextEditingController()),
-            _commonText('Email :'),
+            _commonText(languageModel.form.email),
             _commonTextField('Enter your Email...', TextEditingController()),
-            _commonText('Phone no :'),
+            _commonText(languageModel.form.phoneNo),
             BlocConsumer<FormRepeaterBloc, FormRepeaterState>(
               listener: (context, state) {
                 state.whenOrNull(
@@ -423,10 +424,10 @@ class _RepeaterFormState extends State<RepeaterForm> {
             //FxBox.h16,
             //_addPhoneButton(),
             FxBox.h24,
-            _commonText('Gender :'),
+            _commonText(languageModel.form.gender),
             _radioButton(),
             FxBox.h16,
-            _commonText('Message'),
+            _commonText(languageModel.form.message),
             _commonTextField('Type text...', TextEditingController(),
                 maxLines: 2),
             FxBox.h16,

@@ -286,7 +286,7 @@ class _FxExpansionTileState extends State<FxExpansionTile>
     _backgroundColor =
         _controller.drive(_backgroundColorTween.chain(_easeOutTween));
 
-    _isExpanded = PageStorage.of(context)?.readState(context) as bool? ??
+    _isExpanded = PageStorage.of(context).readState(context) as bool? ??
         widget.initiallyExpanded;
     if (_isExpanded) _controller.value = 1.0;
   }
@@ -310,7 +310,7 @@ class _FxExpansionTileState extends State<FxExpansionTile>
           });
         });
       }
-      PageStorage.of(context)?.writeState(context, _isExpanded);
+      PageStorage.of(context).writeState(context, _isExpanded);
     });
     widget.onExpansionChanged?.call(_isExpanded);
   }
@@ -337,7 +337,7 @@ class _FxExpansionTileState extends State<FxExpansionTile>
   Widget? _buildLeadingIcon(BuildContext context) {
     if (_effectiveAffinity(widget.controlAffinity) !=
         ListTileControlAffinity.leading) return null;
-    return _buildIcon(context,null);
+    return _buildIcon(context, null);
   }
 
   Widget? _buildTrailingIcon(BuildContext context, Widget? icon) {

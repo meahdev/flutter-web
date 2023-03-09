@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/provider/stepper/bloc/stepper_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutterx/flutterx.dart';
@@ -18,33 +18,29 @@ class _ActivityState extends State<Activity> {
 
   List<Step> steps = [
     Step(
-      title: ConstText.lightText(text: 'Step 1'),
+      title: ConstText.lightText(text: '${languageModel.dashboard.step} 1'),
       content: ConstText.lightText(text: ''),
-      subtitle: ConstText.lightText(
-          text: 'Lorem Ipsum is simply dummy text of the printing.'),
+      subtitle: ConstText.lightText(text: languageModel.lorem1),
       isActive: true,
     ),
     Step(
-      title: ConstText.lightText(text: 'Step 2'),
+      title: ConstText.lightText(text: '${languageModel.dashboard.step} 2'),
       content: ConstText.lightText(text: ''),
-      subtitle: ConstText.lightText(
-          text: 'Lorem Ipsum is simply dummy text of the printing.'),
+      subtitle: ConstText.lightText(text: languageModel.lorem1),
       isActive: true,
       state: StepState.complete,
     ),
     Step(
-      title: ConstText.lightText(text: 'Step 3'),
+      title: ConstText.lightText(text: '${languageModel.dashboard.step} 3'),
       content: ConstText.lightText(text: ''),
-      subtitle: ConstText.lightText(
-          text: 'Lorem Ipsum is simply dummy text of the printing.'),
+      subtitle: ConstText.lightText(text: languageModel.lorem1),
       isActive: true,
       state: StepState.complete,
     ),
     Step(
-      title: ConstText.lightText(text: 'Step 4'),
+      title: ConstText.lightText(text: '${languageModel.dashboard.step} 4'),
       content: ConstText.lightText(text: ''),
-      subtitle: ConstText.lightText(
-          text: 'Lorem Ipsum is simply dummy text of the printing.'),
+      subtitle: ConstText.lightText(text: languageModel.lorem1),
       isActive: true,
       state: StepState.complete,
     ),
@@ -74,7 +70,7 @@ class _ActivityState extends State<Activity> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ConstText.lightText(
-                  text: Strings.activity,
+                  text: languageModel.dashboard.activity,
                   fontWeight: FontWeight.bold,
                 ),
                 BlocBuilder<StepperBloc, StepperState>(
@@ -93,7 +89,8 @@ class _ActivityState extends State<Activity> {
                                         StepperEvent.changeIndex(index + 1));
                                   }
                                 },
-                                child: const Text('Continue'),
+                                child:
+                                    Text(languageModel.translate('continue')),
                               ),
                               TextButton(
                                 onPressed: () {
@@ -102,7 +99,7 @@ class _ActivityState extends State<Activity> {
                                         StepperEvent.changeIndex(index - 1));
                                   }
                                 },
-                                child: const Text('Cancle'),
+                                child: Text(languageModel.dashboard.cancel),
                               ),
                             ],
                           );

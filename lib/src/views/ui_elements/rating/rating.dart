@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class _RatingState extends State<Rating> {
         runSpacing: 26,
         children: [
           _ratingBar(
-            title: 'Default rating',
+            title: languageModel.widget.defaultRating,
             icon: [
               CupertinoIcons.star,
               CupertinoIcons.star_fill,
@@ -40,7 +41,7 @@ class _RatingState extends State<Rating> {
           ),
           FxBox.w16,
           _ratingBar(
-            title: 'Half rating',
+            title: languageModel.widget.halfRating,
             allowHalfRating: true,
             icon: [
               CupertinoIcons.star,
@@ -50,7 +51,7 @@ class _RatingState extends State<Rating> {
           ),
           FxBox.w16,
           _ratingBar(
-            title: 'Disable rating',
+            title: languageModel.widget.disableRating,
             enable: false,
             icon: [
               CupertinoIcons.star,
@@ -60,7 +61,7 @@ class _RatingState extends State<Rating> {
           ),
           FxBox.w16,
           _ratingBar(
-            title: 'Custom icon rating',
+            title: languageModel.widget.customIconRating,
             icon: [
               CupertinoIcons.heart,
               CupertinoIcons.heart_fill,

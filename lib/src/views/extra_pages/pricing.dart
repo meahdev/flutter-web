@@ -165,15 +165,20 @@ class _PricingState extends State<Pricing> {
     return ListTile(
       title: Row(
         children: [
-          const Icon(
-            Icons.circle,
-            size: 8,
-            color: ColorConst.black,
+          const Expanded(
+            child: Icon(
+              Icons.circle,
+              size: 8,
+              color: ColorConst.black,
+            ),
           ),
           FxBox.w16,
-          Text(
-            "$text",
-            style: const TextStyle(fontSize: 16),
+          Expanded(
+            flex: 4,
+            child: Text(
+              "$text",
+              style: const TextStyle(fontSize: 16),
+            ),
           ),
         ],
       ),
@@ -183,10 +188,13 @@ class _PricingState extends State<Pricing> {
       //   size: 8,
       //   color: ColorConst.black,
       // ),
-      trailing: Icon(
-        icons,
-        size: 19,
-        color: ColorConst.primary,
+      trailing: Expanded(
+ 
+        child: Icon(
+          icons,
+          size: 19,
+          color: ColorConst.primary,
+        ),
       ),
     );
   }
