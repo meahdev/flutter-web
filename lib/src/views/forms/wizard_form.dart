@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/provider/form/form_wizard/bloc/form_wizard_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -83,28 +84,33 @@ class _WizardFormState extends State<WizardForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Wizard Form",
-                    style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+                  Text(
+                    languageModel.form.wizardForm,
+                    style: const TextStyle(
+                        fontSize: 17, fontWeight: FontWeight.w600),
                   ),
                   FxBox.h24,
                   Responsive.isWeb(context)
                       ? Row(
                           children: [
                             Expanded(
-                              child: _stepperTitle(1, 'Seller Details'),
+                              child: _stepperTitle(
+                                  1, languageModel.form.sellerDetails),
                             ),
                             FxBox.w8,
                             Expanded(
-                              child: _stepperTitle(2, 'Company Document'),
+                              child: _stepperTitle(
+                                  2, languageModel.form.companyDocument),
                             ),
                             FxBox.w8,
                             Expanded(
-                              child: _stepperTitle(3, 'Bank Details'),
+                              child: _stepperTitle(
+                                  3, languageModel.form.bankDetails),
                             ),
                             FxBox.w8,
                             Expanded(
-                              child: _stepperTitle(4, 'Confirm Details'),
+                              child: _stepperTitle(
+                                  4, languageModel.form.confirmDetails),
                             ),
                           ],
                         )
@@ -114,12 +120,13 @@ class _WizardFormState extends State<WizardForm> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: _stepperTitle(1, 'Seller Details'),
+                                      child: _stepperTitle(
+                                          1, languageModel.form.sellerDetails),
                                     ),
                                     FxBox.w8,
                                     Expanded(
-                                      child:
-                                          _stepperTitle(2, 'Company Document'),
+                                      child: _stepperTitle(2,
+                                          languageModel.form.companyDocument),
                                     ),
                                   ],
                                 ),
@@ -127,12 +134,13 @@ class _WizardFormState extends State<WizardForm> {
                                 Row(
                                   children: [
                                     Expanded(
-                                      child: _stepperTitle(3, 'Bank Details'),
+                                      child: _stepperTitle(
+                                          3, languageModel.form.bankDetails),
                                     ),
                                     FxBox.w8,
                                     Expanded(
-                                      child:
-                                          _stepperTitle(4, 'Confirm Details'),
+                                      child: _stepperTitle(
+                                          4, languageModel.form.confirmDetails),
                                     ),
                                   ],
                                 )
@@ -140,13 +148,17 @@ class _WizardFormState extends State<WizardForm> {
                             )
                           : Column(
                               children: [
-                                _stepperTitle(1, 'Seller Details'),
+                                _stepperTitle(
+                                    1, languageModel.form.sellerDetails),
                                 FxBox.h8,
-                                _stepperTitle(2, 'Company Document'),
+                                _stepperTitle(
+                                    2, languageModel.form.companyDocument),
                                 FxBox.h8,
-                                _stepperTitle(3, 'Bank Details'),
+                                _stepperTitle(
+                                    3, languageModel.form.bankDetails),
                                 FxBox.h8,
-                                _stepperTitle(4, 'Confirm Details'),
+                                _stepperTitle(
+                                    4, languageModel.form.confirmDetails),
                               ],
                             ),
                   FxBox.h24,
@@ -299,9 +311,9 @@ class _WizardFormState extends State<WizardForm> {
         ? Column(
             children: [
               _dataViewWebCommon(
-                'Seller Name',
+                languageModel.form.sellerName,
                 'Enter your name',
-                'Mobile No.',
+                languageModel.form.mobileNo,
                 'Enter your number',
                 null,
                 _controllerList[0],
@@ -309,9 +321,9 @@ class _WizardFormState extends State<WizardForm> {
               ),
               FxBox.h24,
               _dataViewWebCommon(
-                'Address 1',
+                '${languageModel.form.address} 1',
                 'Enter Your address',
-                'Address 2',
+                '${languageModel.form.address} 2',
                 'Enter Work address',
                 3,
                 _controllerList[4],
@@ -319,9 +331,9 @@ class _WizardFormState extends State<WizardForm> {
               ),
               FxBox.h24,
               _dataViewWebCommon(
-                'Company Name',
+                languageModel.form.companyName,
                 'Enter your company name',
-                'Live Market A/C',
+                languageModel.form.liveMarketAccount,
                 'Enter A/C number',
                 null,
                 _controllerList[6],
@@ -329,9 +341,9 @@ class _WizardFormState extends State<WizardForm> {
               ),
               FxBox.h24,
               _dataViewWebCommon(
-                'Product Category',
+                languageModel.form.productCategory,
                 '',
-                'Product Sub Category',
+                languageModel.form.productSubCategory,
                 '',
                 null,
                 _controllerList[8],
@@ -343,9 +355,9 @@ class _WizardFormState extends State<WizardForm> {
             ? Column(
                 children: [
                   _dataViewTabCommon(
-                    'Contact Person',
+                    languageModel.form.contactPerson,
                     'Enter your name',
-                    'Mobile No.',
+                    languageModel.form.mobileNo,
                     'Enter your number',
                     null,
                     _controllerList[0],
@@ -353,9 +365,9 @@ class _WizardFormState extends State<WizardForm> {
                   ),
                   FxBox.h24,
                   _dataViewTabCommon(
-                    'Address 1',
+                    '${languageModel.form.address} 1',
                     'Enter your address',
-                    'Address 2',
+                    '${languageModel.form.address} 2',
                     'Enter work address',
                     3,
                     _controllerList[4],
@@ -363,9 +375,9 @@ class _WizardFormState extends State<WizardForm> {
                   ),
                   FxBox.h24,
                   _dataViewTabCommon(
-                    'Company Name',
+                    languageModel.form.companyName,
                     'Enter your company name',
-                    'Live Market A/C',
+                    languageModel.form.liveMarketAccount,
                     'Enter A/C number',
                     null,
                     _controllerList[6],
@@ -373,9 +385,9 @@ class _WizardFormState extends State<WizardForm> {
                   ),
                   FxBox.h24,
                   _dataViewTabCommon(
-                    'Product Category',
+                    languageModel.form.productCategory,
                     '',
-                    'Product Sub Category',
+                    languageModel.form.productSubCategory,
                     '',
                     null,
                     _controllerList[8],
@@ -386,19 +398,19 @@ class _WizardFormState extends State<WizardForm> {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _commonTitle('Seller Name'),
+                  _commonTitle(languageModel.form.sellerName),
                   FxBox.h8,
                   _commonTextField('Enter your name', _controllerList[0]),
                   FxBox.h24,
-                  _commonTitle('Mobile No.'),
+                  _commonTitle(languageModel.form.mobileNo),
                   FxBox.h8,
                   _commonTextField('Enter your number', _controllerList[1]),
                   FxBox.h24,
-                  _commonTitle('Email Id'),
+                  _commonTitle(languageModel.form.emailID),
                   FxBox.h8,
                   _commonTextField('Enter your email', _controllerList[3]),
                   FxBox.h24,
-                  _commonTitle('Address 1'),
+                  _commonTitle('${languageModel.form.address} 1'),
                   FxBox.h8,
                   _commonTextField(
                     'Enter your address',
@@ -406,7 +418,7 @@ class _WizardFormState extends State<WizardForm> {
                     maxLines: 3,
                   ),
                   FxBox.h24,
-                  _commonTitle('Address 2'),
+                  _commonTitle('${languageModel.form.address} 2'),
                   FxBox.h8,
                   _commonTextField(
                     'Enter work address',
@@ -414,22 +426,22 @@ class _WizardFormState extends State<WizardForm> {
                     maxLines: 3,
                   ),
                   FxBox.h24,
-                  _commonTitle('Company Name'),
+                  _commonTitle(languageModel.form.companyName),
                   FxBox.h8,
                   _commonTextField(
                     'Enter your company name',
                     _controllerList[6],
                   ),
                   FxBox.h24,
-                  _commonTitle('Live Market A/C'),
+                  _commonTitle(languageModel.form.liveMarketAccount),
                   FxBox.h8,
                   _commonTextField('Enter A/C number', _controllerList[7]),
                   FxBox.h24,
-                  _commonTitle('Product Category'),
+                  _commonTitle(languageModel.form.productCategory),
                   FxBox.h8,
                   _commonTextField('', _controllerList[8]),
                   FxBox.h24,
-                  _commonTitle('Product Sub Category'),
+                  _commonTitle(languageModel.form.productSubCategory),
                   FxBox.h8,
                   _commonTextField('', _controllerList[9]),
                 ],
@@ -441,9 +453,9 @@ class _WizardFormState extends State<WizardForm> {
         ? Column(
             children: [
               _dataViewWebCommon(
-                'PAN Card',
+                languageModel.form.panCard,
                 'Enter pancard number',
-                'VAT/TIN No.',
+                languageModel.form.vatTinNo,
                 'Enter tin number',
                 null,
                 _controllerList[10],
@@ -451,9 +463,9 @@ class _WizardFormState extends State<WizardForm> {
               ),
               FxBox.h24,
               _dataViewWebCommon(
-                'CST No.',
+                languageModel.form.cstNo,
                 'Enter cst number',
-                'Service Tax No.',
+                languageModel.form.serviceTaxNo,
                 'Service tax number',
                 null,
                 _controllerList[12],
@@ -461,9 +473,9 @@ class _WizardFormState extends State<WizardForm> {
               ),
               FxBox.h24,
               _dataViewWebCommon(
-                'Company UIN',
+                languageModel.form.companyUIN,
                 'Enter uin pin',
-                'Declaration',
+                languageModel.form.declaration,
                 '',
                 null,
                 _controllerList[14],
@@ -475,9 +487,9 @@ class _WizardFormState extends State<WizardForm> {
             ? Column(
                 children: [
                   _dataViewTabCommon(
-                    'PAN Card',
+                    languageModel.form.panCard,
                     'Enter pancard number',
-                    'VAT/TIN No.',
+                    languageModel.form.vatTinNo,
                     'Enter tin number',
                     null,
                     _controllerList[10],
@@ -485,9 +497,9 @@ class _WizardFormState extends State<WizardForm> {
                   ),
                   FxBox.h24,
                   _dataViewTabCommon(
-                    'CST No.',
+                    languageModel.form.cstNo,
                     'Enter cst number',
-                    'Service Tax No.',
+                    languageModel.form.serviceTaxNo,
                     'Service tax number',
                     null,
                     _controllerList[12],
@@ -495,9 +507,9 @@ class _WizardFormState extends State<WizardForm> {
                   ),
                   FxBox.h24,
                   _dataViewTabCommon(
-                    'Company UIN',
+                    languageModel.form.companyUIN,
                     'Enter uin pin',
-                    'Declaration',
+                    languageModel.form.declaration,
                     '',
                     null,
                     _controllerList[14],
@@ -508,27 +520,27 @@ class _WizardFormState extends State<WizardForm> {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _commonTitle('PAN Card'),
+                  _commonTitle(languageModel.form.panCard),
                   FxBox.h8,
                   _commonTextField('Enter pancard number', _controllerList[10]),
                   FxBox.h24,
-                  _commonTitle('VAT/TIN No.'),
+                  _commonTitle(languageModel.form.vatTinNo),
                   FxBox.h8,
                   _commonTextField('Enter tin number', _controllerList[11]),
                   FxBox.h24,
-                  _commonTitle('CST No.'),
+                  _commonTitle(languageModel.form.cstNo),
                   FxBox.h8,
                   _commonTextField('Enter cst number', _controllerList[12]),
                   FxBox.h24,
-                  _commonTitle('Service Tax No.'),
+                  _commonTitle(languageModel.form.serviceTaxNo),
                   FxBox.h8,
                   _commonTextField('Service tax number', _controllerList[13]),
                   FxBox.h24,
-                  _commonTitle('Company UIN'),
+                  _commonTitle(languageModel.form.companyUIN),
                   FxBox.h8,
                   _commonTextField('Enter uin pin', _controllerList[14]),
                   FxBox.h24,
-                  _commonTitle('Declaration'),
+                  _commonTitle(languageModel.form.declaration),
                   FxBox.h8,
                   _commonTextField('', _controllerList[15]),
                 ],
@@ -543,7 +555,7 @@ class _WizardFormState extends State<WizardForm> {
                 children: [
                   Expanded(
                     child: _commonTitle(
-                      'Name on Card',
+                      languageModel.form.nameOnCard,
                       textAlign: TextAlign.end,
                     ),
                   ),
@@ -558,7 +570,7 @@ class _WizardFormState extends State<WizardForm> {
                   FxBox.w24,
                   Expanded(
                     child: _commonTitle(
-                      'Credit Card Type',
+                      languageModel.form.creditCardType,
                       textAlign: TextAlign.end,
                     ),
                   ),
@@ -568,9 +580,9 @@ class _WizardFormState extends State<WizardForm> {
               ),
               FxBox.h24,
               _dataViewWebCommon(
-                'Credit Card Number',
+                languageModel.form.creditCardNumber,
                 'Enter credit card number',
-                'Card Verification Number',
+                languageModel.form.cardVerificationNumber,
                 'Enter verification number',
                 null,
                 _controllerList[17],
@@ -581,7 +593,7 @@ class _WizardFormState extends State<WizardForm> {
                 children: [
                   Expanded(
                     child: _commonTitle(
-                      'Expiration Date',
+                      languageModel.form.expirationDate,
                       textAlign: TextAlign.end,
                     ),
                   ),
@@ -610,7 +622,7 @@ class _WizardFormState extends State<WizardForm> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _commonTitle('Name on Card'),
+                            _commonTitle(languageModel.form.nameOnCard),
                             FxBox.h8,
                             _commonTextField(
                               'Enter card name',
@@ -624,7 +636,7 @@ class _WizardFormState extends State<WizardForm> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _commonTitle('Credit Card Type'),
+                            _commonTitle(languageModel.form.creditCardType),
                             FxBox.h8,
                             _creditCardTextField(),
                           ],
@@ -634,9 +646,9 @@ class _WizardFormState extends State<WizardForm> {
                   ),
                   FxBox.h24,
                   _dataViewTabCommon(
-                    'Credit Card Number',
+                    languageModel.form.creditCardNumber,
                     'Enter credit card number',
-                    'Card Verification Number',
+                    languageModel.form.cardVerificationNumber,
                     'Enter verification number',
                     null,
                     _controllerList[17],
@@ -649,7 +661,7 @@ class _WizardFormState extends State<WizardForm> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            _commonTitle('Expiration Date'),
+                            _commonTitle(languageModel.form.expirationDate),
                             FxBox.h8,
                             _commonTextField(
                               'DD /MM /YYYY',
@@ -675,27 +687,27 @@ class _WizardFormState extends State<WizardForm> {
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _commonTitle('Name on Card'),
+                  _commonTitle(languageModel.form.nameOnCard),
                   FxBox.h8,
                   _commonTextField('Enter card number', _controllerList[16]),
                   FxBox.h24,
-                  _commonTitle('Credit Card Type'),
+                  _commonTitle(languageModel.form.creditCardType),
                   FxBox.h8,
                   _creditCardTextField(),
                   FxBox.h24,
-                  _commonTitle('Credit Card Number'),
+                  _commonTitle(languageModel.form.creditCardNumber),
                   FxBox.h8,
                   _commonTextField(
                     'Enter credit card number',
                     _controllerList[17],
                   ),
                   FxBox.h24,
-                  _commonTitle('Card Verification Number'),
+                  _commonTitle(languageModel.form.cardVerificationNumber),
                   FxBox.h8,
                   _commonTextField(
                       'Enter verification number', _controllerList[18]),
                   FxBox.h24,
-                  _commonTitle('Expiration Date'),
+                  _commonTitle(languageModel.form.expirationDate),
                   FxBox.h8,
                   _commonTextField('DD /MM/ YYYY', _controllerList[19]),
                 ],
@@ -733,10 +745,10 @@ class _WizardFormState extends State<WizardForm> {
                 },
               ),
               FxBox.w8,
-              const Expanded(
+              Expanded(
                 child: Text(
-                  'By proceeding, you agree to Terms and privacy',
-                  style: TextStyle(fontWeight: FontWeight.w600),
+                  languageModel.form.confirmText,
+                  style: const TextStyle(fontWeight: FontWeight.w600),
                 ),
               )
             ],

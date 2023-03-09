@@ -7,6 +7,7 @@ import 'package:admin_dashboard/src/provider/calendar/calendar_drag/bloc/calenda
 import 'package:admin_dashboard/src/provider/calendar/calendar_format/calendar_format_bloc.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -205,18 +206,15 @@ class _CalendarState extends State<Calendar> {
                     deletePressed: () {},
                   );
                 },
-                icon: const Icon(
-                  Icons.add_circle_outline,
-                  size: 15,
-                ),
-                text: 'Create Event',
+                icon: const Icon(Icons.add_circle_outline, size: 15),
+                text: languageModel.calendar.createEvent,
                 borderRadius: 40,
               ),
             ),
             FxBox.h24,
-            const Text(
-              'Drag and drop your event or click in the calendar',
-              style: TextStyle(fontSize: 15),
+            Text(
+              languageModel.calendar.calendarTitle,
+              style: const TextStyle(fontSize: 15),
             ),
             FxBox.h16,
             _addEventButtons(
@@ -237,9 +235,9 @@ class _CalendarState extends State<Calendar> {
                 label: 'Theme',
                 colorIndex: 1),
             FxBox.h40,
-            const Text(
-              'Activity',
-              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+            Text(
+              languageModel.dashboard.activity,
+              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
             ),
             FxBox.h16,
             SizedBox(
@@ -264,25 +262,25 @@ class _CalendarState extends State<Calendar> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Text(
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text.',
+                            languageModel.lorem3,
                             maxLines: 3,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                            style: TextStyle(
+                            languageModel.lorem2,
+                            style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
-                            'Lorem Ipsum is simply dummy text of the printing.',
-                            style: TextStyle(
+                            languageModel.lorem1,
+                            style: const TextStyle(
                               fontSize: 15,
                               fontWeight: FontWeight.bold,
                             ),

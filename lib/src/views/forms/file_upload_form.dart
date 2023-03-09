@@ -4,11 +4,11 @@ import 'dart:ui';
 
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/form/form_upload_file/bloc/form_upload_file_bloc.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:desktop_drop/desktop_drop.dart';
@@ -47,9 +47,9 @@ class _FileUploadFormState extends State<FileUploadForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    Strings.dropzone,
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                  Text(
+                    languageModel.translate('dropzone'),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   FxBox.h24,
                   GestureDetector(
@@ -205,10 +205,10 @@ class _FileUploadFormState extends State<FileUploadForm> {
           color: Colors.grey,
         ),
         FxBox.h20,
-        const Text(
-          "Drop files here or click to upload.",
+        Text(
+          languageModel.form.dropzoneText,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
               fontWeight: FontWeight.w600, fontSize: 22, color: Colors.grey),
         ),
       ],

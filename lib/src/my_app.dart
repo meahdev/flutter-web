@@ -2,7 +2,7 @@ import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
-import 'package:admin_dashboard/src/utils/multi_language.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -28,9 +28,7 @@ class _MyAppState extends State<MyApp> {
 
   Future<void> init() async {
     await HiveUtils.init();
-    themeModeBloc.add(
-      const ThemeModeEvent.changeTheme(null),
-    );
+    themeModeBloc.add(const ThemeModeEvent.changeTheme(null));
   }
 
   @override

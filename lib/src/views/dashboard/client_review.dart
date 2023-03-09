@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -52,7 +52,7 @@ class _ClienresponseState extends State<Clienresponse> {
                 ],
               ),
               ConstText.lightText(
-                text: Strings.clientReviewText,
+                text: languageModel.dashboard.revirewText,
                 fontSize: 15,
                 //color: ColorConst.grey800,
                 fontWeight: FontWeight.w500,
@@ -83,7 +83,7 @@ class _ClienresponseState extends State<Clienresponse> {
         //   ),
         // ),
         ConstText.lightText(
-          text: Strings.clientReviews,
+          text: languageModel.dashboard.clientReviews,
           // color: ColorConst.grey800,
           fontWeight: FontWeight.bold,
         ),

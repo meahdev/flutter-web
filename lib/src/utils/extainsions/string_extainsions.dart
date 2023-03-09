@@ -4,8 +4,6 @@ extension Range on num {
   }
 }
 
-
-
 extension StringExtension on String {
   String capitalize() {
     try {
@@ -15,6 +13,20 @@ extension StringExtension on String {
           .join(' ');
     } catch (e) {
       return this;
+    }
+  }
+
+  String camelCase() {
+    try {
+      final list = trim().split(' ');
+      String remaining = '';
+      if (list.length > 1) {
+        remaining =
+            list.sublist(1).map((e) => e.trim()._capitalizeFirst()).join('');
+      }
+      return [list.first.toLowerCase(), remaining].join('');
+    } catch (e) {
+      return toLowerCase();
     }
   }
 

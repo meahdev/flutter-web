@@ -1,5 +1,5 @@
 import 'package:admin_dashboard/src/my_app.dart';
-import 'package:admin_dashboard/src/utils/multi_language.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:scoped_model/scoped_model.dart';

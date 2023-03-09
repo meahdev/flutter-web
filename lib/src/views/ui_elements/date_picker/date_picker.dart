@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -70,15 +71,15 @@ class _DatePickerState extends State<DatePicker> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Date Range',
-                      style: TextStyle(
+                    Text(
+                      languageModel.widget.dateRange,
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 21.0),
                     ),
                     FxBox.h2,
-                    const Text(
-                      'The simplest use of Date picker',
-                      style: TextStyle(fontSize: 14.0),
+                    Text(
+                      languageModel.widget.datePickerText,
+                      style: const TextStyle(fontSize: 14.0),
                     ),
                     FxBox.h2,
                     Responsive.isWeb(context)
@@ -234,9 +235,9 @@ class _DatePickerState extends State<DatePicker> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Basic',
-              style: TextStyle(
+            Text(
+              languageModel.widget.basic,
+              style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),
@@ -264,9 +265,9 @@ class _DatePickerState extends State<DatePicker> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Date Formate',
-              style: TextStyle(
+            Text(
+              languageModel.widget.dateRange,
+              style: const TextStyle(
                 fontSize: 18.0,
                 fontWeight: FontWeight.bold,
               ),

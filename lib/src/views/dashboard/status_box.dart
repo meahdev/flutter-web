@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -40,14 +40,14 @@ class _StatusBoxState extends State<StatusBox> {
               FxBox.h12,
               ConstText.lightText(
                 fontSize: 17,
-                text: Strings.orderSuccessful,
+                text: languageModel.dashboard.orderSuccessful,
                 color: ColorConst.primary,
                 fontWeight: FontWeight.bold,
               ),
               FxBox.h8,
               ConstText.lightText(
                 fontSize: 15,
-                text: Strings.successText,
+                text: languageModel.dashboard.orderText,
                 fontWeight: FontWeight.w500,
                 textAlign: TextAlign.center,
               ),
@@ -56,7 +56,7 @@ class _StatusBoxState extends State<StatusBox> {
                 borderRadius: 6,
                 onPressed: () {},
                 textColor: ColorConst.white,
-                text: Strings.checkStatus,
+                text: languageModel.dashboard.viewOrder,
                 color: ColorConst.primary,
               ),
             ],

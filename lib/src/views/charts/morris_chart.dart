@@ -1,8 +1,7 @@
 import 'package:admin_dashboard/src/constant/enum.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/utils/charts/chartsutils.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/utils/text_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -20,31 +19,36 @@ class _MorrisChartState extends State<MorrisChart> {
       mainAxisSize: MainAxisSize.min,
       children: Responsive.isTablet(context) || Responsive.isMobile(context)
           ? [
-              _card(ChartType.lineChart, context, Strings.lineChart),
+              _card(
+                  ChartType.lineChart, context, languageModel.chart.lineChart),
               FxBox.h20,
-              _card(ChartType.barChart, context, Strings.barChart),
+              _card(ChartType.barChart, context, languageModel.chart.barChart),
               FxBox.h20,
-              _card(ChartType.areaChart, context, Strings.areaChart),
+              _card(
+                  ChartType.areaChart, context, languageModel.chart.areaChart),
               FxBox.h20,
-              _card(ChartType.piaChart, context, Strings.donutChart),
+              _card(
+                  ChartType.piaChart, context, languageModel.chart.donutChart),
               FxBox.h20,
-              _card(ChartType.colomnChart, context, Strings.columnChart),
+              _card(ChartType.colomnChart, context,
+                  languageModel.chart.columnChart),
             ]
           : [
               Row(
                 children: [
                   Expanded(
-                    child:
-                        _card(ChartType.lineChart, context, Strings.lineChart),
+                    child: _card(ChartType.lineChart, context,
+                        languageModel.chart.lineChart),
                   ),
                   FxBox.w20,
                   Expanded(
-                    child:
-                        _card(ChartType.piaChart, context, Strings.donutChart),
+                    child: _card(ChartType.piaChart, context,
+                        languageModel.chart.donutChart),
                   ),
                   FxBox.w20,
                   Expanded(
-                    child: _card(ChartType.barChart, context, Strings.barChart),
+                    child: _card(ChartType.barChart, context,
+                        languageModel.chart.barChart),
                   ),
                 ],
               ),
@@ -52,13 +56,13 @@ class _MorrisChartState extends State<MorrisChart> {
               Row(
                 children: [
                   Expanded(
-                    child:
-                        _card(ChartType.areaChart, context, Strings.areaChart),
+                    child: _card(ChartType.areaChart, context,
+                        languageModel.chart.areaChart),
                   ),
                   FxBox.w20,
                   Expanded(
-                    child: _card(
-                        ChartType.colomnChart, context, Strings.columnChart),
+                    child: _card(ChartType.colomnChart, context,
+                        languageModel.chart.columnChart),
                   ),
                 ],
               ),
@@ -89,145 +93,6 @@ Widget _card(ChartType chartType, BuildContext context, String name) {
           ),
         ],
       ),
-    ),
-  );
-}
-
-getChartData(ChartType chartType, BuildContext context) {
-  if (Responsive.isMobile(context)) {
-    if (chartType == ChartType.lineChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(children: [
-          _richText(Strings.activated, 18610, context),
-          FxBox.h12,
-          _richText(Strings.pending, 42210, context),
-          FxBox.h12,
-          _richText(Strings.deactivated, 10185, context),
-        ]),
-      );
-    } else if (chartType == ChartType.barChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText(Strings.activated, 42010, context),
-            FxBox.h12,
-            _richText(Strings.pending, 68210, context),
-            FxBox.h12,
-          ],
-        ),
-      );
-    } else if (chartType == ChartType.areaChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText(Strings.activated, 42010, context),
-            FxBox.h12,
-            _richText(Strings.pending, 2041, context),
-            FxBox.h12,
-            _richText(Strings.deactivated, 68210, context),
-          ],
-        ),
-      );
-    } else if (chartType == ChartType.piaChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText(Strings.activated, 2041, context),
-            FxBox.h12,
-            _richText(Strings.pending, 42010, context),
-            FxBox.h12,
-            _richText(Strings.deactivated, 68210, context),
-          ],
-        ),
-      );
-    } else if (chartType == ChartType.colomnChart) {
-      return Align(
-        alignment: Alignment.center,
-        child: Column(
-          children: [
-            _richText(Strings.activated, 42010, context),
-            FxBox.h12,
-            _richText(Strings.pending, 2041, context),
-            FxBox.h12,
-            _richText(Strings.deactivated, 68210, context),
-          ],
-        ),
-      );
-    }
-  } else {
-    if (chartType == ChartType.lineChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText(Strings.activated, 42010, context),
-          _richText(Strings.pending, 56910, context),
-          _richText(Strings.deactivated, 68210, context),
-        ],
-      );
-    } else if (chartType == ChartType.barChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText(Strings.activated, 605312, context),
-          _richText(Strings.pending, 123442, context),
-        ],
-      );
-    } else if (chartType == ChartType.areaChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText(Strings.activated, 82531, context),
-          _richText(Strings.pending, 2521, context),
-          _richText(Strings.deactivated, 102335, context),
-        ],
-      );
-    } else if (chartType == ChartType.piaChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText(Strings.activated, 3251, context),
-          _richText(Strings.pending, 85330, context),
-          _richText(Strings.deactivated, 346414, context),
-        ],
-      );
-    } else if (chartType == ChartType.colomnChart) {
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          _richText(Strings.activated, 86231, context),
-          _richText(Strings.pending, 2441, context),
-          _richText(Strings.deactivated, 102400, context),
-        ],
-      );
-    }
-  }
-}
-
-Widget _richText(String type, int count, BuildContext context) {
-  return RichText(
-    textAlign: TextAlign.center,
-    text: TextSpan(
-      style: DefaultTextStyle.of(context).style,
-      children: <TextSpan>[
-        TextSpan(
-          text: upperCase('$count\n'),
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 23,
-          ),
-        ),
-        TextSpan(
-          text: upperCase(type),
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
-        ),
-      ],
     ),
   );
 }
