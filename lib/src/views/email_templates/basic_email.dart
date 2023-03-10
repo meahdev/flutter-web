@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -31,13 +32,13 @@ class BasicEmail extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    "Please confirm your email address by clicking the link below.",
+                  Text(
+                    languageModel.emailTemplate.basicEmail1,
                     softWrap: true,
                   ),
                   FxBox.h20,
-                  const Text(
-                    "We may need to send you critical information about our service and it is important that we have an accurate email address.",
+                  Text(
+                   languageModel.emailTemplate.basicEmail2,
                     softWrap: true,
                   ),
                   FxBox.h20,
@@ -48,8 +49,8 @@ class BasicEmail extends StatelessWidget {
                             borderRadius: BorderRadius.circular(8)),
                       ),
                       onPressed: () {},
-                      child: const CustomText(
-                        title: 'Confirm Email Address',
+                      child: CustomText(
+                        title: languageModel.emailTemplate.confirmEmail,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
@@ -59,7 +60,7 @@ class BasicEmail extends StatelessWidget {
                     Strings.fdash,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                  const Text("Support Team"),
+                  Text(languageModel.emailTemplate.supportTeam),
                   FxBox.h36,
                   const Align(
                     alignment: Alignment.center,

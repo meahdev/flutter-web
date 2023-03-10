@@ -4,6 +4,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/coming_soon/bloc/coming_soon_bloc_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -87,7 +88,7 @@ class ComingSoonState extends State<ComingSoon> {
                       SvgPicture.asset(IconlyBroken.adminKitText),
                       FxBox.h20,
                       Text(
-                        "We have great adminkit",
+                        languageModel.extraPage.commingSoon1,
                         style: TextStyle(
                           color: isDark
                               ? ColorConst.darkFontColor
@@ -97,7 +98,7 @@ class ComingSoonState extends State<ComingSoon> {
                         ),
                       ),
                       Text(
-                        "Let's Get it",
+                        languageModel.extraPage.commingSoon2,
                         style: TextStyle(
                           color: isDark
                               ? ColorConst.darkFontColor

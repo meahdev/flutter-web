@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
@@ -68,8 +69,8 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
                                   children: [
                                     _logoView(),
                                     FxBox.h16,
-                                    ConstantAuth.headerView(Strings.locked,
-                                        Strings.lockedDescription, context),
+                                    ConstantAuth.headerView(languageModel.authentication.locked,
+                                        languageModel.authentication.loackedText, context),
                                     _bottomView(),
                                   ],
                                 ),
@@ -93,7 +94,7 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
                                   FxBox.h16,
                                   Center(
                                     child: CustomText(
-                                      title: Strings.loginHeaderText,
+                                      title: languageModel.authentication.signInHeader,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w700,
                                       textColor: isDark
@@ -130,7 +131,7 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
         FxBox.h28,
         _profileImageView(),
         FxBox.h8,
-        ConstantAuth.labelView(Strings.password),
+        ConstantAuth.labelView(languageModel.form.password),
         FxBox.h8,
         _passwordTextBoxWidget(),
         FxBox.h20,
@@ -276,7 +277,7 @@ class _LockScreenTwoState extends State<LockScreenTwo> {
   Widget _unLockButton() {
     return FxButton(
       onPressed: () {},
-      text: Strings.unLock,
+      text: languageModel.authentication.unlock,
       borderRadius: 8.0,
       height: 40,
       minWidth: MediaQuery.of(context).size.width,

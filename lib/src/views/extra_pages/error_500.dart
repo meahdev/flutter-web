@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,7 +55,7 @@ class _Error500State extends State<Error500> {
                                     ),
                                   ),
                                   Text(
-                                    "Internal Server Error",
+                                    languageModel.extraPage.error2,
                                     style: TextStyle(
                                       color: isDark
                                           ? ColorConst.darkFontColor
@@ -64,9 +65,7 @@ class _Error500State extends State<Error500> {
                                     ),
                                   ),
                                   FxBox.h24,
-                                  const Text(
-                                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                                  ),
+                                  Text(languageModel.lorem2),
                                   FxBox.h48,
                                   FxButton(
                                     borderRadius: 15,
@@ -100,7 +99,7 @@ class _Error500State extends State<Error500> {
                               ),
                             ),
                             Text(
-                              "Internal Server Error",
+                              languageModel.extraPage.error2,
                               style: TextStyle(
                                 color: isDark
                                     ? ColorConst.darkFontColor
@@ -110,9 +109,7 @@ class _Error500State extends State<Error500> {
                               ),
                             ),
                             FxBox.h24,
-                            const Text(
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                            ),
+                            Text(languageModel.lorem2),
                             FxBox.h48,
                             FxButton(
                               borderRadius: 15,

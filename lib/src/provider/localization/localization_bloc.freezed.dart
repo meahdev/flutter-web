@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'theme_mode_bloc.dart';
+part of 'localization_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,167 +15,118 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ThemeModeEvent {
-  bool? get themeMode => throw _privateConstructorUsedError;
+mixin _$LocalizationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool? themeMode) changeTheme,
+    required TResult Function() changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool? themeMode)? changeTheme,
+    TResult? Function()? changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool? themeMode)? changeTheme,
+    TResult Function()? changeLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ChangeTheme value) changeTheme,
+    required TResult Function(_ChangeLanguage value) changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ChangeTheme value)? changeTheme,
+    TResult? Function(_ChangeLanguage value)? changeLanguage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ChangeTheme value)? changeTheme,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ThemeModeEventCopyWith<ThemeModeEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ThemeModeEventCopyWith<$Res> {
-  factory $ThemeModeEventCopyWith(
-          ThemeModeEvent value, $Res Function(ThemeModeEvent) then) =
-      _$ThemeModeEventCopyWithImpl<$Res, ThemeModeEvent>;
-  @useResult
-  $Res call({bool? themeMode});
+abstract class $LocalizationEventCopyWith<$Res> {
+  factory $LocalizationEventCopyWith(
+          LocalizationEvent value, $Res Function(LocalizationEvent) then) =
+      _$LocalizationEventCopyWithImpl<$Res, LocalizationEvent>;
 }
 
 /// @nodoc
-class _$ThemeModeEventCopyWithImpl<$Res, $Val extends ThemeModeEvent>
-    implements $ThemeModeEventCopyWith<$Res> {
-  _$ThemeModeEventCopyWithImpl(this._value, this._then);
+class _$LocalizationEventCopyWithImpl<$Res, $Val extends LocalizationEvent>
+    implements $LocalizationEventCopyWith<$Res> {
+  _$LocalizationEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? themeMode = freezed,
-  }) {
-    return _then(_value.copyWith(
-      themeMode: freezed == themeMode
-          ? _value.themeMode
-          : themeMode // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_ChangeThemeCopyWith<$Res>
-    implements $ThemeModeEventCopyWith<$Res> {
-  factory _$$_ChangeThemeCopyWith(
-          _$_ChangeTheme value, $Res Function(_$_ChangeTheme) then) =
-      __$$_ChangeThemeCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({bool? themeMode});
+abstract class _$$_ChangeLanguageCopyWith<$Res> {
+  factory _$$_ChangeLanguageCopyWith(
+          _$_ChangeLanguage value, $Res Function(_$_ChangeLanguage) then) =
+      __$$_ChangeLanguageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_ChangeThemeCopyWithImpl<$Res>
-    extends _$ThemeModeEventCopyWithImpl<$Res, _$_ChangeTheme>
-    implements _$$_ChangeThemeCopyWith<$Res> {
-  __$$_ChangeThemeCopyWithImpl(
-      _$_ChangeTheme _value, $Res Function(_$_ChangeTheme) _then)
+class __$$_ChangeLanguageCopyWithImpl<$Res>
+    extends _$LocalizationEventCopyWithImpl<$Res, _$_ChangeLanguage>
+    implements _$$_ChangeLanguageCopyWith<$Res> {
+  __$$_ChangeLanguageCopyWithImpl(
+      _$_ChangeLanguage _value, $Res Function(_$_ChangeLanguage) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? themeMode = freezed,
-  }) {
-    return _then(_$_ChangeTheme(
-      freezed == themeMode
-          ? _value.themeMode
-          : themeMode // ignore: cast_nullable_to_non_nullable
-              as bool?,
-    ));
-  }
 }
 
 /// @nodoc
 
-class _$_ChangeTheme implements _ChangeTheme {
-  const _$_ChangeTheme(this.themeMode);
-
-  @override
-  final bool? themeMode;
+class _$_ChangeLanguage implements _ChangeLanguage {
+  const _$_ChangeLanguage();
 
   @override
   String toString() {
-    return 'ThemeModeEvent.changeTheme(themeMode: $themeMode)';
+    return 'LocalizationEvent.changeLanguage()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ChangeTheme &&
-            (identical(other.themeMode, themeMode) ||
-                other.themeMode == themeMode));
+        (other.runtimeType == runtimeType && other is _$_ChangeLanguage);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, themeMode);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ChangeThemeCopyWith<_$_ChangeTheme> get copyWith =>
-      __$$_ChangeThemeCopyWithImpl<_$_ChangeTheme>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(bool? themeMode) changeTheme,
+    required TResult Function() changeLanguage,
   }) {
-    return changeTheme(themeMode);
+    return changeLanguage();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(bool? themeMode)? changeTheme,
+    TResult? Function()? changeLanguage,
   }) {
-    return changeTheme?.call(themeMode);
+    return changeLanguage?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(bool? themeMode)? changeTheme,
+    TResult Function()? changeLanguage,
     required TResult orElse(),
   }) {
-    if (changeTheme != null) {
-      return changeTheme(themeMode);
+    if (changeLanguage != null) {
+      return changeLanguage();
     }
     return orElse();
   }
@@ -183,61 +134,54 @@ class _$_ChangeTheme implements _ChangeTheme {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_ChangeTheme value) changeTheme,
+    required TResult Function(_ChangeLanguage value) changeLanguage,
   }) {
-    return changeTheme(this);
+    return changeLanguage(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_ChangeTheme value)? changeTheme,
+    TResult? Function(_ChangeLanguage value)? changeLanguage,
   }) {
-    return changeTheme?.call(this);
+    return changeLanguage?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_ChangeTheme value)? changeTheme,
+    TResult Function(_ChangeLanguage value)? changeLanguage,
     required TResult orElse(),
   }) {
-    if (changeTheme != null) {
-      return changeTheme(this);
+    if (changeLanguage != null) {
+      return changeLanguage(this);
     }
     return orElse();
   }
 }
 
-abstract class _ChangeTheme implements ThemeModeEvent {
-  const factory _ChangeTheme(final bool? themeMode) = _$_ChangeTheme;
-
-  @override
-  bool? get themeMode;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ChangeThemeCopyWith<_$_ChangeTheme> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _ChangeLanguage implements LocalizationEvent {
+  const factory _ChangeLanguage() = _$_ChangeLanguage;
 }
 
 /// @nodoc
-mixin _$ThemeModeState {
+mixin _$LocalizationState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool themeMode) success,
+    required TResult Function() success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool themeMode)? success,
+    TResult? Function()? success,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool themeMode)? success,
+    TResult Function()? success,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -263,16 +207,16 @@ mixin _$ThemeModeState {
 }
 
 /// @nodoc
-abstract class $ThemeModeStateCopyWith<$Res> {
-  factory $ThemeModeStateCopyWith(
-          ThemeModeState value, $Res Function(ThemeModeState) then) =
-      _$ThemeModeStateCopyWithImpl<$Res, ThemeModeState>;
+abstract class $LocalizationStateCopyWith<$Res> {
+  factory $LocalizationStateCopyWith(
+          LocalizationState value, $Res Function(LocalizationState) then) =
+      _$LocalizationStateCopyWithImpl<$Res, LocalizationState>;
 }
 
 /// @nodoc
-class _$ThemeModeStateCopyWithImpl<$Res, $Val extends ThemeModeState>
-    implements $ThemeModeStateCopyWith<$Res> {
-  _$ThemeModeStateCopyWithImpl(this._value, this._then);
+class _$LocalizationStateCopyWithImpl<$Res, $Val extends LocalizationState>
+    implements $LocalizationStateCopyWith<$Res> {
+  _$LocalizationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -289,7 +233,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$ThemeModeStateCopyWithImpl<$Res, _$_Initial>
+    extends _$LocalizationStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -302,7 +246,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'ThemeModeState.initial()';
+    return 'LocalizationState.initial()';
   }
 
   @override
@@ -318,7 +262,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool themeMode) success,
+    required TResult Function() success,
   }) {
     return initial();
   }
@@ -327,7 +271,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool themeMode)? success,
+    TResult? Function()? success,
   }) {
     return initial?.call();
   }
@@ -336,7 +280,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool themeMode)? success,
+    TResult Function()? success,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -377,7 +321,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements ThemeModeState {
+abstract class _Initial implements LocalizationState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -386,89 +330,62 @@ abstract class _$$_SuccessCopyWith<$Res> {
   factory _$$_SuccessCopyWith(
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
-  @useResult
-  $Res call({bool themeMode});
 }
 
 /// @nodoc
 class __$$_SuccessCopyWithImpl<$Res>
-    extends _$ThemeModeStateCopyWithImpl<$Res, _$_Success>
+    extends _$LocalizationStateCopyWithImpl<$Res, _$_Success>
     implements _$$_SuccessCopyWith<$Res> {
   __$$_SuccessCopyWithImpl(_$_Success _value, $Res Function(_$_Success) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? themeMode = null,
-  }) {
-    return _then(_$_Success(
-      null == themeMode
-          ? _value.themeMode
-          : themeMode // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ));
-  }
 }
 
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success(this.themeMode);
-
-  @override
-  final bool themeMode;
+  const _$_Success();
 
   @override
   String toString() {
-    return 'ThemeModeState.success(themeMode: $themeMode)';
+    return 'LocalizationState.success()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Success &&
-            (identical(other.themeMode, themeMode) ||
-                other.themeMode == themeMode));
+        (other.runtimeType == runtimeType && other is _$_Success);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, themeMode);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      __$$_SuccessCopyWithImpl<_$_Success>(this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(bool themeMode) success,
+    required TResult Function() success,
   }) {
-    return success(themeMode);
+    return success();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(bool themeMode)? success,
+    TResult? Function()? success,
   }) {
-    return success?.call(themeMode);
+    return success?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(bool themeMode)? success,
+    TResult Function()? success,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success(themeMode);
+      return success();
     }
     return orElse();
   }
@@ -505,11 +422,6 @@ class _$_Success implements _Success {
   }
 }
 
-abstract class _Success implements ThemeModeState {
-  const factory _Success(final bool themeMode) = _$_Success;
-
-  bool get themeMode;
-  @JsonKey(ignore: true)
-  _$$_SuccessCopyWith<_$_Success> get copyWith =>
-      throw _privateConstructorUsedError;
+abstract class _Success implements LocalizationState {
+  const factory _Success() = _$_Success;
 }

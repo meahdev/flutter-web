@@ -1,4 +1,4 @@
-import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_excel/excel.dart';
@@ -17,9 +17,9 @@ class ResponsiveTable extends StatelessWidget {
           children: <Widget>[
             Row(
               children: [
-                const Text(
-                  Strings.responsiveTable,
-                  style: TextStyle(
+                Text(
+                  languageModel.table.responsiveTable,
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -74,28 +74,28 @@ class ResponsiveTable extends StatelessWidget {
       DataColumn2(
         size: ColumnSize.L,
         label: sizedBox(
-          text: "Fist Name",
+          text: languageModel.table.firstName,
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
         size: ColumnSize.L,
         label: sizedBox(
-          text: "Last Name",
+          text: languageModel.table.lastName,
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
         size: ColumnSize.L,
         label: sizedBox(
-          text: "User Name",
+          text: languageModel.table.userName,
           fontwidget: FontWeight.bold,
         ),
       ),
       DataColumn2(
         size: ColumnSize.L,
         label: sizedBox(
-          text: "Department",
+          text: languageModel.table.department,
           fontwidget: FontWeight.bold,
         ),
       ),

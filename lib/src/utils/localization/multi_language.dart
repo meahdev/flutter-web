@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:admin_dashboard/src/provider/localization/localization_bloc.dart';
 import 'package:admin_dashboard/src/utils/hive/hive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -46,6 +47,7 @@ class LanguageModel extends Model {
       _appLocale = hi;
       await load();
     }
+    localizationBloc.add(const LocalizationEvent.changeLanguage());
   }
 
   String translate(String key) => _localizedString[key];
@@ -60,6 +62,9 @@ class LanguageModel extends Model {
   final _Form form = _Form();
   final _Chart chart = _Chart();
   final _Table table = _Table();
+  final _Authentication authentication = _Authentication();
+  final _EmailTemplate emailTemplate = _EmailTemplate();
+  final _ExtraPage extraPage = _ExtraPage();
 }
 
 class MultiLanguage {
@@ -353,6 +358,85 @@ class _Table {
   String get dark => languageModel.translate('dark');
   String get id => languageModel.translate('id');
   String get customerName => languageModel.translate('customerName');
-  String get mobileNo => languageModel.translate('mobileNo').replaceFirst('.', '');
+  String get mobileNo =>
+      languageModel.translate('mobileNo').replaceFirst('.', '');
   String get amount => languageModel.translate('amount');
+  String get dataTable => languageModel.translate('dataTable');
+  String get productName => languageModel.translate('productName');
+  String get quantity => languageModel.translate('quantity');
+  String get emailID => languageModel.translate('emailID');
+  String get responsiveTable => languageModel.translate('responsiveTable');
+  String get firstName => languageModel.translate('fistName');
+  String get lastName => languageModel.translate('lastName');
+  String get userName => languageModel.translate('userName');
+  String get department => languageModel.translate('department');
+  String get editableTable => languageModel.translate('editableTable');
+  String get birthDate => languageModel.translate('birthDate');
+  String get gender => languageModel.translate('gender');
+  String get edit => languageModel.translate('edit');
+}
+
+class _Authentication {
+  String get signIn => languageModel.translate('signIn');
+  String get signInHeader => languageModel.translate('signInHeader');
+  String get signInText => languageModel.translate('signInText');
+  String get email => '${languageModel.translate('signInText')}*';
+  String get forgotPassword => languageModel.translate('forgotPassword');
+  String get terms => languageModel.translate('confirmText');
+  String get contactInformation =>
+      languageModel.translate('contactInformation');
+  String get phone => '${languageModel.translate('phone')}*';
+  String get username => languageModel.translate('username');
+  String get register => languageModel.translate('register');
+  String get resetPassword => languageModel.translate('resetPassword');
+  String get emailInstructions => languageModel.translate('emailInstructions');
+  String get reset => languageModel.translate('reset');
+  String get locked => languageModel.translate('locked');
+  String get loackedText => languageModel.translate('loackedText');
+  String get unlock => languageModel.translate('unlock');
+}
+
+class _EmailTemplate {
+  String get basicEmail1 => languageModel.translate('basicEmail1');
+  String get basicEmail2 => languageModel.translate('basicEmail2');
+  String get confirmEmail => languageModel.translate('confirmEmail');
+  String get supportTeam => languageModel.translate('supportTeam');
+  String get emailWarning => languageModel.translate('emailWarning');
+  String get alertEmail1 => languageModel.translate('alertEmail1');
+  String get alertEmail2 => languageModel.translate('alertEmail2');
+  String get alertEmail3 => languageModel.translate('alertEmail3');
+  String get alertEmail4 => languageModel.translate('alertEmail4');
+  String get alertEmail5 => languageModel.translate('alertEmail5');
+  String get alertEmail6 => languageModel.translate('alertEmail6');
+  String get alertEmail7 => languageModel.translate('alertEmail7');
+}
+
+class _ExtraPage {
+  String get timelineTitle1 => languageModel.translate('timelineTitle1');
+  String get timelineTitle2 => languageModel.translate('timelineTitle2');
+  String get timelineTitle3 => languageModel.translate('timelineTitle3');
+  String get timelineTitle4 => languageModel.translate('timelineTitle4');
+  String get timelineText1 => languageModel.translate('timelineText1');
+  String get timelineText2 => languageModel.translate('timelineText2');
+  String get timelineText3 => languageModel.translate('timelineText3');
+  String get timelineText4 => languageModel.translate('timelineText4');
+  String get intro => 'Intro : ${languageModel.translate('timelineText1')}..  ';
+  String get creativeDirector => languageModel.translate('creativeDirector');
+  String get readMore => languageModel.translate('readMore');
+  String get error1 => languageModel.translate('error1');
+  String get error2 => languageModel.translate('error2');
+  String get starter => languageModel.translate('starter');
+  String get professional => languageModel.translate('professional');
+  String get enterprise => languageModel.translate('enterprise');
+  String get unlimited => languageModel.translate('unlimited');
+  String get pricing1 => languageModel.translate('pricing1');
+  String get pricing2 => languageModel.translate('pricing2');
+  String get pricing3 => languageModel.translate('pricing3');
+  String get pricing4 => languageModel.translate('pricing4');
+  String get maintenancaTitle => languageModel.translate('maintenancaTitle');
+  String get maintenancaSubtitle => languageModel.translate('maintenancaSubtitle');
+  String get maintenancaText => languageModel.translate('maintenancaText');
+  String get commingSoon1 => languageModel.translate('commingSoon1');
+  String get commingSoon2 => languageModel.translate('commingSoon2');
+  String get faqText => languageModel.translate('faqText');
 }

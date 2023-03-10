@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -89,7 +90,7 @@ class _DirectoryPageState extends State<DirectoryPage> {
                         ),
                       ),
                       Text(
-                        "Creative Director",
+                        languageModel.extraPage.creativeDirector,
                         style: TextStyle(
                           color: isDark
                               ? ColorConst.darkFontColor
@@ -119,13 +120,12 @@ class _DirectoryPageState extends State<DirectoryPage> {
             ),
             RichText(
               text: TextSpan(
-                text:
-                    'Intro : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s...  ',
+                text: languageModel.extraPage.intro,
                 style: DefaultTextStyle.of(context).style,
-                children: const <TextSpan>[
+                children: <TextSpan>[
                   TextSpan(
-                    text: 'Read More',
-                    style: TextStyle(
+                    text: languageModel.extraPage.readMore,
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: ColorConst.primary,
                     ),

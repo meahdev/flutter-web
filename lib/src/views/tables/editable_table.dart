@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/provider/table/editabletable/bloc/editable_table_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -108,9 +109,9 @@ class _EditableTableState extends State<EditableTable> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Editable Table',
-                style: TextStyle(
+              Text(
+                languageModel.table.editableTable,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -124,33 +125,39 @@ class _EditableTableState extends State<EditableTable> {
                       minWidth: 700,
                       columns: [
                         DataColumn2(
-                          label:
-                              sizedBox(text: "ID", fontwidget: FontWeight.bold),
+                          label: sizedBox(
+                              text: languageModel.table.id,
+                              fontwidget: FontWeight.bold),
                           size: ColumnSize.S,
                         ),
                         DataColumn2(
                           label: sizedBox(
-                              text: "Username", fontwidget: FontWeight.bold),
+                              text: languageModel.table.userName,
+                              fontwidget: FontWeight.bold),
                           size: ColumnSize.L,
                         ),
                         DataColumn2(
                           label: sizedBox(
-                              text: "Mobile No", fontwidget: FontWeight.bold),
+                              text: languageModel.table.mobileNo,
+                              fontwidget: FontWeight.bold),
                           size: ColumnSize.L,
                         ),
                         DataColumn2(
                           label: sizedBox(
-                              text: "Birth Date", fontwidget: FontWeight.bold),
+                              text: languageModel.table.birthDate,
+                              fontwidget: FontWeight.bold),
                           size: ColumnSize.L,
                         ),
                         DataColumn2(
                           label: sizedBox(
-                              text: "Gender", fontwidget: FontWeight.bold),
+                              text: languageModel.table.gender,
+                              fontwidget: FontWeight.bold),
                           size: ColumnSize.M,
                         ),
                         DataColumn2(
                           label: sizedBox(
-                              text: "Edit", fontwidget: FontWeight.bold),
+                              text: languageModel.table.edit,
+                              fontwidget: FontWeight.bold),
                           size: ColumnSize.S,
                         ),
                       ],

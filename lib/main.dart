@@ -2,7 +2,6 @@ import 'package:admin_dashboard/src/my_app.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:scoped_model/scoped_model.dart';
 import 'package:window_size/window_size.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
@@ -28,9 +27,10 @@ Future<void> main() async {
   usePathUrlStrategy();
   await languageModel.load();
   runApp(
-    ScopedModel<LanguageModel>(
-      model: languageModel,
-      child: const MyApp(),
-    ),
+    const MyApp(),
+    // ScopedModel<LanguageModel>(
+    //   model: languageModel,
+    //   child: const MyApp(),
+    // ),
   );
 }

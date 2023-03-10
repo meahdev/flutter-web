@@ -4,6 +4,7 @@ import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/checkbox/checkbox_bloc/checkbox_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
@@ -76,7 +77,7 @@ class _RegisterTwoState extends State<RegisterTwo> {
                                     _logoView(),
                                     FxBox.h16,
                                     CustomText(
-                                      title: Strings.contactInfo,
+                                      title: languageModel.authentication.contactInformation,
                                       fontSize: 28,
                                       textAlign: TextAlign.start,
                                       fontWeight: FontWeight.w700,
@@ -140,19 +141,19 @@ class _RegisterTwoState extends State<RegisterTwo> {
       mainAxisSize: MainAxisSize.min,
       children: [
         FxBox.h28,
-        ConstantAuth.labelView(Strings.phonestr),
+        ConstantAuth.labelView(languageModel.authentication.phone),
         FxBox.h8,
         _phoneTextBoxWidget(),
         FxBox.h16,
-        ConstantAuth.labelView(Strings.emailstr),
+        ConstantAuth.labelView(languageModel.authentication.email),
         FxBox.h8,
         _emailTextBoxWidget(),
         FxBox.h16,
-        ConstantAuth.labelView(Strings.userStr),
+        ConstantAuth.labelView(languageModel.authentication.username),
         FxBox.h8,
         _usernameTextBoxWidget(),
         FxBox.h16,
-        ConstantAuth.labelView(Strings.password),
+        ConstantAuth.labelView(languageModel.form.password),
         FxBox.h8,
         _passwordTextBoxWidget(),
         FxBox.h8,
@@ -215,7 +216,7 @@ class _RegisterTwoState extends State<RegisterTwo> {
           ),
         ),
         CustomText(
-          title: Strings.termsServiceText3,
+          title: languageModel.authentication.terms,
           textColor: isDark ? ColorConst.white : ColorConst.lightFontColor,
           fontWeight: FontWeight.w700,
         ),
@@ -275,7 +276,7 @@ class _RegisterTwoState extends State<RegisterTwo> {
   Widget _registerButton() {
     return FxButton(
       onPressed: () {},
-      text: Strings.register,
+      text: languageModel.authentication.register,
       borderRadius: 4.0,
       height: 40,
       minWidth: MediaQuery.of(context).size.width,
