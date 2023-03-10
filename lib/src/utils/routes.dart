@@ -7,6 +7,7 @@ import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
 import 'package:admin_dashboard/src/views/e_commerce/cart/cart_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
+import 'package:admin_dashboard/src/views/e_commerce/compare_screen/compare_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
@@ -172,6 +173,8 @@ int getRouteIndex(String route) {
     return 55;
   } else if (route == '${Strings.payment}/success') {
     return 56;
+  } else if (route == 'Compare Screen') {
+    return 57;
   } else {
     return 0;
   }
@@ -290,6 +293,8 @@ Widget getRouteWidget(int index) {
     return const ProductAdd();
   } else if (index == 56) {
     return const SuccessScreen();
+  } else if (index == 57) {
+    return const CompareScreen();
   } else {
     return const Dashboard();
   }
