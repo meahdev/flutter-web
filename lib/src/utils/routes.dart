@@ -25,6 +25,7 @@ import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_s
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_add.dart';
+import 'package:admin_dashboard/src/views/e_commerce/wish_list/wish_list.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
@@ -175,6 +176,8 @@ int getRouteIndex(String route) {
     return 56;
   } else if (route == 'Compare Screen') {
     return 57;
+  } else if (route == 'Wish List') {
+    return 58;
   } else {
     return 0;
   }
@@ -295,6 +298,8 @@ Widget getRouteWidget(int index) {
     return const SuccessScreen();
   } else if (index == 57) {
     return const CompareScreen();
+  } else if (index == 58) {
+    return const WishList();
   } else {
     return const Dashboard();
   }

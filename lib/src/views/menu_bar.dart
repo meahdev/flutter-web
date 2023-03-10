@@ -81,7 +81,7 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.coupons,
       Strings.returnCondition,
     ],
-    [Strings.products, Strings.cart, Strings.payment, 'Compare Screen'],
+    [Strings.products, Strings.cart, Strings.payment, 'Compare Screen','Wish List'],
   ];
 
   List<List<String>> componentsExpandList = [
@@ -223,6 +223,7 @@ class _MenuBarState extends State<FMenuBar> {
     ProductAdd(),
     SuccessScreen(),
     CompareScreen(),
+    WishList(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
