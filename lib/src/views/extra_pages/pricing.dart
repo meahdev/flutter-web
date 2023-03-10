@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,17 +17,11 @@ class Pricing extends StatefulWidget {
 }
 
 class _PricingState extends State<Pricing> {
-  final iconList = [
-    Icons.flight,
-    Icons.emoji_events,
-    Icons.beach_access,
-    Icons.ac_unit
-  ];
   final List<String> headingList = [
-    "Starter",
-    "Professional",
-    'Enterprise',
-    "Unlimited"
+    languageModel.extraPage.starter,
+    languageModel.extraPage.professional,
+    languageModel.extraPage.enterprise,
+    languageModel.extraPage.unlimited,
   ];
   final List<String> priceList = ["9.99", "29.99", "49.99", "99.99"];
 
@@ -97,19 +92,19 @@ class _PricingState extends State<Pricing> {
               ),
               FxBox.h48,
               listTile(
-                text: "Free Live Support",
+                text: languageModel.extraPage.pricing1,
                 icons: Icons.check,
               ),
               listTile(
-                text: "Unlimited User",
+                text: languageModel.extraPage.pricing2,
                 icons: Icons.check,
               ),
               listTile(
-                text: "No Time Tracking",
+                text: languageModel.extraPage.pricing3,
                 icons: Icons.check,
               ),
               listTile(
-                text: "Free Setup",
+                text: languageModel.extraPage.pricing4,
                 icons: Icons.clear,
               ),
               FxBox.h48,

@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -42,9 +43,9 @@ class AlertEmail extends StatelessWidget {
                       ],
                     ),
                     alignment: Alignment.center,
-                    child: const Text(
-                      'Warning: You\'re approaching your limit. Please upgrade.',
-                      style: TextStyle(
+                    child: Text(
+                      languageModel.emailTemplate.emailWarning,
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 17.0,
                         color: ColorConst.white,
@@ -58,24 +59,22 @@ class AlertEmail extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            const Text('You have'),
+                            Text(languageModel.emailTemplate.alertEmail1),
                             FxBox.w4,
-                            const Text(
-                              '1 free report',
-                              style: TextStyle(
+                            Text(
+                              languageModel.emailTemplate.alertEmail2,
+                              style: const TextStyle(
                                 color: Colors.red,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 14,
                               ),
                             ),
                             const SizedBox(width: 5),
-                            const Text('remaining.'),
+                            Text(languageModel.emailTemplate.alertEmail3),
                           ],
                         ),
                         FxBox.h20,
-                        const Text(
-                          "Add your credit card now to upgrade your account to a premium plan to ensure you don't miss out on any reports.",
-                        ),
+                        Text(languageModel.emailTemplate.alertEmail4),
                         FxBox.h20,
                         Align(
                           child: TextButton(
@@ -84,22 +83,22 @@ class AlertEmail extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8)),
                             ),
                             onPressed: () {},
-                            child: const CustomText(
-                              title: 'Upgrade My Account',
+                            child: CustomText(
+                              title: languageModel.emailTemplate.alertEmail5,
                               fontWeight: FontWeight.w800,
                             ),
                           ),
                         ),
                         FxBox.h20,
-                        const Text.rich(
+                        Text.rich(
                           TextSpan(
-                            text: 'Thanks for choosing',
+                            text: languageModel.emailTemplate.alertEmail6,
                             children: <InlineSpan>[
-                              TextSpan(
+                              const TextSpan(
                                 text: '  ${Strings.fdash}',
                                 style: TextStyle(fontWeight: FontWeight.bold),
                               ),
-                              TextSpan(text: ' Admin.'),
+                              TextSpan(text: languageModel.emailTemplate.alertEmail7),
                             ],
                           ),
                         ),
@@ -108,7 +107,7 @@ class AlertEmail extends StatelessWidget {
                           Strings.fdash,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
-                        const Text('Support Team'),
+                        Text(languageModel.emailTemplate.supportTeam),
                         FxBox.h36,
                         const Align(
                           alignment: Alignment.center,

@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/table/datatable/bloc/data_table_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
@@ -36,9 +37,9 @@ class _DatatableState extends State<Datatable> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  const Text(
-                    'Data Table',
-                    style: TextStyle(
+                  Text(
+                    languageModel.table.dataTable,
+                    style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
                     ),
@@ -69,34 +70,34 @@ class _DatatableState extends State<Datatable> {
                         DataColumn2(
                           size: ColumnSize.S,
                           label:
-                              sizedBox(text: "ID", fontwidget: FontWeight.bold),
+                              sizedBox(text: languageModel.table.id, fontwidget: FontWeight.bold),
                         ),
                         DataColumn2(
                           size: ColumnSize.L,
                           label: sizedBox(
-                              text: "Customer Name",
+                              text: languageModel.table.customerName,
                               fontwidget: FontWeight.bold),
                         ),
                         DataColumn2(
                           size: ColumnSize.L,
                           label: sizedBox(
-                              text: "Email ID", fontwidget: FontWeight.bold),
+                              text: languageModel.table.emailID, fontwidget: FontWeight.bold),
                         ),
                         DataColumn2(
                           size: ColumnSize.L,
                           label: sizedBox(
-                              text: "Product Name",
+                              text: languageModel.table.productName,
                               fontwidget: FontWeight.bold),
                         ),
                         DataColumn2(
                           size: ColumnSize.M,
                           label: sizedBox(
-                              text: "Quantity", fontwidget: FontWeight.bold),
+                              text: languageModel.table.quantity, fontwidget: FontWeight.bold),
                         ),
                         DataColumn2(
                           size: ColumnSize.M,
                           label: sizedBox(
-                              text: "Amount", fontwidget: FontWeight.bold),
+                              text: languageModel.table.amount, fontwidget: FontWeight.bold),
                         ),
                       ],
                       rows: ls

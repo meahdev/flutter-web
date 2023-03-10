@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -14,31 +15,31 @@ class FAQs extends StatefulWidget {
 
 class _FAQsState extends State<FAQs> {
   final _dataGeneralList = [
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-    "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.",
-    "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+    languageModel.extraPage.timelineText1,
+    languageModel.extraPage.timelineText2,
+    languageModel.extraPage.timelineText3,
+    languageModel.extraPage.timelineText4,
   ];
 
   final _generalList = [
-    "What is Lorem Ipsum?",
-    "Where does it come from?",
-    "Why do we use it?",
-    "Where can I get some?",
+    languageModel.extraPage.timelineTitle1,
+    languageModel.extraPage.timelineTitle2,
+    languageModel.extraPage.timelineTitle3,
+    languageModel.extraPage.timelineTitle4,
   ];
 
   final _dataPricingNplanList = [
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-    "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.",
-    "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.",
-    "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
+    languageModel.extraPage.timelineText1,
+    languageModel.extraPage.timelineText3,
+    languageModel.extraPage.timelineText2,
+    languageModel.extraPage.timelineText4,
   ];
 
   final _pricingNplanList = [
-    "Where can I get some?",
-    "Why do we use it?",
-    "Where does it come from?",
-    "What is Lorem Ipsum?",
+    languageModel.extraPage.timelineTitle4,
+    languageModel.extraPage.timelineTitle2,
+    languageModel.extraPage.timelineTitle3,
+    languageModel.extraPage.timelineTitle1,
   ];
 
   @override
@@ -53,7 +54,7 @@ class _FAQsState extends State<FAQs> {
       child: Column(
         children: [
           Text(
-            "Can't find what you are looking for?",
+            languageModel.extraPage.faqText,
             style: TextStyle(
               fontSize: 21,
               fontWeight: FontWeight.bold,

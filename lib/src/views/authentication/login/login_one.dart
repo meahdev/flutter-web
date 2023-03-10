@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
@@ -72,8 +73,8 @@ class _LoginOneState extends State<LoginOne> {
                               _logoView(),
                               FxBox.h16,
                               ConstantAuth.headerView(
-                                  Strings.signIn,
-                                  'We suggest using the email address you use at work.',
+                                  languageModel.authentication.signIn,
+                                  languageModel.authentication.signInText,
                                   context),
                               _bottomView(),
                             ],
@@ -103,11 +104,11 @@ class _LoginOneState extends State<LoginOne> {
       //mainAxisSize: MainAxisSize.min,
       children: [
         FxBox.h28,
-        ConstantAuth.labelView(Strings.emailstr),
+        ConstantAuth.labelView(languageModel.authentication.email),
         FxBox.h8,
         _usernameTextBoxWidget(),
         FxBox.h16,
-        ConstantAuth.labelView(Strings.password),
+        ConstantAuth.labelView(languageModel.form.password),
         FxBox.h8,
         _passwordTextBoxWidget(),
         FxBox.h16,
@@ -167,48 +168,10 @@ class _LoginOneState extends State<LoginOne> {
     );
   }
 
-  // Widget _rememberMeCheckBox() {
-  //   return Row(
-  //     mainAxisAlignment: MainAxisAlignment.center,
-  //     children: [
-  //       BlocProvider(
-  //         create: (context) => _checkboxBloc,
-  //         child: BlocBuilder<CheckboxBloc, CheckboxState>(
-  //           builder: (context, state) {
-  //             return state.when(
-  //               success: (isChecked) {
-  //                 return Checkbox(
-  //                   value: isChecked,
-  //                   onChanged: (value) {
-  //                     _rememberMeAction(value!);
-  //                   },
-  //                   activeColor: ColorConst.primary,
-  //                   focusColor: ColorConst.primary,
-  //                 );
-  //               },
-  //             );
-  //           },
-  //         ),
-  //       ),
-  //       CustomText(
-  //         title: Strings.rememberMeLabel,
-  //         textColor: isDark
-  //             ? ColorConst.darkFontColor.withOpacity(0.75)
-  //             : ColorConst.lightFontColor,
-  //         fontWeight: FontWeight.w700,
-  //       ),
-  //     ],
-  //   );
-  // }
-
-  // Future<void> _rememberMeAction(bool isChecked) async {
-  //   _checkboxBloc.add(CheckboxEvent.started(isChecked: isChecked));
-  // }
-
   Widget _loginButton() {
     return FxButton(
       onPressed: () {},
-      text: Strings.signIn,
+      text: languageModel.authentication.signIn,
       borderRadius: 8.0,
       height: 40,
       minWidth: MediaQuery.of(context).size.width,
@@ -235,7 +198,7 @@ class _LoginOneState extends State<LoginOne> {
               ),
               FxBox.w4,
               CustomText(
-                title: Strings.forgotPassword,
+                title: languageModel.authentication.forgotPassword,
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
                 textColor: color,

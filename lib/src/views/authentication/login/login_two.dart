@@ -3,6 +3,7 @@ import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/routes/routes.gr.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
@@ -76,8 +77,8 @@ class _LoginTwoState extends State<LoginTwo> {
                                     _logoView(),
                                     FxBox.h16,
                                     ConstantAuth.headerView(
-                                      Strings.signIn,
-                                      'We suggest using the email address you use at work.',
+                                      languageModel.authentication.signIn,
+                                      languageModel.authentication.signInText,
                                       context,
                                     ),
                                     _bottomView(),
@@ -103,7 +104,7 @@ class _LoginTwoState extends State<LoginTwo> {
                                   FxBox.h16,
                                   Center(
                                     child: CustomText(
-                                      title: Strings.loginHeaderText,
+                                      title: languageModel.authentication.signInHeader,
                                       fontSize: 15,
                                       fontWeight: FontWeight.w700,
                                       textColor: isDark
@@ -139,11 +140,11 @@ class _LoginTwoState extends State<LoginTwo> {
       //mainAxisSize: MainAxisSize.min,
       children: [
         FxBox.h28,
-        ConstantAuth.labelView(Strings.emailstr),
+        ConstantAuth.labelView(languageModel.authentication.email),
         FxBox.h8,
         _usernameTextBoxWidget(),
         FxBox.h16,
-        ConstantAuth.labelView(Strings.password),
+        ConstantAuth.labelView(languageModel.form.password),
         FxBox.h8,
         _passwordTextBoxWidget(),
         FxBox.h16,
@@ -326,7 +327,7 @@ class _LoginTwoState extends State<LoginTwo> {
   Widget _loginButton() {
     return FxButton(
       onPressed: () {},
-      text: Strings.signin,
+      text: languageModel.authentication.signIn,
       borderRadius: 8.0,
       height: 40,
       minWidth: MediaQuery.of(context).size.width,
@@ -353,7 +354,7 @@ class _LoginTwoState extends State<LoginTwo> {
               ),
               FxBox.w4,
               CustomText(
-                title: Strings.forgotPassword,
+                title: languageModel.authentication.forgotPassword,
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
                 textColor: color,

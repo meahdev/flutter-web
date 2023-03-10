@@ -4,6 +4,7 @@ import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/models/steps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -57,29 +58,25 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
   List<Steps> _generateData() {
     return <Steps>[
-      const Steps(
+      Steps(
         step: 1,
-        title: 'What is Lorem Ipsum?',
-        message:
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s.',
+        title: languageModel.extraPage.timelineTitle1,
+        message: languageModel.extraPage.timelineText1,
       ),
-      const Steps(
+      Steps(
         step: 2,
-        title: 'Why do we use it?',
-        message:
-            'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+        title: languageModel.extraPage.timelineTitle2,
+        message: languageModel.extraPage.timelineText2,
       ),
-      const Steps(
+      Steps(
         step: 3,
-        title: 'Where does it come from?',
-        message:
-            'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.',
+        title: languageModel.extraPage.timelineTitle3,
+        message: languageModel.extraPage.timelineText3,
       ),
-      const Steps(
+      Steps(
         step: 4,
-        title: 'Where can I get some?',
-        message:
-            'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable.',
+        title: languageModel.extraPage.timelineTitle4,
+        message: languageModel.extraPage.timelineText4,
       ),
     ];
   }

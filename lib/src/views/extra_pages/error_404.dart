@@ -1,7 +1,6 @@
-// ignore_for_file: sized_box_for_whitespace
-
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -56,7 +55,7 @@ class _Error404State extends State<Error404> {
                                     ),
                                   ),
                                   Text(
-                                    "Sorry, page not found",
+                                    languageModel.extraPage.error1,
                                     style: TextStyle(
                                       color: isDark
                                           ? ColorConst.darkFontColor
@@ -66,8 +65,7 @@ class _Error404State extends State<Error404> {
                                     ),
                                   ),
                                   FxBox.h24,
-                                  const Text(
-                                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry."),
+                                  Text(languageModel.lorem2),
                                   FxBox.h48,
                                   FxButton(
                                     borderRadius: 15,
@@ -108,7 +106,7 @@ class _Error404State extends State<Error404> {
                               ),
                             ),
                             Text(
-                              "Sorry, page not found",
+                              languageModel.extraPage.error1,
                               style: TextStyle(
                                 color: isDark
                                     ? ColorConst.darkFontColor
@@ -118,9 +116,7 @@ class _Error404State extends State<Error404> {
                               ),
                             ),
                             FxBox.h24,
-                            const Text(
-                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-                            ),
+                            Text(languageModel.lorem2),
                             FxBox.h48,
                             FxButton(
                               borderRadius: 15,
