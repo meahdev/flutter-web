@@ -75,4 +75,8 @@ class ColorConst {
   static const Color calDarkBorder = Color(0xFF454D66);
   static const Color callighBorder = Color(0xFFE9ECEF);
   static const Color calSuccess = Color(0xFF02A499);
+
+  static const Color footerDownColor = Color.fromRGBO(17, 23, 35, 1);
+  static const Color footerUpColor = Color.fromRGBO(13, 17, 27, 1);
+  static const Color footerButtonRed = Color.fromRGBO(101, 3, 20, 1);
 }

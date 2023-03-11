@@ -82,6 +82,7 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.returnCondition,
     ],
     [
+      Strings.landingPage,
       Strings.products,
       Strings.cart,
       Strings.payment,
@@ -228,6 +229,7 @@ class _MenuBarState extends State<FMenuBar> {
     ProductAdd(),
     SuccessScreen(),
     DropDownScreen(),
+    ECLandingRoute(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
@@ -288,24 +290,32 @@ class _MenuBarState extends State<FMenuBar> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            FxBox.h20,
-                                            Text(
-                                              languageModel
-                                                  .translate(upperCase(
-                                                          tabsRouter
-                                                              .currentPath)
-                                                      .camelCase())
-                                                  .trim(),
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge!
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                            ),
-                                            FxBox.h8,
-                                            _routesDeatils(tabsRouter),
-                                            FxBox.h20,
+                                            if (languageModel
+                                                    .translate(upperCase(
+                                                            tabsRouter
+                                                                .currentPath)
+                                                        .camelCase())
+                                                    .trim() !=
+                                                Strings.landingPage) ...[
+                                              FxBox.h20,
+                                              Text(
+                                                languageModel
+                                                    .translate(upperCase(
+                                                            tabsRouter
+                                                                .currentPath)
+                                                        .camelCase())
+                                                    .trim(),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge!
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                              ),
+                                              FxBox.h8,
+                                              _routesDeatils(tabsRouter),
+                                              FxBox.h20,
+                                            ],
                                             getRouteWidget(
                                                 tabsRouter.activeIndex),
                                             FxBox.h20,

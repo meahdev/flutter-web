@@ -54,4 +54,59 @@ class Images {
   static const String germany = '${_assetPathCountry}Germany.png';
   static const String switzerland = '${_assetPathCountry}Switzerland.png';
   static const String canada = '${_assetPathCountry}Canada.png';
+
+  // Social button
+
+
+  static const String linkedin = '${_assetPath}likendin.png';
+  static const String youtube = '${_assetPath}youtube.png';
+  static const String twitter = '${_assetPath}twitter.png';
+  static const String instagram = '${_assetPath}instagram.png';
+  static const String facebook = '${_assetPath}facebook.png';
+
+  //
+  static const String appStore = '${_assetPath}app.png';
+  static const String playStore = '${_assetPath}play.png';
+
+  static const String artDesign = '${_assetPath}art_design.png';
+  static const String book = '${_assetPath}books.png';
+  static const String craft = '${_assetPath}crafts.png';
+  static const String gadgets = '${_assetPath}gadgets.png';
+  static const String games = '${_assetPath}games.png';
+  static const String music = '${_assetPath}music.png';
+  static const String photography = '${_assetPath}photography.png';
+  static const String sport = '${_assetPath}sports.png';
+  static const String makeup = '${_assetPath}makeup.png';
+  static const String shoes = '${_assetPath}shoes.png';
+  static const String jewellery = '${_assetPath}jewellery.png';
+  static const String grocery = '${_assetPath}grocery.png';
+  static const String bag = '${_assetPath}bag.png';
+  static const String watch = '${_assetPath}watch.png';
+  static const String underwearLoungewearAccessories =
+      '${_assetPath}Underwear_Loungewear_Accessories.png';
+
+  // all brand screen
+  static const String adidas = '${_assetPath}adidas.png';
+  static const String allenSolly = '${_assetPath}allen_solly.png';
+  static const String calvinKlein = '${_assetPath}calvin_klein.png';
+  static const String nike = '${_assetPath}nike.png';
+  static const String zara = '${_assetPath}zara.png';
+  static const String hAndM = '${_assetPath}h&m.png';
+  static const String apple = '${_assetPath}apple.png';
+  static const String lg = '${_assetPath}lg.png';
+  static const String microsoft = '${_assetPath}microsoft.png';
+  static const String samsung = '${_assetPath}samsung.png';
+  static const String sony = '${_assetPath}sony.png';
+
+  // offers scrren
+  static const String traditional = '${_assetPath}traditional.jpeg';
+  static const String makeupCategories = '${_assetPath}makeupcat.webp';
+  static const String western = '${_assetPath}western.jpeg';
+  static const String footwear = '${_assetPath}footwear.jpeg';
+  static const String casual = '${_assetPath}casual.webp';
+  static const String watchCat = '${_assetPath}watchcat.jpeg';
+  static const String bagCat = '${_assetPath}bagcat.webp';
+  static const String eyeswear = '${_assetPath}eyeswear.webp';
+  static const String flipflop = '${_assetPath}flipflop.webp';
+  static const String sportwear = '${_assetPath}sportwear.jpeg';
 }
