@@ -10,6 +10,7 @@ import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart'
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/ec_landing_page.dart';
 
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
@@ -300,7 +301,17 @@ Widget getRouteWidget(int index) {
     return const DropDownScreen();
   } else if (index == 58) {
     return const ECLandingPage();
+  } else if (index == 59) {
+    return const CategoryScreen();
   } else {
     return const Dashboard();
+  }
+}
+
+Widget getECRouteWidget(int index) {
+  if (index == 1) {
+    return const CategoryScreen();
+  } else {
+    return const BlogScreen();
   }
 }

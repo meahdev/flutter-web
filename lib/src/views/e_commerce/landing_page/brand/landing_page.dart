@@ -5,12 +5,9 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/footer_page.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
-import 'package:admin_dashboard/src/routes/routes.gr.dart';
 
 class ECLandingPage extends StatefulWidget {
   const ECLandingPage({super.key});
@@ -20,66 +17,22 @@ class ECLandingPage extends StatefulWidget {
 }
 
 class _ECLandingPageState extends State<ECLandingPage> {
-  final List<PageRouteInfo<dynamic>> _routes = const [
-    BlogScreen(),
-  ];
-
-  final ValueNotifier<TextDirection> _layout =
-      ValueNotifier<TextDirection>(TextDirection.ltr);
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<TextDirection>(
-        valueListenable: _layout,
-        builder: (context, value, _) {
-          return Directionality(
-            textDirection: value,
-            child: Container(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _header(),
-                  FxBox.h32,
-                  _tabWithLogin(),
-                  FxBox.h32,
-                  getRouteWidget(autoTabRouter!.activeIndex),
-                  FxBox.h32,
-                  _headerOffooter(),
-                  const FooterPage(),
-                ],
-              ),
-            ),
-          );
-        });
-    // AutoTabsRouter(
-    //     routes: _routes,
-    //     homeIndex: 0,
-    //     builder: (context, child, animation) {
-    //       final TabsRouter ecTabRouter = AutoTabsRouter.of(context);
-
-    //       return ValueListenableBuilder<TextDirection>(
-    //           valueListenable: _layout,
-    //           builder: (context, value, _) {
-    //             return Directionality(
-    //               textDirection: value,
-    //               child: Container(
-    //                 padding: const EdgeInsets.all(12.0),
-    //                 child: Column(
-    //                   mainAxisSize: MainAxisSize.min,
-    //                   children: [
-    //                     _header(),
-    //                     FxBox.h32,
-    //                     _tabWithLogin(),
-    //                     FxBox.h32,
-    //                     getECRouteWidget(ecTabRouter.activeIndex),
-    //                     _headerOffooter(),
-    //                     const FooterPage(),
-    //                   ],
-    //                 ),
-    //               ),
-    //             );
-    //           });
-    //     });
+    return Container(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          _header(),
+          FxBox.h32,
+          _tabWithLogin(),
+          FxBox.h32,
+          _headerOffooter(),
+          const FooterPage(),
+        ],
+      ),
+    );
   }
 
   Widget _headerOffooter() {

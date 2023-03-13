@@ -51,7 +51,10 @@ class _MyAppState extends State<MyApp> {
                       GlobalCupertinoLocalizations.delegate,
                       MultiLanguage.delegate,
                     ],
-                    routerDelegate: AutoRouterDelegate(_appRouter),
+                    routerDelegate: AutoRouterDelegate(
+                      _appRouter,
+                      navigatorObservers: () => [AutoRouteObserver()],
+                    ),
                     routeInformationParser: _appRouter.defaultRouteParser(),
                     debugShowCheckedModeBanner: false,
                     theme: ThemeClass.themeData(themeMode, context),

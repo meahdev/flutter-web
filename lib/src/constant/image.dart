@@ -56,8 +56,6 @@ class Images {
   static const String canada = '${_assetPathCountry}Canada.png';
 
   // Social button
-
-
   static const String linkedin = '${_assetPath}likendin.png';
   static const String youtube = '${_assetPath}youtube.png';
   static const String twitter = '${_assetPath}twitter.png';
@@ -67,6 +65,10 @@ class Images {
   //
   static const String appStore = '${_assetPath}app.png';
   static const String playStore = '${_assetPath}play.png';
+
+  static const String tShirt = '${_assetPath}t-shirt.png';
+  static const String tShirt1 = '${_assetPath}t-shirt1.png';
+  static const String tShirt2 = '${_assetPath}t-shirt2.png';
 
   static const String artDesign = '${_assetPath}art_design.png';
   static const String book = '${_assetPath}books.png';

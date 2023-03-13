@@ -291,5 +291,6 @@
     "products": "Products",
     "cart": "Cart",
     "payment": "Payment",
-    "landingPage": "Landing Page"
+    "landingPage": "Landing Page",
+    "blog":"Blog"
 }

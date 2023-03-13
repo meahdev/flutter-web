@@ -290,13 +290,13 @@ class _MenuBarState extends State<FMenuBar> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            if (languageModel
-                                                    .translate(upperCase(
-                                                            tabsRouter
-                                                                .currentPath)
-                                                        .camelCase())
-                                                    .trim() !=
-                                                Strings.landingPage) ...[
+                                            if (!languageModel
+                                                .translate(upperCase(
+                                                        tabsRouter.currentPath)
+                                                    .camelCase())
+                                                .trim()
+                                                .contains(
+                                                    Strings.landingPage)) ...[
                                               FxBox.h20,
                                               Text(
                                                 languageModel
@@ -1311,6 +1311,7 @@ class _MenuBarState extends State<FMenuBar> {
                     } else if (items[index] == 'Recover Password 2') {
                       context.router.push(const RecoverPasswordTwo());
                     } else if (items[index] == 'Lock Screen 1') {
+                    
                       context.router.push(const LockScreenOne());
                     } else if (items[index] == 'Lock Screen 2') {
                       context.router.push(const LockScreenTwo());
@@ -1323,7 +1324,7 @@ class _MenuBarState extends State<FMenuBar> {
                     } else if (items[index] == 'Coming Soon') {
                       context.router.push(const ComingSoon());
                     } else {
-                      if (items[index] == 'Landing Page') {
+                      if (items[index].contains('Landing Page')) {
                         isOpen.value = false;
                       }
 
