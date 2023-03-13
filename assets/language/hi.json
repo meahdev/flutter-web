@@ -292,5 +292,8 @@
     "cart": "              कार्ट",
     "payment": "              भुगतान",
     "compareScreen": "              स्क्रीन की तुलना करें",
-    "wishList": "              इच्छा-सूची"
+    "wishList": "              इच्छा-सूची",
+    "cartScreen": "              कार्ट स्क्रीन",
+    "orderHistory": "              आदेश इतिहास",
+    "trackOrder": "              ऑर्डर पर नज़र रखना"
 }

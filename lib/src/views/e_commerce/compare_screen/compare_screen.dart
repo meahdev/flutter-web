@@ -17,35 +17,35 @@ class _CompareScreenState extends State<CompareScreen> {
       'item_name':
           'Gas Stove Wok Ring Stove Metal Wok Rack Trivets Cook top Range Pan Holder for Gas Hob Home Kitchen Stand Pack Of 1',
       'item_image': Images.gasStove,
-      'item_price': 'Rs399.00',
+      'item_price': 399,
       'item_brand': 'Buha',
       'item_sub_category': '',
     },
     {
       'item_name': 'Blend Stitched Anarkali Gown',
       'item_image': Images.ladyGaga,
-      'item_price': 'Rs899.00',
+      'item_price': 899,
       'item_brand': 'Fashion web',
       'item_sub_category': '',
     },
     {
       'item_name': 'Cotton Polyester Blend Printed Shirt Fabric (Unstitched)',
       'item_image': Images.pinkShirt,
-      'item_price': 'Rs249.00',
+      'item_price': 249,
       'item_brand': 'Buha',
       'item_sub_category': '',
     },
     {
       'item_name': 'Cotton Polyester Blend Printed Shirt Fabric (Unstitched)',
       'item_image': Images.blackShirt,
-      'item_price': 'Rs260.00',
+      'item_price': 260,
       'item_brand': 'Buha',
       'item_sub_category': '',
     },
     {
       'item_name': 'Aapkur nevy blue',
       'item_image': Images.blackDress,
-      'item_price': 'Rs599.00',
+      'item_price': 599,
       'item_brand': '',
       'item_sub_category': '',
     },
@@ -151,7 +151,7 @@ class _CompareScreenState extends State<CompareScreen> {
                                   index == 0
                                       ? _tableHeader('Price')
                                       : _tableHeader(
-                                          _dataList[index - 1]['item_price'],
+                                          "Rs ${_dataList[index - 1]['item_price']}",
                                           color: ColorConst.priceColor),
                                 ),
                               ),

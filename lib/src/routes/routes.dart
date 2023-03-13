@@ -13,9 +13,11 @@ import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart'
 import 'package:admin_dashboard/src/views/e_commerce/compare_screen/compare_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_cart/e_cart.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order_history/order_history.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/success_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
@@ -57,6 +59,7 @@ import 'package:admin_dashboard/src/views/tables/basic_table.dart';
 import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
 import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
+import 'package:admin_dashboard/src/views/track_order/track_order.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
 import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
@@ -141,6 +144,9 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'product-add', page: ProductAdd),
         AutoRoute(path: 'compare-screen', page: CompareScreen),
         AutoRoute(path: 'wish-list', page: WishList),
+        AutoRoute(path: 'cart-screen', page: ECartScreen),
+        AutoRoute(path: 'order-history', page: OrderHistory),
+        AutoRoute(path: 'track-order', page: TrackOrder),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

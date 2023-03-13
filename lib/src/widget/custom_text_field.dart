@@ -15,7 +15,7 @@ class CustomTextField extends StatelessWidget {
       this.onTap,
       this.onSubmitted,
       this.keyBoardType,
-      this.textCapitalization,
+      this.textCapitalization = TextCapitalization.none,
       this.errorText,
       this.changeColor,
       this.readOnly = false,
@@ -35,7 +35,7 @@ class CustomTextField extends StatelessWidget {
   final void Function(String)? onSubmitted;
   final void Function()? onTap;
   final TextInputType? keyBoardType;
-  final TextCapitalization? textCapitalization;
+  final TextCapitalization textCapitalization;
   final String? errorText;
   final bool? changeColor;
   final bool? readOnly;
@@ -58,7 +58,7 @@ class CustomTextField extends StatelessWidget {
         minLines: 1,
         onTap: onTap,
         keyboardType: keyBoardType,
-        textCapitalization: textCapitalization!,
+        textCapitalization: textCapitalization,
         cursorColor: ColorConst.lightFontColor,
         style: const TextStyle(fontSize: 15),
         decoration: InputDecoration(

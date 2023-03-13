@@ -10,10 +10,12 @@ import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart'
 import 'package:admin_dashboard/src/views/e_commerce/compare_screen/compare_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_cart/e_cart.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
 
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order_history/order_history.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/success_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
@@ -46,6 +48,7 @@ import 'package:admin_dashboard/src/views/tables/basic_table.dart';
 import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
 import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
+import 'package:admin_dashboard/src/views/track_order/track_order.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
 import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
@@ -178,6 +181,12 @@ int getRouteIndex(String route) {
     return 57;
   } else if (route == 'Wish List') {
     return 58;
+  } else if (route == 'Cart Screen') {
+    return 59;
+  } else if (route == 'Order History') {
+    return 60;
+  } else if (route == 'Track Order') {
+    return 61;
   } else {
     return 0;
   }
@@ -300,6 +309,12 @@ Widget getRouteWidget(int index) {
     return const CompareScreen();
   } else if (index == 58) {
     return const WishList();
+  } else if (index == 59) {
+    return const ECartScreen();
+  } else if (index == 60) {
+    return const OrderHistory();
+  } else if (index == 61) {
+    return const TrackOrder();
   } else {
     return const Dashboard();
   }

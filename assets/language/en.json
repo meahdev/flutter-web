@@ -292,5 +292,8 @@
     "cart": "Cart",
     "payment": "Payment",
     "compareScreen": "Compare Screen",
-    "wishList": "Wish List"
+    "wishList": "Wish List",
+    "cartScreen": "Cart Screen",
+    "orderHistory": "Order History",
+    "trackOrder": "Track Order"
 }

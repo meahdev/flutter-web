@@ -78,4 +78,7 @@ class ColorConst {
 
   //e-commerce
   static const Color priceColor = Color(0xff6f0d22);
+  static const Color lightRed = Color(0xffEF486A);
+  static const Color lightBlue = Color(0xff25BCF1);
+  static  Color grey200 = Colors.grey.shade200;
 }
