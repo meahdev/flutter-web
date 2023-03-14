@@ -292,5 +292,14 @@
     "cart": "              कार्ट",
     "payment": "              भुगतान",
     "landingPage": "              लैंडिंग पृष्ठ",
-    "blog": "ब्लॉग"
+    "blog": "ब्लॉग",
+    "compareScreen": "              स्क्रीन की तुलना करें",
+    "wishList": "              इच्छा-सूची",
+    "cartScreen": "              कार्ट स्क्रीन",
+    "orderHistory": "              आदेश इतिहास",
+    "trackOrder": "              ऑर्डर पर नज़र रखना",
+    "showProductDetails": "              उत्पाद विवरण दिखाएं",
+    "login": "              लॉग इन करें",
+    "register": "              पंजीकरण करवाना",
+    "forgot": "              भूल गया"
 }

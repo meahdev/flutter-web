@@ -292,5 +292,14 @@
     "cart": "Cart",
     "payment": "Payment",
     "landingPage": "Landing Page",
-    "blog":"Blog"
+    "blog":"Blog",
+    "compareScreen": "Compare Screen",
+    "wishList": "Wish List",
+    "cartScreen": "Cart Screen",
+    "orderHistory": "Order History",
+    "trackOrder": "Track Order",
+    "showProductDetails": "Show Product Details",
+    "login": "Login",
+    "register": "Register",
+    "forgot": "Forgot"
 }
