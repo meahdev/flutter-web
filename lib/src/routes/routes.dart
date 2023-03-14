@@ -146,12 +146,6 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'e-commerce-dashboard', page: EcommerceDashboard),
         AutoRoute(path: 'cart', page: CartScreen),
         AutoRoute(path: 'product-add', page: ProductAdd),
-        AutoRoute(path: 'compare-screen', page: CompareScreen),
-        AutoRoute(path: 'wish-list', page: WishList),
-        AutoRoute(path: 'cart-screen', page: ECartScreen),
-        AutoRoute(path: 'order-history', page: OrderHistory),
-        AutoRoute(path: 'track-order', page: TrackOrder),
-        AutoRoute(path: 'show-product-details', page: ShowProductDetails),
        
       ],
     ),
@@ -167,9 +161,6 @@ import 'package:auto_route/auto_route.dart';
     AutoRoute(path: '/error-500', page: Error500),
     AutoRoute(path: '/coming-soon', page: ComingSoon),
     AutoRoute(path: '/maintenance', page: Maintenance),
-     AutoRoute(path: '/login', page: ELogin),
-        AutoRoute(path: '/register', page: ERegister),
-        AutoRoute(path: '/forgot', page: EForgot),
   ],
 )
 class $AppRouter {}

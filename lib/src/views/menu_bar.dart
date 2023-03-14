@@ -85,15 +85,6 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.products,
       Strings.cart,
       Strings.payment,
-      'Compare Screen',
-      'Wish List',
-      'Cart Screen',
-      'Order History',
-      'Track Order',
-      'Show Product Details',
-      'Login',
-      'Register',
-      'Forgot'
     ],
   ];
 
@@ -235,12 +226,6 @@ class _MenuBarState extends State<FMenuBar> {
     CartScreen(),
     ProductAdd(),
     SuccessScreen(),
-    CompareScreen(),
-    WishList(),
-    ECartScreen(),
-    OrderHistory(),
-    TrackOrder(),
-    ShowProductDetails(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
@@ -1317,13 +1302,7 @@ class _MenuBarState extends State<FMenuBar> {
                       context.router.push(const Maintenance());
                     } else if (items[index] == 'Coming Soon') {
                       context.router.push(const ComingSoon());
-                    } else if (items[index] == 'Login') {
-                      context.router.push(const ELogin());
-                    } else if (items[index] == 'Register') {
-                      context.router.push(const ERegister());
-                    } else if (items[index] == 'Forgot') {
-                      context.router.push(const EForgot());
-                    }else {
+                    } else {
                       if (items[index] == 'Landing Page') {
                         isOpen.value = false;
                       }

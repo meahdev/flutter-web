@@ -180,19 +180,7 @@ int getRouteIndex(String route) {
     return 55;
   } else if (route == '${Strings.payment}/success') {
     return 56;
-  } else if (route == 'Compare Screen') {
-    return 57;
-  } else if (route == 'Wish List') {
-    return 58;
-  } else if (route == 'Cart Screen') {
-    return 59;
-  } else if (route == 'Order History') {
-    return 60;
-  } else if (route == 'Track Order') {
-    return 61;
-  } else if (route == 'Show Product Details') {
-    return 62;
-  } else {
+  }  else {
     return 0;
   }
 }
@@ -310,19 +298,7 @@ Widget getRouteWidget(int index) {
     return const ProductAdd();
   } else if (index == 56) {
     return const SuccessScreen();
-  } else if (index == 57) {
-    return const CompareScreen();
-  } else if (index == 58) {
-    return const WishList();
-  } else if (index == 59) {
-    return const ECartScreen();
-  } else if (index == 60) {
-    return const OrderHistory();
-  } else if (index == 61) {
-    return const TrackOrder();
-  } else if (index == 62) {
-    return const ShowProductDetails();
-  }
+  } 
   else {
     return const Dashboard();
   }
