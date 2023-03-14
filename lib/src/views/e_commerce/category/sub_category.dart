@@ -133,7 +133,7 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
                         onSelectChanged: (value) {},
                         cells: [
                           DataCell(_tableHeader('3')),
-                          DataCell(_tableRowImage(Images.shoe)),
+                          DataCell(_tableRowImage(Images.shoes)),
                           DataCell(_tableHeader('Shoes')),
                           DataCell(
                               _statusBox(ColorConst.successDark, 'Active')),

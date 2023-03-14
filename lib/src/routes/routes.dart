@@ -14,7 +14,11 @@ import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart'
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/brand/all_brand_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/ec_landing_page.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/home/product_home.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/offers/offers_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
@@ -143,21 +147,47 @@ import '../views/ui_elements/dropdown/dropdown_screen.dart';
         AutoRoute(path: 'product-add', page: ProductAdd),
         AutoRoute(path: 'dropdown', page: DropDownScreen),
 
+        // AutoRoute(
+        //   path: 'landing-page/',
+        //   page: ECLandingPage,
+        //   children: [
+        //     AutoRoute(
+        //       path: 'blog',
+        //       page: BlogScreen,
+        //       initial: true,
+        //     ),
+        //     AutoRoute(
+        //       path: 'all-category',
+        //       page: AllCategoryScreen,
+        //     ),
+        //   ],
+        // ),
+      ],
+    ),
+    AutoRoute(
+      path: '/landing-page/',
+      page: ECLandingPage,
+      children: [
         AutoRoute(
-          path: 'landing-page/',
-          page: ECLandingPage,
-          children: [
-            AutoRoute(
-              path: 'blog',
-              page: BlogScreen,
-              initial: true,
-            ),
-            AutoRoute(
-              path: 'category',
-              page: CategoryScreen,
-              
-            ),
-          ],
+          path: '',
+          page: ProductHomeScreen,
+          initial: true,
+        ),
+        AutoRoute(
+          path: 'blog',
+          page: BlogScreen,
+        ),
+        AutoRoute(
+          path: 'all-category',
+          page: AllCategoryScreen,
+        ),
+        AutoRoute(
+          path: 'all-brand',
+          page: AllBrandScreen,
+        ),
+        AutoRoute(
+          path: 'offer',
+          page: OffersScreen,
         ),
       ],
     ),

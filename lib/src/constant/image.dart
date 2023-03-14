@@ -111,4 +111,23 @@ class Images {
   static const String eyeswear = '${_assetPath}eyeswear.webp';
   static const String flipflop = '${_assetPath}flipflop.webp';
   static const String sportwear = '${_assetPath}sportwear.jpeg';
+
+  // offers slider image
+
+  static const String offersImage = '${_assetPath}offer_image.jpeg';
+  static const String offersImage1 = '${_assetPath}offer_image1.jpeg';
+  static const String offersImage2 = '${_assetPath}offer_image2.webp';
+
+  // temp image
+
+  static const String tempImage = '${_assetPath}temp_image.jpeg';
+  static const String tempImage1 = '${_assetPath}temp_image1.jpeg';
+  static const String tempImage2 = '${_assetPath}temp_image2.jpeg';
+
+  // policy image
+  static const String cancellationPolicy =
+      '${_assetPath}cancellation_policy.png';
+  static const String deliveryPolicy = '${_assetPath}delivery_policy.png';
+  static const String terms = '${_assetPath}terms.png';
+  static const String privacyPolicy = '${_assetPath}privacy_policy.png';
 }

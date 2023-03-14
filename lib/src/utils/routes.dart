@@ -11,7 +11,11 @@ import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart'
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/brand/all_brand_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/ec_landing_page.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/home/product_home.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/offers/offers_screen.dart';
 
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
@@ -177,9 +181,11 @@ int getRouteIndex(String route) {
     return 56;
   } else if (route == Strings.dropDown) {
     return 57;
-  } else if (route == Strings.landingPage) {
-    return 58;
-  } else {
+  }
+  // else if (route == Strings.landingPage) {
+  //   return 58;
+  // }
+  else {
     return 0;
   }
 }
@@ -299,19 +305,25 @@ Widget getRouteWidget(int index) {
     return const SuccessScreen();
   } else if (index == 57) {
     return const DropDownScreen();
-  } else if (index == 58) {
-    return const ECLandingPage();
-  } else if (index == 59) {
-    return const CategoryScreen();
-  } else {
+  }
+  // else if (index == 58) {
+  //   return const ECLandingPage();
+  // }
+  else {
     return const Dashboard();
   }
 }
 
 Widget getECRouteWidget(int index) {
   if (index == 1) {
-    return const CategoryScreen();
-  } else {
     return const BlogScreen();
+  } else if (index == 2) {
+    return const AllCategoryScreen();
+  } else if (index == 3) {
+    return const AllBrandScreen();
+  } else if (index == 4) {
+    return const OffersScreen();
+  } else {
+    return const ProductHomeScreen();
   }
 }

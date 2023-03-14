@@ -270,7 +270,7 @@ class _FooterPageState extends State<FooterPage> {
               ? MainAxisAlignment.center
               : MainAxisAlignment.start,
           children: [
-            GestureDetector(
+            InkWell(
               onTap: () {},
               child: SizedBox(
                 width: 140,
@@ -278,7 +278,7 @@ class _FooterPageState extends State<FooterPage> {
               ),
             ),
             FxBox.w12,
-            GestureDetector(
+            InkWell(
               onTap: () {},
               child: SizedBox(
                 width: 140,

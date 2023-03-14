@@ -53,7 +53,6 @@ class _MyAppState extends State<MyApp> {
                     ],
                     routerDelegate: AutoRouterDelegate(
                       _appRouter,
-                      navigatorObservers: () => [AutoRouteObserver()],
                     ),
                     routeInformationParser: _appRouter.defaultRouteParser(),
                     debugShowCheckedModeBanner: false,

@@ -21,65 +21,52 @@ class ECLandingPage extends StatefulWidget {
 
 class _ECLandingPageState extends State<ECLandingPage> {
   final List<PageRouteInfo<dynamic>> _routes = const [
+    ProductHomeScreen(),
     BlogScreen(),
+    AllCategoryScreen(),
+    AllBrandScreen(),
+    OffersScreen(),
   ];
 
-  final ValueNotifier<TextDirection> _layout =
-      ValueNotifier<TextDirection>(TextDirection.ltr);
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<TextDirection>(
-        valueListenable: _layout,
-        builder: (context, value, _) {
-          return Directionality(
-            textDirection: value,
-            child: Container(
-              padding: const EdgeInsets.all(12.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  _header(),
-                  FxBox.h32,
-                  _tabWithLogin(),
-                  FxBox.h32,
-                  getRouteWidget(autoTabRouter!.activeIndex),
-                  FxBox.h32,
-                  _headerOffooter(),
-                  const FooterPage(),
-                ],
-              ),
-            ),
-          );
-        });
-    // AutoTabsRouter(
-    //     routes: _routes,
-    //     homeIndex: 0,
-    //     builder: (context, child, animation) {
-    //       final TabsRouter ecTabRouter = AutoTabsRouter.of(context);
-
-    //       return ValueListenableBuilder<TextDirection>(
-    //           valueListenable: _layout,
-    //           builder: (context, value, _) {
-    //             return Directionality(
-    //               textDirection: value,
-    //               child: Container(
-    //                 padding: const EdgeInsets.all(12.0),
-    //                 child: Column(
-    //                   mainAxisSize: MainAxisSize.min,
-    //                   children: [
-    //                     _header(),
-    //                     FxBox.h32,
-    //                     _tabWithLogin(),
-    //                     FxBox.h32,
-    //                     getECRouteWidget(ecTabRouter.activeIndex),
-    //                     _headerOffooter(),
-    //                     const FooterPage(),
-    //                   ],
-    //                 ),
-    //               ),
-    //             );
-    //           });
-    //     });
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: AutoTabsRouter(
+            routes: _routes,
+            builder: (context, child, animation) {
+              TabsRouter ecTabRouter = AutoTabsRouter.of(context);
+              autoecTabRouter = ecTabRouter;
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Container(
+                      color: ColorConst.white,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 24.0, vertical: 20.0),
+                      child: Column(
+                        children: [
+                          _header(),
+                          FxBox.h32,
+                          _tabWithLogin(),
+                        ],
+                      ),
+                    ),
+                    FxBox.h32,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: getECRouteWidget(ecTabRouter.activeIndex),
+                    ),
+                    FxBox.h32,
+                    _headerOffooter(),
+                    const FooterPage(),
+                  ],
+                ),
+              );
+            }),
+      ),
+    );
   }
 
   Widget _headerOffooter() {
@@ -95,22 +82,22 @@ class _ECLandingPageState extends State<ECLandingPage> {
               children: [
                 _vdivider(),
                 _iconWithText(
-                  iconData: Icons.file_copy,
+                  imagePath: Images.terms,
                   iconString: 'Terms & Conditions',
                 ),
                 _vdivider(),
                 _iconWithText(
-                  iconData: Icons.policy,
+                  imagePath: Images.privacyPolicy,
                   iconString: 'Privacy Policy',
                 ),
                 _vdivider(),
                 _iconWithText(
-                  iconData: Icons.delivery_dining,
+                  imagePath: Images.deliveryPolicy,
                   iconString: 'Delivery Policy',
                 ),
                 _vdivider(),
                 _iconWithText(
-                  iconData: Icons.cancel_presentation,
+                  imagePath: Images.cancellationPolicy,
                   iconString: 'Cancellation Policy',
                 ),
                 _vdivider(),
@@ -124,12 +111,12 @@ class _ECLandingPageState extends State<ECLandingPage> {
                     Column(
                       children: [
                         _iconWithText(
-                          iconData: Icons.file_copy,
+                          imagePath: Images.terms,
                           iconString: 'Terms & Conditions',
                         ),
                         FxBox.h20,
                         _iconWithText(
-                          iconData: Icons.policy,
+                          imagePath: Images.privacyPolicy,
                           iconString: 'Privacy Policy',
                         ),
                       ],
@@ -138,12 +125,12 @@ class _ECLandingPageState extends State<ECLandingPage> {
                     Column(
                       children: [
                         _iconWithText(
-                          iconData: Icons.delivery_dining,
+                          imagePath: Images.deliveryPolicy,
                           iconString: 'Delivery Policy',
                         ),
                         FxBox.h20,
                         _iconWithText(
-                          iconData: Icons.cancel_presentation,
+                          imagePath: Images.cancellationPolicy,
                           iconString: 'Cancellation Policy',
                         ),
                       ],
@@ -156,22 +143,22 @@ class _ECLandingPageState extends State<ECLandingPage> {
                   children: [
                     FxBox.h20,
                     _iconWithText(
-                      iconData: Icons.file_copy,
+                      imagePath: Images.terms,
                       iconString: 'Terms & Conditions',
                     ),
                     FxBox.h20,
                     _iconWithText(
-                      iconData: Icons.policy,
+                      imagePath: Images.privacyPolicy,
                       iconString: 'Privacy Policy',
                     ),
                     FxBox.h20,
                     _iconWithText(
-                      iconData: Icons.delivery_dining,
+                      imagePath: Images.deliveryPolicy,
                       iconString: 'Delivery Policy',
                     ),
                     FxBox.h20,
                     _iconWithText(
-                      iconData: Icons.cancel_presentation,
+                      imagePath: Images.cancellationPolicy,
                       iconString: 'Cancellation Policy',
                     ),
                     FxBox.h20,
@@ -188,18 +175,25 @@ class _ECLandingPageState extends State<ECLandingPage> {
   }
 
   Widget _iconWithText({
-    required IconData iconData,
+    required String imagePath,
     required String iconString,
   }) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(iconData),
-        ConstText.lightText(
-          text: iconString,
-          fontWeight: FontWeight.w700,
-        ),
-      ],
+    return InkWell(
+      onTap: () {},
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            imagePath,
+            height: 30,
+          ),
+          FxBox.h12,
+          ConstText.lightText(
+            text: iconString,
+            fontWeight: FontWeight.w700,
+          ),
+        ],
+      ),
     );
   }
 
@@ -240,15 +234,35 @@ class _ECLandingPageState extends State<ECLandingPage> {
   Widget _tabBar() {
     return Row(
       children: [
-        _textButton(onPressed: () {}, text: 'Home'),
+        _textButton(
+            onPressed: () {
+              autoecTabRouter!.setActiveIndex(0);
+            },
+            text: 'Home'),
         FxBox.w10,
-        _textButton(onPressed: () {}, text: 'Blog'),
+        _textButton(
+            onPressed: () {
+              autoecTabRouter!.setActiveIndex(1);
+            },
+            text: 'Blog'),
         FxBox.w10,
-        _textButton(onPressed: () {}, text: 'Category'),
+        _textButton(
+            onPressed: () {
+              autoecTabRouter!.setActiveIndex(2);
+            },
+            text: 'Category'),
         FxBox.w10,
-        _textButton(onPressed: () {}, text: 'Brand'),
+        _textButton(
+            onPressed: () {
+              autoecTabRouter!.setActiveIndex(3);
+            },
+            text: 'Brand'),
         FxBox.w10,
-        _textButton(onPressed: () {}, text: 'Offer'),
+        _textButton(
+            onPressed: () {
+              autoecTabRouter!.setActiveIndex(4);
+            },
+            text: 'Offer'),
       ],
     );
   }

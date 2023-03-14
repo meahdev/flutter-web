@@ -229,7 +229,7 @@ class _MenuBarState extends State<FMenuBar> {
     ProductAdd(),
     SuccessScreen(),
     DropDownScreen(),
-    ECLandingRoute(),
+    // ECLandingRoute(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
@@ -1311,7 +1311,6 @@ class _MenuBarState extends State<FMenuBar> {
                     } else if (items[index] == 'Recover Password 2') {
                       context.router.push(const RecoverPasswordTwo());
                     } else if (items[index] == 'Lock Screen 1') {
-                    
                       context.router.push(const LockScreenOne());
                     } else if (items[index] == 'Lock Screen 2') {
                       context.router.push(const LockScreenTwo());
@@ -1323,6 +1322,8 @@ class _MenuBarState extends State<FMenuBar> {
                       context.router.push(const Maintenance());
                     } else if (items[index] == 'Coming Soon') {
                       context.router.push(const ComingSoon());
+                    } else if (items[index] == 'Landing Page') {
+                      context.router.push(const ECLandingRoute());
                     } else {
                       if (items[index].contains('Landing Page')) {
                         isOpen.value = false;

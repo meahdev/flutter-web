@@ -61,7 +61,7 @@ class _AllCategoryScreenState extends State<AllCategoryScreen> {
       'name': Strings.makeup,
     },
     {
-      'imagePath': Images.shoe,
+      'imagePath': Images.shoes,
       'name': Strings.shoe,
     },
     {
@@ -94,7 +94,6 @@ class _AllCategoryScreenState extends State<AllCategoryScreen> {
             text: Strings.allCategory.toUpperCase(),
             fontWeight: FontWeight.bold,
           ),
-        
           FxBox.h24,
           GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
