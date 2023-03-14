@@ -151,8 +151,9 @@ class _CompareScreenState extends State<CompareScreen> {
                                   index == 0
                                       ? _tableHeader('Price')
                                       : _tableHeader(
-                                          "Rs ${_dataList[index - 1]['item_price']}",
-                                          color: ColorConst.priceColor),
+                                          "\$ ${_dataList[index - 1]['item_price']}",
+                                          color: ColorConst.priceColor,
+                                        ),
                                 ),
                               ),
                             ),
@@ -191,7 +192,7 @@ class _CompareScreenState extends State<CompareScreen> {
                                       : Align(
                                           alignment: Alignment.center,
                                           child: FxButton(
-                                            color: ColorConst.black,
+                                            // color: ColorConst.black,
                                             borderRadius: 4.0,
                                             onPressed: () {},
                                             text: 'Add to Cart',
@@ -216,7 +217,7 @@ class _CompareScreenState extends State<CompareScreen> {
       overflow: TextOverflow.ellipsis,
       softWrap: true,
       style: TextStyle(
-        fontWeight: fontWeight ?? FontWeight.w700,
+        fontWeight: fontWeight ?? FontWeight.bold,
         color: color,
       ),
     );

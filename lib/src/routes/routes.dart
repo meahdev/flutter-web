@@ -13,8 +13,11 @@ import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart'
 import 'package:admin_dashboard/src/views/e_commerce/compare_screen/compare_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_forgot.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_register.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_cart/e_cart.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_login.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order_history/order_history.dart';
@@ -25,6 +28,7 @@ import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.da
 import 'package:admin_dashboard/src/views/e_commerce/return_condition/return_condition_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/show_product_screen/show_product_details.dart';
 import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
@@ -59,7 +63,7 @@ import 'package:admin_dashboard/src/views/tables/basic_table.dart';
 import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
 import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
-import 'package:admin_dashboard/src/views/track_order/track_order.dart';
+import 'package:admin_dashboard/src/views/e_commerce/track_order/track_order.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
 import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
@@ -147,6 +151,8 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'cart-screen', page: ECartScreen),
         AutoRoute(path: 'order-history', page: OrderHistory),
         AutoRoute(path: 'track-order', page: TrackOrder),
+        AutoRoute(path: 'show-product-details', page: ShowProductDetails),
+       
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),
@@ -161,6 +167,9 @@ import 'package:auto_route/auto_route.dart';
     AutoRoute(path: '/error-500', page: Error500),
     AutoRoute(path: '/coming-soon', page: ComingSoon),
     AutoRoute(path: '/maintenance', page: Maintenance),
+     AutoRoute(path: '/login', page: ELogin),
+        AutoRoute(path: '/register', page: ERegister),
+        AutoRoute(path: '/forgot', page: EForgot),
   ],
 )
 class $AppRouter {}

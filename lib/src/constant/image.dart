@@ -53,6 +53,9 @@ class Images {
   static const String ladyGaga = '${_assetPath}lady_gaga.jpeg';
   static const String blackShirt = '${_assetPath}black_shirt.jpeg';
   static const String blackDress = '${_assetPath}black_dress.jpeg';
+  static const String blackDress2 = '${_assetPath}black_dress2.jpeg';
+  static const String blackDress3 = '${_assetPath}black_dress3.jpeg';
+  static const String blackDress4 = '${_assetPath}black_dress4.jpeg';
 
   // country
   static const String usa = '${_assetPathCountry}usa.png';

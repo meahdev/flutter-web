@@ -295,5 +295,9 @@
     "wishList": "Wish List",
     "cartScreen": "Cart Screen",
     "orderHistory": "Order History",
-    "trackOrder": "Track Order"
+    "trackOrder": "Track Order",
+    "showProductDetails": "Show Product Details",
+    "login": "Login",
+    "register": "Register",
+    "forgot": "Forgot"
 }

@@ -93,6 +93,7 @@ class _WishListState extends State<WishList> {
                       title: productsList[index]['title'],
                       fontSize: 16.0,
                       maxLine: 2,
+                      textColor: ColorConst.black,
                       overflow: TextOverflow.ellipsis,
                       fontWeight: FontWeight.w600,
                     ),
@@ -100,6 +101,7 @@ class _WishListState extends State<WishList> {
                   const Spacer(),
                   CustomText(
                     title: productsList[index]['rating'],
+                    textColor: ColorConst.black,
                     fontSize: 16.0,
                     fontWeight: FontWeight.w600,
                   ),
@@ -129,6 +131,7 @@ class _WishListState extends State<WishList> {
               child: Row(
                 children: [
                   _iconBox(
+                    color: ColorConst.black,
                     icon: Icons.delete_outline,
                     onPressed: () {},
                   ),
@@ -136,7 +139,6 @@ class _WishListState extends State<WishList> {
                   FxButton(
                     icon: const Icon(Icons.shopping_cart_outlined),
                     borderRadius: 4.0,
-                    color: ColorConst.black,
                     onPressed: () {},
                     text: 'Add to cart',
                   ),

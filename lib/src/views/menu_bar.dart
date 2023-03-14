@@ -90,6 +90,10 @@ class _MenuBarState extends State<FMenuBar> {
       'Cart Screen',
       'Order History',
       'Track Order',
+      'Show Product Details',
+      'Login',
+      'Register',
+      'Forgot'
     ],
   ];
 
@@ -236,6 +240,7 @@ class _MenuBarState extends State<FMenuBar> {
     ECartScreen(),
     OrderHistory(),
     TrackOrder(),
+    ShowProductDetails(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
@@ -1312,7 +1317,13 @@ class _MenuBarState extends State<FMenuBar> {
                       context.router.push(const Maintenance());
                     } else if (items[index] == 'Coming Soon') {
                       context.router.push(const ComingSoon());
-                    } else {
+                    } else if (items[index] == 'Login') {
+                      context.router.push(const ELogin());
+                    } else if (items[index] == 'Register') {
+                      context.router.push(const ERegister());
+                    } else if (items[index] == 'Forgot') {
+                      context.router.push(const EForgot());
+                    }else {
                       if (items[index] == 'Landing Page') {
                         isOpen.value = false;
                       }

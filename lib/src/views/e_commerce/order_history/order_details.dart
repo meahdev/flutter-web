@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,13 @@ class OrderDetails {
                   margin: const EdgeInsets.symmetric(horizontal: 16),
                   width: 1000.0,
                   decoration: BoxDecoration(
-                    color: ColorConst.white,
+                    border: Border.all(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .secondary
+                          .withOpacity(0.25),
+                    ),
+                    color: Theme.of(context).colorScheme.background,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: Column(
@@ -195,7 +202,7 @@ class OrderDetails {
           const Divider(height: 0.0),
           Container(
             decoration: BoxDecoration(
-              color: ColorConst.white,
+              // color: ColorConst.white,
               borderRadius: BorderRadius.circular(8.0),
             ),
             child: Column(
@@ -206,11 +213,13 @@ class OrderDetails {
                   minWidth: 500.0,
                   dataRowHeight: 56.0,
                   headingRowHeight: 64.0,
-                  border: const TableBorder(
-                    horizontalInside: BorderSide(
-                      color: ColorConst.white,
-                    ),
-                  ),
+                  border: isDark
+                      ? null
+                      : const TableBorder(
+                          horizontalInside: BorderSide(
+                            color: ColorConst.white,
+                          ),
+                        ),
                   columns: [
                     DataColumn2(
                       label: _tableHeader('#', fontWeight: FontWeight.bold),
