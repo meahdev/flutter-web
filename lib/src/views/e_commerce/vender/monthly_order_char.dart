@@ -1,6 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/half_chart.dart';
 import 'package:fl_chart/fl_chart.dart';
@@ -233,7 +233,7 @@ class _MonthlyOrderChartState extends State<MonthlyOrderChart> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ConstText.lightText(
-                text: Strings.monthlyOrder,
+                text: languageModel.eCommerceAdmin.monthlyOrder,
                 fontWeight: FontWeight.bold,
               ),
               FxBox.h24,
@@ -247,19 +247,19 @@ class _MonthlyOrderChartState extends State<MonthlyOrderChart> {
                           FxBox.h16,
                           Expanded(
                             child: _monthEarning(
-                              durationText: 'This month',
+                              durationText: languageModel.dashboard.thisMonth,
                               salesAmount: '25,234',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text.',
+                                  languageModel.dashboard.chartLorem,
                             ),
                           ),
                           FxBox.h16,
                           Expanded(
                             child: _monthEarning(
-                              durationText: 'Last month',
+                              durationText: languageModel.dashboard.lastMonth,
                               salesAmount: '76,321',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text.',
+                                  languageModel.dashboard.chartLorem,
                             ),
                           ),
                         ],
@@ -275,19 +275,19 @@ class _MonthlyOrderChartState extends State<MonthlyOrderChart> {
                           FxBox.w32,
                           Expanded(
                             child: _monthEarning(
-                              durationText: 'This month',
+                              durationText: languageModel.dashboard.thisMonth,
                               salesAmount: '25,234',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text.',
+                                  languageModel.dashboard.chartLorem,
                             ),
                           ),
                           FxBox.w32,
                           Expanded(
                             child: _monthEarning(
-                              durationText: 'Last month',
+                              durationText: languageModel.dashboard.lastMonth,
                               salesAmount: '76,321',
                               descriptionText:
-                                  'Lorem Ipsum is simply dummy text.',
+                                  languageModel.dashboard.chartLorem,
                             ),
                           ),
                         ],

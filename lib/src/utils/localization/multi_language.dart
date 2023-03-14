@@ -26,6 +26,7 @@ class LanguageModel extends Model {
 
   late Map<String, dynamic> _localizedString;
 
+  /// Load JSON file form assets
   Future<bool> load() async {
     try {
       String jsonString = await rootBundle
@@ -37,6 +38,7 @@ class LanguageModel extends Model {
     }
   }
 
+  /// Change localization
   Future<void> changeLanguage() async {
     if (_appLocale == hi) {
       HiveUtils.set(HiveKeys.locale, 'en');
@@ -65,6 +67,7 @@ class LanguageModel extends Model {
   final _Authentication authentication = _Authentication();
   final _EmailTemplate emailTemplate = _EmailTemplate();
   final _ExtraPage extraPage = _ExtraPage();
+  final _ECommerceAdmin eCommerceAdmin = _ECommerceAdmin();
 }
 
 class MultiLanguage {
@@ -434,9 +437,86 @@ class _ExtraPage {
   String get pricing3 => languageModel.translate('pricing3');
   String get pricing4 => languageModel.translate('pricing4');
   String get maintenancaTitle => languageModel.translate('maintenancaTitle');
-  String get maintenancaSubtitle => languageModel.translate('maintenancaSubtitle');
+  String get maintenancaSubtitle =>
+      languageModel.translate('maintenancaSubtitle');
   String get maintenancaText => languageModel.translate('maintenancaText');
   String get commingSoon1 => languageModel.translate('commingSoon1');
   String get commingSoon2 => languageModel.translate('commingSoon2');
   String get faqText => languageModel.translate('faqText');
+}
+
+class _ECommerceAdmin {
+  String get eCommerce => languageModel.translate('eCommerce');
+  String get admin => languageModel.translate('admin');
+  String get webSite => languageModel.translate('webSite');
+  String get eCommerceDashboard =>
+      languageModel.translate('eCommerceDashboard');
+  String get productAdd => languageModel.translate('productAdd');
+  String get venderDetail => languageModel.translate('venderDetail');
+  String get totalUser => languageModel.translate('totalUser');
+  String get totalOrders => languageModel.translate('totalOrders');
+  String get totalCancelledOrders =>
+      languageModel.translate('totalCancelledOrders');
+  String get totalReturnOrder => languageModel.translate('totalReturnOrder');
+  String get totalVenders => languageModel.translate('totalVenders');
+  String get payoutRequestProgress =>
+      languageModel.translate('payoutRequestProgress');
+  String get totalVelueSales => languageModel.translate('totalVelueSales');
+  String get yourTotalBalance => languageModel.translate('yourTotalBalance');
+  String get increasedBy => languageModel.translate('increasedBy');
+  String get decreasedBy => languageModel.translate('decreasedBy');
+  String get monthlyReport => languageModel.translate('monthlyReport');
+  String get monthlyReportUser => languageModel.translate('monthlyReportUser');
+  String get user => languageModel.translate('user');
+  String get subscription => languageModel.translate('subscription');
+  String get vender => languageModel.translate('vender');
+  String get total => languageModel.translate('total');
+  String get globalSales => languageModel.translate('globalSales');
+  String get id => languageModel.translate('id');
+  String get countryLogo => languageModel.translate('countryLogo');
+  String get countryName => languageModel.translate('countryName');
+  String get totalSales => languageModel.translate('totalSales');
+  String get salesOverview => languageModel.translate('salesOverview');
+  String get traffics => languageModel.translate('traffics');
+  String get sales => languageModel.translate('sales');
+  String get latestTransaction => languageModel.translate('latestTransaction');
+  String get name => languageModel.translate('name');
+  String get product => languageModel.translate('product');
+  String get orderDate => languageModel.translate('orderDate');
+  String get amount => languageModel.translate('amount');
+  String get deliveryStatus => languageModel.translate('deliveryStatus');
+  String get productName => languageModel.translate('productName');
+  String get category => languageModel.translate('category');
+  String get expiryDate => languageModel.translate('expiryDate');
+  String get unit => languageModel.translate('unit');
+  String get image => languageModel.translate('image');
+  String get categoryName => languageModel.translate('categoryName');
+  String get status => languageModel.translate('status');
+  String get emailAndMobile => languageModel.translate('emailAndMobile');
+  String get customer => languageModel.translate('customer');
+  String get order => languageModel.translate('order');
+  String get orderID => languageModel.translate('orderID');
+  String get customerName => languageModel.translate('customerName');
+  String get orderAmount => languageModel.translate('orderAmount');
+  String get phone => languageModel.translate('phone');
+  String get dateOfJoin => languageModel.translate('dateOfJoin');
+  String get bankName => languageModel.translate('bankName');
+  String get bankType => languageModel.translate('bankType');
+  String get accountNumberName => languageModel.translate('accountNumberName');
+  String get monthlyOrder => languageModel.translate('monthlyOrder');
+  String get paidDate => languageModel.translate('paidDate');
+  String get totalEarning => languageModel.translate('totalEarning');
+  String get totalPendingOrdres =>
+      languageModel.translate('totalPendingOrdres');
+  String get pendingSettlement => languageModel.translate('pendingSettlement');
+  String get returnOrder => languageModel.translate('returnOrder');
+  String get returnID => languageModel.translate('returnID');
+  String get returnDate => languageModel.translate('returnDate');
+  String get coupons => languageModel.translate('coupons');
+  String get couponName => languageModel.translate('couponName');
+  String get startDate => languageModel.translate('startDate');
+  String get endDate => languageModel.translate('endDate');
+  String get returnCondition => languageModel.translate('returnCondition');
+  String get description => languageModel.translate('description');
+  String get unitsInStock => languageModel.translate('unitsInStock');
 }

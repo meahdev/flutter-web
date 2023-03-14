@@ -294,6 +294,7 @@ class _MenuBarState extends State<FMenuBar> {
                                                               .currentPath)
                                                       .camelCase())
                                                   .trim(),
+                                              // upperCase(tabsRouter.currentPath),
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .bodyLarge!
@@ -1016,7 +1017,7 @@ class _MenuBarState extends State<FMenuBar> {
                       ],
                     ),
                     title: Text(
-                      items1[index],
+                      languageModel.translate(items1[index].camelCase()),
                       style: TextStyle(
                           color: children[index]
                                   .contains(upperCase(tabsRouter.currentPath))
@@ -1041,7 +1042,7 @@ class _MenuBarState extends State<FMenuBar> {
                 : ListTile(
                     title: isopen
                         ? Text(
-                            items1[index],
+                            languageModel.translate(items1[index].camelCase()),
                             style: TextStyle(
                               color: items1[index] ==
                                       upperCase(tabsRouter.currentPath)
@@ -1084,7 +1085,7 @@ class _MenuBarState extends State<FMenuBar> {
                   child: ListTile(
                     title: isopen
                         ? Text(
-                            items1[index],
+                            languageModel.translate(items1[index].camelCase()),
                             style: TextStyle(
                               color: items1[index] ==
                                       upperCase(tabsRouter.currentPath)
@@ -1154,7 +1155,10 @@ class _MenuBarState extends State<FMenuBar> {
                   ],
                 ),
                 title: Text(
-                  items.keys.elementAt(0),
+                  languageModel.translate(items.keys
+                      .elementAt(0)
+                      .replaceFirst('-', ' ')
+                      .camelCase()),
                   style: TextStyle(
                       color: children[0]
                               .contains(upperCase(tabsRouter.currentPath))
@@ -1358,17 +1362,22 @@ class _MenuBarState extends State<FMenuBar> {
                 // const Text(' / ${Strings.emailTemplates} '),
                 Text(' / ${languageModel.translate('emailTemplates')} '),
               ] else if (routeIndex == 38) ...[
-                const Text(' / ${Strings.eCommerce} '),
+                Text(' / ${languageModel.translate('eCommerce')} '),
               ] else if (routeIndex == 40) ...[
-                const Text(' / ${Strings.eCommerce} '),
+                Text(' / ${languageModel.translate('eCommerce')} '),
+                // const Text(' / ${Strings.eCommerce} '),
               ] else if (routeIndex == 47) ...[
-                const Text(' / ${Strings.eCommerce} / ${Strings.returnOrder} '),
+                Text(
+                    ' / ${languageModel.translate('eCommerce')} / ${Strings.returnOrder} '),
               ] else if (routeIndex == 51) ...[
-                const Text(' / ${Strings.eCommerce} / ${Strings.order} '),
+                Text(
+                    ' / ${languageModel.translate('eCommerce')} / ${Strings.order} '),
               ] else if (routeIndex == 41) ...[
-                const Text(' / ${Strings.eCommerce} / ${Strings.category} '),
+                Text(
+                    ' / ${languageModel.translate('eCommerce')} / ${Strings.category} '),
               ] else if (routeIndex == 43) ...[
-                const Text(' / ${Strings.eCommerce} / ${Strings.vender} '),
+                Text(
+                    ' / ${languageModel.translate('eCommerce')} / ${Strings.vender} '),
               ] else if (routeIndex == 42 ||
                   routeIndex == 44 ||
                   routeIndex == 45 ||
@@ -1380,11 +1389,12 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 53 ||
                   routeIndex == 54 ||
                   routeIndex == 56) ...[
-                const Text(' / ${Strings.eCommerce} '),
+                Text(' / ${languageModel.translate('eCommerce')} '),
               ] else if (routeIndex == 39) ...[
-                const Text(' / ${Strings.eCommerce} / ${Strings.products}'),
+                Text(
+                    ' / ${languageModel.translate('eCommerce')} / ${Strings.products}'),
               ] else if (routeIndex == 55) ...[
-                const Text(' / ${Strings.eCommerce} '),
+                Text(' / ${languageModel.translate('eCommerce')} '),
               ] else if (tabsRouter.currentPath == '/calendar' ||
                   tabsRouter.currentPath == '/map') ...[
                 const SizedBox.shrink()

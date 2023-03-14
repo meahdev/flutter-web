@@ -1,9 +1,9 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -89,7 +89,7 @@ class _ReturnOrderScreenState extends State<ReturnOrderScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ConstText.lightText(
-                  text: Strings.returnOrder.toUpperCase(),
+                  text: languageModel.eCommerceAdmin.returnOrder.trim(),
                   fontWeight: FontWeight.bold,
                 ),
                 FxBox.h16,
@@ -152,27 +152,27 @@ class _ReturnOrderScreenState extends State<ReturnOrderScreen> {
                     ),
                     columns: [
                       DataColumn2(
-                        label: _tableHeader('ID'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.id),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Return ID'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.returnID),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Custome Name'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.customerName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Email And Mobile'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.emailAndMobile),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Product Name'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.productName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Return Date'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.returnDate),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
@@ -249,12 +249,12 @@ class _ReturnOrderScreenState extends State<ReturnOrderScreen> {
     );
   }
 
-  Widget _tableRowImage(String imagepath) {
-    return Image.asset(
-      imagepath,
-      height: 40,
-    );
-  }
+  // Widget _tableRowImage(String imagepath) {
+  //   return Image.asset(
+  //     imagepath,
+  //     height: 40,
+  //   );
+  // }
 
   Widget _viewButton() {
     return FxButton(

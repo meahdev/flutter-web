@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutterx/flutterx.dart';
 import 'package:data_table_2/data_table_2.dart';
-import 'package:printing/printing.dart';
 
 class OrderInvoice extends StatefulWidget {
   const OrderInvoice({Key? key}) : super(key: key);

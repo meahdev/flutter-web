@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -15,7 +16,7 @@ class _VenderListItemState extends State<VenderListItem> {
   final List<Map<String, dynamic>> _listItem = [
     {
       'id': 0,
-      'producTitle': 'Total Earning',
+      'producTitle': languageModel.eCommerceAdmin.totalEarning,
       'value': '3,930 \$',
       'boxIcon': Icons.bar_chart_rounded,
       'boxColor': ['000C40', 'F0F2F0'],
@@ -23,7 +24,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 1,
-      'producTitle': 'Total Orders',
+      'producTitle': languageModel.eCommerceAdmin.totalOrders,
       'value': '1200',
       'boxIcon': Icons.note_alt_rounded,
       'boxColor': ['E8CBC0', '636FA4'],
@@ -31,7 +32,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 2,
-      'producTitle': 'Total Cancelled Orders',
+      'producTitle': languageModel.eCommerceAdmin.totalCancelledOrders,
       'value': '120',
       'boxIcon': Icons.cancel_outlined,
       // 'boxColor': '9B5B1E',
@@ -40,7 +41,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 3,
-      'producTitle': 'Total Return Order',
+      'producTitle': languageModel.eCommerceAdmin.totalReturnOrder,
       'value': '170',
       'boxIcon': Icons.pending_actions_outlined,
       'boxColor': ['3a6186', '89253e'],
@@ -48,7 +49,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 4,
-      'producTitle': 'Total Pending Ordres',
+      'producTitle': languageModel.eCommerceAdmin.totalPendingOrdres,
       'value': '200',
       'boxIcon': Icons.shopping_bag_rounded,
       'boxColor': ['4ecdc4', '556270'],
@@ -56,7 +57,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 5,
-      'producTitle': 'Pending Settlement',
+      'producTitle': languageModel.eCommerceAdmin.pendingSettlement,
       'value': '400 \$',
       'boxIcon': Icons.shopping_bag_rounded,
       'boxColor': ['ffd89b', '19547b'],
@@ -157,8 +158,8 @@ class _VenderListItemState extends State<VenderListItem> {
                 const Spacer(),
                 ConstText.lightText(
                   text: percentage > 0
-                      ? 'Increased by ${percentage.abs()}%'
-                      : 'Decreased by ${percentage.abs()}%',
+                      ? '${languageModel.eCommerceAdmin.increasedBy} ${percentage.abs()}%'
+                      : '${languageModel.eCommerceAdmin.decreasedBy} ${percentage.abs()}%',
                   color: ColorConst.white,
                   fontWeight: FontWeight.bold,
                 ),

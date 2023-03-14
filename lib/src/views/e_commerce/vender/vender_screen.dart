@@ -2,9 +2,9 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -133,7 +133,7 @@ class _VenderScreenState extends State<VenderScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ConstText.lightText(
-                  text: Strings.vender.toUpperCase(),
+                  text: languageModel.eCommerceAdmin.vender.trim(),
                   fontWeight: FontWeight.bold,
                 ),
                 FxBox.h10,
@@ -169,23 +169,23 @@ class _VenderScreenState extends State<VenderScreen> {
                     ),
                     columns: [
                       DataColumn2(
-                        label: _tableHeader('ID'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.id),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Image'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.image),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Name'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.name),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Email And Mobile'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.emailAndMobile),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Status'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.status),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
