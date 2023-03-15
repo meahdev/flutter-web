@@ -2,9 +2,9 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -109,7 +109,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ConstText.lightText(
-                  text: Strings.coupons.toUpperCase(),
+                  text: languageModel.eCommerceAdmin.coupons.trim(),
                   fontWeight: FontWeight.bold,
                 ),
                 FxBox.h12,
@@ -169,27 +169,32 @@ class _CouponsScreenState extends State<CouponsScreen> {
                     ),
                     columns: [
                       DataColumn2(
-                        label: _tableHeader('ID'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.id),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Coupon Name'),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.couponName),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Amount'),
+                        label:
+                            _tableHeader(languageModel.eCommerceAdmin.amount),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Start Date'),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.startDate),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('End Date'),
+                        label:
+                            _tableHeader(languageModel.eCommerceAdmin.endDate),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Status'),
+                        label:
+                            _tableHeader(languageModel.eCommerceAdmin.status),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(

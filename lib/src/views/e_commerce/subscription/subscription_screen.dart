@@ -1,10 +1,9 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
-import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -80,7 +79,7 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ConstText.lightText(
-                  text: Strings.subscriber.toUpperCase(),
+                  text: languageModel.eCommerceAdmin.subscription.trim(),
                   fontWeight: FontWeight.bold,
                 ),
                 FxBox.h16,
@@ -143,23 +142,23 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
                     ),
                     columns: [
                       DataColumn2(
-                        label: _tableHeader('ID'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.id),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Name'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.name),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Email'),
+                        label: _tableHeader(languageModel.form.email),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Date'),
+                        label: _tableHeader(languageModel.form.date),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Status'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.status),
                         size: ColumnSize.S,
                       ),
                     ],
@@ -217,12 +216,12 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
     );
   }
 
-  Widget _tableRowImage(String imagepath) {
-    return Image.asset(
-      imagepath,
-      height: 40,
-    );
-  }
+  // Widget _tableRowImage(String imagepath) {
+  //   return Image.asset(
+  //     imagepath,
+  //     height: 40,
+  //   );
+  // }
 
   Widget _statusBox(
     Color? color,
@@ -237,13 +236,13 @@ class _SubScriptionScreenState extends State<SubScriptionScreen> {
     );
   }
 
-  Widget _viewButton() {
-    return FxButton(
-      onPressed: () {
-        autoTabRouter!.setActiveIndex(43);
-      },
-      text: 'View',
-      color: ColorConst.primary,
-    );
-  }
+  // Widget _viewButton() {
+  //   return FxButton(
+  //     onPressed: () {
+  //       autoTabRouter!.setActiveIndex(43);
+  //     },
+  //     text: 'View',
+  //     color: ColorConst.primary,
+  //   );
+  // }
 }

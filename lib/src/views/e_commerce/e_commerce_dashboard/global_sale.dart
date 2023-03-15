@@ -4,6 +4,7 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class _GlobalSaleState extends State<GlobalSale> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ConstText.lightText(
-                  text: Strings.globalSaleText.toUpperCase(),
+                  text: languageModel.eCommerceAdmin.globalSales,
                   fontWeight: FontWeight.bold,
                 ),
                 FxBox.h12,
@@ -104,19 +105,19 @@ class _GlobalSaleState extends State<GlobalSale> {
                       ),
                       columns: [
                         DataColumn2(
-                          label: _tableHeader('ID'),
+                          label: _tableHeader(languageModel.eCommerceAdmin.id),
                           size: ColumnSize.S,
                         ),
                         DataColumn2(
-                          label: _tableHeader('Country logo'),
+                          label: _tableHeader(languageModel.eCommerceAdmin.countryLogo),
                           size: ColumnSize.S,
                         ),
                         DataColumn2(
-                          label: _tableHeader('Country Name'),
+                          label: _tableHeader(languageModel.eCommerceAdmin.countryName),
                           size: ColumnSize.M,
                         ),
                         DataColumn2(
-                          label: _tableHeader('Total Sales'),
+                          label: _tableHeader(languageModel.eCommerceAdmin.totalSales),
                           size: ColumnSize.S,
                         ),
                       ],

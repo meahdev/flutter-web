@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/dashboard/sales_analytics.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/global_sale.dart';
@@ -221,7 +221,7 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ConstText.lightText(
-              text: 'Monthly report of user'.toUpperCase(),
+              text: languageModel.eCommerceAdmin.monthlyReportUser,
               fontWeight: FontWeight.bold,
             ),
             FxBox.h10,
@@ -310,12 +310,12 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
               children: [
                 _descriptionHeadre(
                   boxColor: const Color.fromRGBO(170, 191, 156, 1),
-                  headerText: 'User',
+                  headerText: languageModel.eCommerceAdmin.user,
                 ),
                 FxBox.w10,
                 _descriptionHeadre(
                   boxColor: const Color.fromRGBO(219, 211, 206, 1),
-                  headerText: 'Vender',
+                  headerText: languageModel.eCommerceAdmin.vender.trim(),
                 ),
               ],
             ),
@@ -325,12 +325,12 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
               children: [
                 _descriptionHeadre(
                   boxColor: const Color.fromRGBO(191, 159, 129, 1),
-                  headerText: 'Subscription',
+                  headerText: languageModel.eCommerceAdmin.subscription,
                 ),
                 FxBox.w10,
                 _descriptionHeadre(
                   boxColor: const Color.fromARGB(255, 54, 64, 152),
-                  headerText: 'Total',
+                  headerText: languageModel.eCommerceAdmin.total,
                 ),
               ],
             ),
@@ -340,129 +340,129 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
     );
   }
 
-  Widget newUserBox() {
-    return Card(
-      shadowColor: ColorConst.primary.withOpacity(0.5),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
-      ),
-      elevation: 7,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: 200,
-          minWidth: MediaQuery.of(context).size.width,
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            // color: ColorConst.primary,
-            borderRadius: BorderRadius.circular(18.0),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ConstText.lightText(
-                text: 'New User',
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-              ConstText.largeText(
-                text: '24,800',
-                fontSize: 33,
-                color: ColorConst.primary,
-                fontWeight: FontWeight.bold,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget newUserBox() {
+  //   return Card(
+  //     shadowColor: ColorConst.primary.withOpacity(0.5),
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.circular(18.0),
+  //     ),
+  //     elevation: 7,
+  //     child: ConstrainedBox(
+  //       constraints: BoxConstraints(
+  //         minHeight: 200,
+  //         minWidth: MediaQuery.of(context).size.width,
+  //       ),
+  //       child: Container(
+  //         padding: const EdgeInsets.all(20),
+  //         decoration: BoxDecoration(
+  //           // color: ColorConst.primary,
+  //           borderRadius: BorderRadius.circular(18.0),
+  //         ),
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //           children: [
+  //             ConstText.lightText(
+  //               text: 'New User',
+  //               fontSize: 20,
+  //               fontWeight: FontWeight.w600,
+  //             ),
+  //             ConstText.largeText(
+  //               text: '24,800',
+  //               fontSize: 33,
+  //               color: ColorConst.primary,
+  //               fontWeight: FontWeight.bold,
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget newsubcriptionBox() {
-    return Card(
-      shadowColor: ColorConst.primary.withOpacity(0.5),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
-      ),
-      elevation: 7,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: 200,
-          minWidth: MediaQuery.of(context).size.width,
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            // color: ColorConst.primary,
-            borderRadius: BorderRadius.circular(18.0),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ConstText.lightText(
-                text: 'New SubScribers',
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-              ConstText.largeText(
-                text: '1452',
-                fontSize: 33,
-                color: ColorConst.primary,
-                fontWeight: FontWeight.bold,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget newsubcriptionBox() {
+  //   return Card(
+  //     shadowColor: ColorConst.primary.withOpacity(0.5),
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.circular(18.0),
+  //     ),
+  //     elevation: 7,
+  //     child: ConstrainedBox(
+  //       constraints: BoxConstraints(
+  //         minHeight: 200,
+  //         minWidth: MediaQuery.of(context).size.width,
+  //       ),
+  //       child: Container(
+  //         padding: const EdgeInsets.all(20),
+  //         decoration: BoxDecoration(
+  //           // color: ColorConst.primary,
+  //           borderRadius: BorderRadius.circular(18.0),
+  //         ),
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //           children: [
+  //             ConstText.lightText(
+  //               text: 'New SubScribers',
+  //               fontSize: 20,
+  //               fontWeight: FontWeight.w600,
+  //             ),
+  //             ConstText.largeText(
+  //               text: '1452',
+  //               fontSize: 33,
+  //               color: ColorConst.primary,
+  //               fontWeight: FontWeight.bold,
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
-  Widget totalsubcriptionBox() {
-    return Card(
-      shadowColor: ColorConst.primary.withOpacity(0.5),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(18.0),
-      ),
-      elevation: 7,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          minHeight: 200,
-          minWidth: MediaQuery.of(context).size.width,
-        ),
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-            // color: ColorConst.primary,
-            borderRadius: BorderRadius.circular(18.0),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              ConstText.lightText(
-                text: 'Total SubScribers',
-                fontSize: 20,
-                fontWeight: FontWeight.w600,
-              ),
-              ConstText.largeText(
-                text: '3200',
-                fontSize: 33,
-                color: ColorConst.primary,
-                fontWeight: FontWeight.bold,
-              ),
-              ConstText.lightText(
-                text: 'Lorem Ipsum is simply dummy text of the printing.',
-                textAlign: TextAlign.center,
-                fontSize: 15,
-                // color: ColorConst.white.withOpacity(0.5),
-                fontWeight: FontWeight.w500,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
+  // Widget totalsubcriptionBox() {
+  //   return Card(
+  //     shadowColor: ColorConst.primary.withOpacity(0.5),
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.circular(18.0),
+  //     ),
+  //     elevation: 7,
+  //     child: ConstrainedBox(
+  //       constraints: BoxConstraints(
+  //         minHeight: 200,
+  //         minWidth: MediaQuery.of(context).size.width,
+  //       ),
+  //       child: Container(
+  //         padding: const EdgeInsets.all(20),
+  //         decoration: BoxDecoration(
+  //           // color: ColorConst.primary,
+  //           borderRadius: BorderRadius.circular(18.0),
+  //         ),
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+  //           children: [
+  //             ConstText.lightText(
+  //               text: 'Total SubScribers',
+  //               fontSize: 20,
+  //               fontWeight: FontWeight.w600,
+  //             ),
+  //             ConstText.largeText(
+  //               text: '3200',
+  //               fontSize: 33,
+  //               color: ColorConst.primary,
+  //               fontWeight: FontWeight.bold,
+  //             ),
+  //             ConstText.lightText(
+  //               text: 'Lorem Ipsum is simply dummy text of the printing.',
+  //               textAlign: TextAlign.center,
+  //               fontSize: 15,
+  //               // color: ColorConst.white.withOpacity(0.5),
+  //               fontWeight: FontWeight.w500,
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   Widget _overViewChart() {
     return Card(
@@ -482,7 +482,7 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ConstText.lightText(
-                  text: Strings.salesOverview,
+                  text: languageModel.eCommerceAdmin.salesOverview,
                   fontWeight: FontWeight.bold,
                 ),
                 Column(
@@ -490,12 +490,12 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
                   children: [
                     _descriptionHeadre(
                       boxColor: const Color(0xff81d7d0),
-                      headerText: 'Traffics',
+                      headerText: languageModel.eCommerceAdmin.traffics,
                     ),
                     FxBox.h10,
                     _descriptionHeadre(
                       boxColor: const Color(0xffaab1e6),
-                      headerText: 'Sales',
+                      headerText: languageModel.eCommerceAdmin.sales,
                     ),
                   ],
                 ),

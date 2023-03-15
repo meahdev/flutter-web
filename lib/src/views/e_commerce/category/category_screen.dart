@@ -2,9 +2,9 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -57,7 +57,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ConstText.lightText(
-                  text: Strings.category.toUpperCase(),
+                  text: languageModel.eCommerceAdmin.category.trim(),
                   fontWeight: FontWeight.bold,
                 ),
                 FxBox.h10,
@@ -87,19 +87,19 @@ class _CategoryScreenState extends State<CategoryScreen> {
                     ),
                     columns: [
                       DataColumn2(
-                        label: _tableHeader('ID'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.id),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Image'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.image),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Category Name'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.categoryName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Status'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.status),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(

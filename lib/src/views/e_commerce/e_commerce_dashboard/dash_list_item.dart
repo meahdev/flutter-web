@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -15,7 +16,7 @@ class _DashListItemState extends State<DashListItem> {
   final List<Map<String, dynamic>> _listItem = [
     {
       'id': 0,
-      'producTitle': 'Total User',
+      'producTitle': languageModel.eCommerceAdmin.totalUser,
       'value': '3,930',
       'boxIcon': Icons.group_sharp,
       'boxColor': ['eb5757', '000000'],
@@ -23,7 +24,7 @@ class _DashListItemState extends State<DashListItem> {
     },
     {
       'id': 1,
-      'producTitle': 'Total Orders',
+      'producTitle': languageModel.eCommerceAdmin.totalOrders,
       'value': '67,000',
       'boxIcon': Icons.note_alt_rounded,
       'boxColor': ['44A08D', '093637'],
@@ -31,7 +32,7 @@ class _DashListItemState extends State<DashListItem> {
     },
     {
       'id': 2,
-      'producTitle': 'Total Cancelled Orders',
+      'producTitle': languageModel.eCommerceAdmin.totalCancelledOrders,
       'value': '1100',
       'boxIcon': Icons.cancel_outlined,
       // 'boxColor': '9B5B1E',
@@ -40,7 +41,7 @@ class _DashListItemState extends State<DashListItem> {
     },
     {
       'id': 3,
-      'producTitle': 'Total Return Order',
+      'producTitle': languageModel.eCommerceAdmin.totalReturnOrder,
       'value': '11,700',
       'boxIcon': Icons.pending_actions_outlined,
       'boxColor': ['E8CBC0', '636FA4'],
@@ -48,7 +49,7 @@ class _DashListItemState extends State<DashListItem> {
     },
     {
       'id': 4,
-      'producTitle': 'Total Venders',
+      'producTitle': languageModel.eCommerceAdmin.totalVenders,
       'value': '3,200',
       'boxIcon': Icons.group_sharp,
       'boxColor': ['de6161', '2657eb'],
@@ -56,7 +57,7 @@ class _DashListItemState extends State<DashListItem> {
     },
     {
       'id': 5,
-      'producTitle': 'Payout Request in Progress',
+      'producTitle': languageModel.eCommerceAdmin.payoutRequestProgress,
       'value': '40',
       'boxIcon': Icons.watch_later_outlined,
       'boxColor': ['3a6186', '89253e'],
@@ -64,7 +65,7 @@ class _DashListItemState extends State<DashListItem> {
     },
     {
       'id': 5,
-      'producTitle': 'Total velue of sales',
+      'producTitle': languageModel.eCommerceAdmin.totalVelueSales,
       'value': '76,675 \$',
       'boxIcon': Icons.shopping_bag_rounded,
       'boxColor': ['4ecdc4', '556270'],
@@ -72,7 +73,7 @@ class _DashListItemState extends State<DashListItem> {
     },
     {
       'id': 5,
-      'producTitle': 'Your Total balance',
+      'producTitle': languageModel.eCommerceAdmin.yourTotalBalance,
       'value': '43,234 \$',
       'boxIcon': Icons.monetization_on_outlined,
       'boxColor': ['ffd89b', '19547b'],
@@ -169,8 +170,8 @@ class _DashListItemState extends State<DashListItem> {
                 const Spacer(),
                 ConstText.lightText(
                   text: percentage > 0
-                      ? 'Increased by ${percentage.abs()}%'
-                      : 'Decreased by ${percentage.abs()}%',
+                      ? '${languageModel.eCommerceAdmin.increasedBy} ${percentage.abs()}%'
+                      : '${languageModel.eCommerceAdmin.decreasedBy} ${percentage.abs()}%',
                   color: ColorConst.white,
                   fontWeight: FontWeight.bold,
                 ),

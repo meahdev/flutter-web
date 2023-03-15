@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -62,11 +63,10 @@ class _SuccessScreenState extends State<SuccessScreen> {
             color: ColorConst.successDark,
           ),
           FxBox.h20,
-          const CustomText(
+          CustomText(
             textAlign: TextAlign.center,
-            title:
-                'Lorem ipsum is a placeholder text commonly used to demonstrate the visual'
-                'form of a document or a typeface without relying on meaningful content.',
+            title: '${languageModel.eCommerceWeb.successLorem1}'
+                '${languageModel.eCommerceWeb.successLorem2}',
           ),
           FxBox.h20,
           FxButton(

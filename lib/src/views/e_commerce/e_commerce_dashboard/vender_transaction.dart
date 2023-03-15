@@ -3,6 +3,7 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -72,7 +73,7 @@ class _VenderTransactionState extends State<VenderTransaction> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ConstText.lightText(
-              text: Strings.latestTransaction,
+              text: languageModel.eCommerceAdmin.latestTransaction,
               fontWeight: FontWeight.bold,
             ),
             FxBox.h10,
@@ -101,27 +102,27 @@ class _VenderTransactionState extends State<VenderTransaction> {
                 ),
                 columns: [
                   DataColumn2(
-                    label: _tableHeader('ID'),
+                    label: _tableHeader(languageModel.eCommerceAdmin.id),
                     size: ColumnSize.S,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Name'),
+                    label: _tableHeader(languageModel.eCommerceAdmin.name),
                     size: ColumnSize.L,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Product'),
+                    label: _tableHeader(languageModel.eCommerceAdmin.product),
                     size: ColumnSize.M,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Order Date'),
+                    label: _tableHeader(languageModel.eCommerceAdmin.orderDate),
                     size: ColumnSize.L,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Amount'),
+                    label: _tableHeader(languageModel.eCommerceAdmin.amount),
                     size: ColumnSize.M,
                   ),
                   DataColumn2(
-                    label: _tableHeader('Delivery Status'),
+                    label: _tableHeader(languageModel.eCommerceAdmin.deliveryStatus),
                     size: ColumnSize.L,
                   ),
                   DataColumn2(

@@ -1,9 +1,9 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -94,7 +94,7 @@ class _OrderScreenState extends State<OrderScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ConstText.lightText(
-                  text: Strings.order.toUpperCase(),
+                  text: languageModel.eCommerceAdmin.order.trim(),
                   fontWeight: FontWeight.bold,
                 ),
                 FxBox.h16,
@@ -157,31 +157,31 @@ class _OrderScreenState extends State<OrderScreen> {
                     ),
                     columns: [
                       DataColumn2(
-                        label: _tableHeader('ID'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.id),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Order ID'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.orderID),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Custome Name'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.customerName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Email And Mobile'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.emailAndMobile),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Product Name'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.productName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Order Date'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.orderDate),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Order Amount'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.orderAmount),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
@@ -241,24 +241,24 @@ class _OrderScreenState extends State<OrderScreen> {
     );
   }
 
-  Widget _tableValue(
-    String email,
-    String number,
-  ) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ConstText.lightText(
-          text: email,
-          fontWeight: FontWeight.w700,
-        ),
-        ConstText.lightText(
-          text: number,
-          fontWeight: FontWeight.w700,
-        )
-      ],
-    );
-  }
+  // Widget _tableValue(
+  //   String email,
+  //   String number,
+  // ) {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       ConstText.lightText(
+  //         text: email,
+  //         fontWeight: FontWeight.w700,
+  //       ),
+  //       ConstText.lightText(
+  //         text: number,
+  //         fontWeight: FontWeight.w700,
+  //       )
+  //     ],
+  //   );
+  // }
 
   Widget _viewButton() {
     return FxButton(

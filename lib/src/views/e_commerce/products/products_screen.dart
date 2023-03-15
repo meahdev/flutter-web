@@ -2,7 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product.dart';
@@ -191,10 +191,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget _colorFilter() {
     return Column(
       children: [
-        const Align(
+        Align(
           alignment: Alignment.centerLeft,
           child: CustomText(
-            title: 'Colors',
+            title: languageModel.eCommerceWeb.colors,
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
@@ -233,10 +233,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget _brandFilter() {
     return Column(
       children: [
-        const Align(
+        Align(
           alignment: Alignment.centerLeft,
           child: CustomText(
-            title: 'Category',
+            title: languageModel.eCommerceAdmin.category.trim(),
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
@@ -336,10 +336,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
   Widget _priceRange() {
     return Column(
       children: [
-        const Align(
+        Align(
           alignment: Alignment.centerLeft,
           child: CustomText(
-            title: 'Price Range',
+            title: languageModel.eCommerceWeb.priceRange,
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
@@ -385,8 +385,8 @@ class _ProductsScreenState extends State<ProductsScreen> {
           width: 20,
         ),
         FxBox.w10,
-        const CustomText(
-          title: Strings.filter,
+        CustomText(
+          title: languageModel.eCommerceWeb.filter,
           fontWeight: FontWeight.w600,
         )
       ],

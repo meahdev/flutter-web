@@ -1,8 +1,8 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/enum.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/charts/chartsutils.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -76,7 +76,7 @@ class _VenderSalesReportState extends State<VenderSalesReport> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             ConstText.lightText(
-              text: Strings.salesReport,
+              text: languageModel.eCommerceAdmin.monthlyReport,
               fontWeight: FontWeight.bold,
             ),
             FxBox.h24,

@@ -2,8 +2,8 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 
 import 'package:admin_dashboard/src/views/e_commerce/vender/latest_transaction.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/monthly_order_char.dart';
@@ -105,7 +105,7 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ConstText.lightText(
-                text: 'BANK DETAILS',
+                text: languageModel.form.bankDetails,
                 fontWeight: FontWeight.bold,
               ),
               FxBox.h24,
@@ -113,14 +113,14 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
                 children: [
                   Expanded(
                       child: _headerWithValue(
-                          header: 'Bank Name', value: 'Money Bank')),
+                          header: languageModel.eCommerceAdmin.bankName, value: 'Money Bank')),
                   Expanded(
                       child: _headerWithValue(
-                          header: 'Bank type', value: 'Current Account')),
+                          header: languageModel.eCommerceAdmin.bankType, value: 'Current Account')),
                 ],
               ),
               FxBox.h24,
-              _headerWithValue(header: 'Account Number Name', value: '-'),
+              _headerWithValue(header: languageModel.eCommerceAdmin.accountNumberName, value: '-'),
             ],
           ),
         ),
@@ -141,7 +141,7 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
         child: Column(
           children: [
             ConstText.lightText(
-              text: Strings.venderDetail.toUpperCase(),
+              text: languageModel.eCommerceAdmin.venderDetail,
               fontWeight: FontWeight.bold,
             ),
             FxBox.h24,
@@ -168,7 +168,7 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
   }
 
   Widget _status() {
-    return _headerWithValue(header: 'Status', value: 'Active');
+    return _headerWithValue(header: languageModel.eCommerceAdmin.status, value: 'Active');
   }
 
   Widget _emailAndPhone() {
@@ -176,9 +176,9 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
       children: [
         Expanded(
             child:
-                _headerWithValue(header: 'Email', value: 'h.patel@gmail.com')),
+                _headerWithValue(header: languageModel.form.email, value: 'h.patel@gmail.com')),
         Expanded(
-            child: _headerWithValue(header: 'Phone', value: '+1 5654349204')),
+            child: _headerWithValue(header: languageModel.eCommerceAdmin.phone, value: '+1 5654349204')),
       ],
     );
   }
@@ -188,10 +188,10 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
       children: [
         Expanded(
             child:
-                _headerWithValue(header: 'Address', value: 'Gujarat, India')),
+                _headerWithValue(header: languageModel.form.address, value: 'Gujarat, India')),
         Expanded(
             child:
-                _headerWithValue(header: 'Date Of Join', value: '30 Jan 2023')),
+                _headerWithValue(header: languageModel.eCommerceAdmin.dateOfJoin, value: '30 Jan 2023')),
       ],
     );
   }

@@ -2,9 +2,9 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
@@ -81,7 +81,7 @@ class _ReturnConditionScreenState extends State<ReturnConditionScreen> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ConstText.lightText(
-                  text: Strings.returnCondition.toUpperCase(),
+                  text: languageModel.eCommerceAdmin.returnCondition.trim(),
                   fontWeight: FontWeight.bold,
                 ),
                 FxBox.h12,
@@ -141,15 +141,15 @@ class _ReturnConditionScreenState extends State<ReturnConditionScreen> {
                     ),
                     columns: [
                       DataColumn2(
-                        label: _tableHeader('ID'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.id),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Return Condition'),
+                        label: _tableHeader(languageModel.eCommerceAdmin.returnCondition),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
-                        label: _tableHeader('Date'),
+                        label: _tableHeader(languageModel.form.date),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
