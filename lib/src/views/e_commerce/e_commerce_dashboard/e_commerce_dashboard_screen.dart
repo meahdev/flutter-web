@@ -4,7 +4,6 @@ import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/dashboard/sales_analytics.dart';
-import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/dash_list_item.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/global_sale.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/sales_overview.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/vender_sales.dart';
@@ -20,11 +19,116 @@ class EcommerceDashboard extends StatefulWidget {
 }
 
 class _EcommerceDashboardState extends State<EcommerceDashboard> {
+  final List<String> _typeOfData = [
+    'Orders',
+    'Revenue',
+    'Avg.order value',
+    'Unique visiors'
+  ];
+  final List<int> _height = [80, 60, 90, 54, 42];
+
+  double _getWidth() {
+    if (MediaQuery.of(context).size.width <= 550) {
+      return MediaQuery.of(context).size.width / 2 - 40;
+    } else if (MediaQuery.of(context).size.width <= 750) {
+      return (MediaQuery.of(context).size.width / 2) - 50;
+    } else if (Responsive.isWeb(context)) {
+      return ((MediaQuery.of(context).size.width - 240) / 4) - 36;
+    } else {
+      return (MediaQuery.of(context).size.width / 3) - 36;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const DashListItem(),
+        MediaQuery.of(context).size.width > 1250
+            ? Wrap(
+                spacing: 28.0,
+                runSpacing: 26.0,
+                children: [
+                  Expanded(
+                    child: _dataOfEcommerce('74,516', 0, 0xFFf0f0ff),
+                  ),
+                  Expanded(
+                    child: _dataOfEcommerce('\$28,947', 1, 0xFFfef0f6),
+                  ),
+                  Expanded(
+                    child: _dataOfEcommerce('\$8,947', 2, 0xFFe9faf5),
+                  ),
+                  Expanded(
+                    child: _dataOfEcommerce('45.2 K', 3, 0xFFeaf3ff),
+                  ),
+                ],
+              )
+            : MediaQuery.of(context).size.width > 550
+                ? Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _dataOfEcommerce('74,516', 0, 0xFFf0f0ff),
+                          ),
+                          const SizedBox(
+                            width: 28,
+                          ),
+                          Expanded(
+                            child: _dataOfEcommerce('\$28,947', 1, 0xFFfef0f6),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 26.0,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: _dataOfEcommerce('\$8,947', 2, 0xFFe9faf5),
+                          ),
+                          const SizedBox(
+                            width: 28,
+                          ),
+                          Expanded(
+                            child: _dataOfEcommerce('45.2 K', 3, 0xFFeaf3ff),
+                          ),
+                        ],
+                      )
+                    ],
+                  )
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: _dataOfEcommerce('74,516', 0, 0xFFf0f0ff),
+                      ),
+                      const SizedBox(
+                        height: 26.0,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: _dataOfEcommerce('\$28,947', 1, 0xFFfef0f6),
+                      ),
+                      const SizedBox(
+                        height: 26.0,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: _dataOfEcommerce('\$8,947', 2, 0xFFe9faf5),
+                      ),
+                      const SizedBox(
+                        height: 26.0,
+                      ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: _dataOfEcommerce('45.2 K', 3, 0xFFeaf3ff),
+                      ),
+                      const SizedBox(
+                        height: 26.0,
+                      ),
+                    ],
+                  ),
         FxBox.h24,
         Responsive.isWeb(context)
             ? Row(
@@ -429,6 +533,71 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
           fontWeight: FontWeight.bold,
         ),
       ],
+    );
+  }
+
+  Widget _dataOfEcommerce(String number, int typeOfData, int decidedColor) {
+    return SizedBox(
+      width: _getWidth(),
+      height: MediaQuery.of(context).size.height * 0.20,
+      child: Card(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  number,
+                  style: const TextStyle(
+                    fontSize: 28.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  _typeOfData[typeOfData],
+                  style: const TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Icon(
+                      typeOfData != 2
+                          ? Icons.arrow_upward_outlined
+                          : Icons.arrow_downward_rounded,
+                      color: typeOfData != 2 ? Colors.green : Colors.red,
+                    ),
+                    const Text('Since last week')
+                  ],
+                ),
+                const SizedBox(
+                  height: 12,
+                )
+              ],
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              // mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                for (int i = 0; i < 5; i++) ...[
+                  Container(
+                    height: _height[i].toDouble(),
+                    width: 15,
+                    // color: Colors.green.withOpacity(0.2),
+                    color: Color(decidedColor),
+                  ),
+                  const SizedBox(
+                    width: 3,
+                  )
+                ],
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
