@@ -142,7 +142,7 @@ class _ECartScreenState extends State<ECartScreen> {
               alignment: Alignment.bottomRight,
               child: FxButton(
                 onPressed: () {
-                  autoTabRouter!.setActiveIndex(45);
+                  autoecTabRouter!.setActiveIndex(14);
                 },
                 height: 50,
                 color: ColorConst.calSuccess,

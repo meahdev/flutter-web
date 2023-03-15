@@ -63,6 +63,13 @@ class _TrackOrderState extends State<TrackOrder> {
       ]
     },
   ];
+
+  @override
+  void initState() {
+    _orderController.text = '20230313-11135293';
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
@@ -46,11 +47,53 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
       padding: const EdgeInsets.all(8.0),
       child: Column(
         children: [
-          Container(
-            constraints: const BoxConstraints(maxHeight: 700),
-            width: double.infinity,
-            child: _crouselSlider(),
-          ),
+          Responsive.isMobile(context) || Responsive.isTablet(context)
+              ? Column(
+                  children: [
+                    Container(
+                      constraints: const BoxConstraints(maxHeight: 500),
+                      width: double.infinity,
+                      child: _crouselSlider(),
+                    ),
+                    FxBox.h12,
+                    Image.asset(
+                      Images.tempImage,
+                      height: 200,
+                    ),
+                    FxBox.h12,
+                    Image.asset(
+                      Images.tempImage1,
+                      height: 200,
+                    ),
+                  ],
+                )
+              : Row(
+                  children: [
+                    Expanded(
+                      child: Container(
+                        constraints: const BoxConstraints(maxHeight: 500),
+                        // width: double.infinity,
+                        child: _crouselSlider(),
+                      ),
+                    ),
+                    FxBox.w20,
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            Images.tempImage,
+                            height: 200,
+                          ),
+                          FxBox.h32,
+                          Image.asset(
+                            Images.tempImage1,
+                            height: 200,
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
           FxBox.h24,
           _featureProduct(
             list: ecomProduct,
@@ -339,12 +382,17 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
           children: [
             Column(
               children: [
-                Image.asset(
-                  imagePath,
-                  height: 200,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.warning);
+                GestureDetector(
+                  onTap: () {
+                    autoecTabRouter!.setActiveIndex(13);
                   },
+                  child: Image.asset(
+                    imagePath,
+                    height: 200,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.warning);
+                    },
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 24.0),
@@ -470,6 +518,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
                 builder: (context, currentIndex, _) {
                   return ListView.builder(
                     shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     itemCount: _imageList.length,
                     itemBuilder: (context, index) {

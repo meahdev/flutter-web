@@ -10,6 +10,8 @@ import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart'
 import 'package:admin_dashboard/src/views/e_commerce/compare_screen/compare_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_forgot.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_login.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_register.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_cart/e_cart.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
@@ -330,6 +332,28 @@ Widget getECRouteWidget(int index) {
     return const AllBrandScreen();
   } else if (index == 4) {
     return const OffersScreen();
+  } else if (index == 5) {
+    return const CompareScreen();
+  } else if (index == 6) {
+    return const WishList();
+  } else if (index == 7) {
+    return const ECartScreen();
+  } else if (index == 8) {
+    return const ELogin();
+  } else if (index == 9) {
+    return const ERegister();
+  } else if (index == 10) {
+    return const EForgot();
+  } else if (index == 11) {
+    return const TrackOrder();
+  } else if (index == 12) {
+    return const OrderHistory();
+  } else if (index == 13) {
+    return const ShowProductDetails();
+  } else if (index == 14) {
+    return const PaymentScreen();
+  } else if (index == 15) {
+    return const SuccessScreen();
   } else {
     return const ProductHomeScreen();
   }

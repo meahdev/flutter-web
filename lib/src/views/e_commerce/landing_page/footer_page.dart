@@ -149,7 +149,17 @@ class _FooterPageState extends State<FooterPage> {
             return Padding(
               padding: const EdgeInsets.all(2.0),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  if (account == 'Login') {
+                    autoecTabRouter!.setActiveIndex(8);
+                  } else if (account == 'Order History') {
+                    autoecTabRouter!.setActiveIndex(12);
+                  } else if (account == 'My Wishlist') {
+                    autoecTabRouter!.setActiveIndex(6);
+                  } else {
+                    autoecTabRouter!.setActiveIndex(11);
+                  }
+                },
                 child: ConstText.lightText(
                   text: account,
                   fontSize: 13,

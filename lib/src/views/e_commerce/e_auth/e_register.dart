@@ -28,76 +28,72 @@ class _ERegisterState extends State<ERegister> {
   final CheckboxBloc _checkboxBloc = CheckboxBloc();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          SelectionArea(
-            child: SingleChildScrollView(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Image.asset(
-                    Images.authBG,
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.cover,
-                  ),
-                  SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        FxBox.h20,
-                        Center(
-                          child: Container(
-                            constraints: const BoxConstraints(
-                              maxWidth: 460,
-                            ),
-                            padding: Responsive.isMobile(context)
-                                ? const EdgeInsets.all(32)
-                                : const EdgeInsets.all(40),
-                            decoration: BoxDecoration(
+    return Stack(
+      children: [
+        SelectionArea(
+          child: SingleChildScrollView(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset(
+                  Images.authBG,
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                ),
+                SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      FxBox.h20,
+                      Center(
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            maxWidth: 460,
+                          ),
+                          padding: Responsive.isMobile(context)
+                              ? const EdgeInsets.all(32)
+                              : const EdgeInsets.all(40),
+                          decoration: BoxDecoration(
+                            color: isDark ? ColorConst.black : ColorConst.white,
+                            border: Border.all(
                               color:
                                   isDark ? ColorConst.black : ColorConst.white,
-                              border: Border.all(
-                                color: isDark
-                                    ? ColorConst.black
-                                    : ColorConst.white,
+                            ),
+                            borderRadius: BorderRadius.circular(24),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Center(
+                                child: _logoView(),
                               ),
-                              borderRadius: BorderRadius.circular(24),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Center(
-                                  child: _logoView(),
-                                ),
-                                FxBox.h16,
-                                CustomText(
-                                  title: Strings.contactInfo,
-                                  fontSize: 28,
-                                  textAlign: TextAlign.start,
-                                  fontWeight: FontWeight.w700,
-                                  textColor: isDark
-                                      ? ColorConst.white
-                                      : ColorConst.black,
-                                ),
-                                FxBox.h6,
-                                _bottomView(),
-                              ],
-                            ),
+                              FxBox.h16,
+                              CustomText(
+                                title: Strings.contactInfo,
+                                fontSize: 28,
+                                textAlign: TextAlign.start,
+                                fontWeight: FontWeight.w700,
+                                textColor: isDark
+                                    ? ColorConst.white
+                                    : ColorConst.black,
+                              ),
+                              FxBox.h6,
+                              _bottomView(),
+                            ],
                           ),
                         ),
-                        FxBox.h20,
-                      ],
-                    ),
+                      ),
+                      FxBox.h20,
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

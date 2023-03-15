@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
@@ -23,67 +24,63 @@ class ELogin extends StatefulWidget {
 }
 
 class _ELoginState extends State<ELogin> {
-
-   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            SelectionArea(
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Image.asset(
-                    Images.authBG,
-                    height: MediaQuery.of(context).size.height,
-                    width: MediaQuery.of(context).size.width,
-                    fit: BoxFit.cover,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      FxBox.h20,
-                      Center(
-                        child: Container(
-                          constraints: const BoxConstraints(
-                            maxWidth: 460,
-                          ),
-                          padding: Responsive.isMobile(context)
-                              ? const EdgeInsets.all(32)
-                              : const EdgeInsets.all(40),
-                          decoration: BoxDecoration(
+    return SingleChildScrollView(
+      child: Stack(
+        children: [
+          SelectionArea(
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset(
+                  Images.authBG,
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  fit: BoxFit.cover,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    FxBox.h20,
+                    Center(
+                      child: Container(
+                        constraints: const BoxConstraints(
+                          maxWidth: 460,
+                        ),
+                        padding: Responsive.isMobile(context)
+                            ? const EdgeInsets.all(32)
+                            : const EdgeInsets.all(40),
+                        decoration: BoxDecoration(
+                          color: isDark ? ColorConst.black : ColorConst.white,
+                          border: Border.all(
                             color: isDark ? ColorConst.black : ColorConst.white,
-                            border: Border.all(
-                              color:
-                                  isDark ? ColorConst.black : ColorConst.white,
-                            ),
-                            borderRadius: BorderRadius.circular(24),
                           ),
-                          child: Column(
-                            children: [
-                              _logoView(),
-                              FxBox.h16,
-                              ConstantAuth.headerView(
-                                  Strings.signIn,
-                                  'We suggest using the email address you use at work.',
-                                  context),
-                              _bottomView(),
-                            ],
-                          ),
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child: Column(
+                          children: [
+                            _logoView(),
+                            FxBox.h16,
+                            ConstantAuth.headerView(
+                                Strings.signIn,
+                                'We suggest using the email address you use at work.',
+                                context),
+                            _bottomView(),
+                          ],
                         ),
                       ),
-                      FxBox.h20,
-                    ],
-                  ),
-                ],
-              ),
+                    ),
+                    FxBox.h20,
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -115,7 +112,7 @@ class _ELoginState extends State<ELogin> {
     );
   }
 
-    Widget _usernameTextBoxWidget() {
+  Widget _usernameTextBoxWidget() {
     return CustomTextField(
       hintText: Strings.enterEmail,
       onChanged: (String value) {},
@@ -150,7 +147,7 @@ class _ELoginState extends State<ELogin> {
   Widget _forgotPasswordButton() {
     return GestureDetector(
       onTap: () {
-        context.router.push(const RecoverPasswordOne());
+        autoecTabRouter!.setActiveIndex(10);
       },
       child: FxHover(
         builder: (isHover) {
@@ -177,6 +174,7 @@ class _ELoginState extends State<ELogin> {
       ),
     );
   }
+
   Widget _serviceText() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,

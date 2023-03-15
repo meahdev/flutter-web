@@ -1,12 +1,15 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/utils/routes.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/footer_page.dart';
+import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -26,6 +29,17 @@ class _ECLandingPageState extends State<ECLandingPage> {
     AllCategoryScreen(),
     AllBrandScreen(),
     OffersScreen(),
+    CompareScreen(),
+    WishList(),
+    ECartScreen(),
+    ELogin(),
+    ERegister(),
+    EForgot(),
+    TrackOrder(),
+    OrderHistory(),
+    ShowProductDetails(),
+    PaymentScreen(),
+    SuccessScreen(),
   ];
 
   @override
@@ -224,46 +238,57 @@ class _ECLandingPageState extends State<ECLandingPage> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        _textButton(onPressed: () {}, text: 'Login'),
+        _textButton(
+            onPressed: () {
+              autoecTabRouter!.setActiveIndex(8);
+            },
+            text: 'Login'),
         ConstText.lightText(text: '/'),
-        _textButton(onPressed: () {}, text: 'Register'),
+        _textButton(
+            onPressed: () {
+              autoecTabRouter!.setActiveIndex(9);
+            },
+            text: 'Register'),
       ],
     );
   }
 
   Widget _tabBar() {
-    return Row(
-      children: [
-        _textButton(
-            onPressed: () {
-              autoecTabRouter!.setActiveIndex(0);
-            },
-            text: 'Home'),
-        FxBox.w10,
-        _textButton(
-            onPressed: () {
-              autoecTabRouter!.setActiveIndex(1);
-            },
-            text: 'Blog'),
-        FxBox.w10,
-        _textButton(
-            onPressed: () {
-              autoecTabRouter!.setActiveIndex(2);
-            },
-            text: 'Category'),
-        FxBox.w10,
-        _textButton(
-            onPressed: () {
-              autoecTabRouter!.setActiveIndex(3);
-            },
-            text: 'Brand'),
-        FxBox.w10,
-        _textButton(
-            onPressed: () {
-              autoecTabRouter!.setActiveIndex(4);
-            },
-            text: 'Offer'),
-      ],
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          _textButton(
+              onPressed: () {
+                autoecTabRouter!.setActiveIndex(0);
+              },
+              text: 'Home'),
+          FxBox.w10,
+          _textButton(
+              onPressed: () {
+                autoecTabRouter!.setActiveIndex(1);
+              },
+              text: 'Blog'),
+          FxBox.w10,
+          _textButton(
+              onPressed: () {
+                autoecTabRouter!.setActiveIndex(2);
+              },
+              text: 'Category'),
+          FxBox.w10,
+          _textButton(
+              onPressed: () {
+                autoecTabRouter!.setActiveIndex(3);
+              },
+              text: 'Brand'),
+          FxBox.w10,
+          _textButton(
+              onPressed: () {
+                autoecTabRouter!.setActiveIndex(4);
+              },
+              text: 'Offer'),
+        ],
+      ),
     );
   }
 
@@ -291,41 +316,114 @@ class _ECLandingPageState extends State<ECLandingPage> {
           child: Image.asset(
               isDark ? Images.oldlgDarkLogo : Images.oldlgLightLogo),
         ),
+        const Spacer(),
+
+        (Responsive.isMobile(context) || Responsive.isTablet(context))
+            ? MaterialButton(
+                minWidth: 60,
+                hoverColor: ColorConst.transparent,
+                onPressed: () {},
+                child: const SvgIcon(icon: IconlyBroken.search),
+              )
+            : Container(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                width: islg(context) ? 500 : 600,
+                child: TextField(
+                  cursorWidth: 1,
+                  textAlignVertical: TextAlignVertical.center,
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: const BorderSide(color: Colors.black),
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: BorderSide(color: Colors.grey.shade50),
+                    ),
+                    contentPadding: const EdgeInsets.fromLTRB(12, 4, 0, 4),
+                    hintText: languageModel.translate('search'),
+                    hintStyle: const TextStyle(fontSize: 15),
+                    suffixIcon: MaterialButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12.0),
+                      ),
+                      color: ColorConst.black,
+                      minWidth: 60,
+                      hoverColor: ColorConst.transparent,
+                      onPressed: () {},
+                      child: const SvgIcon(
+                        icon: IconlyBroken.search,
+                        color: ColorConst.white,
+                      ),
+                    ),
+                    isCollapsed: true,
+                  ),
+                ),
+              ),
+
+        // if (Responsive.isMobile(context) || Responsive.isTablet(context)) ...[
+        //   MaterialButton(
+        //     height: double.infinity,
+        //     minWidth: 60,
+        //     hoverColor: ColorConst.transparent,
+        //     onPressed: () {},
+        //     child: const SvgIcon(icon: IconlyBroken.search),
+        //   )
+        // ],
         if (!Responsive.isMobile(context)) ...[
-          const Spacer(),
+          FxBox.w16,
           _iconWithBadge(
-              badgeText: '0', icon: Icons.compare_arrows, title: 'Compare'),
+            badgeText: '2',
+            icon: Icons.compare_arrows,
+            title: 'Compare',
+            onTap: () {
+              autoecTabRouter!.setActiveIndex(5);
+            },
+          ),
           FxBox.w12,
           _iconWithBadge(
-              badgeText: '0',
-              icon: Icons.favorite_outline_outlined,
-              title: 'Favourite'),
+            badgeText: '3',
+            icon: Icons.favorite_outline_outlined,
+            title: 'Wishlist',
+            onTap: () {
+              autoecTabRouter!.setActiveIndex(6);
+            },
+          ),
           FxBox.w12,
           _iconWithBadge(
-              badgeText: '0', icon: Icons.shopping_bag_outlined, title: 'Cart'),
+            badgeText: '0',
+            icon: Icons.shopping_bag_outlined,
+            title: 'Cart',
+            onTap: () {
+              autoecTabRouter!.setActiveIndex(7);
+            },
+          ),
         ],
       ],
     );
   }
 
-  Widget _iconWithBadge({
-    required String badgeText,
-    required IconData icon,
-    required String title,
-  }) {
-    return Row(
-      children: [
-        Badge(
-          label: Text(badgeText),
-          backgroundColor: ColorConst.black,
-          child: Icon(
-            icon,
-            size: 26,
+  Widget _iconWithBadge(
+      {required String badgeText,
+      required IconData icon,
+      required String title,
+      void Function()? onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Row(
+        children: [
+          Badge(
+            label: Text(badgeText),
+            backgroundColor: ColorConst.black,
+            child: Icon(
+              icon,
+              size: 26,
+            ),
           ),
-        ),
-        FxBox.w6,
-        CustomText(title: title),
-      ],
+          FxBox.w6,
+          CustomText(title: title),
+        ],
+      ),
     );
   }
 }

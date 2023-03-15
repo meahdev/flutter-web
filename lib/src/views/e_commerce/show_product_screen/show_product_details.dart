@@ -682,7 +682,9 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
             minWidth: 150,
             borderRadius: 4,
             color: ColorConst.primary,
-            onPressed: () {},
+            onPressed: () {
+              autoecTabRouter!.setActiveIndex(14);
+            },
           ),
           FxBox.w16,
           FxButton(
@@ -764,6 +766,7 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
                                   height: 35,
                                   text: 'Proceed to Checkout',
                                   onPressed: () {
+                                    autoecTabRouter!.setActiveIndex(7);
                                     Navigator.pop(context);
                                   },
                                   color: ColorConst.successDark,

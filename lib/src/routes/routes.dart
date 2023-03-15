@@ -14,6 +14,7 @@ import 'package:admin_dashboard/src/views/e_commerce/compare_screen/compare_scre
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_forgot.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_login.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_register.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_cart/e_cart.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
@@ -181,22 +182,22 @@ import '../views/ui_elements/dropdown/dropdown_screen.dart';
           page: ProductHomeScreen,
           initial: true,
         ),
-        AutoRoute(
-          path: 'blog',
-          page: BlogScreen,
-        ),
-        AutoRoute(
-          path: 'all-category',
-          page: AllCategoryScreen,
-        ),
-        AutoRoute(
-          path: 'all-brand',
-          page: AllBrandScreen,
-        ),
-        AutoRoute(
-          path: 'offer',
-          page: OffersScreen,
-        ),
+        AutoRoute(path: 'blog', page: BlogScreen),
+        AutoRoute(path: 'all-category', page: AllCategoryScreen),
+        AutoRoute(path: 'all-brand', page: AllBrandScreen),
+        AutoRoute(path: 'offer', page: OffersScreen),
+        AutoRoute(path: 'Compare', page: CompareScreen),
+        AutoRoute(path: 'Compare', page: CompareScreen),
+        AutoRoute(path: 'wish-list', page: WishList),
+        AutoRoute(path: 'landing-cart', page: ECartScreen),
+        AutoRoute(path: 'landing-login', page: ELogin),
+        AutoRoute(path: 'landing-register', page: ERegister),
+        AutoRoute(path: 'landing-forgot', page: EForgot),
+        AutoRoute(path: 'order-history', page: OrderHistory),
+        AutoRoute(path: 'track-order', page: TrackOrder),
+        AutoRoute(path: 'show-product-detail', page: ShowProductDetails),
+        AutoRoute(path: 'payment', page: PaymentScreen),
+        AutoRoute(path: 'payment/success', page: SuccessScreen),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),
