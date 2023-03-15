@@ -4,6 +4,7 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -104,7 +105,7 @@ class _CartScreenState extends State<CartScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ConstText.lightText(
-              text: Strings.couponInfo.toUpperCase(),
+              text: languageModel.eCommerceWeb.couponInfo,
               fontWeight: FontWeight.bold,
             ),
             FxBox.h12,
@@ -125,7 +126,7 @@ class _CartScreenState extends State<CartScreen> {
             ),
             FxBox.h12,
             ConstText.lightText(
-              text: Strings.orderDes.toUpperCase(),
+              text: languageModel.eCommerceWeb.orderDescription,
               fontWeight: FontWeight.bold,
               fontSize: 14,
             ),
@@ -169,7 +170,7 @@ class _CartScreenState extends State<CartScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ConstText.lightText(
-              text: Strings.priceDetails.toUpperCase(),
+              text: languageModel.eCommerceWeb.priceDetails,
               fontWeight: FontWeight.bold,
             ),
             FxBox.h12,
@@ -180,10 +181,10 @@ class _CartScreenState extends State<CartScreen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     _headerAndValue(
-                      text: 'SubTotal:',
-                      text1: 'Shipping:',
-                      text2: 'Tax:',
-                      total: 'Total:',
+                      text: '${languageModel.eCommerceWeb.subTotal}:',
+                      text1: '${languageModel.eCommerceWeb.shipping}:',
+                      text2: '${languageModel.eCommerceWeb.tax}:',
+                      total: '${languageModel.eCommerceWeb.total}:',
                     ),
                   ],
                 ),
@@ -255,7 +256,7 @@ class _CartScreenState extends State<CartScreen> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             ConstText.lightText(
-              text: Strings.cartInfo.toUpperCase(),
+              text: languageModel.eCommerceWeb.cartInfo.trim(),
               fontWeight: FontWeight.bold,
             ),
             FxBox.h12,
@@ -294,23 +295,25 @@ class _CartScreenState extends State<CartScreen> {
                       size: ColumnSize.S,
                     ),
                     DataColumn2(
-                      label: _tableHeader('Product Photo'),
+                      label:
+                          _tableHeader(languageModel.eCommerceWeb.productPhoto),
                       size: ColumnSize.L,
                     ),
                     DataColumn2(
-                      label: _tableHeader('Product Name'),
+                      label:
+                          _tableHeader(languageModel.eCommerceWeb.productName),
                       size: ColumnSize.M,
                     ),
                     DataColumn2(
-                      label: _tableHeader('Quantity'),
+                      label: _tableHeader(languageModel.eCommerceWeb.quantity),
                       size: ColumnSize.M,
                     ),
                     DataColumn2(
-                      label: _tableHeader('Price'),
+                      label: _tableHeader(languageModel.eCommerceWeb.price),
                       size: ColumnSize.S,
                     ),
                     DataColumn2(
-                      label: _tableHeader('Total'),
+                      label: _tableHeader(languageModel.eCommerceWeb.total),
                       size: ColumnSize.S,
                     ),
                     DataColumn2(

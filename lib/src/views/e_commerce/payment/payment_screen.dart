@@ -1,6 +1,8 @@
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
+import 'package:admin_dashboard/src/utils/extainsions/string_extainsions.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -95,9 +97,9 @@ class _PaymentScreenState extends State<PaymentScreen>
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Add Your Informations',
-                    style: TextStyle(
+                  Text(
+                    languageModel.eCommerceWeb.addYourInformations,
+                    style: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -107,13 +109,13 @@ class _PaymentScreenState extends State<PaymentScreen>
                     children: [
                       Expanded(
                           child: _formTextField(
-                        title: 'First Name',
+                        title: languageModel.table.firstName,
                         controller: _firstNameController,
                       )),
                       const SizedBox(width: 16.0),
                       Expanded(
                           child: _formTextField(
-                        title: 'Last Name',
+                        title: languageModel.table.lastName,
                         controller: _lastNameController,
                       ))
                     ],
@@ -123,20 +125,20 @@ class _PaymentScreenState extends State<PaymentScreen>
                     children: [
                       Expanded(
                           child: _formTextField(
-                        title: 'Email',
+                        title: languageModel.form.email,
                         controller: _emailController,
                       )),
                       const SizedBox(width: 16.0),
                       Expanded(
                           child: _formTextField(
-                        title: 'Mobile No.',
+                        title: languageModel.table.mobileNo,
                         controller: _numberController,
                       ))
                     ],
                   ),
                   const SizedBox(height: 16.0),
                   _formTextField(
-                    title: 'Address',
+                    title: languageModel.form.address,
                     maxLines: 3,
                     controller: _addressController,
                   ),
@@ -145,13 +147,13 @@ class _PaymentScreenState extends State<PaymentScreen>
                     children: [
                       Expanded(
                           child: _formTextField(
-                        title: 'City',
+                        title: languageModel.eCommerceWeb.city,
                         controller: _cityController,
                       )),
                       const SizedBox(width: 16.0),
                       Expanded(
                           child: _formTextField(
-                        title: 'Pincode',
+                        title: languageModel.eCommerceWeb.pincode,
                         controller: _pincodeController,
                       ))
                     ],
@@ -161,20 +163,20 @@ class _PaymentScreenState extends State<PaymentScreen>
                     children: [
                       Expanded(
                           child: _formTextField(
-                        title: 'State',
+                        title: languageModel.form.state,
                         controller: _stateController,
                       )),
                       const SizedBox(width: 16.0),
                       Expanded(
                           child: _formTextField(
-                        title: 'Country',
+                        title: languageModel.eCommerceWeb.country,
                         controller: _countryController,
                       ))
                     ],
                   ),
                   const SizedBox(height: 16.0),
                   _formTextField(
-                    title: 'Coupon',
+                    title: languageModel.eCommerceWeb.coupon,
                     controller: _couponController,
                   ),
                   const SizedBox(height: 16.0),
@@ -202,9 +204,9 @@ class _PaymentScreenState extends State<PaymentScreen>
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Your Informations',
-                    style: TextStyle(
+                  Text(
+                    languageModel.eCommerceWeb.yourInformations,
+                    style: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -247,9 +249,9 @@ class _PaymentScreenState extends State<PaymentScreen>
                   const SizedBox(height: 16.0),
                   _detailsText(value, 9),
                   const SizedBox(height: 24.0),
-                  const Text(
-                    'Payment Options',
-                    style: TextStyle(
+                  Text(
+                    languageModel.eCommerceWeb.paymentOptions,
+                    style: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                     ),
@@ -262,10 +264,10 @@ class _PaymentScreenState extends State<PaymentScreen>
                     labelColor: Theme.of(context).colorScheme.primary,
                     isScrollable: true,
                     physics: const BouncingScrollPhysics(),
-                    tabs: const [
-                      Tab(text: 'Credit Card'),
-                      Tab(text: 'Debit Card'),
-                      Tab(text: 'Paypal'),
+                    tabs: [
+                      Tab(text: languageModel.eCommerceWeb.creditCard),
+                      Tab(text: languageModel.eCommerceWeb.debitCard),
+                      Tab(text: languageModel.eCommerceWeb.payPal),
                     ],
                   ),
                   SizedBox(
@@ -366,9 +368,8 @@ class _PaymentScreenState extends State<PaymentScreen>
                           padding: const EdgeInsets.all(8),
                           height: 200,
                           width: MediaQuery.of(context).size.width,
-                          child: const CustomText(
-                              title:
-                                  'Wait the automatic return to the site to complete the transaction'),
+                          child: CustomText(
+                              title: languageModel.eCommerceWeb.payPalText),
                         ),
                       ],
                     ),
@@ -426,9 +427,9 @@ class _PaymentScreenState extends State<PaymentScreen>
         child: Column(
           //crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Product Informations',
-              style: TextStyle(
+            Text(
+              languageModel.eCommerceWeb.productInformations,
+              style: const TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
               ),
@@ -484,7 +485,7 @@ class _PaymentScreenState extends State<PaymentScreen>
     return Row(
       children: [
         Text(
-          '${details.keys.elementAt(index)} : ',
+          '${languageModel.translate(details.keys.elementAt(index).replaceFirst('.', '').camelCase())} : ',
           style: const TextStyle(fontWeight: FontWeight.w700),
         ),
         Text(
