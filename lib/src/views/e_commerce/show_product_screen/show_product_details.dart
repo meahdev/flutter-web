@@ -5,6 +5,7 @@ import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -55,6 +56,16 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
     },
   ];
 
+  final _transController = TransformationController();
+  void _onMove(PointerHoverEvent details) {
+    final x = details.localPosition.dx;
+    final y = details.localPosition.dy;
+
+    _transController.value = Matrix4.identity()
+      ..translate(-x, -y)
+      ..scale(2.0);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -81,10 +92,19 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
                   children: [
                     Column(
                       children: [
-                        Image.asset(
-                          imagePath!,
-                          height: 300,
-                          fit: BoxFit.contain,
+                        MouseRegion(
+                          onExit: (event) {
+                            _transController.value = Matrix4.identity();
+                          },
+                          onHover: _onMove,
+                          child: InteractiveViewer(
+                            transformationController: _transController,
+                            child: Image.asset(
+                              imagePath!,
+                              height: 300,
+                              fit: BoxFit.contain,
+                            ),
+                          ),
                         ),
                         FxBox.h32,
                         _imageSlider(),
@@ -134,10 +154,19 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
                       children: [
                         Column(
                           children: [
-                            Image.asset(
-                              imagePath!,
-                              height: 300,
-                              fit: BoxFit.contain,
+                            MouseRegion(
+                              onExit: (event) {
+                                _transController.value = Matrix4.identity();
+                              },
+                              onHover: _onMove,
+                              child: InteractiveViewer(
+                                transformationController: _transController,
+                                child: Image.asset(
+                                  imagePath!,
+                                  height: 300,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
                             ),
                             FxBox.h32,
                             _imageSlider(),
@@ -184,10 +213,19 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
                       children: [
                         Column(
                           children: [
-                            Image.asset(
-                              imagePath!,
-                              height: 300,
-                              fit: BoxFit.contain,
+                            MouseRegion(
+                              onExit: (event) {
+                                _transController.value = Matrix4.identity();
+                              },
+                              onHover: _onMove,
+                              child: InteractiveViewer(
+                                transformationController: _transController,
+                                child: Image.asset(
+                                  imagePath!,
+                                  height: 300,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
                             ),
                             FxBox.h32,
                             _imageSlider(),
