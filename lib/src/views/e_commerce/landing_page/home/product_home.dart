@@ -450,11 +450,26 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
                 child: Column(
                   children: [
                     FxBox.h8,
-                    _iconButton(Icons.favorite_border),
+                    _iconButton(
+                      Icons.favorite_border,
+                      () {
+                        autoecTabRouter!.setActiveIndex(6);
+                      },
+                    ),
                     FxBox.h8,
-                    _iconButton(Icons.shuffle_rounded),
+                    _iconButton(
+                      Icons.shuffle_rounded,
+                      () {
+                        autoecTabRouter!.setActiveIndex(5);
+                      },
+                    ),
                     FxBox.h8,
-                    _iconButton(Icons.shopping_cart_outlined),
+                    _iconButton(
+                      Icons.shopping_cart_outlined,
+                      () {
+                        autoecTabRouter!.setActiveIndex(7);
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -465,7 +480,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
     });
   }
 
-  Widget _iconButton(IconData iconData) {
+  Widget _iconButton(IconData iconData, void Function()? onPressed) {
     return Container(
       decoration: BoxDecoration(
         boxShadow: [
@@ -480,7 +495,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
       ),
       child: IconButton(
         icon: Icon(iconData),
-        onPressed: () {},
+        onPressed: onPressed,
       ),
     );
   }

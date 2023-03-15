@@ -15,12 +15,15 @@ import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_login.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_register.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_cart/e_cart.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_details_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/brand/all_brand_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/ec_landing_page.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/home/product_home.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/offers/offers_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/payment/landing_payment.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/payment/landing_success.dart';
 
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
@@ -351,9 +354,11 @@ Widget getECRouteWidget(int index) {
   } else if (index == 13) {
     return const ShowProductDetails();
   } else if (index == 14) {
-    return const PaymentScreen();
+    return const LandingPaymentScreen();
   } else if (index == 15) {
-    return const SuccessScreen();
+    return const LandingSuccessScreen();
+  } else if (index == 16) {
+    return const BlogDetailsScreen();
   } else {
     return const ProductHomeScreen();
   }

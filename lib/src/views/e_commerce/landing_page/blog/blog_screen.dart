@@ -129,8 +129,7 @@ class _BlogScreenState extends State<BlogScreen> {
             FxBox.h24,
             FxButton(
               onPressed: () {
-                //  autoTabRouter!.setActiveIndex(57);
-                autoTabRouter!.setActiveIndex(60);
+                autoecTabRouter!.setActiveIndex(16);
               },
               text: 'View More',
             ),

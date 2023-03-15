@@ -38,48 +38,58 @@ class _ECLandingPageState extends State<ECLandingPage> {
     TrackOrder(),
     OrderHistory(),
     ShowProductDetails(),
-    PaymentScreen(),
-    SuccessScreen(),
+    LandingPaymentScreen(),
+    LandingSuccessScreen(),
+    BlogDetailsScreen(),
   ];
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: AutoTabsRouter(
-            routes: _routes,
-            builder: (context, child, animation) {
-              TabsRouter ecTabRouter = AutoTabsRouter.of(context);
-              autoecTabRouter = ecTabRouter;
-              return SingleChildScrollView(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      color: ColorConst.white,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24.0, vertical: 20.0),
-                      child: Column(
+      body: AutoTabsRouter(
+          routes: _routes,
+          builder: (context, child, animation) {
+            TabsRouter ecTabRouter = AutoTabsRouter.of(context);
+            autoecTabRouter = ecTabRouter;
+            return CustomScrollView(
+              controller: _scrollController,
+              slivers: [
+                SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          _header(),
+                          Container(
+                            color: ColorConst.white,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 24.0, vertical: 20.0),
+                            child: Column(
+                              children: [
+                                _header(),
+                                FxBox.h32,
+                                _tabWithLogin(),
+                              ],
+                            ),
+                          ),
                           FxBox.h32,
-                          _tabWithLogin(),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 24.0),
+                            child: getECRouteWidget(ecTabRouter.activeIndex),
+                          ),
+                          FxBox.h32,
+                          _headerOffooter(),
+                          const FooterPage(),
                         ],
                       ),
-                    ),
-                    FxBox.h32,
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                      child: getECRouteWidget(ecTabRouter.activeIndex),
-                    ),
-                    FxBox.h32,
-                    _headerOffooter(),
-                    const FooterPage(),
-                  ],
+                    ],
+                  ),
                 ),
-              );
-            }),
-      ),
+              ],
+            );
+          }),
     );
   }
 

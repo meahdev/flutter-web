@@ -18,12 +18,15 @@ import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_login.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_register.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_cart/e_cart.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_details_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/brand/all_brand_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/ec_landing_page.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/home/product_home.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/offers/offers_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/payment/landing_payment.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/payment/landing_success.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order_history/order_history.dart';
@@ -196,8 +199,9 @@ import '../views/ui_elements/dropdown/dropdown_screen.dart';
         AutoRoute(path: 'order-history', page: OrderHistory),
         AutoRoute(path: 'track-order', page: TrackOrder),
         AutoRoute(path: 'show-product-detail', page: ShowProductDetails),
-        AutoRoute(path: 'payment', page: PaymentScreen),
-        AutoRoute(path: 'payment/success', page: SuccessScreen),
+        AutoRoute(path: 'payment', page: LandingPaymentScreen),
+        AutoRoute(path: 'payment/success', page: LandingSuccessScreen),
+        AutoRoute(path: 'blog/blog-detail', page: BlogDetailsScreen),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),

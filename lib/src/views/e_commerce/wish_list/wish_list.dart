@@ -139,7 +139,9 @@ class _WishListState extends State<WishList> {
                   FxButton(
                     icon: const Icon(Icons.shopping_cart_outlined),
                     borderRadius: 4.0,
-                    onPressed: () {},
+                    onPressed: () {
+                      autoecTabRouter!.setActiveIndex(7);
+                    },
                     text: 'Add to cart',
                   ),
                 ],

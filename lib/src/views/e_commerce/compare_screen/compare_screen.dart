@@ -1,4 +1,5 @@
 import 'package:admin_dashboard/src/constant/color.dart';
+import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
@@ -193,8 +194,11 @@ class _CompareScreenState extends State<CompareScreen> {
                                           alignment: Alignment.center,
                                           child: FxButton(
                                             // color: ColorConst.black,
-                                            borderRadius: 4.0,
-                                            onPressed: () {},
+                                            borderRadius: 6.0,
+                                            onPressed: () {
+                                              autoecTabRouter!
+                                                  .setActiveIndex(7);
+                                            },
                                             text: 'Add to Cart',
                                           ),
                                         ),
