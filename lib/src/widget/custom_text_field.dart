@@ -3,27 +3,28 @@ import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField(
-      {Key? key,
-      this.controller,
-      this.hintText,
-      this.margin,
-      this.textInputAction,
-      this.focusNode,
-      this.onChanged,
-      this.obsecureText = false,
-      this.onTap,
-      this.onSubmitted,
-      this.keyBoardType,
-      this.textCapitalization,
-      this.errorText,
-      this.changeColor,
-      this.readOnly = false,
-      this.onIconTap,
-      this.suffixIcon,
-      this.validator,
-      this.maxLength})
-      : assert(controller != null),
+  const CustomTextField({
+    Key? key,
+    this.controller,
+    this.hintText,
+    this.margin,
+    this.textInputAction,
+    this.focusNode,
+    this.onChanged,
+    this.obsecureText = false,
+    this.onTap,
+    this.onSubmitted,
+    this.keyBoardType,
+    this.textCapitalization = TextCapitalization.none,
+    this.errorText,
+    this.changeColor,
+    this.readOnly = false,
+    this.onIconTap,
+    this.suffixIcon,
+    this.validator,
+    this.maxLength,
+    this.textColor,
+  })  : assert(controller != null),
         super(key: key);
   final TextEditingController? controller;
   final EdgeInsetsGeometry? margin;
@@ -35,7 +36,7 @@ class CustomTextField extends StatelessWidget {
   final void Function(String)? onSubmitted;
   final void Function()? onTap;
   final TextInputType? keyBoardType;
-  final TextCapitalization? textCapitalization;
+  final TextCapitalization textCapitalization;
   final String? errorText;
   final bool? changeColor;
   final bool? readOnly;
@@ -43,6 +44,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final String? Function(String?)? validator;
   final int? maxLength;
+  final Color? textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +60,9 @@ class CustomTextField extends StatelessWidget {
         minLines: 1,
         onTap: onTap,
         keyboardType: keyBoardType,
-        textCapitalization: textCapitalization!,
+        textCapitalization: textCapitalization,
         cursorColor: ColorConst.lightFontColor,
-        style: const TextStyle(fontSize: 15),
+        style:  TextStyle(fontSize: 15, color: textColor),
         decoration: InputDecoration(
           suffixIconConstraints: const BoxConstraints(minWidth: 30),
           filled: true,

@@ -7,12 +7,24 @@ import 'package:admin_dashboard/src/views/dashboard/dashboard.dart';
 import 'package:admin_dashboard/src/views/e_commerce/cart/cart_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
+import 'package:admin_dashboard/src/views/e_commerce/compare_screen/compare_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_forgot.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_login.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_register.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_cart/e_cart.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/brand/all_brand_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/category/category_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/ec_landing_page.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/home/product_home.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/offers/offers_screen.dart';
 
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order_history/order_history.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/success_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
@@ -20,10 +32,12 @@ import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.da
 import 'package:admin_dashboard/src/views/e_commerce/return_condition/return_condition_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/show_product_screen/show_product_details.dart';
 import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_add.dart';
+import 'package:admin_dashboard/src/views/e_commerce/wish_list/wish_list.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
@@ -44,12 +58,14 @@ import 'package:admin_dashboard/src/views/tables/basic_table.dart';
 import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
 import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
+import 'package:admin_dashboard/src/views/e_commerce/track_order/track_order.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
 import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
 import 'package:admin_dashboard/src/views/ui_elements/carousel/carousel.dart';
 import 'package:admin_dashboard/src/views/ui_elements/date_picker/date_picker.dart';
 import 'package:admin_dashboard/src/views/ui_elements/draganddrop/drag_and_drop_element.dart';
+import 'package:admin_dashboard/src/views/ui_elements/dropdown/dropdown_screen.dart';
 import 'package:admin_dashboard/src/views/ui_elements/loader/loader.dart';
 import 'package:admin_dashboard/src/views/ui_elements/modal/modal.dart';
 import 'package:admin_dashboard/src/views/ui_elements/rating/rating.dart';
@@ -172,7 +188,13 @@ int getRouteIndex(String route) {
     return 55;
   } else if (route == '${Strings.payment}/success') {
     return 56;
-  } else {
+  } else if (route == Strings.dropDown) {
+    return 57;
+  }
+  // else if (route == Strings.landingPage) {
+  //   return 58;
+  // }
+  else {
     return 0;
   }
 }
@@ -290,7 +312,49 @@ Widget getRouteWidget(int index) {
     return const ProductAdd();
   } else if (index == 56) {
     return const SuccessScreen();
-  } else {
+  } else if (index == 57) {
+    return const DropDownScreen();
+  }
+  // else if (index == 58) {
+  //   return const ECLandingPage();
+  // }
+  else {
     return const Dashboard();
+  }
+}
+
+Widget getECRouteWidget(int index) {
+  if (index == 1) {
+    return const BlogScreen();
+  } else if (index == 2) {
+    return const AllCategoryScreen();
+  } else if (index == 3) {
+    return const AllBrandScreen();
+  } else if (index == 4) {
+    return const OffersScreen();
+  } else if (index == 5) {
+    return const CompareScreen();
+  } else if (index == 6) {
+    return const WishList();
+  } else if (index == 7) {
+    return const ECartScreen();
+  } else if (index == 8) {
+    return const ELogin();
+  } else if (index == 9) {
+    return const ERegister();
+  } else if (index == 10) {
+    return const EForgot();
+  } else if (index == 11) {
+    return const TrackOrder();
+  } else if (index == 12) {
+    return const OrderHistory();
+  } else if (index == 13) {
+    return const ShowProductDetails();
+  } else if (index == 14) {
+    return const PaymentScreen();
+  } else if (index == 15) {
+    return const SuccessScreen();
+  } else {
+    return const ProductHomeScreen();
   }
 }

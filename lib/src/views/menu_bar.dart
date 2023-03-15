@@ -82,6 +82,7 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.returnCondition,
     ],
     [
+      Strings.landingPage,
       Strings.products,
       Strings.cart,
       Strings.payment,
@@ -102,6 +103,7 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.videoPlayer,
       Strings.dragDrop,
       Strings.datePicker,
+      Strings.dropDown,
     ],
     [
       Strings.formElements,
@@ -226,6 +228,8 @@ class _MenuBarState extends State<FMenuBar> {
     CartScreen(),
     ProductAdd(),
     SuccessScreen(),
+    DropDownScreen(),
+    // ECLandingRoute(),
   ];
 
   // TextDirection _layout = TextDirection.ltr;
@@ -286,24 +290,32 @@ class _MenuBarState extends State<FMenuBar> {
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            FxBox.h20,
-                                            Text(
-                                              languageModel
-                                                  .translate(upperCase(
-                                                          tabsRouter
-                                                              .currentPath)
-                                                      .camelCase())
-                                                  .trim(),
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyLarge!
-                                                  .copyWith(
-                                                      fontWeight:
-                                                          FontWeight.bold),
-                                            ),
-                                            FxBox.h8,
-                                            _routesDeatils(tabsRouter),
-                                            FxBox.h20,
+                                            if (!languageModel
+                                                .translate(upperCase(
+                                                        tabsRouter.currentPath)
+                                                    .camelCase())
+                                                .trim()
+                                                .contains(
+                                                    Strings.landingPage)) ...[
+                                              FxBox.h20,
+                                              Text(
+                                                languageModel
+                                                    .translate(upperCase(
+                                                            tabsRouter
+                                                                .currentPath)
+                                                        .camelCase())
+                                                    .trim(),
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .bodyLarge!
+                                                    .copyWith(
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                              ),
+                                              FxBox.h8,
+                                              _routesDeatils(tabsRouter),
+                                              FxBox.h20,
+                                            ],
                                             getRouteWidget(
                                                 tabsRouter.activeIndex),
                                             FxBox.h20,
@@ -1016,9 +1028,10 @@ class _MenuBarState extends State<FMenuBar> {
                       ],
                     ),
                     title: Text(
-                      items1[index],
+                      languageModel.translate(items1[index].camelCase()),
                       style: TextStyle(
-                          color: children[index]
+                          color: languageModel
+                                  .translate(children[index].first.camelCase())
                                   .contains(upperCase(tabsRouter.currentPath))
                               ? isDark
                                   ? ColorConst.chartForgoundColor
@@ -1029,7 +1042,8 @@ class _MenuBarState extends State<FMenuBar> {
                     trailing: SvgIcon(
                       icon: IconlyBroken.arrowDown,
                       size: 16,
-                      color: children[index]
+                      color: languageModel
+                              .translate(children[index].first.camelCase())
                               .contains(upperCase(tabsRouter.currentPath))
                           ? isDark
                               ? ColorConst.chartForgoundColor
@@ -1043,8 +1057,10 @@ class _MenuBarState extends State<FMenuBar> {
                         ? Text(
                             items1[index],
                             style: TextStyle(
-                              color: items1[index] ==
-                                      upperCase(tabsRouter.currentPath)
+                              color: languageModel
+                                      .translate(items1[index].camelCase())
+                                      .contains(
+                                          upperCase(tabsRouter.currentPath))
                                   ? isDark
                                       ? ColorConst.chartForgoundColor
                                       : ColorConst.primary
@@ -1068,7 +1084,9 @@ class _MenuBarState extends State<FMenuBar> {
                     width: 6.0,
                     height: 48.0,
                     decoration: BoxDecoration(
-                      color: items1[index] == upperCase(tabsRouter.currentPath)
+                      color: languageModel
+                              .translate(items1[index].camelCase())
+                              .contains(upperCase(tabsRouter.currentPath))
                           ? isDark
                               ? ColorConst.chartForgoundColor
                               : ColorConst.primary
@@ -1084,10 +1102,12 @@ class _MenuBarState extends State<FMenuBar> {
                   child: ListTile(
                     title: isopen
                         ? Text(
-                            items1[index],
+                            languageModel.translate(items1[index].camelCase()),
                             style: TextStyle(
-                              color: items1[index] ==
-                                      upperCase(tabsRouter.currentPath)
+                              color: languageModel
+                                      .translate(items1[index].camelCase())
+                                      .contains(
+                                          upperCase(tabsRouter.currentPath))
                                   ? isDark
                                       ? ColorConst.chartForgoundColor
                                       : ColorConst.primary
@@ -1154,7 +1174,7 @@ class _MenuBarState extends State<FMenuBar> {
                   ],
                 ),
                 title: Text(
-                  items.keys.elementAt(0),
+                  languageModel.translate('eCommerce'),
                   style: TextStyle(
                       color: children[0]
                               .contains(upperCase(tabsRouter.currentPath))
@@ -1302,8 +1322,10 @@ class _MenuBarState extends State<FMenuBar> {
                       context.router.push(const Maintenance());
                     } else if (items[index] == 'Coming Soon') {
                       context.router.push(const ComingSoon());
+                    } else if (items[index] == 'Landing Page') {
+                      context.router.push(const ECLandingRoute());
                     } else {
-                      if (items[index] == 'Landing Page') {
+                      if (items[index].contains('Landing Page')) {
                         isOpen.value = false;
                       }
 
@@ -1342,7 +1364,8 @@ class _MenuBarState extends State<FMenuBar> {
                   routeIndex == 25 ||
                   routeIndex == 33 ||
                   routeIndex == 36 ||
-                  routeIndex == 37) ...[
+                  routeIndex == 37 ||
+                  routeIndex == 57) ...[
                 // const Text(' / ${Strings.uiElements} '),
                 Text(' / ${languageModel.translate('widgets')} '),
               ] else if (routeIndex.isBetween(27, 32)) ...[

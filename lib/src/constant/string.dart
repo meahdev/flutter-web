@@ -54,7 +54,10 @@ class Strings {
   static const String carousel = 'Carousel Slider';
   static const String videoPlayer = 'Video Player';
   static const String dragDrop = 'Drag Drop';
+  static const String dropDown = 'Dropdown';
   static const String datePicker = 'Date Picker';
+  static const String simpleDropdown = 'Simple DropDown';
+  static const String searchDropDown = 'Search DropDown';
 
   // forms option
   static const String formElements = 'Elements';
@@ -300,5 +303,49 @@ class Strings {
   static const String latestTransaction = 'Latest Transaction';
   static const String productAdd = 'Product Add';
 
+  static const String city = 'City';
+  static const String state = 'State';
+  static const String country = 'Country';
 
+  // Landing page
+static const String landingPage = 'Landing Page';
+  static const String blog = 'Blog';
+  static const String blogDetail = 'Blog Detail';
+  static const String allCategory = 'All Category';
+
+  static const String allBrand = 'All Brand';
+  static const String offers = 'Offres';
+
+  // category Screen
+
+  static const String artDesign = 'Art And Design';
+  static const String book = 'Books';
+  static const String craft = 'Crafts';
+  static const String gadgets = 'Gadgets';
+  static const String game = 'Games';
+  static const String music = 'Music';
+  static const String photography = 'Photography';
+  static const String sport = 'Sports';
+  static const String men = 'Men';
+  static const String women = 'Women';
+  static const String makeup = 'MakeUp';
+  static const String grocery = 'Grocery';
+  static const String jewellery = 'Jewellery';
+  static const String shoe = 'Shoes';
+  static const String watch = 'Watch';
+  static const String underwearLoungewearAccessories =
+      'Underwear & Loungewear Accessories';
+
+  // All Brand
+  static const String adidas = 'Adidas';
+  static const String allenSolly = 'Allen Solly';
+  static const String calvinKlein = 'Calvin Klein';
+  static const String nike = 'Nike';
+  static const String zara = 'Zara';
+  static const String hAndM = 'H & M';
+  static const String apple = 'Apple';
+  static const String lg = 'LG';
+  static const String microsoft = 'Microsoft';
+  static const String samsung = 'Samsung';
+  static const String sony = 'Sony';
 }

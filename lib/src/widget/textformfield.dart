@@ -28,6 +28,8 @@ class CustomTextField extends StatelessWidget {
   final TextStyle? style;
   final int? maxLength;
   final AutovalidateMode? autovalidateMode;
+  final Color? fillColor;
+  final bool? filled;
   const CustomTextField({
     Key? key,
     this.controller,
@@ -54,6 +56,8 @@ class CustomTextField extends StatelessWidget {
     this.style,
     this.maxLength,
     this.autovalidateMode,
+    this.fillColor,
+    this.filled,
   }) : super(key: key);
 
   @override
@@ -72,6 +76,8 @@ class CustomTextField extends StatelessWidget {
       obscureText: obscureText,
       controller: controller,
       decoration: InputDecoration(
+        fillColor: fillColor,
+        filled: filled,
         prefixText: prefixText,
         errorBorder: errorBorder,
         enabledBorder: enabledBorder?.copyWith(

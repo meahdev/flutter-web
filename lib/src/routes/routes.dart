@@ -10,11 +10,23 @@ import 'package:admin_dashboard/src/views/calender/calender.dart';
 import 'package:admin_dashboard/src/views/e_commerce/cart/cart_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/category_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/category/sub_category.dart';
+import 'package:admin_dashboard/src/views/e_commerce/compare_screen/compare_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/coupon/coupons_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/customer/customer_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_forgot.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_login.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_auth/e_register.dart';
+import 'package:admin_dashboard/src/views/e_commerce/e_cart/e_cart.dart';
 import 'package:admin_dashboard/src/views/e_commerce/e_commerce_dashboard/e_commerce_dashboard_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/brand/all_brand_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/category/category_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/ec_landing_page.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/home/product_home.dart';
+import 'package:admin_dashboard/src/views/e_commerce/landing_page/offers/offers_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/order/order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/order_history/order_history.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/payment_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/payment/success_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_detail_screen.dart';
@@ -22,10 +34,12 @@ import 'package:admin_dashboard/src/views/e_commerce/products/products_screen.da
 import 'package:admin_dashboard/src/views/e_commerce/return_condition/return_condition_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_invoice.dart';
 import 'package:admin_dashboard/src/views/e_commerce/return_order/return_order_screen.dart';
+import 'package:admin_dashboard/src/views/e_commerce/show_product_screen/show_product_details.dart';
 import 'package:admin_dashboard/src/views/e_commerce/subscription/subscription_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_detail_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/vender_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/products/product_add.dart';
+import 'package:admin_dashboard/src/views/e_commerce/wish_list/wish_list.dart';
 import 'package:admin_dashboard/src/views/email_templates/alert_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/basic_email.dart';
 import 'package:admin_dashboard/src/views/email_templates/billing_email.dart';
@@ -55,6 +69,7 @@ import 'package:admin_dashboard/src/views/tables/basic_table.dart';
 import 'package:admin_dashboard/src/views/tables/data_tables.dart';
 import 'package:admin_dashboard/src/views/tables/editable_table.dart';
 import 'package:admin_dashboard/src/views/tables/responsive_table.dart';
+import 'package:admin_dashboard/src/views/e_commerce/track_order/track_order.dart';
 import 'package:admin_dashboard/src/views/ui_elements/alert/alert_dialog.dart';
 import 'package:admin_dashboard/src/views/ui_elements/badge/custom_badge.dart';
 import 'package:admin_dashboard/src/views/ui_elements/buttons/button.dart';
@@ -69,6 +84,8 @@ import 'package:admin_dashboard/src/views/ui_elements/toast/toast.dart';
 import 'package:admin_dashboard/src/views/ui_elements/videos/video_screen.dart';
 import 'package:admin_dashboard/src/views/user/user_profile.dart';
 import 'package:auto_route/auto_route.dart';
+
+import '../views/ui_elements/dropdown/dropdown_screen.dart';
 
 @MaterialAutoRouter(
   replaceInRouteName: 'Page,Route',
@@ -137,6 +154,50 @@ import 'package:auto_route/auto_route.dart';
         AutoRoute(path: 'e-commerce-dashboard', page: EcommerceDashboard),
         AutoRoute(path: 'cart', page: CartScreen),
         AutoRoute(path: 'product-add', page: ProductAdd),
+        AutoRoute(path: 'dropdown', page: DropDownScreen),
+
+        // AutoRoute(
+        //   path: 'landing-page/',
+        //   page: ECLandingPage,
+        //   children: [
+        //     AutoRoute(
+        //       path: 'blog',
+        //       page: BlogScreen,
+        //       initial: true,
+        //     ),
+        //     AutoRoute(
+        //       path: 'all-category',
+        //       page: AllCategoryScreen,
+        //     ),
+        //   ],
+        // ),
+      ],
+    ),
+    AutoRoute(
+      path: '/landing-page/',
+      page: ECLandingPage,
+      children: [
+        AutoRoute(
+          path: '',
+          page: ProductHomeScreen,
+          initial: true,
+        ),
+        AutoRoute(path: 'blog', page: BlogScreen),
+        AutoRoute(path: 'all-category', page: AllCategoryScreen),
+        AutoRoute(path: 'all-brand', page: AllBrandScreen),
+        AutoRoute(path: 'offer', page: OffersScreen),
+        AutoRoute(path: 'Compare', page: CompareScreen),
+        AutoRoute(path: 'Compare', page: CompareScreen),
+        AutoRoute(path: 'wish-list', page: WishList),
+        AutoRoute(path: 'landing-cart', page: ECartScreen),
+        AutoRoute(path: 'landing-login', page: ELogin),
+        AutoRoute(path: 'landing-register', page: ERegister),
+        AutoRoute(path: 'landing-forgot', page: EForgot),
+        AutoRoute(path: 'order-history', page: OrderHistory),
+        AutoRoute(path: 'track-order', page: TrackOrder),
+        AutoRoute(path: 'show-product-detail', page: ShowProductDetails),
+        AutoRoute(path: 'payment', page: PaymentScreen),
+        AutoRoute(path: 'payment/success', page: SuccessScreen),
       ],
     ),
     AutoRoute(path: '/login-one', page: LoginOne),
