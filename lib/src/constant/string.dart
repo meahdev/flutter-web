@@ -281,7 +281,7 @@ class Strings {
   static const String filter = 'Filter';
   static const String category = 'Category';
   static const String subCategory = 'sub Category';
-  static const String vender = 'Vender';
+  static const String vendor = 'Vendor';
   static const String customer = 'Customer';
   static const String payment = 'Payment';
   static const String returnOrder = 'Return Order';
@@ -293,7 +293,7 @@ class Strings {
   static const String returnCondition = 'Return Condition';
   static const String cartInfo = 'Cart Info';
   static const String checkOut = 'CheckOut';
-  static const String venderDetail = 'Vender Detail';
+  static const String vendorDetail = 'Vendor Detail';
   static const String monthlyOrder = 'Monthly Order';
   static const String subscriber = 'Subscribers';
   static const String coupons = 'Coupons';
@@ -308,7 +308,7 @@ class Strings {
   static const String country = 'Country';
 
   // Landing page
-static const String landingPage = 'Landing Page';
+  static const String landingPage = 'Landing Page';
   static const String blog = 'Blog';
   static const String blogDetail = 'Blog Detail';
   static const String allCategory = 'All Category';

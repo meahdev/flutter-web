@@ -43,24 +43,30 @@ class _ECLandingPageState extends State<ECLandingPage> {
     BlogDetailsScreen(),
   ];
   final ScrollController _scrollController = ScrollController();
-
+  final ValueNotifier<TextDirection> _layout =
+      ValueNotifier<TextDirection>(TextDirection.ltr);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: AutoTabsRouter(
-          routes: _routes,
-          builder: (context, child, animation) {
-            TabsRouter ecTabRouter = AutoTabsRouter.of(context);
-            autoecTabRouter = ecTabRouter;
-            return CustomScrollView(
-              controller: _scrollController,
-              slivers: [
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
+        routes: _routes,
+        builder: (ctx, child, animation) {
+          TabsRouter ecTabRouter = AutoTabsRouter.of(ctx);
+          autoecTabRouter = ecTabRouter;
+
+          _scrollController.animateTo(0,
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.easeInOut);
+
+          return ValueListenableBuilder<TextDirection>(
+              valueListenable: _layout,
+              builder: (context, value, _) {
+                return CustomScrollView(
+                  controller: _scrollController,
+                  slivers: [
+                    SliverList(
+                      delegate: SliverChildListDelegate(
+                        [
                           Container(
                             color: ColorConst.white,
                             padding: const EdgeInsets.symmetric(
@@ -73,23 +79,39 @@ class _ECLandingPageState extends State<ECLandingPage> {
                               ],
                             ),
                           ),
-                          FxBox.h32,
+                          ecTabRouter.activeIndex == 8 ||
+                                  ecTabRouter.activeIndex == 9 ||
+                                  ecTabRouter.activeIndex == 10
+                              ? FxBox.shrink
+                              : FxBox.h32,
                           Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 24.0),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: ecTabRouter.activeIndex == 8 ||
+                                        ecTabRouter.activeIndex == 9 ||
+                                        ecTabRouter.activeIndex == 10
+                                    ? 0
+                                    : 24.0),
                             child: getECRouteWidget(ecTabRouter.activeIndex),
                           ),
-                          FxBox.h32,
+                        ],
+                      ),
+                    ),
+                    SliverFillRemaining(
+                      hasScrollBody: false,
+                      fillOverscroll: true,
+                      child: Column(
+                        children: [
+                          const Expanded(child: SizedBox.shrink()),
                           _headerOffooter(),
                           const FooterPage(),
                         ],
                       ),
-                    ],
-                  ),
-                ),
-              ],
-            );
-          }),
+                    ),
+                  ],
+                );
+              });
+        },
+      ),
     );
   }
 
@@ -224,21 +246,36 @@ class _ECLandingPageState extends State<ECLandingPage> {
   Widget _tabWithLogin() {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
-      child: Responsive.isMobile(context)
+      child: Responsive.isMobile(context) || Responsive.isTablet(context)
           ? Column(
               children: [
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: _loginRegister(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    _loginRegister(),
+                    _textButton(
+                        onPressed: () {
+                          context.router.push(const FMenuBar());
+                        },
+                        text: 'Go to Dashboard'),
+                  ],
                 ),
+                FxBox.h16,
                 _tabBar(),
               ],
             )
           : Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
+                FxBox.w(100),
                 _tabBar(),
+                const Spacer(),
                 _loginRegister(),
+                FxBox.w24,
+                _textButton(
+                    onPressed: () {
+                      context.router.push(const FMenuBar());
+                    },
+                    text: 'Go to Dashboard'),
               ],
             ),
     );
