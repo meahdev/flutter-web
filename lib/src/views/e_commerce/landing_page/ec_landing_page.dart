@@ -107,22 +107,22 @@ class _ECLandingPageState extends State<ECLandingPage> {
                 _vdivider(),
                 _iconWithText(
                   imagePath: Images.terms,
-                  iconString: 'Terms & Conditions',
+                  iconString: languageModel.landingPage.termsConditions,
                 ),
                 _vdivider(),
                 _iconWithText(
                   imagePath: Images.privacyPolicy,
-                  iconString: 'Privacy Policy',
+                  iconString: languageModel.landingPage.privacyPolicy,
                 ),
                 _vdivider(),
                 _iconWithText(
                   imagePath: Images.deliveryPolicy,
-                  iconString: 'Delivery Policy',
+                  iconString: languageModel.landingPage.deliveryPolicy,
                 ),
                 _vdivider(),
                 _iconWithText(
                   imagePath: Images.cancellationPolicy,
-                  iconString: 'Cancellation Policy',
+                  iconString: languageModel.landingPage.cancellationPolicy,
                 ),
                 _vdivider(),
               ],
@@ -136,12 +136,12 @@ class _ECLandingPageState extends State<ECLandingPage> {
                       children: [
                         _iconWithText(
                           imagePath: Images.terms,
-                          iconString: 'Terms & Conditions',
+                          iconString: languageModel.landingPage.termsConditions,
                         ),
                         FxBox.h20,
                         _iconWithText(
                           imagePath: Images.privacyPolicy,
-                          iconString: 'Privacy Policy',
+                          iconString: languageModel.landingPage.privacyPolicy,
                         ),
                       ],
                     ),
@@ -150,12 +150,13 @@ class _ECLandingPageState extends State<ECLandingPage> {
                       children: [
                         _iconWithText(
                           imagePath: Images.deliveryPolicy,
-                          iconString: 'Delivery Policy',
+                          iconString: languageModel.landingPage.deliveryPolicy,
                         ),
                         FxBox.h20,
                         _iconWithText(
                           imagePath: Images.cancellationPolicy,
-                          iconString: 'Cancellation Policy',
+                          iconString:
+                              languageModel.landingPage.cancellationPolicy,
                         ),
                       ],
                     ),
@@ -168,22 +169,22 @@ class _ECLandingPageState extends State<ECLandingPage> {
                     FxBox.h20,
                     _iconWithText(
                       imagePath: Images.terms,
-                      iconString: 'Terms & Conditions',
+                      iconString: languageModel.landingPage.termsConditions,
                     ),
                     FxBox.h20,
                     _iconWithText(
                       imagePath: Images.privacyPolicy,
-                      iconString: 'Privacy Policy',
+                      iconString: languageModel.landingPage.privacyPolicy,
                     ),
                     FxBox.h20,
                     _iconWithText(
                       imagePath: Images.deliveryPolicy,
-                      iconString: 'Delivery Policy',
+                      iconString: languageModel.landingPage.deliveryPolicy,
                     ),
                     FxBox.h20,
                     _iconWithText(
                       imagePath: Images.cancellationPolicy,
-                      iconString: 'Cancellation Policy',
+                      iconString: languageModel.landingPage.cancellationPolicy,
                     ),
                     FxBox.h20,
                   ],
@@ -252,13 +253,13 @@ class _ECLandingPageState extends State<ECLandingPage> {
             onPressed: () {
               autoecTabRouter!.setActiveIndex(8);
             },
-            text: 'Login'),
+            text: languageModel.landingPage.login),
         ConstText.lightText(text: '/'),
         _textButton(
             onPressed: () {
               autoecTabRouter!.setActiveIndex(9);
             },
-            text: 'Register'),
+            text: languageModel.landingPage.register),
       ],
     );
   }
@@ -272,31 +273,31 @@ class _ECLandingPageState extends State<ECLandingPage> {
               onPressed: () {
                 autoecTabRouter!.setActiveIndex(0);
               },
-              text: 'Home'),
+              text: languageModel.landingPage.home),
           FxBox.w10,
           _textButton(
               onPressed: () {
                 autoecTabRouter!.setActiveIndex(1);
               },
-              text: 'Blog'),
+              text: languageModel.landingPage.blog),
           FxBox.w10,
           _textButton(
               onPressed: () {
                 autoecTabRouter!.setActiveIndex(2);
               },
-              text: 'Category'),
+              text: languageModel.landingPage.category.trim()),
           FxBox.w10,
           _textButton(
               onPressed: () {
                 autoecTabRouter!.setActiveIndex(3);
               },
-              text: 'Brand'),
+              text: languageModel.landingPage.brand),
           FxBox.w10,
           _textButton(
               onPressed: () {
                 autoecTabRouter!.setActiveIndex(4);
               },
-              text: 'Offer'),
+              text: languageModel.landingPage.offer),
         ],
       ),
     );
@@ -385,7 +386,7 @@ class _ECLandingPageState extends State<ECLandingPage> {
           _iconWithBadge(
             badgeText: '2',
             icon: Icons.compare_arrows,
-            title: 'Compare',
+            title: languageModel.landingPage.compare,
             onTap: () {
               autoecTabRouter!.setActiveIndex(5);
             },
@@ -394,7 +395,7 @@ class _ECLandingPageState extends State<ECLandingPage> {
           _iconWithBadge(
             badgeText: '3',
             icon: Icons.favorite_outline_outlined,
-            title: 'Wishlist',
+            title: languageModel.landingPage.wishlist,
             onTap: () {
               autoecTabRouter!.setActiveIndex(6);
             },
@@ -403,7 +404,7 @@ class _ECLandingPageState extends State<ECLandingPage> {
           _iconWithBadge(
             badgeText: '0',
             icon: Icons.shopping_bag_outlined,
-            title: 'Cart',
+            title: languageModel.landingPage.cart.trim(),
             onTap: () {
               autoecTabRouter!.setActiveIndex(7);
             },

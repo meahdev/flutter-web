@@ -14,7 +14,7 @@ class LanguageModel extends Model {
   static const Locale en = Locale('en');
   static const Locale hi = Locale('hi');
 
-  Locale _appLocale = const Locale.fromSubtags(languageCode: 'en');
+  Locale _appLocale = const Locale.fromSubtags(languageCode: 'hi');
 
   Locale get locale {
     // handleLocale();
@@ -69,6 +69,7 @@ class LanguageModel extends Model {
   final _ExtraPage extraPage = _ExtraPage();
   final _ECommerceAdmin eCommerceAdmin = _ECommerceAdmin();
   final _ECommerceWeb eCommerceWeb = _ECommerceWeb();
+  final _LandingPage landingPage = _LandingPage();
 }
 
 class MultiLanguage {
@@ -388,7 +389,7 @@ class _Authentication {
   String get signIn => languageModel.translate('signIn');
   String get signInHeader => languageModel.translate('signInHeader');
   String get signInText => languageModel.translate('signInText');
-  String get email => '${languageModel.translate('signInText')}*';
+  String get email => '${languageModel.translate('email')}*';
   String get forgotPassword => languageModel.translate('forgotPassword');
   String get terms => languageModel.translate('confirmText');
   String get contactInformation =>
@@ -536,7 +537,8 @@ class _ECommerceWeb {
   String get available => languageModel.translate('available');
   String get inStock => languageModel.translate('inStock');
   String get outOfStock => languageModel.translate('outOfStock');
-  String get productDescription => languageModel.translate('productDescription');
+  String get productDescription =>
+      languageModel.translate('productDescription');
   String get cartInfo => languageModel.translate('cartInfo');
   String get productPhoto => languageModel.translate('productPhoto');
   String get productName => languageModel.translate('productName');
@@ -548,8 +550,10 @@ class _ECommerceWeb {
   String get tax => languageModel.translate('tax');
   String get couponInfo => languageModel.translate('couponInfo');
   String get orderDescription => languageModel.translate('orderDescription');
-  String get productInformations => languageModel.translate('productInformations');
-  String get addYourInformations => languageModel.translate('addYourInformations');
+  String get productInformations =>
+      languageModel.translate('productInformations');
+  String get addYourInformations =>
+      languageModel.translate('addYourInformations');
   String get city => languageModel.translate('city');
   String get pincode => languageModel.translate('pincode');
   String get country => languageModel.translate('country');
@@ -562,4 +566,50 @@ class _ECommerceWeb {
   String get payPalText => languageModel.translate('payPalText');
   String get successLorem1 => languageModel.translate('successLorem1');
   String get successLorem2 => languageModel.translate('successLorem2');
+}
+
+class _LandingPage {
+  String get compare => languageModel.translate('compare');
+  String get wishlist => languageModel.translate('wishlist');
+  String get cart => languageModel.translate('cart');
+  String get home => languageModel.translate('home');
+  String get category => languageModel.translate('category');
+  String get blog => languageModel.translate('blog');
+  String get brand => languageModel.translate('brand');
+  String get offer => languageModel.translate('offer');
+  String get login => languageModel.translate('login');
+  String get register => languageModel.translate('register');
+  String get termsConditions => languageModel.translate('termsConditions');
+  String get privacyPolicy => languageModel.translate('privacyPolicy');
+  String get deliveryPolicy => languageModel.translate('deliveryPolicy');
+  String get cancellationPolicy =>
+      languageModel.translate('cancellationPolicy');
+  String get aboutUs => languageModel.translate('aboutUs');
+  String get orderHistory => languageModel.translate('orderHistory');
+  String get myWishlist => languageModel.translate('myWishlist');
+  String get trackOrder => languageModel.translate('trackOrder');
+  String get contactInfo => languageModel.translate('contactInfo');
+  String get address => languageModel.translate('address');
+  String get phone => languageModel.translate('phone');
+  String get email => languageModel.translate('email');
+  String get quickLinks => languageModel.translate('quickLinks');
+  String get myAccount => languageModel.translate('myAccount');
+  String get offers => languageModel.translate('offers');
+  String get allBrand => languageModel.translate('allBrand');
+  String get allCategory => languageModel.translate('allCategory');
+  String get blogTitle => languageModel.translate('blogTitle');
+  String get blogText1 => languageModel.translate('blogText1');
+  String get blogText2 => languageModel.translate('blogText2');
+  String get blogText3 => languageModel.translate('blogText3');
+  String get productDescription => languageModel.translate('productDescription');
+  String get featuredProducts => languageModel.translate('featuredProducts');
+  String get bestSelling => languageModel.translate('bestSelling');
+  String get menAndWomanFashion => languageModel.translate('menAndWomanFashion');
+  String get comparison => languageModel.translate('comparison');
+  String get resetCompareList => languageModel.translate('resetCompareList');
+  String get emptyCompare => languageModel.translate('emptyCompare');
+  String get name => languageModel.translate('name');
+  String get image => languageModel.translate('image');
+  String get price => languageModel.translate('price');
+  String get subCategory => languageModel.translate('subCategory');
 }

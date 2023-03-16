@@ -1175,7 +1175,10 @@ class _MenuBarState extends State<FMenuBar> {
                   ],
                 ),
                 title: Text(
-                  items.keys.elementAt(0),
+                  languageModel.translate(items.keys
+                      .elementAt(0)
+                      .replaceFirst('-', ' ')
+                      .camelCase()),
                   style: TextStyle(
                       color: children[0]
                               .contains(upperCase(tabsRouter.currentPath))

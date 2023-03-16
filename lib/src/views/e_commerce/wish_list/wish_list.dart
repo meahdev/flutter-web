@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/e_commerce/wish_list/products.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,9 @@ class _WishListState extends State<WishList> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Wishlist',
-          style: TextStyle(
+        Text(
+          languageModel.landingPage.wishlist,
+          style: const TextStyle(
             fontSize: 24.0,
             fontWeight: FontWeight.w500,
           ),

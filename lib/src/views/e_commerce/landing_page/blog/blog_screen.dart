@@ -1,7 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -17,24 +17,24 @@ class _BlogScreenState extends State<BlogScreen> {
   final List<Map<String, dynamic>> _blogData = [
     {
       'blog_poster': 'assets/images/t-shirt_ward1.jpeg',
-      'blog_name': 'T-Shirts Every Man Needs in His Wardrobe',
-      'blog_des': 'Fashion is for men just as much as it is for women.'
-          'And whoever says that men can get away with just about'
-          'any shirt with jeans – ah,they couldn’t be more wrong!',
+      'blog_name': languageModel.landingPage.blogTitle,
+      'blog_des': '${languageModel.landingPage.blogText1}'
+          '${languageModel.landingPage.blogText2}'
+          '${languageModel.landingPage.blogText3}',
     },
     {
       'blog_poster': 'assets/images/t-shirt_ward.jpeg',
-      'blog_name': 'T-Shirts Every Man Needs in His Wardrobe',
-      'blog_des': 'Fashion is for men just as much as it is for women.'
-          'And whoever says that men can get away with just about'
-          'any shirt with jeans – ah,they couldn’t be more wrong!',
+      'blog_name': languageModel.landingPage.blogTitle,
+      'blog_des': '${languageModel.landingPage.blogText1}'
+          '${languageModel.landingPage.blogText2}'
+          '${languageModel.landingPage.blogText3}',
     },
     {
       'blog_poster': 'assets/images/t-shirt_ward2.jpeg',
-      'blog_name': 'T-Shirts Every Man Needs in His Wardrobe',
-      'blog_des': 'Fashion is for men just as much as it is for women.'
-          'And whoever says that men can get away with just about'
-          'any shirt with jeans – ah,they couldn’t be more wrong!',
+      'blog_name': languageModel.landingPage.blogTitle,
+      'blog_des': '${languageModel.landingPage.blogText1}'
+          '${languageModel.landingPage.blogText2}'
+          '${languageModel.landingPage.blogText3}',
     },
   ];
   @override
@@ -47,7 +47,7 @@ class _BlogScreenState extends State<BlogScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           ConstText.lightText(
-            text: Strings.blog.toUpperCase(),
+            text: languageModel.landingPage.blog.toUpperCase(),
             fontWeight: FontWeight.bold,
           ),
           FxBox.h24,

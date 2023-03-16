@@ -3,6 +3,7 @@ import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -90,19 +91,13 @@ class _BlogDetailsScreenState extends State<BlogDetailsScreen> {
           ),
           Expanded(
             child: Column(
-              children: const [
+              children: [
                 Text(
-                  'Fashion is for men just as much as it is for women.'
-                  'And whoever says that men can get away with just about'
-                  'any shirt with jeans – ah,they couldn’t be more wrong!\n\n'
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-                  'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,'
-                  'when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-                  'It has survived not only five centuries, but also the leap into electronic typesetting, remaining'
-                  'essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets '
-                  'containing Lorem Ipsum passages, and more recently with desktop publishing software like '
-                  'Aldus PageMaker including versions of Lorem Ipsum.',
-                  style: TextStyle(
+                  '${languageModel.landingPage.blogText1}'
+                  '${languageModel.landingPage.blogText2}'
+                  '${languageModel.landingPage.blogText3}\n\n'
+                  '${languageModel.landingPage.productDescription}',
+                  style: const TextStyle(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -113,19 +108,13 @@ class _BlogDetailsScreenState extends State<BlogDetailsScreen> {
         if (!isFront) ...[
           Expanded(
             child: Column(
-              children: const [
+              children: [
                 Text(
-                  'Fashion is for men just as much as it is for women.'
-                  'And whoever says that men can get away with just about'
-                  'any shirt with jeans – ah,they couldn’t be more wrong!\n\n'
-                  'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-                  'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,'
-                  'when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-                  'It has survived not only five centuries, but also the leap into electronic typesetting, remaining'
-                  'essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets '
-                  'containing Lorem Ipsum passages, and more recently with desktop publishing software like '
-                  'Aldus PageMaker including versions of Lorem Ipsum.',
-                  style: TextStyle(
+                  '${languageModel.landingPage.blogText1}'
+                  '${languageModel.landingPage.blogText2}'
+                  '${languageModel.landingPage.blogText3}\n\n'
+                  '${languageModel.landingPage.productDescription}',
+                  style: const TextStyle(
                     fontWeight: FontWeight.w500,
                   ),
                 ),
@@ -152,28 +141,22 @@ class _BlogDetailsScreenState extends State<BlogDetailsScreen> {
 
   Widget _blogHeader() {
     return ConstText.mediumText(
-      text: 'T-Shirts Every Man Needs in His Wardrobe',
+      text: languageModel.landingPage.blogTitle,
       fontWeight: FontWeight.bold,
     );
   }
 
   Widget _blogDes() {
-    return const SizedBox(
+    return SizedBox(
       width: 900,
       child: Text(
-        'Fashion is for men just as much as it is for women.'
-        'And whoever says that men can get away with just about'
-        'any shirt with jeans – ah,they couldn’t be more wrong!\n\n'
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry.'
-        'Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,'
-        'when an unknown printer took a galley of type and scrambled it to make a type specimen book.'
-        'It has survived not only five centuries, but also the leap into electronic typesetting, remaining'
-        'essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets '
-        'containing Lorem Ipsum passages, and more recently with desktop publishing software like '
-        'Aldus PageMaker including versions of Lorem Ipsum.',
+        '${languageModel.landingPage.blogText1}'
+        '${languageModel.landingPage.blogText2}'
+        '${languageModel.landingPage.blogText3}\n\n'
+        '${languageModel.landingPage.productDescription}',
         // overflow: TextOverflow.ellipsis,
 
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.w500,
         ),
       ),

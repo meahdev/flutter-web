@@ -1,6 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/offers/offers.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class _OffersScreenState extends State<OffersScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           ConstText.lightText(
-            text: Strings.offers.toUpperCase(),
+            text: languageModel.landingPage.offers.toUpperCase(),
             fontWeight: FontWeight.bold,
           ),
           FxBox.h24,

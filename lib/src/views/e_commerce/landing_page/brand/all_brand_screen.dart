@@ -1,7 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
-import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/brand/brand.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,7 @@ class _AllBrandScreenState extends State<AllBrandScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           ConstText.lightText(
-            text: Strings.allBrand.toUpperCase(),
+            text: languageModel.landingPage.allBrand.toUpperCase(),
             fontWeight: FontWeight.bold,
           ),
           FxBox.h24,

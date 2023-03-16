@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 
 import 'package:flutter/material.dart';
@@ -91,7 +92,7 @@ class _AllCategoryScreenState extends State<AllCategoryScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           ConstText.lightText(
-            text: Strings.allCategory.toUpperCase(),
+            text: languageModel.landingPage.allCategory.toUpperCase(),
             fontWeight: FontWeight.bold,
           ),
           FxBox.h24,

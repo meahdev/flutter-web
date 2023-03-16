@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -57,9 +58,9 @@ class _CompareScreenState extends State<CompareScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Compare',
-          style: TextStyle(
+        Text(
+          languageModel.landingPage.compare,
+          style: const TextStyle(
             fontSize: 24.0,
             fontWeight: FontWeight.w600,
           ),
@@ -73,9 +74,9 @@ class _CompareScreenState extends State<CompareScreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      'Comparison',
-                      style: TextStyle(
+                    Text(
+                      languageModel.landingPage.comparison,
+                      style: const TextStyle(
                         fontSize: 15.0,
                         fontWeight: FontWeight.w600,
                       ),
@@ -84,18 +85,18 @@ class _CompareScreenState extends State<CompareScreen> {
                       borderRadius: 2.0,
                       color: ColorConst.darkFooterText,
                       onPressed: () {},
-                      text: 'Reset Compare List',
+                      text: languageModel.landingPage.resetCompareList,
                     )
                   ],
                 ),
               ),
               const Divider(height: 0.0),
               _dataList.isEmpty
-                  ? const Padding(
-                      padding: EdgeInsets.all(24.0),
+                  ? Padding(
+                      padding: const EdgeInsets.all(24.0),
                       child: Text(
-                        'Your comparison list is empty',
-                        style: TextStyle(fontSize: 17.0),
+                        languageModel.landingPage.emptyCompare,
+                        style: const TextStyle(fontSize: 17.0),
                       ),
                     )
                   : Padding(
@@ -124,7 +125,7 @@ class _CompareScreenState extends State<CompareScreen> {
                                 (index) => DataCell(
                                   _tableHeader(
                                     index == 0
-                                        ? 'Name'
+                                        ? languageModel.landingPage.name
                                         : _dataList[index - 1]['item_name'],
                                   ),
                                 ),
@@ -137,8 +138,7 @@ class _CompareScreenState extends State<CompareScreen> {
                                 (index) => DataCell(
                                   index == 0
                                       ? _tableHeader(
-                                          'Image',
-                                        )
+                                          languageModel.landingPage.image)
                                       : _tableRowImage(
                                           _dataList[index - 1]['item_image'],
                                         ),
@@ -150,7 +150,8 @@ class _CompareScreenState extends State<CompareScreen> {
                                 _dataList.length + 1,
                                 (index) => DataCell(
                                   index == 0
-                                      ? _tableHeader('Price')
+                                      ? _tableHeader(
+                                          languageModel.landingPage.price)
                                       : _tableHeader(
                                           "\$ ${_dataList[index - 1]['item_price']}",
                                           color: ColorConst.priceColor,
@@ -163,7 +164,8 @@ class _CompareScreenState extends State<CompareScreen> {
                                 _dataList.length + 1,
                                 (index) => DataCell(
                                   index == 0
-                                      ? _tableHeader('Brand')
+                                      ? _tableHeader(
+                                          languageModel.landingPage.brand)
                                       : _tableHeader(
                                           _dataList[index - 1]['item_brand'],
                                           fontWeight: FontWeight.w400,
@@ -177,7 +179,7 @@ class _CompareScreenState extends State<CompareScreen> {
                                 (index) => DataCell(
                                   _tableHeader(
                                     index == 0
-                                        ? 'Sub Category'
+                                        ? languageModel.landingPage.subCategory
                                         : _dataList[index - 1]
                                             ['item_sub_category'],
                                   ),

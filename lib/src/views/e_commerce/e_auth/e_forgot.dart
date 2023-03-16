@@ -4,6 +4,7 @@ import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/widget/custom_text_field.dart';
@@ -66,7 +67,8 @@ class _EForgotState extends State<EForgot> {
                               ),
                               FxBox.h16,
                               CustomText(
-                                title: Strings.resetPassword,
+                                title:
+                                    languageModel.authentication.resetPassword,
                                 fontSize: 28,
                                 fontWeight: FontWeight.w700,
                                 textColor: isDark
@@ -102,7 +104,7 @@ class _EForgotState extends State<EForgot> {
         FxBox.h16,
         _emailInstruction(),
         FxBox.h16,
-        ConstantAuth.labelView(Strings.emailstr),
+        ConstantAuth.labelView(languageModel.authentication.email),
         FxBox.h8,
         _emailTextBoxWidget(),
         FxBox.h16,
@@ -131,7 +133,7 @@ class _EForgotState extends State<EForgot> {
         ),
       ),
       child: CustomText(
-        title: Strings.emailInstructions,
+        title: languageModel.authentication.emailInstructions,
         fontSize: 15,
         fontWeight: FontWeight.w700,
         textColor: ColorConst.darkGreen2,
@@ -152,7 +154,7 @@ class _EForgotState extends State<EForgot> {
   Widget _resetButton() {
     return FxButton(
       onPressed: () {},
-      text: Strings.reset,
+      text: languageModel.authentication.reset,
       borderRadius: 8.0,
       height: 40,
       minWidth: MediaQuery.of(context).size.width,

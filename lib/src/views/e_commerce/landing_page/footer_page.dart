@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
@@ -16,17 +17,17 @@ class FooterPage extends StatefulWidget {
 
 class _FooterPageState extends State<FooterPage> {
   final List<String> _quicklinkList = [
-    'About Us',
-    'Terms and conditions',
-    'Privacy Policy',
-    'Delivery Policy',
-    'Cancellation Policy',
+    languageModel.landingPage.aboutUs,
+    languageModel.landingPage.termsConditions,
+    languageModel.landingPage.privacyPolicy,
+    languageModel.landingPage.deliveryPolicy,
+    languageModel.landingPage.cancellationPolicy,
   ];
   final List<String> _accountList = [
-    'Login',
-    'Order History',
-    'My Wishlist',
-    'Track Order',
+    languageModel.landingPage.login,
+    languageModel.landingPage.orderHistory,
+    languageModel.landingPage.myWishlist,
+    languageModel.landingPage.trackOrder,
   ];
   @override
   Widget build(BuildContext context) {
@@ -99,7 +100,7 @@ class _FooterPageState extends State<FooterPage> {
           : CrossAxisAlignment.start,
       children: [
         ConstText.lightText(
-          text: 'QUICK LINKS',
+          text: languageModel.landingPage.quickLinks,
           fontSize: 12,
           fontWeight: FontWeight.bold,
           color: ColorConst.white,
@@ -135,7 +136,7 @@ class _FooterPageState extends State<FooterPage> {
           : CrossAxisAlignment.start,
       children: [
         ConstText.lightText(
-          text: 'MY ACCOUNT',
+          text: languageModel.landingPage.myAccount,
           fontSize: 12,
           fontWeight: FontWeight.bold,
           color: ColorConst.white,
@@ -150,11 +151,11 @@ class _FooterPageState extends State<FooterPage> {
               padding: const EdgeInsets.all(2.0),
               child: InkWell(
                 onTap: () {
-                  if (account == 'Login') {
+                  if (account == languageModel.landingPage.login) {
                     autoecTabRouter!.setActiveIndex(8);
-                  } else if (account == 'Order History') {
+                  } else if (account == languageModel.landingPage.orderHistory) {
                     autoecTabRouter!.setActiveIndex(12);
-                  } else if (account == 'My Wishlist') {
+                  } else if (account == languageModel.landingPage.myWishlist) {
                     autoecTabRouter!.setActiveIndex(6);
                   } else {
                     autoecTabRouter!.setActiveIndex(11);
@@ -180,14 +181,14 @@ class _FooterPageState extends State<FooterPage> {
           : CrossAxisAlignment.start,
       children: [
         ConstText.lightText(
-          text: 'CONTACT INFO',
+          text: languageModel.landingPage.contactInfo,
           fontSize: 12,
           fontWeight: FontWeight.bold,
           color: ColorConst.white,
         ),
         FxBox.h20,
         ConstText.lightText(
-          text: 'Address:',
+          text: '${languageModel.landingPage.address}:',
           fontSize: 13,
           color: Colors.white70,
         ),
@@ -203,7 +204,7 @@ class _FooterPageState extends State<FooterPage> {
         ),
         FxBox.h12,
         ConstText.lightText(
-          text: 'Phone:',
+          text: '${languageModel.landingPage.phone}:',
           fontSize: 13,
           color: Colors.white70,
         ),
@@ -218,7 +219,7 @@ class _FooterPageState extends State<FooterPage> {
         ),
         FxBox.h12,
         ConstText.lightText(
-          text: 'Email:',
+          text: '${languageModel.landingPage.email}:',
           fontSize: 13,
           color: Colors.white70,
         ),

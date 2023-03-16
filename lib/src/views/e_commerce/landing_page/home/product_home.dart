@@ -3,6 +3,7 @@ import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/home/e_com_product.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -97,14 +98,14 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
           FxBox.h24,
           _featureProduct(
             list: ecomProduct,
-            type: 'Featured Products',
+            type: languageModel.landingPage.featuredProducts,
             controller: _fascrollController,
             recontroller: _fascrollController1,
           ),
           FxBox.h24,
           _featureProduct(
             list: ecomProduct,
-            type: 'Best Selling',
+            type: languageModel.landingPage.bestSelling,
             controller: _bsscrollController,
             recontroller: _bsscrollController1,
           ),
@@ -137,7 +138,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
           FxBox.h24,
           _featureProduct(
             list: menAndWomanProduct,
-            type: 'Men And Woman Fashion',
+            type: languageModel.landingPage.menAndWomanFashion,
             controller: _mwscrollController,
             recontroller: _mwscrollController1,
           ),

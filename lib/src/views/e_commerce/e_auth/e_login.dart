@@ -6,15 +6,13 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/authentication/constant_auth.dart';
 import 'package:admin_dashboard/src/widget/custom_text_field.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterx/flutterx.dart';
-
-import '../../../routes/routes.gr.dart';
 
 class ELogin extends StatefulWidget {
   const ELogin({super.key});
@@ -66,8 +64,8 @@ class _ELoginState extends State<ELogin> {
                             _logoView(),
                             FxBox.h16,
                             ConstantAuth.headerView(
-                                Strings.signIn,
-                                'We suggest using the email address you use at work.',
+                                languageModel.authentication.signIn,
+                                languageModel.authentication.signInText,
                                 context),
                             _bottomView(),
                           ],
@@ -95,11 +93,11 @@ class _ELoginState extends State<ELogin> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         FxBox.h28,
-        ConstantAuth.labelView(Strings.emailstr),
+        ConstantAuth.labelView(languageModel.authentication.email),
         FxBox.h8,
         _usernameTextBoxWidget(),
         FxBox.h16,
-        ConstantAuth.labelView(Strings.password),
+        ConstantAuth.labelView(languageModel.form.password),
         FxBox.h8,
         _passwordTextBoxWidget(),
         FxBox.h16,
@@ -136,7 +134,7 @@ class _ELoginState extends State<ELogin> {
   Widget _loginButton() {
     return FxButton(
       onPressed: () {},
-      text: Strings.signIn,
+      text: languageModel.authentication.signIn,
       borderRadius: 8.0,
       height: 40,
       minWidth: MediaQuery.of(context).size.width,
@@ -163,7 +161,7 @@ class _ELoginState extends State<ELogin> {
               ),
               FxBox.w4,
               CustomText(
-                title: Strings.forgotPassword,
+                title: languageModel.authentication.forgotPassword,
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
                 textColor: color,
