@@ -458,13 +458,13 @@ class _ECommerceAdmin {
   String get eCommerceDashboard =>
       languageModel.translate('eCommerceDashboard');
   String get productAdd => languageModel.translate('productAdd');
-  String get venderDetail => languageModel.translate('venderDetail');
+  String get venderDetail => languageModel.translate('vendorDetail');
   String get totalUser => languageModel.translate('totalUser');
   String get totalOrders => languageModel.translate('totalOrders');
   String get totalCancelledOrders =>
       languageModel.translate('totalCancelledOrders');
   String get totalReturnOrder => languageModel.translate('totalReturnOrder');
-  String get totalVenders => languageModel.translate('totalVenders');
+  String get totalVenders => languageModel.translate('totalVendors');
   String get payoutRequestProgress =>
       languageModel.translate('payoutRequestProgress');
   String get totalVelueSales => languageModel.translate('totalVelueSales');
@@ -475,7 +475,7 @@ class _ECommerceAdmin {
   String get monthlyReportUser => languageModel.translate('monthlyReportUser');
   String get user => languageModel.translate('user');
   String get subscription => languageModel.translate('subscription');
-  String get vender => languageModel.translate('vender');
+  String get vender => languageModel.translate('vendor');
   String get total => languageModel.translate('total');
   String get globalSales => languageModel.translate('globalSales');
   String get id => languageModel.translate('id');

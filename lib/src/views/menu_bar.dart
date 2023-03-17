@@ -532,13 +532,13 @@ class _MenuBarState extends State<FMenuBar> {
             valueListenable: _language,
             builder: (context, value, _) {
               return GestureDetector(
-                onTap: () {
+                onTap: () async {
                   if (value == 'en') {
                     _language.value = 'hi';
                   } else {
                     _language.value = 'en';
                   }
-                  languageModel.changeLanguage();
+                  await languageModel.changeLanguage();
                 },
                 child: Text(
                   value,

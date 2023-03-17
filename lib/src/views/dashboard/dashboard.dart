@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/dashboard/activity.dart';
 import 'package:admin_dashboard/src/views/dashboard/chat_screen.dart';
@@ -13,7 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
 class Dashboard extends StatefulWidget {
-  const Dashboard({Key? key}) : super(key: key);
+   const Dashboard({Key? key}) : super(key: key);
 
   @override
   State<Dashboard> createState() => _DashboardState();
@@ -26,35 +28,35 @@ class _DashboardState extends State<Dashboard> {
       children: [
         Column(
           children: [
-            const Listitem(),
+            Listitem(),
             FxBox.h24,
-            const Monthlyearning(),
+             Monthlyearning(),
             FxBox.h24,
             Responsive.isWeb(context)
                 ? Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Expanded(
+                       Expanded(
                         child: SalesReport(),
                       ),
                       FxBox.w24,
-                      const Expanded(
+                       Expanded(
                         child: Salesanalytics(),
                       ),
                     ],
                   )
                 : Column(
                     children: [
-                      const SalesReport(),
+                       SalesReport(),
                       FxBox.h24,
-                      const Salesanalytics(),
+                       Salesanalytics(),
                     ],
                   ),
             FxBox.h24,
             Responsive.isWeb(context)
                 ? Row(
                     children: [
-                      const Expanded(
+                       Expanded(
                         child: Chatscreen(),
                       ),
                       FxBox.w24,
@@ -63,49 +65,49 @@ class _DashboardState extends State<Dashboard> {
                           children: [
                             Row(
                               children: [
-                                const Expanded(child: StatusBox()),
+                                 Expanded(child: StatusBox()),
                                 FxBox.w24,
-                                const Expanded(child: TopProductSale()),
+                                 Expanded(child: TopProductSale()),
                               ],
                             ),
                             FxBox.h24,
-                            const Clienresponse(),
+                             Clienresponse(),
                           ],
                         ),
                       ),
                       FxBox.w24,
-                      const Expanded(
+                       Expanded(
                         child: Activity(),
                       ),
                     ],
                   )
                 : Column(
                     children: [
-                      const Chatscreen(),
+                       Chatscreen(),
                       FxBox.h24,
                       Responsive.isTablet(context)
                           ? Row(
                               children: [
-                                const Expanded(child: StatusBox()),
+                                 Expanded(child: StatusBox()),
                                 FxBox.w24,
-                                const Expanded(child: TopProductSale()),
+                                 Expanded(child: TopProductSale()),
                               ],
                             )
                           : Column(
                               children: [
-                                const StatusBox(),
+                                 StatusBox(),
                                 FxBox.h24,
-                                const TopProductSale(),
+                                 TopProductSale(),
                               ],
                             ),
                       FxBox.h24,
-                      const Clienresponse(),
+                       Clienresponse(),
                       FxBox.h24,
-                      const Activity(),
+                       Activity(),
                     ],
                   ),
             FxBox.h24,
-            const Transaction(),
+             Transaction(),
           ],
         ),
       ],

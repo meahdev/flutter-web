@@ -43,7 +43,9 @@ class CustomBadge extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                isOutline ? languageModel.widget.outlineBadge : languageModel.widget.simpleBadge,
+                isOutline
+                    ? languageModel.widget.outlineBadge
+                    : languageModel.widget.simpleBadge,
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
@@ -54,7 +56,9 @@ class CustomBadge extends StatelessWidget {
                 spacing: 8,
                 runSpacing: 8,
                 children: [
-                  FxBadge(text: Strings.primary, isOutlined: isOutline),
+                  FxBadge(
+                      text: languageModel.widget.primary,
+                      isOutlined: isOutline),
                   FxBadge(
                     text: languageModel.widget.success,
                     color: ColorConst.success,
@@ -71,7 +75,7 @@ class CustomBadge extends StatelessWidget {
                     isOutlined: isOutline,
                   ),
                   FxBadge(
-                    text: languageModel.translate('badge'),
+                    text: languageModel.translate('badge').trim(),
                     color: Theme.of(context).colorScheme.tertiary,
                     isOutlined: isOutline,
                   ),

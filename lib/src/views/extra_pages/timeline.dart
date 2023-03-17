@@ -58,25 +58,25 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
   List<Steps> _generateData() {
     return <Steps>[
-      Steps(
+      const Steps(
         step: 1,
-        title: languageModel.extraPage.timelineTitle1,
-        message: languageModel.extraPage.timelineText1,
+        title: 'timelineTitle1',
+        message: 'timelineText1',
       ),
-      Steps(
+      const Steps(
         step: 2,
-        title: languageModel.extraPage.timelineTitle2,
-        message: languageModel.extraPage.timelineText2,
+        title: 'timelineTitle2',
+        message: 'timelineText2',
       ),
-      Steps(
+      const Steps(
         step: 3,
-        title: languageModel.extraPage.timelineTitle3,
-        message: languageModel.extraPage.timelineText3,
+        title: 'timelineTitle3',
+        message: 'timelineText3',
       ),
-      Steps(
+      const Steps(
         step: 4,
-        title: languageModel.extraPage.timelineTitle4,
-        message: languageModel.extraPage.timelineText4,
+        title: 'timelineTitle4',
+        message: 'timelineText4',
       ),
     ];
   }
@@ -171,7 +171,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             CustomText(
-              title: title,
+              title: languageModel.translate(title),
               textAlign: isLeftAlign ? TextAlign.left : TextAlign.right,
               fontSize: 17,
               fontWeight: FontWeight.w700,
@@ -180,7 +180,7 @@ class _TimelineScreenState extends State<TimelineScreen> {
             ),
             const SizedBox(height: 16),
             CustomText(
-              title: subtitle,
+              title: languageModel.translate(subtitle),
               textAlign: isLeftAlign ? TextAlign.left : TextAlign.right,
               fontSize: 15,
               fontWeight: FontWeight.w600,

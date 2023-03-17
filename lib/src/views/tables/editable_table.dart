@@ -110,7 +110,7 @@ class _EditableTableState extends State<EditableTable> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                languageModel.table.editableTable,
+                languageModel.table.editableTable.trim(),
                 style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

@@ -100,7 +100,7 @@ class _MaskFormState extends State<MaskForm> {
                       ),
                       FxBox.h12,
                       _maskTextFieldCommonView(
-                        _commonText(languageModel.translate('mask')),
+                        _commonText(languageModel.translate('mask').trim()),
                         _maskTextField(),
                         'e.g "99-9999999"',
                       ),

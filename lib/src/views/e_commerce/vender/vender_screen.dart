@@ -181,11 +181,13 @@ class _VenderScreenState extends State<VenderScreen> {
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.emailAndMobile),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.emailAndMobile),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.status),
+                        label:
+                            _tableHeader(languageModel.eCommerceAdmin.status),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
@@ -387,7 +389,7 @@ class _VenderScreenState extends State<VenderScreen> {
           fullWidth: false,
           color: ColorConst.primary,
           minWidth: MediaQuery.of(context).size.width / 7,
-          text: 'Add Vender',
+          text: 'Add Vendor',
         ),
         FxBox.w24,
         FxButton(
@@ -421,7 +423,7 @@ class _VenderScreenState extends State<VenderScreen> {
           isShow = !isShow;
           setState(() {});
         },
-        text: 'New Vender',
+        text: 'New Vendor',
       ),
     );
   }

@@ -15,31 +15,31 @@ class FAQs extends StatefulWidget {
 
 class _FAQsState extends State<FAQs> {
   final _dataGeneralList = [
-    languageModel.extraPage.timelineText1,
-    languageModel.extraPage.timelineText2,
-    languageModel.extraPage.timelineText3,
-    languageModel.extraPage.timelineText4,
+    'timelineText1',
+    'timelineText2',
+    'timelineText3',
+    'timelineText4',
   ];
 
   final _generalList = [
-    languageModel.extraPage.timelineTitle1,
-    languageModel.extraPage.timelineTitle2,
-    languageModel.extraPage.timelineTitle3,
-    languageModel.extraPage.timelineTitle4,
+    'timelineTitle1',
+    'timelineTitle2',
+    'timelineTitle3',
+    'timelineTitle4',
   ];
 
   final _dataPricingNplanList = [
-    languageModel.extraPage.timelineText1,
-    languageModel.extraPage.timelineText3,
-    languageModel.extraPage.timelineText2,
-    languageModel.extraPage.timelineText4,
+    'timelineText1',
+    'timelineText3',
+    'timelineText2',
+    'timelineText4',
   ];
 
   final _pricingNplanList = [
-    languageModel.extraPage.timelineTitle4,
-    languageModel.extraPage.timelineTitle2,
-    languageModel.extraPage.timelineTitle3,
-    languageModel.extraPage.timelineTitle1,
+    'timelineTitle4',
+    'timelineTitle2',
+    'timelineTitle3',
+    'timelineTitle1',
   ];
 
   @override
@@ -98,15 +98,15 @@ class _FAQsState extends State<FAQs> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const ListTile(
+            ListTile(
               title: Text(
-                "General Questions",
-                style: TextStyle(
+                languageModel.translate('generalQuestions'),
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 21,
                 ),
               ),
-              leading: Icon(
+              leading: const Icon(
                 Icons.book_online_rounded,
                 color: ColorConst.primary,
               ),
@@ -125,15 +125,15 @@ class _FAQsState extends State<FAQs> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            const ListTile(
+            ListTile(
               title: Text(
-                "Pricing & Plans",
-                style: TextStyle(
+                languageModel.translate('pricingPlans'),
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 21,
                 ),
               ),
-              leading: Icon(
+              leading: const Icon(
                 Icons.book_online_rounded,
                 color: ColorConst.primary,
               ),
@@ -162,7 +162,7 @@ class _FAQsState extends State<FAQs> {
               return ListTile(
                 hoverColor: Colors.transparent,
                 title: Text(
-                  item,
+                  languageModel.translate(item),
                   style: TextStyle(
                     color: isExpanded ? ColorConst.primary : null,
                     fontWeight: FontWeight.bold,
@@ -173,11 +173,11 @@ class _FAQsState extends State<FAQs> {
             body: ListTile(
               hoverColor: Colors.transparent,
               title: Text(
-                title.elementAt(
+                languageModel.translate(title.elementAt(
                   list.indexWhere(
                     (element) => element == item,
                   ),
-                ),
+                )),
               ),
             ),
           );

@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/provider/theme/bloc/theme_mode_bloc.dart';
+import 'package:admin_dashboard/src/utils/extainsions/string_extainsions.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +19,10 @@ class Pricing extends StatefulWidget {
 
 class _PricingState extends State<Pricing> {
   final List<String> headingList = [
-    languageModel.extraPage.starter,
-    languageModel.extraPage.professional,
-    languageModel.extraPage.enterprise,
-    languageModel.extraPage.unlimited,
+    'Starter',
+    'Professional',
+    'Enterprise',
+    'Unlimited',
   ];
   final List<String> priceList = ["9.99", "29.99", "49.99", "99.99"];
 
@@ -80,7 +81,7 @@ class _PricingState extends State<Pricing> {
             children: [
               Center(
                 child: Text(
-                  title,
+                  languageModel.translate(title.camelCase()),
                   style: TextStyle(
                     color: isDark
                         ? ColorConst.darkFontColor
@@ -184,7 +185,6 @@ class _PricingState extends State<Pricing> {
       //   color: ColorConst.black,
       // ),
       trailing: Expanded(
- 
         child: Icon(
           icons,
           size: 19,

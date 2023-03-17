@@ -18,7 +18,7 @@ class ResponsiveTable extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  languageModel.table.responsiveTable,
+                  languageModel.table.responsiveTable.trim(),
                   style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,

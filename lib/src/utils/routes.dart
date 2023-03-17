@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:admin_dashboard/src/constant/string.dart';
 import 'package:admin_dashboard/src/views/calender/calender.dart';
 import 'package:admin_dashboard/src/views/charts/chartist.dart';
@@ -19,7 +21,6 @@ import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_deta
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/blog/blog_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/brand/all_brand_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/category/category_screen.dart';
-import 'package:admin_dashboard/src/views/e_commerce/landing_page/ec_landing_page.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/home/product_home.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/offers/offers_screen.dart';
 import 'package:admin_dashboard/src/views/e_commerce/landing_page/payment/landing_payment.dart';
@@ -204,162 +205,162 @@ int getRouteIndex(String route) {
 
 Widget getRouteWidget(int index) {
   if (index == 1) {
-    return const Button();
+    return  Button();
   } else if (index == 2) {
-    return const Rating();
+    return  Rating();
   } else if (index == 3) {
-    return const CustomBadge();
+    return  CustomBadge();
   } else if (index == 4) {
-    return const Toast();
+    return Toast();
   } else if (index == 5) {
-    return const AlertDialogBox();
+    return AlertDialogBox();
   } else if (index == 6) {
-    return const Modal();
+    return Modal();
   } else if (index == 7) {
-    return const BasicEmail();
+    return BasicEmail();
   } else if (index == 8) {
-    return const AlertEmail();
+    return AlertEmail();
   } else if (index == 9) {
-    return const BillingEmail();
+    return BillingEmail();
   } else if (index == 10) {
-    return const Loaders();
+    return Loaders();
   } else if (index == 11) {
-    return const MorrisChart();
+    return MorrisChart();
   } else if (index == 12) {
-    return const ChartListChart();
+    return ChartListChart();
   } else if (index == 13) {
-    return const ChartJsChart();
+    return ChartJsChart();
   } else if (index == 14) {
-    return const BasicTable();
+    return BasicTable();
   } else if (index == 15) {
-    return const Datatable();
+    return Datatable();
   } else if (index == 16) {
-    return const ResponsiveTable();
+    return ResponsiveTable();
   } else if (index == 17) {
-    return const EditableTable();
+    return EditableTable();
   } else if (index == 18) {
-    return const TimelineScreen();
+    return TimelineScreen();
   } else if (index == 19) {
-    return const Pricing();
+    return Pricing();
   } else if (index == 20) {
-    return const DirectoryPage();
+    return DirectoryPage();
   } else if (index == 21) {
-    return const FAQs();
+    return FAQs();
   } else if (index == 22) {
-    return const Invoice();
+    return Invoice();
   } else if (index == 23) {
-    return const Gallery();
+    return Gallery();
   } else if (index == 24) {
-    return const Carousel();
+    return Carousel();
   } else if (index == 25) {
-    return const TabScreen();
+    return TabScreen();
   } else if (index == 26) {
-    return const Calendar();
+    return Calendar();
   } else if (index == 27) {
-    return const ElementsForm();
+    return ElementsForm();
   } else if (index == 28) {
-    return const ValidationForm();
+    return ValidationForm();
   } else if (index == 29) {
-    return const FileUploadForm();
+    return FileUploadForm();
   } else if (index == 30) {
-    return const RepeaterForm();
+    return RepeaterForm();
   } else if (index == 31) {
-    return const WizardForm();
+    return WizardForm();
   } else if (index == 32) {
-    return const MaskForm();
+    return MaskForm();
   } else if (index == 33) {
-    return const VideoScreen();
+    return VideoScreen();
   } else if (index == 34) {
-    return const GoogleMaps();
+    return GoogleMaps();
   } else if (index == 35) {
-    return const UserProfile();
+    return UserProfile();
   } else if (index == 36) {
-    return const DragAndDrop();
+    return DragAndDrop();
   } else if (index == 37) {
-    return const DatePicker();
+    return DatePicker();
   } else if (index == 38) {
-    return const ProductsScreen();
+    return ProductsScreen();
   } else if (index == 39) {
-    return const ProductDetailScreen();
+    return ProductDetailScreen();
   } else if (index == 40) {
-    return const CategoryScreen();
+    return CategoryScreen();
   } else if (index == 41) {
-    return const SubCategoryScreen();
+    return SubCategoryScreen();
   } else if (index == 42) {
-    return const VenderScreen();
+    return VenderScreen();
   } else if (index == 43) {
-    return const VenderDetailScreen();
+    return VenderDetailScreen();
   } else if (index == 44) {
-    return const CustomerScreen();
+    return CustomerScreen();
   } else if (index == 45) {
-    return const PaymentScreen();
+    return PaymentScreen();
   } else if (index == 46) {
-    return const ReturnOrderScreen();
+    return ReturnOrderScreen();
   } else if (index == 47) {
-    return const ReturnOrderInvoice();
+    return ReturnOrderInvoice();
   } else if (index == 48) {
-    return const SubScriptionScreen();
+    return SubScriptionScreen();
   } else if (index == 49) {
-    return const CouponsScreen();
+    return CouponsScreen();
   } else if (index == 50) {
-    return const OrderScreen();
+    return OrderScreen();
   } else if (index == 51) {
-    return const OrderInvoice();
+    return OrderInvoice();
   } else if (index == 52) {
-    return const ReturnConditionScreen();
+    return ReturnConditionScreen();
   } else if (index == 53) {
-    return const EcommerceDashboard();
+    return EcommerceDashboard();
   } else if (index == 54) {
-    return const CartScreen();
+    return CartScreen();
   } else if (index == 55) {
-    return const ProductAdd();
+    return ProductAdd();
   } else if (index == 56) {
-    return const SuccessScreen();
+    return SuccessScreen();
   } else if (index == 57) {
-    return const DropDownScreen();
+    return DropDownScreen();
   }
   // else if (index == 58) {
-  //   return const ECLandingPage();
+  //   return ECLandingPage();
   // }
   else {
-    return const Dashboard();
+    return Dashboard();
   }
 }
 
 Widget getECRouteWidget(int index) {
   if (index == 1) {
-    return const BlogScreen();
+    return BlogScreen();
   } else if (index == 2) {
-    return const AllCategoryScreen();
+    return AllCategoryScreen();
   } else if (index == 3) {
-    return const AllBrandScreen();
+    return AllBrandScreen();
   } else if (index == 4) {
-    return const OffersScreen();
+    return OffersScreen();
   } else if (index == 5) {
-    return const CompareScreen();
+    return CompareScreen();
   } else if (index == 6) {
-    return const WishList();
+    return WishList();
   } else if (index == 7) {
-    return const ECartScreen();
+    return ECartScreen();
   } else if (index == 8) {
-    return const ELogin();
+    return ELogin();
   } else if (index == 9) {
-    return const ERegister();
+    return ERegister();
   } else if (index == 10) {
-    return const EForgot();
+    return EForgot();
   } else if (index == 11) {
-    return const TrackOrder();
+    return TrackOrder();
   } else if (index == 12) {
-    return const OrderHistory();
+    return OrderHistory();
   } else if (index == 13) {
-    return const ShowProductDetails();
+    return ShowProductDetails();
   } else if (index == 14) {
-    return const LandingPaymentScreen();
+    return LandingPaymentScreen();
   } else if (index == 15) {
-    return const LandingSuccessScreen();
+    return LandingSuccessScreen();
   } else if (index == 16) {
-    return const BlogDetailsScreen();
+    return BlogDetailsScreen();
   } else {
-    return const ProductHomeScreen();
+    return ProductHomeScreen();
   }
 }

@@ -38,7 +38,7 @@ class _DatatableState extends State<Datatable> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    languageModel.table.dataTable,
+                    languageModel.table.dataTable.trim(),
                     style: const TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -69,8 +69,9 @@ class _DatatableState extends State<Datatable> {
                       columns: [
                         DataColumn2(
                           size: ColumnSize.S,
-                          label:
-                              sizedBox(text: languageModel.table.id, fontwidget: FontWeight.bold),
+                          label: sizedBox(
+                              text: languageModel.table.id,
+                              fontwidget: FontWeight.bold),
                         ),
                         DataColumn2(
                           size: ColumnSize.L,
@@ -81,7 +82,8 @@ class _DatatableState extends State<Datatable> {
                         DataColumn2(
                           size: ColumnSize.L,
                           label: sizedBox(
-                              text: languageModel.table.emailID, fontwidget: FontWeight.bold),
+                              text: languageModel.table.emailID,
+                              fontwidget: FontWeight.bold),
                         ),
                         DataColumn2(
                           size: ColumnSize.L,
@@ -92,12 +94,14 @@ class _DatatableState extends State<Datatable> {
                         DataColumn2(
                           size: ColumnSize.M,
                           label: sizedBox(
-                              text: languageModel.table.quantity, fontwidget: FontWeight.bold),
+                              text: languageModel.table.quantity,
+                              fontwidget: FontWeight.bold),
                         ),
                         DataColumn2(
                           size: ColumnSize.M,
                           label: sizedBox(
-                              text: languageModel.table.amount, fontwidget: FontWeight.bold),
+                              text: languageModel.table.amount,
+                              fontwidget: FontWeight.bold),
                         ),
                       ],
                       rows: ls

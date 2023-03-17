@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
@@ -74,11 +75,11 @@ class _TrackOrderState extends State<TrackOrder> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Align(
+        Align(
           alignment: Alignment.centerLeft,
           child: Text(
-            'Track Order',
-            style: TextStyle(
+            languageModel.landingPage.trackOrder,
+            style: const TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
             ),
@@ -105,11 +106,11 @@ class _TrackOrderState extends State<TrackOrder> {
       child: Card(
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.all(18.0),
+            Padding(
+              padding: const EdgeInsets.all(18.0),
               child: Text(
-                'Check Your Order Status',
-                style: TextStyle(
+                languageModel.translate('checkYourOrderStatus'),
+                style: const TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.bold,
                 ),
@@ -140,7 +141,7 @@ class _TrackOrderState extends State<TrackOrder> {
                 _orderController.clear();
               },
               borderRadius: 4.0,
-              text: 'Track Order',
+              text: languageModel.landingPage.trackOrder,
             ),
             FxBox.h12,
           ],
@@ -154,11 +155,11 @@ class _TrackOrderState extends State<TrackOrder> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.all(18.0),
+          Padding(
+            padding: const EdgeInsets.all(18.0),
             child: Text(
-              'Order Summary',
-              style: TextStyle(
+              languageModel.translate('orderSummary'),
+              style: const TextStyle(
                 fontSize: 15.0,
                 fontWeight: FontWeight.bold,
               ),
@@ -173,11 +174,16 @@ class _TrackOrderState extends State<TrackOrder> {
                   child: Column(
                     children: [
                       _orderSummaryText(
-                          'Order Code:', _searchData['order_code']),
-                      _orderSummaryText('Customer:', 'Keval Gajera'),
-                      _orderSummaryText('Email:', 'keval.gajera@sarvadhi.com'),
+                          '${languageModel.translate('orderCode')}:',
+                          _searchData['order_code']),
                       _orderSummaryText(
-                          'Shipping address:', 'Surat, Adoni, India'),
+                          '${languageModel.eCommerceAdmin.customer}:',
+                          'Keval Gajera'),
+                      _orderSummaryText('${languageModel.form.email}:',
+                          'keval.gajera@sarvadhi.com'),
+                      _orderSummaryText(
+                          '${languageModel.eCommerceWeb.shipping} ${languageModel.landingPage.address.toLowerCase()}:',
+                          'Surat, Adoni, India'),
                     ],
                   ),
                 ),
@@ -185,13 +191,20 @@ class _TrackOrderState extends State<TrackOrder> {
                 Expanded(
                   child: Column(
                     children: [
-                      _orderSummaryText('Order date:', _searchData['date']),
-                      _orderSummaryText('Total order amount:',
+                      _orderSummaryText('${languageModel.dashboard.orderDate}:',
+                          _searchData['date']),
+                      _orderSummaryText(
+                          '${languageModel.eCommerceAdmin.total} ${languageModel.eCommerceAdmin.orderAmount.toLowerCase()}:',
                           '\$ ${_searchData['total_amount']}'),
                       _orderSummaryText(
-                          'Shipping method:', 'Flat shipping rate'),
-                      _orderSummaryText('Payment method:', 'Cash on delivery'),
-                      _orderSummaryText('Shipping address:', 'Delivery Status'),
+                          '${languageModel.translate('shippingMethod')}:',
+                          'Flat shipping rate'),
+                      _orderSummaryText(
+                          '${languageModel.translate('paymentMethod')}:',
+                          'Cash on delivery'),
+                      _orderSummaryText(
+                          '${languageModel.dashboard.deliveryStatus}:',
+                          'Pending'),
                     ],
                   ),
                 )
@@ -200,16 +213,29 @@ class _TrackOrderState extends State<TrackOrder> {
           } else ...{
             Column(
               children: [
-                _orderSummaryText('Order Code:', _searchData['order_code']),
-                _orderSummaryText('Customer:', 'Keval Gajera'),
-                _orderSummaryText('Email:', 'keval.gajera@sarvadhi.com'),
-                _orderSummaryText('Shipping address:', 'Surat, Adoni, India'),
-                _orderSummaryText('Order date:', _searchData['date']),
+                _orderSummaryText('${languageModel.translate('orderCode')}:',
+                    _searchData['order_code']),
                 _orderSummaryText(
-                    'Total order amount:', '\$ ${_searchData['total_amount']}'),
-                _orderSummaryText('Shipping method:', 'Flat shipping rate'),
-                _orderSummaryText('Payment method:', 'Cash on delivery'),
-                _orderSummaryText('Shipping address:', 'Delivery Status'),
+                    '${languageModel.eCommerceAdmin.customer.trim()}:',
+                    'Keval Gajera'),
+                _orderSummaryText('${languageModel.form.email}:',
+                    'keval.gajera@sarvadhi.com'),
+                _orderSummaryText(
+                    '${languageModel.eCommerceWeb.shipping} ${languageModel.landingPage.address.toLowerCase()}:',
+                    'Surat, Adoni, India'),
+                _orderSummaryText('${languageModel.dashboard.orderDate}:',
+                    _searchData['date']),
+                _orderSummaryText(
+                    '${languageModel.eCommerceAdmin.total} ${languageModel.eCommerceAdmin.orderAmount.toLowerCase()}:',
+                    '\$ ${_searchData['total_amount']}'),
+                _orderSummaryText(
+                    '${languageModel.translate('shippingMethod')}:',
+                    'Flat shipping rate'),
+                _orderSummaryText(
+                    '${languageModel.translate('paymentMethod')}:',
+                    'Cash on delivery'),
+                _orderSummaryText(
+                    '${languageModel.dashboard.deliveryStatus}:', 'Pending'),
               ],
             )
           }
@@ -256,15 +282,15 @@ class _TrackOrderState extends State<TrackOrder> {
                   columns: [
                     DataColumn2(
                       size: ColumnSize.L,
-                      label: _tableHeader('Product Name',
+                      label: _tableHeader(languageModel.table.productName,
                           fontWeight: FontWeight.bold),
                     ),
                     DataColumn2(
-                      label:
-                          _tableHeader('Quantity', fontWeight: FontWeight.bold),
+                      label: _tableHeader(languageModel.table.quantity,
+                          fontWeight: FontWeight.bold),
                     ),
                     DataColumn2(
-                      label: _tableHeader('Shipped By',
+                      label: _tableHeader(languageModel.translate('shippedBy'),
                           fontWeight: FontWeight.bold),
                     ),
                   ],

@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/extainsions/string_extainsions.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/dashboard/sales_analytics.dart';
@@ -22,7 +23,7 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
   final List<String> _typeOfData = [
     'Orders',
     'Revenue',
-    'Avg.order value',
+    'Avg order value',
     'Unique visiors'
   ];
   final List<int> _height = [80, 60, 90, 54, 42];
@@ -556,7 +557,7 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
                   ),
                 ),
                 Text(
-                  _typeOfData[typeOfData],
+                  languageModel.translate(_typeOfData[typeOfData].camelCase()),
                   style: const TextStyle(
                     fontSize: 16.0,
                     fontWeight: FontWeight.w300,

@@ -145,7 +145,9 @@ class _ReturnConditionScreenState extends State<ReturnConditionScreen> {
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.returnCondition),
+                        label: _tableHeader(languageModel
+                            .eCommerceAdmin.returnCondition
+                            .trim()),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(

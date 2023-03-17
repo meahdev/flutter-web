@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/utils/extainsions/string_extainsions.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class _VenderListItemState extends State<VenderListItem> {
   final List<Map<String, dynamic>> _listItem = [
     {
       'id': 0,
-      'producTitle': languageModel.eCommerceAdmin.totalEarning,
+      'producTitle': 'Total Earning',
       'value': '3,930 \$',
       'boxIcon': Icons.bar_chart_rounded,
       'boxColor': ['000C40', 'F0F2F0'],
@@ -24,7 +25,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 1,
-      'producTitle': languageModel.eCommerceAdmin.totalOrders,
+      'producTitle': 'Total Orders',
       'value': '1200',
       'boxIcon': Icons.note_alt_rounded,
       'boxColor': ['E8CBC0', '636FA4'],
@@ -32,7 +33,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 2,
-      'producTitle': languageModel.eCommerceAdmin.totalCancelledOrders,
+      'producTitle': 'Total Cancelled Orders',
       'value': '120',
       'boxIcon': Icons.cancel_outlined,
       // 'boxColor': '9B5B1E',
@@ -41,7 +42,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 3,
-      'producTitle': languageModel.eCommerceAdmin.totalReturnOrder,
+      'producTitle': 'Total Return Order',
       'value': '170',
       'boxIcon': Icons.pending_actions_outlined,
       'boxColor': ['3a6186', '89253e'],
@@ -49,7 +50,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 4,
-      'producTitle': languageModel.eCommerceAdmin.totalPendingOrdres,
+      'producTitle': 'Total Pending Ordres',
       'value': '200',
       'boxIcon': Icons.shopping_bag_rounded,
       'boxColor': ['4ecdc4', '556270'],
@@ -57,7 +58,7 @@ class _VenderListItemState extends State<VenderListItem> {
     },
     {
       'id': 5,
-      'producTitle': languageModel.eCommerceAdmin.pendingSettlement,
+      'producTitle': 'Pending Settlement',
       'value': '400 \$',
       'boxIcon': Icons.shopping_bag_rounded,
       'boxColor': ['ffd89b', '19547b'],
@@ -69,7 +70,6 @@ class _VenderListItemState extends State<VenderListItem> {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       child: GridView.builder(
-      
         gridDelegate: Responsive.isMobile(context)
             ? const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
@@ -142,7 +142,7 @@ class _VenderListItemState extends State<VenderListItem> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ConstText.lightText(
-                      text: productTitle,
+                      text: languageModel.translate(productTitle.camelCase()),
                       color: ColorConst.white,
                       fontWeight: FontWeight.bold,
                     ),

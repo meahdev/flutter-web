@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
@@ -68,9 +70,9 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
                     ],
                   ),
         FxBox.h20,
-        const MonthlyOrderChart(),
+        MonthlyOrderChart(),
         FxBox.h20,
-        const LatestTransaction(),
+        LatestTransaction(),
       ],
     );
   }
@@ -83,7 +85,8 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
               ? 650
               : MediaQuery.of(context).size.width),
       padding: const EdgeInsets.all(20),
-      child: const VenderListItem(),
+      // ignore: prefer_const_constructors
+      child: VenderListItem(),
     );
   }
 
@@ -113,14 +116,18 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
                 children: [
                   Expanded(
                       child: _headerWithValue(
-                          header: languageModel.eCommerceAdmin.bankName, value: 'Money Bank')),
+                          header: languageModel.eCommerceAdmin.bankName,
+                          value: 'Money Bank')),
                   Expanded(
                       child: _headerWithValue(
-                          header: languageModel.eCommerceAdmin.bankType, value: 'Current Account')),
+                          header: languageModel.eCommerceAdmin.bankType,
+                          value: 'Current Account')),
                 ],
               ),
               FxBox.h24,
-              _headerWithValue(header: languageModel.eCommerceAdmin.accountNumberName, value: '-'),
+              _headerWithValue(
+                  header: languageModel.eCommerceAdmin.accountNumberName,
+                  value: '-'),
             ],
           ),
         ),
@@ -168,17 +175,20 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
   }
 
   Widget _status() {
-    return _headerWithValue(header: languageModel.eCommerceAdmin.status, value: 'Active');
+    return _headerWithValue(
+        header: languageModel.eCommerceAdmin.status, value: 'Active');
   }
 
   Widget _emailAndPhone() {
     return Row(
       children: [
         Expanded(
-            child:
-                _headerWithValue(header: languageModel.form.email, value: 'h.patel@gmail.com')),
+            child: _headerWithValue(
+                header: languageModel.form.email, value: 'h.patel@gmail.com')),
         Expanded(
-            child: _headerWithValue(header: languageModel.eCommerceAdmin.phone, value: '+1 5654349204')),
+            child: _headerWithValue(
+                header: languageModel.eCommerceAdmin.phone,
+                value: '+1 5654349204')),
       ],
     );
   }
@@ -187,11 +197,12 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
     return Row(
       children: [
         Expanded(
-            child:
-                _headerWithValue(header: languageModel.form.address, value: 'Gujarat, India')),
+            child: _headerWithValue(
+                header: languageModel.form.address, value: 'Gujarat, India')),
         Expanded(
-            child:
-                _headerWithValue(header: languageModel.eCommerceAdmin.dateOfJoin, value: '30 Jan 2023')),
+            child: _headerWithValue(
+                header: languageModel.eCommerceAdmin.dateOfJoin,
+                value: '30 Jan 2023')),
       ],
     );
   }

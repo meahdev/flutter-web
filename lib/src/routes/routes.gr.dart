@@ -876,12 +876,12 @@ class AppRouter extends _i90.RootStackRouter {
             ),
             _i90.RouteConfig(
               VenderScreen.name,
-              path: 'vender',
+              path: 'vendor',
               parent: FMenuBar.name,
             ),
             _i90.RouteConfig(
               VenderDetailScreen.name,
-              path: 'vender/vender-detail',
+              path: 'vendor/vendor-detail',
               parent: FMenuBar.name,
             ),
             _i90.RouteConfig(
@@ -1783,7 +1783,7 @@ class VenderScreen extends _i90.PageRouteInfo<void> {
   const VenderScreen()
       : super(
           VenderScreen.name,
-          path: 'vender',
+          path: 'vendor',
         );
 
   static const String name = 'VenderScreen';
@@ -1795,7 +1795,7 @@ class VenderDetailScreen extends _i90.PageRouteInfo<void> {
   const VenderDetailScreen()
       : super(
           VenderDetailScreen.name,
-          path: 'vender/vender-detail',
+          path: 'vendor/vendor-detail',
         );
 
   static const String name = 'VenderDetailScreen';
