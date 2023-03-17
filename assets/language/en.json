@@ -456,5 +456,6 @@
     "comparison": "Comparison",
     "resetCompareList": "Reset Compare List",
     "emptyCompare": "Your comparison list is empty",
-    "subCategory": "Sub Category"
+    "subCategory": "Sub Category",
+    "userProfile": "User Profile"
 }

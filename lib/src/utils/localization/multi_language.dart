@@ -14,7 +14,7 @@ class LanguageModel extends Model {
   static const Locale en = Locale('en');
   static const Locale hi = Locale('hi');
 
-  Locale _appLocale = const Locale.fromSubtags(languageCode: 'hi');
+  Locale _appLocale = const Locale.fromSubtags(languageCode: 'en');
 
   Locale get locale {
     // handleLocale();
@@ -601,10 +601,12 @@ class _LandingPage {
   String get blogText1 => languageModel.translate('blogText1');
   String get blogText2 => languageModel.translate('blogText2');
   String get blogText3 => languageModel.translate('blogText3');
-  String get productDescription => languageModel.translate('productDescription');
+  String get productDescription =>
+      languageModel.translate('productDescription');
   String get featuredProducts => languageModel.translate('featuredProducts');
   String get bestSelling => languageModel.translate('bestSelling');
-  String get menAndWomanFashion => languageModel.translate('menAndWomanFashion');
+  String get menAndWomanFashion =>
+      languageModel.translate('menAndWomanFashion');
   String get comparison => languageModel.translate('comparison');
   String get resetCompareList => languageModel.translate('resetCompareList');
   String get emptyCompare => languageModel.translate('emptyCompare');

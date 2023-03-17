@@ -234,9 +234,14 @@ class _MenuBarState extends State<FMenuBar> {
 
   // TextDirection _layout = TextDirection.ltr;
 
+  // for LTR
   final ValueNotifier<TextDirection> _layout =
       ValueNotifier<TextDirection>(TextDirection.ltr);
   final ValueNotifier<bool> _switchlayout = ValueNotifier<bool>(false);
+
+  // for change language
+  final ValueNotifier<String> _language = ValueNotifier<String>('en');
+  //final ValueNotifier<bool> _changeLanguage = ValueNotifier<bool>(false);
 
   @override
   Widget build(BuildContext context) {
@@ -514,15 +519,36 @@ class _MenuBarState extends State<FMenuBar> {
                   child: Switch(
                     value: value,
                     onChanged: (value) {
-                      languageModel.changeLanguage();
+                      // languageModel.changeLanguage();
                       _switchlayout.value = value;
-                      // value == true
-                      //     ? _layout.value = TextDirection.rtl
-                      //     : _layout.value = TextDirection.ltr;
+                      value == true
+                          ? _layout.value = TextDirection.rtl
+                          : _layout.value = TextDirection.ltr;
                     },
                   ),
                 );
               }),
+          ValueListenableBuilder<String>(
+            valueListenable: _language,
+            builder: (context, value, _) {
+              return GestureDetector(
+                onTap: () {
+                  if (value == 'en') {
+                    _language.value = 'hi';
+                  } else {
+                    _language.value = 'en';
+                  }
+                  languageModel.changeLanguage();
+                },
+                child: Text(
+                  value,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w500, fontSize: 16),
+                ),
+              );
+            },
+          ),
+
           _notification(),
           BlocBuilder<ThemeModeBloc, ThemeModeState>(
             builder: (context, state) {

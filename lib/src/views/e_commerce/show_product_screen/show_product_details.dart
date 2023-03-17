@@ -4,6 +4,7 @@ import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
+import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -315,8 +316,8 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
       clipBehavior: Clip.hardEdge,
       child: Column(
         children: [
-          const CustomText(
-            title: 'Customer review',
+          CustomText(
+            title: languageModel.eCommerceWeb.customerReview,
             fontWeight: FontWeight.bold,
             textColor: ColorConst.black,
             fontSize: 18,
@@ -377,8 +378,8 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
       clipBehavior: Clip.hardEdge,
       child: Column(
         children: [
-          const CustomText(
-            title: 'Customer FeedBack',
+          CustomText(
+            title: languageModel.eCommerceWeb.customerFeedback,
             fontWeight: FontWeight.bold,
             textColor: ColorConst.black,
             fontSize: 18,
@@ -589,11 +590,10 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
   }
 
   Widget _productDes() {
-    return const Padding(
-      padding: EdgeInsets.only(top: 8.0),
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
       child: CustomText(
-        title:
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
+        title: languageModel.eCommerceWeb.productDescription,
         fontSize: 14,
         maxLine: 3,
         textColor: ColorConst.black,
@@ -607,15 +607,15 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
       padding: const EdgeInsets.only(top: 8.0),
       child: Row(
         children: [
-          const CustomText(
-            title: 'Available:',
+          CustomText(
+            title: '${languageModel.eCommerceWeb.available}:',
             fontSize: 14,
             fontWeight: FontWeight.bold,
             textColor: ColorConst.black,
           ),
           FxBox.w24,
           CustomText(
-            title: 'In Stock',
+            title: languageModel.eCommerceWeb.inStock,
             fontSize: 14,
             textColor: ColorConst.success,
             fontWeight: FontWeight.bold,
@@ -630,8 +630,8 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
       padding: const EdgeInsets.only(top: 8.0),
       child: Row(
         children: [
-          const CustomText(
-            title: 'Shipping:',
+          CustomText(
+            title: '${languageModel.eCommerceWeb.shipping}:',
             fontSize: 14,
             textColor: ColorConst.black,
             fontWeight: FontWeight.bold,
@@ -653,8 +653,8 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
       padding: const EdgeInsets.only(top: 14.0),
       child: Row(
         children: [
-          const CustomText(
-            title: 'Quantity:',
+          CustomText(
+            title: '${languageModel.table.quantity}:',
             fontSize: 14,
             textColor: ColorConst.black,
             fontWeight: FontWeight.bold,
@@ -828,8 +828,8 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
       padding: const EdgeInsets.only(top: 8.0),
       child: Row(
         children: [
-          const CustomText(
-            title: 'Seller Name',
+          CustomText(
+            title: '${languageModel.form.sellerName}:',
             fontSize: 14,
             textColor: ColorConst.black,
             fontWeight: FontWeight.bold,
@@ -851,8 +851,8 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
       padding: const EdgeInsets.only(top: 8.0),
       child: Row(
         children: [
-          const CustomText(
-            title: 'Category:',
+          CustomText(
+            title: '${languageModel.eCommerceAdmin.category.trim()}:',
             textColor: ColorConst.black,
             fontSize: 14,
             fontWeight: FontWeight.bold,
@@ -874,8 +874,8 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
       padding: const EdgeInsets.only(top: 8.0),
       child: Row(
         children: [
-          const CustomText(
-            title: 'Color:',
+          CustomText(
+            title: '${languageModel.form.color}:',
             fontSize: 14,
             textColor: ColorConst.black,
             fontWeight: FontWeight.bold,
