@@ -73,7 +73,7 @@ class _MenuBarState extends State<FMenuBar> {
       Strings.eCommerceDashboard,
       Strings.productAdd,
       Strings.category,
-      Strings.vender,
+      Strings.vendor,
       Strings.customer,
       Strings.order,
       Strings.returnOrder,
@@ -1400,7 +1400,7 @@ class _MenuBarState extends State<FMenuBar> {
                     ' / ${languageModel.translate('eCommerce')} / ${Strings.category} '),
               ] else if (routeIndex == 43) ...[
                 Text(
-                    ' / ${languageModel.translate('eCommerce')} / ${Strings.vender} '),
+                    ' / ${languageModel.translate('eCommerce')} / ${Strings.vendor} '),
               ] else if (routeIndex == 42 ||
                   routeIndex == 44 ||
                   routeIndex == 45 ||

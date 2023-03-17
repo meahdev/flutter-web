@@ -19,6 +19,7 @@
     "elements": "            तत्वों",
     "validation": "            मान्यकरण",
     "dropzone": "            ड्रॉप क्षेत्र",
+    "dropdown": "            ड्रॉप डाउन",
     "repeater": "            रिपीटर",
     "wizard": "            विज़ार्ड",
     "mask": "            मास्क",
@@ -334,8 +335,8 @@
     "eCommerceDashboard": "                ई कॉमर्स डैशबोर्ड",
     "productAdd": "                उत्पाद जोड़ें",
     "category": "                वर्ग",
-    "vender": "                विक्रेता",
-    "venderDetail": "विक्रेता विवरण",
+    "vendor": "                विक्रेता",
+    "vendorDetail": "विक्रेता विवरण",
     "customer": "                ग्राहक",
     "order": "                आदेश",
     "orderInvoice": "आदेश चालान",
@@ -351,7 +352,7 @@
     "totalOrders": "कुल आदेश",
     "totalCancelledOrders": "कुल रद्द किए गए आदेश",
     "totalReturnOrder": "कुल वापसी आदेश",
-    "totalVenders": "कुल विक्रेता",
+    "totalVendors": "कुल विक्रेता",
     "payoutRequestProgress": "भुगतान अनुरोध प्रगति पर है",
     "totalVelueSales": "बिक्री का कुल मूल्य",
     "yourTotalBalance": "आपका कुल बैलेंस",
@@ -453,5 +454,7 @@
     "comparison": "तुलना",
     "resetCompareList": "तुलना सूची को रीसेट करें",
     "emptyCompare": "आपकी तुलना सूची खाली है",
-    "subCategory": "उप श्रेणी"
+    "subCategory": "उप श्रेणी",
+    "simpleDropdown": "सरल ड्रॉपडाउन",
+    "searchDropdown": "ड्रॉपडाउन खोजें"
 }

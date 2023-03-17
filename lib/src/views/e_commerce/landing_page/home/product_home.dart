@@ -51,20 +51,27 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
           Responsive.isMobile(context) || Responsive.isTablet(context)
               ? Column(
                   children: [
+                  
                     Container(
                       constraints: const BoxConstraints(maxHeight: 500),
                       width: double.infinity,
                       child: _crouselSlider(),
                     ),
                     FxBox.h12,
-                    Image.asset(
-                      Images.tempImage,
-                      height: 200,
+                    Tooltip(
+                      message: 'Live For Fashion',
+                      child: Image.asset(
+                        Images.tempImage,
+                        height: 200,
+                      ),
                     ),
                     FxBox.h12,
-                    Image.asset(
-                      Images.tempImage1,
-                      height: 200,
+                    Tooltip(
+                      message: 'Get Your Style',
+                      child: Image.asset(
+                        Images.tempImage1,
+                        height: 200,
+                      ),
                     ),
                   ],
                 )
@@ -81,14 +88,20 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
                     Expanded(
                       child: Column(
                         children: [
-                          Image.asset(
-                            Images.tempImage,
-                            height: 200,
+                          Tooltip(
+                            message: 'Live For Fashion',
+                            child: Image.asset(
+                              Images.tempImage,
+                              height: 200,
+                            ),
                           ),
                           FxBox.h32,
-                          Image.asset(
-                            Images.tempImage1,
-                            height: 200,
+                          Tooltip(
+                            message: 'Get Your Style',
+                            child: Image.asset(
+                              Images.tempImage1,
+                              height: 200,
+                            ),
                           ),
                         ],
                       ),

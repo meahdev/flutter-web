@@ -161,9 +161,9 @@ int getRouteIndex(String route) {
     return 40;
   } else if (route == '${Strings.category}/${Strings.subCategory}') {
     return 41;
-  } else if (route == Strings.vender) {
+  } else if (route == Strings.vendor) {
     return 42;
-  } else if (route == '${Strings.vender}/vender Detail') {
+  } else if (route == '${Strings.vendor}/vender Detail') {
     return 43;
   } else if (route == Strings.customer) {
     return 44;
