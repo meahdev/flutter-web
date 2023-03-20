@@ -225,13 +225,13 @@ class _OrderInvoiceState extends State<OrderInvoice> {
                         ),
                       ),
                       onPressed: () async {
-                        try {
-                          await GenerateInvoice().printInvoice();
-                        } catch (e) {
-                          if (kDebugMode) {
-                            print(e);
-                          }
-                        }
+                        // try {
+                        //   await GenerateInvoice().printInvoice();
+                        // } catch (e) {
+                        //   if (kDebugMode) {
+                        //     print(e);
+                        //   }
+                        // }
                       },
                       child: const Icon(
                         Icons.print,

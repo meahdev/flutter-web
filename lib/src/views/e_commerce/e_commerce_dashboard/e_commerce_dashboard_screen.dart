@@ -20,116 +20,134 @@ class EcommerceDashboard extends StatefulWidget {
 }
 
 class _EcommerceDashboardState extends State<EcommerceDashboard> {
-  final List<String> _typeOfData = [
-    'Orders',
-    'Revenue',
-    'Avg order value',
-    'Unique visiors'
+  final List<Map<String, dynamic>> _typeOfData = [
+    {
+      "type": "Orders",
+      "color": 0xFFf0f0ff,
+      "number": "74,516",
+    },
+    {
+      "type": "Revenue",
+      "color": 0xFFfef0f6,
+      "number": "\$28,947",
+    },
+    {
+      "type": "Avg order value",
+      "color": 0xFFe9faf5,
+      "number": "\$8,947",
+    },
+    {
+      "type": "Unique visiors",
+      "color": 0xFFeaf3ff,
+      "number": "45.2 K",
+    },
   ];
   final List<int> _height = [80, 60, 90, 54, 42];
 
-  double _getWidth() {
-    if (MediaQuery.of(context).size.width <= 550) {
-      return MediaQuery.of(context).size.width / 2 - 40;
-    } else if (MediaQuery.of(context).size.width <= 750) {
-      return (MediaQuery.of(context).size.width / 2) - 50;
-    } else if (Responsive.isWeb(context)) {
-      return ((MediaQuery.of(context).size.width - 240) / 4) - 36;
-    } else {
-      return (MediaQuery.of(context).size.width / 3) - 36;
-    }
-  }
+  // double _getWidth() {
+  //   if (MediaQuery.of(context).size.width <= 550) {
+  //     return MediaQuery.of(context).size.width / 2 - 40;
+  //   } else if (MediaQuery.of(context).size.width <= 750) {
+  //     return (MediaQuery.of(context).size.width / 2) - 50;
+  //   } else if (Responsive.isWeb(context)) {
+  //     return ((MediaQuery.of(context).size.width - 240) / 4) - 36;
+  //   } else {
+  //     return (MediaQuery.of(context).size.width / 3) - 36;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        MediaQuery.of(context).size.width > 1250
-            ? Wrap(
-                spacing: 28.0,
-                runSpacing: 26.0,
-                children: [
-                  Expanded(
-                    child: _dataOfEcommerce('74,516', 0, 0xFFf0f0ff),
-                  ),
-                  Expanded(
-                    child: _dataOfEcommerce('\$28,947', 1, 0xFFfef0f6),
-                  ),
-                  Expanded(
-                    child: _dataOfEcommerce('\$8,947', 2, 0xFFe9faf5),
-                  ),
-                  Expanded(
-                    child: _dataOfEcommerce('45.2 K', 3, 0xFFeaf3ff),
-                  ),
-                ],
-              )
-            : MediaQuery.of(context).size.width > 550
-                ? Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _dataOfEcommerce('74,516', 0, 0xFFf0f0ff),
-                          ),
-                          const SizedBox(
-                            width: 28,
-                          ),
-                          Expanded(
-                            child: _dataOfEcommerce('\$28,947', 1, 0xFFfef0f6),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 26.0,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: _dataOfEcommerce('\$8,947', 2, 0xFFe9faf5),
-                          ),
-                          const SizedBox(
-                            width: 28,
-                          ),
-                          Expanded(
-                            child: _dataOfEcommerce('45.2 K', 3, 0xFFeaf3ff),
-                          ),
-                        ],
-                      )
-                    ],
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(
-                        width: double.infinity,
-                        child: _dataOfEcommerce('74,516', 0, 0xFFf0f0ff),
-                      ),
-                      const SizedBox(
-                        height: 26.0,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: _dataOfEcommerce('\$28,947', 1, 0xFFfef0f6),
-                      ),
-                      const SizedBox(
-                        height: 26.0,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: _dataOfEcommerce('\$8,947', 2, 0xFFe9faf5),
-                      ),
-                      const SizedBox(
-                        height: 26.0,
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: _dataOfEcommerce('45.2 K', 3, 0xFFeaf3ff),
-                      ),
-                      const SizedBox(
-                        height: 26.0,
-                      ),
-                    ],
-                  ),
+        _dataItem(),
+        // MediaQuery.of(context).size.width > 1250
+        //     ? Wrap(
+        //         spacing: 28.0,
+        //         runSpacing: 26.0,
+        //         children: [
+        //           Expanded(
+        //             child: _dataOfEcommerce('74,516', 0, 0xFFf0f0ff),
+        //           ),
+        //           Expanded(
+        //             child: _dataOfEcommerce('\$28,947', 1, 0xFFfef0f6),
+        //           ),
+        //           Expanded(
+        //             child: _dataOfEcommerce('\$8,947', 2, 0xFFe9faf5),
+        //           ),
+        //           Expanded(
+        //             child: _dataOfEcommerce('45.2 K', 3, 0xFFeaf3ff),
+        //           ),
+        //         ],
+        //       )
+        //     : MediaQuery.of(context).size.width > 550
+        //         ? Column(
+        //             children: [
+        //               Row(
+        //                 children: [
+        //                   Expanded(
+        //                     child: _dataOfEcommerce('74,516', 0, 0xFFf0f0ff),
+        //                   ),
+        //                   const SizedBox(
+        //                     width: 28,
+        //                   ),
+        //                   Expanded(
+        //                     child: _dataOfEcommerce('\$28,947', 1, 0xFFfef0f6),
+        //                   ),
+        //                 ],
+        //               ),
+        //               const SizedBox(
+        //                 height: 26.0,
+        //               ),
+        //               Row(
+        //                 children: [
+        //                   Expanded(
+        //                     child: _dataOfEcommerce('\$8,947', 2, 0xFFe9faf5),
+        //                   ),
+        //                   const SizedBox(
+        //                     width: 28,
+        //                   ),
+        //                   Expanded(
+        //                     child: _dataOfEcommerce('45.2 K', 3, 0xFFeaf3ff),
+        //                   ),
+        //                 ],
+        //               )
+        //             ],
+        //           )
+        //         : Column(
+        //             mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //             children: [
+        //               SizedBox(
+        //                 width: double.infinity,
+        //                 child: _dataOfEcommerce('74,516', 0, 0xFFf0f0ff),
+        //               ),
+        //               const SizedBox(
+        //                 height: 26.0,
+        //               ),
+        //               SizedBox(
+        //                 width: double.infinity,
+        //                 child: _dataOfEcommerce('\$28,947', 1, 0xFFfef0f6),
+        //               ),
+        //               const SizedBox(
+        //                 height: 26.0,
+        //               ),
+        //               SizedBox(
+        //                 width: double.infinity,
+        //                 child: _dataOfEcommerce('\$8,947', 2, 0xFFe9faf5),
+        //               ),
+        //               const SizedBox(
+        //                 height: 26.0,
+        //               ),
+        //               SizedBox(
+        //                 width: double.infinity,
+        //                 child: _dataOfEcommerce('45.2 K', 3, 0xFFeaf3ff),
+        //               ),
+        //               const SizedBox(
+        //                 height: 26.0,
+        //               ),
+        //             ],
+        //           ),
+
         FxBox.h24,
         Responsive.isWeb(context)
             ? Row(
@@ -537,67 +555,108 @@ class _EcommerceDashboardState extends State<EcommerceDashboard> {
     );
   }
 
-  Widget _dataOfEcommerce(String number, int typeOfData, int decidedColor) {
+  Widget _dataItem() {
     return SizedBox(
-      width: _getWidth(),
-      height: MediaQuery.of(context).size.height * 0.20,
-      child: Card(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  number,
-                  style: const TextStyle(
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.bold,
+      width: MediaQuery.of(context).size.width,
+      child: GridView.builder(
+        gridDelegate: Responsive.isMobile(context)
+            ? const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 1,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                mainAxisExtent: 205,
+              )
+            : MediaQuery.of(context).size.width < 1500
+                ? const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    mainAxisExtent: 205,
+                  )
+                : SliverGridDelegateWithMaxCrossAxisExtent(
+                    maxCrossAxisExtent:
+                        MediaQuery.of(context).size.width * 0.24,
+                    crossAxisSpacing: 20,
+                    mainAxisSpacing: 20,
+                    mainAxisExtent: 205,
                   ),
+        itemCount: _typeOfData.length,
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        itemBuilder: (context, index) {
+          return _dataOfEcommerce(
+            name: _typeOfData[index]['type'],
+            decidedColor: _typeOfData[index]['color'],
+            number: _typeOfData[index]['number'],
+            typeOfData: index,
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _dataOfEcommerce({
+    required String number,
+    required int typeOfData,
+    required int decidedColor,
+    required String name,
+  }) {
+    return Card(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                number,
+                style: const TextStyle(
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  languageModel.translate(_typeOfData[typeOfData].camelCase()),
-                  style: const TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w300,
+              ),
+              Text(
+                languageModel.translate(name.camelCase()),
+                style: const TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w300,
+                ),
+              ),
+              Row(
+                children: [
+                  Icon(
+                    typeOfData != 2
+                        ? Icons.arrow_upward_outlined
+                        : Icons.arrow_downward_rounded,
+                    color: typeOfData != 2 ? Colors.green : Colors.red,
                   ),
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      typeOfData != 2
-                          ? Icons.arrow_upward_outlined
-                          : Icons.arrow_downward_rounded,
-                      color: typeOfData != 2 ? Colors.green : Colors.red,
-                    ),
-                    const Text('Since last week')
-                  ],
+                  const Text('Since last week')
+                ],
+              ),
+              const SizedBox(
+                height: 12,
+              )
+            ],
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            // mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              for (int i = 0; i < 5; i++) ...[
+                Container(
+                  height: _height[i].toDouble(),
+                  width: 15,
+                  // color: Colors.green.withOpacity(0.2),
+                  color: Color(decidedColor),
                 ),
                 const SizedBox(
-                  height: 12,
+                  width: 3,
                 )
               ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              // mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                for (int i = 0; i < 5; i++) ...[
-                  Container(
-                    height: _height[i].toDouble(),
-                    width: 15,
-                    // color: Colors.green.withOpacity(0.2),
-                    color: Color(decidedColor),
-                  ),
-                  const SizedBox(
-                    width: 3,
-                  )
-                ],
-              ],
-            ),
-          ],
-        ),
+            ],
+          ),
+        ],
       ),
     );
   }
