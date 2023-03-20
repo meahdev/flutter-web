@@ -3,6 +3,7 @@ import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/icons.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
+import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/svg_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
@@ -19,7 +20,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Expanded(flex: 2, child: SizedBox.shrink()),
+        if (Responsive.isWeb(context))
+          const Expanded(flex: 2, child: SizedBox.shrink()),
         Expanded(
           flex: 3,
           child: Column(
@@ -31,7 +33,8 @@ class _SuccessScreenState extends State<SuccessScreen> {
             ],
           ),
         ),
-        const Expanded(flex: 2, child: SizedBox.shrink()),
+        if (Responsive.isWeb(context))
+          const Expanded(flex: 2, child: SizedBox.shrink()),
       ],
     );
   }

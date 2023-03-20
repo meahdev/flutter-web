@@ -179,6 +179,7 @@ class _ERegisterState extends State<ERegister> {
   Widget _agreeterms() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BlocProvider(
           create: (context) => _checkboxBloc,
@@ -199,10 +200,12 @@ class _ERegisterState extends State<ERegister> {
             },
           ),
         ),
-        CustomText(
-          title: languageModel.form.confirmText,
-          textColor: isDark ? ColorConst.white : ColorConst.lightFontColor,
-          fontWeight: FontWeight.w700,
+        Expanded(
+          child: CustomText(
+            title: languageModel.form.confirmText,
+            textColor: isDark ? ColorConst.white : ColorConst.lightFontColor,
+            fontWeight: FontWeight.w700,
+          ),
         ),
       ],
     );

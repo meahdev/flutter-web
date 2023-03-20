@@ -203,6 +203,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
         ListView.builder(
           shrinkWrap: true,
           itemCount: _productColor.length,
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return Row(
               children: [
@@ -245,6 +246,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
         ListView.builder(
           shrinkWrap: true,
           itemCount: _categoryList.length,
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             return Row(
               children: [

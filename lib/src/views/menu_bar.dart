@@ -391,14 +391,12 @@ class _MenuBarState extends State<FMenuBar> {
                     _scaffoldDrawerKey.currentState?.closeDrawer();
                   },
                   child: Container(
-                    width: 70,
+                    width: 60,
                     height: double.infinity,
                     color:
                         isDark ? ColorConst.transparent : ColorConst.drawerBG,
-                    child: Image.asset(
-                      Images.smLogo,
-                      fit: BoxFit.contain,
-                    ),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image.asset(Images.smLogo, fit: BoxFit.contain),
                   ),
                 );
               },
@@ -502,16 +500,14 @@ class _MenuBarState extends State<FMenuBar> {
           //     onChanged: (value) {},
           //   ),
           // ),
-          const SizedBox(
-            width: 10,
-          ),
-          ValueListenableBuilder<bool>(
-            valueListenable: _switchlayout,
-            builder: (context, value, _) {
-              return Text(value == true ? 'RTL' : 'LTR');
-            },
-          ),
-          ValueListenableBuilder<bool>(
+          if (Responsive.isWeb(context)) ...[
+            ValueListenableBuilder<bool>(
+              valueListenable: _switchlayout,
+              builder: (context, value, _) {
+                return Text(value == true ? 'RTL' : 'LTR');
+              },
+            ),
+            ValueListenableBuilder<bool>(
               valueListenable: _switchlayout,
               builder: (context, value, _) {
                 return Transform.scale(
@@ -527,52 +523,122 @@ class _MenuBarState extends State<FMenuBar> {
                     },
                   ),
                 );
-              }),
-          ValueListenableBuilder<String>(
-            valueListenable: _language,
-            builder: (context, value, _) {
-              return GestureDetector(
-                onTap: () async {
-                  if (value == 'en') {
-                    _language.value = 'hi';
-                  } else {
-                    _language.value = 'en';
-                  }
-                  await languageModel.changeLanguage();
-                },
-                child: Text(
-                  value,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w500, fontSize: 16),
-                ),
-              );
-            },
-          ),
-
+              },
+            ),
+            ValueListenableBuilder<String>(
+              valueListenable: _language,
+              builder: (context, value, _) {
+                return GestureDetector(
+                  onTap: () async {
+                    if (value == 'en') {
+                      _language.value = 'hi';
+                    } else {
+                      _language.value = 'en';
+                    }
+                    await languageModel.changeLanguage();
+                  },
+                  child: Text(
+                    value,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w500, fontSize: 16),
+                  ),
+                );
+              },
+            ),
+            BlocBuilder<ThemeModeBloc, ThemeModeState>(
+              builder: (context, state) {
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          HiveUtils.set(HiveKeys.themeMode, !isDark);
+                          themeModeBloc
+                              .add(ThemeModeEvent.changeTheme(!isDark));
+                        },
+                        icon: Icon(
+                          isDark
+                              ? Icons.light_mode_outlined
+                              : Icons.dark_mode_outlined,
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ],
           _notification(),
-          BlocBuilder<ThemeModeBloc, ThemeModeState>(
-            builder: (context, state) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        HiveUtils.set(HiveKeys.themeMode, !isDark);
-                        themeModeBloc.add(ThemeModeEvent.changeTheme(!isDark));
-                      },
-                      icon: Icon(
-                        isDark
-                            ? Icons.light_mode_outlined
-                            : Icons.dark_mode_outlined,
+          _profile(tabsRouter),
+          if (!Responsive.isWeb(context))
+            MenuBar(
+              style: MenuStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(ColorConst.transparent),
+                elevation: MaterialStateProperty.all(0.0),
+                fixedSize: const MaterialStatePropertyAll(Size(60.0, 60.0)),
+                // shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(100.0))),
+              ),
+              children: [
+                SubmenuButton(
+                  style: ButtonStyle(
+                    fixedSize: const MaterialStatePropertyAll(Size(40.0, 40.0)),
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(100.0)),
+                    ),
+                  ),
+                  menuStyle: const MenuStyle(
+                    padding: MaterialStatePropertyAll(EdgeInsets.zero),
+                  ),
+                  menuChildren: [
+                    SizedBox(
+                      height: 40.0,
+                      child: MenuItemButton(
+                        onPressed: () {
+                          HiveUtils.set(HiveKeys.themeMode, !isDark);
+                          themeModeBloc
+                              .add(ThemeModeEvent.changeTheme(!isDark));
+                        },
+                        child: MenuAcceleratorLabel(
+                            isDark ? 'Light mode' : 'Dark mode'),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40.0,
+                      child: MenuItemButton(
+                        onPressed: () {
+                          _switchlayout.value = !_switchlayout.value;
+                          _switchlayout.value == true
+                              ? _layout.value = TextDirection.rtl
+                              : _layout.value = TextDirection.ltr;
+                        },
+                        child: MenuAcceleratorLabel(
+                            _switchlayout.value ? 'LTR' : 'RTL'),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 40.0,
+                      child: MenuItemButton(
+                        onPressed: () async {
+                          if (_language.value == 'en') {
+                            _language.value = 'hi';
+                          } else {
+                            _language.value = 'en';
+                          }
+                          await languageModel.changeLanguage();
+                        },
+                        child: MenuAcceleratorLabel(
+                            _language.value == 'en' ? 'Hindi' : 'English'),
                       ),
                     ),
                   ],
+                  child: const SvgIcon(icon: IconlyBroken.setting),
                 ),
-              );
-            },
-          ),
-          _profile(tabsRouter),
+              ],
+            ),
         ],
       );
 

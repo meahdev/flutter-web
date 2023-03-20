@@ -243,14 +243,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 ? Column(
                     children: [
                       _customerReview(),
-                      FxBox.w16,
+                      FxBox.h16,
                       _reviewBox(),
                     ],
                   )
                 : Column(
                     children: [
                       _customerReview(),
-                      FxBox.w16,
+                      FxBox.h16,
                       _reviewBox(),
                     ],
                   ),
@@ -290,6 +290,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   Widget _customerFeedBack() {
     return ListView.builder(
         shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: _feedbackList.length,
         itemBuilder: (context, index) {
           return ListTile(

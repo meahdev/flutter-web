@@ -284,14 +284,14 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
                 ? Column(
                     children: [
                       _customerReview(),
-                      FxBox.w16,
+                      FxBox.h16,
                       _reviewBox(),
                     ],
                   )
                 : Column(
                     children: [
                       _customerReview(),
-                      FxBox.w16,
+                      FxBox.h16,
                       _reviewBox(),
                     ],
                   ),
@@ -395,6 +395,7 @@ class _ShowProductDetailsState extends State<ShowProductDetails> {
     return ListView.builder(
         shrinkWrap: true,
         itemCount: _feedbackList.length,
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return ListTile(
             leading: CircleAvatar(
