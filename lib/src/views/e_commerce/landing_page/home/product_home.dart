@@ -51,7 +51,6 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
           Responsive.isMobile(context) || Responsive.isTablet(context)
               ? Column(
                   children: [
-                  
                     Container(
                       constraints: const BoxConstraints(maxHeight: 500),
                       width: double.infinity,
@@ -62,7 +61,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
                       message: 'Live For Fashion',
                       child: Image.asset(
                         Images.tempImage,
-                        height: 200,
+                        height: 250,
                       ),
                     ),
                     FxBox.h12,
@@ -70,7 +69,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
                       message: 'Get Your Style',
                       child: Image.asset(
                         Images.tempImage1,
-                        height: 200,
+                        height: 250,
                       ),
                     ),
                   ],
@@ -92,7 +91,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
                             message: 'Live For Fashion',
                             child: Image.asset(
                               Images.tempImage,
-                              height: 200,
+                              height: 250,
                             ),
                           ),
                           FxBox.h32,
@@ -100,7 +99,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
                             message: 'Get Your Style',
                             child: Image.asset(
                               Images.tempImage1,
-                              height: 200,
+                              height: 250,
                             ),
                           ),
                         ],

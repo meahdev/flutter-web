@@ -129,9 +129,9 @@ class Images {
 
   // temp image
 
-  static const String tempImage = '${_assetPath}temp_image.jpeg';
-  static const String tempImage1 = '${_assetPath}temp_image1.jpeg';
-  static const String tempImage2 = '${_assetPath}temp_image2.jpeg';
+  static const String tempImage = '${_assetPath}temp_image.jpg';
+  static const String tempImage1 = '${_assetPath}temp_image1.jpg';
+  static const String tempImage2 = '${_assetPath}temp_image2.jpg';
 
   // policy image
   static const String cancellationPolicy =
