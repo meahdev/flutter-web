@@ -1,3 +1,4 @@
+import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';

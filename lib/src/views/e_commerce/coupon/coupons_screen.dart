@@ -318,16 +318,22 @@ class _CouponsScreenState extends State<CouponsScreen> {
     required void Function()? onPressed,
   }) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        IconButton(
-          onPressed: onPressed,
-          icon: const Icon(Icons.mode_edit_rounded),
+        Expanded(
+          child: IconButton(
+            onPressed: onPressed,
+            icon: const Icon(Icons.mode_edit_rounded),
+          ),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.delete,
-            color: ColorConst.errorDark,
+        FxBox.w10,
+        Expanded(
+          child: IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.delete,
+              color: ColorConst.errorDark,
+            ),
           ),
         ),
       ],
@@ -436,6 +442,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
           color: ColorConst.primary,
           minWidth: MediaQuery.of(context).size.width / 7,
           text: isEdit ? 'Update Coupon' : 'Add Coupon',
+          textColor: ColorConst.white,
         ),
         FxBox.w24,
         FxButton(
@@ -462,6 +469,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
       alignment: Alignment.centerRight,
       child: FxButton(
         height: 50,
+        textColor: ColorConst.white,
         color: ColorConst.primary,
         fullWidth: false,
         minWidth: MediaQuery.of(context).size.width / 7,

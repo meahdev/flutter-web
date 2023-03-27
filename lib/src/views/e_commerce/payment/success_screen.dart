@@ -74,6 +74,7 @@ class _SuccessScreenState extends State<SuccessScreen> {
           FxBox.h20,
           FxButton(
             color: ColorConst.primaryDark,
+            textColor: ColorConst.white,
             onPressed: () {
               autoTabRouter!.setActiveIndex(0);
             },

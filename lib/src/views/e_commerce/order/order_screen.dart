@@ -161,27 +161,33 @@ class _OrderScreenState extends State<OrderScreen> {
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.orderID),
+                        label:
+                            _tableHeader(languageModel.eCommerceAdmin.orderID),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.customerName),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.customerName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.emailAndMobile),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.emailAndMobile),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.productName),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.productName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.orderDate),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.orderDate),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.orderAmount),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.orderAmount),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
@@ -266,6 +272,7 @@ class _OrderScreenState extends State<OrderScreen> {
         autoTabRouter!.setActiveIndex(51);
       },
       text: 'View',
+      textColor: ColorConst.white,
       color: ColorConst.primary,
     );
   }

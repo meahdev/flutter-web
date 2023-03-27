@@ -119,6 +119,8 @@ class _ECartScreenState extends State<ECartScreen> {
                 suffixIcon: FxButton(
                   onPressed: () {},
                   height: 65,
+                  borderRadius: 10,
+                  textColor: ColorConst.white,
                   color: ColorConst.primaryDark.withOpacity(0.8),
                   text: Strings.apply,
                 ),
@@ -146,6 +148,7 @@ class _ECartScreenState extends State<ECartScreen> {
                   autoecTabRouter!.setActiveIndex(14);
                 },
                 height: 50,
+                textColor: ColorConst.white,
                 color: ColorConst.calSuccess,
                 text: Strings.checkOut,
               ),
@@ -295,11 +298,13 @@ class _ECartScreenState extends State<ECartScreen> {
                       size: ColumnSize.S,
                     ),
                     DataColumn2(
-                      label: _tableHeader(languageModel.eCommerceWeb.productPhoto),
+                      label:
+                          _tableHeader(languageModel.eCommerceWeb.productPhoto),
                       size: ColumnSize.L,
                     ),
                     DataColumn2(
-                      label: _tableHeader(languageModel.eCommerceWeb.productName),
+                      label:
+                          _tableHeader(languageModel.eCommerceWeb.productName),
                       size: ColumnSize.M,
                     ),
                     DataColumn2(

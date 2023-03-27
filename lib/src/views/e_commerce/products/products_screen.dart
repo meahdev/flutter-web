@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -147,7 +148,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                                               : 1,
                           crossAxisSpacing: 20,
                           mainAxisSpacing: 20,
-                          mainAxisExtent: Responsive.isWeb(context) ? 390 : 426,
+                          mainAxisExtent: Responsive.isWeb(context)
+                              ? 390
+                              : Responsive.isMobile(context)
+                                  ? 380
+                                  : 426,
                         ),
                         itemBuilder: (context, index) {
                           return _cardUI(index);
@@ -164,26 +169,25 @@ class _ProductsScreenState extends State<ProductsScreen> {
   }
 
   Widget _filterUi() {
-    return Container(
-      constraints:
-          BoxConstraints(maxWidth: Responsive.isMobile(context) ? 400 : 250),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
-      decoration: BoxDecoration(
-        color: ColorConst.white,
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _filterHeader(),
-          Divider(color: Colors.grey.shade300),
-          FxBox.h10,
-          _priceRange(),
-          FxBox.h32,
-          _brandFilter(),
-          FxBox.h32,
-          _colorFilter(),
-        ],
+    return Card(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+      child: Container(
+        constraints:
+            BoxConstraints(maxWidth: Responsive.isMobile(context) ? 400 : 250),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _filterHeader(),
+            Divider(color: Colors.grey.shade300),
+            FxBox.h10,
+            _priceRange(),
+            FxBox.h32,
+            _brandFilter(),
+            FxBox.h32,
+            _colorFilter(),
+          ],
+        ),
       ),
     );
   }
@@ -385,6 +389,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
         Image.asset(
           Images.filter,
           width: 20,
+          color: isDark ? ColorConst.white : ColorConst.black,
         ),
         FxBox.w10,
         CustomText(
@@ -400,99 +405,93 @@ class _ProductsScreenState extends State<ProductsScreen> {
       onTap: () {
         autoTabRouter!.setActiveIndex(39);
       },
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(
-          color: ColorConst.white,
+      child: Card(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
-          boxShadow: [
-            BoxShadow(
-              color: ColorConst.primary.withOpacity(0.1),
-              blurRadius: 5.0,
-              offset: const Offset(0.0, 5.0),
-            ),
-          ],
         ),
-        clipBehavior: Clip.hardEdge,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              _filterList.isNotEmpty
-                  ? _filterList[index]['image']
-                  : productList[index]['image'],
-              fit: BoxFit.contain,
-              height: 250.0,
-              width: double.infinity,
-            ),
-            const SizedBox(height: 16.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: CustomText(
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                _filterList.isNotEmpty
+                    ? _filterList[index]['image']
+                    : productList[index]['image'],
+                fit: BoxFit.contain,
+                height: 250.0,
+                width: double.infinity,
+              ),
+              const SizedBox(height: 16.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: CustomText(
+                        title: _filterList.isNotEmpty
+                            ? _filterList[index]['title']
+                            : productList[index]['title'],
+                        fontSize: 16.0,
+                        maxLine: 2,
+                        overflow: TextOverflow.ellipsis,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const Spacer(),
+                    CustomText(
                       title: _filterList.isNotEmpty
-                          ? _filterList[index]['title']
-                          : productList[index]['title'],
+                          ? _filterList[index]['rating']
+                          : productList[index]['rating'],
                       fontSize: 16.0,
-                      maxLine: 2,
-                      overflow: TextOverflow.ellipsis,
                       fontWeight: FontWeight.w600,
                     ),
-                  ),
-                  const Spacer(),
-                  CustomText(
-                    title: _filterList.isNotEmpty
-                        ? _filterList[index]['rating']
-                        : productList[index]['rating'],
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  const Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                    size: 15,
-                  ),
-                ],
+                    const Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                      size: 15,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            FxBox.h12,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: [
-                  CustomText(
-                    title:
-                        '${_filterList.isNotEmpty ? _filterList[index]['price'] : productList[index]['price']} \$',
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  const Spacer(),
-                  _iconBox(
-                    icon: Icons.add_shopping_cart_outlined,
-                    onPressed: () {},
-                  ),
-                  FxBox.w10,
-                  _iconBox(
-                    color: ColorConst.errorDark,
-                    icon: _iconChoose(index),
-                    onPressed: () {
-                      if (_filterList.isNotEmpty) {
-                        _filterList[index]['isFavourite'] =
-                            !_filterList[index]['isFavourite'];
-                      } else {
-                        productList[index]['isFavourite'] =
-                            !productList[index]['isFavourite'];
-                      }
-                      setState(() {});
-                    },
-                  )
-                ],
+              FxBox.h12,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    CustomText(
+                      title:
+                          '${_filterList.isNotEmpty ? _filterList[index]['price'] : productList[index]['price']} \$',
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    const Spacer(),
+                    _iconBox(
+                      icon: Icons.add_shopping_cart_outlined,
+                      onPressed: () {},
+                      color: ColorConst.grey800,
+                    ),
+                    FxBox.w10,
+                    _iconBox(
+                      color: ColorConst.errorDark,
+                      icon: _iconChoose(index),
+                      onPressed: () {
+                        if (_filterList.isNotEmpty) {
+                          _filterList[index]['isFavourite'] =
+                              !_filterList[index]['isFavourite'];
+                        } else {
+                          productList[index]['isFavourite'] =
+                              !productList[index]['isFavourite'];
+                        }
+                        setState(() {});
+                      },
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

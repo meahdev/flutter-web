@@ -849,7 +849,8 @@ class _MenuBarState extends State<FMenuBar> {
             return Container(
               height: MediaQuery.of(context).size.height,
               width: value || value1 ? 240 : 70,
-              color: isDark ? ColorConst.transparent : ColorConst.drawerBG,
+              color:
+                  isDark ? ColorConst.darkModeBackGround : ColorConst.drawerBG,
               child: SingleChildScrollView(
                 controller: ScrollController(),
                 child: Column(

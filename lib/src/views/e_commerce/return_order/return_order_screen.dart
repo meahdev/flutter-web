@@ -156,23 +156,28 @@ class _ReturnOrderScreenState extends State<ReturnOrderScreen> {
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.returnID),
+                        label:
+                            _tableHeader(languageModel.eCommerceAdmin.returnID),
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.customerName),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.customerName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.emailAndMobile),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.emailAndMobile),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.productName),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.productName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.returnDate),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.returnDate),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
@@ -262,6 +267,7 @@ class _ReturnOrderScreenState extends State<ReturnOrderScreen> {
         autoTabRouter!.setActiveIndex(47);
       },
       text: 'View',
+      textColor: ColorConst.white,
       color: ColorConst.primary,
     );
   }

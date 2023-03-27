@@ -71,6 +71,7 @@ class _LandingSuccessScreenState extends State<LandingSuccessScreen> {
           FxBox.h20,
           FxButton(
             color: ColorConst.primaryDark,
+            textColor: ColorConst.white,
             onPressed: () {
               autoecTabRouter!.setActiveIndex(0);
             },

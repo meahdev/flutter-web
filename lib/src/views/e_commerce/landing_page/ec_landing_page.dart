@@ -68,7 +68,9 @@ class _ECLandingPageState extends State<ECLandingPage> {
                       delegate: SliverChildListDelegate(
                         [
                           Container(
-                            color: ColorConst.white,
+                            color: isDark
+                                ? ColorConst.scaffoldDark
+                                : ColorConst.white,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 24.0, vertical: 20.0),
                             child: Column(
@@ -119,8 +121,8 @@ class _ECLandingPageState extends State<ECLandingPage> {
     return Container(
       constraints: const BoxConstraints(minHeight: 120),
       width: double.infinity,
-      decoration: const BoxDecoration(
-        color: Colors.white,
+      decoration: BoxDecoration(
+        color: isDark ? ColorConst.scaffoldDark : ColorConst.white,
       ),
       child: isxl(context) || islg(context)
           ? Row(
@@ -233,6 +235,7 @@ class _ECLandingPageState extends State<ECLandingPage> {
           Image.asset(
             imagePath,
             height: 30,
+            color: !isDark ? ColorConst.black : ColorConst.white,
           ),
           FxBox.h12,
           ConstText.lightText(
@@ -245,7 +248,8 @@ class _ECLandingPageState extends State<ECLandingPage> {
   }
 
   Widget _tabWithLogin() {
-    return SizedBox(
+    return Container(
+      color: isDark ? ColorConst.scaffoldDark : ColorConst.white,
       width: MediaQuery.of(context).size.width,
       child: Responsive.isMobile(context) || Responsive.isTablet(context)
           ? Column(
@@ -354,100 +358,103 @@ class _ECLandingPageState extends State<ECLandingPage> {
   }
 
   Widget _header() {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          width: 240,
-          padding: const EdgeInsets.symmetric(horizontal: 61),
-          color: ColorConst.transparent,
-          child: Image.asset(
-              isDark ? Images.oldlgDarkLogo : Images.oldlgLightLogo),
-        ),
-        const Spacer(),
+    return Container(
+      color: isDark ? ColorConst.scaffoldDark : ColorConst.white,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 240,
+            padding: const EdgeInsets.symmetric(horizontal: 61),
+            color: ColorConst.transparent,
+            child: Image.asset(
+                isDark ? Images.oldlgDarkLogo : Images.oldlgLightLogo),
+          ),
+          const Spacer(),
 
-        (Responsive.isMobile(context) || Responsive.isTablet(context))
-            ? MaterialButton(
-                minWidth: 60,
-                hoverColor: ColorConst.transparent,
-                onPressed: () {},
-                child: const SvgIcon(icon: IconlyBroken.search),
-              )
-            : Container(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                width: islg(context) ? 500 : 600,
-                child: TextField(
-                  cursorWidth: 1,
-                  textAlignVertical: TextAlignVertical.center,
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                      borderSide: const BorderSide(color: Colors.black),
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                      borderSide: BorderSide(color: Colors.grey.shade50),
-                    ),
-                    contentPadding: const EdgeInsets.fromLTRB(12, 4, 0, 4),
-                    hintText: languageModel.translate('search'),
-                    hintStyle: const TextStyle(fontSize: 15),
-                    suffixIcon: MaterialButton(
-                      shape: RoundedRectangleBorder(
+          (Responsive.isMobile(context) || Responsive.isTablet(context))
+              ? MaterialButton(
+                  minWidth: 60,
+                  hoverColor: ColorConst.transparent,
+                  onPressed: () {},
+                  child: const SvgIcon(icon: IconlyBroken.search),
+                )
+              : Container(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  width: islg(context) ? 500 : 600,
+                  child: TextField(
+                    cursorWidth: 1,
+                    textAlignVertical: TextAlignVertical.center,
+                    decoration: InputDecoration(
+                      focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.0),
+                        borderSide: const BorderSide(color: Colors.black),
                       ),
-                      color: ColorConst.black,
-                      minWidth: 60,
-                      hoverColor: ColorConst.transparent,
-                      onPressed: () {},
-                      child: const SvgIcon(
-                        icon: IconlyBroken.search,
-                        color: ColorConst.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12.0),
+                        borderSide: BorderSide(color: Colors.grey.shade50),
                       ),
+                      contentPadding: const EdgeInsets.fromLTRB(12, 4, 0, 4),
+                      hintText: languageModel.translate('search'),
+                      hintStyle: const TextStyle(fontSize: 15),
+                      suffixIcon: MaterialButton(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12.0),
+                        ),
+                        color: ColorConst.black,
+                        minWidth: 60,
+                        hoverColor: ColorConst.transparent,
+                        onPressed: () {},
+                        child: const SvgIcon(
+                          icon: IconlyBroken.search,
+                          color: ColorConst.white,
+                        ),
+                      ),
+                      isCollapsed: true,
                     ),
-                    isCollapsed: true,
                   ),
                 ),
-              ),
 
-        // if (Responsive.isMobile(context) || Responsive.isTablet(context)) ...[
-        //   MaterialButton(
-        //     height: double.infinity,
-        //     minWidth: 60,
-        //     hoverColor: ColorConst.transparent,
-        //     onPressed: () {},
-        //     child: const SvgIcon(icon: IconlyBroken.search),
-        //   )
-        // ],
-        if (!Responsive.isMobile(context)) ...[
-          FxBox.w16,
-          _iconWithBadge(
-            badgeText: '2',
-            icon: Icons.compare_arrows,
-            title: languageModel.landingPage.compare,
-            onTap: () {
-              autoecTabRouter!.setActiveIndex(5);
-            },
-          ),
-          FxBox.w12,
-          _iconWithBadge(
-            badgeText: '3',
-            icon: Icons.favorite_outline_outlined,
-            title: languageModel.landingPage.wishlist,
-            onTap: () {
-              autoecTabRouter!.setActiveIndex(6);
-            },
-          ),
-          FxBox.w12,
-          _iconWithBadge(
-            badgeText: '0',
-            icon: Icons.shopping_bag_outlined,
-            title: languageModel.landingPage.cart.trim(),
-            onTap: () {
-              autoecTabRouter!.setActiveIndex(7);
-            },
-          ),
+          // if (Responsive.isMobile(context) || Responsive.isTablet(context)) ...[
+          //   MaterialButton(
+          //     height: double.infinity,
+          //     minWidth: 60,
+          //     hoverColor: ColorConst.transparent,
+          //     onPressed: () {},
+          //     child: const SvgIcon(icon: IconlyBroken.search),
+          //   )
+          // ],
+          if (!Responsive.isMobile(context)) ...[
+            FxBox.w16,
+            _iconWithBadge(
+              badgeText: '2',
+              icon: Icons.compare_arrows,
+              title: languageModel.landingPage.compare,
+              onTap: () {
+                autoecTabRouter!.setActiveIndex(5);
+              },
+            ),
+            FxBox.w12,
+            _iconWithBadge(
+              badgeText: '3',
+              icon: Icons.favorite_outline_outlined,
+              title: languageModel.landingPage.wishlist,
+              onTap: () {
+                autoecTabRouter!.setActiveIndex(6);
+              },
+            ),
+            FxBox.w12,
+            _iconWithBadge(
+              badgeText: '0',
+              icon: Icons.shopping_bag_outlined,
+              title: languageModel.landingPage.cart.trim(),
+              onTap: () {
+                autoecTabRouter!.setActiveIndex(7);
+              },
+            ),
+          ],
         ],
-      ],
+      ),
     );
   }
 
@@ -461,7 +468,10 @@ class _ECLandingPageState extends State<ECLandingPage> {
       child: Row(
         children: [
           Badge(
-            label: Text(badgeText),
+            label: Text(
+              badgeText,
+              style: const TextStyle(color: ColorConst.white),
+            ),
             backgroundColor: ColorConst.black,
             child: Icon(
               icon,

@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/hover.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
@@ -176,7 +177,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
           height: 40,
           width: 40,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: isDark ? ColorConst.scaffoldDark : Colors.white,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
@@ -207,7 +208,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
           height: 40,
           width: 40,
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: isDark ? ColorConst.scaffoldDark : Colors.white,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
@@ -217,9 +218,11 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
               )
             ],
           ),
-          child: const Icon(
-            Icons.arrow_back_ios,
-            size: 14,
+          child: const Center(
+            child: Icon(
+              Icons.arrow_back_ios,
+              size: 14,
+            ),
           ),
         ),
       ),
@@ -427,8 +430,10 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
                           ),
                           Text(
                             'Rs$disAmount',
-                            style: const TextStyle(
-                                color: Color(0xFF5b2230),
+                            style: TextStyle(
+                                color: isDark
+                                    ? ColorConst.errorDark
+                                    : const Color(0xFF5b2230),
                                 fontWeight: FontWeight.bold),
                           )
                         ],
@@ -509,6 +514,7 @@ class _ProductHomeScreenState extends State<ProductHomeScreen> {
       child: IconButton(
         icon: Icon(iconData),
         onPressed: onPressed,
+        color: ColorConst.black,
       ),
     );
   }

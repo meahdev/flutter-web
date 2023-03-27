@@ -118,7 +118,9 @@ class _CartScreenState extends State<CartScreen> {
                 ),
                 suffixIcon: FxButton(
                   onPressed: () {},
-                  height: 65,
+                  height: 70,
+                  borderRadius: 10,
+                  textColor: ColorConst.white,
                   color: ColorConst.primaryDark.withOpacity(0.8),
                   text: Strings.apply,
                 ),
@@ -146,6 +148,7 @@ class _CartScreenState extends State<CartScreen> {
                   autoTabRouter!.setActiveIndex(45);
                 },
                 height: 50,
+                textColor: ColorConst.white,
                 color: ColorConst.calSuccess,
                 text: Strings.checkOut,
               ),

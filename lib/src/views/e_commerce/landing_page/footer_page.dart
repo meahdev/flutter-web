@@ -2,6 +2,7 @@ import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/widget/textformfield.dart';
@@ -153,7 +154,8 @@ class _FooterPageState extends State<FooterPage> {
                 onTap: () {
                   if (account == languageModel.landingPage.login) {
                     autoecTabRouter!.setActiveIndex(8);
-                  } else if (account == languageModel.landingPage.orderHistory) {
+                  } else if (account ==
+                      languageModel.landingPage.orderHistory) {
                     autoecTabRouter!.setActiveIndex(12);
                   } else if (account == languageModel.landingPage.myWishlist) {
                     autoecTabRouter!.setActiveIndex(6);
@@ -267,9 +269,10 @@ class _FooterPageState extends State<FooterPage> {
               borderRadius: 4,
               color: ColorConst.footerButtonRed,
               text: 'Subscribe',
+              textColor: ColorConst.white,
             ),
             hintText: 'Your Email Address',
-            fillColor: ColorConst.white,
+            fillColor: isDark ? ColorConst.scaffoldDark : ColorConst.white,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(4),
             ),

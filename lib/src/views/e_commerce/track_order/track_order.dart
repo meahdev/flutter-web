@@ -3,8 +3,8 @@ import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
-import 'package:admin_dashboard/src/widget/custom_text_field.dart';
 import 'package:admin_dashboard/src/widget/datatable.dart';
+import 'package:admin_dashboard/src/widget/textformfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -120,9 +120,10 @@ class _TrackOrderState extends State<TrackOrder> {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: CustomTextField(
-                textColor: isDark ? ColorConst.black : null,
                 controller: _orderController,
                 hintText: 'Order Code',
+                filled: true,
+                fillColor: isDark ? ColorConst.scaffoldDark : ColorConst.white,
               ),
             ),
             FxButton(

@@ -95,11 +95,13 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         size: ColumnSize.L,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.categoryName),
+                        label: _tableHeader(
+                            languageModel.eCommerceAdmin.categoryName),
                         size: ColumnSize.M,
                       ),
                       DataColumn2(
-                        label: _tableHeader(languageModel.eCommerceAdmin.status),
+                        label:
+                            _tableHeader(languageModel.eCommerceAdmin.status),
                         size: ColumnSize.S,
                       ),
                       DataColumn2(
@@ -311,6 +313,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
           color: ColorConst.primary,
           minWidth: MediaQuery.of(context).size.width / 7,
           text: 'Add Category',
+          textColor: ColorConst.white,
         ),
         FxBox.w24,
         FxButton(
@@ -338,6 +341,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
       alignment: Alignment.centerRight,
       child: FxButton(
         height: 50,
+        textColor: ColorConst.white,
         color: ColorConst.primary,
         fullWidth: false,
         minWidth: MediaQuery.of(context).size.width / 7,

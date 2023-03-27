@@ -6,6 +6,7 @@ import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
+import 'package:admin_dashboard/src/utils/responsive.dart';
 
 import 'package:admin_dashboard/src/views/e_commerce/vender/latest_transaction.dart';
 import 'package:admin_dashboard/src/views/e_commerce/vender/monthly_order_char.dart';
@@ -40,15 +41,17 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
                   _venderRevenue(),
                 ],
               )
-            : MediaQuery.of(context).size.width < 1300
+            : Responsive.isMobile(context) ||
+                    islg(context) ||
+                    Responsive.isTablet(context)
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
+                      Column(
                         children: [
                           venderDetail(),
-                          FxBox.w20,
+                          FxBox.h20,
                           _bankDetails(),
                         ],
                       ),
@@ -59,10 +62,10 @@ class _VenderDetailScreenState extends State<VenderDetailScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
+                      Row(
                         children: [
                           venderDetail(),
-                          FxBox.h20,
+                          FxBox.w20,
                           _bankDetails(),
                         ],
                       ),

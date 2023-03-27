@@ -278,6 +278,7 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
           color: ColorConst.primary,
           minWidth: MediaQuery.of(context).size.width / 7,
           text: 'Add Sub Category',
+          textColor: ColorConst.white,
         ),
         FxBox.w24,
         FxButton(
@@ -304,6 +305,7 @@ class _SubCategoryScreenState extends State<SubCategoryScreen> {
     return Align(
       alignment: Alignment.centerRight,
       child: FxButton(
+        textColor: ColorConst.white,
         height: 50,
         color: ColorConst.primary,
         fullWidth: false,

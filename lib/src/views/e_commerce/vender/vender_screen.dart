@@ -390,6 +390,7 @@ class _VenderScreenState extends State<VenderScreen> {
           color: ColorConst.primary,
           minWidth: MediaQuery.of(context).size.width / 7,
           text: 'Add Vendor',
+          textColor: ColorConst.white,
         ),
         FxBox.w24,
         FxButton(
@@ -416,6 +417,7 @@ class _VenderScreenState extends State<VenderScreen> {
       alignment: Alignment.centerRight,
       child: FxButton(
         height: 50,
+        textColor: ColorConst.white,
         color: ColorConst.primary,
         fullWidth: false,
         minWidth: MediaQuery.of(context).size.width / 7,

@@ -276,6 +276,7 @@ class _ReturnConditionScreenState extends State<ReturnConditionScreen> {
           fullWidth: false,
           color: ColorConst.primary,
           minWidth: MediaQuery.of(context).size.width / 7,
+          textColor: ColorConst.white,
           text: isEdit ? 'Update Return Condition' : 'Add Return Condition',
         ),
         FxBox.w24,
@@ -311,6 +312,7 @@ class _ReturnConditionScreenState extends State<ReturnConditionScreen> {
           isEdit = false;
           setState(() {});
         },
+        textColor: ColorConst.white,
         text: 'New Return Condition',
       ),
     );

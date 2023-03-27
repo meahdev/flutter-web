@@ -62,18 +62,16 @@ class CustomTextField extends StatelessWidget {
         keyboardType: keyBoardType,
         textCapitalization: textCapitalization,
         cursorColor: ColorConst.lightFontColor,
-        style:  TextStyle(fontSize: 15, color: textColor),
+        style: TextStyle(fontSize: 15, color: textColor),
         decoration: InputDecoration(
           suffixIconConstraints: const BoxConstraints(minWidth: 30),
           filled: true,
           hintText: hintText,
-          // fillColor: isDark ? ColorConst.darkContainer : ColorConst.white,
-          fillColor: ColorConst.white,
+          fillColor: isDark ? ColorConst.darkContainer : ColorConst.white,
+          // fillColor: ColorConst.white,
 
           hintStyle: TextStyle(
-            color: isDark
-                ? ColorConst.black.withOpacity(0.5)
-                : ColorConst.lightFontColor,
+            color: isDark ? ColorConst.white : ColorConst.lightFontColor,
             fontSize: 15,
             fontWeight: FontWeight.w600,
           ),
@@ -95,6 +93,7 @@ class CustomTextField extends StatelessWidget {
             borderSide: const BorderSide(color: ColorConst.lightFontColor),
             borderRadius: BorderRadius.circular(4),
           ),
+
           focusedBorder: OutlineInputBorder(
             borderSide: const BorderSide(color: ColorConst.primary),
             borderRadius: BorderRadius.circular(4),

@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/const.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:admin_dashboard/src/views/e_commerce/wish_list/products.dart';
@@ -60,95 +61,101 @@ class _WishListState extends State<WishList> {
   Widget _cardUI(int index) {
     return GestureDetector(
       onTap: () {},
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: 10),
-        decoration: BoxDecoration(
-          color: ColorConst.white,
+      child: Card(
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
-          boxShadow: [
-            BoxShadow(
-              color: ColorConst.primary.withOpacity(0.1),
-              blurRadius: 5.0,
-              offset: const Offset(0.0, 5.0),
-            ),
-          ],
         ),
-        clipBehavior: Clip.hardEdge,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              productsList[index]['image'],
-              fit: BoxFit.contain,
-              height: 250.0,
-              width: double.infinity,
-            ),
-            const SizedBox(height: 16.0),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: CustomText(
-                      title: productsList[index]['title'],
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+            // color: ColorConst.white,
+            // borderRadius: BorderRadius.circular(12.0),
+            boxShadow: [
+              BoxShadow(
+                color: ColorConst.primary.withOpacity(0.1),
+                blurRadius: 5.0,
+                offset: const Offset(0.0, 5.0),
+              ),
+            ],
+          ),
+          clipBehavior: Clip.hardEdge,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                productsList[index]['image'],
+                fit: BoxFit.contain,
+                height: 250.0,
+                width: double.infinity,
+              ),
+              const SizedBox(height: 16.0),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: CustomText(
+                        title: productsList[index]['title'],
+                        fontSize: 16.0,
+                        maxLine: 2,
+                        //textColor: ColorConst.black,
+                        overflow: TextOverflow.ellipsis,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    const Spacer(),
+                    CustomText(
+                      title: productsList[index]['rating'],
+                      //textColor: ColorConst.black,
                       fontSize: 16.0,
-                      maxLine: 2,
-                      textColor: ColorConst.black,
-                      overflow: TextOverflow.ellipsis,
                       fontWeight: FontWeight.w600,
                     ),
-                  ),
-                  const Spacer(),
-                  CustomText(
-                    title: productsList[index]['rating'],
-                    textColor: ColorConst.black,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                  ),
-                  const Icon(
-                    Icons.star,
-                    color: Colors.amber,
-                    size: 15,
-                  ),
-                ],
+                    const Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                      size: 15,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            FxBox.h8,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: CustomText(
-                title: '${productsList[index]['price']} \$',
-                fontSize: 16.0,
-                fontWeight: FontWeight.w600,
-                textColor: ColorConst.priceColor,
+              FxBox.h8,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: CustomText(
+                  title: '${productsList[index]['price']} \$',
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w600,
+                  textColor:
+                      isDark ? ColorConst.errorDark : ColorConst.priceColor,
+                ),
               ),
-            ),
-            FxBox.h12,
-            const Divider(height: 0.0),
-            FxBox.h12,
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: [
-                  _iconBox(
-                    color: ColorConst.black,
-                    icon: Icons.delete_outline,
-                    onPressed: () {},
-                  ),
-                  const Spacer(),
-                  FxButton(
-                    icon: const Icon(Icons.shopping_cart_outlined),
-                    borderRadius: 4.0,
-                    onPressed: () {
-                      autoecTabRouter!.setActiveIndex(7);
-                    },
-                    text: 'Add to cart',
-                  ),
-                ],
+              FxBox.h12,
+              const Divider(height: 0.0),
+              FxBox.h12,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  children: [
+                    _iconBox(
+                      color: ColorConst.black,
+                      icon: Icons.delete_outline,
+                      onPressed: () {},
+                    ),
+                    const Spacer(),
+                    FxButton(
+                      icon: const Icon(Icons.shopping_cart_outlined),
+                      borderRadius: 4.0,
+                      onPressed: () {
+                        autoecTabRouter!.setActiveIndex(7);
+                      },
+                      text: 'Add to cart',
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

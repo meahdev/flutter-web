@@ -26,6 +26,8 @@ class ColorConst {
   static const Color footerLight = Color(0xffE9EEF9);
   static const Color footerDark = Color(0xff2e3344);
 
+  static const Color darkModeBackGround = Color.fromRGBO(34, 39, 53, 1);
+
   //form upload file
   static const Color file = Color(0xffdddddd);
 
@@ -83,5 +85,5 @@ class ColorConst {
   static const Color priceColor = Color(0xff6f0d22);
   static const Color lightRed = Color(0xffEF486A);
   static const Color lightBlue = Color(0xff25BCF1);
-  static  Color grey200 = Colors.grey.shade200;
+  static Color grey200 = Colors.grey.shade200;
 }
