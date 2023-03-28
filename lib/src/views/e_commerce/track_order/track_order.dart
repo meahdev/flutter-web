@@ -32,7 +32,7 @@ class _TrackOrderState extends State<TrackOrder> {
           'item_image': Images.gasStove,
           'item_price': 399,
           'item_quantity': 1,
-          'item_brand': 'Buha',
+          'item_brand': 'Loream',
           'item_sub_category': '',
         },
         {
@@ -40,7 +40,7 @@ class _TrackOrderState extends State<TrackOrder> {
           'item_image': Images.ladyGaga,
           'item_price': 899,
           'item_quantity': 1,
-          'item_brand': 'Fashion web',
+          'item_brand': 'Loream',
           'item_sub_category': '',
         }
       ]
@@ -58,7 +58,7 @@ class _TrackOrderState extends State<TrackOrder> {
           'item_image': Images.pinkShirt,
           'item_price': 249,
           'item_quantity': 1,
-          'item_brand': 'Buha',
+          'item_brand': 'Loream',
           'item_sub_category': '',
         }
       ]
