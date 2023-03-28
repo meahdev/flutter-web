@@ -3,6 +3,7 @@ class Images {
   static const String _assetPathCountry = 'assets/country/';
 
   static const String smLogo = '${_assetPath}logo-sm.png';
+  static const String smLogoOld = '${_assetPath}logo-sm-old.png';
   static const String lgLightLogo = '${_assetPath}logo-light-lg.png';
   static const String lgDarkLogo = '${_assetPath}logo-dark-lg.png';
 
@@ -96,19 +97,6 @@ class Images {
   static const String underwearLoungewearAccessories =
       '${_assetPath}Underwear_Loungewear_Accessories.png';
 
-  // all brand screen
-  static const String adidas = '${_assetPath}adidas.png';
-  static const String allenSolly = '${_assetPath}allen_solly.png';
-  static const String calvinKlein = '${_assetPath}calvin_klein.png';
-  static const String nike = '${_assetPath}nike.png';
-  static const String zara = '${_assetPath}zara.png';
-  static const String hAndM = '${_assetPath}h&m.png';
-  static const String apple = '${_assetPath}apple.png';
-  static const String lg = '${_assetPath}lg.png';
-  static const String microsoft = '${_assetPath}microsoft.png';
-  static const String samsung = '${_assetPath}samsung.png';
-  static const String sony = '${_assetPath}sony.png';
-
   // offers scrren
   static const String traditional = '${_assetPath}traditional.jpeg';
   static const String makeupCategories = '${_assetPath}makeupcat.webp';
@@ -123,9 +111,9 @@ class Images {
 
   // offers slider image
 
-  static const String offersImage = '${_assetPath}offer_image.jpeg';
-  static const String offersImage1 = '${_assetPath}offer_image1.jpeg';
-  static const String offersImage2 = '${_assetPath}offer_image2.webp';
+  static const String offersImage = '${_assetPath}offer_image.jpg';
+  static const String offersImage1 = '${_assetPath}offer_image1.jpg';
+  static const String offersImage2 = '${_assetPath}offer_image2.jpg';
 
   // temp image
 

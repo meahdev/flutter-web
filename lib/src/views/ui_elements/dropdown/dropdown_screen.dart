@@ -1,6 +1,7 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/custom_text.dart';
 import 'package:admin_dashboard/src/constant/text.dart';
+import 'package:admin_dashboard/src/constant/theme.dart';
 import 'package:admin_dashboard/src/utils/localization/multi_language.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
@@ -232,6 +233,7 @@ class _DropDownScreenState extends State<DropDownScreen> {
             ),
             child: Text(
               item,
+              style: const TextStyle(color: ColorConst.black),
             ),
           );
         },

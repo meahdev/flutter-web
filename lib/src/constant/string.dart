@@ -335,17 +335,4 @@ class Strings {
   static const String watch = 'Watch';
   static const String underwearLoungewearAccessories =
       'Underwear & Loungewear Accessories';
-
-  // All Brand
-  static const String adidas = 'Adidas';
-  static const String allenSolly = 'Allen Solly';
-  static const String calvinKlein = 'Calvin Klein';
-  static const String nike = 'Nike';
-  static const String zara = 'Zara';
-  static const String hAndM = 'H & M';
-  static const String apple = 'Apple';
-  static const String lg = 'LG';
-  static const String microsoft = 'Microsoft';
-  static const String samsung = 'Samsung';
-  static const String sony = 'Sony';
 }

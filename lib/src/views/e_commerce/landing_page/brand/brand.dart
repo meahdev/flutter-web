@@ -1,49 +1,48 @@
 import 'package:admin_dashboard/src/constant/image.dart';
-import 'package:admin_dashboard/src/constant/string.dart';
 
 const List<Map<String, dynamic>> allBrandCloth = [
   {
-    'imagePath': Images.adidas,
-    'name': Strings.adidas,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.allenSolly,
-    'name': Strings.allenSolly,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.calvinKlein,
-    'name': Strings.calvinKlein,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.hAndM,
-    'name': Strings.hAndM,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.nike,
-    'name': Strings.nike,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.zara,
-    'name': Strings.zara,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.apple,
-    'name': Strings.apple,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.microsoft,
-    'name': Strings.microsoft,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.lg,
-    'name': Strings.lg,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.samsung,
-    'name': Strings.samsung,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
   {
-    'imagePath': Images.sony,
-    'name': Strings.sony,
+    'imagePath': Images.smLogoOld,
+    'name': 'Lorem',
   },
 ];
