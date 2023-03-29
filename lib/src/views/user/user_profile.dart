@@ -1,5 +1,6 @@
 import 'package:admin_dashboard/src/constant/color.dart';
 import 'package:admin_dashboard/src/constant/image.dart';
+import 'package:admin_dashboard/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterx/flutterx.dart';
 
@@ -42,41 +43,69 @@ class _UserProfileState extends State<UserProfile> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  // crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(4.0),
-                      child: Image.asset(
-                        Images.profileImage,
-                        fit: BoxFit.cover,
-                        height: 144.0,
-                        width: 144.0,
+                if (!Responsive.isMobile(context))
+                  Row(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(4.0),
+                        child: Image.asset(
+                          Images.profileImage,
+                          fit: BoxFit.cover,
+                          height: 144.0,
+                          width: 144.0,
+                        ),
                       ),
-                    ),
-                    FxBox.w24,
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text(
-                          'Jane Deo',
-                          style: TextStyle(
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w800,
+                      FxBox.w24,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Text(
+                            'Jane Deo',
+                            style: TextStyle(
+                              fontSize: 28.0,
+                              fontWeight: FontWeight.w800,
+                            ),
                           ),
-                        ),
-                        Text(
-                          'Managing Director',
-                          style: TextStyle(
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.w600,
-                            color: ColorConst.primary,
+                          Text(
+                            'Managing Director',
+                            style: TextStyle(
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.w600,
+                              color: ColorConst.primary,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
+                    ],
+                  ),
+                if (Responsive.isMobile(context)) ...[
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(4.0),
+                    child: Image.asset(
+                      Images.profileImage,
+                      fit: BoxFit.cover,
+                      height: 144.0,
+                      width: 144.0,
                     ),
-                  ],
-                ),
+                  ),
+                  FxBox.h16,
+                  const Text(
+                    'Jane Deo',
+                    style: TextStyle(
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
+                  const Text(
+                    'Managing Director',
+                    style: TextStyle(
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                      color: ColorConst.primary,
+                    ),
+                  ),
+                ],
                 FxBox.h32,
                 MediaQuery.of(context).size.width > 936
                     ? Row(
@@ -105,41 +134,39 @@ class _UserProfileState extends State<UserProfile> {
       children: [
         _titleWidget(title),
         FxBox.h12,
-        Row(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: data.first
-                  .map((e) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: Text(
-                          e,
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            ),
-            FxBox.w24,
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: data.last
-                  .map((e) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: Opacity(
-                          opacity: 0.75,
-                          child: Text(
-                            e,
-                            style: const TextStyle(
-                              fontSize: 16.0,
-                            ),
-                          ),
-                        ),
-                      ))
-                  .toList(),
-            ),
-          ],
+        ...List.generate(
+          data.first.length,
+          (index) => Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Text(
+                    data.first.elementAt(index),
+                    style: const TextStyle(
+                      fontSize: 16.0,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Opacity(
+                    opacity: 0.75,
+                    child: Text(
+                      data.last.elementAt(index),
+                      style: const TextStyle(
+                        fontSize: 16.0,
+                      ),
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ],
     );
