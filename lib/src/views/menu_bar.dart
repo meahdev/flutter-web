@@ -267,7 +267,7 @@ class _MenuBarState extends State<FMenuBar> {
                   body: SafeArea(
                     child: Scaffold(
                       key: _scaffoldDrawerKey,
-                      drawerScrimColor: ColorConst.transparent,
+                      // drawerScrimColor: ColorConst.transparent,
                       drawer: _sidebar(tabsRouter),
                       body: Row(
                         mainAxisSize: MainAxisSize.max,
