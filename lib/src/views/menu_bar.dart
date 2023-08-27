@@ -197,7 +197,7 @@ class _MenuBarState extends State<FMenuBar> {
     Gallery(),
     Carousel(),
     TabScreen(),
-    Calendar(),
+    GoogleMaps(),
     ElementsForm(),
     ValidationForm(),
     FileUploadForm(),
@@ -205,7 +205,7 @@ class _MenuBarState extends State<FMenuBar> {
     WizardForm(),
     MaskForm(),
     VideoScreen(),
-    GoogleMaps(),
+    Calendar(),
     UserProfile(),
     DragAndDrop(),
     DatePicker(),
@@ -241,6 +241,7 @@ class _MenuBarState extends State<FMenuBar> {
 
   // for change language
   final ValueNotifier<String> _language = ValueNotifier<String>('en');
+
   //final ValueNotifier<bool> _changeLanguage = ValueNotifier<bool>(false);
 
   @override
@@ -999,21 +1000,8 @@ class _MenuBarState extends State<FMenuBar> {
                               : ColorConst.primary
                           : color,
                     ),
-                    title: isopen
-                        ? Text(
-                            languageModel.translate(
-                                items.keys.elementAt(index).camelCase()),
-                            style: TextStyle(
-                              color: items.keys.elementAt(index) ==
-                                      upperCase(tabsRouter.currentPath)
-                                  ? isDark
-                                      ? ColorConst.chartForgoundColor
-                                      : ColorConst.primary
-                                  : color,
-                              fontSize: 15.7,
-                            ),
-                          )
-                        : null,
+                    title:
+                        isopen ? text(items, index, tabsRouter, color) : null,
                     mouseCursor: SystemMouseCursors.click,
                     horizontalTitleGap: 0.0,
                     onTap: () {
@@ -1054,21 +1042,8 @@ class _MenuBarState extends State<FMenuBar> {
                               : ColorConst.primary
                           : color,
                     ),
-                    title: isopen
-                        ? Text(
-                            languageModel.translate(
-                                items.keys.elementAt(index).camelCase()),
-                            style: TextStyle(
-                              color: items.keys.elementAt(index) ==
-                                      upperCase(tabsRouter.currentPath)
-                                  ? isDark
-                                      ? ColorConst.chartForgoundColor
-                                      : ColorConst.primary
-                                  : color,
-                              fontSize: 15.7,
-                            ),
-                          )
-                        : null,
+                    title:
+                        isopen ? text(items, index, tabsRouter, color) : null,
                     mouseCursor: SystemMouseCursors.click,
                     horizontalTitleGap: 0.0,
                     onTap: () {
@@ -1085,6 +1060,22 @@ class _MenuBarState extends State<FMenuBar> {
             );
           }
         },
+      ),
+    );
+  }
+
+  Text text(Map<String, String> items, int index, TabsRouter tabsRouter,
+      Color color) {
+    print('value == and ${items.keys.elementAt(index)} and ${ upperCase(tabsRouter.currentPath)}');
+    return Text(
+      items.keys.elementAt(index).camelCase().capitalize(),
+      style: TextStyle(
+        color: items.keys.elementAt(index) == upperCase(tabsRouter.currentPath)
+            ? isDark
+                ? ColorConst.chartForgoundColor
+                : ColorConst.primary
+            : color,
+        fontSize: 15.7,
       ),
     );
   }

@@ -18,12 +18,12 @@ Future<void> main() async {
   // );
 
   WidgetsFlutterBinding.ensureInitialized();
-  if (TargetPlatform.windows == defaultTargetPlatform ||
-      TargetPlatform.macOS == defaultTargetPlatform) {
-    setWindowTitle('AdminKit');
-    setWindowMinSize(const Size(480, 360));
-    setWindowMaxSize(Size.infinite);
-  }
+  // if (TargetPlatform.windows == defaultTargetPlatform ||
+  //     TargetPlatform.macOS == defaultTargetPlatform) {
+  //   setWindowTitle('AdminKit');
+  //   setWindowMinSize(const Size(480, 360));
+  //   setWindowMaxSize(Size.infinite);
+  // }
   usePathUrlStrategy();
   await languageModel.load();
   runApp(

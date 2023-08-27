@@ -80,6 +80,7 @@ import 'package:admin_dashboard/src/views/user/user_profile.dart';
 import 'package:flutter/material.dart';
 
 int getRouteIndex(String route) {
+  print('route =$route');
   if (route == Strings.buttons) {
     return 1;
   } else if (route == Strings.rating) {
@@ -130,9 +131,11 @@ int getRouteIndex(String route) {
     return 24;
   } else if (route == Strings.tabs) {
     return 25;
-  } else if (route == Strings.calendar) {
+  } else if (route == Strings.map) {
+    print('route =${Strings.map} -26');
     return 26;
-  } else if (route == Strings.formElements) {
+  }
+   else if (route == Strings.formElements) {
     return 27;
   } else if (route == Strings.formValidation) {
     return 28;
@@ -146,9 +149,11 @@ int getRouteIndex(String route) {
     return 32;
   } else if (route == Strings.videoPlayer) {
     return 33;
-  } else if (route == Strings.map) {
+  }  else if (route == Strings.calendar) {
+    print('route =${Strings.calendar} -34');
     return 34;
-  } else if (route == Strings.userProfile) {
+  }
+   else if (route == Strings.userProfile) {
     return 35;
   } else if (route == Strings.dragDrop) {
     return 36;
@@ -195,15 +200,13 @@ int getRouteIndex(String route) {
   } else if (route == Strings.dropDown) {
     return 57;
   }
-  // else if (route == Strings.landingPage) {
-  //   return 58;
-  // }
   else {
     return 0;
   }
 }
 
 Widget getRouteWidget(int index) {
+  print('route index:$index');
   if (index == 1) {
     return  Button();
   } else if (index == 2) {
@@ -255,7 +258,7 @@ Widget getRouteWidget(int index) {
   } else if (index == 25) {
     return TabScreen();
   } else if (index == 26) {
-    return Calendar();
+    return GoogleMaps();
   } else if (index == 27) {
     return ElementsForm();
   } else if (index == 28) {
@@ -271,7 +274,7 @@ Widget getRouteWidget(int index) {
   } else if (index == 33) {
     return VideoScreen();
   } else if (index == 34) {
-    return GoogleMaps();
+    return Calendar();
   } else if (index == 35) {
     return UserProfile();
   } else if (index == 36) {

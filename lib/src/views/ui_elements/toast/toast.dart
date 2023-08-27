@@ -86,7 +86,7 @@ class _ToastState extends State<Toast> {
               _toast(
                 context,
                 ToastWithColor.success(
-                  message: languageModel.widget.success,
+                  message: "hey",
                   isLightBackground: background,
                 ),
                 ToastPosition.top,

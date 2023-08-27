@@ -17,7 +17,6 @@ class LanguageModel extends Model {
   Locale _appLocale = const Locale.fromSubtags(languageCode: 'en');
 
   Locale get locale {
-    // handleLocale();
     notifyListeners();
     return _appLocale;
   }
